@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- width=device-width makes the page's CSS-pixel width match the actual
+     device screen (rather than a zoomed-out "desktop-site" view); the scale
+     values keep users from pinch-zooming the page, since this is meant to
+     feel like a small self-contained app rather than a document. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>PUSULZ</title>
+<!-- tokens.css must load first — it defines the CSS custom properties
+     (--ink, --accent, --space-md, etc.) that both tools-panel.css and this
+     page's own style.css rely on via var(--name). -->
+<link rel="stylesheet" href="shared/tokens.css">
+<link rel="stylesheet" href="shared/tools-panel.css">
+<link rel="stylesheet" href="shared/beta-gate.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Beta-only entry gate (shared/core/beta-gate.js) — empty until index.js
+       decides whether to fill it in, based on whether this device already
+       has a saved tester code. Sits before .hub in the DOM so its
+       position:fixed overlay (z-index:300, see shared/beta-gate.css) covers
+       it completely while it's up. -->
+  <div class="beta-gate is-hidden" id="beta-gate"></div>
+
+  <div class="hub is-gate-hidden" id="hub">
+    <!-- Each letter of PUSULZ is its own colored tile (colors borrowed from
+         the 6 non-RAINZ game accents in games-registry.js, so the logo reads
+         as "family" with the tiles below it). P and S are mirror-flipped
+         (.is-mirrored — right-side up but reading backwards); Z is rotated
+         (.is-upside-down — reads backwards AND upside down) — per the
+         brand's deliberately jumbled-puzzle look. Each letter's outer -wrap
+         span carries a fixed, hand-picked --tilt (15-30deg, alternating
+         sign) baked directly into the HTML rather than set by JS at
+         runtime — a plain static value in the very first rendered frame is
+         what guarantees the tilt is visible BEFORE the inner tile's on-load
+         spin animation starts, with zero dependency on script timing. -->
+    <h1 class="hub__title">
+      <span class="hub__title-tile-wrap" style="--tilt: -22deg"><span class="hub__title-tile is-mirrored" style="background:#E59A63">P</span></span>
+      <span class="hub__title-tile-wrap" style="--tilt: 18deg"><span class="hub__title-tile" style="background:#6F9BDB">U</span></span>
+      <span class="hub__title-tile-wrap" style="--tilt: -27deg"><span class="hub__title-tile is-mirrored" style="background:#63B98A">S</span></span>
+      <span class="hub__title-tile-wrap" style="--tilt: 16deg"><span class="hub__title-tile" style="background:#AD82D6">U</span></span>
+      <span class="hub__title-tile-wrap" style="--tilt: 24deg"><span class="hub__title-tile" style="background:#DFAE55">L</span></span>
+      <span class="hub__title-tile-wrap" style="--tilt: -19deg"><span class="hub__title-tile is-upside-down" style="background:#DD7FA3">Z</span></span>
+    </h1>
+    <!-- Left empty on purpose — index.js fills this in with one tile per
+         game, built from games-registry.js, once the page loads. -->
+    <div class="hub__grid" id="hub-grid"></div>
+  </div>
+
+  <!-- type="module" is what lets index.js use `import`/`export` statements
+       (the ES module system — see the long comment at the top of index.js
+       and shared/core/date-utils.js for more on why that matters). Module
+       scripts are also automatically deferred: the browser waits until the
+       whole page (including the #hub-grid div above) has been parsed before
+       running this, so index.js never needs to worry about running before
+       the elements it looks up (like #hub-grid) actually exist. -->
+  <script type="module" src="index.js"></script>
+</body>
+</html>

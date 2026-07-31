@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Send feedback</title>
+<!-- tokens.css first, same load order as every game — see tokens.css for
+     why (font-face + the --ink/--accent/--space-* custom properties this
+     page's own feedback.css relies on via var(--name)). -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+  <div class="feedback" id="feedback">
+    <!-- href is left blank here and filled in by feedback.js from the
+         ?returnTo=... param — see that file for why (this page can be
+         reached from the hub or any of the 7 games, each at a different
+         relative depth, so there's no single static "back" target). -->
+    <a class="feedback__back" id="feedback-back" href="#">← back</a>
+
+    <h1 class="feedback__title">Send feedback</h1>
+
+    <!-- Type and Section share ONE grid (grid-template-columns: auto 1fr in
+         feedback.css) rather than each <label> sizing its own row
+         independently — that's what makes both dropdowns the same width
+         and lined up under each other, instead of each just being "however
+         wide is left over after ITS OWN label." Each <label> below is
+         `display: contents` (see feedback.css), so its span+select become
+         direct children of the grid rather than boxes of their own. -->
+    <div class="feedback__row-fields">
+      <label class="feedback__field feedback__field--row" for="feedback-type">
+        <span class="feedback__label">Type</span>
+        <!-- The "Pick" option is disabled so it can never be re-selected
+             once the tester moves off it — it's placeholder helper text,
+             not a real 8th feedback type, same idea as an <input
+             placeholder>. -->
+        <select class="feedback__select" id="feedback-type" required>
+          <option value="" disabled selected>Pick</option>
+          <option value="Bug">Bug</option>
+          <option value="Styling">Styling</option>
+          <option value="Usability">Usability</option>
+          <option value="New idea">New idea</option>
+          <option value="Too hard">Too hard</option>
+          <option value="Too easy">Too easy</option>
+          <option value="General comment">General comment</option>
+        </select>
+      </label>
+
+      <label class="feedback__field feedback__field--row" for="feedback-section">
+        <span class="feedback__label">section</span>
+        <!-- Home Page/All/None are fixed here; the 7 game options are
+             appended by feedback.js from games-registry.js (the site's one
+             source of truth for "which games exist" — see that file's own
+             header comment) so this list can't drift out of sync as games
+             are renamed or added. Defaults to whichever page the tester
+             actually opened "Send feedback" from — see feedback.js. -->
+        <select class="feedback__select" id="feedback-section">
+          <option value="Home Page">Home Page</option>
+          <option value="All">All</option>
+          <option value="None">None</option>
+        </select>
+      </label>
+    </div>
+
+    <fieldset class="feedback__field">
+      <legend class="feedback__label">How you feeling?</legend>
+      <!-- Styled as a row of tappable emoji (see feedback.css), not a
+           dropdown — the whole point of the emoji is to be seen at a
+           glance, which a <select> would hide until opened. Each option is
+           a real radio input under the hood (just visually hidden) so this
+           still behaves like any other required, single-choice field:
+           keyboard-navigable, and reportValidity() works on it the same
+           way it does on the Type <select> above. -->
+      <div class="feedback__rating-group" role="radiogroup" aria-label="Satisfaction rating">
+        <label class="feedback__rating">
+          <input type="radio" name="feedback-rating" value="fuming" required>
+          <span class="feedback__rating-emoji" aria-hidden="true">🤬</span>
+          <span class="feedback__rating-text">fuming</span>
+        </label>
+        <label class="feedback__rating">
+          <input type="radio" name="feedback-rating" value="peeved">
+          <span class="feedback__rating-emoji" aria-hidden="true">🙁</span>
+          <span class="feedback__rating-text">peeved</span>
+        </label>
+        <label class="feedback__rating">
+          <input type="radio" name="feedback-rating" value="OK">
+          <span class="feedback__rating-emoji" aria-hidden="true">😐</span>
+          <span class="feedback__rating-text">OK</span>
+        </label>
+        <label class="feedback__rating">
+          <input type="radio" name="feedback-rating" value="happy">
+          <span class="feedback__rating-emoji" aria-hidden="true">🙂</span>
+          <span class="feedback__rating-text">happy</span>
+        </label>
+        <label class="feedback__rating">
+          <input type="radio" name="feedback-rating" value="wowser!">
+          <span class="feedback__rating-emoji" aria-hidden="true">🤩</span>
+          <span class="feedback__rating-text">wowser!</span>
+        </label>
+        <!-- The 6th option — opts out of rating entirely, distinct from the
+             5-point scale rather than a "middle" value like OK. 🤷 was my
+             pick for it. -->
+        <label class="feedback__rating">
+          <input type="radio" name="feedback-rating" value="n/a">
+          <span class="feedback__rating-emoji" aria-hidden="true">🤷</span>
+          <span class="feedback__rating-text">n/a</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- feedback__field--grow: this field claims whatever vertical space
+         the rest of the page doesn't need (see feedback.css), so the
+         textarea stretches down and the buttons/notes below it settle at
+         the bottom of the page instead of sitting right under a short box
+         with empty space beneath. -->
+    <label class="feedback__field feedback__field--grow">
+      <span class="feedback__label" for="feedback-details">Details</span>
+      <textarea class="feedback__textarea" id="feedback-details"></textarea>
+    </label>
+
+    <button class="feedback__submit" id="feedback-submit" type="button">Send feedback</button>
+    <p class="feedback__note">Opens your mail app with this pre-filled — just hit send.</p>
+
+    <button class="feedback__copy" id="feedback-copy" type="button">Copy feedback instead</button>
+    <p class="feedback__note">
+      If that opened an app you don't actually use (or nothing happened), tap this to copy the
+      same message, then paste it into whichever app you check and send it to
+      <strong id="feedback-email"></strong>.
+    </p>
+    <p class="feedback__copy-status" id="feedback-copy-status" aria-live="polite"></p>
+  </div>
+
+  <script type="module" src="feedback.js"></script>
+</body>
+</html>

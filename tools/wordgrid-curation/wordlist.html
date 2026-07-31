@@ -1,0 +1,860 @@
+<!doctype html>
+<title>WYRDGRID — Word List (639)</title>
+<style>
+  :root {
+    --bg: #eef1ef; --bg-grid-line: #dfe4e1; --panel: #ffffff; --ink: #1b2420;
+    --ink-dim: #5b665f; --border: #d3dad6; --accent: #2f6f6b; --accent-contrast: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14191a; --bg-grid-line: #1d2426; --panel: #1b2224; --ink: #e8ede9;
+      --ink-dim: #93a099; --border: #2b3436; --accent: #5fb3ac; --accent-contrast: #0d1a19; }
+  }
+  :root[data-theme="dark"] { --bg: #14191a; --bg-grid-line: #1d2426; --panel: #1b2224; --ink: #e8ede9;
+    --ink-dim: #93a099; --border: #2b3436; --accent: #5fb3ac; --accent-contrast: #0d1a19; }
+  :root[data-theme="light"] { --bg: #eef1ef; --bg-grid-line: #dfe4e1; --panel: #ffffff; --ink: #1b2420;
+    --ink-dim: #5b665f; --border: #d3dad6; --accent: #2f6f6b; --accent-contrast: #ffffff; }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      linear-gradient(var(--bg-grid-line) 1px, transparent 1px) 0 0 / 100% 32px,
+      linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px) 0 0 / 32px 100%,
+      var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+  h1 { margin: 0 0 4px; font-size: 22px; }
+  h1 .mono-accent { font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace; color: var(--accent); }
+  .subtitle { margin: 0 0 14px; color: var(--ink-dim); font-size: 14px; max-width: 68ch; }
+  #search {
+    width: 100%; max-width: 360px;
+    padding: 9px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-size: 14px;
+  }
+  #search:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  main { padding: 20px 24px 64px; }
+  .letter-section { break-inside: avoid; margin-bottom: 18px; }
+  .letter-heading {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    font-weight: 700; font-size: 13px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .word-columns { columns: 5 160px; column-gap: 20px; }
+  @media (max-width: 700px) { .word-columns { columns: 2 140px; } }
+  .word {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    font-size: 14px;
+    padding: 2px 0;
+    break-inside: avoid;
+  }
+  .word.is-hidden { display: none; }
+  .letter-section.is-empty { display: none; }
+</style>
+
+<header>
+  <h1><span class="mono-accent">WYRDGRID</span> — word list</h1>
+  <p class="subtitle">All 639 distinct words used across the 366 selected puzzles, alphabetically.</p>
+  <input id="search" type="text" placeholder="Filter…" autocomplete="off" />
+</header>
+
+<main id="main">
+
+  <section class="letter-section" data-letter="A">
+    <h2 class="letter-heading">A <span style="color:var(--ink-dim); font-weight:400;">(46)</span></h2>
+    <div class="word-columns">
+      <div class="word">ABLE</div>
+      <div class="word">ACER</div>
+      <div class="word">ACES</div>
+      <div class="word">ACID</div>
+      <div class="word">ACME</div>
+      <div class="word">ACNE</div>
+      <div class="word">ACRE</div>
+      <div class="word">ACTA</div>
+      <div class="word">ACTS</div>
+      <div class="word">ADDS</div>
+      <div class="word">AERO</div>
+      <div class="word">AGED</div>
+      <div class="word">AGES</div>
+      <div class="word">AIMS</div>
+      <div class="word">AKIN</div>
+      <div class="word">ALAN</div>
+      <div class="word">ALBA</div>
+      <div class="word">ALEC</div>
+      <div class="word">ALFA</div>
+      <div class="word">ALMA</div>
+      <div class="word">ALOE</div>
+      <div class="word">ALSO</div>
+      <div class="word">ALTO</div>
+      <div class="word">AMEN</div>
+      <div class="word">AMES</div>
+      <div class="word">ANNA</div>
+      <div class="word">ANTE</div>
+      <div class="word">ANTI</div>
+      <div class="word">ANTS</div>
+      <div class="word">APEX</div>
+      <div class="word">APPS</div>
+      <div class="word">ARCH</div>
+      <div class="word">AREA</div>
+      <div class="word">ARES</div>
+      <div class="word">ARIA</div>
+      <div class="word">ARID</div>
+      <div class="word">ARMS</div>
+      <div class="word">ARMY</div>
+      <div class="word">ARTS</div>
+      <div class="word">ASKS</div>
+      <div class="word">ATOM</div>
+      <div class="word">AUNT</div>
+      <div class="word">AURA</div>
+      <div class="word">AUTO</div>
+      <div class="word">AVID</div>
+      <div class="word">AXIS</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="B">
+    <h2 class="letter-heading">B <span style="color:var(--ink-dim); font-weight:400;">(20)</span></h2>
+    <div class="word-columns">
+      <div class="word">BACK</div>
+      <div class="word">BALD</div>
+      <div class="word">BATH</div>
+      <div class="word">BEAN</div>
+      <div class="word">BEAT</div>
+      <div class="word">BEEN</div>
+      <div class="word">BEST</div>
+      <div class="word">BIAS</div>
+      <div class="word">BIDS</div>
+      <div class="word">BILL</div>
+      <div class="word">BITE</div>
+      <div class="word">BLAH</div>
+      <div class="word">BLOG</div>
+      <div class="word">BLUE</div>
+      <div class="word">BOOT</div>
+      <div class="word">BOSS</div>
+      <div class="word">BRAD</div>
+      <div class="word">BRAS</div>
+      <div class="word">BRED</div>
+      <div class="word">BUSH</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="C">
+    <h2 class="letter-heading">C <span style="color:var(--ink-dim); font-weight:400;">(37)</span></h2>
+    <div class="word-columns">
+      <div class="word">CAFE</div>
+      <div class="word">CALL</div>
+      <div class="word">CAME</div>
+      <div class="word">CAMP</div>
+      <div class="word">CANT</div>
+      <div class="word">CAPE</div>
+      <div class="word">CARE</div>
+      <div class="word">CARL</div>
+      <div class="word">CASE</div>
+      <div class="word">CASH</div>
+      <div class="word">CAST</div>
+      <div class="word">CATS</div>
+      <div class="word">CAVE</div>
+      <div class="word">CELL</div>
+      <div class="word">CENT</div>
+      <div class="word">CHAR</div>
+      <div class="word">CHAT</div>
+      <div class="word">CHIP</div>
+      <div class="word">CIAO</div>
+      <div class="word">CITE</div>
+      <div class="word">CLAN</div>
+      <div class="word">CLAY</div>
+      <div class="word">CLUB</div>
+      <div class="word">COAT</div>
+      <div class="word">CODE</div>
+      <div class="word">COLD</div>
+      <div class="word">COLE</div>
+      <div class="word">COMP</div>
+      <div class="word">CONS</div>
+      <div class="word">COOL</div>
+      <div class="word">CORD</div>
+      <div class="word">CORE</div>
+      <div class="word">CORN</div>
+      <div class="word">COST</div>
+      <div class="word">COVE</div>
+      <div class="word">CREW</div>
+      <div class="word">CROP</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="D">
+    <h2 class="letter-heading">D <span style="color:var(--ink-dim); font-weight:400;">(27)</span></h2>
+    <div class="word-columns">
+      <div class="word">DALE</div>
+      <div class="word">DAME</div>
+      <div class="word">DARE</div>
+      <div class="word">DASH</div>
+      <div class="word">DATE</div>
+      <div class="word">DEAL</div>
+      <div class="word">DEAN</div>
+      <div class="word">DEAR</div>
+      <div class="word">DECK</div>
+      <div class="word">DEEP</div>
+      <div class="word">DEER</div>
+      <div class="word">DELL</div>
+      <div class="word">DEMO</div>
+      <div class="word">DIAL</div>
+      <div class="word">DIET</div>
+      <div class="word">DIFF</div>
+      <div class="word">DISC</div>
+      <div class="word">DISH</div>
+      <div class="word">DISK</div>
+      <div class="word">DOME</div>
+      <div class="word">DONE</div>
+      <div class="word">DOSE</div>
+      <div class="word">DRAM</div>
+      <div class="word">DRAW</div>
+      <div class="word">DRUM</div>
+      <div class="word">DUST</div>
+      <div class="word">DYES</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="E">
+    <h2 class="letter-heading">E <span style="color:var(--ink-dim); font-weight:400;">(26)</span></h2>
+    <div class="word-columns">
+      <div class="word">EACH</div>
+      <div class="word">EARL</div>
+      <div class="word">EARS</div>
+      <div class="word">EASE</div>
+      <div class="word">EAST</div>
+      <div class="word">EASY</div>
+      <div class="word">EATS</div>
+      <div class="word">ECHO</div>
+      <div class="word">EDDY</div>
+      <div class="word">EDGE</div>
+      <div class="word">EDIT</div>
+      <div class="word">EGGS</div>
+      <div class="word">EINE</div>
+      <div class="word">ELSE</div>
+      <div class="word">EMMA</div>
+      <div class="word">ENDS</div>
+      <div class="word">EPIC</div>
+      <div class="word">ERIC</div>
+      <div class="word">EURO</div>
+      <div class="word">EVEN</div>
+      <div class="word">EVER</div>
+      <div class="word">EVIL</div>
+      <div class="word">EXEC</div>
+      <div class="word">EXPO</div>
+      <div class="word">EYED</div>
+      <div class="word">EYES</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="F">
+    <h2 class="letter-heading">F <span style="color:var(--ink-dim); font-weight:400;">(23)</span></h2>
+    <div class="word-columns">
+      <div class="word">FAIR</div>
+      <div class="word">FAME</div>
+      <div class="word">FANS</div>
+      <div class="word">FARE</div>
+      <div class="word">FARM</div>
+      <div class="word">FAST</div>
+      <div class="word">FEAT</div>
+      <div class="word">FEED</div>
+      <div class="word">FELT</div>
+      <div class="word">FINE</div>
+      <div class="word">FISH</div>
+      <div class="word">FIST</div>
+      <div class="word">FLAG</div>
+      <div class="word">FLAP</div>
+      <div class="word">FLAT</div>
+      <div class="word">FLAW</div>
+      <div class="word">FLEE</div>
+      <div class="word">FLEW</div>
+      <div class="word">FLOW</div>
+      <div class="word">FREE</div>
+      <div class="word">FROG</div>
+      <div class="word">FROM</div>
+      <div class="word">FUND</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="G">
+    <h2 class="letter-heading">G <span style="color:var(--ink-dim); font-weight:400;">(18)</span></h2>
+    <div class="word-columns">
+      <div class="word">GAIN</div>
+      <div class="word">GAME</div>
+      <div class="word">GAPS</div>
+      <div class="word">GEAR</div>
+      <div class="word">GEEK</div>
+      <div class="word">GENE</div>
+      <div class="word">GETS</div>
+      <div class="word">GLAD</div>
+      <div class="word">GOAL</div>
+      <div class="word">GOAT</div>
+      <div class="word">GOLD</div>
+      <div class="word">GRAB</div>
+      <div class="word">GRAN</div>
+      <div class="word">GRAY</div>
+      <div class="word">GRID</div>
+      <div class="word">GRIN</div>
+      <div class="word">GRIP</div>
+      <div class="word">GROW</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="H">
+    <h2 class="letter-heading">H <span style="color:var(--ink-dim); font-weight:400;">(42)</span></h2>
+    <div class="word-columns">
+      <div class="word">HACK</div>
+      <div class="word">HAHA</div>
+      <div class="word">HAIL</div>
+      <div class="word">HAIR</div>
+      <div class="word">HALE</div>
+      <div class="word">HALF</div>
+      <div class="word">HALL</div>
+      <div class="word">HALO</div>
+      <div class="word">HARD</div>
+      <div class="word">HARE</div>
+      <div class="word">HARM</div>
+      <div class="word">HASH</div>
+      <div class="word">HAST</div>
+      <div class="word">HATE</div>
+      <div class="word">HATS</div>
+      <div class="word">HAVE</div>
+      <div class="word">HAWK</div>
+      <div class="word">HEAD</div>
+      <div class="word">HEAL</div>
+      <div class="word">HEAT</div>
+      <div class="word">HEEL</div>
+      <div class="word">HELD</div>
+      <div class="word">HELP</div>
+      <div class="word">HEMP</div>
+      <div class="word">HERD</div>
+      <div class="word">HERE</div>
+      <div class="word">HERO</div>
+      <div class="word">HIDE</div>
+      <div class="word">HIGH</div>
+      <div class="word">HIKE</div>
+      <div class="word">HILL</div>
+      <div class="word">HIRE</div>
+      <div class="word">HIST</div>
+      <div class="word">HITS</div>
+      <div class="word">HOLE</div>
+      <div class="word">HOME</div>
+      <div class="word">HOOD</div>
+      <div class="word">HOOP</div>
+      <div class="word">HOPE</div>
+      <div class="word">HOSE</div>
+      <div class="word">HOST</div>
+      <div class="word">HUGE</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="I">
+    <h2 class="letter-heading">I <span style="color:var(--ink-dim); font-weight:400;">(11)</span></h2>
+    <div class="word-columns">
+      <div class="word">ICON</div>
+      <div class="word">IDEA</div>
+      <div class="word">IDLE</div>
+      <div class="word">IDOL</div>
+      <div class="word">INFO</div>
+      <div class="word">INNS</div>
+      <div class="word">INTO</div>
+      <div class="word">IRIS</div>
+      <div class="word">IRON</div>
+      <div class="word">ISLE</div>
+      <div class="word">ITEM</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="K">
+    <h2 class="letter-heading">K <span style="color:var(--ink-dim); font-weight:400;">(9)</span></h2>
+    <div class="word-columns">
+      <div class="word">KEEN</div>
+      <div class="word">KEEP</div>
+      <div class="word">KENO</div>
+      <div class="word">KEPT</div>
+      <div class="word">KEYS</div>
+      <div class="word">KIRK</div>
+      <div class="word">KNEE</div>
+      <div class="word">KNEW</div>
+      <div class="word">KNIT</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="L">
+    <h2 class="letter-heading">L <span style="color:var(--ink-dim); font-weight:400;">(43)</span></h2>
+    <div class="word-columns">
+      <div class="word">LACE</div>
+      <div class="word">LAID</div>
+      <div class="word">LAKE</div>
+      <div class="word">LAMA</div>
+      <div class="word">LAME</div>
+      <div class="word">LAND</div>
+      <div class="word">LANE</div>
+      <div class="word">LANG</div>
+      <div class="word">LAST</div>
+      <div class="word">LATE</div>
+      <div class="word">LAVA</div>
+      <div class="word">LEAD</div>
+      <div class="word">LEAF</div>
+      <div class="word">LEAN</div>
+      <div class="word">LEFT</div>
+      <div class="word">LEGS</div>
+      <div class="word">LENS</div>
+      <div class="word">LESS</div>
+      <div class="word">LETS</div>
+      <div class="word">LIBS</div>
+      <div class="word">LIFE</div>
+      <div class="word">LIME</div>
+      <div class="word">LIMO</div>
+      <div class="word">LINE</div>
+      <div class="word">LION</div>
+      <div class="word">LIPS</div>
+      <div class="word">LIST</div>
+      <div class="word">LITE</div>
+      <div class="word">LIVE</div>
+      <div class="word">LOAD</div>
+      <div class="word">LOAN</div>
+      <div class="word">LOFT</div>
+      <div class="word">LOGO</div>
+      <div class="word">LONE</div>
+      <div class="word">LONG</div>
+      <div class="word">LOOP</div>
+      <div class="word">LORD</div>
+      <div class="word">LOSE</div>
+      <div class="word">LOSS</div>
+      <div class="word">LOST</div>
+      <div class="word">LOUD</div>
+      <div class="word">LOVE</div>
+      <div class="word">LOWE</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="M">
+    <h2 class="letter-heading">M <span style="color:var(--ink-dim); font-weight:400;">(40)</span></h2>
+    <div class="word-columns">
+      <div class="word">MAIL</div>
+      <div class="word">MAIN</div>
+      <div class="word">MALE</div>
+      <div class="word">MALI</div>
+      <div class="word">MANY</div>
+      <div class="word">MAPS</div>
+      <div class="word">MASK</div>
+      <div class="word">MATS</div>
+      <div class="word">MATT</div>
+      <div class="word">MEAL</div>
+      <div class="word">MEAN</div>
+      <div class="word">MEAT</div>
+      <div class="word">MEDS</div>
+      <div class="word">MEET</div>
+      <div class="word">MEGA</div>
+      <div class="word">MEMO</div>
+      <div class="word">MENT</div>
+      <div class="word">MENU</div>
+      <div class="word">MERE</div>
+      <div class="word">MESA</div>
+      <div class="word">MESH</div>
+      <div class="word">MESS</div>
+      <div class="word">META</div>
+      <div class="word">MIKE</div>
+      <div class="word">MILE</div>
+      <div class="word">MILL</div>
+      <div class="word">MIME</div>
+      <div class="word">MINE</div>
+      <div class="word">MINI</div>
+      <div class="word">MINT</div>
+      <div class="word">MISS</div>
+      <div class="word">MODS</div>
+      <div class="word">MOMS</div>
+      <div class="word">MONA</div>
+      <div class="word">MONO</div>
+      <div class="word">MOOD</div>
+      <div class="word">MOON</div>
+      <div class="word">MORE</div>
+      <div class="word">MOSS</div>
+      <div class="word">MOST</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="N">
+    <h2 class="letter-heading">N <span style="color:var(--ink-dim); font-weight:400;">(20)</span></h2>
+    <div class="word-columns">
+      <div class="word">NAME</div>
+      <div class="word">NEAL</div>
+      <div class="word">NEAR</div>
+      <div class="word">NEAT</div>
+      <div class="word">NECK</div>
+      <div class="word">NEED</div>
+      <div class="word">NERD</div>
+      <div class="word">NESS</div>
+      <div class="word">NEST</div>
+      <div class="word">NEWS</div>
+      <div class="word">NEXT</div>
+      <div class="word">NICE</div>
+      <div class="word">NICK</div>
+      <div class="word">NINE</div>
+      <div class="word">NITE</div>
+      <div class="word">NOAH</div>
+      <div class="word">NONE</div>
+      <div class="word">NOSE</div>
+      <div class="word">NOTE</div>
+      <div class="word">NOVA</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="O">
+    <h2 class="letter-heading">O <span style="color:var(--ink-dim); font-weight:400;">(17)</span></h2>
+    <div class="word-columns">
+      <div class="word">OATH</div>
+      <div class="word">ODDS</div>
+      <div class="word">OKAY</div>
+      <div class="word">OMIT</div>
+      <div class="word">ONCE</div>
+      <div class="word">ONES</div>
+      <div class="word">ONLY</div>
+      <div class="word">ONTO</div>
+      <div class="word">OPAL</div>
+      <div class="word">OPEN</div>
+      <div class="word">ORAL</div>
+      <div class="word">OTTO</div>
+      <div class="word">OVAL</div>
+      <div class="word">OVEN</div>
+      <div class="word">OVER</div>
+      <div class="word">OWED</div>
+      <div class="word">OWLS</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="P">
+    <h2 class="letter-heading">P <span style="color:var(--ink-dim); font-weight:400;">(47)</span></h2>
+    <div class="word-columns">
+      <div class="word">PACE</div>
+      <div class="word">PACK</div>
+      <div class="word">PADS</div>
+      <div class="word">PAGE</div>
+      <div class="word">PAID</div>
+      <div class="word">PAIN</div>
+      <div class="word">PAIR</div>
+      <div class="word">PALE</div>
+      <div class="word">PARA</div>
+      <div class="word">PART</div>
+      <div class="word">PASS</div>
+      <div class="word">PAST</div>
+      <div class="word">PATH</div>
+      <div class="word">PAUL</div>
+      <div class="word">PAYS</div>
+      <div class="word">PEAK</div>
+      <div class="word">PEAS</div>
+      <div class="word">PEEK</div>
+      <div class="word">PEER</div>
+      <div class="word">PENS</div>
+      <div class="word">PESO</div>
+      <div class="word">PEST</div>
+      <div class="word">PETS</div>
+      <div class="word">PHAT</div>
+      <div class="word">PICS</div>
+      <div class="word">PILL</div>
+      <div class="word">PINE</div>
+      <div class="word">PIPE</div>
+      <div class="word">PLAN</div>
+      <div class="word">PLAT</div>
+      <div class="word">PLAY</div>
+      <div class="word">PLOT</div>
+      <div class="word">PLUS</div>
+      <div class="word">POLL</div>
+      <div class="word">POND</div>
+      <div class="word">POOR</div>
+      <div class="word">POPE</div>
+      <div class="word">PORK</div>
+      <div class="word">POSE</div>
+      <div class="word">POST</div>
+      <div class="word">POUR</div>
+      <div class="word">PRAY</div>
+      <div class="word">PREP</div>
+      <div class="word">PREY</div>
+      <div class="word">PROS</div>
+      <div class="word">PURE</div>
+      <div class="word">PUSH</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="R">
+    <h2 class="letter-heading">R <span style="color:var(--ink-dim); font-weight:400;">(35)</span></h2>
+    <div class="word-columns">
+      <div class="word">RACE</div>
+      <div class="word">RAGE</div>
+      <div class="word">RAID</div>
+      <div class="word">RAIL</div>
+      <div class="word">RAIN</div>
+      <div class="word">RAND</div>
+      <div class="word">RANK</div>
+      <div class="word">RANT</div>
+      <div class="word">RARE</div>
+      <div class="word">RATE</div>
+      <div class="word">RATS</div>
+      <div class="word">RAVE</div>
+      <div class="word">READ</div>
+      <div class="word">REAL</div>
+      <div class="word">REED</div>
+      <div class="word">REEF</div>
+      <div class="word">REEL</div>
+      <div class="word">RENT</div>
+      <div class="word">REST</div>
+      <div class="word">RICE</div>
+      <div class="word">RICH</div>
+      <div class="word">RIDE</div>
+      <div class="word">RIPE</div>
+      <div class="word">RISE</div>
+      <div class="word">ROBE</div>
+      <div class="word">RODE</div>
+      <div class="word">ROLE</div>
+      <div class="word">ROLL</div>
+      <div class="word">ROMA</div>
+      <div class="word">ROOF</div>
+      <div class="word">ROPE</div>
+      <div class="word">ROSE</div>
+      <div class="word">ROVE</div>
+      <div class="word">RUIN</div>
+      <div class="word">RULE</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="S">
+    <h2 class="letter-heading">S <span style="color:var(--ink-dim); font-weight:400;">(75)</span></h2>
+    <div class="word-columns">
+      <div class="word">SAFE</div>
+      <div class="word">SAID</div>
+      <div class="word">SALE</div>
+      <div class="word">SALT</div>
+      <div class="word">SAME</div>
+      <div class="word">SAND</div>
+      <div class="word">SANS</div>
+      <div class="word">SAVE</div>
+      <div class="word">SAYS</div>
+      <div class="word">SCAN</div>
+      <div class="word">SEAL</div>
+      <div class="word">SEAN</div>
+      <div class="word">SEAS</div>
+      <div class="word">SEAT</div>
+      <div class="word">SECS</div>
+      <div class="word">SECT</div>
+      <div class="word">SEED</div>
+      <div class="word">SEEK</div>
+      <div class="word">SEEM</div>
+      <div class="word">SEEN</div>
+      <div class="word">SEES</div>
+      <div class="word">SELF</div>
+      <div class="word">SEMI</div>
+      <div class="word">SEND</div>
+      <div class="word">SENT</div>
+      <div class="word">SEPT</div>
+      <div class="word">SETS</div>
+      <div class="word">SHAW</div>
+      <div class="word">SHEA</div>
+      <div class="word">SHED</div>
+      <div class="word">SHIP</div>
+      <div class="word">SHOE</div>
+      <div class="word">SHOP</div>
+      <div class="word">SHOT</div>
+      <div class="word">SHOW</div>
+      <div class="word">SHUT</div>
+      <div class="word">SICK</div>
+      <div class="word">SIDE</div>
+      <div class="word">SIMS</div>
+      <div class="word">SITE</div>
+      <div class="word">SKIP</div>
+      <div class="word">SLAM</div>
+      <div class="word">SLIM</div>
+      <div class="word">SLIP</div>
+      <div class="word">SLOT</div>
+      <div class="word">SLOW</div>
+      <div class="word">SNAP</div>
+      <div class="word">SNOW</div>
+      <div class="word">SOFA</div>
+      <div class="word">SOFT</div>
+      <div class="word">SOLD</div>
+      <div class="word">SOLE</div>
+      <div class="word">SOLO</div>
+      <div class="word">SOMA</div>
+      <div class="word">SOME</div>
+      <div class="word">SONG</div>
+      <div class="word">SONS</div>
+      <div class="word">SOON</div>
+      <div class="word">SORT</div>
+      <div class="word">SPAM</div>
+      <div class="word">SPAN</div>
+      <div class="word">SPAS</div>
+      <div class="word">SPEC</div>
+      <div class="word">SPOT</div>
+      <div class="word">STAR</div>
+      <div class="word">STAT</div>
+      <div class="word">STAY</div>
+      <div class="word">STEM</div>
+      <div class="word">STEP</div>
+      <div class="word">STEW</div>
+      <div class="word">STOP</div>
+      <div class="word">STUD</div>
+      <div class="word">SUCH</div>
+      <div class="word">SUED</div>
+      <div class="word">SWAP</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="T">
+    <h2 class="letter-heading">T <span style="color:var(--ink-dim); font-weight:400;">(63)</span></h2>
+    <div class="word-columns">
+      <div class="word">TACK</div>
+      <div class="word">TACO</div>
+      <div class="word">TAGS</div>
+      <div class="word">TAKE</div>
+      <div class="word">TALE</div>
+      <div class="word">TALK</div>
+      <div class="word">TALL</div>
+      <div class="word">TANK</div>
+      <div class="word">TAPE</div>
+      <div class="word">TARA</div>
+      <div class="word">TASK</div>
+      <div class="word">TAXI</div>
+      <div class="word">TEAL</div>
+      <div class="word">TEAM</div>
+      <div class="word">TEAR</div>
+      <div class="word">TEAS</div>
+      <div class="word">TECH</div>
+      <div class="word">TEEN</div>
+      <div class="word">TEES</div>
+      <div class="word">TELL</div>
+      <div class="word">TEMP</div>
+      <div class="word">TEND</div>
+      <div class="word">TENS</div>
+      <div class="word">TENT</div>
+      <div class="word">TEST</div>
+      <div class="word">TEXT</div>
+      <div class="word">THAN</div>
+      <div class="word">THAT</div>
+      <div class="word">THEE</div>
+      <div class="word">THEM</div>
+      <div class="word">THEN</div>
+      <div class="word">THEY</div>
+      <div class="word">THIN</div>
+      <div class="word">THIS</div>
+      <div class="word">THRU</div>
+      <div class="word">THUS</div>
+      <div class="word">TIDE</div>
+      <div class="word">TIER</div>
+      <div class="word">TIES</div>
+      <div class="word">TILE</div>
+      <div class="word">TILL</div>
+      <div class="word">TIME</div>
+      <div class="word">TIPS</div>
+      <div class="word">TIRE</div>
+      <div class="word">TOLD</div>
+      <div class="word">TOLL</div>
+      <div class="word">TONE</div>
+      <div class="word">TONS</div>
+      <div class="word">TONY</div>
+      <div class="word">TOPS</div>
+      <div class="word">TOTE</div>
+      <div class="word">TOWN</div>
+      <div class="word">TOYS</div>
+      <div class="word">TRAP</div>
+      <div class="word">TRAY</div>
+      <div class="word">TREE</div>
+      <div class="word">TRIM</div>
+      <div class="word">TRIO</div>
+      <div class="word">TRIP</div>
+      <div class="word">TROY</div>
+      <div class="word">TUNE</div>
+      <div class="word">TWIN</div>
+      <div class="word">TYPE</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="U">
+    <h2 class="letter-heading">U <span style="color:var(--ink-dim); font-weight:400;">(6)</span></h2>
+    <div class="word-columns">
+      <div class="word">UNDO</div>
+      <div class="word">UNTO</div>
+      <div class="word">UPON</div>
+      <div class="word">URGE</div>
+      <div class="word">USER</div>
+      <div class="word">USES</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="V">
+    <h2 class="letter-heading">V <span style="color:var(--ink-dim); font-weight:400;">(5)</span></h2>
+    <div class="word-columns">
+      <div class="word">VALE</div>
+      <div class="word">VARY</div>
+      <div class="word">VAST</div>
+      <div class="word">VISA</div>
+      <div class="word">VOIP</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="W">
+    <h2 class="letter-heading">W <span style="color:var(--ink-dim); font-weight:400;">(27)</span></h2>
+    <div class="word-columns">
+      <div class="word">WAIT</div>
+      <div class="word">WALK</div>
+      <div class="word">WALL</div>
+      <div class="word">WANT</div>
+      <div class="word">WARE</div>
+      <div class="word">WARS</div>
+      <div class="word">WASH</div>
+      <div class="word">WATT</div>
+      <div class="word">WEAK</div>
+      <div class="word">WEAR</div>
+      <div class="word">WEBS</div>
+      <div class="word">WELD</div>
+      <div class="word">WELL</div>
+      <div class="word">WENT</div>
+      <div class="word">WERE</div>
+      <div class="word">WEST</div>
+      <div class="word">WHAT</div>
+      <div class="word">WHEN</div>
+      <div class="word">WHIP</div>
+      <div class="word">WIDE</div>
+      <div class="word">WIFE</div>
+      <div class="word">WILL</div>
+      <div class="word">WINE</div>
+      <div class="word">WISE</div>
+      <div class="word">WISH</div>
+      <div class="word">WORD</div>
+      <div class="word">WRAP</div>
+    </div>
+  </section>
+
+  <section class="letter-section" data-letter="Y">
+    <h2 class="letter-heading">Y <span style="color:var(--ink-dim); font-weight:400;">(2)</span></h2>
+    <div class="word-columns">
+      <div class="word">YEAH</div>
+      <div class="word">YEAR</div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const searchEl = document.getElementById('search');
+  const sections = [...document.querySelectorAll('.letter-section')];
+  searchEl.addEventListener('input', () => {
+    const q = searchEl.value.trim().toUpperCase();
+    sections.forEach((section) => {
+      let anyVisible = false;
+      section.querySelectorAll('.word').forEach((el) => {
+        const match = !q || el.textContent.includes(q);
+        el.classList.toggle('is-hidden', !match);
+        if (match) anyVisible = true;
+      });
+      section.classList.toggle('is-empty', !anyVisible);
+    });
+  });
+</script>

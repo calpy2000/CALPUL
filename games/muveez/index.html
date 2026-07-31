@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MUVEEZ</title>
+<!-- Same load order convention as every other game — see the matching
+     comment in games/solvz/index.html. -->
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="../../shared/shell.css">
+<link rel="stylesheet" href="../../shared/tools-panel.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as
+       every other game. Unlike GLYMPZ, there's more than just the grid in
+       here — the guess prompt, text input, button, and error message are
+       all static markup (not built dynamically), since none of them need
+       to be generated in a loop the way 36 tiles do. #grid-container
+       itself starts empty — index.js's buildGrid() fills it with 36
+       image-slice tiles once the page loads.
+
+       .muveez-stage (inside #game-root) is the element that actually sizes
+       itself from the available height and pulls its width along via
+       aspect-ratio (see style.css) — the same "content sizes itself,
+       #game-root just centers it" split SOLVZ's #game-root/.board pair
+       uses. -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <div class="muveez-stage">
+          <div id="grid-container"></div>
+
+          <p class="muveez-prompt">Can you guess the movie?</p>
+
+          <div class="muveez-guess-row">
+            <!-- Wraps the input so the guess-number badge below can be
+                 positioned absolutely INSIDE the input's own box (rather
+                 than floating outside it) — see style.css. The badge's text
+                 is kept in sync with guessCount by index.js. -->
+            <div class="muveez-input-wrap">
+              <span class="muveez-guess-number" id="guess-number">1</span>
+              <input
+                type="text"
+                id="guess-input"
+                class="muveez-input"
+                placeholder="Movie title..."
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              >
+            </div>
+            <button type="button" id="guess-btn" class="shell-btn shell-btn--small">Guess</button>
+          </div>
+
+          <!-- Reserves its line of space at all times (see style.css —
+               hidden via `visibility`, not `display:none`) so the layout
+               doesn't jump up/down every time this appears or disappears. -->
+          <p class="muveez-error is-hidden" id="guess-error">Sorry, try again</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

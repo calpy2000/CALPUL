@@ -1,0 +1,196 @@
+/* Biased so the grid sits about a third of the way down (not dead center):
+   a 1:3 flex-space ratio above/below pushes it up from true center.
+
+   ::before and ::after are "pseudo-elements" — they let CSS insert an extra
+   element into the page without it existing in the HTML at all (content: ''
+   makes them empty, invisible boxes that only exist for layout purposes).
+   Since #game-root is a flex column, these two empty boxes become flex
+   items alongside #grid-container itself — one placed before it, one after
+   (their order matches this file's HTML-like ::before/::after naming).
+   flex: 1 1 0 vs flex: 3 1 0 gives the ::after box THREE TIMES as much of
+   the leftover vertical space as the ::before box gets, which is what
+   visually pushes #grid-container up from dead-center — more empty space
+   below it than above. See shared/shell.css for the full breakdown of what
+   the three flex:grow/shrink/basis numbers mean. */
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-root::before {
+  content: '';
+  flex: 1 1 0;
+}
+
+#game-root::after {
+  content: '';
+  flex: 3 1 0;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keeps the whole grid a perfect square regardless of its width */
+  border: 2px solid #333;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #474444; /* shows through the 1px grid-gap below, acting as thin dividing lines between tiles */
+  grid-gap: 1px;
+}
+
+.tile {
+  width: 100%;
+  height: 100%;
+  /* var(--daily-image, ...) reads the CSS custom property index.js sets on
+     <html> (document.documentElement) for today's specific image — the
+     fallback (crosses.jpg) is only used if that property somehow wasn't
+     set at all. background-size:600% 600% makes the background image
+     render at 6x its normal width AND height inside each tile — since the
+     grid is 6 tiles across and 6 tiles down, this makes ONE tile's worth of
+     space show exactly 1/6th of the image both horizontally and
+     vertically. Combined with each tile's own background-position
+     (set individually in index.js's createTiles()), every tile ends up
+     displaying a different 1/36th slice of the same full photo. */
+  background-image: var(--daily-image, url('./images/crosses.jpg'));
+  background-size: 600% 600%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  user-select: none;
+  position: relative; /* positioning reference for the .tick-mark badge (position:absolute) below */
+  z-index: 1;
+  transition: transform 0.1s ease-in-out;
+}
+
+.tile.is-dragging {
+  opacity: 0.35;
+}
+
+.tile.drag-over {
+  /* `inset` (after the color) makes the box-shadow point INWARD instead of
+     outward — a highlight ring drawn just inside the tile's edge, rather
+     than a glow bleeding out past it. */
+  box-shadow: 0 0 0 3px var(--accent) inset;
+}
+
+/* Triggered briefly on both tiles involved in a swap (see index.js's
+   onSwap — the class is added, then removed 200ms later) — plays the
+   tilePop keyframe animation once. */
+.tile-swapped {
+  animation: tilePop 0.2s ease-in-out;
+}
+
+/* A three-step "pop": briefly scales up to 110% size at the halfway point,
+   then back down to normal — a quick visual pulse marking that a swap just
+   happened. */
+@keyframes tilePop {
+  0% { transform: scale(1); z-index: 20; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); z-index: 20; }
+}
+
+.tick-mark {
+  position: absolute;
+  top: 5px;
+  right: 5px; /* sits in the tile's top-right corner */
+  width: 12px;
+  height: 12px;
+  background-color: #39cc51;
+  border-radius: 50%; /* circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.tick-mark.is-hidden {
+  display: none;
+}
+
+/* Styles the inline <svg><polyline .../></svg> checkmark shape built in
+   index.js's createTiles(). `fill: none` means the checkmark shape isn't
+   filled in with color, only its outline is drawn — `stroke` sets that
+   outline's color, `stroke-width` its thickness, and `stroke-linecap`/
+   `stroke-linejoin: round` give the checkmark's corners and endpoints
+   smooth rounded edges instead of sharp/flat ones. */
+.tick-mark svg {
+  width: 60%;
+  height: 60%;
+  fill: none;
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Same badge as .tick-mark above, sized for sitting inline in the
+   instructions text (see index.js's TICK_IMG) instead of pinned to a
+   tile's corner. `vertical-align: middle` (rather than a hand-tuned
+   negative-px offset) keeps it centered on the text's own vertical rhythm
+   without letting its edges stick out far enough to force the whole line
+   box taller than a plain-text line — which is what was quietly inflating
+   line height and causing wrapped/"scrolling" sentences (see
+   games/solvz's same fix). Kept small (16px) for the same reason. */
+.glympz-inline-tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background-color: #39cc51;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+.glympz-inline-tick svg {
+  width: 60%;
+  height: 60%;
+  fill: none;
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Reveal solution (same feature/styling as games/slydz/style.css and
+   games/quadz/style.css — see their fuller comments for the reasoning) ---
+   The confirm panel itself (.reveal-confirm/.reveal-confirm__panel) now
+   carries shell.css's own .shell-overlay/.shell-overlay__panel/
+   .shell-end-screen__message classes directly (see index.js) instead of a
+   separate copy of the same positioning/message rules here — that's what
+   keeps it visually identical to the start banner and end-screen without
+   needing to hand-update three places every time one of those changes.
+   Only what's actually unique to this dialog is still styled here: the
+   small "Reveal solution" trigger link, and the side-by-side two-button
+   row (shell's own panels only ever stack a single button). */
+.reveal-btn {
+  margin-top: var(--space-md);
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.reveal-btn:hover {
+  color: var(--ink);
+}
+
+.reveal-btn.is-hidden {
+  display: none;
+}
+
+.reveal-confirm__actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}

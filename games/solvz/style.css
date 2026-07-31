@@ -1,0 +1,157 @@
+/* SOLVZ-only: narrower than the shared 95vw stage default. The shared shell
+   already makes .shell-stage flex-grow to fill available height (see
+   shared/shell.css); this just tightens the width so the two grids don't
+   fill the entire screen edge to edge. */
+.shell-stage {
+  width: 80%;
+}
+
+#game-root {
+  /* --gap-one/--tile-size-calc/--gap-two are LOCAL custom properties (only
+     meaningful within this element and its descendants — grid1/grid2/tiles
+     below all inherit and read them via var(--name)). The goal: grid2's
+     tiles need to line up in width with grid1's tiles (5 columns vs 4
+     columns, but both spanning the same total width), so grid2 needs a
+     LARGER gap between its fewer columns to make each individual tile end
+     up the same size as grid1's tiles.
+     --tile-size-calc works out how wide one of grid1's 5 tiles is: total
+     width (100%) minus the total space taken up by grid1's 4 gaps between
+     tiles, divided into 5 equal tiles.
+     --gap-two then works out what gap grid2 needs between its 4 tiles so
+     that ITS tiles come out that exact same size: (tile size + a gap's
+     worth of the original spacing) divided by 3 (the 3 gaps between 4
+     tiles). This is genuinely fiddly math — if you want to change this
+     grid's proportions, it's usually easier to adjust --gap-one and let
+     these formulas keep everything in sync, rather than hand-tuning gap-two
+     directly. */
+  --gap-one: 0px;
+  --tile-size-calc: calc((100% - (4 * var(--gap-one))) / 5);
+  --gap-two: calc((var(--tile-size-calc) + (4 * var(--gap-one))) / 3);
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers .board (below) within whatever vertical space .shell-stage has available */
+}
+
+.board {
+  /* height:100%; width:auto; aspect-ratio:1/1.85 — this is the "size
+     yourself from available height" pattern explained in shared/shell.css.
+     1.85 is an approximation of how much TALLER this board is than it is
+     wide, once you account for grid1 (square) + the instructions paragraph
+     + grid2 (shorter than it is wide) all stacked up — it doesn't need to
+     be mathematically perfect, just close enough that .board never grows
+     taller than the space actually available (see the earlier debugging
+     story that led here: a too-small ratio caused the timer to overlap the
+     grid on some screen sizes). */
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 1 / 1.85;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.board__instructions {
+  margin: var(--space-sm) 0;
+  font-size: 16px;
+  text-align: center;
+  color: #4a5568;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* repeat(5, 1fr) is shorthand for "5 equal-width columns" — identical to
+   writing `1fr 1fr 1fr 1fr 1fr` by hand, just shorter and easier to keep
+   correct if the column count ever changes. */
+.grid--one {
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gap-one);
+}
+
+.grid--two {
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-two); /* the calculated gap from #game-root above, so these tiles match grid--one's tile size */
+}
+
+.tile {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* forces every tile to be a perfect square, with height following automatically from width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(16px, 5.5vw, 26px);
+  font-weight: 500;
+  color: #fff;
+  user-select: none; /* stops the tile's text from being selectable/highlightable, which would otherwise interfere with dragging */
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  touch-action: none; /* tells the browser not to use this element for its own touch gestures (like scrolling), so drag.js's touch handling gets full control */
+}
+
+/* Applied by shared/input/dom-tile-drag.js while a tile is actively being
+   dragged. */
+.tile.is-dragging {
+  opacity: 0.35;
+}
+
+/* Applied by dom-tile-drag.js while another tile is being dragged OVER this
+   one, as a valid drop target — gives the player a visual "drop here"
+   highlight before they even release. */
+.tile.drag-over {
+  box-shadow: 0 0 0 3px var(--accent);
+  transform: scale(1.05);
+}
+
+/* Color-codes each tile TYPE (see the ROW_TILE_CLASSES/GRID2_ROW_CLASS data
+   in index.js, which is what decides which of these classes a given tile
+   gets). Writing multiple simple rules on one line each, rather than
+   spreading them across many lines, is just a style choice for keeping a
+   short "lookup table" of colors visually compact. */
+.tile.number { background-color: #c3ecc9; color: var(--ink); }
+.tile.operator { background-color: #f6c9dd; color: var(--ink); }
+.tile.blank { background-color: #e2e2e2; color: var(--ink); }
+.tile.white-blank { background-color: #ffffff; color: var(--ink); }
+.tile.equals { background-color: #ffffff; color: var(--ink); }
+
+/* Same flat number/operator tile colors as above, sized for sitting inline
+   in the instructions text (see index.js's NUMBER_TILE_IMG/OPERATOR_TILE_IMG)
+   instead of filling a full grid cell. `vertical-align: middle` (rather
+   than a hand-tuned negative-px offset) keeps it centered on the text's own
+   vertical rhythm without letting its edges stick out far enough to force
+   the whole line box taller than a plain-text line — this was the actual
+   cause of sentence 1's wrapped/"scrolling" line: a fixed px offset doesn't
+   cap how far the icon's edges reach above/below the surrounding text. Kept
+   small (16px) for the same reason. */
+.solvz-inline-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+  vertical-align: middle;
+}
+.solvz-inline-tile.number { background-color: #c3ecc9; }
+.solvz-inline-tile.operator { background-color: #f6c9dd; }
+
+/* Makes every element INSIDE a tile (there normally aren't any — tiles are
+   just text — but this is a defensive catch-all) ignore mouse/touch events,
+   so any click/drag always lands on the .tile element itself rather than
+   getting intercepted by something nested inside it. This is what makes
+   dom-tile-drag.js's `e.target.closest(tileSelector)` reliably find the
+   tile even if the browser reports a slightly different element as the
+   literal click target. */
+.tile * {
+  pointer-events: none;
+}

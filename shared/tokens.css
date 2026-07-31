@@ -1,0 +1,87 @@
+/* Quicksand, self-hosted (no external font request at runtime) — every page
+   loads tokens.css first, so this one declaration is what puts Quicksand on
+   the hub AND all seven games via --font-body below. Four weights are
+   included (not just the 600/700 the hub tiles use) so any plain-weight
+   (400) or medium-weight (500) text elsewhere on the site — which is most
+   of it — doesn't get silently bumped up to a heavier face than intended. */
+@font-face {
+  font-family: 'Quicksand';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Quicksand-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Quicksand-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Quicksand-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Quicksand-700.woff2') format('woff2');
+}
+
+/* Universal reset — every page loads tokens.css first (before shell.css and
+   the game's own style.css), so these two rules apply everywhere.
+
+   box-sizing: border-box changes what "width" and "height" mean for every
+   element: by default (content-box), an element's declared width/height
+   covers ONLY its content, and padding/border get added on TOP of that —
+   so a box with width:100px; padding:10px actually renders 120px wide,
+   which trips people up constantly. border-box instead makes width/height
+   include padding and border, so a box with width:100px; padding:10px
+   really is 100px wide (content just shrinks to fit). This one rule is
+   applied to literally every element (the "*" selector, plus its
+   ::before/::after pseudo-elements) so sizing math stays predictable
+   everywhere in the project. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Browsers give <body> a small default margin (usually 8px) — this removes
+   it, since every game's own layout controls its own spacing precisely and
+   doesn't want an unaccounted-for gap around the edge of the page. */
+body {
+  margin: 0;
+}
+
+/* Shared design tokens — swap these to re-skin every game at once.
+   These are CSS custom properties (aka "CSS variables"). Anything defined
+   inside :root is available to every element on the page via var(--name),
+   e.g. `color: var(--ink);`. The advantage over just writing the hex code
+   everywhere is that changing the value here instantly updates it
+   everywhere it's used — e.g. change --accent once and every button across
+   every game picks up the new color. */
+:root {
+  --ink: #1b1f27; /* near-black, used for body text */
+  --paper: #eef0f3; /* light gray-blue background */
+  --line: #c7cdd6; /* subtle border/divider color */
+  --accent: #3d5af1; /* the main "brand" blue used for buttons/links/highlights */
+  --accent-contrast: #ffffff; /* text color that reads clearly ON TOP of --accent */
+
+  /* A small fixed spacing scale (4/8/16/24px) so margins and padding across
+     every file stay consistent instead of every developer picking their own
+     one-off pixel values. Used like `padding: var(--space-md);`. */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+  /* Quicksand first (self-hosted via @font-face above), then the same
+     platform-native fallback stack as before in case the font file ever
+     fails to load — -apple-system/BlinkMacSystemFont for macOS/iOS, Segoe UI
+     for Windows, Roboto for Android, sans-serif as the last resort. */
+  --font-body: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}

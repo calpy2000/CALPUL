@@ -1,0 +1,182 @@
+[
+  {
+    "day": 32,
+    "topic": "Susan B. Anthony",
+    "reason": "download failed"
+  },
+  {
+    "day": 33,
+    "topic": "Charles Darwin",
+    "reason": "download failed"
+  },
+  {
+    "day": 34,
+    "topic": "Ludwig van Beethoven",
+    "reason": "download failed"
+  },
+  {
+    "day": 36,
+    "topic": "William Shakespeare",
+    "reason": "download failed"
+  },
+  {
+    "day": 38,
+    "topic": "Elizabeth I of England",
+    "reason": "download failed"
+  },
+  {
+    "day": 40,
+    "topic": "Marie Antoinette",
+    "reason": "download failed"
+  },
+  {
+    "day": 41,
+    "topic": "Thomas Jefferson",
+    "reason": "download failed"
+  },
+  {
+    "day": 42,
+    "topic": "Benjamin Franklin",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 43,
+    "topic": "Ulysses S. Grant",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 44,
+    "topic": "Robert E. Lee",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 45,
+    "topic": "Florence Nightingale",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 46,
+    "topic": "Nikola Tesla",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 47,
+    "topic": "Thomas Edison",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 48,
+    "topic": "Alexander Graham Bell",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 49,
+    "topic": "Louis Pasteur",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 50,
+    "topic": "Charles Dickens",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 51,
+    "topic": "Jane Austen",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 52,
+    "topic": "Leo Tolstoy",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 53,
+    "topic": "Karl Marx",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 54,
+    "topic": "Sigmund Freud",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 55,
+    "topic": "Vincent van Gogh",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 56,
+    "topic": "Pablo Picasso",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 57,
+    "topic": "Frida Kahlo",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 58,
+    "topic": "Amelia Earhart",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 59,
+    "topic": "Catherine the Great",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 60,
+    "topic": "Peter the Great",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 61,
+    "topic": "Julius Caesar",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 62,
+    "topic": "Cleopatra",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 63,
+    "topic": "Christopher Columbus",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 64,
+    "topic": "Isaac Newton",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 65,
+    "topic": "Michelangelo",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 66,
+    "topic": "Leonardo da Vinci",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 67,
+    "topic": "Galileo Galilei",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 68,
+    "topic": "Johannes Kepler",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 69,
+    "topic": "Johann Sebastian Bach",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  },
+  {
+    "day": 70,
+    "topic": "Frederic Chopin",
+    "reason": "non-JSON response (likely rate-limited): You are making too many requests to the API.\nPlease follow the best practices at"
+  }
+]

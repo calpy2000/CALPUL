@@ -1,0 +1,102 @@
+// Third hand-picked batch — see fetch-new-batch.js for the pattern.
+// Usage: TMDB_KEY=xxxx node fetch-new-batch3.js
+
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+
+const TMDB_KEY = process.env.TMDB_KEY;
+if (!TMDB_KEY) {
+  console.error('Set TMDB_KEY environment variable to your TMDb API key.');
+  process.exit(1);
+}
+
+const IMAGES_DIR = path.join(__dirname, '..', '..', 'games', 'muveez', 'images');
+const NEW_TITLES_LOG = path.join(__dirname, 'new-batch3-log.json');
+
+const BATCH = [
+  { search: 'War Horse', year: 2011, display: 'War Horse' },
+  { search: 'High Noon', year: 1952, display: 'High Noon' },
+  { search: 'Gunfight at the O.K. Corral', year: 1957, display: 'Gunfight at the O.K. Corral' },
+  { search: 'The Mermaid', year: 2016, display: 'The Mermaid' },
+  { search: "A Hard Day's Night", year: 1964, display: "A Hard Day's Night" },
+  { search: 'Ned Kelly', year: 2003, display: 'Ned Kelly' },
+  { search: 'Arthur', year: 1981, display: 'Arthur' },
+  { search: 'Hooper', year: 1978, display: 'Hooper' },
+  { search: 'Desperately Seeking Susan', year: 1985, display: 'Desperately Seeking Susan' },
+  { search: 'Evita', year: 1996, display: 'Evita' },
+  { search: 'Spartacus', year: 1960, display: 'Spartacus' },
+  { search: 'Gentlemen Prefer Blondes', year: 1953, display: 'Gentlemen Prefer Blondes' },
+  { search: 'Watergate', year: null, display: 'Watergate' },
+];
+
+async function tmdbGet(urlPath, params) {
+  const url = new URL(`https://api.themoviedb.org/3${urlPath}`);
+  url.searchParams.set('api_key', TMDB_KEY);
+  for (const [k, v] of Object.entries(params || {})) if (v !== null && v !== undefined) url.searchParams.set(k, v);
+  const res = await fetch(url);
+  if (res.status === 429) {
+    await new Promise((r) => setTimeout(r, 1000));
+    return tmdbGet(urlPath, params);
+  }
+  if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
+  return res.json();
+}
+
+function currentMaxDay() {
+  const nums = fs.readdirSync(IMAGES_DIR)
+    .map((f) => { const m = f.match(/^(\d+)\.jpg$/); return m ? parseInt(m[1], 10) : null; })
+    .filter((n) => n !== null);
+  return nums.length ? Math.max(...nums) : 0;
+}
+
+async function fetchOne(entry, dayNumber) {
+  let search = await tmdbGet('/search/movie', { query: entry.search, year: entry.year });
+  let movie = search.results && search.results[0];
+  if (!movie && entry.year) {
+    search = await tmdbGet('/search/movie', { query: entry.search });
+    movie = search.results && search.results[0];
+  }
+  if (!movie) return { dayNumber, display: entry.display, status: 'failed', reason: 'no TMDb match' };
+
+  const images = await tmdbGet(`/movie/${movie.id}/images`, { include_image_language: 'null' });
+  const backdrops = (images.backdrops || []).sort((a, b) => b.vote_average - a.vote_average);
+  if (backdrops.length === 0) return { dayNumber, display: entry.display, status: 'failed', reason: 'no backdrop images' };
+
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrops[0].file_path}`;
+  const imgRes = await fetch(imageUrl);
+  if (!imgRes.ok) return { dayNumber, display: entry.display, status: 'failed', reason: `image download ${imgRes.status}` };
+  const buffer = Buffer.from(await imgRes.arrayBuffer());
+
+  const meta = await sharp(buffer).metadata();
+  const side = Math.min(meta.width, meta.height);
+  const left = Math.max(0, Math.round((meta.width - side) / 2));
+  const top = Math.max(0, Math.round((meta.height - side) / 2));
+
+  await sharp(buffer)
+    .extract({ left, top, width: side, height: side })
+    .resize(500, 500)
+    .jpeg({ quality: 88 })
+    .toFile(path.join(IMAGES_DIR, `${dayNumber}.jpg`));
+
+  return { dayNumber, display: entry.display, status: 'ok', tmdbTitle: movie.title, tmdbYear: (movie.release_date || '').slice(0, 4), tmdbId: movie.id };
+}
+
+async function main() {
+  const startDay = currentMaxDay() + 1;
+  console.log(`Starting new batch at day ${startDay} (${BATCH.length} titles)`);
+
+  const results = [];
+  for (let i = 0; i < BATCH.length; i++) {
+    const dayNumber = startDay + i;
+    const r = await fetchOne(BATCH[i], dayNumber);
+    results.push(r);
+    console.log(`[day ${dayNumber}] ${BATCH[i].display} -> ${r.status}${r.reason ? ' (' + r.reason + ')' : r.tmdbTitle ? ' (TMDb: ' + r.tmdbTitle + ' ' + r.tmdbYear + ')' : ''}`);
+  }
+
+  fs.writeFileSync(NEW_TITLES_LOG, JSON.stringify(results, null, 2));
+  const ok = results.filter((r) => r.status === 'ok').length;
+  console.log(`\nDone. ${ok}/${BATCH.length} fetched successfully, saved as days ${startDay}-${startDay + BATCH.length - 1}.`);
+}
+
+main().catch((err) => { console.error(err); process.exit(1); });

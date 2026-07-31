@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLYMPZ</title>
+<!-- Same load order as every other game: tokens.css (variables + reset)
+     first, then shell.css (shared header/footer/timer/overlay chrome), then
+     this game's own style.css last so it can add/override freely. -->
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="../../shared/shell.css">
+<link rel="stylesheet" href="../../shared/tools-panel.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as
+       every game (see the longer explanation in games/solvz/index.html) —
+       shell.js finds #game-stage/#game-root by id and wraps them with the
+       shared chrome. #grid-container starts empty; index.js's
+       createTiles() fills it with 36 individual tile <div>s once the page
+       loads. -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <div id="grid-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

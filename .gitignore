@@ -1,0 +1,12 @@
+# Dependencies for the curation tools (tools/*-curation) — large, native
+# binaries, not needed to run or deploy the actual site.
+node_modules/
+
+# Scratch output from the muveez curation tool's own test runs — not part
+# of the shipped game assets (see games/muveez/images/ for those).
+tools/muveez-curation/test-crops/
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+.vscode/

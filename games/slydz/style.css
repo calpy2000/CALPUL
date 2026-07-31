@@ -1,0 +1,198 @@
+/* Simple width-driven square grid, same approach as GLYMPZ's #grid-container
+   (no extra elements stacked below it, so unlike SOLVZ's .board there's no
+   need for the height-driven aspect-ratio trick — see shared/shell.css for
+   when each approach applies).
+
+   Biased so the grid sits above dead-center, same 1:3 flex-space-ratio
+   trick used by GLYMPZ's #game-root (see the fuller explanation in
+   games/glympz/style.css) — the ::after spacer gets 3x as much of the
+   leftover vertical space as ::before, pushing the grid up. */
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-root::before {
+  content: '';
+  flex: 1 1 0;
+}
+
+#game-root::after {
+  content: '';
+  flex: 3 1 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  gap: 4px;
+}
+
+.tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #a855f7;
+  color: #f3e8ff;
+  font-size: clamp(18px, 6vw, 28px);
+  font-weight: 700;
+  text-transform: uppercase;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.tile.is-dragging {
+  opacity: 0.35;
+}
+
+.tile.drag-over {
+  box-shadow: 0 0 0 3px var(--accent);
+  transform: scale(1.05);
+}
+
+/* Applied to every tile in a row once that row currently spells a real
+   word (see index.js's updateRowValidity()) — flips the tile to a light
+   background with a bold purple outline/text, echoing the original
+   standalone SLYDZ's own ".validWord" highlight treatment. */
+.tile.valid-word {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+  box-shadow: inset 0 0 0 3px #6b21a8;
+}
+
+/* Same "pop" swap animation used by SOLVZ/GLYMPZ. */
+.tile-swapped {
+  animation: tilePop 0.2s ease-in-out;
+}
+
+@keyframes tilePop {
+  0% { transform: scale(1); z-index: 20; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); z-index: 20; }
+}
+
+.tile * {
+  pointer-events: none;
+}
+
+/* --- Help toggle (SLYDZ-only) ---
+   This file is only ever loaded by games/slydz/index.html, so even though
+   these rules target the shared .shell-header class, they have zero effect
+   on SOLVZ/GLYMPZ/JEWELZ's pages — this is a per-page override, not a change to
+   the shared stylesheet. .shell-header already lays itself out as a
+   3-column grid (back link | title | empty slot) — index.js appends the
+   toggle as the header's 3rd child, so it lands in that already-reserved
+   empty slot automatically via CSS Grid's normal auto-placement. */
+
+.shell-header {
+  position: relative; /* anchors the popover below, via position:absolute */
+}
+
+.help-toggle {
+  grid-column: 3;
+  justify-self: end;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.help-toggle.is-hidden {
+  display: none;
+}
+
+/* Lit up amber while help is showing — a lightbulb visually "switching on"
+   reads as an intuitive on/off signal without needing a separate label. */
+.help-toggle.is-active {
+  background: #fbbf24;
+  color: #78350f;
+  border-color: #f59e0b;
+  box-shadow: 0 2px 12px rgba(251, 191, 36, 0.5);
+}
+
+.help-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-xs);
+  width: 240px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  z-index: 30;
+}
+
+.help-popover.is-hidden {
+  display: none;
+}
+
+.help-popover p {
+  margin: 0;
+}
+
+/* The CAN / CANNOT verdict inside the help text (see index.js's
+   computeHelpMessage()) — both are already bold+uppercase via <strong> and
+   the literal capitalized text, color is the only thing added here. */
+.help-can {
+  color: #16a34a;
+}
+
+.help-cannot {
+  color: #dc2626;
+}
+
+/* --- Reveal solution (same feature/styling as games/quadz/style.css —
+   see its fuller comments for the reasoning) ---
+   The confirm panel itself (.reveal-confirm/.reveal-confirm__panel) now
+   carries shell.css's own .shell-overlay/.shell-overlay__panel/
+   .shell-end-screen__message classes directly (see index.js) instead of a
+   separate copy of the same positioning/message rules here — that's what
+   keeps it visually identical to the start banner and end-screen without
+   needing to hand-update three places every time one of those changes.
+   Only what's actually unique to this dialog is still styled here: the
+   small "Reveal solution" trigger link, and the side-by-side two-button
+   row (shell's own panels only ever stack a single button). */
+.reveal-btn {
+  margin-top: var(--space-md);
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.reveal-btn:hover {
+  color: var(--ink);
+}
+
+.reveal-btn.is-hidden {
+  display: none;
+}
+
+.reveal-confirm__actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}

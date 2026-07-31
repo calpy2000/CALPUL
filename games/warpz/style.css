@@ -1,0 +1,62 @@
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centers the canvas + score text vertically within whatever space .shell-stage gives this game */
+  gap: var(--space-sm);
+}
+
+#responsiveCanvas {
+  /* Same "size yourself from available height" pattern as JEWELZ's own
+     #responsiveCanvas — see shared/shell.css and games/jewelz/style.css for
+     the fuller explanation. aspect-ratio: 9/16 matches this canvas's own
+     width="450" height="800" internal resolution exactly. */
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  background-color: #05070c; /* dark space background, drawn under whatever Asteroid.js/index.js clear/redraw each frame */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  touch-action: none; /* stops the browser from trying to scroll/zoom the page in response to touches on the canvas */
+  cursor: pointer;
+}
+
+#liveScore {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  min-height: 1.4em; /* reserves space for a line of text even before the game starts (when this is still empty), so nothing shifts position once it fills in */
+}
+
+/* Player/asteroid/star-shard images used inline within running text (live
+   score, instructions, end-of-round message) — same sizing convention as
+   JEWELZ's .jewelz-inline-icon. */
+.warpz-inline-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* Temporary dev-only debug label (see index.html/index.js) — fixed to the
+   top-right corner, roughly level with and to the right of the header
+   title on this narrow, centered layout. Not gated behind dev-mode in CSS
+   itself — updateObstacleDebugLabel() in index.js sets display:none on
+   this element outside TOOL_MODE 'dev', so it's fully hidden (not just
+   textless) for testers/real players. */
+.warpz-obstacle-debug {
+  position: fixed;
+  top: 26px; /* level with the header title's own row, clear of the canvas below it */
+  right: 16px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  text-align: right;
+  color: #cc0000;
+  background: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  z-index: 90; /* below the dev-toggle gear icon's z-index:100 */
+  pointer-events: none;
+}

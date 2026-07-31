@@ -1,0 +1,268 @@
+/* Full-page structured feedback form (shared/feedback.html + feedback.js) —
+   reached from the tester panel's "Send feedback" button, never seen by
+   real players. Centered flex column with a max-width, same pattern as
+   every game's own .shell — no fixed pixel page height or vw/vh guesses,
+   so it holds up across phone/tablet/desktop and however tall the textarea
+   grows. */
+
+body {
+  min-height: 100dvh; /* "dvh" (dynamic viewport height) — accounts for a mobile browser's address bar showing/hiding, unlike plain "vh" */
+  display: flex;
+  justify-content: center;
+  background: var(--paper);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.feedback {
+  width: 100%;
+  max-width: 480px;
+  /* Explicit height context (not just min-height on body) so
+     .feedback__field--grow below has real spare space to flex into,
+     rather than only ever growing to fit its own content. */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-md);
+}
+
+.feedback__back {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.feedback__title {
+  margin: 0;
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 900;
+}
+
+.feedback__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  border: none; /* strips the default <fieldset> outline — this class is shared by plain <label> fields and the "How you feeling?" <fieldset>, and grouping there is semantic, not visual */
+}
+
+/* Wraps the Type and Section fields in ONE grid, rather than letting each
+   <label> size its own row independently — grid-template-columns computes
+   ONE "auto" width for the label column across BOTH rows (the wider of
+   "Type"/"section"), so both selects start at the same x position and
+   share the exact same remaining (1fr) width, without hard-coding a pixel
+   value anywhere. */
+.feedback__row-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-sm) var(--space-sm);
+}
+
+/* `display: contents` makes the <label> itself invisible to layout — its
+   two children (the span and the select) become direct grid items of
+   .feedback__row-fields above instead of being boxed inside their own row.
+   The <label>'s for/wrapping association with its control still works;
+   only its own box disappears. */
+.feedback__field--row {
+  display: contents;
+}
+
+.feedback__field--row .feedback__select {
+  width: auto;
+}
+
+.feedback__label {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0; /* strips the default <legend> inset, so it lines up flush with every other field's label */
+}
+
+.feedback__select {
+  width: 100%;
+  padding: var(--space-sm);
+  font: inherit;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+  /* Custom thin chevron in place of the browser's own (often clunky, OS-
+     specific) native arrow — appearance:none strips that native arrow so
+     this background-image can stand in for it instead. */
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 11px 7px;
+  padding-right: 32px; /* clears the chevron so long option text never overlaps it */
+}
+
+/* :invalid matches while the required select still has the disabled "Pick"
+   placeholder selected (an empty value fails the `required` constraint) —
+   dims it the same "not a real choice yet" way as a text input's
+   placeholder. The moment a tester picks a real option the select becomes
+   valid again and this stops applying, so the text goes back to --ink. */
+.feedback__select:invalid {
+  color: #6b7280;
+}
+
+/* One row, all 6 options spread evenly across the full width (flex:1 on
+   each — see .feedback__rating below) rather than wrapping onto multiple
+   rows — no card background/border anymore, just the emoji and its
+   tagline sitting directly on the page. */
+.feedback__rating-group {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.feedback__rating {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* The actual radio input is visually hidden (this is the standard
+   "sr-only" pattern — NOT display:none, which would drop it from the
+   keyboard tab order and break screen readers) — the surrounding label
+   card is what's seen and clicked, styled by the rules around it instead. */
+.feedback__rating input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* :has() lets a PARENT react to something matching further down inside it
+   — here, "highlight the emoji/tagline if the (hidden) radio inside this
+   label is checked." Without :has(), this same effect would need JS to
+   toggle a class by hand every time the selection changes. No card
+   background/border to swap anymore — just the emoji's own circle tint and
+   the tagline's color/weight. */
+.feedback__rating:has(input:checked) .feedback__rating-emoji {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.feedback__rating:has(input:checked) .feedback__rating-text {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Keyboard-focus ring on the label (not the invisible input) when a tester
+   tabs to it — :focus-within matches the label because the focused input
+   is one of its descendants. */
+.feedback__rating:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.feedback__rating-emoji {
+  font-size: 28px;
+  /* Color emoji glyphs commonly render taller than their nominal font-size
+     (extending below the normal text baseline more than plain letters do)
+     — line-height:1 was clipping their bottom edge against the line box.
+     A bit of breathing room here fixes that without changing the visible
+     emoji size. */
+  line-height: 1.4;
+  padding: 6px;
+  border-radius: 50%; /* so the checked-state tint above fills a circle behind the emoji, not a square */
+}
+
+.feedback__rating-text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* This field claims all the vertical space nothing else on the page needs
+   — min-height:0 is what actually lets a flex item shrink/grow to a size
+   OTHER than its content's natural size (the flex default is
+   min-height:auto, which would otherwise refuse to shrink and defeat the
+   whole "fill the leftover space" effect). */
+.feedback__field--grow {
+  flex: 1;
+  min-height: 0;
+}
+
+.feedback__field--grow .feedback__textarea {
+  flex: 1;
+  height: auto; /* replaces the fixed 6-line height below — this field's grown box IS its height now */
+  min-height: 0;
+}
+
+.feedback__textarea {
+  width: 100%;
+  height: calc(1.4em * 6); /* fixed to ~6 lines tall by default; overridden to fill available space when wrapped in .feedback__field--grow (see above) */
+  padding: var(--space-sm);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.4;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  resize: vertical; /* a tester can still drag it taller by hand if they want */
+  overflow-y: auto; /* scrolls internally once typed content exceeds the box, rather than the page reflowing under it */
+}
+
+.feedback__submit {
+  padding: var(--space-sm) var(--space-md);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  cursor: pointer;
+}
+
+.feedback__note {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Secondary/fallback action — deliberately lighter than .feedback__submit
+   (outlined instead of filled) so "Send feedback" still reads as the
+   primary path and this doesn't compete with it for attention. */
+.feedback__copy {
+  padding: var(--space-sm) var(--space-md);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.feedback__copy-status {
+  margin: calc(var(--space-md) * -1) 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: center;
+  /* Reserves a line of height even when empty so the page doesn't jump
+     when the "Copied!" message appears/disappears. */
+  min-height: 1.4em;
+}

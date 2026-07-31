@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>JEWELZ</title>
+  <!-- Same load order convention as every other game — see the matching
+       comment in games/solvz/index.html. -->
+  <link rel="stylesheet" href="../../shared/tokens.css" />
+  <link rel="stylesheet" href="../../shared/shell.css" />
+  <link rel="stylesheet" href="../../shared/tools-panel.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as the
+       other two games. Unlike SOLVZ/GLYMPZ (which build their game content
+       entirely out of styled <div>s), JEWELZ draws everything itself onto a
+       single <canvas> element using JavaScript drawing commands — the
+       canvas's width="450" height="800" attributes set its fixed INTERNAL
+       drawing resolution (see style.css and shared/input/canvas-pointer.js
+       for how that internal resolution gets mapped onto whatever size the
+       canvas is actually displayed at on screen). -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <canvas id="responsiveCanvas" width="450" height="800"></canvas>
+        <!-- Filled in by index.js with the current "Score: [jewel image] = N"
+             text while a round is in progress. -->
+        <div id="liveScore"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JEWELZ doesn't load jQuery at all (unlike SOLVZ/GLYMPZ) — everything here
+       is plain/"vanilla" JavaScript and the Canvas drawing API, neither of
+       which benefit from jQuery the way DOM-heavy tile manipulation does. -->
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

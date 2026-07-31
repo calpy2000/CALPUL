@@ -1,0 +1,450 @@
+/* Common chrome: header, footer, start banner, end screen, aspect-ratio stage. */
+
+/* .shell is the outermost wrapper every game's <body> contains (see each
+   game's index.html: <div class="shell" id="app-shell">). It's a flex
+   container with flex-direction:column, meaning its children (header, the
+   game's own .shell-stage, footer) stack top-to-bottom, in the order they
+   appear in the HTML — this is the foundation the header/footer/stage
+   layout below builds on.
+
+   Locked to exactly one viewport tall (height:100dvh — "dvh" is "dynamic
+   viewport height", which correctly accounts for mobile browsers' address
+   bar showing/hiding, unlike the older "vh" unit). .shell-stage (below) is
+   the flex item that absorbs whatever vertical space header + footer don't
+   use, so the footer always sits at the bottom instead of wherever the
+   game's content happens to end — consistent across every game without
+   per-game tuning. overflow-y:auto is just a safety net for the rare case
+   where header + footer alone can't fit (e.g. a tiny window) — the page
+   becomes scrollable rather than clipping content. */
+.shell {
+  width: 100vw;
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  font-family: var(--font-body);
+  color: var(--ink);
+  overflow-y: auto;
+}
+
+/* grid-template-columns: 1fr auto 1fr splits the header into three columns:
+   a flexible left column, a middle column sized to fit its content exactly
+   ("auto"), and a flexible right column. Because the two flexible columns
+   are both "1fr" (equal shares of whatever space is left), they're always
+   the SAME width as each other — which keeps the middle column (the game
+   title) perfectly centered no matter how wide the back-button text is,
+   without needing to know that width in advance. This is a common CSS Grid
+   trick for "centered item with something on one side" layouts. */
+.shell-header {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-md) 0;
+  flex-shrink: 0; /* never let the header get squeezed smaller than its natural size */
+  perspective: 400px; /* gives the title's 3D flip animation below some depth, rather than looking flat */
+}
+
+.shell-header__back {
+  grid-column: 1; /* explicitly pins this to the grid's first column */
+  justify-self: start; /* aligns it to the left edge of that column */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none; /* removes the underline browsers give <a> links by default */
+  color: var(--ink);
+  line-height: 1;
+  white-space: nowrap; /* keeps "back" from wrapping onto its own line */
+}
+
+.shell-header__title {
+  grid-column: 2;
+  justify-self: center;
+  font-weight: 900;
+  /* clamp(min, preferred, max) picks a font size that scales with the
+     viewport (7vw = 7% of viewport width) but never goes below 26px or
+     above 38px — so the title stays readable on tiny phones and doesn't
+     become enormous on a wide desktop window. */
+  font-size: clamp(26px, 7vw, 38px);
+  letter-spacing: 0.02em;
+  /* Runs the shell-header-spin animation defined just below, once, over 2
+     seconds, automatically as soon as this element appears on the page
+     (animations with no trigger just play on load). */
+  animation: shell-header-spin 2s ease-in-out;
+  /* Games with an `emojiImage`/`emojiBadge` icon (see shell.js) put it right
+     before the title text — flex + align-items:center keeps it vertically
+     centered against the text's actual rendered height regardless of font
+     metrics, rather than a hand-tuned vertical-align offset that only
+     happens to look right at one particular icon/font size. `gap` spaces
+     the icon and text without needing a one-sided margin on the icon
+     itself. */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Static image icon (e.g. JEWELZ's jewel) that some games use in place of a
+   plain-text emoji glyph — see shell.js's `emojiImage` option. */
+.shell-header__icon {
+  width: 34px;
+  height: 34px;
+}
+
+/* SOLVZ's raised-circle badge (see shell.js's `emojiBadge` option) — same
+   look as .hub__tile-badge on the hub page, sized to match
+   .shell-header__icon above. */
+.shell-header__badge {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ffffff;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.45), inset -2px -3px 4px rgba(0, 0, 0, 0.22);
+}
+
+/* @keyframes defines the animation named "shell-header-spin" referenced
+   above. "from"/"to" describe the starting and ending CSS values — here,
+   rotating the element a full 360 degrees around its horizontal (X) axis,
+   which reads as a "flip" effect (combined with the `perspective` set on
+   the parent .shell-header, which is what makes it look 3D instead of just
+   squashing flat). */
+@keyframes shell-header-spin {
+  from { transform: rotateX(0deg); }
+  to { transform: rotateX(360deg); }
+}
+
+/* --- Flip-clock footer timer ---
+   See shared/core/flip-timer.js for the JavaScript that builds this DOM
+   and drives the animation by toggling the "is-flipping"/"no-transition"
+   classes referenced below. */
+
+.flip-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #e2e5ea;
+  border-radius: 999px; /* larger than the element could ever be, which is a common trick for a fully "pill" shaped border-radius */
+  padding: 5px 10px;
+}
+
+.flip-timer__colon {
+  font-family: 'Courier New', monospace; /* monospace so digits line up evenly, matching the digit tiles */
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  padding: 0 1px;
+}
+
+/* Each digit "tile" is a small fixed-size box with overflow:hidden — it
+   clips anything positioned outside its bounds, which is what makes the
+   sliding digits underneath (.flip-timer__digit) appear to enter/exit
+   through the top/bottom edges instead of spilling out visibly. */
+.flip-timer__tile {
+  position: relative; /* establishes this as the positioning reference for the absolutely-positioned digits inside it */
+  width: 15px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f7f8fa;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06); /* a subtle 1px inward-facing border, softer than a real `border` */
+}
+
+/* Both the --current and --next digit spans are positioned absolutely and
+   stacked exactly on top of each other (inset:0 is shorthand for
+   top/right/bottom/left all set to 0, filling the parent tile completely).
+   Only their `transform: translateY(...)` (set by the rules below) decides
+   which one is actually visible at any moment. */
+.flip-timer__digit {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  transition: transform 0.3s ease; /* animates any future change to `transform` over 0.3s instead of jumping instantly */
+}
+
+/* Resting state: --current sits in the visible position (0% offset)... */
+.flip-timer__digit--current {
+  transform: translateY(0%);
+}
+
+/* ...and --next is parked directly above the visible area (-100% = shifted
+   up by its own full height), out of view, ready to slide down in. */
+.flip-timer__digit--next {
+  transform: translateY(-100%);
+}
+
+/* While the tile has the "is-flipping" class (added by flip-timer.js),
+   these two rules override the resting-state transforms above: --current
+   slides DOWN and out of view (100% = its own height, downward), while
+   --next slides down INTO the visible spot (0%). Because both digits have
+   `transition: transform 0.3s ease`, the browser automatically animates
+   between the old transform value and this new one — that animated slide
+   is the entire "flip" effect. */
+.flip-timer__tile.is-flipping .flip-timer__digit--current {
+  transform: translateY(100%);
+}
+
+.flip-timer__tile.is-flipping .flip-timer__digit--next {
+  transform: translateY(0%);
+}
+
+/* Used by flip-timer.js to instantly snap a tile back to its resting
+   position with no animation, by temporarily disabling the transition. */
+.flip-timer__tile.no-transition .flip-timer__digit {
+  transition: none;
+}
+
+.shell-footer {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: center;
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-sm) 0 var(--space-md);
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  flex-shrink: 0; /* never let the footer get squeezed smaller than its natural size */
+}
+
+/* The play area every game renders #game-root into. It's a flex item that
+   grows to fill whatever space is left between header and footer — it does
+   NOT size itself off the game's content. Each game's actual visible content
+   (a grid, a canvas, whatever) should size itself from the height it's
+   given — typically height:100%; width:auto; max-width:100%; aspect-ratio:X
+   on the content element itself — and #game-root centers it. This is what
+   keeps the footer pinned near the bottom consistently across every game,
+   regardless of that game's own content shape.
+
+   `flex: 1 1 auto` breaks down as: flex-grow:1 (take up available extra
+   space), flex-shrink:1 (allow shrinking if needed), flex-basis:auto (start
+   from its natural size before growing/shrinking). Paired with
+   `min-height:0` — flex items default to a minimum size based on their
+   content, which can quietly stop them shrinking as much as you'd expect;
+   min-height:0 removes that floor, letting this element truly shrink down
+   to fit tight spaces if it has to. */
+.shell-stage {
+  position: relative; /* positioning reference for the absolutely-centered overlay/end-screen below */
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 95vw;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* The start banner ("Play Now") and the end-of-game panel share identical
+   positioning — both anchored a fixed distance above the footer, in every
+   game, regardless of that game's own board/grid/canvas size. They used to
+   be positioned via JS (measuring a game-specific element and placing the
+   panel just below it), but that made the panel's on-screen position depend
+   on each game's own layout — fine for games with a short board, but pushed
+   the panel off-screen entirely for games with a tall one (e.g. JEWELZ's
+   canvas). A single fixed CSS position sits in the same spot everywhere,
+   at the cost of sometimes overlapping the board/grid underneath — an
+   acceptable trade since the panel is meant to be the focus at that moment
+   anyway. position:absolute takes each out of normal document flow
+   entirely, letting them sit on top of the game content instead of pushing
+   it around. */
+.shell-overlay,
+.shell-end-screen {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-sm);
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  text-align: center;
+  background: rgba(96, 98, 104, 0.92); /* a lighter grey than the near-black this used to be — rgba = red/green/blue/alpha, alpha 0.92 means 92% opaque, letting a hint of what's behind it show through */
+  z-index: 20; /* stacks above the game content (which mostly doesn't set z-index, so defaults to the base stacking level) */
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Both panels start hidden via this class (see shared/core/shell.js) —
+   display:none removes them from layout entirely (unlike visibility:hidden,
+   which would still reserve their space). */
+.shell-overlay.is-hidden,
+.shell-end-screen.is-hidden {
+  display: none;
+}
+
+.shell-overlay__panel,
+.shell-end-screen__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: 320px;
+}
+
+.shell-overlay__instructions,
+.shell-end-screen__message {
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.35; /* tighter than a default 1.5, for wrapped lines within one sentence — same value for both panels, so wrapped-line spacing reads identically whichever one is showing */
+  margin: 0;
+}
+
+/* Both the start-banner instructions and the end-screen message are
+   left-justified rather than centered, and both need width:100% so the
+   text actually has the panel's full width to left-align against —
+   align-items:center on .shell-overlay__panel/.shell-end-screen__panel
+   above would otherwise shrink each of these down to its longest line,
+   which would make text-align:left invisible (a box exactly as wide as
+   its own longest line looks the same whether it's "left-aligned" or
+   "centered" inside itself). */
+.shell-overlay__instructions,
+.shell-end-screen__message {
+  text-align: left;
+  width: 100%;
+}
+
+/* Each game writes its instructions as one or more real <p> tags, one per
+   step/sentence (see e.g. games/rainz/index.js) — a real block-level
+   margin between paragraphs, rather than styling <br> to behave like one,
+   so the gap is unambiguous. No margin-top: each <p>'s own margin-bottom
+   is what separates it from the next, and the last one's margin-bottom is
+   zeroed below so it doesn't add extra space before the button (that gap
+   already comes from .shell-overlay__panel's own `gap`).
+
+   A game's end-screen message can use the same real-<p>-per-sentence
+   pattern (see e.g. games/warpz/index.js's buildResultLine()) to get this
+   exact same paragraph spacing — that's opt-in per game (a message built
+   with plain <br> line breaks instead just gets the line-height above and
+   no extra gap, which is still a valid, tighter-looking choice), but any
+   game that does use real <p>s here shares this identical rule with the
+   instructions panel rather than needing its own copy. */
+.shell-overlay__instructions p,
+.shell-end-screen__message p {
+  margin: 0 0 var(--space-md) 0;
+}
+
+.shell-overlay__instructions p:last-child,
+.shell-end-screen__message p:last-child {
+  margin-bottom: 0;
+}
+
+/* Optional: a game can wrap its end-screen message's first line in this
+   class (in addition to it being a normal <p>) to have just that line read
+   as the panel's title — centered, like the shell header's own icon+title
+   — while the rest of the message stays left-aligned like the instructions
+   panel. Centers whatever's on that line, text and/or an inline icon
+   <img> alike, since text-align:center centers all inline content. */
+.shell-end-screen__title {
+  text-align: center;
+}
+
+/* --shell-accent/--shell-accent-ink/--shell-accent-rim are set inline on
+   .shell by shell.js's initShell() (see its `accentColor` option) using
+   each game's OWN hub-tile colors — falling back to the shared global blue
+   (--accent) for any game that doesn't pass one.
+
+   The bevel below is the same "puffy" recipe as the hub page's own tiles
+   (see style.css's .hub__tile): two inset shadows only — a light highlight
+   upper-left, a dark rim lower-right, each blurred to roughly 2x its own
+   offset, which is what makes the rim fade out smoothly on both sides
+   (toward the button's outer edge and toward its flat center) instead of
+   reading as a hard chiseled facet. --shell-accent-rim is the exact same
+   translucent dark color each game's hub tile already uses for its own
+   bevel shadow, so the button's "material" matches that game's tile
+   instead of a one-size-fits-all shade. Scaled down from the tile's own
+   offset/blur numbers to suit a small button instead of a full tile. */
+.shell-btn {
+  font-family: inherit; /* buttons don't inherit font-family from the page by default in most browsers — without this, "play now" would render in the browser's default UI font instead of Quicksand like the rest of the page */
+  padding: 7px 20px;
+  font-size: 14.4px; /* 20% larger than the button's own base 12px — text size only, padding/shape unchanged */
+  font-weight: 500;
+  text-transform: lowercase; /* renders the text in lowercase regardless of how it's typed in the HTML/JS */
+  letter-spacing: 0.04em; /* "em" is relative to the element's own font-size, so this spacing scales with the text */
+  background-color: var(--shell-accent, var(--accent));
+  color: #443653; /* same dark ink as the hub tiles' "Not played today"-style status pills (.hub__tile-status in style.css) — one flat color across every game, not per-game accent-ink */
+  border: none;
+  border-radius: 50px; /* large enough relative to the button's height to render as a full pill/capsule shape */
+  cursor: pointer; /* shows a hand-pointer cursor on hover, signaling "clickable" even though it's already a <button> */
+  box-shadow:
+    0 3px 8px rgba(20, 20, 20, 0.22),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.6),
+    inset -2px -3px 5px var(--shell-accent-rim, rgba(0, 0, 0, 0.25));
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* :active is a CSS pseudo-class matching an element WHILE it's being
+   pressed (mouse button down / finger touching, not yet released) — this
+   makes buttons visibly shrink and nudge down slightly on press, AND flips
+   the bevel to its "pressed in" version (same idea as .hub__tile:active on
+   the hub page) — smaller/tighter offsets and blurs, so the rim reads as
+   flattening into the page instead of just shrinking in place. */
+.shell-btn:active {
+  transform: scale(0.96) translateY(1px);
+  box-shadow:
+    0 1px 3px rgba(20, 20, 20, 0.24),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.35),
+    inset -1.5px -2px 3.5px var(--shell-accent-rim, rgba(0, 0, 0, 0.25));
+}
+
+/* Modifier class layered on top of .shell-btn (elements get BOTH classes:
+   class="shell-btn shell-btn--small") — overrides just the properties that
+   need to differ for the smaller "Share Results" button, while still
+   inheriting everything else (border-radius, uppercase text, etc.) from
+   .shell-btn. */
+.shell-btn--small {
+  padding: 7px 20px;
+  font-size: 12px;
+  background-color: #bfdbfe;
+  color: #443653; /* matches .shell-btn's own text color above, for the same reason */
+  box-shadow: none;
+}
+
+/* Same modifier pattern as .shell-btn--small above — for the one button in
+   the hub that confirms an irreversible/costly action (GLYMPZ/SLYDZ/QUADZ's
+   "Reveal Solution", inside their own reveal-confirm dialogs). Keeps the
+   exact same shape, lowercase text, weight, and bevel as every other
+   .shell-btn — only the color changes, so it still reads as "one of this
+   game's own buttons" rather than a completely different button style, the
+   way a fully custom outline/ghost button previously did. */
+.shell-btn--danger {
+  background-color: #f59e0b;
+  color: #402c04;
+  box-shadow:
+    0 3px 8px rgba(20, 20, 20, 0.22),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.45),
+    inset -2px -3px 5px rgba(120, 65, 0, 0.35);
+}
+
+/* Toggled briefly on a game's chosen element when the game ends (see
+   shell.js's showEndScreen — this class gets added, then removed 900ms
+   later via a JS setTimeout, matching this animation's own 0.9s duration). */
+.shell-end-animate {
+  animation: shell-end-pulse 0.9s ease;
+}
+
+/* A three-step keyframe animation (0% -> 40% -> 100%, as percentages of the
+   total animation duration) that grows the element slightly then settles
+   back to its normal size — a quick "pulse" to celebrate finishing. */
+@keyframes shell-end-pulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}

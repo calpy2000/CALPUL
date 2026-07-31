@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SOLVZ</title>
+<!-- Load order matters: tokens.css defines the CSS variables (--ink,
+     --accent, etc.) that shell.css and this game's own style.css both use
+     via var(--name), so it has to come first. shell.css provides the
+     header/footer/timer/overlay chrome shared by every game (see
+     shared/shell.css) — style.css (last, so it can override anything
+     above it) then adds SOLVZ's own board/grid/tile styling. -->
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="../../shared/shell.css">
+<link rel="stylesheet" href="../../shared/tools-panel.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- This nested structure — .shell > .shell-stage#game-stage >
+       #game-root > (game content) — is the fixed convention every game
+       follows. shared/core/shell.js's initShell() looks for #game-stage
+       and #game-root specifically by those ids and injects the
+       header/footer/overlay/end-screen around them; everything actually
+       INSIDE #game-root (the .board div and its two grids, below) is
+       SOLVZ-specific and built dynamically by index.js. -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <div class="board" id="board">
+          <!-- Both grids start completely empty — index.js's buildGrid()
+               function fills them in with individual tile <div>s once the
+               page loads (see the big comment near buildGrid() in
+               index.js for why this is built with JS instead of writing
+               out ~32 tile <div>s by hand here). -->
+          <div class="grid grid--one" id="grid1" data-cols="5" data-rows="5"></div>
+          <p class="board__instructions">drag the tiles below to the grid above</p>
+          <div class="grid grid--two" id="grid2" data-cols="4" data-rows="3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery, loaded from a public CDN (a server hosting a copy anyone can
+       load from) rather than a local copy of the file — index.js uses
+       jQuery's `$` for convenience when building/manipulating the tile
+       grid (this predates the shared framework, which is itself plain
+       vanilla JS and doesn't require jQuery — that's why JEWELZ, built more
+       recently, doesn't load it at all). This MUST be loaded before
+       index.js runs, since index.js calls $(...) — see the note on
+       index.js's very first line for how the script loading order
+       guarantees that. -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

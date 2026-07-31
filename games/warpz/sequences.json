@@ -1,0 +1,43 @@
+[
+    {
+    "sequence": 0,
+    "steps": [
+      { "obstacles": ["maze"], "quantity": 1, "level": "easy" },
+      { "obstacles": ["station"], "quantity": 1 },
+      { "obstacles": ["asteroids"], "duration": 15 },
+      { "obstacles": ["worms"], "duration": 15 },
+      { "obstacles": ["clusters"], "duration": 15 },
+      { "obstacles": ["zapper"], "duration": 15 },
+      { "obstacles": ["asteroids", "zapper"], "duration": 15 }
+        ]
+  },
+  {
+    "sequence": 1,
+    "steps": [
+      { "obstacles": ["station"], "quantity": 1 },
+      { "obstacles": ["asteroids"], "duration": 10 },
+      { "obstacles": ["worms"], "duration": 10 },
+      { "obstacles": ["clusters"], "duration": 10 },
+      { "obstacles": ["zapper"], "duration": 10 },
+      { "obstacles": ["asteroids", "zapper"], "duration": 10 }
+        ]
+  },
+  {
+    "sequence": 2,
+    "steps": [
+      { "obstacles": ["maze"], "quantity": 1, "level": "easy" },
+      { "obstacles": ["station"], "quantity": 1 },
+      { "obstacles": ["asteroids"], "duration": 5 },
+      { "obstacles": ["worms"], "duration": 5 },
+      { "obstacles": ["clusters"], "duration": 5 },
+      { "obstacles": ["zapper"], "duration": 5 },
+      { "obstacles": ["asteroids", "zapper"], "duration": 5 }
+        ]
+  },
+  {
+    "sequence": 3,
+    "steps": [
+      { "obstacles": ["maze"], "quantity": 1, "level": "easy" }
+        ]
+  }
+]

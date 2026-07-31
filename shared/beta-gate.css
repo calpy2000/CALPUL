@@ -1,0 +1,129 @@
+/* Beta entry-code gate — shown full-screen, on top of everything, before
+   the hub is revealed. See shared/core/beta-gate.js for the logic; this is
+   hub-only (the .hub element it hides lives in the hub's own index.html). */
+
+.hub.is-gate-hidden {
+  display: none;
+}
+
+.beta-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 300; /* above the dev/tester tools panel's z-index:100 (shared/tools-panel.css) — the gate should win while it's up */
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beta-gate.is-hidden {
+  display: none;
+}
+
+.beta-gate__panel {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.beta-gate__logo {
+  display: flex;
+  gap: 4px;
+}
+
+.beta-gate__logo-tile {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #ffffff;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.5), inset -2px -3px 5px rgba(0, 0, 0, 0.28);
+}
+
+.beta-gate__badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(61, 90, 241, 0.12); /* --accent at 12% opacity — color-mix isn't used elsewhere in this codebase, so a plain rgba keeps this consistent */
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.beta-gate__title {
+  font-size: 23px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.beta-gate__body {
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #4a5568;
+  margin: 0;
+  max-width: 280px;
+}
+
+.beta-gate__input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: #ffffff;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+.beta-gate__input::placeholder {
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: #4a5568;
+  opacity: 0.6;
+}
+
+.beta-gate__submit {
+  width: 100%;
+  padding: 14px;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+.beta-gate__error {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c0392b;
+  margin: 0;
+}
+
+.beta-gate__error.is-hidden {
+  display: none;
+}
+
+.beta-gate__hint {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4a5568;
+  margin: 0;
+}

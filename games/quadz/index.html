@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>QUADZ</title>
+<!-- Same load order convention as every other game — see the matching
+     comment in games/solvz/index.html. -->
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="../../shared/shell.css">
+<link rel="stylesheet" href="../../shared/tools-panel.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as every
+       other game. .quadz-board wraps the two decorative direction arrows
+       plus #grid — #grid itself is a 5x5 layout just like SLYDZ's, except
+       only 16 of its 25 cells are letter tiles (the rest are row/column
+       validity indicators, or one invisible spacer — see index.js's
+       buildGrid() and style.css for the full layout). -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <div class="quadz-board">
+          <div class="quadz-arrow-top" aria-hidden="true"></div>
+          <div class="quadz-arrow-left" aria-hidden="true"></div>
+          <div class="grid" id="grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

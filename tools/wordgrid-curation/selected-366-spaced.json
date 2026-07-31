@@ -1,0 +1,5858 @@
+[
+  {
+    "day": 1,
+    "rows": [
+      "FULL",
+      "ASIA",
+      "SENT",
+      "TREE"
+    ],
+    "cols": [
+      "FAST",
+      "USER",
+      "LINE",
+      "LATE"
+    ],
+    "worstRank": 270
+  },
+  {
+    "day": 2,
+    "rows": [
+      "SALE",
+      "ORAL",
+      "LESS",
+      "DATE"
+    ],
+    "cols": [
+      "SOLD",
+      "AREA",
+      "LAST",
+      "ELSE"
+    ],
+    "worstRank": 330
+  },
+  {
+    "day": 3,
+    "rows": [
+      "SHOW",
+      "NONE",
+      "OPEN",
+      "WEST"
+    ],
+    "cols": [
+      "SNOW",
+      "HOPE",
+      "ONES",
+      "WENT"
+    ],
+    "worstRank": 365
+  },
+  {
+    "day": 4,
+    "rows": [
+      "HEAD",
+      "AUTO",
+      "IRON",
+      "ROME"
+    ],
+    "cols": [
+      "HAIR",
+      "EURO",
+      "ATOM",
+      "DONE"
+    ],
+    "worstRank": 510
+  },
+  {
+    "day": 5,
+    "rows": [
+      "INTO",
+      "TOWN",
+      "EVIL",
+      "MANY"
+    ],
+    "cols": [
+      "ITEM",
+      "NOVA",
+      "TWIN",
+      "ONLY"
+    ],
+    "worstRank": 610
+  },
+  {
+    "day": 6,
+    "rows": [
+      "DICK",
+      "ROLE",
+      "AWAY",
+      "WAYS"
+    ],
+    "cols": [
+      "DRAW",
+      "IOWA",
+      "CLAY",
+      "KEYS"
+    ],
+    "worstRank": 629
+  },
+  {
+    "day": 7,
+    "rows": [
+      "MORE",
+      "EVEN",
+      "TEND",
+      "ARTS"
+    ],
+    "cols": [
+      "META",
+      "OVER",
+      "RENT",
+      "ENDS"
+    ],
+    "worstRank": 650
+  },
+  {
+    "day": 8,
+    "rows": [
+      "CASH",
+      "ONCE",
+      "ANAL",
+      "LAND"
+    ],
+    "cols": [
+      "COAL",
+      "ANNA",
+      "SCAN",
+      "HELD"
+    ],
+    "worstRank": 683
+  },
+  {
+    "day": 9,
+    "rows": [
+      "FULL",
+      "ASIA",
+      "CENT",
+      "TREE"
+    ],
+    "cols": [
+      "FACT",
+      "USER",
+      "LINE",
+      "LATE"
+    ],
+    "worstRank": 401
+  },
+  {
+    "day": 10,
+    "rows": [
+      "SAFE",
+      "ORAL",
+      "LESS",
+      "DATE"
+    ],
+    "cols": [
+      "SOLD",
+      "AREA",
+      "FAST",
+      "ELSE"
+    ],
+    "worstRank": 330
+  },
+  {
+    "day": 11,
+    "rows": [
+      "STAR",
+      "HOLE",
+      "ONES",
+      "TEXT"
+    ],
+    "cols": [
+      "SHOT",
+      "TONE",
+      "ALEX",
+      "REST"
+    ],
+    "worstRank": 553
+  },
+  {
+    "day": 12,
+    "rows": [
+      "WEST",
+      "AUTO",
+      "IRAN",
+      "TOYS"
+    ],
+    "cols": [
+      "WAIT",
+      "EURO",
+      "STAY",
+      "TONS"
+    ],
+    "worstRank": 695
+  },
+  {
+    "day": 13,
+    "rows": [
+      "LAST",
+      "ONLY",
+      "STOP",
+      "SITE"
+    ],
+    "cols": [
+      "LOSS",
+      "ANTI",
+      "SLOT",
+      "TYPE"
+    ],
+    "worstRank": 502
+  },
+  {
+    "day": 14,
+    "rows": [
+      "EDIT",
+      "GENE",
+      "GETS",
+      "SPOT"
+    ],
+    "cols": [
+      "EGGS",
+      "DEEP",
+      "INTO",
+      "TEST"
+    ],
+    "worstRank": 700
+  },
+  {
+    "day": 15,
+    "rows": [
+      "SHOP",
+      "TAPE",
+      "EVER",
+      "MENU"
+    ],
+    "cols": [
+      "STEM",
+      "HAVE",
+      "OPEN",
+      "PERU"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 16,
+    "rows": [
+      "CASH",
+      "ONCE",
+      "ANAL",
+      "TEND"
+    ],
+    "cols": [
+      "COAT",
+      "ANNE",
+      "SCAN",
+      "HELD"
+    ],
+    "worstRank": 667
+  },
+  {
+    "day": 17,
+    "rows": [
+      "PART",
+      "USER",
+      "LINE",
+      "LATE"
+    ],
+    "cols": [
+      "PULL",
+      "ASIA",
+      "RENT",
+      "TREE"
+    ],
+    "worstRank": 530
+  },
+  {
+    "day": 18,
+    "rows": [
+      "LIST",
+      "AREA",
+      "KONG",
+      "ENDS"
+    ],
+    "cols": [
+      "LAKE",
+      "IRON",
+      "SEND",
+      "TAGS"
+    ],
+    "worstRank": 381
+  },
+  {
+    "day": 19,
+    "rows": [
+      "SOME",
+      "EVIL",
+      "LENS",
+      "FREE"
+    ],
+    "cols": [
+      "SELF",
+      "OVER",
+      "MINE",
+      "ELSE"
+    ],
+    "worstRank": 485
+  },
+  {
+    "day": 20,
+    "rows": [
+      "SAID",
+      "ONTO",
+      "ONES",
+      "NAME"
+    ],
+    "cols": [
+      "SOON",
+      "ANNA",
+      "ITEM",
+      "DOSE"
+    ],
+    "worstRank": 607
+  },
+  {
+    "day": 21,
+    "rows": [
+      "AIDS",
+      "DEAL",
+      "DEMO",
+      "SENT"
+    ],
+    "cols": [
+      "ADDS",
+      "IEEE",
+      "DAMN",
+      "SLOT"
+    ],
+    "worstRank": 697
+  },
+  {
+    "day": 22,
+    "rows": [
+      "DIET",
+      "EDGE",
+      "LEGS",
+      "LAST"
+    ],
+    "cols": [
+      "DELL",
+      "IDEA",
+      "EGGS",
+      "TEST"
+    ],
+    "worstRank": 700
+  },
+  {
+    "day": 23,
+    "rows": [
+      "STEP",
+      "ORAL",
+      "LISA",
+      "OPEN"
+    ],
+    "cols": [
+      "SOLO",
+      "TRIP",
+      "EASE",
+      "PLAN"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 24,
+    "rows": [
+      "RISK",
+      "ONCE",
+      "STAY",
+      "SONS"
+    ],
+    "cols": [
+      "ROSS",
+      "INTO",
+      "SCAN",
+      "KEYS"
+    ],
+    "worstRank": 635
+  },
+  {
+    "day": 25,
+    "rows": [
+      "FACT",
+      "USER",
+      "NINE",
+      "DATE"
+    ],
+    "cols": [
+      "FUND",
+      "ASIA",
+      "CENT",
+      "TREE"
+    ],
+    "worstRank": 437
+  },
+  {
+    "day": 26,
+    "rows": [
+      "CHAT",
+      "HIGH",
+      "AREA",
+      "REST"
+    ],
+    "cols": [
+      "CHAR",
+      "HIRE",
+      "AGES",
+      "THAT"
+    ],
+    "worstRank": 527
+  },
+  {
+    "day": 27,
+    "rows": [
+      "GEAR",
+      "RULE",
+      "IRAN",
+      "DONT"
+    ],
+    "cols": [
+      "GRID",
+      "EURO",
+      "ALAN",
+      "RENT"
+    ],
+    "worstRank": 529
+  },
+  {
+    "day": 28,
+    "rows": [
+      "MAIL",
+      "ONTO",
+      "ONES",
+      "NAME"
+    ],
+    "cols": [
+      "MOON",
+      "ANNA",
+      "ITEM",
+      "LOSE"
+    ],
+    "worstRank": 607
+  },
+  {
+    "day": 29,
+    "rows": [
+      "SELF",
+      "OVER",
+      "LINE",
+      "ELSE"
+    ],
+    "cols": [
+      "SOLE",
+      "EVIL",
+      "LENS",
+      "FREE"
+    ],
+    "worstRank": 627
+  },
+  {
+    "day": 30,
+    "rows": [
+      "DATA",
+      "UNIX",
+      "ANTI",
+      "LESS"
+    ],
+    "cols": [
+      "DUAL",
+      "ANNE",
+      "TITS",
+      "AXIS"
+    ],
+    "worstRank": 658
+  },
+  {
+    "day": 31,
+    "rows": [
+      "BLOW",
+      "RARE",
+      "ANAL",
+      "DELL"
+    ],
+    "cols": [
+      "BRAD",
+      "LANE",
+      "ORAL",
+      "WELL"
+    ],
+    "worstRank": 711
+  },
+  {
+    "day": 32,
+    "rows": [
+      "SHOW",
+      "NOVA",
+      "OPEN",
+      "WENT"
+    ],
+    "cols": [
+      "SNOW",
+      "HOPE",
+      "OVEN",
+      "WANT"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 33,
+    "rows": [
+      "FAST",
+      "USER",
+      "NINE",
+      "DATE"
+    ],
+    "cols": [
+      "FUND",
+      "ASIA",
+      "SENT",
+      "TREE"
+    ],
+    "worstRank": 437
+  },
+  {
+    "day": 34,
+    "rows": [
+      "HITS",
+      "AREA",
+      "TONY",
+      "ENDS"
+    ],
+    "cols": [
+      "HATE",
+      "IRON",
+      "TEND",
+      "SAYS"
+    ],
+    "worstRank": 618
+  },
+  {
+    "day": 35,
+    "rows": [
+      "ACID",
+      "ROSE",
+      "MALE",
+      "STEP"
+    ],
+    "cols": [
+      "ARMS",
+      "COAT",
+      "ISLE",
+      "DEEP"
+    ],
+    "worstRank": 748
+  },
+  {
+    "day": 36,
+    "rows": [
+      "ECHO",
+      "ALAN",
+      "SAVE",
+      "EYES"
+    ],
+    "cols": [
+      "EASE",
+      "CLAY",
+      "HAVE",
+      "ONES"
+    ],
+    "worstRank": 629
+  },
+  {
+    "day": 37,
+    "rows": [
+      "SELF",
+      "OVER",
+      "LITE",
+      "ELSE"
+    ],
+    "cols": [
+      "SOLE",
+      "EVIL",
+      "LETS",
+      "FREE"
+    ],
+    "worstRank": 693
+  },
+  {
+    "day": 38,
+    "rows": [
+      "HAIR",
+      "INTO",
+      "STEM",
+      "TIME"
+    ],
+    "cols": [
+      "HIST",
+      "ANTI",
+      "ITEM",
+      "ROME"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 39,
+    "rows": [
+      "STOP",
+      "EURO",
+      "ANAL",
+      "TELL"
+    ],
+    "cols": [
+      "SEAT",
+      "TUNE",
+      "ORAL",
+      "POLL"
+    ],
+    "worstRank": 705
+  },
+  {
+    "day": 40,
+    "rows": [
+      "STAR",
+      "PAGE",
+      "OPEN",
+      "TEST"
+    ],
+    "cols": [
+      "SPOT",
+      "TAPE",
+      "AGES",
+      "RENT"
+    ],
+    "worstRank": 460
+  },
+  {
+    "day": 41,
+    "rows": [
+      "PAST",
+      "USER",
+      "LINE",
+      "LATE"
+    ],
+    "cols": [
+      "PULL",
+      "ASIA",
+      "SENT",
+      "TREE"
+    ],
+    "worstRank": 530
+  },
+  {
+    "day": 42,
+    "rows": [
+      "MADE",
+      "IRON",
+      "SEND",
+      "CATS"
+    ],
+    "cols": [
+      "MISC",
+      "AREA",
+      "DONT",
+      "ENDS"
+    ],
+    "worstRank": 579
+  },
+  {
+    "day": 43,
+    "rows": [
+      "SEMI",
+      "OVEN",
+      "LEAF",
+      "ONTO"
+    ],
+    "cols": [
+      "SOLO",
+      "EVEN",
+      "MEAT",
+      "INFO"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 44,
+    "rows": [
+      "ADAM",
+      "NOTE",
+      "NOON",
+      "ARMS"
+    ],
+    "cols": [
+      "ANNA",
+      "DOOR",
+      "ATOM",
+      "MENS"
+    ],
+    "worstRank": 741
+  },
+  {
+    "day": 45,
+    "rows": [
+      "ARTS",
+      "COAT",
+      "ISLE",
+      "DEEP"
+    ],
+    "cols": [
+      "ACID",
+      "ROSE",
+      "TALE",
+      "STEP"
+    ],
+    "worstRank": 748
+  },
+  {
+    "day": 46,
+    "rows": [
+      "ODDS",
+      "IEEE",
+      "LAMP",
+      "SLOT"
+    ],
+    "cols": [
+      "OILS",
+      "DEAL",
+      "DEMO",
+      "SEPT"
+    ],
+    "worstRank": 759
+  },
+  {
+    "day": 47,
+    "rows": [
+      "SHOT",
+      "HERE",
+      "IRAN",
+      "TOLD"
+    ],
+    "cols": [
+      "SHIT",
+      "HERO",
+      "ORAL",
+      "TEND"
+    ],
+    "worstRank": 660
+  },
+  {
+    "day": 48,
+    "rows": [
+      "SHOW",
+      "TUNE",
+      "AGES",
+      "REST"
+    ],
+    "cols": [
+      "STAR",
+      "HUGE",
+      "ONES",
+      "WEST"
+    ],
+    "worstRank": 705
+  },
+  {
+    "day": 49,
+    "rows": [
+      "BONE",
+      "EVIL",
+      "LENS",
+      "TREE"
+    ],
+    "cols": [
+      "BELT",
+      "OVER",
+      "NINE",
+      "ELSE"
+    ],
+    "worstRank": 560
+  },
+  {
+    "day": 50,
+    "rows": [
+      "KISS",
+      "AREA",
+      "TONY",
+      "ENDS"
+    ],
+    "cols": [
+      "KATE",
+      "IRON",
+      "SEND",
+      "SAYS"
+    ],
+    "worstRank": 639
+  },
+  {
+    "day": 51,
+    "rows": [
+      "BASE",
+      "USED",
+      "SING",
+      "HATE"
+    ],
+    "cols": [
+      "BUSH",
+      "ASIA",
+      "SENT",
+      "EDGE"
+    ],
+    "worstRank": 694
+  },
+  {
+    "day": 52,
+    "rows": [
+      "DATE",
+      "UNIX",
+      "ANTI",
+      "LAST"
+    ],
+    "cols": [
+      "DUAL",
+      "ANNA",
+      "TITS",
+      "EXIT"
+    ],
+    "worstRank": 607
+  },
+  {
+    "day": 53,
+    "rows": [
+      "SLOW",
+      "PIPE",
+      "EVEN",
+      "CENT"
+    ],
+    "cols": [
+      "SPEC",
+      "LIVE",
+      "OPEN",
+      "WENT"
+    ],
+    "worstRank": 753
+  },
+  {
+    "day": 54,
+    "rows": [
+      "ACID",
+      "DOSE",
+      "DALE",
+      "STEP"
+    ],
+    "cols": [
+      "ADDS",
+      "COAT",
+      "ISLE",
+      "DEEP"
+    ],
+    "worstRank": 756
+  },
+  {
+    "day": 55,
+    "rows": [
+      "SHIT",
+      "PERU",
+      "ARAB",
+      "NONE"
+    ],
+    "cols": [
+      "SPAN",
+      "HERO",
+      "IRAN",
+      "TUBE"
+    ],
+    "worstRank": 781
+  },
+  {
+    "day": 56,
+    "rows": [
+      "BLUE",
+      "LISA",
+      "ONES",
+      "WEST"
+    ],
+    "cols": [
+      "BLOW",
+      "LINE",
+      "USES",
+      "EAST"
+    ],
+    "worstRank": 585
+  },
+  {
+    "day": 57,
+    "rows": [
+      "REST",
+      "OVER",
+      "SITE",
+      "ELSE"
+    ],
+    "cols": [
+      "ROSE",
+      "EVIL",
+      "SETS",
+      "TREE"
+    ],
+    "worstRank": 451
+  },
+  {
+    "day": 58,
+    "rows": [
+      "HAIR",
+      "EURO",
+      "ATOM",
+      "TONE"
+    ],
+    "cols": [
+      "HEAT",
+      "AUTO",
+      "IRON",
+      "ROME"
+    ],
+    "worstRank": 553
+  },
+  {
+    "day": 59,
+    "rows": [
+      "SAME",
+      "USED",
+      "RING",
+      "EASE"
+    ],
+    "cols": [
+      "SURE",
+      "ASIA",
+      "MENS",
+      "EDGE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 60,
+    "rows": [
+      "CAMP",
+      "ORAL",
+      "MENU",
+      "PAYS"
+    ],
+    "cols": [
+      "COMP",
+      "AREA",
+      "MANY",
+      "PLUS"
+    ],
+    "worstRank": 761
+  },
+  {
+    "day": 61,
+    "rows": [
+      "LATE",
+      "UNIV",
+      "NAME",
+      "GLEN"
+    ],
+    "cols": [
+      "LUNG",
+      "ANAL",
+      "TIME",
+      "EVEN"
+    ],
+    "worstRank": 783
+  },
+  {
+    "day": 62,
+    "rows": [
+      "ACID",
+      "DONE",
+      "DATE",
+      "STOP"
+    ],
+    "cols": [
+      "ADDS",
+      "COAT",
+      "INTO",
+      "DEEP"
+    ],
+    "worstRank": 667
+  },
+  {
+    "day": 63,
+    "rows": [
+      "BUSH",
+      "ONTO",
+      "STEP",
+      "SOME"
+    ],
+    "cols": [
+      "BOSS",
+      "UNTO",
+      "STEM",
+      "HOPE"
+    ],
+    "worstRank": 760
+  },
+  {
+    "day": 64,
+    "rows": [
+      "ABLE",
+      "CLAY",
+      "TUNE",
+      "SEES"
+    ],
+    "cols": [
+      "ACTS",
+      "BLUE",
+      "LANE",
+      "EYES"
+    ],
+    "worstRank": 726
+  },
+  {
+    "day": 65,
+    "rows": [
+      "DEBT",
+      "OVER",
+      "SIDE",
+      "ELSE"
+    ],
+    "cols": [
+      "DOSE",
+      "EVIL",
+      "BEDS",
+      "TREE"
+    ],
+    "worstRank": 577
+  },
+  {
+    "day": 66,
+    "rows": [
+      "SNOW",
+      "LOVE",
+      "ONES",
+      "WENT"
+    ],
+    "cols": [
+      "SLOW",
+      "NONE",
+      "OVEN",
+      "WEST"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 67,
+    "rows": [
+      "SALE",
+      "USED",
+      "RING",
+      "EASE"
+    ],
+    "cols": [
+      "SURE",
+      "ASIA",
+      "LENS",
+      "EDGE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 68,
+    "rows": [
+      "KITS",
+      "AREA",
+      "TONY",
+      "ENDS"
+    ],
+    "cols": [
+      "KATE",
+      "IRON",
+      "TEND",
+      "SAYS"
+    ],
+    "worstRank": 639
+  },
+  {
+    "day": 69,
+    "rows": [
+      "ANAL",
+      "LINE",
+      "ANNA",
+      "NEED"
+    ],
+    "cols": [
+      "ALAN",
+      "NINE",
+      "ANNE",
+      "LEAD"
+    ],
+    "worstRank": 607
+  },
+  {
+    "day": 70,
+    "rows": [
+      "DROP",
+      "RIPE",
+      "USER",
+      "MENU"
+    ],
+    "cols": [
+      "DRUM",
+      "RISE",
+      "OPEN",
+      "PERU"
+    ],
+    "worstRank": 777
+  },
+  {
+    "day": 71,
+    "rows": [
+      "COST",
+      "ANTI",
+      "STEM",
+      "HOPE"
+    ],
+    "cols": [
+      "CASH",
+      "ONTO",
+      "STEP",
+      "TIME"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 72,
+    "rows": [
+      "POST",
+      "UNTO",
+      "SCAN",
+      "HERE"
+    ],
+    "cols": [
+      "PUSH",
+      "ONCE",
+      "STAR",
+      "TONE"
+    ],
+    "worstRank": 760
+  },
+  {
+    "day": 73,
+    "rows": [
+      "ROLE",
+      "EVIL",
+      "SETS",
+      "TREE"
+    ],
+    "cols": [
+      "REST",
+      "OVER",
+      "LITE",
+      "ELSE"
+    ],
+    "worstRank": 693
+  },
+  {
+    "day": 74,
+    "rows": [
+      "SHOW",
+      "LANE",
+      "OVEN",
+      "WEST"
+    ],
+    "cols": [
+      "SLOW",
+      "HAVE",
+      "ONES",
+      "WENT"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 75,
+    "rows": [
+      "RACE",
+      "USED",
+      "SING",
+      "HATE"
+    ],
+    "cols": [
+      "RUSH",
+      "ASIA",
+      "CENT",
+      "EDGE"
+    ],
+    "worstRank": 694
+  },
+  {
+    "day": 76,
+    "rows": [
+      "FITS",
+      "AREA",
+      "MANY",
+      "ENDS"
+    ],
+    "cols": [
+      "FAME",
+      "IRAN",
+      "TEND",
+      "SAYS"
+    ],
+    "worstRank": 699
+  },
+  {
+    "day": 77,
+    "rows": [
+      "ARAB",
+      "SALE",
+      "KISS",
+      "SLOT"
+    ],
+    "cols": [
+      "ASKS",
+      "RAIL",
+      "ALSO",
+      "BEST"
+    ],
+    "worstRank": 789
+  },
+  {
+    "day": 78,
+    "rows": [
+      "SNOW",
+      "TIRE",
+      "ANAL",
+      "TELL"
+    ],
+    "cols": [
+      "STAT",
+      "NINE",
+      "ORAL",
+      "WELL"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 79,
+    "rows": [
+      "HAIR",
+      "ONTO",
+      "STEM",
+      "TIME"
+    ],
+    "cols": [
+      "HOST",
+      "ANTI",
+      "ITEM",
+      "ROME"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 80,
+    "rows": [
+      "SAID",
+      "PURE",
+      "ATOM",
+      "MONO"
+    ],
+    "cols": [
+      "SPAM",
+      "AUTO",
+      "IRON",
+      "DEMO"
+    ],
+    "worstRank": 804
+  },
+  {
+    "day": 81,
+    "rows": [
+      "SOLE",
+      "EVIL",
+      "PETS",
+      "TREE"
+    ],
+    "cols": [
+      "SEPT",
+      "OVER",
+      "LITE",
+      "ELSE"
+    ],
+    "worstRank": 759
+  },
+  {
+    "day": 82,
+    "rows": [
+      "BLUE",
+      "LISA",
+      "ONES",
+      "WERE"
+    ],
+    "cols": [
+      "BLOW",
+      "LINE",
+      "USER",
+      "EASE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 83,
+    "rows": [
+      "RARE",
+      "USED",
+      "SING",
+      "HATE"
+    ],
+    "cols": [
+      "RUSH",
+      "ASIA",
+      "RENT",
+      "EDGE"
+    ],
+    "worstRank": 694
+  },
+  {
+    "day": 84,
+    "rows": [
+      "WHAT",
+      "EURO",
+      "AGED",
+      "READ"
+    ],
+    "cols": [
+      "WEAR",
+      "HUGE",
+      "AREA",
+      "TODD"
+    ],
+    "worstRank": 724
+  },
+  {
+    "day": 85,
+    "rows": [
+      "PLUS",
+      "LOSE",
+      "OVEN",
+      "TEST"
+    ],
+    "cols": [
+      "PLOT",
+      "LOVE",
+      "USES",
+      "SENT"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 86,
+    "rows": [
+      "MAIL",
+      "ANNA",
+      "RATS",
+      "SLOT"
+    ],
+    "cols": [
+      "MARS",
+      "ANAL",
+      "INTO",
+      "LAST"
+    ],
+    "worstRank": 794
+  },
+  {
+    "day": 87,
+    "rows": [
+      "POST",
+      "ANTI",
+      "ITEM",
+      "ROME"
+    ],
+    "cols": [
+      "PAIR",
+      "ONTO",
+      "STEM",
+      "TIME"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 88,
+    "rows": [
+      "MAIN",
+      "ALSO",
+      "SALT",
+      "KNEE"
+    ],
+    "cols": [
+      "MASK",
+      "ALAN",
+      "ISLE",
+      "NOTE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 89,
+    "rows": [
+      "CARE",
+      "ORAL",
+      "ACTS",
+      "THEE"
+    ],
+    "cols": [
+      "COAT",
+      "ARCH",
+      "RATE",
+      "ELSE"
+    ],
+    "worstRank": 797
+  },
+  {
+    "day": 90,
+    "rows": [
+      "STEP",
+      "NOVA",
+      "ONES",
+      "WENT"
+    ],
+    "cols": [
+      "SNOW",
+      "TONE",
+      "EVEN",
+      "PAST"
+    ],
+    "worstRank": 610
+  },
+  {
+    "day": 91,
+    "rows": [
+      "FLAT",
+      "RISE",
+      "EVIL",
+      "DEAL"
+    ],
+    "cols": [
+      "FRED",
+      "LIVE",
+      "ASIA",
+      "TELL"
+    ],
+    "worstRank": 623
+  },
+  {
+    "day": 92,
+    "rows": [
+      "PARA",
+      "IRON",
+      "LEAD",
+      "LADY"
+    ],
+    "cols": [
+      "PILL",
+      "AREA",
+      "ROAD",
+      "ANDY"
+    ],
+    "worstRank": 649
+  },
+  {
+    "day": 93,
+    "rows": [
+      "ARTS",
+      "TIRE",
+      "OPEN",
+      "MEET"
+    ],
+    "cols": [
+      "ATOM",
+      "RIPE",
+      "TREE",
+      "SENT"
+    ],
+    "worstRank": 777
+  },
+  {
+    "day": 94,
+    "rows": [
+      "WAIT",
+      "ANNE",
+      "RATS",
+      "SLOT"
+    ],
+    "cols": [
+      "WARS",
+      "ANAL",
+      "INTO",
+      "TEST"
+    ],
+    "worstRank": 794
+  },
+  {
+    "day": 95,
+    "rows": [
+      "LAST",
+      "ONTO",
+      "STAY",
+      "TITS"
+    ],
+    "cols": [
+      "LOST",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 96,
+    "rows": [
+      "SCAN",
+      "TILE",
+      "EASE",
+      "MOOD"
+    ],
+    "cols": [
+      "STEM",
+      "CIAO",
+      "ALSO",
+      "NEED"
+    ],
+    "worstRank": 806
+  },
+  {
+    "day": 97,
+    "rows": [
+      "CAME",
+      "ORAL",
+      "ACTS",
+      "THEE"
+    ],
+    "cols": [
+      "COAT",
+      "ARCH",
+      "MATE",
+      "ELSE"
+    ],
+    "worstRank": 797
+  },
+  {
+    "day": 98,
+    "rows": [
+      "STOP",
+      "NOVA",
+      "ONES",
+      "WENT"
+    ],
+    "cols": [
+      "SNOW",
+      "TONE",
+      "OVEN",
+      "PAST"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 99,
+    "rows": [
+      "FLAT",
+      "ROSE",
+      "EVIL",
+      "DEAL"
+    ],
+    "cols": [
+      "FRED",
+      "LOVE",
+      "ASIA",
+      "TELL"
+    ],
+    "worstRank": 623
+  },
+  {
+    "day": 100,
+    "rows": [
+      "TIME",
+      "ACID",
+      "LONG",
+      "KNEE"
+    ],
+    "cols": [
+      "TALK",
+      "ICON",
+      "MINE",
+      "EDGE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 101,
+    "rows": [
+      "THIS",
+      "EAST",
+      "MILE",
+      "PREP"
+    ],
+    "cols": [
+      "TEMP",
+      "HAIR",
+      "ISLE",
+      "STEP"
+    ],
+    "worstRank": 808
+  },
+  {
+    "day": 102,
+    "rows": [
+      "MEAN",
+      "AUTO",
+      "PROS",
+      "SOME"
+    ],
+    "cols": [
+      "MAPS",
+      "EURO",
+      "ATOM",
+      "NOSE"
+    ],
+    "worstRank": 810
+  },
+  {
+    "day": 103,
+    "rows": [
+      "LIST",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "cols": [
+      "LAST",
+      "INTO",
+      "STAY",
+      "TITS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 104,
+    "rows": [
+      "DEAR",
+      "RARE",
+      "USES",
+      "MEAT"
+    ],
+    "cols": [
+      "DRUM",
+      "EASE",
+      "AREA",
+      "REST"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 105,
+    "rows": [
+      "RATE",
+      "ANAL",
+      "INNS",
+      "LAKE"
+    ],
+    "cols": [
+      "RAIL",
+      "ANNA",
+      "TANK",
+      "ELSE"
+    ],
+    "worstRank": 785
+  },
+  {
+    "day": 106,
+    "rows": [
+      "SHOW",
+      "LANE",
+      "OVEN",
+      "TEST"
+    ],
+    "cols": [
+      "SLOT",
+      "HAVE",
+      "ONES",
+      "WENT"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 107,
+    "rows": [
+      "PART",
+      "USER",
+      "NINE",
+      "KATE"
+    ],
+    "cols": [
+      "PUNK",
+      "ASIA",
+      "RENT",
+      "TREE"
+    ],
+    "worstRank": 661
+  },
+  {
+    "day": 108,
+    "rows": [
+      "WIFE",
+      "ACID",
+      "LONG",
+      "KNEE"
+    ],
+    "cols": [
+      "WALK",
+      "ICON",
+      "FINE",
+      "EDGE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 109,
+    "rows": [
+      "MATT",
+      "ECHO",
+      "TEEN",
+      "ARMY"
+    ],
+    "cols": [
+      "META",
+      "ACER",
+      "THEM",
+      "TONY"
+    ],
+    "worstRank": 820
+  },
+  {
+    "day": 110,
+    "rows": [
+      "WEST",
+      "AUTO",
+      "IRON",
+      "TOPS"
+    ],
+    "cols": [
+      "WAIT",
+      "EURO",
+      "STOP",
+      "TONS"
+    ],
+    "worstRank": 695
+  },
+  {
+    "day": 111,
+    "rows": [
+      "PUSH",
+      "INTO",
+      "STEP",
+      "SOME"
+    ],
+    "cols": [
+      "PISS",
+      "UNTO",
+      "STEM",
+      "HOPE"
+    ],
+    "worstRank": 760
+  },
+  {
+    "day": 112,
+    "rows": [
+      "POST",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "cols": [
+      "PAST",
+      "ONTO",
+      "STAY",
+      "TITS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 113,
+    "rows": [
+      "RATE",
+      "ORAL",
+      "LESS",
+      "LAKE"
+    ],
+    "cols": [
+      "ROLL",
+      "AREA",
+      "TASK",
+      "ELSE"
+    ],
+    "worstRank": 404
+  },
+  {
+    "day": 114,
+    "rows": [
+      "INFO",
+      "DEAN",
+      "EASE",
+      "ARTS"
+    ],
+    "cols": [
+      "IDEA",
+      "NEAR",
+      "FAST",
+      "ONES"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 115,
+    "rows": [
+      "LAST",
+      "USER",
+      "NINE",
+      "GATE"
+    ],
+    "cols": [
+      "LUNG",
+      "ASIA",
+      "SENT",
+      "TREE"
+    ],
+    "worstRank": 723
+  },
+  {
+    "day": 116,
+    "rows": [
+      "SLOW",
+      "POPE",
+      "EVEN",
+      "CENT"
+    ],
+    "cols": [
+      "SPEC",
+      "LOVE",
+      "OPEN",
+      "WENT"
+    ],
+    "worstRank": 800
+  },
+  {
+    "day": 117,
+    "rows": [
+      "TALK",
+      "ICON",
+      "LINE",
+      "EDGE"
+    ],
+    "cols": [
+      "TILE",
+      "ACID",
+      "LONG",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 118,
+    "rows": [
+      "MATT",
+      "ECHO",
+      "TEEN",
+      "ARMS"
+    ],
+    "cols": [
+      "META",
+      "ACER",
+      "THEM",
+      "TONS"
+    ],
+    "worstRank": 820
+  },
+  {
+    "day": 119,
+    "rows": [
+      "MAPS",
+      "EURO",
+      "STEM",
+      "HOPE"
+    ],
+    "cols": [
+      "MESH",
+      "AUTO",
+      "PREP",
+      "SOME"
+    ],
+    "worstRank": 808
+  },
+  {
+    "day": 120,
+    "rows": [
+      "COST",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "cols": [
+      "CAST",
+      "ONTO",
+      "STAY",
+      "TITS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 121,
+    "rows": [
+      "TOLD",
+      "AREA",
+      "PAST",
+      "ELSE"
+    ],
+    "cols": [
+      "TAPE",
+      "ORAL",
+      "LESS",
+      "DATE"
+    ],
+    "worstRank": 398
+  },
+  {
+    "day": 122,
+    "rows": [
+      "LAID",
+      "INTO",
+      "ONES",
+      "NAME"
+    ],
+    "cols": [
+      "LION",
+      "ANNA",
+      "ITEM",
+      "DOSE"
+    ],
+    "worstRank": 684
+  },
+  {
+    "day": 123,
+    "rows": [
+      "PUMP",
+      "ASIA",
+      "REST",
+      "ARCH"
+    ],
+    "cols": [
+      "PARA",
+      "USER",
+      "MISC",
+      "PATH"
+    ],
+    "worstRank": 736
+  },
+  {
+    "day": 124,
+    "rows": [
+      "PLOT",
+      "RIPE",
+      "OVEN",
+      "SEND"
+    ],
+    "cols": [
+      "PROS",
+      "LIVE",
+      "OPEN",
+      "TEND"
+    ],
+    "worstRank": 810
+  },
+  {
+    "day": 125,
+    "rows": [
+      "TIME",
+      "ACID",
+      "SONG",
+      "KNEE"
+    ],
+    "cols": [
+      "TASK",
+      "ICON",
+      "MINE",
+      "EDGE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 126,
+    "rows": [
+      "BEST",
+      "ACER",
+      "THEE",
+      "HOME"
+    ],
+    "cols": [
+      "BATH",
+      "ECHO",
+      "SEEM",
+      "TREE"
+    ],
+    "worstRank": 820
+  },
+  {
+    "day": 127,
+    "rows": [
+      "THAN",
+      "RENO",
+      "IRAN",
+      "POLE"
+    ],
+    "cols": [
+      "TRIP",
+      "HERO",
+      "ANAL",
+      "NONE"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 128,
+    "rows": [
+      "RUSH",
+      "ONTO",
+      "STEP",
+      "SOME"
+    ],
+    "cols": [
+      "ROSS",
+      "UNTO",
+      "STEM",
+      "HOPE"
+    ],
+    "worstRank": 760
+  },
+  {
+    "day": 129,
+    "rows": [
+      "RAPE",
+      "ORAL",
+      "LESS",
+      "LATE"
+    ],
+    "cols": [
+      "ROLL",
+      "AREA",
+      "PAST",
+      "ELSE"
+    ],
+    "worstRank": 404
+  },
+  {
+    "day": 130,
+    "rows": [
+      "FAST",
+      "INTO",
+      "STAY",
+      "HITS"
+    ],
+    "cols": [
+      "FISH",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 131,
+    "rows": [
+      "STAR",
+      "HUGE",
+      "ONES",
+      "TEST"
+    ],
+    "cols": [
+      "SHOT",
+      "TUNE",
+      "AGES",
+      "REST"
+    ],
+    "worstRank": 705
+  },
+  {
+    "day": 132,
+    "rows": [
+      "CREW",
+      "HIRE",
+      "ASIA",
+      "DECK"
+    ],
+    "cols": [
+      "CHAD",
+      "RISE",
+      "ERIC",
+      "WEAK"
+    ],
+    "worstRank": 774
+  },
+  {
+    "day": 133,
+    "rows": [
+      "WINE",
+      "ACID",
+      "LONG",
+      "KNEE"
+    ],
+    "cols": [
+      "WALK",
+      "ICON",
+      "NINE",
+      "EDGE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 134,
+    "rows": [
+      "SNOW",
+      "POPE",
+      "EVEN",
+      "CANT"
+    ],
+    "cols": [
+      "SPEC",
+      "NOVA",
+      "OPEN",
+      "WENT"
+    ],
+    "worstRank": 811
+  },
+  {
+    "day": 135,
+    "rows": [
+      "WEST",
+      "ACER",
+      "THEE",
+      "TONE"
+    ],
+    "cols": [
+      "WATT",
+      "ECHO",
+      "SEEN",
+      "TREE"
+    ],
+    "worstRank": 825
+  },
+  {
+    "day": 136,
+    "rows": [
+      "MAPS",
+      "EURO",
+      "ATOM",
+      "LOSE"
+    ],
+    "cols": [
+      "MEAL",
+      "AUTO",
+      "PROS",
+      "SOME"
+    ],
+    "worstRank": 810
+  },
+  {
+    "day": 137,
+    "rows": [
+      "RACE",
+      "ORAL",
+      "LESS",
+      "LATE"
+    ],
+    "cols": [
+      "ROLL",
+      "AREA",
+      "CAST",
+      "ELSE"
+    ],
+    "worstRank": 404
+  },
+  {
+    "day": 138,
+    "rows": [
+      "LAST",
+      "INTO",
+      "STEP",
+      "AIMS"
+    ],
+    "cols": [
+      "LISA",
+      "ANTI",
+      "STEM",
+      "TOPS"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 139,
+    "rows": [
+      "MAIN",
+      "ONTO",
+      "ONES",
+      "NAME"
+    ],
+    "cols": [
+      "MOON",
+      "ANNA",
+      "ITEM",
+      "NOSE"
+    ],
+    "worstRank": 717
+  },
+  {
+    "day": 140,
+    "rows": [
+      "PUMP",
+      "ASIA",
+      "RELY",
+      "ASKS"
+    ],
+    "cols": [
+      "PARA",
+      "USES",
+      "MILK",
+      "PAYS"
+    ],
+    "worstRank": 789
+  },
+  {
+    "day": 141,
+    "rows": [
+      "PACK",
+      "ALAN",
+      "ISLE",
+      "ROLE"
+    ],
+    "cols": [
+      "PAIR",
+      "ALSO",
+      "CALL",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 142,
+    "rows": [
+      "LORD",
+      "EVER",
+      "GENE",
+      "SNOW"
+    ],
+    "cols": [
+      "LEGS",
+      "OVEN",
+      "RENO",
+      "DREW"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 143,
+    "rows": [
+      "ACID",
+      "CODE",
+      "TREE",
+      "SNAP"
+    ],
+    "cols": [
+      "ACTS",
+      "CORN",
+      "IDEA",
+      "DEEP"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 144,
+    "rows": [
+      "REST",
+      "AUTO",
+      "IRAN",
+      "NOTE"
+    ],
+    "cols": [
+      "RAIN",
+      "EURO",
+      "STAT",
+      "TONE"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 145,
+    "rows": [
+      "TAPE",
+      "ORAL",
+      "LESS",
+      "LATE"
+    ],
+    "cols": [
+      "TOLL",
+      "AREA",
+      "PAST",
+      "ELSE"
+    ],
+    "worstRank": 422
+  },
+  {
+    "day": 146,
+    "rows": [
+      "VISA",
+      "ANTI",
+      "STEM",
+      "TOPS"
+    ],
+    "cols": [
+      "VAST",
+      "INTO",
+      "STEP",
+      "AIMS"
+    ],
+    "worstRank": 703
+  },
+  {
+    "day": 147,
+    "rows": [
+      "RAIL",
+      "ONTO",
+      "ONES",
+      "FAME"
+    ],
+    "cols": [
+      "ROOF",
+      "ANNA",
+      "ITEM",
+      "LOSE"
+    ],
+    "worstRank": 699
+  },
+  {
+    "day": 148,
+    "rows": [
+      "PUSH",
+      "ASIA",
+      "CENT",
+      "EDGE"
+    ],
+    "cols": [
+      "PACE",
+      "USED",
+      "SING",
+      "HATE"
+    ],
+    "worstRank": 694
+  },
+  {
+    "day": 149,
+    "rows": [
+      "DISH",
+      "ECHO",
+      "COOL",
+      "KNEE"
+    ],
+    "cols": [
+      "DECK",
+      "ICON",
+      "SHOE",
+      "HOLE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 150,
+    "rows": [
+      "FLOW",
+      "RIPE",
+      "OVER",
+      "GENE"
+    ],
+    "cols": [
+      "FROG",
+      "LIVE",
+      "OPEN",
+      "WERE"
+    ],
+    "worstRank": 830
+  },
+  {
+    "day": 151,
+    "rows": [
+      "SLUT",
+      "NOSE",
+      "AGES",
+      "PORT"
+    ],
+    "cols": [
+      "SNAP",
+      "LOGO",
+      "USER",
+      "TEST"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 152,
+    "rows": [
+      "THAT",
+      "RENO",
+      "IRAN",
+      "POLE"
+    ],
+    "cols": [
+      "TRIP",
+      "HERO",
+      "ANAL",
+      "TONE"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 153,
+    "rows": [
+      "COLD",
+      "AREA",
+      "PAST",
+      "ELSE"
+    ],
+    "cols": [
+      "CAPE",
+      "ORAL",
+      "LESS",
+      "DATE"
+    ],
+    "worstRank": 423
+  },
+  {
+    "day": 154,
+    "rows": [
+      "MOST",
+      "INTO",
+      "SCAN",
+      "SETS"
+    ],
+    "cols": [
+      "MISS",
+      "ONCE",
+      "STAT",
+      "TONS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 155,
+    "rows": [
+      "CASH",
+      "ONTO",
+      "ONES",
+      "KEPT"
+    ],
+    "cols": [
+      "COOK",
+      "ANNE",
+      "STEP",
+      "HOST"
+    ],
+    "worstRank": 535
+  },
+  {
+    "day": 156,
+    "rows": [
+      "CAME",
+      "USED",
+      "RING",
+      "EASE"
+    ],
+    "cols": [
+      "CURE",
+      "ASIA",
+      "MENS",
+      "EDGE"
+    ],
+    "worstRank": 735
+  },
+  {
+    "day": 157,
+    "rows": [
+      "ANTI",
+      "SORT",
+      "KNEE",
+      "SEEM"
+    ],
+    "cols": [
+      "ASKS",
+      "NONE",
+      "TREE",
+      "ITEM"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 158,
+    "rows": [
+      "WEST",
+      "AUTO",
+      "TROY",
+      "TOPS"
+    ],
+    "cols": [
+      "WATT",
+      "EURO",
+      "STOP",
+      "TOYS"
+    ],
+    "worstRank": 840
+  },
+  {
+    "day": 159,
+    "rows": [
+      "SLUT",
+      "NOSE",
+      "AGES",
+      "POST"
+    ],
+    "cols": [
+      "SNAP",
+      "LOGO",
+      "USES",
+      "TEST"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 160,
+    "rows": [
+      "HATE",
+      "UNIV",
+      "NAME",
+      "GLEN"
+    ],
+    "cols": [
+      "HUNG",
+      "ANAL",
+      "TIME",
+      "EVEN"
+    ],
+    "worstRank": 803
+  },
+  {
+    "day": 161,
+    "rows": [
+      "ROLL",
+      "AREA",
+      "RANK",
+      "ELSE"
+    ],
+    "cols": [
+      "RARE",
+      "ORAL",
+      "LENS",
+      "LAKE"
+    ],
+    "worstRank": 485
+  },
+  {
+    "day": 162,
+    "rows": [
+      "BAGS",
+      "ICON",
+      "RENO",
+      "DREW"
+    ],
+    "cols": [
+      "BIRD",
+      "ACER",
+      "GONE",
+      "SNOW"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 163,
+    "rows": [
+      "STAR",
+      "POLE",
+      "ONES",
+      "TEXT"
+    ],
+    "cols": [
+      "SPOT",
+      "TONE",
+      "ALEX",
+      "REST"
+    ],
+    "worstRank": 767
+  },
+  {
+    "day": 164,
+    "rows": [
+      "LOSS",
+      "ONCE",
+      "STAT",
+      "TONS"
+    ],
+    "cols": [
+      "LOST",
+      "ONTO",
+      "SCAN",
+      "SETS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 165,
+    "rows": [
+      "SURE",
+      "ASIA",
+      "LESS",
+      "TREE"
+    ],
+    "cols": [
+      "SALT",
+      "USER",
+      "RISE",
+      "EASE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 166,
+    "rows": [
+      "LACK",
+      "IRAN",
+      "SALE",
+      "ABLE"
+    ],
+    "cols": [
+      "LISA",
+      "ARAB",
+      "CALL",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 167,
+    "rows": [
+      "PAST",
+      "ANTI",
+      "SNAP",
+      "SAYS"
+    ],
+    "cols": [
+      "PASS",
+      "ANNA",
+      "STAY",
+      "TIPS"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 168,
+    "rows": [
+      "CUBA",
+      "ANAL",
+      "VISA",
+      "EVEN"
+    ],
+    "cols": [
+      "CAVE",
+      "UNIV",
+      "BASE",
+      "ALAN"
+    ],
+    "worstRank": 844
+  },
+  {
+    "day": 169,
+    "rows": [
+      "RATE",
+      "ORAL",
+      "LENS",
+      "LAKE"
+    ],
+    "cols": [
+      "ROLL",
+      "AREA",
+      "TANK",
+      "ELSE"
+    ],
+    "worstRank": 498
+  },
+  {
+    "day": 170,
+    "rows": [
+      "BANK",
+      "ICON",
+      "RENO",
+      "DREW"
+    ],
+    "cols": [
+      "BIRD",
+      "ACER",
+      "NONE",
+      "KNOW"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 171,
+    "rows": [
+      "SLOW",
+      "LINE",
+      "OVEN",
+      "TEST"
+    ],
+    "cols": [
+      "SLOT",
+      "LIVE",
+      "ONES",
+      "WENT"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 172,
+    "rows": [
+      "POST",
+      "INTO",
+      "SCAN",
+      "SETS"
+    ],
+    "cols": [
+      "PISS",
+      "ONCE",
+      "STAT",
+      "TONS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 173,
+    "rows": [
+      "BUSH",
+      "ASIA",
+      "RENT",
+      "EDGE"
+    ],
+    "cols": [
+      "BARE",
+      "USED",
+      "SING",
+      "HATE"
+    ],
+    "worstRank": 802
+  },
+  {
+    "day": 174,
+    "rows": [
+      "MISS",
+      "IRAN",
+      "LOGO",
+      "KNEW"
+    ],
+    "cols": [
+      "MILK",
+      "IRON",
+      "SAGE",
+      "SNOW"
+    ],
+    "worstRank": 843
+  },
+  {
+    "day": 175,
+    "rows": [
+      "LAST",
+      "ONTO",
+      "SNAP",
+      "SAYS"
+    ],
+    "cols": [
+      "LOSS",
+      "ANNA",
+      "STAY",
+      "TOPS"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 176,
+    "rows": [
+      "PACK",
+      "ALAN",
+      "ISLE",
+      "ROME"
+    ],
+    "cols": [
+      "PAIR",
+      "ALSO",
+      "CALM",
+      "KNEE"
+    ],
+    "worstRank": 838
+  },
+  {
+    "day": 177,
+    "rows": [
+      "ANAL",
+      "CORE",
+      "IDEA",
+      "DEAD"
+    ],
+    "cols": [
+      "ACID",
+      "NODE",
+      "AREA",
+      "LEAD"
+    ],
+    "worstRank": 493
+  },
+  {
+    "day": 178,
+    "rows": [
+      "CAKE",
+      "ORAL",
+      "ACTS",
+      "THEE"
+    ],
+    "cols": [
+      "COAT",
+      "ARCH",
+      "KATE",
+      "ELSE"
+    ],
+    "worstRank": 797
+  },
+  {
+    "day": 179,
+    "rows": [
+      "SLOW",
+      "PINE",
+      "OVEN",
+      "TEST"
+    ],
+    "cols": [
+      "SPOT",
+      "LIVE",
+      "ONES",
+      "WENT"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 180,
+    "rows": [
+      "BOSS",
+      "INTO",
+      "ACER",
+      "SEPT"
+    ],
+    "cols": [
+      "BIAS",
+      "ONCE",
+      "STEP",
+      "SORT"
+    ],
+    "worstRank": 820
+  },
+  {
+    "day": 181,
+    "rows": [
+      "DUKE",
+      "ASIA",
+      "LENS",
+      "EDGE"
+    ],
+    "cols": [
+      "DALE",
+      "USED",
+      "KING",
+      "EASE"
+    ],
+    "worstRank": 756
+  },
+  {
+    "day": 182,
+    "rows": [
+      "REST",
+      "AUTO",
+      "IRAN",
+      "LOTS"
+    ],
+    "cols": [
+      "RAIL",
+      "EURO",
+      "STAT",
+      "TONS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 183,
+    "rows": [
+      "STAY",
+      "NONE",
+      "ANNA",
+      "PEER"
+    ],
+    "cols": [
+      "SNAP",
+      "TONE",
+      "ANNE",
+      "YEAR"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 184,
+    "rows": [
+      "DISC",
+      "ECHO",
+      "COOL",
+      "KNEE"
+    ],
+    "cols": [
+      "DECK",
+      "ICON",
+      "SHOE",
+      "COLE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 185,
+    "rows": [
+      "ANAL",
+      "CURE",
+      "IDEA",
+      "DEAD"
+    ],
+    "cols": [
+      "ACID",
+      "NUDE",
+      "AREA",
+      "LEAD"
+    ],
+    "worstRank": 735
+  },
+  {
+    "day": 186,
+    "rows": [
+      "BOAT",
+      "ARCH",
+      "RATE",
+      "ELSE"
+    ],
+    "cols": [
+      "BARE",
+      "ORAL",
+      "ACTS",
+      "THEE"
+    ],
+    "worstRank": 802
+  },
+  {
+    "day": 187,
+    "rows": [
+      "SNOW",
+      "LIVE",
+      "ONES",
+      "WENT"
+    ],
+    "cols": [
+      "SLOW",
+      "NINE",
+      "OVEN",
+      "WEST"
+    ],
+    "worstRank": 740
+  },
+  {
+    "day": 188,
+    "rows": [
+      "LAST",
+      "ONTO",
+      "STEP",
+      "SIMS"
+    ],
+    "cols": [
+      "LOSS",
+      "ANTI",
+      "STEM",
+      "TOPS"
+    ],
+    "worstRank": 841
+  },
+  {
+    "day": 189,
+    "rows": [
+      "PAST",
+      "USER",
+      "TILE",
+      "SALE"
+    ],
+    "cols": [
+      "PUTS",
+      "ASIA",
+      "SELL",
+      "TREE"
+    ],
+    "worstRank": 805
+  },
+  {
+    "day": 190,
+    "rows": [
+      "TEST",
+      "AUTO",
+      "IRAN",
+      "LOTS"
+    ],
+    "cols": [
+      "TAIL",
+      "EURO",
+      "STAT",
+      "TONS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 191,
+    "rows": [
+      "WISH",
+      "ANNE",
+      "STAR",
+      "HOPE"
+    ],
+    "cols": [
+      "WASH",
+      "INTO",
+      "SNAP",
+      "HERE"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 192,
+    "rows": [
+      "DESK",
+      "ICON",
+      "SHOE",
+      "TONE"
+    ],
+    "cols": [
+      "DIST",
+      "ECHO",
+      "SOON",
+      "KNEE"
+    ],
+    "worstRank": 821
+  },
+  {
+    "day": 193,
+    "rows": [
+      "MISS",
+      "AREA",
+      "TONY",
+      "ENDS"
+    ],
+    "cols": [
+      "MATE",
+      "IRON",
+      "SEND",
+      "SAYS"
+    ],
+    "worstRank": 746
+  },
+  {
+    "day": 194,
+    "rows": [
+      "RARE",
+      "ANAL",
+      "INNS",
+      "LAKE"
+    ],
+    "cols": [
+      "RAIL",
+      "ANNA",
+      "RANK",
+      "ELSE"
+    ],
+    "worstRank": 785
+  },
+  {
+    "day": 195,
+    "rows": [
+      "LORD",
+      "OVER",
+      "GENE",
+      "SNOW"
+    ],
+    "cols": [
+      "LOGS",
+      "OVEN",
+      "RENO",
+      "DREW"
+    ],
+    "worstRank": 831
+  },
+  {
+    "day": 196,
+    "rows": [
+      "ABLE",
+      "CLAY",
+      "TUNE",
+      "SEED"
+    ],
+    "cols": [
+      "ACTS",
+      "BLUE",
+      "LANE",
+      "EYED"
+    ],
+    "worstRank": 846
+  },
+  {
+    "day": 197,
+    "rows": [
+      "PAST",
+      "USER",
+      "NINE",
+      "KATE"
+    ],
+    "cols": [
+      "PUNK",
+      "ASIA",
+      "SENT",
+      "TREE"
+    ],
+    "worstRank": 661
+  },
+  {
+    "day": 198,
+    "rows": [
+      "PLOT",
+      "RIPE",
+      "ONES",
+      "CENT"
+    ],
+    "cols": [
+      "PROC",
+      "LINE",
+      "OPEN",
+      "TEST"
+    ],
+    "worstRank": 777
+  },
+  {
+    "day": 199,
+    "rows": [
+      "LAST",
+      "ONTO",
+      "SNAP",
+      "SETS"
+    ],
+    "cols": [
+      "LOSS",
+      "ANNE",
+      "STAT",
+      "TOPS"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 200,
+    "rows": [
+      "THIS",
+      "RIDE",
+      "ALEX",
+      "PLAY"
+    ],
+    "cols": [
+      "TRAP",
+      "HILL",
+      "IDEA",
+      "SEXY"
+    ],
+    "worstRank": 849
+  },
+  {
+    "day": 201,
+    "rows": [
+      "PACK",
+      "IRAN",
+      "PETE",
+      "EASE"
+    ],
+    "cols": [
+      "PIPE",
+      "AREA",
+      "CATS",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 202,
+    "rows": [
+      "MAIL",
+      "ANNA",
+      "TANK",
+      "ELSE"
+    ],
+    "cols": [
+      "MATE",
+      "ANAL",
+      "INNS",
+      "LAKE"
+    ],
+    "worstRank": 785
+  },
+  {
+    "day": 203,
+    "rows": [
+      "ATOM",
+      "RARE",
+      "ALAN",
+      "BELT"
+    ],
+    "cols": [
+      "ARAB",
+      "TALE",
+      "ORAL",
+      "MENT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 204,
+    "rows": [
+      "FAIR",
+      "INTO",
+      "STEM",
+      "TIME"
+    ],
+    "cols": [
+      "FIST",
+      "ANTI",
+      "ITEM",
+      "ROME"
+    ],
+    "worstRank": 864
+  },
+  {
+    "day": 205,
+    "rows": [
+      "CAST",
+      "USER",
+      "TILE",
+      "SALE"
+    ],
+    "cols": [
+      "CUTS",
+      "ASIA",
+      "SELL",
+      "TREE"
+    ],
+    "worstRank": 805
+  },
+  {
+    "day": 206,
+    "rows": [
+      "PLOT",
+      "RAPE",
+      "ONES",
+      "CENT"
+    ],
+    "cols": [
+      "PROC",
+      "LANE",
+      "OPEN",
+      "TEST"
+    ],
+    "worstRank": 745
+  },
+  {
+    "day": 207,
+    "rows": [
+      "ADDS",
+      "SEAT",
+      "KATE",
+      "SNAP"
+    ],
+    "cols": [
+      "ASKS",
+      "DEAN",
+      "DATA",
+      "STEP"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 208,
+    "rows": [
+      "WEST",
+      "AUTO",
+      "TRAP",
+      "TOYS"
+    ],
+    "cols": [
+      "WATT",
+      "EURO",
+      "STAY",
+      "TOPS"
+    ],
+    "worstRank": 849
+  },
+  {
+    "day": 209,
+    "rows": [
+      "MILE",
+      "ACID",
+      "SONG",
+      "KNEE"
+    ],
+    "cols": [
+      "MASK",
+      "ICON",
+      "LINE",
+      "EDGE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 210,
+    "rows": [
+      "CASH",
+      "ONTO",
+      "ANAL",
+      "LATE"
+    ],
+    "cols": [
+      "COAL",
+      "ANNA",
+      "STAT",
+      "HOLE"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 211,
+    "rows": [
+      "COLD",
+      "AREA",
+      "FAST",
+      "ELSE"
+    ],
+    "cols": [
+      "CAFE",
+      "ORAL",
+      "LESS",
+      "DATE"
+    ],
+    "worstRank": 567
+  },
+  {
+    "day": 212,
+    "rows": [
+      "THUS",
+      "RIPE",
+      "IRON",
+      "MENT"
+    ],
+    "cols": [
+      "TRIM",
+      "HIRE",
+      "UPON",
+      "SENT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 213,
+    "rows": [
+      "PAST",
+      "USER",
+      "TILE",
+      "SAFE"
+    ],
+    "cols": [
+      "PUTS",
+      "ASIA",
+      "SELF",
+      "TREE"
+    ],
+    "worstRank": 805
+  },
+  {
+    "day": 214,
+    "rows": [
+      "META",
+      "EVER",
+      "RENT",
+      "ENDS"
+    ],
+    "cols": [
+      "MERE",
+      "EVEN",
+      "TEND",
+      "ARTS"
+    ],
+    "worstRank": 865
+  },
+  {
+    "day": 215,
+    "rows": [
+      "SLOT",
+      "NONE",
+      "AGES",
+      "POST"
+    ],
+    "cols": [
+      "SNAP",
+      "LOGO",
+      "ONES",
+      "TEST"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 216,
+    "rows": [
+      "SPOT",
+      "HOPE",
+      "ALEX",
+      "WENT"
+    ],
+    "cols": [
+      "SHAW",
+      "POLE",
+      "OPEN",
+      "TEXT"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 217,
+    "rows": [
+      "MINE",
+      "ACID",
+      "SONG",
+      "KNEE"
+    ],
+    "cols": [
+      "MASK",
+      "ICON",
+      "NINE",
+      "EDGE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 218,
+    "rows": [
+      "SPAN",
+      "WINE",
+      "ANNA",
+      "PEER"
+    ],
+    "cols": [
+      "SWAP",
+      "PINE",
+      "ANNE",
+      "NEAR"
+    ],
+    "worstRank": 833
+  },
+  {
+    "day": 219,
+    "rows": [
+      "GAME",
+      "ORAL",
+      "LETS",
+      "DATE"
+    ],
+    "cols": [
+      "GOLD",
+      "AREA",
+      "MATT",
+      "ELSE"
+    ],
+    "worstRank": 578
+  },
+  {
+    "day": 220,
+    "rows": [
+      "THAT",
+      "RENO",
+      "IRAN",
+      "POLY"
+    ],
+    "cols": [
+      "TRIP",
+      "HERO",
+      "ANAL",
+      "TONY"
+    ],
+    "worstRank": 862
+  },
+  {
+    "day": 221,
+    "rows": [
+      "PAST",
+      "UNTO",
+      "STAY",
+      "HITS"
+    ],
+    "cols": [
+      "PUSH",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 222,
+    "rows": [
+      "CAST",
+      "USER",
+      "TILE",
+      "SAFE"
+    ],
+    "cols": [
+      "CUTS",
+      "ASIA",
+      "SELF",
+      "TREE"
+    ],
+    "worstRank": 805
+  },
+  {
+    "day": 223,
+    "rows": [
+      "SLOW",
+      "NONE",
+      "AGES",
+      "POST"
+    ],
+    "cols": [
+      "SNAP",
+      "LOGO",
+      "ONES",
+      "WEST"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 224,
+    "rows": [
+      "SHOW",
+      "TAPE",
+      "EVEN",
+      "MENT"
+    ],
+    "cols": [
+      "STEM",
+      "HAVE",
+      "OPEN",
+      "WENT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 225,
+    "rows": [
+      "FROM",
+      "LIVE",
+      "ACER",
+      "GENE"
+    ],
+    "cols": [
+      "FLAG",
+      "RICE",
+      "OVEN",
+      "MERE"
+    ],
+    "worstRank": 865
+  },
+  {
+    "day": 226,
+    "rows": [
+      "SICK",
+      "HOLE",
+      "AWAY",
+      "WAYS"
+    ],
+    "cols": [
+      "SHAW",
+      "IOWA",
+      "CLAY",
+      "KEYS"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 227,
+    "rows": [
+      "SAME",
+      "ORAL",
+      "LETS",
+      "DATE"
+    ],
+    "cols": [
+      "SOLD",
+      "AREA",
+      "MATT",
+      "ELSE"
+    ],
+    "worstRank": 578
+  },
+  {
+    "day": 228,
+    "rows": [
+      "ARTS",
+      "CARL",
+      "TRIO",
+      "SEPT"
+    ],
+    "cols": [
+      "ACTS",
+      "RARE",
+      "TRIP",
+      "SLOT"
+    ],
+    "worstRank": 874
+  },
+  {
+    "day": 229,
+    "rows": [
+      "SKIP",
+      "ANNA",
+      "LENS",
+      "TEST"
+    ],
+    "cols": [
+      "SALT",
+      "KNEE",
+      "INNS",
+      "PAST"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 230,
+    "rows": [
+      "PUSH",
+      "ASIA",
+      "RENT",
+      "ASKS"
+    ],
+    "cols": [
+      "PARA",
+      "USES",
+      "SINK",
+      "HATS"
+    ],
+    "worstRank": 823
+  },
+  {
+    "day": 231,
+    "rows": [
+      "DEMO",
+      "ICON",
+      "SHOE",
+      "TONS"
+    ],
+    "cols": [
+      "DIST",
+      "ECHO",
+      "MOON",
+      "ONES"
+    ],
+    "worstRank": 821
+  },
+  {
+    "day": 232,
+    "rows": [
+      "TEMP",
+      "OVER",
+      "PETE",
+      "SNAP"
+    ],
+    "cols": [
+      "TOPS",
+      "EVEN",
+      "META",
+      "PREP"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 233,
+    "rows": [
+      "SLUT",
+      "WASH",
+      "ACER",
+      "PERU"
+    ],
+    "cols": [
+      "SWAP",
+      "LACE",
+      "USER",
+      "THRU"
+    ],
+    "worstRank": 855
+  },
+  {
+    "day": 234,
+    "rows": [
+      "FROM",
+      "LIVE",
+      "OPEN",
+      "WENT"
+    ],
+    "cols": [
+      "FLOW",
+      "RIPE",
+      "OVEN",
+      "MENT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 235,
+    "rows": [
+      "CAME",
+      "ORAL",
+      "LETS",
+      "DATE"
+    ],
+    "cols": [
+      "COLD",
+      "AREA",
+      "MATT",
+      "ELSE"
+    ],
+    "worstRank": 578
+  },
+  {
+    "day": 236,
+    "rows": [
+      "FAST",
+      "INTO",
+      "STAY",
+      "TITS"
+    ],
+    "cols": [
+      "FIST",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "worstRank": 864
+  },
+  {
+    "day": 237,
+    "rows": [
+      "SHIT",
+      "HIDE",
+      "AGES",
+      "WHAT"
+    ],
+    "cols": [
+      "SHAW",
+      "HIGH",
+      "IDEA",
+      "TEST"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 238,
+    "rows": [
+      "NAME",
+      "USED",
+      "KING",
+      "EASE"
+    ],
+    "cols": [
+      "NUKE",
+      "ASIA",
+      "MENS",
+      "EDGE"
+    ],
+    "worstRank": 836
+  },
+  {
+    "day": 239,
+    "rows": [
+      "RAIN",
+      "ONTO",
+      "ONES",
+      "FAME"
+    ],
+    "cols": [
+      "ROOF",
+      "ANNA",
+      "ITEM",
+      "NOSE"
+    ],
+    "worstRank": 717
+  },
+  {
+    "day": 240,
+    "rows": [
+      "BASS",
+      "ONCE",
+      "SNAP",
+      "SENT"
+    ],
+    "cols": [
+      "BOSS",
+      "ANNE",
+      "SCAN",
+      "SEPT"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 241,
+    "rows": [
+      "REST",
+      "ACER",
+      "THEE",
+      "SOME"
+    ],
+    "cols": [
+      "RATS",
+      "ECHO",
+      "SEEM",
+      "TREE"
+    ],
+    "worstRank": 820
+  },
+  {
+    "day": 242,
+    "rows": [
+      "SHOT",
+      "POPE",
+      "ALEX",
+      "MENT"
+    ],
+    "cols": [
+      "SPAM",
+      "HOLE",
+      "OPEN",
+      "TEXT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 243,
+    "rows": [
+      "FACE",
+      "ORAL",
+      "LESS",
+      "KATE"
+    ],
+    "cols": [
+      "FOLK",
+      "AREA",
+      "CAST",
+      "ELSE"
+    ],
+    "worstRank": 639
+  },
+  {
+    "day": 244,
+    "rows": [
+      "PAST",
+      "INTO",
+      "STEP",
+      "SIMS"
+    ],
+    "cols": [
+      "PISS",
+      "ANTI",
+      "STEM",
+      "TOPS"
+    ],
+    "worstRank": 841
+  },
+  {
+    "day": 245,
+    "rows": [
+      "SPOT",
+      "HAVE",
+      "AGES",
+      "WENT"
+    ],
+    "cols": [
+      "SHAW",
+      "PAGE",
+      "OVEN",
+      "TEST"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 246,
+    "rows": [
+      "TASK",
+      "ICON",
+      "LINE",
+      "EDGE"
+    ],
+    "cols": [
+      "TILE",
+      "ACID",
+      "SONG",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 247,
+    "rows": [
+      "NOON",
+      "ANNA",
+      "ITEM",
+      "LOSE"
+    ],
+    "cols": [
+      "NAIL",
+      "ONTO",
+      "ONES",
+      "NAME"
+    ],
+    "worstRank": 780
+  },
+  {
+    "day": 248,
+    "rows": [
+      "SETS",
+      "EARN",
+      "ASIA",
+      "TEMP"
+    ],
+    "cols": [
+      "SEAT",
+      "EASE",
+      "TRIM",
+      "SNAP"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 249,
+    "rows": [
+      "ACTS",
+      "CARE",
+      "EVEN",
+      "REED"
+    ],
+    "cols": [
+      "ACER",
+      "CAVE",
+      "TREE",
+      "SEND"
+    ],
+    "worstRank": 844
+  },
+  {
+    "day": 250,
+    "rows": [
+      "PICS",
+      "HERO",
+      "YEAR",
+      "SEPT"
+    ],
+    "cols": [
+      "PHYS",
+      "IEEE",
+      "CRAP",
+      "SORT"
+    ],
+    "worstRank": 877
+  },
+  {
+    "day": 251,
+    "rows": [
+      "POLL",
+      "AREA",
+      "CAST",
+      "ELSE"
+    ],
+    "cols": [
+      "PACE",
+      "ORAL",
+      "LESS",
+      "LATE"
+    ],
+    "worstRank": 663
+  },
+  {
+    "day": 252,
+    "rows": [
+      "STEM",
+      "PARA",
+      "AXIS",
+      "NICK"
+    ],
+    "cols": [
+      "SPAN",
+      "TAXI",
+      "ERIC",
+      "MASK"
+    ],
+    "worstRank": 867
+  },
+  {
+    "day": 253,
+    "rows": [
+      "SPAM",
+      "POLE",
+      "OPEN",
+      "TEXT"
+    ],
+    "cols": [
+      "SPOT",
+      "POPE",
+      "ALEX",
+      "MENT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 254,
+    "rows": [
+      "FLAT",
+      "LINE",
+      "OVAL",
+      "WELL"
+    ],
+    "cols": [
+      "FLOW",
+      "LIVE",
+      "ANAL",
+      "TELL"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 255,
+    "rows": [
+      "SHOW",
+      "TUNE",
+      "AGES",
+      "TEST"
+    ],
+    "cols": [
+      "STAT",
+      "HUGE",
+      "ONES",
+      "WEST"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 256,
+    "rows": [
+      "PAST",
+      "INTO",
+      "SNAP",
+      "SAYS"
+    ],
+    "cols": [
+      "PISS",
+      "ANNA",
+      "STAY",
+      "TOPS"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 257,
+    "rows": [
+      "HUNG",
+      "ASIA",
+      "RENT",
+      "TREE"
+    ],
+    "cols": [
+      "HART",
+      "USER",
+      "NINE",
+      "GATE"
+    ],
+    "worstRank": 857
+  },
+  {
+    "day": 258,
+    "rows": [
+      "REST",
+      "ACER",
+      "THAI",
+      "SOLO"
+    ],
+    "cols": [
+      "RATS",
+      "ECHO",
+      "SEAL",
+      "TRIO"
+    ],
+    "worstRank": 874
+  },
+  {
+    "day": 259,
+    "rows": [
+      "ROLE",
+      "AREA",
+      "PASS",
+      "ELSE"
+    ],
+    "cols": [
+      "RAPE",
+      "ORAL",
+      "LESS",
+      "EASE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 260,
+    "rows": [
+      "SEMI",
+      "OVEN",
+      "MEAN",
+      "ARTS"
+    ],
+    "cols": [
+      "SOMA",
+      "EVER",
+      "MEAT",
+      "INNS"
+    ],
+    "worstRank": 881
+  },
+  {
+    "day": 261,
+    "rows": [
+      "THIS",
+      "RICE",
+      "IRON",
+      "MENT"
+    ],
+    "cols": [
+      "TRIM",
+      "HIRE",
+      "ICON",
+      "SENT"
+    ],
+    "worstRank": 858
+  },
+  {
+    "day": 262,
+    "rows": [
+      "SHOT",
+      "HOPE",
+      "ALEX",
+      "WENT"
+    ],
+    "cols": [
+      "SHAW",
+      "HOLE",
+      "OPEN",
+      "TEXT"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 263,
+    "rows": [
+      "CLUB",
+      "ROSE",
+      "AGES",
+      "POST"
+    ],
+    "cols": [
+      "CRAP",
+      "LOGO",
+      "USES",
+      "BEST"
+    ],
+    "worstRank": 877
+  },
+  {
+    "day": 264,
+    "rows": [
+      "ROOF",
+      "ANNA",
+      "ITEM",
+      "DOSE"
+    ],
+    "cols": [
+      "RAID",
+      "ONTO",
+      "ONES",
+      "FAME"
+    ],
+    "worstRank": 817
+  },
+  {
+    "day": 265,
+    "rows": [
+      "PAST",
+      "INTO",
+      "SNAP",
+      "SETS"
+    ],
+    "cols": [
+      "PISS",
+      "ANNE",
+      "STAT",
+      "TOPS"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 266,
+    "rows": [
+      "HOME",
+      "EVEN",
+      "LAND",
+      "PLUS"
+    ],
+    "cols": [
+      "HELP",
+      "OVAL",
+      "MENU",
+      "ENDS"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 267,
+    "rows": [
+      "ACTS",
+      "RARE",
+      "AREA",
+      "BEEN"
+    ],
+    "cols": [
+      "ARAB",
+      "CARE",
+      "TREE",
+      "SEAN"
+    ],
+    "worstRank": 589
+  },
+  {
+    "day": 268,
+    "rows": [
+      "STEP",
+      "PILL",
+      "ALSO",
+      "MEET"
+    ],
+    "cols": [
+      "SPAM",
+      "TILE",
+      "ELSE",
+      "PLOT"
+    ],
+    "worstRank": 805
+  },
+  {
+    "day": 269,
+    "rows": [
+      "CHAT",
+      "RENO",
+      "ORAL",
+      "POLL"
+    ],
+    "cols": [
+      "CROP",
+      "HERO",
+      "ANAL",
+      "TOLL"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 270,
+    "rows": [
+      "DRAW",
+      "RICE",
+      "USER",
+      "MERE"
+    ],
+    "cols": [
+      "DRUM",
+      "RISE",
+      "ACER",
+      "WERE"
+    ],
+    "worstRank": 865
+  },
+  {
+    "day": 271,
+    "rows": [
+      "SEED",
+      "HAVE",
+      "ASIA",
+      "WELL"
+    ],
+    "cols": [
+      "SHAW",
+      "EASE",
+      "EVIL",
+      "DEAL"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 272,
+    "rows": [
+      "UPON",
+      "TONE",
+      "ALEX",
+      "HOST"
+    ],
+    "cols": [
+      "UTAH",
+      "POLO",
+      "ONES",
+      "NEXT"
+    ],
+    "worstRank": 828
+  },
+  {
+    "day": 273,
+    "rows": [
+      "PAST",
+      "ANTI",
+      "SNAP",
+      "SETS"
+    ],
+    "cols": [
+      "PASS",
+      "ANNE",
+      "STAT",
+      "TIPS"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 274,
+    "rows": [
+      "TONS",
+      "OVAL",
+      "DEMO",
+      "DREW"
+    ],
+    "cols": [
+      "TODD",
+      "OVER",
+      "NAME",
+      "SLOW"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 275,
+    "rows": [
+      "FACE",
+      "IRAN",
+      "SEND",
+      "HATS"
+    ],
+    "cols": [
+      "FISH",
+      "AREA",
+      "CANT",
+      "ENDS"
+    ],
+    "worstRank": 811
+  },
+  {
+    "day": 276,
+    "rows": [
+      "TELL",
+      "IDEA",
+      "EGGS",
+      "REST"
+    ],
+    "cols": [
+      "TIER",
+      "EDGE",
+      "LEGS",
+      "LAST"
+    ],
+    "worstRank": 882
+  },
+  {
+    "day": 277,
+    "rows": [
+      "FIRE",
+      "ORAL",
+      "LOTS",
+      "KNEE"
+    ],
+    "cols": [
+      "FOLK",
+      "IRON",
+      "RATE",
+      "ELSE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 278,
+    "rows": [
+      "CLUB",
+      "ROSE",
+      "AGES",
+      "PORT"
+    ],
+    "cols": [
+      "CRAP",
+      "LOGO",
+      "USER",
+      "BEST"
+    ],
+    "worstRank": 877
+  },
+  {
+    "day": 279,
+    "rows": [
+      "SEEM",
+      "HAVE",
+      "ASIA",
+      "WELL"
+    ],
+    "cols": [
+      "SHAW",
+      "EASE",
+      "EVIL",
+      "MEAL"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 280,
+    "rows": [
+      "PLOT",
+      "RAPE",
+      "ONES",
+      "SENT"
+    ],
+    "cols": [
+      "PROS",
+      "LANE",
+      "OPEN",
+      "TEST"
+    ],
+    "worstRank": 810
+  },
+  {
+    "day": 281,
+    "rows": [
+      "WISH",
+      "ANNA",
+      "STAT",
+      "HOPE"
+    ],
+    "cols": [
+      "WASH",
+      "INTO",
+      "SNAP",
+      "HATE"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 282,
+    "rows": [
+      "SOLO",
+      "OVEN",
+      "MATT",
+      "ALSO"
+    ],
+    "cols": [
+      "SOMA",
+      "OVAL",
+      "LETS",
+      "ONTO"
+    ],
+    "worstRank": 881
+  },
+  {
+    "day": 283,
+    "rows": [
+      "SAND",
+      "AREA",
+      "RAIL",
+      "ABLE"
+    ],
+    "cols": [
+      "SARA",
+      "ARAB",
+      "NEIL",
+      "DALE"
+    ],
+    "worstRank": 812
+  },
+  {
+    "day": 284,
+    "rows": [
+      "INFO",
+      "DEAN",
+      "EARL",
+      "ARMY"
+    ],
+    "cols": [
+      "IDEA",
+      "NEAR",
+      "FARM",
+      "ONLY"
+    ],
+    "worstRank": 883
+  },
+  {
+    "day": 285,
+    "rows": [
+      "ROCK",
+      "IRAN",
+      "CARE",
+      "ELSE"
+    ],
+    "cols": [
+      "RICE",
+      "ORAL",
+      "CARS",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 286,
+    "rows": [
+      "CLUB",
+      "HOSE",
+      "AGED",
+      "ROSS"
+    ],
+    "cols": [
+      "CHAR",
+      "LOGO",
+      "USES",
+      "BEDS"
+    ],
+    "worstRank": 889
+  },
+  {
+    "day": 287,
+    "rows": [
+      "SEES",
+      "HAVE",
+      "ASIA",
+      "WELL"
+    ],
+    "cols": [
+      "SHAW",
+      "EASE",
+      "EVIL",
+      "SEAL"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 288,
+    "rows": [
+      "PLOT",
+      "RIPE",
+      "ONES",
+      "SENT"
+    ],
+    "cols": [
+      "PROS",
+      "LINE",
+      "OPEN",
+      "TEST"
+    ],
+    "worstRank": 810
+  },
+  {
+    "day": 289,
+    "rows": [
+      "STAR",
+      "NONE",
+      "ANNA",
+      "PEER"
+    ],
+    "cols": [
+      "SNAP",
+      "TONE",
+      "ANNE",
+      "REAR"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 290,
+    "rows": [
+      "WORD",
+      "OVER",
+      "LANE",
+      "FLOW"
+    ],
+    "cols": [
+      "WOLF",
+      "OVAL",
+      "RENO",
+      "DREW"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 291,
+    "rows": [
+      "DALE",
+      "IRON",
+      "SEND",
+      "TAGS"
+    ],
+    "cols": [
+      "DIST",
+      "AREA",
+      "LONG",
+      "ENDS"
+    ],
+    "worstRank": 821
+  },
+  {
+    "day": 292,
+    "rows": [
+      "HAIR",
+      "INTO",
+      "STEP",
+      "TIME"
+    ],
+    "cols": [
+      "HIST",
+      "ANTI",
+      "ITEM",
+      "ROPE"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 293,
+    "rows": [
+      "WORK",
+      "IRAN",
+      "DATE",
+      "ELSE"
+    ],
+    "cols": [
+      "WIDE",
+      "ORAL",
+      "RATS",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 294,
+    "rows": [
+      "MATT",
+      "ECHO",
+      "SEEN",
+      "ARMY"
+    ],
+    "cols": [
+      "MESA",
+      "ACER",
+      "THEM",
+      "TONY"
+    ],
+    "worstRank": 894
+  },
+  {
+    "day": 295,
+    "rows": [
+      "BURN",
+      "ASIA",
+      "LESS",
+      "IDEA"
+    ],
+    "cols": [
+      "BALI",
+      "USED",
+      "RISE",
+      "NASA"
+    ],
+    "worstRank": 872
+  },
+  {
+    "day": 296,
+    "rows": [
+      "SHUT",
+      "HOSE",
+      "ALEX",
+      "WEST"
+    ],
+    "cols": [
+      "SHAW",
+      "HOLE",
+      "USES",
+      "TEXT"
+    ],
+    "worstRank": 889
+  },
+  {
+    "day": 297,
+    "rows": [
+      "SPAN",
+      "NINE",
+      "ANNA",
+      "PEER"
+    ],
+    "cols": [
+      "SNAP",
+      "PINE",
+      "ANNE",
+      "NEAR"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 298,
+    "rows": [
+      "AIDS",
+      "REAL",
+      "MEMO",
+      "SENT"
+    ],
+    "cols": [
+      "ARMS",
+      "IEEE",
+      "DAMN",
+      "SLOT"
+    ],
+    "worstRank": 897
+  },
+  {
+    "day": 299,
+    "rows": [
+      "FROM",
+      "LANE",
+      "AREA",
+      "TEST"
+    ],
+    "cols": [
+      "FLAT",
+      "RARE",
+      "ONES",
+      "MEAT"
+    ],
+    "worstRank": 547
+  },
+  {
+    "day": 300,
+    "rows": [
+      "SEMI",
+      "OVEN",
+      "MINT",
+      "ALSO"
+    ],
+    "cols": [
+      "SOMA",
+      "EVIL",
+      "MENS",
+      "INTO"
+    ],
+    "worstRank": 881
+  },
+  {
+    "day": 301,
+    "rows": [
+      "SLOW",
+      "TIRE",
+      "ANAL",
+      "TELL"
+    ],
+    "cols": [
+      "STAT",
+      "LINE",
+      "ORAL",
+      "WELL"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 302,
+    "rows": [
+      "MORE",
+      "OVAL",
+      "SETS",
+      "TREE"
+    ],
+    "cols": [
+      "MOST",
+      "OVER",
+      "RATE",
+      "ELSE"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 303,
+    "rows": [
+      "SAME",
+      "USED",
+      "RING",
+      "FATE"
+    ],
+    "cols": [
+      "SURF",
+      "ASIA",
+      "MENT",
+      "EDGE"
+    ],
+    "worstRank": 878
+  },
+  {
+    "day": 304,
+    "rows": [
+      "POST",
+      "ANTI",
+      "ITEM",
+      "ROPE"
+    ],
+    "cols": [
+      "PAIR",
+      "ONTO",
+      "STEP",
+      "TIME"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 305,
+    "rows": [
+      "ADDS",
+      "IRAN",
+      "META",
+      "SWAP"
+    ],
+    "cols": [
+      "AIMS",
+      "DREW",
+      "DATA",
+      "SNAP"
+    ],
+    "worstRank": 833
+  },
+  {
+    "day": 306,
+    "rows": [
+      "DATE",
+      "UNIV",
+      "KNEE",
+      "EARN"
+    ],
+    "cols": [
+      "DUKE",
+      "ANNA",
+      "TIER",
+      "EVEN"
+    ],
+    "worstRank": 882
+  },
+  {
+    "day": 307,
+    "rows": [
+      "GROW",
+      "LANE",
+      "AREA",
+      "DESK"
+    ],
+    "cols": [
+      "GLAD",
+      "RARE",
+      "ONES",
+      "WEAK"
+    ],
+    "worstRank": 630
+  },
+  {
+    "day": 308,
+    "rows": [
+      "MATT",
+      "ECHO",
+      "SEEN",
+      "ARMS"
+    ],
+    "cols": [
+      "MESA",
+      "ACER",
+      "THEM",
+      "TONS"
+    ],
+    "worstRank": 894
+  },
+  {
+    "day": 309,
+    "rows": [
+      "CHAR",
+      "RENO",
+      "ORAL",
+      "POLL"
+    ],
+    "cols": [
+      "CROP",
+      "HERO",
+      "ANAL",
+      "ROLL"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 310,
+    "rows": [
+      "COST",
+      "OVER",
+      "RATE",
+      "ELSE"
+    ],
+    "cols": [
+      "CORE",
+      "OVAL",
+      "SETS",
+      "TREE"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 311,
+    "rows": [
+      "DALE",
+      "USED",
+      "MINI",
+      "PAST"
+    ],
+    "cols": [
+      "DUMP",
+      "ASIA",
+      "LENS",
+      "EDIT"
+    ],
+    "worstRank": 888
+  },
+  {
+    "day": 312,
+    "rows": [
+      "HAIR",
+      "ONTO",
+      "STEP",
+      "TIME"
+    ],
+    "cols": [
+      "HOST",
+      "ANTI",
+      "ITEM",
+      "ROPE"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 313,
+    "rows": [
+      "MAIL",
+      "EURO",
+      "STAT",
+      "SONS"
+    ],
+    "cols": [
+      "MESS",
+      "AUTO",
+      "IRAN",
+      "LOTS"
+    ],
+    "worstRank": 886
+  },
+  {
+    "day": 314,
+    "rows": [
+      "LATE",
+      "UNIV",
+      "KNEE",
+      "EARN"
+    ],
+    "cols": [
+      "LUKE",
+      "ANNA",
+      "TIER",
+      "EVEN"
+    ],
+    "worstRank": 882
+  },
+  {
+    "day": 315,
+    "rows": [
+      "SPOT",
+      "NONE",
+      "ALEX",
+      "POST"
+    ],
+    "cols": [
+      "SNAP",
+      "POLO",
+      "ONES",
+      "TEXT"
+    ],
+    "worstRank": 832
+  },
+  {
+    "day": 316,
+    "rows": [
+      "TWIN",
+      "RIDE",
+      "AREA",
+      "YEAR"
+    ],
+    "cols": [
+      "TRAY",
+      "WIRE",
+      "IDEA",
+      "NEAR"
+    ],
+    "worstRank": 842
+  },
+  {
+    "day": 317,
+    "rows": [
+      "CHAR",
+      "RENO",
+      "ORAL",
+      "POLE"
+    ],
+    "cols": [
+      "CROP",
+      "HERO",
+      "ANAL",
+      "ROLE"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 318,
+    "rows": [
+      "CODE",
+      "OVAL",
+      "SETS",
+      "TREE"
+    ],
+    "cols": [
+      "COST",
+      "OVER",
+      "DATE",
+      "ELSE"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 319,
+    "rows": [
+      "GETS",
+      "RARE",
+      "ASIA",
+      "SEPT"
+    ],
+    "cols": [
+      "GRAS",
+      "EASE",
+      "TRIP",
+      "SEAT"
+    ],
+    "worstRank": 879
+  },
+  {
+    "day": 320,
+    "rows": [
+      "FAIR",
+      "INTO",
+      "STEP",
+      "TIME"
+    ],
+    "cols": [
+      "FIST",
+      "ANTI",
+      "ITEM",
+      "ROPE"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 321,
+    "rows": [
+      "SHIP",
+      "PERU",
+      "ARAB",
+      "MENS"
+    ],
+    "cols": [
+      "SPAM",
+      "HERE",
+      "IRAN",
+      "PUBS"
+    ],
+    "worstRank": 890
+  },
+  {
+    "day": 322,
+    "rows": [
+      "GAME",
+      "UNIV",
+      "ANNE",
+      "MAIN"
+    ],
+    "cols": [
+      "GUAM",
+      "ANNA",
+      "MINI",
+      "EVEN"
+    ],
+    "worstRank": 884
+  },
+  {
+    "day": 323,
+    "rows": [
+      "SHOT",
+      "TONE",
+      "ALEX",
+      "TEST"
+    ],
+    "cols": [
+      "STAT",
+      "HOLE",
+      "ONES",
+      "TEXT"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 324,
+    "rows": [
+      "THIN",
+      "RIDE",
+      "AREA",
+      "YEAR"
+    ],
+    "cols": [
+      "TRAY",
+      "HIRE",
+      "IDEA",
+      "NEAR"
+    ],
+    "worstRank": 842
+  },
+  {
+    "day": 325,
+    "rows": [
+      "CROP",
+      "HERO",
+      "ANAL",
+      "DOLL"
+    ],
+    "cols": [
+      "CHAD",
+      "RENO",
+      "ORAL",
+      "POLL"
+    ],
+    "worstRank": 827
+  },
+  {
+    "day": 326,
+    "rows": [
+      "DESK",
+      "OVEN",
+      "SITE",
+      "ELSE"
+    ],
+    "cols": [
+      "DOSE",
+      "EVIL",
+      "SETS",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 327,
+    "rows": [
+      "DATA",
+      "USED",
+      "MIND",
+      "PADS"
+    ],
+    "cols": [
+      "DUMP",
+      "ASIA",
+      "TEND",
+      "ADDS"
+    ],
+    "worstRank": 888
+  },
+  {
+    "day": 328,
+    "rows": [
+      "FLOW",
+      "ROPE",
+      "OVER",
+      "GENE"
+    ],
+    "cols": [
+      "FROG",
+      "LOVE",
+      "OPEN",
+      "WERE"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 329,
+    "rows": [
+      "BEST",
+      "ACER",
+      "THEE",
+      "HOSE"
+    ],
+    "cols": [
+      "BATH",
+      "ECHO",
+      "SEES",
+      "TREE"
+    ],
+    "worstRank": 889
+  },
+  {
+    "day": 330,
+    "rows": [
+      "CASE",
+      "ANNA",
+      "STAR",
+      "TIPS"
+    ],
+    "cols": [
+      "CAST",
+      "ANTI",
+      "SNAP",
+      "EARS"
+    ],
+    "worstRank": 863
+  },
+  {
+    "day": 331,
+    "rows": [
+      "SPOT",
+      "TONE",
+      "ALEX",
+      "TEST"
+    ],
+    "cols": [
+      "STAT",
+      "POLE",
+      "ONES",
+      "TEXT"
+    ],
+    "worstRank": 795
+  },
+  {
+    "day": 332,
+    "rows": [
+      "DALE",
+      "IRAN",
+      "SEND",
+      "TAGS"
+    ],
+    "cols": [
+      "DIST",
+      "AREA",
+      "LANG",
+      "ENDS"
+    ],
+    "worstRank": 821
+  },
+  {
+    "day": 333,
+    "rows": [
+      "SLOT",
+      "HIRE",
+      "ANAL",
+      "WELL"
+    ],
+    "cols": [
+      "SHAW",
+      "LINE",
+      "ORAL",
+      "TELL"
+    ],
+    "worstRank": 869
+  },
+  {
+    "day": 334,
+    "rows": [
+      "SPAM",
+      "PACE",
+      "ARTS",
+      "NASA"
+    ],
+    "cols": [
+      "SPAN",
+      "PARA",
+      "ACTS",
+      "MESA"
+    ],
+    "worstRank": 894
+  },
+  {
+    "day": 335,
+    "rows": [
+      "HALF",
+      "USER",
+      "LIFE",
+      "LATE"
+    ],
+    "cols": [
+      "HULL",
+      "ASIA",
+      "LEFT",
+      "FREE"
+    ],
+    "worstRank": 895
+  },
+  {
+    "day": 336,
+    "rows": [
+      "WORK",
+      "OVEN",
+      "LANE",
+      "FLOW"
+    ],
+    "cols": [
+      "WOLF",
+      "OVAL",
+      "RENO",
+      "KNEW"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 337,
+    "rows": [
+      "BLOW",
+      "ROPE",
+      "AGES",
+      "DONT"
+    ],
+    "cols": [
+      "BRAD",
+      "LOGO",
+      "OPEN",
+      "WEST"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 338,
+    "rows": [
+      "EAST",
+      "ANTI",
+      "SNAP",
+      "EARS"
+    ],
+    "cols": [
+      "EASE",
+      "ANNA",
+      "STAR",
+      "TIPS"
+    ],
+    "worstRank": 863
+  },
+  {
+    "day": 339,
+    "rows": [
+      "DISC",
+      "ECHO",
+      "MOON",
+      "ONES"
+    ],
+    "cols": [
+      "DEMO",
+      "ICON",
+      "SHOE",
+      "CONS"
+    ],
+    "worstRank": 866
+  },
+  {
+    "day": 340,
+    "rows": [
+      "THUS",
+      "REST",
+      "AREA",
+      "POST"
+    ],
+    "cols": [
+      "TRAP",
+      "HERO",
+      "USES",
+      "STAT"
+    ],
+    "worstRank": 849
+  },
+  {
+    "day": 341,
+    "rows": [
+      "ROCK",
+      "IRAN",
+      "DATE",
+      "ELSE"
+    ],
+    "cols": [
+      "RIDE",
+      "ORAL",
+      "CATS",
+      "KNEE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 342,
+    "rows": [
+      "MORE",
+      "EVEN",
+      "SEND",
+      "ARTS"
+    ],
+    "cols": [
+      "MESA",
+      "OVER",
+      "RENT",
+      "ENDS"
+    ],
+    "worstRank": 894
+  },
+  {
+    "day": 343,
+    "rows": [
+      "DATA",
+      "USER",
+      "MISC",
+      "PATH"
+    ],
+    "cols": [
+      "DUMP",
+      "ASIA",
+      "TEST",
+      "ARCH"
+    ],
+    "worstRank": 888
+  },
+  {
+    "day": 344,
+    "rows": [
+      "SLOT",
+      "HAVE",
+      "ANAL",
+      "WELL"
+    ],
+    "cols": [
+      "SHAW",
+      "LANE",
+      "OVAL",
+      "TELL"
+    ],
+    "worstRank": 880
+  },
+  {
+    "day": 345,
+    "rows": [
+      "FROM",
+      "LOVE",
+      "OPEN",
+      "WENT"
+    ],
+    "cols": [
+      "FLOW",
+      "ROPE",
+      "OVEN",
+      "MENT"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 346,
+    "rows": [
+      "LAST",
+      "ONTO",
+      "SNAP",
+      "EARS"
+    ],
+    "cols": [
+      "LOSE",
+      "ANNA",
+      "STAR",
+      "TOPS"
+    ],
+    "worstRank": 863
+  },
+  {
+    "day": 347,
+    "rows": [
+      "SYNC",
+      "HEAR",
+      "EASE",
+      "DRAW"
+    ],
+    "cols": [
+      "SHED",
+      "YEAR",
+      "NASA",
+      "CREW"
+    ],
+    "worstRank": 896
+  },
+  {
+    "day": 348,
+    "rows": [
+      "SPAM",
+      "WAGE",
+      "AREA",
+      "PAST"
+    ],
+    "cols": [
+      "SWAP",
+      "PARA",
+      "AGES",
+      "MEAT"
+    ],
+    "worstRank": 833
+  },
+  {
+    "day": 349,
+    "rows": [
+      "FILE",
+      "ORAL",
+      "LOTS",
+      "KNEE"
+    ],
+    "cols": [
+      "FOLK",
+      "IRON",
+      "LATE",
+      "ELSE"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 350,
+    "rows": [
+      "MERE",
+      "EVEN",
+      "SEND",
+      "ARTS"
+    ],
+    "cols": [
+      "MESA",
+      "EVER",
+      "RENT",
+      "ENDS"
+    ],
+    "worstRank": 894
+  },
+  {
+    "day": 351,
+    "rows": [
+      "MISS",
+      "ECHO",
+      "MOON",
+      "ONES"
+    ],
+    "cols": [
+      "MEMO",
+      "ICON",
+      "SHOE",
+      "SONS"
+    ],
+    "worstRank": 897
+  },
+  {
+    "day": 352,
+    "rows": [
+      "SHOW",
+      "TIDE",
+      "ADDS",
+      "TEST"
+    ],
+    "cols": [
+      "STAT",
+      "HIDE",
+      "ODDS",
+      "WEST"
+    ],
+    "worstRank": 898
+  },
+  {
+    "day": 353,
+    "rows": [
+      "DROP",
+      "ROPE",
+      "USER",
+      "MENU"
+    ],
+    "cols": [
+      "DRUM",
+      "ROSE",
+      "OPEN",
+      "PERU"
+    ],
+    "worstRank": 887
+  },
+  {
+    "day": 354,
+    "rows": [
+      "EDIT",
+      "MINE",
+      "META",
+      "ATOM"
+    ],
+    "cols": [
+      "EMMA",
+      "DIET",
+      "INTO",
+      "TEAM"
+    ],
+    "worstRank": 909
+  },
+  {
+    "day": 355,
+    "rows": [
+      "SHUT",
+      "NOSE",
+      "ALEX",
+      "PEST"
+    ],
+    "cols": [
+      "SNAP",
+      "HOLE",
+      "USES",
+      "TEXT"
+    ],
+    "worstRank": 910
+  },
+  {
+    "day": 356,
+    "rows": [
+      "CREW",
+      "HIRE",
+      "ASIA",
+      "NECK"
+    ],
+    "cols": [
+      "CHAN",
+      "RISE",
+      "ERIC",
+      "WEAK"
+    ],
+    "worstRank": 912
+  },
+  {
+    "day": 357,
+    "rows": [
+      "RATE",
+      "ORAL",
+      "LEGS",
+      "EASE"
+    ],
+    "cols": [
+      "ROLE",
+      "AREA",
+      "TAGS",
+      "ELSE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 358,
+    "rows": [
+      "SOME",
+      "OVEN",
+      "FEED",
+      "ARTS"
+    ],
+    "cols": [
+      "SOFA",
+      "OVER",
+      "MEET",
+      "ENDS"
+    ],
+    "worstRank": 915
+  },
+  {
+    "day": 359,
+    "rows": [
+      "KNOW",
+      "NONE",
+      "EVEN",
+      "EAST"
+    ],
+    "cols": [
+      "KNEE",
+      "NOVA",
+      "ONES",
+      "WENT"
+    ],
+    "worstRank": 807
+  },
+  {
+    "day": 360,
+    "rows": [
+      "STAR",
+      "WIDE",
+      "IRAN",
+      "MEMO"
+    ],
+    "cols": [
+      "SWIM",
+      "TIRE",
+      "ADAM",
+      "RENO"
+    ],
+    "worstRank": 897
+  },
+  {
+    "day": 361,
+    "rows": [
+      "SHIT",
+      "TIDE",
+      "AGES",
+      "THAT"
+    ],
+    "cols": [
+      "STAT",
+      "HIGH",
+      "IDEA",
+      "TEST"
+    ],
+    "worstRank": 898
+  },
+  {
+    "day": 362,
+    "rows": [
+      "PAST",
+      "ECHO",
+      "TROY",
+      "SETS"
+    ],
+    "cols": [
+      "PETS",
+      "ACRE",
+      "SHOT",
+      "TOYS"
+    ],
+    "worstRank": 905
+  },
+  {
+    "day": 363,
+    "rows": [
+      "ACTS",
+      "GAIN",
+      "EMMA",
+      "DEEP"
+    ],
+    "cols": [
+      "AGED",
+      "CAME",
+      "TIME",
+      "SNAP"
+    ],
+    "worstRank": 909
+  },
+  {
+    "day": 364,
+    "rows": [
+      "PUMP",
+      "ASIA",
+      "RELY",
+      "ADDS"
+    ],
+    "cols": [
+      "PARA",
+      "USED",
+      "MILD",
+      "PAYS"
+    ],
+    "worstRank": 891
+  },
+  {
+    "day": 365,
+    "rows": [
+      "COME",
+      "AREA",
+      "FANS",
+      "ELSE"
+    ],
+    "cols": [
+      "CAFE",
+      "ORAL",
+      "MENS",
+      "EASE"
+    ],
+    "worstRank": 614
+  },
+  {
+    "day": 366,
+    "rows": [
+      "PLOT",
+      "ROPE",
+      "OVEN",
+      "SEND"
+    ],
+    "cols": [
+      "PROS",
+      "LOVE",
+      "OPEN",
+      "TEND"
+    ],
+    "worstRank": 887
+  }
+]

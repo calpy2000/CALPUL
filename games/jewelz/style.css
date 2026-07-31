@@ -1,0 +1,64 @@
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centers the canvas + score text vertically within whatever space .shell-stage gives this game */
+  gap: var(--space-sm);
+}
+
+#responsiveCanvas {
+  /* Same "size yourself from available height" pattern used by SOLVZ's
+     .board and GLYMPZ's #grid-container (see the fuller explanation in
+     shared/shell.css) — but note this canvas ALSO has width="450"
+     height="800" attributes set directly in the HTML, which is a
+     completely separate thing: those attributes define the canvas's fixed
+     INTERNAL drawing resolution (see the big comment at the top of
+     index.js), while everything here in CSS only controls how large that
+     drawing surface is DISPLAYED on screen. aspect-ratio: 9/16 matches
+     450:800 exactly, so the canvas is never displayed stretched or
+     squashed relative to its actual drawing resolution. */
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  background-color: #4b4949;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  touch-action: none; /* stops the browser from trying to scroll/zoom the page in response to touches on the canvas, leaving that entirely to canvas-pointer.js */
+  cursor: pointer;
+}
+
+#liveScore {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  min-height: 1.4em; /* reserves space for a line of text even before the game starts (when this is still empty), so nothing shifts position once it fills in */
+}
+
+/* Jewel/player/bar images used inline within running text (live score,
+   footer best score, end-of-round message, instructions) — e.g.
+   "Score: [img] = 5". `vertical-align: middle` (rather than a hand-tuned
+   negative-px offset) keeps the icon centered on the text's own vertical
+   rhythm without letting its edges stick out above/below far enough to
+   force the whole line box taller than a plain-text line — a fixed px
+   offset doesn't cap that, which is what was quietly inflating line height
+   and causing wrapped/"scrolling" sentences (see games/solvz's same fix).
+   Kept small (16px) for the same reason. */
+.jewelz-inline-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* The bar image in the instructions text (see index.js's BAR_IMG) is a
+   long horizontal rectangle, not a square like the jewel/player icons
+   above — width:auto here lets it keep its own real aspect ratio at the
+   same 16px height as everything else, instead of .jewelz-inline-icon's
+   fixed 16x16 box squashing it into a square. */
+.jewelz-inline-icon--bar {
+  width: auto;
+  height: 16px;
+  vertical-align: middle;
+}

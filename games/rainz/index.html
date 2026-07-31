@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>RAINZ</title>
+  <!-- Same load order convention as every other game — see the matching
+       comment in games/solvz/index.html. -->
+  <link rel="stylesheet" href="../../shared/tokens.css" />
+  <link rel="stylesheet" href="../../shared/shell.css" />
+  <link rel="stylesheet" href="../../shared/tools-panel.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as
+       every other game. Like JEWELZ, everything falling is drawn onto a
+       single <canvas> via JavaScript — width="450" height="800" is its
+       fixed INTERNAL drawing resolution (see style.css and
+       shared/input/canvas-pointer.js for how that maps onto whatever size
+       the canvas actually displays at). Below the canvas, #rainz-tiles is
+       the 1x5 letter grid index.js fills in as raindrops get caught. -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <canvas id="responsiveCanvas" width="450" height="800"></canvas>
+        <div id="rainz-tiles" class="rainz-tiles"></div>
+        <!-- Filled in by index.js with the current "Words: N" text while a
+             round is in progress. -->
+        <div id="liveScore"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No jQuery, same as JEWELZ — this is plain JS + the Canvas drawing API. -->
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

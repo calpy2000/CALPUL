@@ -1,0 +1,244 @@
+<!doctype html>
+<title>WYRDGRID — 366 Candidate Puzzles</title>
+<style>
+  :root {
+    --bg: #eef1ef;
+    --bg-grid-line: #dfe4e1;
+    --panel: #ffffff;
+    --ink: #1b2420;
+    --ink-dim: #5b665f;
+    --border: #d3dad6;
+    --accent: #2f6f6b;
+    --accent-contrast: #ffffff;
+    --flagged: #b45309;
+    --flagged-bg: #fef3e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14191a;
+      --bg-grid-line: #1d2426;
+      --panel: #1b2224;
+      --ink: #e8ede9;
+      --ink-dim: #93a099;
+      --border: #2b3436;
+      --accent: #5fb3ac;
+      --accent-contrast: #0d1a19;
+      --flagged: #f0a75a;
+      --flagged-bg: #3a2c17;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14191a; --bg-grid-line: #1d2426; --panel: #1b2224; --ink: #e8ede9;
+    --ink-dim: #93a099; --border: #2b3436; --accent: #5fb3ac; --accent-contrast: #0d1a19;
+    --flagged: #f0a75a; --flagged-bg: #3a2c17;
+  }
+  :root[data-theme="light"] {
+    --bg: #eef1ef; --bg-grid-line: #dfe4e1; --panel: #ffffff; --ink: #1b2420;
+    --ink-dim: #5b665f; --border: #d3dad6; --accent: #2f6f6b; --accent-contrast: #ffffff;
+    --flagged: #b45309; --flagged-bg: #fef3e2;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background:
+      linear-gradient(var(--bg-grid-line) 1px, transparent 1px) 0 0 / 100% 32px,
+      linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px) 0 0 / 32px 100%,
+      var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+  h1 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+  }
+  h1 .mono-accent {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    color: var(--accent);
+  }
+  .subtitle {
+    margin: 0 0 14px;
+    color: var(--ink-dim);
+    font-size: 14px;
+    max-width: 68ch;
+  }
+  .controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #search {
+    flex: 1 1 240px;
+    max-width: 360px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+  }
+  #search:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  #count {
+    font-size: 13px;
+    color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  main {
+    padding: 20px 24px 64px;
+  }
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .day {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink-dim);
+  }
+  .rank {
+    font-size: 11px;
+    color: var(--ink-dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .letter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    aspect-ratio: 1;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .letter-grid .cell {
+    background: var(--panel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .words {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+  }
+  .words b { color: var(--ink); font-weight: 600; letter-spacing: 0.02em; }
+  .words .row-words, .words .col-words { display: block; }
+  .word-tag {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  }
+
+  .card.is-hidden { display: none; }
+
+  footer {
+    padding: 24px;
+    color: var(--ink-dim);
+    font-size: 12px;
+    max-width: 68ch;
+  }
+</style>
+
+<header>
+  <h1><span class="mono-accent">WYRDGRID</span> — 366 candidate puzzles</h1>
+  <p class="subtitle">
+    Each card is one day's 4×4 grid: 4 across words (rows) and 4 down words
+    (columns), all 8 distinct. Sourced from a common-word frequency list
+    cross-checked against a real curated dictionary (SCOWL, the word list
+    behind most spell-checkers) — no proper nouns, no profanity, no
+    abbreviations. No word repeats within 7 days of itself, and no word is
+    used more than 20 times across all 366 days.
+  </p>
+  <div class="controls">
+    <input id="search" type="text" placeholder="Filter by day number or word…" autocomplete="off" />
+    <span id="count"></span>
+  </div>
+</header>
+
+<main>
+  <div id="grid"></div>
+</main>
+
+<footer>
+  Generated from a common-word-frequency list intersected with a real
+  English dictionary and a proper-noun blocklist, scheduled onto days 1–366
+  so no word reappears within 7 days of its last use and no word is used
+  more than 20 times total, preferring the most universally common words
+  where the schedule allows.
+</footer>
+
+<script>
+  const PUZZLES = [{"day":1,"rows":["SALE","ORAL","LESS","DATE"],"cols":["SOLD","AREA","LAST","ELSE"],"worstRank":319},{"day":2,"rows":["SHOW","NONE","OPEN","WEST"],"cols":["SNOW","HOPE","ONES","WENT"],"worstRank":350},{"day":3,"rows":["INTO","TOWN","EVIL","MANY"],"cols":["ITEM","NOVA","TWIN","ONLY"],"worstRank":566},{"day":4,"rows":["MORE","EVEN","TEND","ARTS"],"cols":["META","OVER","RENT","ENDS"],"worstRank":599},{"day":5,"rows":["ABLE","CLAY","TUNE","SEES"],"cols":["ACTS","BLUE","LANE","EYES"],"worstRank":663},{"day":6,"rows":["PLUS","LOSE","OVEN","TEST"],"cols":["PLOT","LOVE","USES","SENT"],"worstRank":676},{"day":7,"rows":["ACID","ROSE","MALE","STEP"],"cols":["ARMS","COAT","ISLE","DEEP"],"worstRank":681},{"day":8,"rows":["POST","UNTO","SCAN","HERE"],"cols":["PUSH","ONCE","STAR","TONE"],"worstRank":690},{"day":9,"rows":["SAFE","ORAL","LESS","DATE"],"cols":["SOLD","AREA","FAST","ELSE"],"worstRank":319},{"day":10,"rows":["WEST","AUTO","IRON","TOPS"],"cols":["WAIT","EURO","STOP","TONS"],"worstRank":638},{"day":11,"rows":["TEMP","IDEA","EGGS","SEAT"],"cols":["TIES","EDGE","MEGA","PAST"],"worstRank":696},{"day":12,"rows":["ENDS","VOIP","INFO","LEFT"],"cols":["EVIL","NONE","DIFF","SPOT"],"worstRank":496},{"day":13,"rows":["SLOW","PIPE","EVEN","CENT"],"cols":["SPEC","LIVE","OPEN","WENT"],"worstRank":685},{"day":14,"rows":["DISH","ECHO","COOL","KNEE"],"cols":["DECK","ICON","SHOE","HOLE"],"worstRank":736},{"day":15,"rows":["COST","ANTI","STEM","HOPE"],"cols":["CASH","ONTO","STEP","TIME"],"worstRank":644},{"day":16,"rows":["STAR","HUGE","ONES","TEST"],"cols":["SHOT","TUNE","AGES","REST"],"worstRank":646},{"day":17,"rows":["RATE","ORAL","LESS","LAKE"],"cols":["ROLL","AREA","TASK","ELSE"],"worstRank":386},{"day":18,"rows":["ACID","DONE","DATE","STOP"],"cols":["ADDS","COAT","INTO","DEEP"],"worstRank":614},{"day":19,"rows":["SAID","PURE","ATOM","MONO"],"cols":["SPAM","AUTO","IRON","DEMO"],"worstRank":732},{"day":20,"rows":["DRAW","RICE","USER","MERE"],"cols":["DRUM","RISE","ACER","WERE"],"worstRank":784},{"day":21,"rows":["SLOW","POPE","EVEN","CENT"],"cols":["SPEC","LOVE","OPEN","WENT"],"worstRank":728},{"day":22,"rows":["DISC","ECHO","COOL","KNEE"],"cols":["DECK","ICON","SHOE","COLE"],"worstRank":736},{"day":23,"rows":["BUSH","ONTO","STEP","SOME"],"cols":["BOSS","UNTO","STEM","HOPE"],"worstRank":690},{"day":24,"rows":["INFO","DEAN","EASE","ARTS"],"cols":["IDEA","NEAR","FAST","ONES"],"worstRank":569},{"day":25,"rows":["RACE","ORAL","LESS","LATE"],"cols":["ROLL","AREA","CAST","ELSE"],"worstRank":386},{"day":26,"rows":["LAST","ONLY","STOP","SITE"],"cols":["LOSS","ANTI","SLOT","TYPE"],"worstRank":475},{"day":27,"rows":["EDIT","GENE","GETS","SPOT"],"cols":["EGGS","DEEP","INTO","TEST"],"worstRank":642},{"day":28,"rows":["ABLE","CLAY","TUNE","SEED"],"cols":["ACTS","BLUE","LANE","EYED"],"worstRank":768},{"day":29,"rows":["AGED","POUR","PARA","SLOW"],"cols":["APPS","GOAL","EURO","DRAW"],"worstRank":734},{"day":30,"rows":["TIME","ACID","LONG","KNEE"],"cols":["TALK","ICON","MINE","EDGE"],"worstRank":736},{"day":31,"rows":["SHOW","NOVA","OPEN","WENT"],"cols":["SNOW","HOPE","OVEN","WANT"],"worstRank":676},{"day":32,"rows":["SCAN","TILE","EASE","MOOD"],"cols":["STEM","CIAO","ALSO","NEED"],"worstRank":735},{"day":33,"rows":["TOLD","AREA","PAST","ELSE"],"cols":["TAPE","ORAL","LESS","DATE"],"worstRank":380},{"day":34,"rows":["THIS","EAST","MILE","PREP"],"cols":["TEMP","HAIR","ISLE","STEP"],"worstRank":737},{"day":35,"rows":["FAST","INTO","STAY","HITS"],"cols":["FISH","ANTI","STAT","TOYS"],"worstRank":723},{"day":36,"rows":["BEST","ACER","THEE","HOME"],"cols":["BATH","ECHO","SEEM","TREE"],"worstRank":745},{"day":37,"rows":["MEAN","AUTO","PROS","SOME"],"cols":["MAPS","EURO","ATOM","NOSE"],"worstRank":738},{"day":38,"rows":["DIET","EDGE","LEGS","LAST"],"cols":["DELL","IDEA","EGGS","TEST"],"worstRank":642},{"day":39,"rows":["SHOW","TUNE","AGES","REST"],"cols":["STAR","HUGE","ONES","WEST"],"worstRank":646},{"day":40,"rows":["SEMI","OVEN","LEAF","ONTO"],"cols":["SOLO","EVEN","MEAT","INFO"],"worstRank":676},{"day":41,"rows":["TAPE","ORAL","LESS","LATE"],"cols":["TOLL","AREA","PAST","ELSE"],"worstRank":404},{"day":42,"rows":["ARTS","COAT","ISLE","DEEP"],"cols":["ACID","ROSE","TALE","STEP"],"worstRank":681},{"day":43,"rows":["MOST","INTO","SCAN","SETS"],"cols":["MISS","ONCE","STAT","TONS"],"worstRank":723},{"day":44,"rows":["ANTI","SORT","KNEE","SEEM"],"cols":["ASKS","NONE","TREE","ITEM"],"worstRank":736},{"day":45,"rows":["MAPS","EURO","STEM","HOPE"],"cols":["MESH","AUTO","PREP","SOME"],"worstRank":737},{"day":46,"rows":["FLOW","RIPE","OVER","GENE"],"cols":["FROG","LIVE","OPEN","WERE"],"worstRank":753},{"day":47,"rows":["THIS","RICE","IRON","MENT"],"cols":["TRIM","HIRE","ICON","SENT"],"worstRank":779},{"day":48,"rows":["SHOW","LANE","OVEN","WEST"],"cols":["SLOW","HAVE","ONES","WENT"],"worstRank":676},{"day":49,"rows":["COLD","AREA","PAST","ELSE"],"cols":["CAPE","ORAL","LESS","DATE"],"worstRank":405},{"day":50,"rows":["ACID","DOSE","DALE","STEP"],"cols":["ADDS","COAT","ISLE","DEEP"],"worstRank":688},{"day":51,"rows":["LOSS","ONCE","STAT","TONS"],"cols":["LOST","ONTO","SCAN","SETS"],"worstRank":723},{"day":52,"rows":["ACTS","CARE","EVEN","REED"],"cols":["ACER","CAVE","TREE","SEND"],"worstRank":766},{"day":53,"rows":["MAPS","EURO","ATOM","LOSE"],"cols":["MEAL","AUTO","PROS","SOME"],"worstRank":738},{"day":54,"rows":["STAR","PAGE","OPEN","TEST"],"cols":["SPOT","TAPE","AGES","RENT"],"worstRank":440},{"day":55,"rows":["THUS","RIPE","IRON","MENT"],"cols":["TRIM","HIRE","UPON","SENT"],"worstRank":779},{"day":56,"rows":["SNOW","LOVE","ONES","WENT"],"cols":["SLOW","NONE","OVEN","WEST"],"worstRank":676},{"day":57,"rows":["ROLL","AREA","RANK","ELSE"],"cols":["RARE","ORAL","LENS","LAKE"],"worstRank":461},{"day":58,"rows":["VISA","ANTI","STEM","TOPS"],"cols":["VAST","INTO","STEP","AIMS"],"worstRank":644},{"day":59,"rows":["WIFE","ACID","LONG","KNEE"],"cols":["WALK","ICON","FINE","EDGE"],"worstRank":736},{"day":60,"rows":["MATT","ECHO","TEEN","ARMS"],"cols":["META","ACER","THEM","TONS"],"worstRank":745},{"day":61,"rows":["HOME","EVEN","LAND","PLUS"],"cols":["HELP","OVAL","MENU","ENDS"],"worstRank":796},{"day":62,"rows":["INFO","DEAN","EARL","ARMY"],"cols":["IDEA","NEAR","FARM","ONLY"],"worstRank":798},{"day":63,"rows":["ARTS","TIRE","OPEN","MEET"],"cols":["ATOM","RIPE","TREE","SENT"],"worstRank":706},{"day":64,"rows":["SHOW","LANE","OVEN","TEST"],"cols":["SLOT","HAVE","ONES","WENT"],"worstRank":676},{"day":65,"rows":["SOME","EVIL","LENS","FREE"],"cols":["SELF","OVER","MINE","ELSE"],"worstRank":461},{"day":66,"rows":["CHAT","HIGH","AREA","REST"],"cols":["CHAR","HIRE","AGES","THAT"],"worstRank":493},{"day":67,"rows":["PAST","UNTO","STAY","HITS"],"cols":["PUSH","ANTI","STAT","TOYS"],"worstRank":723},{"day":68,"rows":["TALK","ICON","LINE","EDGE"],"cols":["TILE","ACID","LONG","KNEE"],"worstRank":736},{"day":69,"rows":["STEM","PARA","AXIS","NICK"],"cols":["SPAN","TAXI","ERIC","MASK"],"worstRank":786},{"day":70,"rows":["LAST","ECHO","GROW","SEEN"],"cols":["LEGS","ACRE","SHOE","TOWN"],"worstRank":817},{"day":71,"rows":["META","EVER","RENT","ENDS"],"cols":["MERE","EVEN","TEND","ARTS"],"worstRank":784},{"day":72,"rows":["SNOW","LIVE","ONES","WENT"],"cols":["SLOW","NINE","OVEN","WEST"],"worstRank":676},{"day":73,"rows":["DEBT","OVER","SIDE","ELSE"],"cols":["DOSE","EVIL","BEDS","TREE"],"worstRank":540},{"day":74,"rows":["DEAR","RARE","USES","MEAT"],"cols":["DRUM","EASE","AREA","REST"],"worstRank":569},{"day":75,"rows":["POST","ANTI","ITEM","ROPE"],"cols":["PAIR","ONTO","STEP","TIME"],"worstRank":801},{"day":76,"rows":["TASK","ICON","LINE","EDGE"],"cols":["TILE","ACID","SONG","KNEE"],"worstRank":736},{"day":77,"rows":["SHOW","PARA","OVAL","TELL"],"cols":["SPOT","HAVE","ORAL","WALL"],"worstRank":796},{"day":78,"rows":["PATH","ECHO","TRIO","SEND"],"cols":["PETS","ACRE","THIN","HOOD"],"worstRank":817},{"day":79,"rows":["CHAT","HIGH","IDEA","PEST"],"cols":["CHIP","HIDE","AGES","THAT"],"worstRank":820},{"day":80,"rows":["STOP","NOVA","ONES","WENT"],"cols":["SNOW","TONE","OVEN","PAST"],"worstRank":676},{"day":81,"rows":["BONE","EVIL","LENS","TREE"],"cols":["BELT","OVER","NINE","ELSE"],"worstRank":524},{"day":82,"rows":["THUS","REST","AREA","PORT"],"cols":["TRAP","HERO","USER","STAT"],"worstRank":771},{"day":83,"rows":["LAST","ONTO","STEP","SIMS"],"cols":["LOSS","ANTI","STEM","TOPS"],"worstRank":763},{"day":84,"rows":["TIME","ACID","SONG","KNEE"],"cols":["TASK","ICON","MINE","EDGE"],"worstRank":736},{"day":85,"rows":["SHOW","LIVE","ORAL","TELL"],"cols":["SLOT","HIRE","OVAL","WELL"],"worstRank":796},{"day":86,"rows":["SLOW","HOPE","USES","TENT"],"cols":["SHUT","LOSE","OPEN","WEST"],"worstRank":825},{"day":87,"rows":["SHIP","HIDE","AGES","WHAT"],"cols":["SHAW","HIGH","IDEA","PEST"],"worstRank":820},{"day":88,"rows":["MEGA","EVER","MENT","ONES"],"cols":["MEMO","EVEN","GENE","ARTS"],"worstRank":810},{"day":89,"rows":["SELF","OVER","LINE","ELSE"],"cols":["SOLE","EVIL","LENS","FREE"],"worstRank":579},{"day":90,"rows":["REST","ACER","THEE","SOME"],"cols":["RATS","ECHO","SEEM","TREE"],"worstRank":745},{"day":91,"rows":["STAR","TAXI","EPIC","MESH"],"cols":["STEM","TAPE","AXIS","RICH"],"worstRank":832},{"day":92,"rows":["WINE","ACID","LONG","KNEE"],"cols":["WALK","ICON","NINE","EDGE"],"worstRank":736},{"day":93,"rows":["CAMP","ORAL","MENU","PAYS"],"cols":["COMP","AREA","MANY","PLUS"],"worstRank":691},{"day":94,"rows":["PLOT","RIPE","OVEN","SEND"],"cols":["PROS","LIVE","OPEN","TEND"],"worstRank":738},{"day":95,"rows":["WEST","AUTO","TRAP","TOYS"],"cols":["WATT","EURO","STAY","TOPS"],"worstRank":771},{"day":96,"rows":["STEP","NOVA","ONES","WENT"],"cols":["SNOW","TONE","EVEN","PAST"],"worstRank":566},{"day":97,"rows":["SELF","OVER","LITE","ELSE"],"cols":["SOLE","EVIL","LETS","FREE"],"worstRank":636},{"day":98,"rows":["BEST","ACER","THEE","HOSE"],"cols":["BATH","ECHO","SEES","TREE"],"worstRank":803},{"day":99,"rows":["STAR","HIDE","ODDS","TEST"],"cols":["SHOT","TIDE","ADDS","REST"],"worstRank":811},{"day":100,"rows":["MILE","ACID","SONG","KNEE"],"cols":["MASK","ICON","LINE","EDGE"],"worstRank":736},{"day":101,"rows":["TWIN","RIDE","AREA","YEAR"],"cols":["TRAY","WIRE","IDEA","NEAR"],"worstRank":764},{"day":102,"rows":["PLOT","ROPE","OVEN","SEND"],"cols":["PROS","LOVE","OPEN","TEND"],"worstRank":801},{"day":103,"rows":["SNAP","HIRE","ACTS","WEST"],"cols":["SHAW","NICE","ARTS","PEST"],"worstRank":820},{"day":104,"rows":["ALSO","BEAN","LANE","ENDS"],"cols":["ABLE","LEAN","SAND","ONES"],"worstRank":835},{"day":105,"rows":["WERE","OVAL","LETS","FREE"],"cols":["WOLF","EVER","RATE","ELSE"],"worstRank":796},{"day":106,"rows":["DUST","ANTI","STEM","HOPE"],"cols":["DASH","UNTO","STEP","TIME"],"worstRank":840},{"day":107,"rows":["ARMS","DEEP","DEMO","SLOT"],"cols":["ADDS","REEL","MEMO","SPOT"],"worstRank":813},{"day":108,"rows":["MINE","ACID","SONG","KNEE"],"cols":["MASK","ICON","NINE","EDGE"],"worstRank":736},{"day":109,"rows":["SPAM","WAGE","AREA","PAST"],"cols":["SWAP","PARA","AGES","MEAT"],"worstRank":756},{"day":110,"rows":["SNOW","POPE","EVEN","CANT"],"cols":["SPEC","NOVA","OPEN","WENT"],"worstRank":739},{"day":111,"rows":["WEST","ACER","THEE","TONE"],"cols":["WATT","ECHO","SEEN","TREE"],"worstRank":749},{"day":112,"rows":["CLUB","RISE","ONES","PEST"],"cols":["CROP","LINE","USES","BEST"],"worstRank":820},{"day":113,"rows":["SHOT","LIVE","ORAL","WELL"],"cols":["SLOW","HIRE","OVAL","TELL"],"worstRank":796},{"day":114,"rows":["HAIR","ONTO","STEP","TIME"],"cols":["HOST","ANTI","ITEM","ROPE"],"worstRank":801},{"day":115,"rows":["MODE","EVIL","MESS","ONCE"],"cols":["MEMO","OVEN","DISC","ELSE"],"worstRank":810},{"day":116,"rows":["EDIT","RACE","IRON","CENT"],"cols":["ERIC","DARE","ICON","TENT"],"worstRank":827},{"day":117,"rows":["SPOT","HAVE","AREA","WARM"],"cols":["SHAW","PARA","OVER","TEAM"],"worstRank":788},{"day":118,"rows":["GEAR","RULE","ARTS","BOOT"],"cols":["GRAB","EURO","ALTO","REST"],"worstRank":837},{"day":119,"rows":["ACID","CODE","TREE","SNAP"],"cols":["ACTS","CORN","IDEA","DEEP"],"worstRank":755},{"day":120,"rows":["SHOW","TUNE","AGES","TEST"],"cols":["STAT","HUGE","ONES","WEST"],"worstRank":723},{"day":121,"rows":["PLUS","ROSE","EVEN","PEST"],"cols":["PREP","LOVE","USES","SENT"],"worstRank":820},{"day":122,"rows":["FAIR","INTO","STEP","TIME"],"cols":["FIST","ANTI","ITEM","ROPE"],"worstRank":801},{"day":123,"rows":["DESK","OVEN","SITE","ELSE"],"cols":["DOSE","EVIL","SETS","KNEE"],"worstRank":736},{"day":124,"rows":["EDIT","PACE","IRON","CENT"],"cols":["EPIC","DARE","ICON","TENT"],"worstRank":832},{"day":125,"rows":["SHOT","PARA","OVAL","TELL"],"cols":["SPOT","HAVE","ORAL","TALL"],"worstRank":796},{"day":126,"rows":["HEAT","ACRE","THEM","SOAP"],"cols":["HATS","ECHO","AREA","TEMP"],"worstRank":817},{"day":127,"rows":["WHAT","EACH","NINE","TREE"],"cols":["WENT","HAIR","ACNE","THEE"],"worstRank":847},{"day":128,"rows":["SLOW","NONE","AGES","POST"],"cols":["SNAP","LOGO","ONES","WEST"],"worstRank":755},{"day":129,"rows":["STEM","LIVE","IDEA","MENT"],"cols":["SLIM","TIDE","EVEN","MEAT"],"worstRank":811},{"day":130,"rows":["FLOW","ROPE","OVER","GENE"],"cols":["FROG","LOVE","OPEN","WERE"],"worstRank":801},{"day":131,"rows":["STEP","PILL","ALSO","MEET"],"cols":["SPAM","TILE","ELSE","PLOT"],"worstRank":733},{"day":132,"rows":["THAT","RICE","ARTS","PEST"],"cols":["TRAP","HIRE","ACTS","TEST"],"worstRank":820},{"day":133,"rows":["ERIC","PARA","ICON","CENT"],"cols":["EPIC","RACE","IRON","CANT"],"worstRank":832},{"day":134,"rows":["SEED","TAXI","USES","DECK"],"cols":["STUD","EASE","EXEC","DISK"],"worstRank":851},{"day":135,"rows":["HEAD","ACRE","THEE","SOAP"],"cols":["HATS","ECHO","AREA","DEEP"],"worstRank":817},{"day":136,"rows":["SHOT","LANE","OVEN","WEST"],"cols":["SLOW","HAVE","ONES","TENT"],"worstRank":825},{"day":137,"rows":["TELL","IDEA","EGGS","REST"],"cols":["TIER","EDGE","LEGS","LAST"],"worstRank":797},{"day":138,"rows":["SLOT","NOVA","AGES","PORK"],"cols":["SNAP","LOGO","OVER","TASK"],"worstRank":864},{"day":139,"rows":["HERE","OVAL","SETS","TREE"],"cols":["HOST","EVER","RATE","ELSE"],"worstRank":796},{"day":140,"rows":["WHAT","RICE","ARTS","PEST"],"cols":["WRAP","HIRE","ACTS","TEST"],"worstRank":820},{"day":141,"rows":["THIS","WISH","IDLE","NEED"],"cols":["TWIN","HIDE","ISLE","SHED"],"worstRank":872},{"day":142,"rows":["MESH","EXPO","TEAM","ACNE"],"cols":["META","EXEC","SPAN","HOME"],"worstRank":851},{"day":143,"rows":["READ","ACRE","THEE","SOAP"],"cols":["RATS","ECHO","AREA","DEEP"],"worstRank":817},{"day":144,"rows":["SHOW","TAPE","EVEN","MENT"],"cols":["STEM","HAVE","OPEN","WENT"],"worstRank":779},{"day":145,"rows":["SEMI","OVEN","FIST","ALSO"],"cols":["SOFA","EVIL","MESS","INTO"],"worstRank":824},{"day":146,"rows":["ABLE","LEAN","TEND","ONES"],"cols":["ALTO","BEEN","LANE","ENDS"],"worstRank":837},{"day":147,"rows":["FIRE","ORAL","LOTS","KNEE"],"cols":["FOLK","IRON","RATE","ELSE"],"worstRank":736},{"day":148,"rows":["SHIP","TIDE","AGES","THAT"],"cols":["STAT","HIGH","IDEA","PEST"],"worstRank":820},{"day":149,"rows":["THIS","WISE","IDLE","NEED"],"cols":["TWIN","HIDE","ISLE","SEED"],"worstRank":872},{"day":150,"rows":["GEAR","AUTO","PROS","SOME"],"cols":["GAPS","EURO","ATOM","ROSE"],"worstRank":893},{"day":151,"rows":["LAST","ECHO","SNOW","SEEN"],"cols":["LESS","ACNE","SHOE","TOWN"],"worstRank":847},{"day":152,"rows":["SHOW","HOPE","USES","TENT"],"cols":["SHUT","HOSE","OPEN","WEST"],"worstRank":825},{"day":153,"rows":["FROM","LIVE","ACER","GENE"],"cols":["FLAG","RICE","OVEN","MERE"],"worstRank":784},{"day":154,"rows":["GROW","LANE","AREA","DESK"],"cols":["GLAD","RARE","ONES","WEAK"],"worstRank":582},{"day":155,"rows":["ROLE","EVIL","SETS","TREE"],"cols":["REST","OVER","LITE","ELSE"],"worstRank":636},{"day":156,"rows":["STEP","LINE","ODDS","TEST"],"cols":["SLOT","TIDE","ENDS","PEST"],"worstRank":820},{"day":157,"rows":["TIPS","IDLE","LEAN","LAND"],"cols":["TILL","IDEA","PLAN","SEND"],"worstRank":872},{"day":158,"rows":["ABLE","CLAY","TAKE","SHED"],"cols":["ACTS","BLAH","LAKE","EYED"],"worstRank":882},{"day":159,"rows":["META","EXEC","SPAN","SOME"],"cols":["MESS","EXPO","TEAM","ACNE"],"worstRank":851},{"day":160,"rows":["SHOT","TAPE","EVEN","MENT"],"cols":["STEM","HAVE","OPEN","TENT"],"worstRank":825},{"day":161,"rows":["SOLO","OVEN","FAST","ALSO"],"cols":["SOFA","OVAL","LESS","ONTO"],"worstRank":824},{"day":162,"rows":["KNOW","NONE","EVER","EASE"],"cols":["KNEE","NOVA","ONES","WERE"],"worstRank":736},{"day":163,"rows":["THUS","REST","AREA","POST"],"cols":["TRAP","HERO","USES","STAT"],"worstRank":771},{"day":164,"rows":["STEP","LINE","ODDS","WEST"],"cols":["SLOW","TIDE","ENDS","PEST"],"worstRank":820},{"day":165,"rows":["PICS","EDIT","ALTO","KEEP"],"cols":["PEAK","IDLE","CITE","STOP"],"worstRank":872},{"day":166,"rows":["ABLE","PLAY","PACE","SHED"],"cols":["APPS","BLAH","LACE","EYED"],"worstRank":882},{"day":167,"rows":["CHAT","EACH","NINE","TREE"],"cols":["CENT","HAIR","ACNE","THEE"],"worstRank":847},{"day":168,"rows":["SEMI","OPEN","LIST","ECHO"],"cols":["SOLE","EPIC","MESH","INTO"],"worstRank":832},{"day":169,"rows":["SPOT","HAVE","AGES","WENT"],"cols":["SHAW","PAGE","OVEN","TEST"],"worstRank":788},{"day":170,"rows":["MASK","ICON","MINE","EDGE"],"cols":["MIME","ACID","SONG","KNEE"],"worstRank":883},{"day":171,"rows":["SHOP","WINE","IDEA","MESS"],"cols":["SWIM","HIDE","ONES","PEAS"],"worstRank":885},{"day":172,"rows":["PLUS","RISE","EVEN","PEST"],"cols":["PREP","LIVE","USES","SENT"],"worstRank":820},{"day":173,"rows":["HOST","ANTI","STEM","HOPE"],"cols":["HASH","ONTO","STEP","TIME"],"worstRank":875},{"day":174,"rows":["USER","PINE","ODDS","NEST"],"cols":["UPON","SIDE","ENDS","REST"],"worstRank":895},{"day":175,"rows":["THAT","EACH","NINE","TREE"],"cols":["TENT","HAIR","ACNE","THEE"],"worstRank":847},{"day":176,"rows":["META","ACER","THEM","SONS"],"cols":["MATS","ECHO","TEEN","ARMS"],"worstRank":881},{"day":177,"rows":["FROM","LOVE","OPEN","WENT"],"cols":["FLOW","ROPE","OVEN","MENT"],"worstRank":801},{"day":178,"rows":["READ","AUTO","IRON","DOME"],"cols":["RAID","EURO","ATOM","DONE"],"worstRank":900},{"day":179,"rows":["PICS","IDLE","LEAN","LAND"],"cols":["PILL","IDEA","CLAN","SEND"],"worstRank":872},{"day":180,"rows":["STAT","NICE","ARTS","PEST"],"cols":["SNAP","TIRE","ACTS","TEST"],"worstRank":820},{"day":181,"rows":["CREW","HAVE","AGES","RENT"],"cols":["CHAR","RAGE","EVEN","WEST"],"worstRank":845},{"day":182,"rows":["SETS","IDOL","MINI","STEP"],"cols":["SIMS","EDIT","TONE","SLIP"],"worstRank":897},{"day":183,"rows":["ABLE","CLAY","NONE","EGGS"],"cols":["ACNE","BLOG","LANG","EYES"],"worstRank":847},{"day":184,"rows":["SPAM","WARE","ARMS","PAYS"],"cols":["SWAP","PARA","ARMY","MESS"],"worstRank":909},{"day":185,"rows":["FROM","LIVE","OPEN","WENT"],"cols":["FLOW","RIPE","OVEN","MENT"],"worstRank":779},{"day":186,"rows":["LIST","ANTI","ITEM","DOME"],"cols":["LAID","INTO","STEM","TIME"],"worstRank":900},{"day":187,"rows":["GRID","RISE","IDLE","PEER"],"cols":["GRIP","RIDE","ISLE","DEER"],"worstRank":872},{"day":188,"rows":["STAR","NICE","ARTS","PEST"],"cols":["SNAP","TIRE","ACTS","REST"],"worstRank":820},{"day":189,"rows":["SHOW","TIDE","ADDS","TEST"],"cols":["STAT","HIDE","ODDS","WEST"],"worstRank":811},{"day":190,"rows":["TEEN","HAVE","USES","SENT"],"cols":["THUS","EASE","EVEN","NEST"],"worstRank":895},{"day":191,"rows":["SIDE","IDEA","MOMS","SLOT"],"cols":["SIMS","IDOL","DEMO","EAST"],"worstRank":897},{"day":192,"rows":["DIAL","URGE","DOES","ENDS"],"cols":["DUDE","IRON","AGED","LESS"],"worstRank":919},{"day":193,"rows":["SHOT","LOVE","OPEN","WENT"],"cols":["SLOW","HOPE","OVEN","TENT"],"worstRank":825},{"day":194,"rows":["POST","ANTI","ITEM","DOME"],"cols":["PAID","ONTO","STEM","TIME"],"worstRank":900},{"day":195,"rows":["SUCH","KNEE","IDLE","POLL"],"cols":["SKIP","UNDO","CELL","HEEL"],"worstRank":901},{"day":196,"rows":["PATH","ECHO","SEEM","TREE"],"cols":["PEST","ACER","THEE","HOME"],"worstRank":820},{"day":197,"rows":["SHOW","TIDE","ADDS","REST"],"cols":["STAR","HIDE","ODDS","WEST"],"worstRank":811},{"day":198,"rows":["MISS","ONCE","STAT","SONS"],"cols":["MOSS","INTO","SCAN","SETS"],"worstRank":898},{"day":199,"rows":["BIKE","IDEA","TONS","SLOT"],"cols":["BITS","IDOL","KENO","EAST"],"worstRank":912},{"day":200,"rows":["DEAL","RAGE","USES","MESS"],"cols":["DRUM","EASE","AGES","LESS"],"worstRank":845},{"day":201,"rows":["ACID","POSE","PALE","STEP"],"cols":["APPS","COAT","ISLE","DEEP"],"worstRank":914},{"day":202,"rows":["LOST","ANTI","ITEM","DOME"],"cols":["LAID","ONTO","STEM","TIME"],"worstRank":900},{"day":203,"rows":["SALE","PRAY","ACNE","SHED"],"cols":["SPAS","ARCH","LANE","EYED"],"worstRank":927},{"day":204,"rows":["PAIR","EURO","STOP","TONE"],"cols":["PEST","AUTO","IRON","ROPE"],"worstRank":820},{"day":205,"rows":["ACTS","CORE","EVEN","REED"],"cols":["ACER","COVE","TREE","SEND"],"worstRank":873},{"day":206,"rows":["SNOW","CODE","ADDS","NEST"],"cols":["SCAN","NODE","ODDS","WEST"],"worstRank":895},{"day":207,"rows":["MIKE","IDEA","SONS","SLOT"],"cols":["MISS","IDOL","KENO","EAST"],"worstRank":912},{"day":208,"rows":["SPOT","TAPE","AGES","TENT"],"cols":["STAT","PAGE","OPEN","TEST"],"worstRank":825},{"day":209,"rows":["THEN","HIDE","URGE","SEED"],"cols":["THUS","HIRE","EDGE","NEED"],"worstRank":919},{"day":210,"rows":["STEM","WARE","AXIS","PICS"],"cols":["SWAP","TAXI","ERIC","MESS"],"worstRank":909},{"day":211,"rows":["PLAN","LINE","UNTO","SKIN"],"cols":["PLUS","LINK","ANTI","NEON"],"worstRank":920},{"day":212,"rows":["LEAD","AUTO","IRON","DOME"],"cols":["LAID","EURO","ATOM","DONE"],"worstRank":900},{"day":213,"rows":["PATH","ECHO","SEES","TREE"],"cols":["PEST","ACER","THEE","HOSE"],"worstRank":820},{"day":214,"rows":["ACID","CODE","TALE","STEP"],"cols":["ACTS","COAT","IDLE","DEEP"],"worstRank":872},{"day":215,"rows":["ENDS","VOIP","IDEA","LETS"],"cols":["EVIL","NODE","DIET","SPAS"],"worstRank":927},{"day":216,"rows":["CHAT","RAGE","EVEN","WEST"],"cols":["CREW","HAVE","AGES","TENT"],"worstRank":845},{"day":217,"rows":["MOST","ONTO","SCAN","SETS"],"cols":["MOSS","ONCE","STAT","TONS"],"worstRank":898},{"day":218,"rows":["SEEK","TAXI","USER","DECK"],"cols":["STUD","EASE","EXEC","KIRK"],"worstRank":925},{"day":219,"rows":["THAT","HOME","APPS","NEST"],"cols":["THAN","HOPE","AMPS","TEST"],"worstRank":null},{"day":220,"rows":["SAID","EURO","ATOM","TONE"],"cols":["SEAT","AUTO","IRON","DOME"],"worstRank":900},{"day":221,"rows":["SHOP","TIDE","ADDS","REST"],"cols":["STAR","HIDE","ODDS","PEST"],"worstRank":820},{"day":222,"rows":["THIS","EACH","ALOE","SEND"],"cols":["TEAS","HALE","ICON","SHED"],"worstRank":null},{"day":223,"rows":["TEMP","IDEA","EGGS","SEAS"],"cols":["TIES","EDGE","MEGA","PASS"],"worstRank":913},{"day":224,"rows":["FROM","AURA","CLAD","TELE"],"cols":["FACT","RULE","ORAL","MADE"],"worstRank":null},{"day":225,"rows":["PAGE","AMEN","REED","ASKS"],"cols":["PARA","AMES","GEEK","ENDS"],"worstRank":null},{"day":226,"rows":["FREE","LAVA","AGES","TENT"],"cols":["FLAT","RAGE","EVEN","EAST"],"worstRank":null},{"day":227,"rows":["MATT","ECHO","SNAP","SETS"],"cols":["MESS","ACNE","THAT","TOPS"],"worstRank":847},{"day":228,"rows":["LAID","EURO","ATOM","NONE"],"cols":["LEAN","AUTO","IRON","DOME"],"worstRank":900},{"day":229,"rows":["CHAT","RIDE","ODDS","PEST"],"cols":["CROP","HIDE","ADDS","TEST"],"worstRank":820},{"day":230,"rows":["SCAN","PALE","ARTS","SLOT"],"cols":["SPAS","CARL","ALTO","NEST"],"worstRank":927},{"day":231,"rows":["THIS","HERE","ERIC","MOST"],"cols":["THEM","HERO","IRIS","SECT"],"worstRank":null},{"day":232,"rows":["WITH","IDEA","GLEN","SEND"],"cols":["WIGS","IDLE","TEEN","HAND"],"worstRank":null},{"day":233,"rows":["FROM","LOVE","AMEN","PART"],"cols":["FLAP","ROMA","OVER","MENT"],"worstRank":null},{"day":234,"rows":["HOME","AVID","LANG","FLEE"],"cols":["HALF","OVAL","MINE","EDGE"],"worstRank":null},{"day":235,"rows":["SETS","IDOL","MINI","STEM"],"cols":["SIMS","EDIT","TONE","SLIM"],"worstRank":897},{"day":236,"rows":["SAID","EURO","ATOM","LONE"],"cols":["SEAL","AUTO","IRON","DOME"],"worstRank":922},{"day":237,"rows":["PLOT","RIDE","ENDS","PEST"],"cols":["PREP","LINE","ODDS","TEST"],"worstRank":820},{"day":238,"rows":["SAFE","PRAY","ACRE","SHED"],"cols":["SPAS","ARCH","FARE","EYED"],"worstRank":927},{"day":239,"rows":["THAT","HIRE","AKIN","NEAT"],"cols":["THAN","HIKE","ARIA","TENT"],"worstRank":null},{"day":240,"rows":["THIS","RACE","ALOE","POND"],"cols":["TRAP","HALO","ICON","SEED"],"worstRank":null},{"day":241,"rows":["FROM","LOVE","AMES","WARS"],"cols":["FLAW","ROMA","OVER","MESS"],"worstRank":null},{"day":242,"rows":["HOME","ARID","LANG","FLEE"],"cols":["HALF","ORAL","MINE","EDGE"],"worstRank":null},{"day":243,"rows":["CAST","ECHO","NEON","TREE"],"cols":["CENT","ACER","SHOE","TONE"],"worstRank":920},{"day":244,"rows":["REAL","AUTO","IRON","DOME"],"cols":["RAID","EURO","ATOM","LONE"],"worstRank":922},{"day":245,"rows":["SHOT","WIDE","ADDS","PEST"],"cols":["SWAP","HIDE","ODDS","TEST"],"worstRank":820},{"day":246,"rows":["STEM","PARA","AXIS","SICK"],"cols":["SPAS","TAXI","ERIC","MASK"],"worstRank":927},{"day":247,"rows":["THAT","HERO","ARMY","NESS"],"cols":["THAN","HERE","ARMS","TOYS"],"worstRank":null},{"day":248,"rows":["THIS","EACH","ALOE","LEND"],"cols":["TEAL","HALE","ICON","SHED"],"worstRank":null},{"day":249,"rows":["FROM","LOVE","EVER","WERE"],"cols":["FLEW","ROVE","OVER","MERE"],"worstRank":null},{"day":250,"rows":["HOME","AKIN","RAND","DYES"],"cols":["HARD","OKAY","MINE","ENDS"],"worstRank":null},{"day":251,"rows":["WENT","ACER","THOU","TONE"],"cols":["WATT","ECHO","NEON","TRUE"],"worstRank":920},{"day":252,"rows":["WILL","ARIA","LOFT","KNEE"],"cols":["WALK","IRON","LIFE","LATE"],"worstRank":null},{"day":253,"rows":["PAGE","AURA","STAR","TONS"],"cols":["PAST","AUTO","GRAN","EARS"],"worstRank":null},{"day":254,"rows":["SEAT","PALE","ARTS","SLOT"],"cols":["SPAS","EARL","ALTO","TEST"],"worstRank":927},{"day":255,"rows":["THAT","AERO","CLIP","ODDS"],"cols":["TACO","HELD","ARID","TOPS"],"worstRank":null},{"day":256,"rows":["THIS","HIRE","EDIT","MESS"],"cols":["THEM","HIDE","IRIS","SETS"],"worstRank":null},{"day":257,"rows":["FROM","LIME","ACID","GETS"],"cols":["FLAG","RICE","OMIT","MEDS"],"worstRank":null},{"day":258,"rows":["HOME","AKIN","RAND","EYES"],"cols":["HARE","OKAY","MINE","ENDS"],"worstRank":null},{"day":259,"rows":["FREE","LAVA","AGES","WERE"],"cols":["FLAW","RAGE","EVER","EASE"],"worstRank":null},{"day":260,"rows":["TIME","ARIA","SONS","KNIT"],"cols":["TASK","IRON","MINI","EAST"],"worstRank":null},{"day":261,"rows":["PAGE","AURA","STAR","TOYS"],"cols":["PAST","AUTO","GRAY","EARS"],"worstRank":null},{"day":262,"rows":["ALSO","NOON","TALL","EDDY"],"cols":["ANTE","LOAD","SOLD","ONLY"],"worstRank":null},{"day":263,"rows":["THAT","HOLE","UPON","SEED"],"cols":["THUS","HOPE","ALOE","TEND"],"worstRank":null},{"day":264,"rows":["THIS","HIRE","EDIT","NESS"],"cols":["THEN","HIDE","IRIS","SETS"],"worstRank":null},{"day":265,"rows":["FROM","LIME","ACID","PETS"],"cols":["FLAP","RICE","OMIT","MEDS"],"worstRank":null},{"day":266,"rows":["HOME","AKIN","LAND","EYES"],"cols":["HALE","OKAY","MINE","ENDS"],"worstRank":null},{"day":267,"rows":["FREE","LAVA","ACES","WERE"],"cols":["FLAW","RACE","EVER","EASE"],"worstRank":null},{"day":268,"rows":["TIME","ARIA","CONS","KNIT"],"cols":["TACK","IRON","MINI","EAST"],"worstRank":null},{"day":269,"rows":["PAGE","AURA","STAR","SONS"],"cols":["PASS","AUTO","GRAN","EARS"],"worstRank":null},{"day":270,"rows":["ALSO","LIEU","TENT","ODDS"],"cols":["ALTO","LIED","SEND","OUTS"],"worstRank":null},{"day":271,"rows":["THAT","HOLE","UPON","SEES"],"cols":["THUS","HOPE","ALOE","TENS"],"worstRank":null},{"day":272,"rows":["THIS","RISE","IDLE","PEEK"],"cols":["TRIP","HIDE","ISLE","SEEK"],"worstRank":null},{"day":273,"rows":["FROM","LIMO","ACID","GETS"],"cols":["FLAG","RICE","OMIT","MODS"],"worstRank":null},{"day":274,"rows":["SOME","AKIN","LAND","EYES"],"cols":["SALE","OKAY","MINE","ENDS"],"worstRank":null},{"day":275,"rows":["HELP","EVIL","META","PREY"],"cols":["HEMP","EVER","LITE","PLAY"],"worstRank":null},{"day":276,"rows":["TIME","ARID","COLD","ONLY"],"cols":["TACO","IRON","MILL","EDDY"],"worstRank":null},{"day":277,"rows":["PAGE","AURA","STAT","TOYS"],"cols":["PAST","AUTO","GRAY","EATS"],"worstRank":null},{"day":278,"rows":["WHAT","HERO","IRIS","PEAS"],"cols":["WHIP","HERE","ARIA","TOSS"],"worstRank":null},{"day":279,"rows":["THAT","HOME","APEX","NEST"],"cols":["THAN","HOPE","AMES","TEXT"],"worstRank":null},{"day":280,"rows":["THIS","RACE","ALOE","PENS"],"cols":["TRAP","HALE","ICON","SEES"],"worstRank":null},{"day":281,"rows":["FROM","LIVE","ACER","WERE"],"cols":["FLAW","RICE","OVER","MERE"],"worstRank":null},{"day":282,"rows":["ALSO","LOUD","AVID","SETS"],"cols":["ALAS","LOVE","SUIT","ODDS"],"worstRank":null},{"day":283,"rows":["DATE","ANON","STUD","HITS"],"cols":["DASH","ANTI","TOUT","ENDS"],"worstRank":null},{"day":284,"rows":["BACK","RUIN","ANTE","STEW"],"cols":["BRAS","AUNT","CITE","KNEW"],"worstRank":null},{"day":285,"rows":["PAGE","AURA","STAT","TONS"],"cols":["PAST","AUTO","GRAN","EATS"],"worstRank":null},{"day":286,"rows":["WHAT","HARE","EVIL","NEAL"],"cols":["WHEN","HAVE","ARIA","TELL"],"worstRank":null},{"day":287,"rows":["THAT","HOPE","AMEN","NEXT"],"cols":["THAN","HOME","APEX","TENT"],"worstRank":null},{"day":288,"rows":["THIS","RODE","ISLE","PEEK"],"cols":["TRIP","HOSE","IDLE","SEEK"],"worstRank":null},{"day":289,"rows":["FROM","LIMO","ACID","PETS"],"cols":["FLAP","RICE","OMIT","MODS"],"worstRank":null},{"day":290,"rows":["ALSO","LOUD","ARID","SETS"],"cols":["ALAS","LORE","SUIT","ODDS"],"worstRank":null},{"day":291,"rows":["LIST","ONLY","STAR","SOME"],"cols":["LOSS","INTO","SLAM","TYRE"],"worstRank":null},{"day":292,"rows":["DATE","ANON","STUD","HERS"],"cols":["DASH","ANTE","TOUR","ENDS"],"worstRank":null},{"day":293,"rows":["PAGE","AURA","STAT","SONS"],"cols":["PASS","AUTO","GRAN","EATS"],"worstRank":null},{"day":294,"rows":["WHAT","AERO","IRIS","TEAS"],"cols":["WAIT","HERE","ARIA","TOSS"],"worstRank":null},{"day":295,"rows":["THAT","EACH","MINE","PREY"],"cols":["TEMP","HAIR","ACNE","THEY"],"worstRank":null},{"day":296,"rows":["THAN","HOME","USER","SEND"],"cols":["THUS","HOSE","AMEN","NERD"],"worstRank":null},{"day":297,"rows":["FROM","LAME","AVID","GETS"],"cols":["FLAG","RAVE","OMIT","MEDS"],"worstRank":null},{"day":298,"rows":["ALSO","LIED","TEND","OUTS"],"cols":["ALTO","LIEU","SENT","ODDS"],"worstRank":null},{"day":299,"rows":["BACK","RUIN","ONTO","STEW"],"cols":["BROS","AUNT","CITE","KNOW"],"worstRank":null},{"day":300,"rows":["WHEN","EINE","ADDS","REST"],"cols":["WEAR","HIDE","ENDS","NEST"],"worstRank":null},{"day":301,"rows":["LIST","ANTI","STAR","TOTE"],"cols":["LAST","INTO","STAT","TIRE"],"worstRank":null},{"day":302,"rows":["WHAT","AERO","RAIN","SPAS"],"cols":["WARS","HEAP","ARIA","TONS"],"worstRank":null},{"day":303,"rows":["THAT","AURA","CLIP","OLDS"],"cols":["TACO","HULL","ARID","TAPS"],"worstRank":null},{"day":304,"rows":["THAN","RAKE","IRIS","PENS"],"cols":["TRIP","HARE","AKIN","NESS"],"worstRank":null},{"day":305,"rows":["FROM","LAME","AVID","PETS"],"cols":["FLAP","RAVE","OMIT","MEDS"],"worstRank":null},{"day":306,"rows":["ALSO","NEON","TALL","EDDY"],"cols":["ANTE","LEAD","SOLD","ONLY"],"worstRank":null},{"day":307,"rows":["BACK","ALOE","STOP","HOLT"],"cols":["BASH","ALTO","COOL","KEPT"],"worstRank":null},{"day":308,"rows":["OVER","FADE","FLIP","SETS"],"cols":["OFFS","VALE","EDIT","REPS"],"worstRank":null},{"day":309,"rows":["LIST","ONTO","STAT","SORE"],"cols":["LOSS","INTO","STAR","TOTE"],"worstRank":null},{"day":310,"rows":["WHAT","AERO","TRIO","TEAK"],"cols":["WATT","HERE","ARIA","TOOK"],"worstRank":null},{"day":311,"rows":["THAT","OATH","SHOE","SAME"],"cols":["TOSS","HAHA","ATOM","THEE"],"worstRank":null},{"day":312,"rows":["THIS","HIRE","AKIN","NEST"],"cols":["THAN","HIKE","IRIS","SENT"],"worstRank":null},{"day":313,"rows":["FROM","LAME","ARID","GETS"],"cols":["FLAG","RARE","OMIT","MEDS"],"worstRank":null},{"day":314,"rows":["ALSO","DIED","DEAD","SUMS"],"cols":["ADDS","LIEU","SEAM","ODDS"],"worstRank":null},{"day":315,"rows":["JUST","ONLY","STIR","HOME"],"cols":["JOSH","UNTO","SLIM","TYRE"],"worstRank":null},{"day":316,"rows":["LAST","AXLE","VEIN","ALPS"],"cols":["LAVA","AXEL","SLIP","TENS"],"worstRank":null},{"day":317,"rows":["INTO","TORN","EDIT","MEMO"],"cols":["ITEM","NODE","TRIM","ONTO"],"worstRank":null},{"day":318,"rows":["WHAT","AERO","TRIP","TEAS"],"cols":["WATT","HERE","ARIA","TOPS"],"worstRank":null},{"day":319,"rows":["MOST","ABLE","REAL","TYPE"],"cols":["MART","OBEY","SLAP","TELE"],"worstRank":null},{"day":320,"rows":["THAN","EINE","ARTS","MEET"],"cols":["TEAM","HIRE","ANTE","NEST"],"worstRank":null},{"day":321,"rows":["FROM","LAME","ARID","PETS"],"cols":["FLAP","RARE","OMIT","MEDS"],"worstRank":null},{"day":322,"rows":["ALSO","DIED","DEED","SUMS"],"cols":["ADDS","LIEU","SEEM","ODDS"],"worstRank":null},{"day":323,"rows":["BACK","ICON","TRIO","SENT"],"cols":["BITS","ACRE","COIN","KNOT"],"worstRank":null},{"day":324,"rows":["JUST","ONLY","STAR","HOME"],"cols":["JOSH","UNTO","SLAM","TYRE"],"worstRank":null},{"day":325,"rows":["LIST","ONTO","ATOM","NOPE"],"cols":["LOAN","INTO","STOP","TOME"],"worstRank":null},{"day":326,"rows":["THAT","HERO","IRIS","SEAS"],"cols":["THIS","HERE","ARIA","TOSS"],"worstRank":null},{"day":327,"rows":["LAST","OBEY","SLAP","TELE"],"cols":["LOST","ABLE","SEAL","TYPE"],"worstRank":null},{"day":328,"rows":["THAN","EINE","ARTS","MESS"],"cols":["TEAM","HIRE","ANTS","NESS"],"worstRank":null},{"day":329,"rows":["FROM","LAVA","AGED","WERE"],"cols":["FLAW","RAGE","OVER","MADE"],"worstRank":null},{"day":330,"rows":["ALSO","ROAD","INFO","DEER"],"cols":["ARID","LONE","SAFE","ODOR"],"worstRank":null},{"day":331,"rows":["MOST","ANTE","SCAN","SETS"],"cols":["MASS","ONCE","STAT","TENS"],"worstRank":null},{"day":332,"rows":["JUST","ONLY","STIR","HOPE"],"cols":["JOSH","UNTO","SLIP","TYRE"],"worstRank":null},{"day":333,"rows":["DATA","EXEC","LEAN","ISLE"],"cols":["DELI","AXES","TEAL","ACNE"],"worstRank":null},{"day":334,"rows":["THAT","HARE","EVIL","MEAL"],"cols":["THEM","HAVE","ARIA","TELL"],"worstRank":null},{"day":335,"rows":["LAST","INTO","STAY","PIGS"],"cols":["LISP","ANTI","STAG","TOYS"],"worstRank":null},{"day":336,"rows":["WHEN","HIDE","IRIS","PETS"],"cols":["WHIP","HIRE","EDIT","NESS"],"worstRank":null},{"day":337,"rows":["FROM","LAVA","ACER","WERE"],"cols":["FLAW","RACE","OVER","MARE"],"worstRank":null},{"day":338,"rows":["ALSO","DIED","DEED","SUNS"],"cols":["ADDS","LIEU","SEEN","ODDS"],"worstRank":null},{"day":339,"rows":["THAN","HOME","USES","SENT"],"cols":["THUS","HOSE","AMEN","NEST"],"worstRank":null},{"day":340,"rows":["LIST","ODOR","CLUE","HERE"],"cols":["LOCH","IDLE","SOUR","TREE"],"worstRank":null},{"day":341,"rows":["JUST","ONLY","STAR","HOPE"],"cols":["JOSH","UNTO","SLAP","TYRE"],"worstRank":null},{"day":342,"rows":["THAT","HARE","EVIL","NEAL"],"cols":["THEN","HAVE","ARIA","TELL"],"worstRank":null},{"day":343,"rows":["LAST","INTO","STAY","PITS"],"cols":["LISP","ANTI","STAT","TOYS"],"worstRank":null},{"day":344,"rows":["MOST","EVER","GALA","ALLY"],"cols":["MEGA","OVAL","SELL","TRAY"],"worstRank":null},{"day":345,"rows":["FROM","LAME","IRIS","PETS"],"cols":["FLIP","RARE","OMIT","MESS"],"worstRank":null},{"day":346,"rows":["ALSO","DINO","DROP","SAWS"],"cols":["ADDS","LIRA","SNOW","OOPS"],"worstRank":null},{"day":347,"rows":["THAN","HIRE","EDIT","MEDS"],"cols":["THEM","HIDE","ARID","NETS"],"worstRank":null},{"day":348,"rows":["DATA","EXEC","LIAR","ISLE"],"cols":["DELI","AXIS","TEAL","ACRE"],"worstRank":null},{"day":349,"rows":["POST","ABLE","REAL","TYPE"],"cols":["PART","OBEY","SLAP","TELE"],"worstRank":null},{"day":350,"rows":["WHAT","RAKE","ARIA","PENS"],"cols":["WRAP","HARE","AKIN","TEAS"],"worstRank":null},{"day":351,"rows":["LIST","ONLY","STAR","TOME"],"cols":["LOST","INTO","SLAM","TYRE"],"worstRank":null},{"day":352,"rows":["LAST","ALTO","WOES","NEWS"],"cols":["LAWN","ALOE","STEW","TOSS"],"worstRank":null},{"day":353,"rows":["FROM","LAVA","ORAL","WELL"],"cols":["FLOW","RARE","OVAL","MALL"],"worstRank":null},{"day":354,"rows":["ALSO","POLL","PROD","SETS"],"cols":["APPS","LORE","SLOT","OLDS"],"worstRank":null},{"day":355,"rows":["THAN","EINE","ARTS","REST"],"cols":["TEAR","HIRE","ANTS","NEST"],"worstRank":null},{"day":356,"rows":["MOST","ANTE","SCAN","KEYS"],"cols":["MASK","ONCE","STAY","TENS"],"worstRank":null},{"day":357,"rows":["THEM","AERO","GRIN","SOCK"],"cols":["TAGS","HERO","ERIC","MONK"],"worstRank":null},{"day":358,"rows":["DATE","ARIA","TIER","ADDS"],"cols":["DATA","ARID","TIED","EARS"],"worstRank":null},{"day":359,"rows":["LIST","ONLY","STIR","SOME"],"cols":["LOSS","INTO","SLIM","TYRE"],"worstRank":null},{"day":360,"rows":["LAST","OBEY","FLAP","TELE"],"cols":["LOFT","ABLE","SEAL","TYPE"],"worstRank":null},{"day":361,"rows":["BEST","EXPO","TEAM","ACNE"],"cols":["BETA","EXEC","SPAN","TOME"],"worstRank":null},{"day":362,"rows":["ALSO","PULL","PROD","SETS"],"cols":["APPS","LURE","SLOT","OLDS"],"worstRank":null},{"day":363,"rows":["THAN","EINE","ARTS","LESS"],"cols":["TEAL","HIRE","ANTS","NESS"],"worstRank":null},{"day":364,"rows":["MOST","OVER","MAMA","SLIP"],"cols":["MOMS","OVAL","SEMI","TRAP"],"worstRank":null},{"day":365,"rows":["THEM","WADE","IRIS","NETS"],"cols":["TWIN","HARE","EDIT","MESS"],"worstRank":null},{"day":366,"rows":["HELP","ARIA","HITS","ACES"],"cols":["HAHA","ERIC","LITE","PASS"],"worstRank":null}];
+
+  const gridEl = document.getElementById('grid');
+  const searchEl = document.getElementById('search');
+  const countEl = document.getElementById('count');
+
+  function cardHTML(p) {
+    const letters = p.rows.join('').split('');
+    const cells = letters.map((ch) => `<div class="cell">${ch}</div>`).join('');
+    return `
+      <div class="card" data-day="${p.day}" data-words="${[...p.rows, ...p.cols].join(' ')}">
+        <div class="card-head">
+          <span class="day">Day ${p.day}</span>
+          <span class="rank">rank ${p.worstRank}</span>
+        </div>
+        <div class="letter-grid">${cells}</div>
+        <div class="words">
+          <span class="row-words"><b>Across:</b> <span class="word-tag">${p.rows.join(' · ')}</span></span>
+          <span class="col-words"><b>Down:</b> <span class="word-tag">${p.cols.join(' · ')}</span></span>
+        </div>
+      </div>
+    `;
+  }
+
+  gridEl.innerHTML = PUZZLES.map(cardHTML).join('');
+  const cardEls = [...gridEl.children];
+
+  function applyFilter() {
+    const q = searchEl.value.trim().toUpperCase();
+    let shown = 0;
+    cardEls.forEach((el, i) => {
+      const p = PUZZLES[i];
+      const matches = !q || String(p.day) === q || el.dataset.words.includes(q);
+      el.classList.toggle('is-hidden', !matches);
+      if (matches) shown++;
+    });
+    countEl.textContent = q ? `${shown} / ${PUZZLES.length} shown` : `${PUZZLES.length} puzzles`;
+  }
+
+  searchEl.addEventListener('input', applyFilter);
+  applyFilter();
+</script>

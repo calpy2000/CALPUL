@@ -1,0 +1,133 @@
+/* --- Tools panel (dev tools + tester tools, never shown to real players) ---
+   Styles for the gear/flask-icon button and popup panel built in
+   shared/core/tools-panel.js. Both elements use `position: fixed`, which
+   positions them relative to the browser window/viewport itself rather than
+   any parent element — and keeps them in the same screen position even if
+   the page scrolls, which is exactly why they're used here for a
+   "floats on top of everything, always reachable" control. The same classes
+   (.dev-panel, .dev-panel__btn, ...) render either the dev panel's
+   reset/shortcut buttons or the tester panel's reset+feedback buttons —
+   which one shows is decided in JS by tool-mode.js, not by anything here in
+   CSS. The feedback FORM itself (radios, textarea, ...) lives on its own
+   full page — see shared/feedback.html and shared/feedback.css. */
+
+.dev-toggle {
+  position: fixed;
+  bottom: var(--space-md); /* distance from the bottom of the VIEWPORT, not the page */
+  right: var(--space-md);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* exactly half the width/height turns a square box into a circle */
+  border: none;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  opacity: 0.5; /* dimmed by default so it doesn't distract during normal play */
+  cursor: pointer;
+  z-index: 100; /* higher than the shell-overlay/end-screen's z-index:20, so this stays reachable even over those */
+}
+
+/* :hover is a pseudo-class matching while the mouse pointer is over the
+   element (touch devices don't really have "hover", but this is harmless
+   there — it just never triggers). Brings the icon to full opacity so it's
+   easy to find when you're actually looking for it. */
+.dev-toggle:hover {
+  opacity: 1;
+}
+
+.dev-panel {
+  position: fixed;
+  /* calc() lets you mix units/values in one expression — here, "the toggle
+     button's own offset from the bottom, PLUS 44px" positions the panel
+     directly above the toggle button (44px being roughly the button's height
+     plus a small gap), so the panel always sits just above the toggle
+     regardless of what --space-md happens to be set to. */
+  bottom: calc(var(--space-md) + 44px);
+  right: var(--space-md);
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  /* Caps how tall the panel can get before scrolling internally — the dev
+     panel's longest button list (reset today/all + a couple of extra
+     shortcuts) can run taller than the viewport on a small phone in
+     landscape, and this keeps it fully usable there instead of clipping
+     off-screen. */
+  max-height: calc(100vh - var(--space-md) * 2 - 44px);
+  overflow-y: auto;
+}
+
+.dev-panel.is-hidden {
+  display: none;
+}
+
+.dev-panel__title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8a94a6;
+}
+
+.dev-panel__btn {
+  padding: var(--space-sm);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* Modifier class (used alongside .dev-panel__btn) for the destructive
+   "Reset all data" button — red-tinted so it visually stands apart from the
+   safer "Reset today's progress" button. Dev-mode only; the tester panel
+   never includes this button. */
+.dev-panel__btn--danger {
+  color: #c0392b;
+  border-color: #f0c4bd;
+}
+
+/* Group of dev-only checkboxes (e.g. WARPZ's "which obstacle types are
+   currently spawning" — see shared/core/tools-panel.js's `toggles` option)
+   — visually separated from the plain action buttons below it with its own
+   border/gap, since it's a distinct group of controls (persistent on/off
+   state you can flip several of in a row) rather than one-shot shortcuts. */
+.dev-panel__toggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--line);
+}
+
+.dev-panel__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.dev-panel__toggle input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.dev-panel__status {
+  margin: 0;
+  font-size: 12px;
+  color: #4a5568;
+  /* Reserves space for a line of text even when empty, so the panel doesn't
+     visibly resize/jump the moment a status message (like "Reloading…")
+     appears after clicking a button. */
+  min-height: 1.4em;
+}

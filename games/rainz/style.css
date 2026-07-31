@@ -1,0 +1,127 @@
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+#responsiveCanvas {
+  /* Same "grow within available height, width auto via aspect-ratio"
+     pattern as JEWELZ's canvas (see games/jewelz/style.css) — but flex:1 1 auto
+     + min-height:0 here (rather than a flat height:100%) since this
+     game-root ALSO has the tile grid + live-score line below it competing
+     for vertical space; this lets the canvas shrink to whatever's left
+     after those take theirs, instead of demanding the full height and
+     pushing them off-screen. */
+  flex: 1 1 auto;
+  min-height: 0;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  background-color: #1e3a5f;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  touch-action: none; /* stops the browser from trying to scroll/zoom the page in response to touches on the canvas, leaving that entirely to canvas-pointer.js */
+  cursor: pointer;
+}
+
+/* --- The 1x5 letter grid below the canvas — a plain display target
+   (never draggable, unlike the tile grids in SOLVZ/GLYMPZ/SLYDZ/QUADZ),
+   filled in left-to-right as raindrops get caught. --- */
+.rainz-tiles {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.rainz-tile {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #e0f2fe;
+  border: 2px solid #38bdf8;
+  color: #0369a1;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.rainz-tile.filled {
+  background-color: #38bdf8;
+  color: #ffffff;
+}
+
+/* Briefly flashes green/red to signal a valid/invalid word — see
+   index.js's resolveWord(), which adds one of these classes for the flash
+   duration, then swaps to .exploding to clear the tiles out. */
+.rainz-tile.flash-success {
+  animation: rainzFlashSuccess 0.5s ease;
+}
+
+.rainz-tile.flash-fail {
+  animation: rainzFlashFail 0.5s ease;
+}
+
+@keyframes rainzFlashSuccess {
+  0%, 100% { background-color: #38bdf8; }
+  50% { background-color: #22c55e; transform: scale(1.08); }
+}
+
+@keyframes rainzFlashFail {
+  0%, 100% { background-color: #38bdf8; }
+  50% { background-color: #ef4444; transform: scale(1.08); }
+}
+
+/* The "letters explode" clear-out, played right after the flash. */
+.rainz-tile.exploding {
+  animation: rainzTileExplode 0.35s ease-in forwards;
+}
+
+@keyframes rainzTileExplode {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* The base .shell-header__icon rule (shared/shell.css) is a fixed 34x34
+   square — fine for roughly-square icons, but a raindrop is taller than it
+   is wide (see raindrop-icon.js's DROP_HEIGHT), so forcing both dimensions
+   squashed it. Fixing height and letting width follow keeps its real
+   proportions, matching the fix already used for MUVEEZ's wider-than-tall
+   projector image (games/muveez/style.css). */
+.shell-header__icon {
+  width: auto;
+  height: 34px;
+}
+
+/* Inline images used in the instructions text (see index.js's initShell
+   call) — same "auto width, fixed height" reasoning as .shell-header__icon
+   above, since raindrops/umbrellas are all taller than wide. `vertical-align:
+   middle` (rather than a hand-tuned negative-px offset) is what keeps a line
+   with an icon on it from forcing the whole line box taller than the
+   plain-text lines around it: a fixed px offset shifts the icon relative to
+   the baseline without limiting how far its edges can stick out above/below
+   the surrounding text, which is what was quietly inflating line height and
+   causing wrapped/"scrolling" sentences (see games/solvz's same fix) —
+   `middle` keeps the icon centered on the text's own vertical rhythm
+   instead. Kept small (16px, close to the text's own line height) on top of
+   that for the same reason. */
+.rainz-inline-icon {
+  width: auto;
+  height: 16px;
+  vertical-align: middle;
+}
+
+#liveScore {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  min-height: 1.4em; /* reserves space for a line of text even before the game starts, so nothing shifts position once it fills in */
+  flex-shrink: 0;
+}

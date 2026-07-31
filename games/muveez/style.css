@@ -1,0 +1,194 @@
+/* Biased so .muveez-stage sits near the TOP of the stage — much more
+   aggressively than GLYMPZ/SLYDZ's 1:3 split (see games/glympz/style.css for
+   the full explanation of the ::before/::after flex-spacer trick itself).
+   MUVEEZ needs almost all the leftover space pushed BELOW the content
+   rather than shared with above it, because the end-of-game panel (see
+   shared/shell.css's .shell-end-screen) needs to fit underneath the guess
+   input box without covering it — giving ::after nearly the whole leftover
+   share (::before just enough to keep a small gap under the header) is
+   what makes that room. This ONLY works because .muveez-stage sizes itself
+   from its own content (width-driven grid + natural-height text/input
+   rows), leaving genuine leftover vertical space for ::before/::after to
+   split — a height:100% stage (the pattern SOLVZ's .board uses) would
+   consume ALL available height itself, leaving nothing to split. */
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-root::before {
+  content: '';
+  flex: 0 1 0;
+}
+
+#game-root::after {
+  content: '';
+  flex: 1 1 0;
+}
+
+.muveez-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keeps the grid a perfect square regardless of its width */
+  border: 2px solid #333;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  /* No grid-gap (MUVEEZ-only choice) — tiles sit flush against each other
+     with no dividing lines between them, unlike GLYMPZ/SOLVZ's 1px-gap grids.
+     background-color isn't needed either now: it only ever existed to show
+     through that gap. */
+}
+
+/* The always-visible base layer of every tile — a plain neutral color that
+   reads as "not revealed yet". This is a real background-color (not just
+   the absence of an image), so an unrevealed tile looks deliberately blank
+   rather than showing whatever happens to be behind the grid. */
+.tile {
+  position: relative; /* positioning reference for the ::before image layer below */
+  width: 100%;
+  height: 100%;
+  background-color: var(--line);
+  overflow: hidden; /* clips the ::before layer to this tile's own box */
+}
+
+/* The actual image-slice layer, stacked exactly on top of .tile via
+   position:absolute + inset:0. var(--daily-image) is set on <html> by
+   index.js (today's picture); var(--pos-x)/var(--pos-y) are set per-tile on
+   the .tile element itself (custom properties inherit down into
+   pseudo-elements) and pick out this one tile's 1/36th slice — see the
+   fuller background-size/position explanation in games/glympz/style.css.
+
+   clip-path: inset(top right bottom left) describes a rectangle to clip the
+   element down to; "0 0 100% 0" clips away the ENTIRE bottom 100% of the
+   box, leaving nothing visible — i.e. fully hidden, even though the image
+   itself is already sitting there underneath. transitioning that to
+   "0 0 0% 0" (nothing clipped, fully visible) over 2s is what produces the
+   "swipe down" reveal: the visible portion grows from the top edge downward
+   as the clipped-away bottom shrinks to nothing. */
+.tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--daily-image);
+  background-size: 600% 600%;
+  background-position: var(--pos-x) var(--pos-y);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 2s ease;
+}
+
+.tile.revealed::before {
+  clip-path: inset(0 0 0% 0);
+}
+
+.muveez-prompt {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+
+.muveez-guess-row {
+  width: 100%;
+  display: flex;
+  gap: var(--space-sm);
+}
+
+/* The badge-in-input effect: .muveez-input-wrap is the positioning
+   reference (position:relative) for the badge (position:absolute) to sit
+   INSIDE the input's box, on its left edge — the input itself gets extra
+   left padding (below) so its own text never renders underneath the badge. */
+.muveez-input-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0; /* lets the wrapper shrink below its default intrinsic width instead of overflowing the row on narrow screens */
+}
+
+.muveez-guess-number {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* clicks pass straight through to the input underneath, so the badge never blocks focusing/typing */
+}
+
+.muveez-input {
+  width: 100%;
+  padding: 10px 12px 10px 38px; /* extra left padding reserves room for the guess-number badge */
+  font-size: 15px;
+  font-family: var(--font-body);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+}
+
+.muveez-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Applied once the game is over (win, loss, or revisiting a finished day) —
+   see index.js's showAnswerInInput() — so the revealed "Answer: ..." text
+   reads as clearly different from anything the player themselves typed. */
+.muveez-input.is-answer-shown {
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+/* Reserves this line's height at all times (see the HTML comment on this
+   element) — `visibility: hidden` hides it from view but keeps its layout
+   space, unlike `display: none` which would collapse the space away and
+   cause everything below/around it to jump when it appears/disappears. */
+.muveez-error {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #dc2626;
+  text-align: center;
+}
+
+.muveez-error.is-hidden {
+  visibility: hidden;
+}
+
+/* The header's 2nd icon (the projector) is rendered on its own
+   wider-than-tall canvas (see games/muveez/icon.js's
+   getProjectorIconDataURL) so nothing about it needs cropping — width:auto
+   here lets it keep that shape while matching the clapperboard's height
+   (the base .shell-header__icon rule, in shared/shell.css, sets both a
+   fixed width and height). Scoped to this file (loaded only on MUVEEZ's own
+   page) rather than the shared stylesheet, since every other game's header
+   icon should stay a plain square. */
+.shell-header__icon:last-child {
+  width: auto;
+}
+
+/* The Guess button shares .shell-btn--small with the end screen's "Share
+   Results" button (see shared/shell.css) — this scoped-by-id override bumps
+   just THIS button's text 20% larger (matching .shell-btn's own play now/
+   resume increase) without touching Share Results' size too. */
+#guess-btn {
+  font-size: 14.4px;
+}

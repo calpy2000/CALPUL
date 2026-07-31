@@ -1,0 +1,275 @@
+/* Hub-page-only styles. This page does NOT load shared/shell.css (it isn't
+   one of the games — it has no header/footer/timer chrome), only
+   shared/tokens.css for the reset + design tokens and shared/tools-panel.css
+   for the gear icon. */
+
+* {
+  box-sizing: border-box; /* tokens.css already sets this globally — repeated here defensively, harmless either way */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh; /* ensures the pale background fills the whole screen even if the tile grid is short */
+  background: var(--paper);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.hub {
+  max-width: 720px; /* keeps tiles from stretching too wide on a large desktop window */
+  margin: 0 auto; /* centers the whole hub horizontally */
+  padding: var(--space-lg) var(--space-md);
+}
+
+.hub__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 3vw, 18px);
+  margin: 0 0 var(--space-lg);
+}
+
+/* One wrapper per letter, carrying ONLY a fixed static tilt (--tilt, set
+   as an inline style per letter in index.html) plus the 3D viewing context
+   for the inner tile's spin. Deliberately kept separate from the animated
+   inner tile below, and deliberately a plain baked-in value rather than
+   something JS sets at runtime — a static value already present in the
+   very first rendered frame is what guarantees the tilt shows BEFORE the
+   spin starts, with zero dependency on script/animation timing. */
+.hub__title-tile-wrap {
+  --tilt: 0deg; /* fallback only — every tile overrides this inline in index.html */
+  display: inline-flex;
+  perspective: 600px; /* gives the inner tile's rotateY() swivel real depth instead of just squashing flat */
+  transform: rotate(var(--tilt));
+}
+
+/* One square per letter of PUSULZ (see index.html) — same puffy-bevel
+   recipe as .hub__tile-badge (a light highlight upper-left, a dark rim
+   lower-right), just squared off instead of a circle. Each tile's own
+   background color is set inline in index.html, borrowed from that
+   letter's matching game accent, so the logo reads as "family" with the
+   tile grid below it. */
+.hub__title-tile {
+  --letter-rotate: 0deg; /* 180deg (upside down) via .is-upside-down below */
+  --flip-x: 1; /* -1 (mirror-flipped) via .is-mirrored below */
+  width: clamp(34px, 9vw, 52px);
+  height: clamp(34px, 9vw, 52px);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700; /* Quicksand's heaviest self-hosted weight — see shared/tokens.css */
+  font-size: clamp(20px, 5.5vw, 32px);
+  color: #ffffff;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.5), inset -2px -3px 5px rgba(0, 0, 0, 0.28);
+  transform: scaleX(var(--flip-x)) rotate(var(--letter-rotate));
+  animation: hub-title-swivel 1.1s ease-in-out;
+  animation-fill-mode: backwards;
+}
+
+/* A true mirror image — flipped left-right across its own vertical center
+   line, staying right-side up but reading backwards. Used for P and S. */
+.hub__title-tile.is-mirrored {
+  --flip-x: -1;
+}
+
+/* Rotated a half-turn — reads as BOTH backwards AND upside down at once,
+   distinct from .is-mirrored's plain left-right flip. Used for Z. */
+.hub__title-tile.is-upside-down {
+  --letter-rotate: 180deg;
+}
+
+/* Plays once, automatically, as soon as the hub loads — each tile spins a
+   full 360 degrees around its own vertical axis (rotateY), landing back
+   exactly where it started (360deg looks identical to 0deg) while keeping
+   whatever standing flip/rotation this letter has throughout, so a
+   mirrored or upside-down letter stays that way before, during, and after
+   the swivel. */
+@keyframes hub-title-swivel {
+  from { transform: scaleX(var(--flip-x)) rotate(var(--letter-rotate)) rotateY(0deg); }
+  to { transform: scaleX(var(--flip-x)) rotate(var(--letter-rotate)) rotateY(360deg); }
+}
+
+/* A small stagger (each tile starts a beat after the last) so the six
+   tiles swivel in a little left-to-right wave on load, rather than all
+   snapping through the spin in perfect unison. */
+.hub__title-tile-wrap:nth-child(1) .hub__title-tile { animation-delay: 0s; }
+.hub__title-tile-wrap:nth-child(2) .hub__title-tile { animation-delay: 0.08s; }
+.hub__title-tile-wrap:nth-child(3) .hub__title-tile { animation-delay: 0.16s; }
+.hub__title-tile-wrap:nth-child(4) .hub__title-tile { animation-delay: 0.24s; }
+.hub__title-tile-wrap:nth-child(5) .hub__title-tile { animation-delay: 0.32s; }
+.hub__title-tile-wrap:nth-child(6) .hub__title-tile { animation-delay: 0.4s; }
+
+.hub__grid {
+  display: grid;
+  /* Fixed 2 columns down to the iPhone 14 (standard, 390px-wide) breakpoint
+     below — this grid is meant to stay 2-wide across ordinary phone-to-
+     desktop sizes ("reactive" in width, not in column count). Each tile's
+     own aspect-ratio below is what keeps it square as that column width
+     changes, rather than a fixed pixel height tuned to one screen. */
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+/* Below the iPhone 14 standard's own width (390px CSS px — narrower than
+   the 430px iPhone 14 Pro Max this was designed against, e.g. the 375px
+   iPhone X/10), 2 square columns would each be uncomfortably narrow, so the
+   grid drops to a single column instead. The tile itself still just reads
+   its column's width via aspect-ratio/cqw as before — nothing about the
+   tile's own CSS needs to know which breakpoint it's in. */
+@media (max-width: 389px) {
+  .hub__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hub__tile {
+  aspect-ratio: 1 / 1;
+  /* Establishes this tile as a CSS container so its children below can be
+     sized in `cqw` units (1cqw = 1% of THIS element's own width) instead of
+     fixed px. The tile's own width already varies a lot by screen size —
+     from ~150px on a narrow phone up to ~336px inside the hub's 720px
+     max-width on a full desktop window — and since it's square, sizing
+     every bit of content off the tile's own width keeps the exact same
+     proportions (header height, tagline size, etc.) at ANY of those sizes,
+     rather than the fixed-px values that looked right at one specific
+     screen size and too small/large everywhere else. */
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  /* Content is centered rather than stretched top-to-bottom: the tagline
+     below no longer flex-grows to fill leftover space (that was pushing
+     status/score to the very bottom edge and leaving a big dead gap above
+     them when the tagline itself was short). Centering means any leftover
+     space splits evenly above/below instead of collecting in one spot. */
+  justify-content: center;
+  /* % here (not cqw) deliberately — this tile is the element that
+     ESTABLISHES the cqw container, and using cqw for its own padding/gap
+     would mean its own content-box size (which cqw is measured against)
+     depends on its own padding, which depends on cqw, which depends on the
+     content-box size... a circular reference that made Chrome resolve
+     every cqw value on this page against some wrong intermediate number
+     instead of the tile's real width. % avoids that entirely: it resolves
+     against the GRID CELL's width, which is already fixed before this
+     element's own box model is computed, so there's nothing circular
+     about it — and since the grid cell is square-ish here too, the result
+     is the same proportional scaling. */
+  gap: 4.2%;
+  text-decoration: none; /* this is an <a> link — removes the default underline */
+  overflow: hidden;
+  padding: 7.3%;
+  border-radius: 13px;
+  /* var(--tile-flat, var(--accent)) reads the --tile-flat custom property
+     set inline by index.js (tile.style.setProperty(...)); the SECOND
+     argument to var() is a fallback used only if --tile-flat isn't set at
+     all — so a tile would still render sensibly (using the shared --accent
+     blue) even if a future game's registry entry forgot to specify a
+     color. A single flat color, no gradient — the "puffy" curve below comes
+     entirely from the box-shadow, not from any shading on the fill itself. */
+  background: var(--tile-flat, var(--accent));
+  /* Flat-top rounded "puffy" bevel: a solid plateau with a soft, feathered
+     rim built from two inset shadows only — light upper-left, dark
+     lower-right — each blurred to roughly 2x its own offset. That ratio is
+     what makes the rim fade out smoothly on BOTH sides (toward the tile's
+     outer edge and toward the flat plateau) instead of stopping on a hard
+     line, which is what a single small-blur inset shadow (or a gradient
+     fill) would read as — a flat chiseled facet rather than a curve. */
+  box-shadow:
+    0 8px 16px rgba(90, 60, 40, 0.14),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.6),
+    inset -5px -6px 10px var(--tile-rim, rgba(0, 0, 0, 0.25));
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.hub__tile:active {
+  /* Scales down, drops 2px, and the bevel itself flattens toward the
+     shadow side — reads as the tile being pressed INTO the page, not just
+     shrinking in place. */
+  transform: scale(0.96) translateY(2px);
+  box-shadow:
+    0 2px 5px rgba(90, 60, 40, 0.16),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.35),
+    inset -3px -4px 7px var(--tile-rim, rgba(0, 0, 0, 0.25));
+}
+
+.hub__tile-row1 {
+  display: flex;
+  align-items: center;
+  gap: 6.2cqw; /* 1.2x */
+}
+
+/* SOLVZ is the one game with no generated icon art of its own, so it still
+   shows a plain emoji glyph — kept legible against any tile color by
+   sitting in a small raised circle (--tile-accent, a more saturated shade
+   than the tile's own soft fill) rather than directly on the flat pastel. */
+.hub__tile-badge {
+  width: 24cqw; /* 1.2x */
+  height: 24cqw; /* 1.2x */
+  flex: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.6cqw; /* 1.2x */
+  color: #ffffff;
+  background: var(--tile-accent, rgba(0, 0, 0, 0.2));
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.45), inset -2px -3px 4px rgba(0, 0, 0, 0.22);
+}
+
+/* Every other game shows its own real generated icon image directly, with
+   no circle behind it — sized by height so each game's own aspect ratio
+   (square gem/clapperboard, taller raindrop, etc.) comes through unchanged
+   rather than being squashed into a fixed box. */
+.hub__tile-icon-img {
+  height: 24cqw; /* 1.2x */
+  width: auto;
+  max-width: 34.8cqw; /* 1.2x */
+  flex: none;
+  display: block;
+  object-fit: contain;
+}
+
+.hub__tile-title {
+  font-weight: 700;
+  font-size: 13.8cqw; /* 12cqw base, ×1.15 */
+  line-height: 1.1;
+  color: #443653;
+}
+
+.hub__tile-tagline {
+  font-size: 8.76cqw; /* 1.2x */
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(68, 54, 83, 0.72);
+  /* No flex-grow here on purpose — it used to stretch to fill ALL leftover
+     vertical space (so it'd claim ~60% of the tile even when the actual
+     text was only a line or two), which is what shoved status/score down
+     to the tile's bottom edge with a big dead gap above them. Now it only
+     takes the height its own (up to 2 lines of) text needs, and the
+     .hub__tile's own `justify-content: center` above splits whatever space
+     is left evenly instead. */
+  /* Hard-capped at 2 lines — a long tagline gets an ellipsis instead of
+     pushing status/score below the tile's own edge or forcing the tile to
+     grow past square. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hub__tile-status {
+  align-self: flex-start;
+  font-size: 7.56cqw; /* 1.2x */
+  font-weight: 700;
+  color: #443653;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 3.12cqw 7.2cqw; /* 1.2x */
+  border-radius: 999px; /* always a full pill regardless of how tall this ends up at any tile size */
+}
+
+.hub__tile-score {
+  font-size: 7.8cqw; /* 1.2x */
+  font-weight: 600;
+  color: rgba(68, 54, 83, 0.58);
+}

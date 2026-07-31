@@ -1,0 +1,112 @@
+[
+  {
+    "day": 118,
+    "artist": "Claude Monet",
+    "reason": "no verified Met result"
+  },
+  {
+    "day": 121,
+    "artist": "Paul Cezanne",
+    "reason": "no verified Met result"
+  },
+  {
+    "day": 123,
+    "artist": "Pierre-Auguste Renoir",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 144,
+    "artist": "Winslow Homer",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 145,
+    "artist": "John Singer Sargent",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 146,
+    "artist": "Grant Wood",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 147,
+    "artist": "Edward Hopper",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 148,
+    "artist": "Gustav Klimt",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 149,
+    "artist": "Egon Schiele",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 150,
+    "artist": "Henri de Toulouse-Lautrec",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 151,
+    "artist": "Camille Pissarro",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 152,
+    "artist": "Berthe Morisot",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 153,
+    "artist": "Mary Cassatt",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 154,
+    "artist": "Jean-Francois Millet",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 155,
+    "artist": "Frederic Church",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 156,
+    "artist": "Thomas Cole",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 157,
+    "artist": "Katsushika Hokusai",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 158,
+    "artist": "Utagawa Hiroshige",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 159,
+    "artist": "Peter Paul Rubens",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 160,
+    "artist": "Anthony van Dyck",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 161,
+    "artist": "Frans Hals",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  },
+  {
+    "day": 162,
+    "artist": "Nicolas Poussin",
+    "reason": "Unexpected token '<', \"<html styl\"... is not valid JSON"
+  }
+]

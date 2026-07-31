@@ -1,0 +1,321 @@
+:root {
+  --quadz-accent: #f59e0b;
+}
+
+/* Same width-driven square grid + "bias above dead-center" flex-spacer
+   trick as SLYDZ's #game-root (see the fuller explanation in
+   games/slydz/style.css) — the ::after spacer gets 3x as much of the
+   leftover vertical space as ::before, pushing the board up. The only
+   difference from SLYDZ is that the flex child here is .quadz-board (the
+   arrows + grid together), not #grid directly. */
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-root::before {
+  content: '';
+  flex: 1 1 0;
+}
+
+#game-root::after {
+  content: '';
+  flex: 3 1 0;
+}
+
+/* Wraps the two decorative direction arrows around the actual 5x5 #grid.
+   A 2x2 CSS grid (rather than absolutely-positioned arrows) so the arrows'
+   lengths line up with the letter columns/rows BY CONSTRUCTION: each arrow
+   shares its grid cell's exact width/height with .grid itself (both occupy
+   grid-column/row 2), so an arrow set to 80% width/height reliably lands on
+   the boundary between the 4th and 5th column/row of the 5-column/row grid
+   beneath it, without any hand-tuned pixel math. */
+.quadz-board {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  grid-template-rows: 18px 1fr;
+  gap: 8px;
+}
+
+.quadz-arrow-top,
+.quadz-arrow-left {
+  background-color: var(--quadz-accent);
+}
+
+.quadz-arrow-top {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: center;
+  width: 80%;
+  height: 2px;
+  position: relative;
+}
+
+/* Arrowhead — the classic CSS "triangle from borders" trick: a zero-size
+   box whose only visible edges are three transparent borders and one
+   colored one, which renders as a solid triangle pointing away from the
+   transparent sides. */
+.quadz-arrow-top::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent var(--quadz-accent);
+}
+
+.quadz-arrow-left {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  justify-self: center;
+  width: 2px;
+  height: 80%;
+  position: relative;
+}
+
+.quadz-arrow-left::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: var(--quadz-accent) transparent transparent transparent;
+}
+
+.grid {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  aspect-ratio: 1 / 1;
+  gap: 4px;
+}
+
+.tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: clamp(18px, 6vw, 28px);
+  font-weight: 700;
+  text-transform: uppercase;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+/* --- Letter tiles (16 of the 25 cells — the draggable/swappable ones) --- */
+.tile.letter-tile {
+  background-color: var(--quadz-accent);
+  color: #451a03; /* dark brown — better contrast on amber than white */
+}
+
+.tile.letter-tile.is-dragging {
+  opacity: 0.35;
+}
+
+.tile.letter-tile.drag-over {
+  box-shadow: 0 0 0 3px var(--accent);
+  transform: scale(1.05);
+}
+
+/* Deliberately no "word just became valid" highlight on letter tiles — see
+   the design note in index.js: every letter serves BOTH a row and a column
+   simultaneously, so highlighting the tiles themselves would be ambiguous
+   about which word just completed. The tick cells below carry that signal
+   instead. This swap-gesture "pop" (distinct from any word-completion
+   feedback) still applies, matching every other game's drag-and-drop. */
+.tile-swapped {
+  animation: tilePop 0.2s ease-in-out;
+}
+
+@keyframes tilePop {
+  0% { transform: scale(1); z-index: 20; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); z-index: 20; }
+}
+
+/* --- Tick cells (8 of the 25 cells — 4 row indicators + 4 column
+   indicators, never draggable) --- */
+.tile.tick-cell {
+  background-color: #fdf6e8; /* faint warm neutral, not the bold accent */
+  color: #16a34a;
+  font-size: clamp(16px, 5vw, 22px);
+}
+
+.tile.tick-cell::before {
+  content: '';
+}
+
+.tile.tick-cell.is-valid::before {
+  content: '✓';
+}
+
+/* Grow-in when a row/column BECOMES valid: scale from nothing up past full
+   size then settle — only triggered on a state CHANGE (see index.js's
+   updateGridValidity()), never on every check, so it doesn't replay while
+   the word stays valid. */
+.tile.tick-cell.tick-appear {
+  animation: tickAppear 0.35s ease-out;
+}
+
+@keyframes tickAppear {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.5); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* The reverse — plays right before the checkmark is cleared, when a
+   previously-valid row/column stops being one. */
+.tile.tick-cell.tick-disappear {
+  animation: tickDisappear 0.35s ease-in;
+}
+
+@keyframes tickDisappear {
+  0% { transform: scale(1); opacity: 1; }
+  40% { transform: scale(1.5); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* --- The one unused cell (row 5, col 5) — kept in the grid's flow so the
+   5x5 layout math stays simple, just made fully invisible and inert. --- */
+.tile.tile-hidden {
+  visibility: hidden;
+}
+
+/* --- Reveal solution (QUADZ-only) — deliberately understated compared to
+   Play/Help, since this one ENDS today's round rather than just assisting.
+   A plain underlined text button rather than a filled pill keeps it from
+   competing visually with the primary actions, while still being
+   discoverable below the board. */
+.reveal-btn {
+  margin-top: var(--space-md);
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.reveal-btn:hover {
+  color: var(--ink);
+}
+
+.reveal-btn.is-hidden {
+  display: none;
+}
+
+/* --- Reveal-solution confirm panel — now carries the shared shell.js
+   start/end panel classes directly (.shell-overlay/.shell-overlay__panel/
+   .shell-end-screen__message — see index.js) rather than a separate near-
+   identical copy of the same positioning/message rules, so it can never
+   visually drift out of sync with those two again. Doesn't collide with
+   those shared panels since this one only ever shows mid-play, never at
+   the same time as the start banner or end screen. Only what's actually
+   unique to this dialog is still styled here: the small "Reveal solution"
+   trigger link above, and the side-by-side two-button row below (shell's
+   own panels only ever stack a single button). */
+.reveal-confirm__actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+/* Reveal keeps the .shell-btn--danger warning color (see shared/shell.css)
+   so it still reads as the less-safe of the two actions, without needing
+   its own completely separate button style the way it used to — Cancel
+   stays on the page's normal accent color as the visually "safe" default,
+   nudging against an accidental tap ending the round. */
+
+.tile * {
+  pointer-events: none;
+}
+
+/* --- Help toggle (QUADZ-only) — same language, colors, and formatting as
+   SLYDZ's (see games/slydz/style.css), copied verbatim rather than
+   reskinned to the amber accent, per the design brief. This file is only
+   ever loaded by games/quadz/index.html, so even though these rules
+   target the shared .shell-header class, they have zero effect on any
+   other game's page. */
+
+.shell-header {
+  position: relative; /* anchors the popover below, via position:absolute */
+}
+
+.help-toggle {
+  grid-column: 3;
+  justify-self: end;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.help-toggle.is-hidden {
+  display: none;
+}
+
+/* Lit up amber while help is showing — a lightbulb visually "switching on"
+   reads as an intuitive on/off signal without needing a separate label. */
+.help-toggle.is-active {
+  background: #fbbf24;
+  color: #78350f;
+  border-color: #f59e0b;
+  box-shadow: 0 2px 12px rgba(251, 191, 36, 0.5);
+}
+
+.help-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-xs);
+  width: 240px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  z-index: 30;
+}
+
+.help-popover.is-hidden {
+  display: none;
+}
+
+.help-popover p {
+  margin: 0;
+}
+
+/* The CAN / CANNOT verdict inside the help text — both are already
+   bold+uppercase via <strong> and the literal capitalized text, color is
+   the only thing added here. */
+.help-can {
+  color: #16a34a;
+}
+
+.help-cannot {
+  color: #dc2626;
+}

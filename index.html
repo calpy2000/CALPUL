@@ -7,6 +7,25 @@
      values keep users from pinch-zooming the page, since this is meant to
      feel like a small self-contained app rather than a document. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Launches from the home-screen icon with NO Safari chrome at all (no
+     back button, no share/reload/tabs pill) — without these, iOS just
+     opens the site as a normal Safari tab even from the home screen. Only
+     takes effect for icons added AFTER this ships; anyone who already
+     added PUSULZ to their home screen needs to remove and re-add it to
+     pick this up, since iOS bakes the launch mode into the icon at the
+     moment it's created. mobile-web-app-capable is the newer non-prefixed
+     name (Android/other browsers); apple-mobile-web-app-capable is what
+     iOS Safari itself actually reads — both included since iOS support
+     for the non-prefixed one is inconsistent across versions. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- The Android/Samsung Internet/Chrome equivalent of the above — a Web
+     App Manifest is what those browsers actually check for standalone
+     "Add to Home Screen" behavior (the meta tags above are largely
+     iOS-only). theme-color additionally tints the browser's own UI even
+     for someone who hasn't installed it at all. -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3d5af1">
 <title>PUSULZ</title>
 <!-- iOS Safari's "Add to Home Screen" ignores plain favicons and falls
      back to a blurry auto-grabbed one without this — same "P" tile design

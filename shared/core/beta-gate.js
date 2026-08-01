@@ -170,15 +170,29 @@ async function tryCodeFromUrl() {
   const entered = url.searchParams.get('code');
   if (!entered) return false;
 
-  // Strips the code out of the visible/bookmarkable address bar URL right
-  // away (before even validating it) — replaceState, not a real
-  // navigation, so this doesn't add a history entry or reload anything.
-  // The code stays effective for THIS load either way; this purely keeps
-  // it from lingering on-screen or ending up in a share/copy of the URL
-  // from this point forward. The home-screen icon itself is unaffected —
-  // its own saved target URL still has ?code=... on it for next time.
-  url.searchParams.delete('code');
-  window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+  // Strips the code out of the visible/bookmarkable address bar URL —
+  // replaceState, not a real navigation, so this doesn't add a history
+  // entry or reload anything. The code stays effective for THIS load
+  // either way; this purely keeps it from lingering on-screen indefinitely.
+  //
+  // Deliberately DELAYED (not immediate) — a tester following welcome.html's
+  // "tap your personal link, then Add to Home Screen" instructions needs
+  // the address bar to STILL have ?code=... on it at the moment they
+  // actually do Add to Home Screen, or the icon they create won't have it
+  // baked into ITS OWN saved target URL, which is what lets a future
+  // delete+re-add (which wipes iOS's isolated storage for standalone apps)
+  // silently re-authenticate instead of prompting for the code again. An
+  // immediate strip closed that window before anyone could realistically
+  // get through the Share-icon flow. 60s is a generous, un-rushed amount of
+  // time for that, still short enough that the code isn't just sitting
+  // there forever. Accepted as a low-risk tradeoff, per the user's explicit
+  // call — the whole codebook (testers.json) is already public/unencrypted,
+  // so a code visible in the address bar/history for an extra minute isn't
+  // a meaningful new exposure on top of that.
+  setTimeout(() => {
+    url.searchParams.delete('code');
+    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+  }, 60000);
 
   let testers;
   try {

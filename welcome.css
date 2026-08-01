@@ -1,0 +1,315 @@
+/* Welcome/onboarding page for testers — a standalone page (not part of the
+   hub/game flow, no beta gate) meant to be shared as a LINK via WhatsApp,
+   email, text, etc. Own stylesheet, same convention as every game having
+   its own style.css, since this page's look (a scrollable document with
+   sections) doesn't fit shell.css's game-shell layout at all. */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  background: var(--paper);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-lg) var(--space-md) 64px;
+}
+
+.welcome {
+  max-width: 560px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- header / logo ---- */
+/* Same puffy-bevel recipe as the hub's own .hub__title-tile (style.css) —
+   copy-pasted rather than shared, matching this project's per-page
+   convention, so it renders identically wherever the logo appears. */
+.welcome__header {
+  padding: 36px 28px 16px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(61, 90, 241, 0.06), transparent);
+}
+
+.welcome__logo {
+  display: flex;
+  justify-content: center;
+  gap: clamp(4px, 2vw, 8px);
+  margin: 0 0 20px;
+}
+
+.welcome__logo-tile-wrap {
+  --tilt: 0deg;
+  display: inline-flex;
+  transform: rotate(var(--tilt));
+}
+
+.welcome__logo-tile {
+  --letter-rotate: 0deg;
+  --flip-x: 1;
+  width: clamp(28px, 8vw, 40px);
+  height: clamp(28px, 8vw, 40px);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: clamp(16px, 4.5vw, 22px);
+  color: #ffffff;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.5), inset -2px -3px 5px rgba(0, 0, 0, 0.28);
+  transform: scaleX(var(--flip-x)) rotate(var(--letter-rotate));
+}
+
+.welcome__logo-tile.is-mirrored { --flip-x: -1; }
+.welcome__logo-tile.is-upside-down { --letter-rotate: 180deg; }
+
+.welcome__headline {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.welcome__subhead {
+  font-size: 15px;
+  font-weight: 500;
+  color: #5b6270;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---- body ---- */
+.welcome__body {
+  padding: 8px 28px 36px;
+}
+
+.welcome__section {
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.welcome__section:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.welcome__section h2 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+.welcome__section p {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.welcome__section p:last-child {
+  margin-bottom: 0;
+}
+
+.welcome__section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.welcome__section li {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.welcome__section li:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- game cards (built by welcome.js from games-registry.js) ---- */
+.welcome__game {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.welcome__game:last-child {
+  margin-bottom: 0;
+}
+
+.welcome__game-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.welcome__game-icon img {
+  height: 26px;
+  width: auto;
+  max-width: 34px;
+  object-fit: contain;
+  display: block;
+}
+
+.welcome__game-icon.is-badge {
+  background: var(--badge-bg, #f2803a);
+}
+
+.welcome__game-icon.is-badge span {
+  font-size: 20px;
+}
+
+.welcome__game-name {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  margin: 0 0 3px;
+}
+
+.welcome__game-desc {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #5b6270;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Matches the REAL in-app tester-tools button exactly: 36x36 circle, white
+   fill, soft drop shadow, centered glyph — see shared/tools-panel.css's
+   own .dev-toggle. */
+.welcome__tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+/* ---- setup section (built by welcome.js) ---- */
+.welcome__path-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.welcome__path-card:last-child {
+  margin-bottom: 0;
+}
+
+.welcome__path-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(61, 90, 241, 0.1);
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+
+.welcome__path-card ol {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.welcome__path-card ol li {
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.welcome__path-card ol li:last-child {
+  margin-bottom: 0;
+}
+
+.welcome__step-url {
+  display: block;
+  background: rgba(61, 90, 241, 0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 13.5px;
+  margin-top: 8px;
+  word-break: break-all;
+  text-decoration: none;
+}
+
+.welcome__code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(61, 90, 241, 0.08);
+  border: 1.5px dashed var(--accent);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+
+.welcome__code-box .label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5b6270;
+}
+
+.welcome__code-box .code {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.welcome__no-code-note {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #5b6270;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+
+.welcome__footer {
+  padding: 22px 28px 30px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5b6270;
+  border-top: 1px solid var(--line);
+}

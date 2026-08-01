@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Same inline page-load spinner convention as every other page — see the
+     matching comment in the hub's own index.html for why this can't just
+     live in tokens.css. -->
+<style>
+  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
+  @keyframes page-loading-reveal{to{opacity:1;pointer-events:auto}}
+  .page-loading__spinner{width:68px;height:68px;border-radius:50%;border:6px solid #c7cdd6;border-top-color:#3d5af1;animation:page-loading-spin .8s linear infinite}
+  @keyframes page-loading-spin{to{transform:rotate(360deg)}}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Welcome to PUSULZ</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Open Graph tags — this page is meant to be SHARED as a link (WhatsApp,
+     email, text), not just visited directly, so these give it a real
+     preview card (title/description/image) wherever that link is pasted,
+     instead of a bare blue link with no context. icon-512.png is already a
+     good square, on-brand thumbnail — no need for a dedicated share image
+     yet. Absolute URL required — relative paths don't work for og:image,
+     since the crawler fetching it has no "current page" of its own. -->
+<meta property="og:title" content="You're invited to the PUSULZ beta! 🎉">
+<meta property="og:description" content="A hub of small daily games — word, number, and visual puzzles, one attempt per day each. Tap to see what's inside.">
+<meta property="og:image" content="https://calpy2000.github.io/PUSULZ/icon-512.png">
+<meta name="theme-color" content="#3d5af1">
+<link rel="stylesheet" href="shared/tokens.css">
+<link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+
+  <div class="page-loading" id="pageLoading" aria-hidden="true"><div class="page-loading__spinner"></div></div>
+
+  <div class="welcome" id="welcome">
+    <div class="welcome__header">
+      <!-- Same PUSULZ logo tiles as the hub's own index.html — copy-pasted
+           markup (not shared as a component, matching this project's own
+           per-page convention) so it's identical wherever it appears. -->
+      <h1 class="welcome__logo">
+        <span class="welcome__logo-tile-wrap" style="--tilt: -22deg"><span class="welcome__logo-tile is-mirrored" style="background:#E59A63">P</span></span>
+        <span class="welcome__logo-tile-wrap" style="--tilt: 18deg"><span class="welcome__logo-tile" style="background:#6F9BDB">U</span></span>
+        <span class="welcome__logo-tile-wrap" style="--tilt: -27deg"><span class="welcome__logo-tile is-mirrored" style="background:#63B98A">S</span></span>
+        <span class="welcome__logo-tile-wrap" style="--tilt: 16deg"><span class="welcome__logo-tile" style="background:#AD82D6">U</span></span>
+        <span class="welcome__logo-tile-wrap" style="--tilt: 24deg"><span class="welcome__logo-tile" style="background:#DFAE55">L</span></span>
+        <span class="welcome__logo-tile-wrap" style="--tilt: -19deg"><span class="welcome__logo-tile is-upside-down" style="background:#DD7FA3">Z</span></span>
+      </h1>
+      <!-- Filled in by welcome.js: "Hi Tess, welcome..." if ?code=... matches
+           a real tester, a generic greeting otherwise. -->
+      <p class="welcome__headline" id="welcome-headline">Welcome to the PUSULZ beta! 🎉</p>
+      <p class="welcome__subhead">You're one of a small group getting early access — thank you for helping us test it. Here's everything you need to get started.</p>
+    </div>
+
+    <div class="welcome__body">
+
+      <section class="welcome__section">
+        <h2>What is PUSULZ?</h2>
+        <p>PUSULZ is a hub of small daily games — a mix of word games, number games, visual puzzles, and a few that combine all of the above. Every game gives you exactly <strong>one attempt per day</strong>. Once you've played it (won, lost, or run out of time), that's it until tomorrow, when a brand new challenge is waiting.</p>
+        <p>No grinding, no replaying — just a couple of minutes a day, then come back tomorrow.</p>
+      </section>
+
+      <section class="welcome__section">
+        <h2>Meet the 8 games</h2>
+        <!-- Left empty on purpose — welcome.js fills this in from
+             games-registry.js, the site's own single source of truth for
+             which games exist and what each one's real hub-tile icon is,
+             so this list can never drift out of sync with the actual app. -->
+        <div id="welcome-games"></div>
+      </section>
+
+      <section class="welcome__section">
+        <h2>Your role as a tester</h2>
+        <ul>
+          <li>Play as often as you can — even just one or two games a day. Since each game only allows one go per day, the more days you play, the more we learn.</li>
+          <li>Try to play <strong>all 8 games</strong> at least once over the coming days, not just your favourites — we need eyes on every game.</li>
+          <li>Tell us anything — bugs, confusing bits, things that felt too easy or too hard, or just a thought. No feedback is too small.</li>
+          <li><strong>Ideas to make an existing game better</strong> — a rule that feels unfair, a visual that's hard to read, a difficulty curve that spikes too fast, anything you'd tweak if it were up to you.</li>
+          <li><strong>Ideas for new gameplay</strong> — a new obstacle, a new twist on an existing game, or even a whole new game concept. If something occurs to you while you're playing, we want to hear it.</li>
+        </ul>
+      </section>
+
+      <section class="welcome__section">
+        <h2>How to give feedback</h2>
+        <p>Every page has a small <span class="welcome__tool-icon">🧪</span> icon in the bottom-right corner — <strong>Tester tools</strong>. Tap it, then <strong>"Send feedback."</strong></p>
+        <p>This opens your mail app with a form already partly filled in (which game, your device, today's scores) — just add your comment and hit send.</p>
+      </section>
+
+      <section class="welcome__section">
+        <h2>Testing tools</h2>
+        <p>Tap that same <span class="welcome__tool-icon">🧪</span> icon any time to open:</p>
+        <ul>
+          <li><strong>Send feedback</strong> — jump straight to the feedback form (see above).</li>
+          <li><strong>Reset today's progress</strong> — this one's special to you as a tester. Normal players only get one go per game per day, full stop. But you're not a normal player — reset lets you replay any game as many times as you like, the same day. Found a bug halfway through? Want to try a different approach? Just tap reset and go again. Don't be shy about using it — the whole point is to put each game through its paces, not to play it once and move on.</li>
+        </ul>
+        <p>The panel also shows the current app version number — worth mentioning if you're reporting a bug, so we know exactly which version you were on.</p>
+      </section>
+
+      <section class="welcome__section">
+        <h2>Getting set up (iPhone)</h2>
+        <p>Which of these applies depends on where you're reading this right now.</p>
+
+        <!-- Both paths, and their content, are filled in by welcome.js —
+             the personal link/code only exist once a valid ?code=... is
+             known, so there's nothing meaningful to hard-code here. -->
+        <div id="welcome-setup"></div>
+      </section>
+
+    </div>
+
+    <div class="welcome__footer">
+      Thanks again for being part of this — really excited to see what you all think.<br>
+      Any questions at all, just get in touch.
+    </div>
+  </div>
+
+  <script type="module" src="welcome.js"></script>
+</body>
+</html>

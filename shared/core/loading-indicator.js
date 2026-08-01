@@ -64,7 +64,19 @@ export function navigateWithSpinner(url) {
   showPageLoadingIndicator();
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      window.location.href = url;
+      // A small extra setTimeout on top of the double-rAF above — belt and
+      // suspenders. Confirmed via a real forced-slow-navigation test (real
+      // 3s network delay, screencast-captured frame by frame) that the
+      // double-rAF alone reliably works in Chromium. There's no way to
+      // verify the exact same claim on iOS Safari/WebKit from this
+      // environment, and rAF-before-navigation timing is exactly the kind
+      // of thing that's occasionally differed between engines — this
+      // setTimeout is a cheap (imperceptible, ~30ms), zero-downside hedge
+      // against that possibility rather than evidence of a specific known
+      // bug in it.
+      setTimeout(() => {
+        window.location.href = url;
+      }, 30);
     });
   });
 }
@@ -90,7 +102,11 @@ export function reloadWithSpinner() {
   url.searchParams.set('_r', String(Math.random()).slice(2));
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      window.location.href = url.toString();
+      // Same small extra setTimeout hedge as navigateWithSpinner() above —
+      // see its own comment for the reasoning.
+      setTimeout(() => {
+        window.location.href = url.toString();
+      }, 30);
     });
   });
 }

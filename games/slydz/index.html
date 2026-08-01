@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Inline page-load spinner CSS — see the matching comment in the hub's
+     own index.html for why this is duplicated inline on every page rather
+     than centralized in tokens.css. -->
+<style>
+  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
+  @keyframes page-loading-reveal{to{opacity:1;pointer-events:auto}}
+  .page-loading__spinner{width:34px;height:34px;border-radius:50%;border:3px solid #c7cdd6;border-top-color:#3d5af1;animation:page-loading-spin .8s linear infinite}
+  @keyframes page-loading-spin{to{transform:rotate(360deg)}}
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- Standalone home-screen launch (no Safari chrome) — see the matching
      comment in the hub's own index.html. -->

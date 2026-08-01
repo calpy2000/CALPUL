@@ -2,6 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Page-load spinner CSS, INLINE (not a <link>) and first thing in <head>
+     — deliberately duplicated on every page rather than centralized in
+     tokens.css, since a <link rel="stylesheet"> is render-blocking and
+     this needs to paint BEFORE any network request finishes, including
+     tokens.css's own. Colors are hardcoded (not var(--accent) etc.)
+     because tokens.css, which defines those custom properties, hasn't
+     necessarily loaded yet at this point either. Paired with the
+     #pageLoading div (first thing in <body>, below) and
+     hidePageLoadingIndicator() (shared/core/loading-indicator.js, called
+     as the first statement in this page's own index.js — see that file's
+     own comment for why that moment is the right one). -->
+<style>
+  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
+  @keyframes page-loading-reveal{to{opacity:1;pointer-events:auto}}
+  .page-loading__spinner{width:34px;height:34px;border-radius:50%;border:3px solid #c7cdd6;border-top-color:#3d5af1;animation:page-loading-spin .8s linear infinite}
+  @keyframes page-loading-spin{to{transform:rotate(360deg)}}
+</style>
 <!-- width=device-width makes the page's CSS-pixel width match the actual
      device screen (rather than a zoomed-out "desktop-site" view); the scale
      values keep users from pinch-zooming the page, since this is meant to

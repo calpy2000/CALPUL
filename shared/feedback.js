@@ -9,6 +9,12 @@ import { getTodayScore, getTodayOutcome, loadProgress } from './core/game-storag
 import { getDailyStatus } from './core/daily-lock.js';
 import { getStoredTester } from './core/beta-gate.js';
 import { GAMES } from '../games-registry.js';
+import { hidePageLoadingIndicator } from './core/loading-indicator.js';
+
+// See loading-indicator.js's own comment: every file imported above has
+// already finished loading by the time this line runs, so the spinner's
+// job is done. This page previously had no spinner wiring at all.
+hidePageLoadingIndicator();
 
 const FEEDBACK_EMAIL = 'pusulzbetafeedback@gmail.com';
 const HUB_TITLE = 'PUSULZ'; // matches <title>PUSULZ</title> in the hub's own index.html

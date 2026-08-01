@@ -277,6 +277,17 @@ let isPlayerExploded = false;
 let finalSummaryProcessed = false;
 let lastTime = performance.now();
 
+// Set the instant the browser starts navigating away (e.g. the header's
+// "back" link to the hub) — animate() checks this and stops scheduling
+// itself immediately, rather than continuing to burn CPU on a page that's
+// about to be torn down anyway. Without this, this game's own rAF loop
+// competes with the browser for the CPU it needs to actually load the next
+// page, which can make that transition visibly stall. 'pagehide' fires
+// reliably on navigation (including back/forward-cache cases) without the
+// user-facing side effects 'beforeunload' can have.
+let pageIsUnloading = false;
+window.addEventListener('pagehide', () => { pageIsUnloading = true; });
+
 let survivalTime = 0; // seconds survived so far this round — shown in the header timer, no longer the score itself
 let score = 0; // points earned this round (star shards + energy orbs) — the round's actual score, same convention as JEWELZ's jewel count
 let nextSpawnIn = 0;
@@ -962,7 +973,7 @@ function buildVictoryLine(finalScore) {
 }
 
 function animate(currentTime) {
-  if (finalSummaryProcessed) return;
+  if (finalSummaryProcessed || pageIsUnloading) return;
 
   // Clamped so a stalled frame (tab backgrounded, GC pause, slow device)
   // can't hand every obstacle a huge dt on the frame it resumes — without

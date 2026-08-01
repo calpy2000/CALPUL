@@ -66,6 +66,18 @@ let isGameStarted = false;
 let isGameOver = false;
 let lastTime = performance.now();
 
+// Set the instant the browser starts navigating away (e.g. the header's
+// "back" link to the hub) — animate() checks this and stops scheduling
+// itself immediately, rather than continuing to burn CPU on a page that's
+// about to be torn down anyway. Without this, this game's own rAF loop
+// (up to 25 raindrops + particles + collision checks, redrawn every frame)
+// competes with the browser for the CPU it needs to actually load the next
+// page, which can make that transition visibly stall. 'pagehide' fires
+// reliably on navigation (including back/forward-cache cases) without the
+// user-facing side effects 'beforeunload' can have.
+let pageIsUnloading = false;
+window.addEventListener('pagehide', () => { pageIsUnloading = true; });
+
 let survivalTime = 0; // shown in the shared header timer, same as JEWELZ's survival time
 let score = 0; // words formed this round
 let finalSummaryProcessed = false; // same guard as JEWELZ's — flips once, stops the loop for good
@@ -607,9 +619,14 @@ function buildResultLine(finalScore, result) {
 // JEWELZ's animate() (see the fuller explanation there); deltaTime keeps
 // spawn timing and raindrop movement frame-rate independent.
 function animate(currentTime) {
-  if (finalSummaryProcessed) return;
+  if (finalSummaryProcessed || pageIsUnloading) return;
 
-  const deltaTime = (currentTime - lastTime) / 1000;
+  // Clamped so a stalled frame (tab backgrounded, GC pause, slow device)
+  // can't hand every raindrop a huge dt on the frame it resumes — without
+  // this, a fast-falling drop in particular can jump straight through (and
+  // past) the bottom of the canvas in a single step. Same clamp WARPZ's own
+  // animate() already uses.
+  const deltaTime = Math.min(0.05, (currentTime - lastTime) / 1000);
   lastTime = currentTime;
 
   if (!isGameOver) {

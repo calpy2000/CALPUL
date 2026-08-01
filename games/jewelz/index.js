@@ -98,6 +98,17 @@ let isDragging = false;
 // consistent regardless of how fast or slow a particular device can render.
 let lastTime = performance.now();
 
+// Set the instant the browser starts navigating away (e.g. the header's
+// "back" link to the hub) — animate() checks this and stops scheduling
+// itself immediately, rather than continuing to burn CPU on a page that's
+// about to be torn down anyway. Without this, this game's own rAF loop
+// competes with the browser for the CPU it needs to actually load the next
+// page, which can make that transition visibly stall. 'pagehide' fires
+// reliably on navigation (including back/forward-cache cases) without the
+// user-facing side effects 'beforeunload' can have.
+let pageIsUnloading = false;
+window.addEventListener('pagehide', () => { pageIsUnloading = true; });
+
 let survivalTime = 0; // seconds survived so far this round — also what's shown in the header timer
 let lastSpawnTime = 0; // survivalTime value when a new bar was last spawned
 let score = 0; // jewels collected this round
@@ -294,8 +305,9 @@ function buildResultLine(finalScore, result) {
 function animate(currentTime) {
   // Bails out once the round's ending has already been fully handled (see
   // the block near the bottom of this function) — without this check, the
-  // loop would keep running forever even after the game visibly ended.
-  if (finalSummaryProcessed) return;
+  // loop would keep running forever even after the game visibly ended. Also
+  // bails once the page is navigating away (see pageIsUnloading above).
+  if (finalSummaryProcessed || pageIsUnloading) return;
 
   // deltaTime = seconds elapsed since the PREVIOUS frame (dividing by 1000
   // converts milliseconds to seconds). Every movement/timer calculation
@@ -304,8 +316,11 @@ function animate(currentTime) {
   // movement: the game plays at the same real-world SPEED whether it's
   // running at 30fps or 144fps, because a slower frame rate means fewer,
   // but individually LARGER, position updates (bigger deltaTime each time),
-  // averaging out to the same overall motion.
-  const deltaTime = (currentTime - lastTime) / 1000;
+  // averaging out to the same overall motion. Clamped to 0.05s so a stalled
+  // frame (tab backgrounded, GC pause, slow device) can't hand every jewel/
+  // bar a huge dt on the frame it resumes — same clamp WARPZ's own
+  // animate() already uses, for the same reason.
+  const deltaTime = Math.min(0.05, (currentTime - lastTime) / 1000);
   lastTime = currentTime;
 
   if (!isGameOver) {

@@ -585,7 +585,7 @@ function buildResultLine(finalScore, result) {
   // priority over isNewBest/isTie, since a score of 0 "tying" a previous
   // best of 0 still isn't something worth congratulating.
   if (finalScore === 0) {
-    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>you failed to score today</p><p>better luck tomorrow</p>`;
+    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>You failed to score today</p><p>Better luck tomorrow</p>`;
   }
   const wordOrWords = `${finalScore} word${finalScore === 1 ? '' : 's'}`;
   // No previous best at all (result.isFirst) or a previous best of exactly
@@ -598,9 +598,9 @@ function buildResultLine(finalScore, result) {
   }
   // finalScore > 0 is already guaranteed here (the ===0 case returned above).
   if (!hasNoMeaningfulBest && result.isTie) {
-    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>you equaled your best score of ${wordOrWords}</p><p>Let's go for a personal best tomorrow</p>`;
+    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${wordOrWords}</p><p>Try for a personal best tomorrow</p>`;
   }
-  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>you scored ${wordOrWords}</p><p>see if you can do even better tomorrow</p>`;
+  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${wordOrWords}</p><p>Try and do better tomorrow</p>`;
 }
 
 // THE GAME LOOP — same self-scheduling requestAnimationFrame pattern as

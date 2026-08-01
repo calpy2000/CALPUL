@@ -330,7 +330,7 @@ $(function () {
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>you scored ${formatTime(totalSeconds)}</p><p>see if you can do even better tomorrow</p>`;
+    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>`;
     // No previous best at all (first-ever play) or a previous best of
     // exactly 0 would make "new best"/"equaled best" messaging read oddly
     // this early on — fall back to the plain WELL DONE message for both.
@@ -340,7 +340,7 @@ $(function () {
       : result.isNewBest
         ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
         : result.isTie
-          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>you equaled your best score of ${formatTime(totalSeconds)}</p><p>Let's go for a personal best tomorrow</p>`
+          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${formatTime(totalSeconds)}</p><p>Try for a personal best tomorrow</p>`
           : wellDoneMessage;
     shell.showEndScreen({
       message,
@@ -369,7 +369,7 @@ $(function () {
     // isTie are always false here, since giving up never sets a best.
     saveTodayOutcome(GAME_ID, { revealed: true, usedHelp: false, failed: false, isNewBest: false, isTie: false });
     shell.showEndScreen({
-      message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>you failed to win the game today</p><p>better luck tomorrow</p>`,
+      message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>You failed to win the game today</p><p>Better luck tomorrow</p>`,
       shareText: `🟥 GLYMPZ 🟩 — couldn't solve it today!`,
       // No `celebrate` here — giving up is explicitly not a celebration moment.
     });
@@ -434,7 +434,7 @@ $(function () {
     // actual moment of winning/revealing, so it shouldn't replay confetti.
     if (revealed) {
       shell.showEndScreen({
-        message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>you failed to win the game today</p><p>better luck tomorrow</p>`,
+        message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>You failed to win the game today</p><p>Better luck tomorrow</p>`,
         shareText: `🟥 GLYMPZ 🟩 — couldn't solve it today!`,
       });
     } else {

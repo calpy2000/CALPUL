@@ -258,7 +258,7 @@ $(function () {
     const result = submitScore(GAME_ID, guessCount, { higherIsBetter: false });
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
     const guessWord = `${guessCount} guess${guessCount === 1 ? '' : 'es'}`;
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>you scored ${guessWord}</p><p>see if you can do even better tomorrow</p>`;
+    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You got it with ${guessWord}</p><p>Try and do better tomorrow</p>`;
     // No previous best at all (first-ever play) or a previous best of
     // exactly 0 would make "new best"/"equaled best" messaging read oddly
     // this early on — fall back to the plain WELL DONE message for both.
@@ -266,9 +266,9 @@ $(function () {
     const message = hasNoMeaningfulBest
       ? wellDoneMessage
       : result.isNewBest
-        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${guessWord}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
+        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You got it with ${guessWord}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
         : result.isTie
-          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>you equaled your best score of ${guessWord}</p><p>Let's go for a personal best tomorrow</p>`
+          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${guessWord}</p><p>Try for a personal best tomorrow</p>`
           : wellDoneMessage;
     shell.showEndScreen({
       message,
@@ -302,7 +302,7 @@ $(function () {
     saveTodayOutcome(GAME_ID, { revealed: true, usedHelp: false, failed: true, isNewBest: false, isTie: false });
 
     shell.showEndScreen({
-      message: `<p class="shell-end-screen__title"><strong>COMMISERATIONS 😢</strong></p><p>you failed to guess the movie</p><p>better luck tomorrow</p>`,
+      message: `<p class="shell-end-screen__title"><strong>COMMISERATIONS 😢</strong></p><p>You failed to guess the movie</p><p>Better luck tomorrow</p>`,
       animateTarget: document.getElementById('grid-container'),
       shareText: `🎬 MUVEEZ — couldn't guess it today!`,
       // No `celebrate` here — a loss is explicitly not a celebration moment.
@@ -391,7 +391,7 @@ $(function () {
     // revisiting a day already finished in an EARLIER session, not on the
     // actual moment of winning/losing, so it shouldn't replay the confetti.
     shell.showEndScreen(won === false ? {
-      message: `<p class="shell-end-screen__title"><strong>COMMISERATIONS 😢</strong></p><p>you failed to guess the movie</p><p>better luck tomorrow</p>`,
+      message: `<p class="shell-end-screen__title"><strong>COMMISERATIONS 😢</strong></p><p>You failed to guess the movie</p><p>Better luck tomorrow</p>`,
       shareText: `🎬 MUVEEZ — couldn't guess it today!`,
     } : {
       message: `<p>You already guessed today's MUVEEZ in ${guessCount}.</p><p>Hope to see you tomorrow.</p>`,

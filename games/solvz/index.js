@@ -472,7 +472,7 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
     // SOLVZ has no reveal/help/fail concept — a win is the only way it ever
     // ends — so this only ever carries isNewBest/isTie for the feedback page.
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>you scored ${formatTime(totalSeconds)}</p><p>see if you can do even better tomorrow</p>`;
+    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>`;
     // No previous best at all (first-ever play) or a previous best of
     // exactly 0 would make "new best"/"equaled best" messaging read oddly
     // this early on — fall back to the plain WELL DONE message for both.
@@ -482,7 +482,7 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
       : result.isNewBest
         ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
         : result.isTie
-          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>you equaled your best score of ${formatTime(totalSeconds)}</p><p>Let's go for a personal best tomorrow</p>`
+          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${formatTime(totalSeconds)}</p><p>Try for a personal best tomorrow</p>`
           : wellDoneMessage;
     shell.showEndScreen({
       message,

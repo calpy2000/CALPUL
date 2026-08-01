@@ -267,7 +267,7 @@ function buildResultLine(finalScore, result) {
   // priority over isFirst/isNewBest/isTie, since a score of 0 "tying" a
   // previous best of 0 still isn't something worth congratulating.
   if (finalScore === 0) {
-    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>you failed to score today</p><p>better luck tomorrow</p>`;
+    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>You failed to score today</p><p>Better luck tomorrow</p>`;
   }
   // No previous best at all (result.isFirst) or a previous best of exactly
   // 0 would make "new best"/"equaled best" messaging read oddly this early
@@ -279,9 +279,9 @@ function buildResultLine(finalScore, result) {
   }
   // finalScore > 0 is already guaranteed here (the ===0 case returned above).
   if (!hasNoMeaningfulBest && result.isTie) {
-    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>you equaled your best score of ${finalScore} ${JEWEL_IMG}</p><p>Let's go for a personal best tomorrow</p>`;
+    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${finalScore} ${JEWEL_IMG}</p><p>Try for a personal best tomorrow</p>`;
   }
-  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>you scored ${finalScore} ${JEWEL_IMG}</p><p>see if you can do even better tomorrow</p>`;
+  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${finalScore} ${JEWEL_IMG}</p><p>Try and do better tomorrow</p>`;
 }
 
 // THE GAME LOOP. This function calls itself over and over via
@@ -498,20 +498,29 @@ function animate(currentTime) {
   requestAnimationFrame(animate);
 }
 
-// Builds the very first bar of a round, positioned just below the smiley
+// Builds the very first bar of a round, positioned just above the smiley
 // face's starting spot rather than the old fixed (110, 150) — that could
 // land anywhere relative to the player and, worse, inherited Bar's fully
 // random diagonal velocity, so it could occasionally beeline straight into
 // the still-stationary player in the first instant after "Play Now" is
 // pressed, before they've had a chance to start moving. Overriding speedX/
 // speedY afterward (same pattern as the bonus jewel's post-construction
-// overrides below) keeps it mostly horizontal with only a gentle downward
-// drift, so it can't double back upward into the player right away.
+// overrides below) sends it launching up and away at a steep angle instead,
+// so it can't immediately double back down into the player.
 function createFirstBar() {
   const bar = new Bar(player.x, 0, neonHues[0]);
-  bar.y = player.y + player.radius + bar.height / 2 + 20; // just below the smiley, with a small gap
-  bar.speedX = 4 * (Math.random() < 0.5 ? 1 : -1); // mostly horizontal...
-  bar.speedY = 1; // ...only drifting gently down the screen
+  bar.y = player.y - player.radius - bar.height / 2 - 20; // just above the smiley, with a small gap
+
+  // Launches upward at a random 30-50 degree angle from the horizontal, to
+  // the left or right at random — steep enough that it's always heading
+  // clearly away from the player, rather than the old flat/near-horizontal
+  // path that could read as cutting close past the still-stationary player.
+  const angleDeg = 30 + Math.random() * 20;
+  const angleRad = (angleDeg * Math.PI) / 180;
+  const speed = 4.24; // same overall speed as the old horizontal path (sqrt(4^2 + 1^2))
+  const sideDir = Math.random() < 0.5 ? 1 : -1;
+  bar.speedX = Math.cos(angleRad) * speed * sideDir;
+  bar.speedY = -Math.sin(angleRad) * speed; // negative = upward (canvas y increases downward)
   return bar;
 }
 

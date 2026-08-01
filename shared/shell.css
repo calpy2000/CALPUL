@@ -354,6 +354,20 @@
    <img> alike, since text-align:center centers all inline content. */
 .shell-end-screen__title {
   text-align: center;
+  font-size: 1.3em; /* 1.3x the rest of the end-screen message's text — em is relative to the inherited 15px, so this also scales any emoji glyphs within it (they're just characters, sized with the text) */
+}
+
+/* Scales any inline icon <img> on the title line by the same 1.3x as its
+   text above. Every game's own inline-icon class (.jewelz-inline-icon,
+   .rainz-inline-icon, .warpz-inline-icon, etc.) fixes height at 16px — this
+   selector's higher specificity (class + element vs. a lone class) overrides
+   that height here without needing !important. width:auto (rather than a
+   second fixed px value) lets each icon keep its own aspect ratio: square
+   icons scale evenly, and a non-square one (like JEWELZ's bar icon, itself
+   already width:auto/height:16px) scales the same way its own class does. */
+.shell-end-screen__title img {
+  height: calc(16px * 1.3);
+  width: auto;
 }
 
 /* --shell-accent/--shell-accent-ink/--shell-accent-rim are set inline on

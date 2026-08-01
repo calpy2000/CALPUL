@@ -95,6 +95,11 @@
       <span class="hub__title-tile-wrap" style="--tilt: 24deg"><span class="hub__title-tile" style="background:#DFAE55">L</span></span>
       <span class="hub__title-tile-wrap" style="--tilt: -19deg"><span class="hub__title-tile is-upside-down" style="background:#DD7FA3">Z</span></span>
     </h1>
+    <!-- Beta-testing badge — purple pill pinned to the top-right corner of
+         the page (see .hub__beta-pill in style.css), independent of the
+         title's own centered/animated layout so it can't disturb the
+         swivel-in tiles above. -->
+    <span class="hub__beta-pill">Beta</span>
     <!-- Left empty on purpose — index.js fills this in with one tile per
          game, built from games-registry.js, once the page loads. -->
     <div class="hub__grid" id="hub-grid"></div>

@@ -281,41 +281,27 @@ function buildMessage() {
   return { subject, body, html };
 }
 
-document.getElementById('feedback-submit').addEventListener('click', () => {
-  const message = buildMessage();
-  if (!message) return;
-  // Navigating to a mailto: URL is what actually opens the browser's
-  // configured mail app (or a "choose an app" prompt) with the subject/body
-  // pre-filled — there's no way to send the email directly from a static
-  // page with no backend. If that opens an app the tester doesn't actually
-  // use (e.g. an unconfigured default on their phone/PC), "Copy feedback
-  // instead" below is the fallback.
-  window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(message.subject)}&body=${encodeURIComponent(message.body)}`;
-});
-
-const copyStatus = document.getElementById('feedback-copy-status');
-let copyStatusTimer = null;
-
-document.getElementById('feedback-copy').addEventListener('click', async () => {
-  const message = buildMessage();
-  if (!message) return;
-  // Includes To:/Subject: as plain text lines (not just the body) so the
-  // copied block is self-contained — a tester pasting it into ANY app,
-  // email or otherwise, still has everything needed to send it on
-  // manually, not just the message body.
+// Writes both a text/plain and a text/html clipboard flavor for a built
+// message (see buildMessage()) — shared by "Send feedback" (which copies as
+// a formatting fallback, below) and "Copy feedback instead" (which copies as
+// its own whole point). Returns whether the copy actually succeeded, since
+// both ClipboardItem and writeText can throw (e.g. no HTTPS, denied
+// permission) and each caller needs to react to that differently. Includes
+// To:/Subject: as plain text lines (not just the body) so the copied block
+// is self-contained — a tester pasting it into ANY app, email or otherwise,
+// still has everything needed to send it on manually.
+async function copyMessageToClipboard(message) {
   const fullText = `To: ${FEEDBACK_EMAIL}\nSubject: ${message.subject}\n\n${message.body}`;
   const fullHtml =
     `<p style="font-family:sans-serif;font-size:13px;">To: ${FEEDBACK_EMAIL}<br>Subject: ${escapeHtml(message.subject)}</p>` +
     message.html;
-
-  clearTimeout(copyStatusTimer);
   try {
     if (window.ClipboardItem) {
       // Writing BOTH text/plain and text/html to the clipboard in one call
       // is what lets this paste as a real, aligned HTML <table> into a
       // rich-text compose box (the default in Gmail/Outlook web, not just
-      // their plain-text mode) — the mail app picks whichever flavor it
-      // understands, falling back to the plain-text version everywhere
+      // their plain-text mode) — the destination app picks whichever flavor
+      // it understands, falling back to the plain-text version everywhere
       // else (a bare textarea, Notes, etc).
       await navigator.clipboard.write([
         new ClipboardItem({
@@ -327,12 +313,56 @@ document.getElementById('feedback-copy').addEventListener('click', async () => {
       // Older/unsupported browser — falls back to plain text only.
       await navigator.clipboard.writeText(fullText);
     }
-    copyStatus.textContent = 'Copied! Paste it into your mail app and send.';
+    return true;
   } catch {
-    // Clipboard access can be blocked (e.g. no HTTPS, or the browser denied
-    // permission) — this is rare but not impossible, so it gets its own
-    // message rather than failing silently.
-    copyStatus.textContent = "Couldn't copy automatically — please select and copy the text yourself.";
+    return false;
   }
+}
+
+const copyStatus = document.getElementById('feedback-copy-status');
+let copyStatusTimer = null;
+
+document.getElementById('feedback-submit').addEventListener('click', async () => {
+  const message = buildMessage();
+  if (!message) return;
+
+  // mailto:'s body param can only ever carry plain text — a hard limitation
+  // of the mailto: URL scheme itself, not something fixable in this code —
+  // so the aligned, styled HTML table "Copy feedback instead" produces can
+  // never be pre-filled directly into the email body. Instead, this copies
+  // that SAME nicely-formatted table to the clipboard (exactly like "Copy
+  // feedback instead" does) and opens the mail app with just a short
+  // "paste it below" placeholder, so a quick paste gets the tester the same
+  // formatting either button produces. Falls back to the old, fully
+  // pre-filled plain-text body if the clipboard write fails for any reason,
+  // so the tester still ends up with something usable either way.
+  clearTimeout(copyStatusTimer);
+  const copied = await copyMessageToClipboard(message);
+  const body = copied
+    ? 'Your feedback has been copied to your clipboard — paste it here before sending (long-press > Paste, or Cmd/Ctrl+V).'
+    : message.body;
+  copyStatus.textContent = copied
+    ? 'Copied! Paste it into this email before sending.'
+    : "Couldn't copy automatically — the email has been pre-filled instead.";
+  copyStatusTimer = setTimeout(() => { copyStatus.textContent = ''; }, 4000);
+
+  // Navigating to a mailto: URL is what actually opens the browser's
+  // configured mail app (or a "choose an app" prompt) with the subject/body
+  // pre-filled — there's no way to send the email directly from a static
+  // page with no backend. If that opens an app the tester doesn't actually
+  // use (e.g. an unconfigured default on their phone/PC), "Copy feedback
+  // instead" below is the fallback.
+  window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(message.subject)}&body=${encodeURIComponent(body)}`;
+});
+
+document.getElementById('feedback-copy').addEventListener('click', async () => {
+  const message = buildMessage();
+  if (!message) return;
+
+  clearTimeout(copyStatusTimer);
+  const copied = await copyMessageToClipboard(message);
+  copyStatus.textContent = copied
+    ? 'Copied! Paste it into your mail app and send.'
+    : "Couldn't copy automatically — please select and copy the text yourself.";
   copyStatusTimer = setTimeout(() => { copyStatus.textContent = ''; }, 4000);
 });

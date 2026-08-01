@@ -150,18 +150,18 @@ export default class Jewel {
         drawFacetedGem(context, this.x, this.y, r, this.style, this.timeAlive);
 
         // The bonus jewel's point value ("3") drawn centered on top of the
-        // gem — light grey (not bold, smaller) with a dark shadow for
-        // legibility against whichever facet brightness happens to be
-        // underneath at any given moment.
+        // gem — same look and feel as WARPZ's Energy Orb value text (see
+        // EnergyOrb.js's own draw()): bold monospace, glowing in the jewel's
+        // own hue, near-white fill, rather than the old plain grey sans-serif.
         if (this.label) {
             context.save();
-            context.fillStyle = '#d1d5db';
-            context.font = `${Math.round(r * 0.65)}px sans-serif`;
+            context.font = `bold ${Math.round(r * (this.label.length > 1 ? 0.85 : 1.15))}px ui-monospace, Consolas, monospace`;
             context.textAlign = 'center';
             context.textBaseline = 'middle';
-            context.shadowColor = 'rgba(0, 0, 0, 0.6)';
-            context.shadowBlur = 4;
-            context.fillText(this.label, this.x, this.y);
+            context.shadowColor = this.style.glowColor;
+            context.shadowBlur = r * 0.7;
+            context.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            context.fillText(this.label, this.x, this.y + r * 0.04);
             context.restore();
         }
     }

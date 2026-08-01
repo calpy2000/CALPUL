@@ -20,21 +20,34 @@ export const JEWEL_STYLE = { facets: 8, hue: 350, glowColor: '#f43f5e' }; // rub
 // regular ruby one at a glance, on top of its size/label/lifetime.
 export const BONUS_JEWEL_STYLE = { facets: 12, hue: 210, glowColor: '#38bdf8' }; // sapphire
 
+// How fast the gem's facets actually rotate, in radians/sec — 2*PI is a full
+// 360-degree turn, so this is exactly "360 degrees per second," per the
+// user's explicit request. Previously the facets never moved at all; only
+// their brightness cycled via `t`, which just made the light look like it
+// was traveling around a stationary gem rather than the gem itself spinning.
+const SPIN_RATE = Math.PI * 2;
+
 // Draws one faceted gem centered at (x, y) with radius r. `t` is elapsed
-// seconds — each facet's brightness cycles via `t`, which is what makes the
-// light appear to travel around the gem as if it's slowly rotating.
+// seconds — each facet's brightness cycles via `t` (making the light appear
+// to travel around the gem), AND the whole facet layout now physically
+// rotates via `t * SPIN_RATE`.
 export function drawFacetedGem(context, x, y, r, style, t) {
   context.save();
   context.shadowColor = style.glowColor;
   context.shadowBlur = 16;
+  // Recenters the origin on the gem and rotates the whole coordinate space —
+  // everything below is drawn relative to (0, 0) so it comes out already
+  // spun into place, same trick Bar.js uses for its own rotation.
+  context.translate(x, y);
+  context.rotate(t * SPIN_RATE);
   for (let i = 0; i < style.facets; i++) {
     const a0 = (Math.PI * 2 / style.facets) * i;
     const a1 = a0 + Math.PI * 2 / style.facets;
     const brightness = 0.5 + 0.5 * Math.sin(t * 1.5 + i);
     context.beginPath();
-    context.moveTo(x, y);
-    context.lineTo(x + Math.cos(a0) * r, y + Math.sin(a0) * r);
-    context.lineTo(x + Math.cos(a1) * r, y + Math.sin(a1) * r);
+    context.moveTo(0, 0);
+    context.lineTo(Math.cos(a0) * r, Math.sin(a0) * r);
+    context.lineTo(Math.cos(a1) * r, Math.sin(a1) * r);
     context.closePath();
     context.fillStyle = `hsl(${style.hue}, 80%, ${28 + brightness * 45}%)`;
     context.fill();

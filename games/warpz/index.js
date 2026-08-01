@@ -939,16 +939,16 @@ function drawEverything() {
 // panel's centered title, while the rest stays left-aligned underneath it.
 function buildResultLine(finalScore, result) {
   if (finalScore === 0) {
-    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>you failed to score any points today</p><p>better luck tomorrow</p>`;
+    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>You failed to score today</p><p>Better luck tomorrow</p>`;
   }
   const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
   if (!hasNoMeaningfulBest && result.isNewBest) {
     return `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${finalScore} points</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`;
   }
   if (!hasNoMeaningfulBest && result.isTie) {
-    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>you equaled your best of ${finalScore} points</p><p>Let's go for a personal best tomorrow</p>`;
+    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best of ${finalScore} points</p><p>Try for a personal best tomorrow</p>`;
   }
-  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>you scored ${finalScore} points</p><p>see if you can do even better tomorrow</p>`;
+  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${finalScore} points</p><p>Try and do better tomorrow</p>`;
 }
 
 // Shown instead of buildResultLine() when the round ended via

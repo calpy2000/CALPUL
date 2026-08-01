@@ -696,7 +696,10 @@ function skullGrin(ctx, jawHalfW, cy0, jawBottom, darkColor, lightColor) {
 // highlight — the eyes/nose/teeth stay flat dark cutouts, unchanged from
 // before (that's the "Recessed Features" option's own territory, not
 // this one's).
-function drawSkull(ctx, x, y, R, pulse) {
+// Exported so skull-icon.js can render the exact same skull as a static
+// inline icon (see index.js's instructions text) — same reasoning as every
+// other game concept here having its own dedicated icon module.
+export function drawSkull(ctx, x, y, R, pulse) {
   ctx.save();
   ctx.translate(x, y);
 

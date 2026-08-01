@@ -15,6 +15,7 @@ import Starfield from './Starfield.js';
 import { drawPlayerFace, getPlayerIconDataURL } from './player-icon.js';
 import { getStarShardIconDataURL } from './star-shard-icon.js';
 import { getEnergyOrbIconDataURL } from './energy-orb-icon.js';
+import { getSkullIconDataURL } from './skull-icon.js';
 import { initShell } from '../../shared/core/shell.js';
 import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
@@ -32,8 +33,14 @@ stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools r
 const GAME_ID = 'warpz';
 
 const PLAYER_IMG = `<img src="${getPlayerIconDataURL()}" alt="spaceman" class="warpz-inline-icon">`;
-const STAR_SHARD_IMG = `<img src="${getStarShardIconDataURL()}" alt="star shard" class="warpz-inline-icon">`;
-const ENERGY_ORB_IMG = `<img src="${getEnergyOrbIconDataURL()}" alt="energy orb" class="warpz-inline-icon">`;
+// --large: these two read as too small to make out at the plain inline-icon
+// size (per the user's explicit feedback) — see .warpz-inline-icon--large's
+// own comment in style.css for why a transform:scale() modifier, not a
+// bigger width/height, is what keeps the instructions text's own line
+// spacing completely unchanged.
+const STAR_SHARD_IMG = `<img src="${getStarShardIconDataURL()}" alt="star shard" class="warpz-inline-icon warpz-inline-icon--large">`;
+const ENERGY_ORB_IMG = `<img src="${getEnergyOrbIconDataURL()}" alt="energy orb" class="warpz-inline-icon warpz-inline-icon--large">`;
+const SKULL_IMG = `<img src="${getSkullIconDataURL()}" alt="skull" class="warpz-inline-icon warpz-inline-icon--xlarge">`;
 
 // Loaded once, up front, via top-level await (valid inside a <script
 // type="module">) — the dev-tool "Sequence #" radio group below needs the
@@ -1840,7 +1847,7 @@ const shell = initShell({
   title: 'WARPZ',
   emojiImage: getPlayerIconDataURL(), // player smiley face, matching the hub tile — swapped in from the plain '☄️' emoji per the user's explicit request
   accentColor: { bg: '#A8D84A', ink: '#243D05', rim: 'rgba(55, 85, 5, 0.30)' },
-  instructions: `<p>Move the spaceman ${PLAYER_IMG} with your finger or mouse</p><p>Traverse the obstacles and avoid some that are lethal to life</p><p>Collect shards ${STAR_SHARD_IMG} and energy orbs ${ENERGY_ORB_IMG} to earn points</p>`,
+  instructions: `<p>Move the spaceman ${PLAYER_IMG} with your finger or mouse</p><p>Traverse the obstacles and avoid some that are lethal to life ${SKULL_IMG}</p><p>Collect shards ${STAR_SHARD_IMG} and energy orbs ${ENERGY_ORB_IMG} to earn points</p>`,
   formatScore: (score) => `${score} pts`,
 });
 

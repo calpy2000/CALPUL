@@ -3,12 +3,13 @@
     "sequence": 0,
     "steps": [
       { "obstacles": ["maze"], "quantity": 1, "level": "easy" },
-      { "obstacles": ["station"], "quantity": 1 },
       { "obstacles": ["asteroids"], "duration": 15 },
+      { "obstacles": ["station"], "quantity": 1 },
       { "obstacles": ["worms"], "duration": 15 },
       { "obstacles": ["clusters"], "duration": 15 },
       { "obstacles": ["zapper"], "duration": 15 },
-      { "obstacles": ["asteroids", "zapper"], "duration": 15 }
+      { "obstacles": ["asteroids", "zapper"], "duration": 15 },
+      { "obstacles": ["maze"], "quantity": 1, "level": "hard" }
         ]
   },
   {

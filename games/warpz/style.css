@@ -40,6 +40,26 @@
   vertical-align: middle;
 }
 
+/* Star shard / energy orb specifically read as too small to make out at the
+   plain 16px size above (per the user's explicit feedback on the
+   instructions text) — transform:scale() enlarges the rendered image
+   WITHOUT changing its own width/height, so the line box it sits in (and
+   therefore the paragraph's line-height/wrap points) is completely
+   unaffected; only the pixels visually spill slightly outside its own
+   16x16 layout box, same trick used for oversized emoji-replacement icons
+   elsewhere on the site. */
+.warpz-inline-icon--large {
+  transform: scale(1.6);
+}
+
+/* The skull specifically still read as too small even at --large's 1.6x
+   (per the user's explicit follow-up) — a bigger scale factor on the SAME
+   16x16 layout box, so the line box (and therefore line-height/wrap points)
+   stays exactly as unaffected as --large's own does. */
+.warpz-inline-icon--xlarge {
+  transform: scale(2.4);
+}
+
 /* Temporary dev-only debug label (see index.html/index.js) — fixed to the
    top-right corner, roughly level with and to the right of the header
    title on this narrow, centered layout. Not gated behind dev-mode in CSS

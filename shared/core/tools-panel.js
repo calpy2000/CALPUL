@@ -10,7 +10,7 @@
 import { clearProgress, clearAllData } from './game-storage.js';
 import { getToolMode } from './tool-mode.js';
 import { APP_VERSION } from './app-version.js';
-import { showPageLoadingIndicator } from './loading-indicator.js';
+import { reloadWithSpinner, navigateWithSpinner } from './loading-indicator.js';
 
 // Same small DOM-building helper used in shell.js and flip-timer.js — see
 // the longer explanation in shell.js if you haven't read that one yet.
@@ -149,18 +149,12 @@ function buildTestPanelContent() {
 // to manually reset every piece of in-memory game state by hand).
 function afterReset(panel, message) {
   panel.querySelector('#dev-panel-status').textContent = message;
-  // Shown on THIS (still-current) page right away, well before the reload
-  // below actually fires — a page keeps whatever it last painted on screen
-  // until the next page is ready to replace it, so putting the spinner up
-  // now means it stays visible continuously across the whole reload,
-  // regardless of how long any part of it (stylesheet fetch, JS module
-  // graph, etc.) takes on the reloaded page's side. Relying only on the
-  // reloaded page's OWN spinner timing left a gap: on a heavier game (e.g.
-  // WARPZ, with the most stylesheets/JS of any page), that reload could
-  // stall long enough to look frozen before its own spinner got a chance
-  // to appear.
-  showPageLoadingIndicator();
-  setTimeout(() => window.location.reload(), 500);
+  // reloadWithSpinner() (not a plain reload()) — confirmed on a real device
+  // that a bare window.location.reload() blanks the screen to plain white
+  // BEFORE the spinner (or anything else) gets a chance to show, unlike
+  // navigating to a URL, which keeps the current page's last-painted frame
+  // up until the next page is ready — see that function's own comment.
+  setTimeout(() => reloadWithSpinner(), 500);
 }
 
 function wireDevPanel(panel, gameIds, extraActions, radioGroups) {
@@ -203,6 +197,6 @@ function wireTestPanel(panel, gameIds) {
   });
 
   panel.querySelector('#dev-send-feedback').addEventListener('click', () => {
-    window.location.href = buildFeedbackPageUrl();
+    navigateWithSpinner(buildFeedbackPageUrl());
   });
 }

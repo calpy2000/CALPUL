@@ -37,3 +37,71 @@ export function showPageLoadingIndicator() {
   el.innerHTML = '<div class="page-loading__spinner"></div>';
   document.body.appendChild(el);
 }
+
+// Use this instead of a plain `window.location.href = url` (or a plain
+// `<a href>` with no click handler at all) for any navigation that isn't
+// ALREADY buffered by a real delay of its own (contrast: the dev/tester
+// tools' reset-then-reload flow already waits 500ms before reloading, which
+// is plenty of time for a real paint — this helper isn't needed there).
+//
+// Just calling showPageLoadingIndicator() and then immediately navigating
+// is NOT enough on its own: adding a DOM node doesn't guarantee the browser
+// actually renders a frame showing it before navigation begins — a
+// same-tick DOM change right before the page starts unloading can be
+// skipped entirely, with zero visible frames in between, which is exactly
+// what an instant link tap (hub tile, header "back", "Return to PUSULZ")
+// does. The two nested requestAnimationFrame calls force a real paint to
+// happen first: the outer one fires at the start of the NEXT frame (so the
+// spinner's insertion is at least scheduled for that frame's render), and
+// scheduling the actual navigation inside a SECOND, nested rAF guarantees
+// we're now past a frame that has actually been painted, not just queued —
+// the standard "wait for a real paint" pattern for exactly this class of
+// bug. Only after that does it navigate, by which point the spinner is
+// genuinely on screen and (being the current page's last-painted content)
+// stays there for the whole transition, regardless of how long the
+// destination page takes to load.
+export function navigateWithSpinner(url) {
+  showPageLoadingIndicator();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      window.location.href = url;
+    });
+  });
+}
+
+// Use this instead of a plain window.location.reload() for the dev/tester
+// tools' "reset" actions. A true reload() appears to behave differently
+// from navigating to a URL (even the SAME url): where a normal navigation
+// keeps the current page's last-painted frame on screen until the next
+// page is ready (see navigateWithSpinner() above), reload() seems to blank
+// the screen to a plain white background first, then fetch/parse/paint the
+// page from scratch — a real white flash before the spinner ever gets a
+// chance to show, confirmed on a real device. Navigating to the exact same
+// URL plus a harmless, unique query param (rather than calling reload()
+// itself) makes the browser treat this as an ordinary cross-page
+// navigation instead, which is the code path that doesn't have that flash.
+// The extra param is stripped from the address bar the moment the reloaded
+// page's own script runs (see hidePageLoadingIndicator() usage sites — this
+// stripping happens once, right alongside it), so it never lingers or ends
+// up in a bookmark/share.
+export function reloadWithSpinner() {
+  showPageLoadingIndicator();
+  const url = new URL(window.location.href);
+  url.searchParams.set('_r', String(Math.random()).slice(2));
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      window.location.href = url.toString();
+    });
+  });
+}
+
+// Strips the `_r=...` cache-busting param reloadWithSpinner() adds, via
+// history.replaceState (no new navigation/reload of its own). Call once,
+// early in a page's own index.js — safe to call even when the param isn't
+// present (no-ops).
+export function stripReloadParam() {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('_r')) return;
+  url.searchParams.delete('_r');
+  window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+}

@@ -6,9 +6,10 @@ import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/g
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
-import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
+stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 const GAME_ID = 'solvz';
 

@@ -19,9 +19,10 @@ import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ANSWERS_366 } from './answers.js';
 import { isFuzzyMatch } from './fuzzy-match.js';
 import { getClapperboardIconDataURL } from './icon.js';
-import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
+stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 const GAME_ID = 'muveez';
 

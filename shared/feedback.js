@@ -322,37 +322,29 @@ async function copyMessageToClipboard(message) {
 const copyStatus = document.getElementById('feedback-copy-status');
 let copyStatusTimer = null;
 
-document.getElementById('feedback-submit').addEventListener('click', async () => {
+document.getElementById('feedback-submit').addEventListener('click', () => {
   const message = buildMessage();
   if (!message) return;
-
   // mailto:'s body param can only ever carry plain text — a hard limitation
-  // of the mailto: URL scheme itself, not something fixable in this code —
-  // so the aligned, styled HTML table "Copy feedback instead" produces can
-  // never be pre-filled directly into the email body. Instead, this copies
-  // that SAME nicely-formatted table to the clipboard (exactly like "Copy
-  // feedback instead" does) and opens the mail app with just a short
-  // "paste it below" placeholder, so a quick paste gets the tester the same
-  // formatting either button produces. Falls back to the old, fully
-  // pre-filled plain-text body if the clipboard write fails for any reason,
-  // so the tester still ends up with something usable either way.
-  clearTimeout(copyStatusTimer);
-  const copied = await copyMessageToClipboard(message);
-  const body = copied
-    ? 'Your feedback has been copied to your clipboard — paste it here before sending (long-press > Paste, or Cmd/Ctrl+V).'
-    : message.body;
-  copyStatus.textContent = copied
-    ? 'Copied! Paste it into this email before sending.'
-    : "Couldn't copy automatically — the email has been pre-filled instead.";
-  copyStatusTimer = setTimeout(() => { copyStatus.textContent = ''; }, 4000);
-
+  // of the mailto: URL scheme itself — so this is always the plainer,
+  // alignment-not-guaranteed table rather than the nicely-formatted one
+  // "Copy feedback instead" can produce. An earlier version tried copying
+  // that nicer table to the clipboard and asking the tester to paste it in
+  // instead, but that reminder lives in the email BODY — by the time
+  // they're looking at it they've already switched apps and away from any
+  // on-page confirmation, and in practice testers missed it and sent the
+  // placeholder text as-is. Pre-filling directly, even with plainer
+  // formatting, is more reliable than a step that's easy to skip
+  // unnoticed — "Copy feedback instead" remains the way to get the nicer
+  // formatting, for anyone who wants it.
+  //
   // Navigating to a mailto: URL is what actually opens the browser's
   // configured mail app (or a "choose an app" prompt) with the subject/body
   // pre-filled — there's no way to send the email directly from a static
   // page with no backend. If that opens an app the tester doesn't actually
   // use (e.g. an unconfigured default on their phone/PC), "Copy feedback
   // instead" below is the fallback.
-  window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(message.subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(message.subject)}&body=${encodeURIComponent(message.body)}`;
 });
 
 document.getElementById('feedback-copy').addEventListener('click', async () => {

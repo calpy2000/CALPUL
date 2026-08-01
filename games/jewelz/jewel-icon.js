@@ -58,15 +58,15 @@ export function drawFacetedGem(context, x, y, r, style, t, label) {
   }
 
   if (label) {
-    // Light grey (not white) with a small glow in the gem's own hue —
+    // Light-to-mid grey (not white) with a small glow in the gem's own hue —
     // deliberately smaller/subtler than WARPZ's Energy Orb value text
     // rather than an exact copy, per the user's own explicit spec.
-    context.font = `bold ${Math.round(r * 0.85)}px ui-monospace, Consolas, monospace`;
+    context.font = `bold ${Math.round(r * 0.7)}px ui-monospace, Consolas, monospace`;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.shadowColor = style.glowColor;
     context.shadowBlur = r * 0.35;
-    context.fillStyle = '#d1d5db';
+    context.fillStyle = '#9CA3AF';
     context.fillText(label, 0, r * 0.04);
   }
 

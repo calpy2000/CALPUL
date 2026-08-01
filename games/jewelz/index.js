@@ -18,9 +18,10 @@ import { initShell } from '../../shared/core/shell.js';
 import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
-import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
+stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 const GAME_ID = 'jewelz';
 

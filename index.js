@@ -9,7 +9,7 @@ import { getDailyStatus } from './shared/core/daily-lock.js';
 import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
-import { hidePageLoadingIndicator, showPageLoadingIndicator } from './shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam } from './shared/core/loading-indicator.js';
 
 // See loading-indicator.js's own comment: this page's whole JS module graph
 // (every import above) has already finished loading by the time this line
@@ -18,6 +18,9 @@ import { hidePageLoadingIndicator, showPageLoadingIndicator } from './shared/cor
 // load (the beta gate waiting on a typed code), neither of which the
 // spinner should keep covering.
 hidePageLoadingIndicator();
+// Cleans up the harmless `?_r=...` cache-busting param reloadWithSpinner()
+// may have added (see loading-indicator.js) — no-ops if it isn't present.
+stripReloadParam();
 
 // Converts a raw number of seconds (e.g. 83) into "M:SS" (e.g. "1:23") for
 // display. Used for every game whose games-registry.js entry has
@@ -86,8 +89,17 @@ function renderTiles() {
     // bridges the whole transition regardless of how long any part of it
     // (stylesheet fetch, that game's own JS module graph, etc.) takes. The
     // heavier games — WARPZ especially, with the most stylesheets/JS of any
-    // page — are exactly where that gap was visible before this.
-    tile.addEventListener('click', () => showPageLoadingIndicator());
+    // page — are exactly where that gap was visible before this. preventDefault()
+    // + navigateWithSpinner() (rather than just calling
+    // showPageLoadingIndicator() and letting the plain href navigate on its
+    // own) is what actually guarantees the spinner gets a real painted frame
+    // before navigation begins — see that function's own comment for why a
+    // bare same-tick DOM change right before navigating isn't enough on its
+    // own.
+    tile.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateWithSpinner(game.path);
+    });
     // .style.setProperty() sets a CSS custom property directly on this one
     // element (as an inline style), rather than in a stylesheet — this is
     // how each tile gets ITS OWN color even though they all share the same
@@ -147,12 +159,10 @@ initToolsPanel(GAMES.map((game) => game.id), {
       label: 'Reset tester code',
       onClick: () => {
         clearStoredTester();
-        // Shown on this page right away, before the reload — see
-        // tools-panel.js's afterReset() for the fuller reasoning (a page's
-        // last-painted content, spinner included, stays on screen until the
-        // next page is ready to replace it, bridging the whole reload).
-        showPageLoadingIndicator();
-        window.location.reload();
+        // reloadWithSpinner(), not a plain reload() — see
+        // loading-indicator.js's own comment: a bare reload() blanks the
+        // screen to plain white before anything else gets a chance to show.
+        reloadWithSpinner();
       },
     },
   ],

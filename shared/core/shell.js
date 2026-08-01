@@ -30,7 +30,7 @@
 import { getDailyStatus } from './daily-lock.js';
 import { getBestScore, getTodayScore, saveTodayScore } from './game-storage.js';
 import { createFlipTimer } from './flip-timer.js';
-import { showPageLoadingIndicator } from './loading-indicator.js';
+import { navigateWithSpinner } from './loading-indicator.js';
 
 // Small helper to cut down on repetition below: creates a DOM element,
 // optionally gives it a class and some inner HTML, and hands it back — but
@@ -151,10 +151,14 @@ export function initShell({
 
   // Shows the spinner on THIS (still-current) page the instant "back" is
   // tapped, rather than relying only on the hub's own spinner timing — see
-  // index.js's identical reasoning on its own hub-tile click listener. A
-  // plain <a href> already navigates on its own right after this runs; this
-  // only adds the proactive show, nothing about the click itself changes.
-  header.querySelector('.shell-header__back').addEventListener('click', () => showPageLoadingIndicator());
+  // loading-indicator.js's navigateWithSpinner() for why preventDefault() +
+  // a manual navigate (rather than just letting the plain <a href> fire on
+  // its own) is what actually guarantees the spinner gets a real painted
+  // frame before navigation begins.
+  header.querySelector('.shell-header__back').addEventListener('click', (e) => {
+    e.preventDefault();
+    navigateWithSpinner(hubPath);
+  });
 
   // --- Footer ---
   const footer = el(
@@ -248,8 +252,7 @@ export function initShell({
   );
   stage.appendChild(endScreen);
   endScreen.querySelector('#shell-hub-btn').onclick = () => {
-    showPageLoadingIndicator(); // shown proactively — see the back link's identical reasoning above
-    window.location.href = hubPath; // full page navigation back to the hub
+    navigateWithSpinner(hubPath); // see the back link's identical reasoning above
   };
 
   const shareBtn = endScreen.querySelector('#shell-share-btn');

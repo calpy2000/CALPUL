@@ -25,9 +25,10 @@ import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ALL_WORDS } from './words.js';
 import { getHeaderIconDataURL, getTileIconDataURL, getWildcardIconDataURL, WILDCARD_LETTER } from './raindrop-icon.js';
 import { drawUmbrella, getUmbrellaIconDataURL } from './umbrella-icon.js';
-import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
+stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 const GAME_ID = 'rainz';
 const WORD_LENGTH = 4;

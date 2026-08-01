@@ -8,6 +8,12 @@
      feel like a small self-contained app rather than a document. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PUSULZ</title>
+<!-- iOS Safari's "Add to Home Screen" ignores plain favicons and falls
+     back to a blurry auto-grabbed one without this — same "P" tile design
+     as favicon.ico, just rendered crisp at the size iOS actually wants
+     (180x180, flat/unrounded — iOS applies its own rounded-square mask on
+     top of whatever's supplied here). -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <!-- tokens.css must load first — it defines the CSS custom properties
      (--ink, --accent, --space-md, etc.) that both tools-panel.css and this
      page's own style.css rely on via var(--name). -->
@@ -17,6 +23,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Page-load spinner (shared/core/loading-indicator.js + tokens.css's
+       own .page-loading rules) — first thing in the DOM on every page, so
+       it paints as early as possible. Only actually becomes visible if
+       still present 200ms later (a pure-CSS delay, see tokens.css) and is
+       removed by index.js the moment this page's own JS module graph has
+       finished loading. -->
+  <div class="page-loading" id="pageLoading" aria-hidden="true"><div class="page-loading__spinner"></div></div>
 
   <!-- Beta-only entry gate (shared/core/beta-gate.js) — empty until index.js
        decides whether to fill it in, based on whether this device already

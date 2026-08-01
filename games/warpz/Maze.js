@@ -914,11 +914,16 @@ export default class Maze {
   // exit is still off-screen as the first one was. So every spawn computes
   // the FULL exit->entrance route once (bfsFullPath(), unlike every other
   // pathing call in this file which only ever wants the next hop) and
-  // starts the skull at the first cell along THAT REAL ROUTE that's
-  // already on-screen — i.e. wherever it would naturally have reached by
-  // now if it had been travelling the whole time. If the exit itself is
-  // already visible, that's just the exit cell (this is a strict
-  // generalization of "spawn at the exit," not a different behavior).
+  // starts the skull at the LAST cell along THAT REAL ROUTE that's still
+  // OFF-screen, one hop before the route first becomes visible — per the
+  // user's explicit live-testing follow-up, spawning already inside the
+  // visible area made the skull just materialize out of nowhere with no
+  // warning; starting one hop short means _updateSkull()'s own normal
+  // movement carries it across the boundary on the very next hop, so it
+  // visibly travels in from outside rather than popping in. If the exit
+  // itself is already visible, there's no earlier off-screen cell to fall
+  // back to, so this is still just the exit cell (a strict generalization
+  // of "spawn at the exit," not a different behavior in that case).
   _spawnSkullOnRoute() {
     const exitIdx = 0 * COLS + this.exitCol;
     const entranceIdx = (ROWS - 1) * COLS + this.entranceCol;
@@ -928,7 +933,8 @@ export default class Maze {
       for (const idx of path) {
         const r = Math.floor(idx / COLS);
         const cy = this.nodeY(r) + CELL_H / 2;
-        if (cy >= 0 && cy <= this.canvasHeight) { spawnIdx = idx; break; }
+        if (cy >= 0 && cy <= this.canvasHeight) break; // first on-screen cell — spawn at the still-off-screen cell right before it instead
+        spawnIdx = idx;
       }
     }
     const r = Math.floor(spawnIdx / COLS), c = spawnIdx % COLS;

@@ -6,6 +6,9 @@ import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/g
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
+import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+
+hidePageLoadingIndicator();
 
 const GAME_ID = 'solvz';
 

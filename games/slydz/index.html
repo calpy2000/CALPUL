@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>SLYDZ</title>
+<!-- Same apple-touch-icon as every page — see the matching comment in the
+     hub's own index.html. -->
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <!-- Same load order convention as every other game — see the matching
      comment in games/solvz/index.html. -->
 <link rel="stylesheet" href="../../shared/tokens.css">
@@ -12,6 +15,10 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Page-load spinner — see shared/tokens.css's .page-loading rules and
+       shared/core/loading-indicator.js. Same convention on every page. -->
+  <div class="page-loading" id="pageLoading" aria-hidden="true"><div class="page-loading__spinner"></div></div>
 
   <!-- Same .shell > .shell-stage#game-stage > #game-root convention as
        every other game. #grid starts empty — index.js's buildGrid() fills

@@ -9,6 +9,15 @@ import { getDailyStatus } from './shared/core/daily-lock.js';
 import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
+import { hidePageLoadingIndicator } from './shared/core/loading-indicator.js';
+
+// See loading-indicator.js's own comment: this page's whole JS module graph
+// (every import above) has already finished loading by the time this line
+// runs, so the spinner's job is done — everything from here on either
+// finishes fast (renderTiles()) or is genuinely interactive rather than a
+// load (the beta gate waiting on a typed code), neither of which the
+// spinner should keep covering.
+hidePageLoadingIndicator();
 
 // Converts a raw number of seconds (e.g. 83) into "M:SS" (e.g. "1:23") for
 // display. Used for every game whose games-registry.js entry has

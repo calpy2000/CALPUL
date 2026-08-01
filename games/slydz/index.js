@@ -14,6 +14,9 @@ import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ALL_WORDS, COMMON_WORDS } from './words.js';
 import { getTileDataURL } from './tile-icon.js';
+import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+
+hidePageLoadingIndicator();
 
 const GAME_ID = 'slydz';
 

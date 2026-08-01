@@ -73,6 +73,18 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #8a94a6;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* App version (shared/core/app-version.js), top-right of the panel's own
+   title row — small red text per the user's explicit spec, distinct from
+   the title's own gray. Bumped automatically as part of every push to
+   GitHub (see app-version.js's own comment). */
+.dev-panel__version {
+  color: #c0392b; /* same red as .dev-panel__btn--danger, for consistency */
+  font-size: 11px;
 }
 
 .dev-panel__btn {

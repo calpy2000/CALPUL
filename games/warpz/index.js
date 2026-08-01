@@ -21,6 +21,13 @@ import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/g
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getToolMode } from '../../shared/core/tool-mode.js';
+import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+
+// See loading-indicator.js's own comment: every file imported above
+// (Asteroid.js, Station.js, Maze.js, etc. — the whole reason this page can
+// be slow to appear on a cold/first load) has already finished loading by
+// the time this line runs, so the spinner's job is done here.
+hidePageLoadingIndicator();
 
 const GAME_ID = 'warpz';
 

@@ -20,9 +20,22 @@ html, body {
   max-width: 720px; /* keeps tiles from stretching too wide on a large desktop window */
   margin: 0 auto; /* centers the whole hub horizontally */
   padding: var(--space-lg) var(--space-md);
+  /* Bounded to exactly the visible viewport (100dvh — the "dynamic" unit
+     that already accounts for Safari's collapsing address/tab bars, unlike
+     100vh which is measured against the LARGEST possible viewport and
+     leaves content sitting under the toolbar) rather than growing to fit
+     however many tiles exist. Combined with .hub__grid's own flex:1 +
+     overflow-y below, this is what lets the grid shrink its rows to fit
+     whatever's currently on screen, and fall back to scrolling only once
+     that stops being possible — see .hub__grid's own comment for the
+     actual "how many rows fit" math. */
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 .hub__title {
+  flex: none; /* always keeps its natural size — .hub__grid below is the only thing that trades space against the viewport */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,18 +118,42 @@ html, body {
   display: grid;
   /* Fixed 2 columns down to the iPhone 14 (standard, 390px-wide) breakpoint
      below — this grid is meant to stay 2-wide across ordinary phone-to-
-     desktop sizes ("reactive" in width, not in column count). Each tile's
-     own aspect-ratio below is what keeps it square as that column width
-     changes, rather than a fixed pixel height tuned to one screen. */
+     desktop sizes ("reactive" in width, not in column count). */
   grid-template-columns: repeat(2, 1fr);
+  /* Row height is now driven by whatever vertical space .hub actually has
+     left (see .hub's own height:100dvh + this element's flex:1 below),
+     NOT by a fixed tile count — this is what replaces the old
+     aspect-ratio:1/1 approach (which sized every tile purely off its
+     WIDTH, with zero regard for how many rows that added up to
+     vertically, which is exactly why 4 rows of square tiles could run off
+     the bottom of a shorter phone).
+     `minmax(100px, 1fr)`: as many rows as exist share the leftover space
+     equally (1fr each), shrinking together as more rows get added — but
+     never below 100px, a floor chosen for the tile's own content (icon +
+     title + tagline + status pill + score) to stay legible, not reverse-
+     engineered from "make 8 tiles fit". On an iPhone 14 (844px viewport,
+     minus the header/padding above and Safari's own chrome) today's 4
+     rows land at roughly ~125-150px each — comfortably above that floor.
+     Once there are enough rows that even 100px each would overflow
+     .hub's own fixed 100dvh height, the floor wins, the grid's natural
+     content height exceeds its flex-allotted space, and overflow-y below
+     turns THAT into a scroll area instead of squeezing tiles smaller or
+     pushing them off-screen — so this keeps working automatically as more
+     games get added later, with no hardcoded tile count anywhere. */
+  grid-auto-rows: minmax(100px, 1fr);
   gap: var(--space-md);
+  flex: 1 1 auto;
+  min-height: 0; /* the classic flexbox trap: without this, a flex child won't shrink below its own content's natural height, which would silently defeat the minmax() floor above and just push the grid past .hub's 100dvh instead of ever scrolling */
+  overflow-y: auto;
 }
 
 /* Below the iPhone 14 standard's own width (390px CSS px — narrower than
    the 430px iPhone 14 Pro Max this was designed against, e.g. the 375px
-   iPhone X/10), 2 square columns would each be uncomfortably narrow, so the
-   grid drops to a single column instead. The tile itself still just reads
-   its column's width via aspect-ratio/cqw as before — nothing about the
+   iPhone X/10), 2 columns would each be uncomfortably narrow, so the grid
+   drops to a single column instead — this doubles the row count for the
+   same tile count, so it's this breakpoint, not tile count, that decides
+   whether the grid needs to scroll on a given phone. The tile itself still
+   just reads its container's size via cqmin as before — nothing about the
    tile's own CSS needs to know which breakpoint it's in. */
 @media (max-width: 389px) {
   .hub__grid {
@@ -125,17 +162,23 @@ html, body {
 }
 
 .hub__tile {
-  aspect-ratio: 1 / 1;
-  /* Establishes this tile as a CSS container so its children below can be
-     sized in `cqw` units (1cqw = 1% of THIS element's own width) instead of
-     fixed px. The tile's own width already varies a lot by screen size —
-     from ~150px on a narrow phone up to ~336px inside the hub's 720px
-     max-width on a full desktop window — and since it's square, sizing
-     every bit of content off the tile's own width keeps the exact same
-     proportions (header height, tagline size, etc.) at ANY of those sizes,
-     rather than the fixed-px values that looked right at one specific
-     screen size and too small/large everywhere else. */
-  container-type: inline-size;
+  /* No more aspect-ratio:1/1 — the tile's height now comes from its grid
+     ROW (see .hub__grid's own grid-auto-rows comment), which is driven by
+     available viewport height, not by this tile's own width. That means a
+     tile isn't guaranteed square anymore (it can end up shorter/wider on a
+     cramped mobile screen, or a bit taller on a spacious desktop one) — a
+     deliberate tradeoff for "fit what's currently on screen without
+     scrolling," which only works if height is free to differ from width.
+     Establishes this tile as a CSS container so its children below can be
+     sized in `cqmin` units (1cqmin = 1% of THIS element's SHORTER side —
+     see MDN's container query length units) instead of fixed px or plain
+     `cqw`. cqmin specifically (not cqw) is what keeps content correctly
+     sized in EITHER direction now that width and height can genuinely
+     differ: sizing off cqw alone would overflow a short-but-wide tile
+     (content sized for the wide axis, squeezed into a shorter one), and
+     cqh alone would do the same in reverse on a narrow-but-tall one —
+     cqmin always scales off whichever axis is currently tighter. */
+  container-type: size;
   display: flex;
   flex-direction: column;
   /* Content is centered rather than stretched top-to-bottom: the tagline
@@ -153,8 +196,14 @@ html, body {
      instead of the tile's real width. % avoids that entirely: it resolves
      against the GRID CELL's width, which is already fixed before this
      element's own box model is computed, so there's nothing circular
-     about it — and since the grid cell is square-ish here too, the result
-     is the same proportional scaling. */
+     about it. Left as % rather than switched to cqmin along with
+     everything below (see the container-type comment above) purely
+     because that Chrome quirk was never re-verified as fixed under
+     container-type:size specifically — this is the one place on the tile
+     that's still width-only, so its padding/gap in px terms won't track
+     height as closely as the cqmin-based content does on a tile that ends
+     up notably shorter than it is wide. Minor cosmetic nuance, not a
+     functional issue: worth re-testing if it ever looks off in practice. */
   gap: 4.2%;
   text-decoration: none; /* this is an <a> link — removes the default underline */
   overflow: hidden;
@@ -196,7 +245,7 @@ html, body {
 .hub__tile-row1 {
   display: flex;
   align-items: center;
-  gap: 6.2cqw; /* 1.2x */
+  gap: 6.2cqmin; /* 1.2x */
 }
 
 /* SOLVZ is the one game with no generated icon art of its own, so it still
@@ -204,14 +253,14 @@ html, body {
    sitting in a small raised circle (--tile-accent, a more saturated shade
    than the tile's own soft fill) rather than directly on the flat pastel. */
 .hub__tile-badge {
-  width: 24cqw; /* 1.2x */
-  height: 24cqw; /* 1.2x */
+  width: 24cqmin; /* 1.2x */
+  height: 24cqmin; /* 1.2x */
   flex: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12.6cqw; /* 1.2x */
+  font-size: 12.6cqmin; /* 1.2x */
   color: #ffffff;
   background: var(--tile-accent, rgba(0, 0, 0, 0.2));
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.45), inset -2px -3px 4px rgba(0, 0, 0, 0.22);
@@ -222,9 +271,9 @@ html, body {
    (square gem/clapperboard, taller raindrop, etc.) comes through unchanged
    rather than being squashed into a fixed box. */
 .hub__tile-icon-img {
-  height: 24cqw; /* 1.2x */
+  height: 24cqmin; /* 1.2x */
   width: auto;
-  max-width: 34.8cqw; /* 1.2x */
+  max-width: 34.8cqmin; /* 1.2x */
   flex: none;
   display: block;
   object-fit: contain;
@@ -232,13 +281,13 @@ html, body {
 
 .hub__tile-title {
   font-weight: 700;
-  font-size: 13.8cqw; /* 12cqw base, ×1.15 */
+  font-size: 13.8cqmin; /* 12cqmin base, ×1.15 */
   line-height: 1.1;
   color: #443653;
 }
 
 .hub__tile-tagline {
-  font-size: 8.76cqw; /* 1.2x */
+  font-size: 8.76cqmin; /* 1.2x */
   font-weight: 600;
   line-height: 1.35;
   color: rgba(68, 54, 83, 0.72);
@@ -250,8 +299,7 @@ html, body {
      .hub__tile's own `justify-content: center` above splits whatever space
      is left evenly instead. */
   /* Hard-capped at 2 lines — a long tagline gets an ellipsis instead of
-     pushing status/score below the tile's own edge or forcing the tile to
-     grow past square. */
+     pushing status/score below the tile's own bottom edge. */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -260,16 +308,16 @@ html, body {
 
 .hub__tile-status {
   align-self: flex-start;
-  font-size: 7.56cqw; /* 1.2x */
+  font-size: 7.56cqmin; /* 1.2x */
   font-weight: 700;
   color: #443653;
   background: rgba(255, 255, 255, 0.55);
-  padding: 3.12cqw 7.2cqw; /* 1.2x */
+  padding: 3.12cqmin 7.2cqmin; /* 1.2x */
   border-radius: 999px; /* always a full pill regardless of how tall this ends up at any tile size */
 }
 
 .hub__tile-score {
-  font-size: 7.8cqw; /* 1.2x */
+  font-size: 7.8cqmin; /* 1.2x */
   font-weight: 600;
   color: rgba(68, 54, 83, 0.58);
 }

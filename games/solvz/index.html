@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>SOLVZ</title>
+<!-- Same apple-touch-icon as every page — see the matching comment in the
+     hub's own index.html. -->
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <!-- Load order matters: tokens.css defines the CSS variables (--ink,
      --accent, etc.) that shell.css and this game's own style.css both use
      via var(--name), so it has to come first. shell.css provides the
@@ -16,6 +19,10 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Page-load spinner — see shared/tokens.css's .page-loading rules and
+       shared/core/loading-indicator.js. Same convention on every page. -->
+  <div class="page-loading" id="pageLoading" aria-hidden="true"><div class="page-loading__spinner"></div></div>
 
   <!-- This nested structure — .shell > .shell-stage#game-stage >
        #game-root > (game content) — is the fixed convention every game

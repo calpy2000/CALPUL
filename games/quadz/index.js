@@ -27,6 +27,9 @@ import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { PUZZLES_366 } from './puzzles.js';
 import { ALL_WORDS } from './words.js';
 import { getTileIconDataURL } from './tile-icon.js';
+import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+
+hidePageLoadingIndicator();
 
 const GAME_ID = 'quadz';
 const LETTER_SIZE = 4; // the inner 4x4 block of actual letter tiles

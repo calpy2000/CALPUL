@@ -9,6 +9,7 @@
 
 import { clearProgress, clearAllData } from './game-storage.js';
 import { getToolMode } from './tool-mode.js';
+import { APP_VERSION } from './app-version.js';
 
 // Same small DOM-building helper used in shell.js and flip-timer.js — see
 // the longer explanation in shell.js if you haven't read that one yet.
@@ -121,7 +122,7 @@ function buildDevPanelContent(extraActions, radioGroups) {
   return el(
     'div',
     'dev-panel is-hidden',
-    `<p class="dev-panel__title">Dev tools</p>
+    `<p class="dev-panel__title">Dev tools<span class="dev-panel__version">V${APP_VERSION}</span></p>
      ${radioGroupsHtml}
      ${extraButtonsHtml}
      <button class="dev-panel__btn" id="dev-reset-today" type="button">Reset today's progress</button>
@@ -134,7 +135,7 @@ function buildTestPanelContent() {
   return el(
     'div',
     'dev-panel is-hidden',
-    `<p class="dev-panel__title">Tester tools</p>
+    `<p class="dev-panel__title">Tester tools<span class="dev-panel__version">V${APP_VERSION}</span></p>
      <button class="dev-panel__btn" id="dev-reset-today" type="button">Reset today's progress</button>
      <button class="dev-panel__btn" id="dev-send-feedback" type="button">Send feedback</button>
      <p class="dev-panel__status" id="dev-panel-status"></p>`

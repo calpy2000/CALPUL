@@ -85,3 +85,49 @@ body {
      for Windows, Roboto for Android, sans-serif as the last resort. */
   --font-body: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+
+/* ---- page-load spinner (shared/core/loading-indicator.js) ----
+   Every page (hub + every game) has a `<div class="page-loading" id=
+   "pageLoading">` as the very first thing in <body> (see index.html), and
+   calls hidePageLoadingIndicator() as the first statement its own index.js
+   runs — which, thanks to how ES modules work, only happens once every
+   file that index.js imports has already been fetched and evaluated. So
+   this overlay's entire lifetime is "from first paint until this page's
+   own JS module graph has finished loading" — exactly the "looks frozen"
+   gap the user reported hitting on first/cold-cache loads.
+
+   The 200ms-before-appearing delay lives ENTIRELY in this CSS animation,
+   not in any JS timer — deliberately, since the whole point is to cover
+   for the JS not having run yet, so nothing here can depend on JS logic
+   having already executed. tokens.css loading before anything else (see
+   every index.html's own link order comment) is what guarantees this
+   delay is in effect from the very first paint. Per the Doherty threshold
+   (the standard UX guideline this was picked from): anything faster than
+   ~200-400ms reads as flicker if a spinner flashes on and off, so loads
+   that finish inside 200ms never show it at all. */
+.page-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  opacity: 0;
+  pointer-events: none;
+  animation: page-loading-reveal 0s 200ms forwards;
+}
+@keyframes page-loading-reveal {
+  to { opacity: 1; pointer-events: auto; }
+}
+.page-loading__spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  border-top-color: var(--accent);
+  animation: page-loading-spin 0.8s linear infinite;
+}
+@keyframes page-loading-spin {
+  to { transform: rotate(360deg); }
+}

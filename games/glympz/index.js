@@ -8,6 +8,9 @@ import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getTileIconDataURL } from './row-icon.js';
+import { hidePageLoadingIndicator } from '../../shared/core/loading-indicator.js';
+
+hidePageLoadingIndicator();
 
 const GAME_ID = 'glympz';
 

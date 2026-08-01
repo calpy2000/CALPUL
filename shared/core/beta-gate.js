@@ -60,6 +60,23 @@ async function fetchTesters() {
   return res.json();
 }
 
+// Schedules the ?code=... param to be stripped from the address bar after
+// a delay — shared by both showGate()'s manual-entry success path and
+// tryCodeFromUrl() below, for exactly the same reason (see
+// tryCodeFromUrl()'s own comment for the full "why delayed, why 60s"
+// story). Re-reads window.location.href fresh at fire time (rather than
+// capturing a URL object up front) and no-ops if the param is already
+// gone, so it's safe to call from multiple places without them stepping
+// on each other.
+function scheduleCodeStrip() {
+  setTimeout(() => {
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has('code')) return;
+    url.searchParams.delete('code');
+    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+  }, 60000);
+}
+
 function buildGatePanel() {
   return el(
     'form',
@@ -148,6 +165,22 @@ function showGate() {
 
       const [name, code] = match;
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
+
+      // Bakes ?code=... onto the CURRENT url — welcome.html's own
+      // instructions have the tester do "Add to Home Screen" shortly AFTER
+      // landing on the hub, not before, so without this the resulting icon
+      // would be created from a plain, code-less URL. A home-screen icon
+      // gets its own separate, isolated storage from its very FIRST
+      // launch (not just on a later delete+re-add), so with nothing baked
+      // into its own saved URL to fall back on, opening it hit that empty
+      // container and prompted for the code again immediately — confirmed
+      // on a real device. Same delayed strip as tryCodeFromUrl() uses, so
+      // it isn't left sitting in the address bar indefinitely.
+      const url = new URL(window.location.href);
+      url.searchParams.set('code', code);
+      window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+      scheduleCodeStrip();
+
       hidePageLoadingIndicator();
       gate.classList.add('is-hidden');
       gate.innerHTML = '';
@@ -175,24 +208,19 @@ async function tryCodeFromUrl() {
   // entry or reload anything. The code stays effective for THIS load
   // either way; this purely keeps it from lingering on-screen indefinitely.
   //
-  // Deliberately DELAYED (not immediate) — a tester following welcome.html's
-  // "tap your personal link, then Add to Home Screen" instructions needs
-  // the address bar to STILL have ?code=... on it at the moment they
-  // actually do Add to Home Screen, or the icon they create won't have it
-  // baked into ITS OWN saved target URL, which is what lets a future
-  // delete+re-add (which wipes iOS's isolated storage for standalone apps)
-  // silently re-authenticate instead of prompting for the code again. An
-  // immediate strip closed that window before anyone could realistically
-  // get through the Share-icon flow. 60s is a generous, un-rushed amount of
-  // time for that, still short enough that the code isn't just sitting
-  // there forever. Accepted as a low-risk tradeoff, per the user's explicit
-  // call — the whole codebook (testers.json) is already public/unencrypted,
-  // so a code visible in the address bar/history for an extra minute isn't
-  // a meaningful new exposure on top of that.
-  setTimeout(() => {
-    url.searchParams.delete('code');
-    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
-  }, 60000);
+  // Deliberately DELAYED (not immediate, see scheduleCodeStrip() above) —
+  // a tester doing "Add to Home Screen" shortly after this URL resolves
+  // needs the address bar to STILL have ?code=... on it at that moment, or
+  // the icon they create won't have it baked into ITS OWN saved target
+  // URL, which is what lets a future delete+re-add (which wipes iOS's
+  // isolated storage for standalone apps) silently re-authenticate instead
+  // of prompting for the code again. An immediate strip closed that window
+  // before anyone could realistically get through the Share-icon flow.
+  // Accepted as a low-risk tradeoff, per the user's explicit call — the
+  // whole codebook (testers.json) is already public/unencrypted, so a code
+  // visible in the address bar/history for an extra minute isn't a
+  // meaningful new exposure on top of that.
+  scheduleCodeStrip();
 
   let testers;
   try {

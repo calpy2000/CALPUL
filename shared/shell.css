@@ -404,6 +404,14 @@
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
+/* Overrides .shell-btn's own text-transform:lowercase (above) for just the
+   "PUSULZ" brand name inside the end-screen's "Return to PUSULZ" button (see
+   shell.js) — every other word on every .shell-btn still renders lowercase
+   as before; only the brand name itself stays fully capitalized. */
+.shell-btn__brand {
+  text-transform: uppercase;
+}
+
 /* :active is a CSS pseudo-class matching an element WHILE it's being
    pressed (mouse button down / finger touching, not yet released) — this
    makes buttons visibly shrink and nudge down slightly on press, AND flips

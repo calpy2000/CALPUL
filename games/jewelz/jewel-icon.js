@@ -20,18 +20,22 @@ export const JEWEL_STYLE = { facets: 8, hue: 350, glowColor: '#f43f5e' }; // rub
 // regular ruby one at a glance, on top of its size/label/lifetime.
 export const BONUS_JEWEL_STYLE = { facets: 12, hue: 210, glowColor: '#38bdf8' }; // sapphire
 
-// How fast the gem's facets actually rotate, in radians/sec — 2*PI is a full
-// 360-degree turn, so this is exactly "360 degrees per second," per the
-// user's explicit request. Previously the facets never moved at all; only
-// their brightness cycled via `t`, which just made the light look like it
-// was traveling around a stationary gem rather than the gem itself spinning.
-const SPIN_RATE = Math.PI * 2;
+// How fast the gem's facets actually rotate, in radians/sec — PI is a half
+// turn per second, i.e. 180 degrees/sec (half of the original 360deg/sec,
+// per the user's explicit request to slow it down 0.5x). Previously the
+// facets never moved at all; only their brightness cycled via `t`, which
+// just made the light look like it was traveling around a stationary gem
+// rather than the gem itself spinning.
+const SPIN_RATE = Math.PI;
 
 // Draws one faceted gem centered at (x, y) with radius r. `t` is elapsed
 // seconds — each facet's brightness cycles via `t` (making the light appear
 // to travel around the gem), AND the whole facet layout now physically
-// rotates via `t * SPIN_RATE`.
-export function drawFacetedGem(context, x, y, r, style, t) {
+// rotates via `t * SPIN_RATE`. `label` (optional — only the bonus jewel
+// passes one, its point value "3") is drawn centered on top, INSIDE this
+// same rotated coordinate space, so it visibly spins along with the facets
+// rather than sitting still on top of a spinning gem.
+export function drawFacetedGem(context, x, y, r, style, t, label) {
   context.save();
   context.shadowColor = style.glowColor;
   context.shadowBlur = 16;
@@ -52,6 +56,20 @@ export function drawFacetedGem(context, x, y, r, style, t) {
     context.fillStyle = `hsl(${style.hue}, 80%, ${28 + brightness * 45}%)`;
     context.fill();
   }
+
+  if (label) {
+    // Light grey (not white) with a small glow in the gem's own hue —
+    // deliberately smaller/subtler than WARPZ's Energy Orb value text
+    // rather than an exact copy, per the user's own explicit spec.
+    context.font = `bold ${Math.round(r * 0.85)}px ui-monospace, Consolas, monospace`;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.shadowColor = style.glowColor;
+    context.shadowBlur = r * 0.35;
+    context.fillStyle = '#d1d5db';
+    context.fillText(label, 0, r * 0.04);
+  }
+
   context.restore();
 }
 

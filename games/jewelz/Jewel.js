@@ -147,22 +147,11 @@ export default class Jewel {
     draw(context) {
         if (this.scale <= 0) return; // nothing to draw once fully shrunk away
         const r = this.radius * this.scale;
-        drawFacetedGem(context, this.x, this.y, r, this.style, this.timeAlive);
-
-        // The bonus jewel's point value ("3") drawn centered on top of the
-        // gem — same look and feel as WARPZ's Energy Orb value text (see
-        // EnergyOrb.js's own draw()): bold monospace, glowing in the jewel's
-        // own hue, near-white fill, rather than the old plain grey sans-serif.
-        if (this.label) {
-            context.save();
-            context.font = `bold ${Math.round(r * (this.label.length > 1 ? 0.85 : 1.15))}px ui-monospace, Consolas, monospace`;
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.shadowColor = this.style.glowColor;
-            context.shadowBlur = r * 0.7;
-            context.fillStyle = 'rgba(255, 255, 255, 0.95)';
-            context.fillText(this.label, this.x, this.y + r * 0.04);
-            context.restore();
-        }
+        // The bonus jewel's point value ("3"), if any, is drawn BY
+        // drawFacetedGem itself now — inside the same rotated coordinate
+        // space as the facets, so it visibly spins along with the gem
+        // rather than sitting fixed on top of a spinning one (see
+        // jewel-icon.js's own comment for the label's exact styling).
+        drawFacetedGem(context, this.x, this.y, r, this.style, this.timeAlive, this.label);
     }
 }

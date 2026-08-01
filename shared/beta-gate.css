@@ -115,27 +115,8 @@
 }
 
 .beta-gate__submit:disabled {
-  opacity: 0.85; /* barely dims — the spinner itself is the main "something's happening" signal, this just softens the disabled look slightly */
+  opacity: 0.85; /* barely dims while mid-flight — the full-page spinner overlay (see beta-gate.js) is the main "something's happening" signal now, this just softens the disabled look slightly */
   cursor: default;
-}
-
-/* Hidden by default — shown only while beta-gate.js's submit handler is
-   mid-flight on the testers.json fetch (see its own comment for why this
-   needs its own indicator rather than reusing the whole-page spinner).
-   Reuses tokens.css's own page-loading-spin keyframe rather than
-   redefining an identical one here. */
-.beta-gate__submit-spinner {
-  display: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-top-color: #ffffff;
-  animation: page-loading-spin 0.8s linear infinite;
-}
-
-.beta-gate__submit.is-loading .beta-gate__submit-spinner {
-  display: inline-block;
 }
 
 .beta-gate__error {

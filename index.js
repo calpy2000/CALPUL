@@ -9,7 +9,7 @@ import { getDailyStatus } from './shared/core/daily-lock.js';
 import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
-import { hidePageLoadingIndicator } from './shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, showPageLoadingIndicator } from './shared/core/loading-indicator.js';
 
 // See loading-indicator.js's own comment: this page's whole JS module graph
 // (every import above) has already finished loading by the time this line
@@ -79,6 +79,15 @@ function renderTiles() {
     // through the --tile-* custom properties set below instead.
     tile.className = `hub__tile hub__tile--${game.id}`;
     tile.href = game.path;
+    // Shows the spinner on THIS (still-current) page the instant a tile is
+    // tapped, rather than relying only on the destination game's own
+    // spinner timing — this page's last-painted content (spinner included)
+    // stays on screen until the next page is ready to replace it, so it
+    // bridges the whole transition regardless of how long any part of it
+    // (stylesheet fetch, that game's own JS module graph, etc.) takes. The
+    // heavier games — WARPZ especially, with the most stylesheets/JS of any
+    // page — are exactly where that gap was visible before this.
+    tile.addEventListener('click', () => showPageLoadingIndicator());
     // .style.setProperty() sets a CSS custom property directly on this one
     // element (as an inline style), rather than in a stylesheet — this is
     // how each tile gets ITS OWN color even though they all share the same
@@ -138,6 +147,11 @@ initToolsPanel(GAMES.map((game) => game.id), {
       label: 'Reset tester code',
       onClick: () => {
         clearStoredTester();
+        // Shown on this page right away, before the reload — see
+        // tools-panel.js's afterReset() for the fuller reasoning (a page's
+        // last-painted content, spinner included, stays on screen until the
+        // next page is ready to replace it, bridging the whole reload).
+        showPageLoadingIndicator();
         window.location.reload();
       },
     },

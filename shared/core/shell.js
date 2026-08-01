@@ -30,6 +30,7 @@
 import { getDailyStatus } from './daily-lock.js';
 import { getBestScore, getTodayScore, saveTodayScore } from './game-storage.js';
 import { createFlipTimer } from './flip-timer.js';
+import { showPageLoadingIndicator } from './loading-indicator.js';
 
 // Small helper to cut down on repetition below: creates a DOM element,
 // optionally gives it a class and some inner HTML, and hands it back — but
@@ -148,6 +149,13 @@ export function initShell({
   // (the .shell div from each game's HTML).
   stage.parentNode.insertBefore(header, stage);
 
+  // Shows the spinner on THIS (still-current) page the instant "back" is
+  // tapped, rather than relying only on the hub's own spinner timing — see
+  // index.js's identical reasoning on its own hub-tile click listener. A
+  // plain <a href> already navigates on its own right after this runs; this
+  // only adds the proactive show, nothing about the click itself changes.
+  header.querySelector('.shell-header__back').addEventListener('click', () => showPageLoadingIndicator());
+
   // --- Footer ---
   const footer = el(
     'footer',
@@ -234,12 +242,13 @@ export function initShell({
     'shell-end-screen is-hidden',
     `<div class="shell-end-screen__panel">
        <div class="shell-end-screen__message" id="shell-end-message"></div>
-       <button class="shell-btn" id="shell-hub-btn" type="button">Return to PUSULZ</button>
+       <button class="shell-btn" id="shell-hub-btn" type="button">Return to <span class="shell-btn__brand">PUSULZ</span></button>
        <button class="shell-btn shell-btn--small is-hidden" id="shell-share-btn" type="button">Share Results</button>
      </div>`
   );
   stage.appendChild(endScreen);
   endScreen.querySelector('#shell-hub-btn').onclick = () => {
+    showPageLoadingIndicator(); // shown proactively — see the back link's identical reasoning above
     window.location.href = hubPath; // full page navigation back to the hub
   };
 

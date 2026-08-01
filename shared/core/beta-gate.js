@@ -20,6 +20,8 @@
 // Hub-only: nothing here is imported by any individual game page, so a
 // tester who's already past the hub never sees this again mid-game.
 
+import { showPageLoadingIndicator, hidePageLoadingIndicator } from './loading-indicator.js';
+
 const STORAGE_KEY = 'pusulz_tester';
 
 function el(tag, className, html) {
@@ -76,7 +78,6 @@ function buildGatePanel() {
      <input class="beta-gate__input" id="beta-gate-input" type="text" inputmode="text" maxlength="6" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" autofocus>
      <button class="beta-gate__submit" id="beta-gate-submit" type="submit">
        <span class="beta-gate__submit-label">Enter</span>
-       <span class="beta-gate__submit-spinner" aria-hidden="true"></span>
      </button>
      <p class="beta-gate__error is-hidden" id="beta-gate-error">That code isn't recognized — check for typos and try again.</p>
      <p class="beta-gate__hint">Your code is remembered on this device — you won't need to enter it again.</p>`
@@ -113,20 +114,22 @@ function showGate() {
       // nothing else on screen to show for it (the page-load spinner, see
       // loading-indicator.js, is long gone by this point — it's dismissed
       // the moment this page's JS starts running, which is BEFORE this
-      // gate even appears). Unlike that whole-page spinner, this is a
-      // direct response to a tap, so it shows immediately rather than
-      // waiting out a delay threshold — the tester should see SOMETHING
-      // happened the instant they hit Enter.
+      // gate even appears). Reuses that SAME full-page centered spinner
+      // rather than a separate one built into the button, so a spinner
+      // always looks and appears the same way everywhere on the site — the
+      // button itself still disables immediately so the tester sees SOMETHING
+      // happened the instant they hit Enter, even before the 200ms delay on
+      // the overlay's own reveal.
       submitBtn.disabled = true;
-      submitBtn.classList.add('is-loading');
       input.disabled = true;
+      showPageLoadingIndicator();
 
       let testers;
       try {
         testers = await fetchTesters();
       } catch (err) {
+        hidePageLoadingIndicator();
         submitBtn.disabled = false;
-        submitBtn.classList.remove('is-loading');
         input.disabled = false;
         errorMsg.textContent = "Couldn't reach the server — check your connection and try again.";
         errorMsg.classList.remove('is-hidden');
@@ -135,8 +138,8 @@ function showGate() {
       const match = Object.entries(testers).find(([, code]) => code === entered);
 
       if (!match) {
+        hidePageLoadingIndicator();
         submitBtn.disabled = false;
-        submitBtn.classList.remove('is-loading');
         input.disabled = false;
         errorMsg.classList.remove('is-hidden');
         input.select();
@@ -145,6 +148,7 @@ function showGate() {
 
       const [name, code] = match;
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
+      hidePageLoadingIndicator();
       gate.classList.add('is-hidden');
       gate.innerHTML = '';
       resolve();

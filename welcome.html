@@ -34,6 +34,12 @@
 
   <div class="welcome" id="welcome">
     <div class="welcome__header">
+      <!-- Reachable from any page's tools panel ("See tester instructions"
+           — see tools-panel.js), which otherwise leaves a tester with no
+           way back short of the browser's own back button. Always goes to
+           the hub specifically (not "wherever you came from") — same
+           convention as every game's own header back link. -->
+      <a class="welcome__back" href="index.html" id="welcome-back">&larr; back to PUSULZ</a>
       <!-- Same PUSULZ logo tiles as the hub's own index.html — copy-pasted
            markup (not shared as a component, matching this project's own
            per-page convention) so it's identical wherever it appears. -->

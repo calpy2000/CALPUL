@@ -12,9 +12,18 @@
 // every tester.
 
 import { GAMES } from './games-registry.js';
-import { hidePageLoadingIndicator } from './shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, navigateWithSpinner } from './shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
+
+// Same preventDefault() + navigateWithSpinner() pattern as every other
+// back link on the site (see shell.js's identical wiring) — guarantees the
+// spinner actually gets a painted frame before navigating away, rather
+// than relying on the plain <a href> firing on its own.
+document.getElementById('welcome-back').addEventListener('click', (e) => {
+  e.preventDefault();
+  navigateWithSpinner('index.html');
+});
 
 // One short, hand-written description per game — games-registry.js's own
 // `tagline` is deliberately terse (it has to fit on a small hub tile), so

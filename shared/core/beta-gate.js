@@ -20,7 +20,7 @@
 // Hub-only: nothing here is imported by any individual game page, so a
 // tester who's already past the hub never sees this again mid-game.
 
-import { showPageLoadingIndicator, hidePageLoadingIndicator } from './loading-indicator.js';
+import { showPageLoadingIndicator, hidePageLoadingIndicator, navigateWithSpinner } from './loading-indicator.js';
 
 const STORAGE_KEY = 'pusulz_tester';
 
@@ -58,23 +58,6 @@ async function fetchTesters() {
   const url = new URL('../../testers.json', import.meta.url);
   const res = await fetch(url);
   return res.json();
-}
-
-// Schedules the ?code=... param to be stripped from the address bar after
-// a delay — shared by both showGate()'s manual-entry success path and
-// tryCodeFromUrl() below, for exactly the same reason (see
-// tryCodeFromUrl()'s own comment for the full "why delayed, why 60s"
-// story). Re-reads window.location.href fresh at fire time (rather than
-// capturing a URL object up front) and no-ops if the param is already
-// gone, so it's safe to call from multiple places without them stepping
-// on each other.
-function scheduleCodeStrip() {
-  setTimeout(() => {
-    const url = new URL(window.location.href);
-    if (!url.searchParams.has('code')) return;
-    url.searchParams.delete('code');
-    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
-  }, 60000);
 }
 
 function buildGatePanel() {
@@ -166,25 +149,19 @@ function showGate() {
       const [name, code] = match;
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
 
-      // Bakes ?code=... onto the CURRENT url — welcome.html's own
-      // instructions have the tester do "Add to Home Screen" shortly AFTER
-      // landing on the hub, not before, so without this the resulting icon
-      // would be created from a plain, code-less URL. A home-screen icon
-      // gets its own separate, isolated storage from its very FIRST
-      // launch (not just on a later delete+re-add), so with nothing baked
-      // into its own saved URL to fall back on, opening it hit that empty
-      // container and prompted for the code again immediately — confirmed
-      // on a real device. Same delayed strip as tryCodeFromUrl() uses, so
-      // it isn't left sitting in the address bar indefinitely.
-      const url = new URL(window.location.href);
-      url.searchParams.set('code', code);
-      window.history.replaceState(null, '', url.pathname + url.search + url.hash);
-      scheduleCodeStrip();
-
-      hidePageLoadingIndicator();
-      gate.classList.add('is-hidden');
-      gate.innerHTML = '';
-      resolve();
+      // Reloads the hub with ?code=... as a REAL navigation, not just a
+      // history.replaceState address-bar rewrite (an earlier version did
+      // that instead — didn't reliably work on a real device: doing "Add
+      // to Home Screen" afterward still produced an icon with no code
+      // baked into its own saved target URL, so its first launch prompted
+      // for the code again anyway). This way the code is genuinely part of
+      // the freshly-loaded page's own URL by any definition, not a
+      // cosmetic rewrite iOS's Add to Home Screen may or may not pick up —
+      // see initBetaGate()'s own comment for how the code gets cleaned
+      // back out of the address bar afterward, once it's no longer needed.
+      navigateWithSpinner(`${window.location.origin}${window.location.pathname}?code=${code}`);
+      // No resolve() here — the navigation above replaces this whole page,
+      // so there's nothing left to hand control back to.
     });
   });
 }
@@ -203,25 +180,13 @@ async function tryCodeFromUrl() {
   const entered = url.searchParams.get('code');
   if (!entered) return false;
 
-  // Strips the code out of the visible/bookmarkable address bar URL —
-  // replaceState, not a real navigation, so this doesn't add a history
-  // entry or reload anything. The code stays effective for THIS load
-  // either way; this purely keeps it from lingering on-screen indefinitely.
-  //
-  // Deliberately DELAYED (not immediate, see scheduleCodeStrip() above) —
-  // a tester doing "Add to Home Screen" shortly after this URL resolves
-  // needs the address bar to STILL have ?code=... on it at that moment, or
-  // the icon they create won't have it baked into ITS OWN saved target
-  // URL, which is what lets a future delete+re-add (which wipes iOS's
-  // isolated storage for standalone apps) silently re-authenticate instead
-  // of prompting for the code again. An immediate strip closed that window
-  // before anyone could realistically get through the Share-icon flow.
-  // Accepted as a low-risk tradeoff, per the user's explicit call — the
-  // whole codebook (testers.json) is already public/unencrypted, so a code
-  // visible in the address bar/history for an extra minute isn't a
-  // meaningful new exposure on top of that.
-  scheduleCodeStrip();
-
+  // Deliberately does NOT strip the code out of the address bar here — see
+  // initBetaGate()'s own comment for where and why that happens instead.
+  // The code stays effective for THIS load either way; leaving it in place
+  // here is what lets a tester doing "Add to Home Screen" at any point
+  // during this same page view — no matter how long they take reading
+  // instructions, finding the Share icon, etc. — capture a URL with the
+  // code genuinely baked in.
   let testers;
   try {
     testers = await fetchTesters();
@@ -236,13 +201,41 @@ async function tryCodeFromUrl() {
   return true;
 }
 
+// Schedules a lingering ?code=... to be stripped from the address bar
+// after a generous delay. Used whenever this load's URL still has one —
+// either right after showGate()'s own reload (the tester's actual, only
+// chance to do "Add to Home Screen" while it's visible) or a plain
+// ?code=... link loaded directly (tryCodeFromUrl()). 5 minutes is
+// deliberately generous — long enough that timing is never realistically
+// the reason "Add to Home Screen" fails to pick it up, no matter how long
+// a tester takes finding the Share icon, reading instructions, etc. No
+// real downside to leaving it a while either way: testers.json (the whole
+// codebook) is already public/unencrypted, so a code sitting in the
+// address bar/history for a few extra minutes isn't a meaningful new
+// exposure on top of that. Re-reads window.location.href fresh at fire
+// time and no-ops if the param is already gone.
+function scheduleCodeStrip() {
+  setTimeout(() => {
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has('code')) return;
+    url.searchParams.delete('code');
+    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+  }, 5 * 60 * 1000);
+}
+
 // Call once, at the top of the hub's own index.js (only the hub — no game
 // page imports this). Resolves immediately if a code is already stored (or
 // a valid ?code=XXXXXX URL param silently re-establishes one — see
 // tryCodeFromUrl()); otherwise shows the gate and resolves once the tester
 // enters a valid one.
 export async function initBetaGate() {
-  if (getStoredTester()) return;
-  if (await tryCodeFromUrl()) return;
+  if (getStoredTester()) {
+    if (new URL(window.location.href).searchParams.has('code')) scheduleCodeStrip();
+    return;
+  }
+  if (await tryCodeFromUrl()) {
+    scheduleCodeStrip();
+    return;
+  }
   await showGate();
 }

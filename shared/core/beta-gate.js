@@ -60,6 +60,25 @@ async function fetchTesters() {
   return res.json();
 }
 
+// TEMPORARY diagnostic block — see tools-panel.js's own matching debug
+// block for the fuller "why this exists" comment. This one specifically
+// exists because the gate can show up BEFORE initToolsPanel() ever runs
+// (see index.js's own call order — tools panel only appears AFTER the
+// gate is passed), so the tools-panel debug block isn't actually on
+// screen at the one moment that matters most: right when a home-screen
+// icon's first launch unexpectedly shows this gate instead of silently
+// logging in. Put directly in the gate's own markup so it's visible at
+// exactly that moment, with no extra tap needed. Remove once the
+// underlying issue is found and fixed for real.
+function buildGateDebugInfo() {
+  const standalone = 'standalone' in window.navigator ? String(window.navigator.standalone) : 'not iOS Safari';
+  return (
+    `url: ${window.location.href}\n` +
+    `standalone: ${standalone}\n` +
+    `referrer: ${document.referrer || '(none)'}`
+  );
+}
+
 function buildGatePanel() {
   return el(
     'form',
@@ -80,7 +99,8 @@ function buildGatePanel() {
        <span class="beta-gate__submit-label">Enter</span>
      </button>
      <p class="beta-gate__error is-hidden" id="beta-gate-error">That code isn't recognized — check for typos and try again.</p>
-     <p class="beta-gate__hint">Your code is remembered on this device — you won't need to enter it again.</p>`
+     <p class="beta-gate__hint">Your code is remembered on this device — you won't need to enter it again.</p>
+     <pre class="beta-gate__debug">${buildGateDebugInfo()}</pre>`
   );
 }
 

@@ -134,6 +134,26 @@
   cursor: pointer;
 }
 
+/* TEMPORARY debug block (see tools-panel.js's buildDebugInfoHtml()) — a
+   plain, monospace dump of a few live values, meant to be read off by eye
+   or screenshotted, not styled nicely. Remove alongside the JS that builds
+   it once the underlying issue is found. white-space:pre-wrap (not the
+   <pre> tag's own default pre, which doesn't wrap) so a long URL wraps
+   inside the panel's fixed width instead of forcing it wider/scrolling. */
+.dev-panel__debug {
+  margin: 0;
+  padding: var(--space-xs);
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
 .dev-panel__status {
   margin: 0;
   font-size: 12px;

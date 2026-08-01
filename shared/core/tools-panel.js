@@ -87,8 +87,14 @@ export function initToolsPanel(gameIds, { extraActions = [], radioGroups = [] } 
 
   // Clicking the gear/flask icon just toggles the "is-hidden" CSS class —
   // the panel's DOM never gets removed/recreated, only shown or hidden.
+  // refreshDebugInfo() re-reads live values every time the panel is
+  // opened (not just once at build time), since the whole point is
+  // catching state at whatever moment the tester actually checks it —
+  // e.g. right before "Add to Home Screen" vs. right after opening the
+  // resulting icon.
   toggle.addEventListener('click', () => {
     panel.classList.toggle('is-hidden');
+    if (!panel.classList.contains('is-hidden')) refreshDebugInfo(panel);
   });
 
   if (isDev) {
@@ -96,6 +102,34 @@ export function initToolsPanel(gameIds, { extraActions = [], radioGroups = [] } 
   } else {
     wireTestPanel(panel, gameIds);
   }
+}
+
+// TEMPORARY diagnostic block — added to help debug a real-device-only
+// "still asked for the code after Add to Home Screen" report that hasn't
+// been reproducible any other way (no access to a real iOS device/Safari
+// to test against directly). Shows exactly the values needed to tell
+// whether the URL a home-screen icon actually launches with has ?code=...
+// on it or not, and whether the page even recognizes itself as running in
+// standalone (home-screen icon) mode at all. Meant to be screenshotted/
+// read off by hand, not pretty — remove once the underlying issue is
+// found and fixed for real.
+function buildDebugInfoHtml() {
+  return `<pre class="dev-panel__debug" id="dev-debug-info"></pre>`;
+}
+
+function refreshDebugInfo(panel) {
+  const el = panel.querySelector('#dev-debug-info');
+  if (!el) return;
+  // navigator.standalone is iOS Safari's own (non-standard, iOS-only) way
+  // of reporting "this page is running as a launched home-screen icon,
+  // not a normal browser tab" — undefined on every other browser/OS.
+  const standalone = 'standalone' in window.navigator ? String(window.navigator.standalone) : 'not iOS Safari';
+  const stored = localStorage.getItem('pusulz_tester') || '(none)';
+  el.textContent =
+    `url: ${window.location.href}\n` +
+    `standalone: ${standalone}\n` +
+    `stored tester: ${stored}\n` +
+    `referrer: ${document.referrer || '(none)'}`;
 }
 
 function buildDevPanelContent(extraActions, radioGroups) {
@@ -136,6 +170,7 @@ function buildDevPanelContent(extraActions, radioGroups) {
     'div',
     'dev-panel is-hidden',
     `<p class="dev-panel__title">Dev tools<span class="dev-panel__version">V${APP_VERSION}</span></p>
+     ${buildDebugInfoHtml()}
      ${radioGroupsHtml}
      ${extraButtonsHtml}
      <button class="dev-panel__btn" id="dev-reset-today" type="button">Reset today's progress</button>
@@ -149,6 +184,7 @@ function buildTestPanelContent() {
     'div',
     'dev-panel is-hidden',
     `<p class="dev-panel__title">Tester tools<span class="dev-panel__version">V${APP_VERSION}</span></p>
+     ${buildDebugInfoHtml()}
      <button class="dev-panel__btn" id="dev-reset-today" type="button">Reset today's progress</button>
      <button class="dev-panel__btn" id="dev-send-feedback" type="button">Send feedback</button>
      <button class="dev-panel__btn" id="dev-see-instructions" type="button">See tester instructions</button>

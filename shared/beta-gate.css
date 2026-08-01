@@ -136,3 +136,22 @@
   color: #4a5568;
   margin: 0;
 }
+
+/* TEMPORARY debug block — see beta-gate.js's own buildGateDebugInfo()
+   comment. Same plain-monospace-dump treatment as tools-panel.css's
+   .dev-panel__debug. Remove alongside the JS once no longer needed. */
+.beta-gate__debug {
+  width: 100%;
+  margin: 0;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-all;
+  text-align: left;
+}

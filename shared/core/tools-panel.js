@@ -35,6 +35,18 @@ function buildFeedbackPageUrl() {
   return url.href;
 }
 
+// Builds the URL to the tester welcome/onboarding page (welcome.html, at
+// the hub root — see that file). Same "resolve relative to THIS file's own
+// location" trick as buildFeedbackPageUrl() above, just one level further
+// up (shared/core/ -> shared/ -> root/), so it lands on welcome.html
+// correctly whether this runs from the hub root or a games/<name>/
+// subfolder. No query params — welcome.html is deliberately generic (see
+// its own header comment), so there's nothing tester-specific to pass.
+function buildWelcomePageUrl() {
+  const url = new URL('../../welcome.html', import.meta.url);
+  return url.href;
+}
+
 // gameIds: array of game ids the "reset today" button should act on (the
 // hub page passes all seven; each individual game page passes just its own
 // id, so resetting from inside GLYMPZ doesn't also wipe SOLVZ/JEWELZ).
@@ -139,6 +151,7 @@ function buildTestPanelContent() {
     `<p class="dev-panel__title">Tester tools<span class="dev-panel__version">V${APP_VERSION}</span></p>
      <button class="dev-panel__btn" id="dev-reset-today" type="button">Reset today's progress</button>
      <button class="dev-panel__btn" id="dev-send-feedback" type="button">Send feedback</button>
+     <button class="dev-panel__btn" id="dev-see-instructions" type="button">See tester instructions</button>
      <p class="dev-panel__status" id="dev-panel-status"></p>`
   );
 }
@@ -198,5 +211,9 @@ function wireTestPanel(panel, gameIds) {
 
   panel.querySelector('#dev-send-feedback').addEventListener('click', () => {
     navigateWithSpinner(buildFeedbackPageUrl());
+  });
+
+  panel.querySelector('#dev-see-instructions').addEventListener('click', () => {
+    navigateWithSpinner(buildWelcomePageUrl());
   });
 }

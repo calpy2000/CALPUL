@@ -140,6 +140,24 @@ body {
   margin-bottom: 0;
 }
 
+/* A nested <ul> (e.g. "Tell us anything" listing the specific TYPES of
+   feedback it covers) reads as sub-items of its parent bullet rather than
+   separate top-level asks — slightly smaller and tighter than the main
+   list, with its own top margin to separate it from the intro line above. */
+.welcome__section li ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.welcome__section li ul li {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.welcome__section li ul li:last-child {
+  margin-bottom: 0;
+}
+
 /* ---- game cards (built by welcome.js from games-registry.js) ---- */
 .welcome__game {
   display: flex;
@@ -239,19 +257,14 @@ body {
   margin-bottom: 10px;
 }
 
-.welcome__path-card ol {
-  padding-left: 20px;
-  margin: 0;
-}
-
-.welcome__path-card ol li {
-  margin-bottom: 10px;
+.welcome__path-card p {
+  margin: 0 0 10px;
   font-size: 14.5px;
   font-weight: 500;
   line-height: 1.55;
 }
 
-.welcome__path-card ol li:last-child {
+.welcome__path-card p:last-child {
   margin-bottom: 0;
 }
 
@@ -266,43 +279,6 @@ body {
   margin-top: 8px;
   word-break: break-all;
   text-decoration: none;
-}
-
-.welcome__code-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  background: rgba(61, 90, 241, 0.08);
-  border: 1.5px dashed var(--accent);
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin: 10px 0;
-}
-
-.welcome__code-box .label {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #5b6270;
-}
-
-.welcome__code-box .code {
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-}
-
-.welcome__no-code-note {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: #5b6270;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 10px;
-  padding: 12px 14px;
-  line-height: 1.5;
 }
 
 .welcome__footer {

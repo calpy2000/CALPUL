@@ -6,6 +6,17 @@
 // dev panel's "Reset tester code" button, see tools-panel.js) makes the
 // gate show again.
 //
+// One real-world wrinkle localStorage alone doesn't cover: iOS gives a
+// standalone home-screen web app (see index.html's own
+// apple-mobile-web-app-capable tag) its OWN isolated storage container,
+// separate from regular Safari — deleting and re-adding the home-screen
+// icon wipes that container, same as reinstalling any app resets its
+// data, taking the saved code with it. tryCodeFromUrl() below is the
+// workaround: a tester can add PUSULZ to their home screen from a URL
+// with their own code baked in (e.g. .../?code=ABC123) so a future
+// delete+re-add silently re-authenticates from the icon's own saved URL
+// instead of prompting again.
+//
 // Hub-only: nothing here is imported by any individual game page, so a
 // tester who's already past the hub never sees this again mid-game.
 
@@ -63,7 +74,10 @@ function buildGatePanel() {
      <h1 class="beta-gate__title">Welcome to beta testing</h1>
      <p class="beta-gate__body">To get started, type in the entry code that you should have and hit enter to unlock the game.</p>
      <input class="beta-gate__input" id="beta-gate-input" type="text" inputmode="text" maxlength="6" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" autofocus>
-     <button class="beta-gate__submit" type="submit">Enter</button>
+     <button class="beta-gate__submit" id="beta-gate-submit" type="submit">
+       <span class="beta-gate__submit-label">Enter</span>
+       <span class="beta-gate__submit-spinner" aria-hidden="true"></span>
+     </button>
      <p class="beta-gate__error is-hidden" id="beta-gate-error">That code isn't recognized — check for typos and try again.</p>
      <p class="beta-gate__hint">Your code is remembered on this device — you won't need to enter it again.</p>`
   );
@@ -80,6 +94,7 @@ function showGate() {
 
     const input = panel.querySelector('#beta-gate-input');
     const errorMsg = panel.querySelector('#beta-gate-error');
+    const submitBtn = panel.querySelector('#beta-gate-submit');
 
     // Codes are all-caps (see testers.json) — this uppercases as the tester
     // types so e.g. "akglex" still matches "AKGLEX" without them needing to
@@ -93,10 +108,36 @@ function showGate() {
       const entered = input.value.trim().toUpperCase();
       if (!entered) return;
 
-      const testers = await fetchTesters();
+      // fetchTesters() is a real network request (testers.json) — on a
+      // cold cache/slow connection this is a genuine multi-second wait with
+      // nothing else on screen to show for it (the page-load spinner, see
+      // loading-indicator.js, is long gone by this point — it's dismissed
+      // the moment this page's JS starts running, which is BEFORE this
+      // gate even appears). Unlike that whole-page spinner, this is a
+      // direct response to a tap, so it shows immediately rather than
+      // waiting out a delay threshold — the tester should see SOMETHING
+      // happened the instant they hit Enter.
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      input.disabled = true;
+
+      let testers;
+      try {
+        testers = await fetchTesters();
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        input.disabled = false;
+        errorMsg.textContent = "Couldn't reach the server — check your connection and try again.";
+        errorMsg.classList.remove('is-hidden');
+        return;
+      }
       const match = Object.entries(testers).find(([, code]) => code === entered);
 
       if (!match) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        input.disabled = false;
         errorMsg.classList.remove('is-hidden');
         input.select();
         return;
@@ -111,10 +152,51 @@ function showGate() {
   });
 }
 
+// Silently checks a ?code=XXXXXX URL param against testers.json and saves
+// it exactly like a typed submission would, WITHOUT ever showing the gate
+// form — this is what lets a tester's home-screen icon survive iOS wiping
+// its isolated storage on a delete+re-add (see initBetaGate()'s own
+// comment): if the icon's own target URL has their code baked in, opening
+// it re-authenticates automatically instead of prompting for the code
+// again. Returns true if a valid code was found and saved, false
+// otherwise (missing param, bad code, or the fetch failing) — either way,
+// the caller falls back to the normal gate.
+async function tryCodeFromUrl() {
+  const url = new URL(window.location.href);
+  const entered = url.searchParams.get('code');
+  if (!entered) return false;
+
+  // Strips the code out of the visible/bookmarkable address bar URL right
+  // away (before even validating it) — replaceState, not a real
+  // navigation, so this doesn't add a history entry or reload anything.
+  // The code stays effective for THIS load either way; this purely keeps
+  // it from lingering on-screen or ending up in a share/copy of the URL
+  // from this point forward. The home-screen icon itself is unaffected —
+  // its own saved target URL still has ?code=... on it for next time.
+  url.searchParams.delete('code');
+  window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+
+  let testers;
+  try {
+    testers = await fetchTesters();
+  } catch {
+    return false; // network hiccup — just fall through to the normal gate rather than blocking on it
+  }
+  const match = Object.entries(testers).find(([, code]) => code === entered.trim().toUpperCase());
+  if (!match) return false;
+
+  const [name, code] = match;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
+  return true;
+}
+
 // Call once, at the top of the hub's own index.js (only the hub — no game
-// page imports this). Resolves immediately if a code is already stored;
-// otherwise shows the gate and resolves once the tester enters a valid one.
+// page imports this). Resolves immediately if a code is already stored (or
+// a valid ?code=XXXXXX URL param silently re-establishes one — see
+// tryCodeFromUrl()); otherwise shows the gate and resolves once the tester
+// enters a valid one.
 export async function initBetaGate() {
   if (getStoredTester()) return;
+  if (await tryCodeFromUrl()) return;
   await showGate();
 }

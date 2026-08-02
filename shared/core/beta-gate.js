@@ -21,8 +21,7 @@
 // Hub-only: nothing here is imported by any individual game page, so a
 // tester who's already past the hub never sees this again mid-game.
 
-import { showPageLoadingIndicator, hidePageLoadingIndicator, yieldForPaint } from './loading-indicator.js';
-import { logTrace } from './debug-trace.js'; // TEMPORARY — see that file's own comment
+import { showPageLoadingIndicator, hidePageLoadingIndicator, yieldForPaint, reloadWithSpinner } from './loading-indicator.js';
 
 const STORAGE_KEY = 'pusulz_tester';
 
@@ -86,9 +85,13 @@ function buildGatePanel() {
   );
 }
 
-// Shows the gate and resolves once a valid code has been entered and saved.
+// Shows the gate. Deliberately never resolves on success — see the submit
+// handler's own comment on reloadWithSpinner(): a valid code triggers a
+// real page reload instead, so initBetaGate() (and index.js's own await on
+// it) just stays paused here until that reload replaces the page, rather
+// than resolving into an in-place hub reveal.
 function showGate() {
-  return new Promise((resolve) => {
+  return new Promise(() => {
     const gate = document.getElementById('beta-gate');
     const panel = buildGatePanel();
     gate.innerHTML = '';
@@ -108,7 +111,6 @@ function showGate() {
 
     panel.addEventListener('submit', async (e) => {
       e.preventDefault();
-      logTrace('submit: preventDefault done'); // TEMPORARY
       const entered = input.value.trim().toUpperCase();
       if (!entered) return;
 
@@ -126,21 +128,16 @@ function showGate() {
       submitBtn.disabled = true;
       input.disabled = true;
       showPageLoadingIndicator();
-      logTrace('disabled inputs + showPageLoadingIndicator done'); // TEMPORARY
       // See loading-indicator.js's own comment on yieldForPaint(): without
       // this, the disabled input/button and the spinner just added above
       // can both silently never make it to the screen before the fetch
       // below starts — a real on-device freeze, not just a missing spinner.
       await yieldForPaint();
-      logTrace('yieldForPaint #1 resolved'); // TEMPORARY
 
       let testers;
       try {
-        logTrace('starting fetchTesters()'); // TEMPORARY
         testers = await fetchTesters();
-        logTrace('fetchTesters() resolved'); // TEMPORARY
       } catch (err) {
-        logTrace('fetchTesters() THREW: ' + (err && err.message)); // TEMPORARY
         hidePageLoadingIndicator();
         submitBtn.disabled = false;
         input.disabled = false;
@@ -149,7 +146,6 @@ function showGate() {
         return;
       }
       const match = Object.entries(testers).find(([, code]) => code === entered);
-      logTrace('match check done: ' + (match ? 'FOUND' : 'not found')); // TEMPORARY
 
       if (!match) {
         hidePageLoadingIndicator();
@@ -162,18 +158,18 @@ function showGate() {
 
       const [name, code] = match;
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
-      logTrace('localStorage.setItem done'); // TEMPORARY
-      // Same reasoning as the yieldForPaint() call above, on the other side
-      // of the fetch this time — without it, everything from here on
-      // (hiding the spinner, resolving, the hub's own reveal right after)
-      // can end up bundled into the same un-painted stretch as the fetch
-      // itself, so the tester never sees anything change until they
-      // manually reload, even though the code WAS actually accepted.
-      await yieldForPaint();
-      logTrace('yieldForPaint #2 resolved'); // TEMPORARY
-      hidePageLoadingIndicator();
-      logTrace('hidePageLoadingIndicator done, about to resolve()'); // TEMPORARY
-      resolve();
+      // Deliberately reloads instead of hiding the spinner and resolving
+      // in place — a real on-device trace proved every step of the
+      // in-place path (hide spinner, resolve, reveal the hub, render
+      // tiles) WAS completing successfully, all within ~400ms, but WebKit
+      // never painted any of it until a manual refresh. The one thing
+      // every OTHER working case on this site has in common that this
+      // in-place path doesn't: a real navigation. reloadWithSpinner()
+      // (already proven reliable everywhere else — see its own comment)
+      // re-runs this page from scratch; getStoredTester() will find the
+      // code we just saved and skip straight past the gate into a
+      // normally-painted hub, no in-place reveal involved at all.
+      reloadWithSpinner();
     });
   });
 }
@@ -206,14 +202,26 @@ async function tryCodeFromUrl() {
   // reason to leave a tester's code sitting in the visible URL/history.
   url.searchParams.delete('code');
   window.history.replaceState(null, '', url.pathname + url.search + url.hash);
-  return true;
+
+  // Reloads instead of returning true — same reasoning as showGate()'s own
+  // submit handler (see its comment): this success path is ALSO a
+  // fetch-then-reveal sequence, and letting the caller (initBetaGate())
+  // return normally here would hand control back to index.js's own
+  // in-place hub reveal, the exact pattern proven unreliable. Returning a
+  // Promise that never resolves keeps initBetaGate() (and everything
+  // after it in index.js) paused here for good — harmless, since the page
+  // is about to be replaced by the reload anyway.
+  reloadWithSpinner();
+  return new Promise(() => {});
 }
 
 // Call once, at the top of the hub's own index.js (only the hub — no game
-// page imports this). Resolves immediately if a code is already stored (or
-// a valid ?code=XXXXXX URL param silently re-establishes one — see
-// tryCodeFromUrl()); otherwise shows the gate and resolves once the tester
-// enters a valid one.
+// page imports this). Resolves immediately (synchronously, in practice) if
+// a code is already stored on this device — the normal case on every
+// return visit. Otherwise shows the gate (or silently checks a
+// ?code=XXXXXX URL param first — see tryCodeFromUrl()) and, on a VALID
+// code, triggers a real page reload rather than ever resolving — see
+// showGate()'s own comment for why.
 export async function initBetaGate() {
   if (getStoredTester()) return;
   if (await tryCodeFromUrl()) return;

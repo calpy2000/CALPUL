@@ -42,7 +42,7 @@ export const GAMES = [
     id: 'solvz', // must be unique across all games — used to namespace localStorage keys
     title: 'SOLVZ',
     emoji: '➕', // the one game with no generated icon art of its own — shown in a small raised circle on the hub tile
-    tagline: 'Make every row and column add up', // subtitle text shown on the hub tile
+    tagline: 'add, subtract, divide & multiply', // subtitle text shown on the hub tile
     path: 'games/solvz/index.html', // relative link the hub tile points to
     color: '#E59A63', // deep-but-soft pastel tile fill
     rim: 'rgba(120, 55, 15, 0.30)', // dark side of the tile's puffy-bevel rim
@@ -70,7 +70,7 @@ export const GAMES = [
     // Just the regular ruby jewel now (not the ruby+sapphire bonus-jewel
     // pair) — one image per tile, matching every other game.
     emojiImage: getJewelIconDataURL(),
-    tagline: 'Stay alive to grab JEWELZ while you can',
+    tagline: 'Make like a jewel thief, but stay alive',
     path: 'games/jewelz/index.html',
     color: '#63B98A', // green still reads well behind the ruby jewel image
     rim: 'rgba(10, 55, 30, 0.30)',
@@ -86,7 +86,7 @@ export const GAMES = [
     // A single 'S' tile in SLYDZ's own solved-tile style, not the full
     // 5-tile "SLYDZ" row — same single-crop style used for its header.
     emojiImage: getSlydzTileDataURL('S'),
-    tagline: 'Shuffle letters to make 5 real words',
+    tagline: 'Spell 5 words - easy right?',
     path: 'games/slydz/index.html',
     color: '#AD82D6',
     rim: 'rgba(55, 20, 80, 0.30)',
@@ -99,7 +99,7 @@ export const GAMES = [
     // A single tick cell (not the full "A B C D + tick" row) — the
     // checkmark reads as "solved" on its own without needing a letter.
     emojiImage: getQuadzTileIconDataURL('✓', true),
-    tagline: '4 words across & 4 words down',
+    tagline: 'Just 4 words across & 4 words down',
     path: 'games/quadz/index.html',
     color: '#DFAE55',
     rim: 'rgba(90, 55, 5, 0.30)',
@@ -111,7 +111,7 @@ export const GAMES = [
     title: 'MUVEEZ',
     // Just the clapperboard now (not the clapperboard+projector pair).
     emojiImage: getClapperboardIconDataURL(),
-    tagline: '6 tries to guess the film title',
+    tagline: 'What was the name of that film?',
     path: 'games/muveez/index.html',
     color: '#DD7FA3',
     rim: 'rgba(90, 15, 50, 0.30)',
@@ -125,7 +125,7 @@ export const GAMES = [
     // "RAINZ" is already the tile's own title text right next to it, so a
     // letter on the drop would be redundant, same reasoning as the header.
     emojiImage: getRainzHeaderIconDataURL(0),
-    tagline: 'Score points before the rain drops get you',
+    tagline: 'WATER you waiting for?',
     path: 'games/rainz/index.html',
     color: '#4FB2D6',
     rim: 'rgba(5, 55, 75, 0.30)',
@@ -136,7 +136,7 @@ export const GAMES = [
     id: 'warpz',
     title: 'WARPZ',
     emojiImage: getWarpzOrbIconDataURL(WARPZ_VIOLET_PALETTE),
-    tagline: 'Dodge asteroids and survive as long as you can',
+    tagline: 'In space no one can hear to scream!',
     path: 'games/warpz/index.html',
     color: '#A8D84A', // lime green — matches this game's own shell accentColor (see games/warpz/index.js)
     rim: 'rgba(55, 85, 5, 0.30)',

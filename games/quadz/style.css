@@ -255,6 +255,13 @@
 
 .shell-header {
   position: relative; /* anchors the popover below, via position:absolute */
+  /* .shell-header also has `perspective` set (see shared shell.css), which
+     makes it its own stacking context. Without an explicit z-index here,
+     that context sits at the same "auto" stacking level as .shell-stage —
+     and since .shell-stage comes later in the DOM, it painted on top,
+     burying the popover behind the game grid despite its own z-index: 30.
+     This lifts the whole header (popover included) above the stage. */
+  z-index: 10;
 }
 
 .help-toggle {

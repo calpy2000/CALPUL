@@ -20,7 +20,7 @@
 // — don't hand-edit either file.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
@@ -558,6 +558,7 @@ $(function () {
     hideRevealButton();
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
+    saveTodayScore(GAME_ID, totalSeconds);
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
     // A trailing <p> of its own (rather than appended inside the last
     // sentence's own <p>) so it gets the exact same paragraph spacing as

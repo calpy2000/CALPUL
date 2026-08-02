@@ -17,7 +17,7 @@ import { getStarShardIconDataURL } from './star-shard-icon.js';
 import { getEnergyOrbIconDataURL } from './energy-orb-icon.js';
 import { getSkullIconDataURL } from './skull-icon.js';
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getToolMode } from '../../shared/core/tool-mode.js';
@@ -1661,6 +1661,7 @@ function animate(currentTime) {
 
     const seconds = Math.floor(survivalTime);
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
+    saveTodayScore(GAME_ID, score);
     // Completing the whole sequence gets its own congratulations message
     // instead of the normal score-comparison one, and always celebrates
     // (a win is a win regardless of how the score stacks up) — everything

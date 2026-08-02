@@ -2,7 +2,7 @@
 // and both marked columns sum (or multiply/etc.) correctly.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
@@ -470,6 +470,7 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
     stopTimer();
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
+    saveTodayScore(GAME_ID, totalSeconds);
     // SOLVZ has no reveal/help/fail concept — a win is the only way it ever
     // ends — so this only ever carries isNewBest/isTie for the feedback page.
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });

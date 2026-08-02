@@ -3,7 +3,7 @@
 // every slice is back in its correct spot and the picture is whole again.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
@@ -330,6 +330,7 @@ $(function () {
     hideRevealButton();
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
+    saveTodayScore(GAME_ID, totalSeconds);
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
     const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>`;
     // No previous best at all (first-ever play) or a previous best of

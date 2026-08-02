@@ -13,7 +13,7 @@
 // exists for every day of the year.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ANSWERS_366 } from './answers.js';
@@ -257,6 +257,7 @@ $(function () {
     persistProgress(true);
 
     const result = submitScore(GAME_ID, guessCount, { higherIsBetter: false });
+    saveTodayScore(GAME_ID, guessCount);
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
     const guessWord = `${guessCount} guess${guessCount === 1 ? '' : 'es'}`;
     const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You got it with ${guessWord}</p><p>Try and do better tomorrow</p>`;

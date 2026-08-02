@@ -15,7 +15,7 @@ import { getJewelIconDataURL, getBonusJewelIconDataURL, BONUS_JEWEL_STYLE } from
 import { drawPlayerFace, getPlayerIconDataURL } from './player-icon.js';
 import { getHorizontalBarIconDataURL } from './bar-icon.js';
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
@@ -496,6 +496,7 @@ function animate(currentTime) {
     finalSummaryProcessed = true;
 
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
+    saveTodayScore(GAME_ID, score);
     const resultLine = buildResultLine(score, result);
     saveProgress(GAME_ID, { score, resultLine, seconds: survivalTime }, { completed: true });
     // JEWELZ has no reveal/help concept, and only ever ends via a death — a

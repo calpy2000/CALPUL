@@ -19,7 +19,7 @@
 
 import Raindrop from './Raindrop.js';
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ALL_WORDS } from './words.js';
@@ -695,6 +695,7 @@ function animate(currentTime) {
     finalSummaryProcessed = true;
     liveScoreEl.textContent = '';
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
+    saveTodayScore(GAME_ID, score);
     const resultLine = buildResultLine(score, result);
     saveProgress(GAME_ID, { score, resultLine, seconds: survivalTime }, { completed: true });
     // RAINZ has no reveal/help concept, and only ever ends via a raindrop

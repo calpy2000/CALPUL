@@ -21,7 +21,7 @@
 // Hub-only: nothing here is imported by any individual game page, so a
 // tester who's already past the hub never sees this again mid-game.
 
-import { showPageLoadingIndicator, hidePageLoadingIndicator } from './loading-indicator.js';
+import { showPageLoadingIndicator, hidePageLoadingIndicator, yieldForPaint } from './loading-indicator.js';
 
 const STORAGE_KEY = 'pusulz_tester';
 
@@ -124,6 +124,11 @@ function showGate() {
       submitBtn.disabled = true;
       input.disabled = true;
       showPageLoadingIndicator();
+      // See loading-indicator.js's own comment on yieldForPaint(): without
+      // this, the disabled input/button and the spinner just added above
+      // can both silently never make it to the screen before the fetch
+      // below starts — a real on-device freeze, not just a missing spinner.
+      await yieldForPaint();
 
       let testers;
       try {
@@ -149,6 +154,13 @@ function showGate() {
 
       const [name, code] = match;
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
+      // Same reasoning as the yieldForPaint() call above, on the other side
+      // of the fetch this time — without it, everything from here on
+      // (hiding the spinner, resolving, the hub's own reveal right after)
+      // can end up bundled into the same un-painted stretch as the fetch
+      // itself, so the tester never sees anything change until they
+      // manually reload, even though the code WAS actually accepted.
+      await yieldForPaint();
       hidePageLoadingIndicator();
       resolve();
     });

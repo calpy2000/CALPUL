@@ -9,7 +9,7 @@ import { getDailyStatus } from './shared/core/daily-lock.js';
 import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
-import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam } from './shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
 import { ensureAppReady } from './shared/core/update-gate.js';
 
 // Waits here, BEFORE hiding the spinner, only on a brand-new install or a
@@ -143,6 +143,12 @@ function renderTiles() {
 // shown — see the "is-gate-hidden" class in index.html/beta-gate.css)
 // behind a locked gate.
 await initBetaGate();
+// See loading-indicator.js's own comment on yieldForPaint(): initBetaGate()
+// resolves right after a fetch() (either the gate's own testers.json
+// lookup, or the already-stored-code fast path), and that same fetch-based
+// await doesn't reliably let WebKit paint the transition on its own — so
+// without this, the hub reveal right below can end up stuck un-painted too.
+await yieldForPaint();
 document.getElementById('hub').classList.remove('is-gate-hidden');
 
 renderTiles();

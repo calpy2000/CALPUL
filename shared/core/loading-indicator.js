@@ -20,6 +20,22 @@ export function hidePageLoadingIndicator() {
   if (el) el.remove();
 }
 
+// Forces a genuine yield back to the browser between two DOM changes, so
+// whatever was just shown (a spinner, a disabled input, a hidden panel)
+// actually gets painted before the next thing happens — confirmed, via
+// real on-device testing, to be necessary around `fetch()` specifically:
+// unlike a timer-based await (e.g. `await new Promise(r => setTimeout(r,
+// 3000))`, which reliably lets WebKit paint in the gap), awaiting a fetch()
+// does NOT reliably trigger a repaint on this engine even when the request
+// resolves near-instantly (e.g. served from the service worker's cache) —
+// the DOM change made right before the fetch, and the one made right after
+// it resolves, can both simply never make it to the screen otherwise. Use
+// this immediately before starting a fetch-based wait, and again right
+// after it resolves and before revealing whatever comes next.
+export function yieldForPaint() {
+  return new Promise((resolve) => setTimeout(resolve, 0));
+}
+
 // Re-shows the same full-page centered spinner for a LATER wait that isn't
 // the initial page load (hidePageLoadingIndicator() above already removed
 // the original element from the DOM by this point) — rebuilds it fresh

@@ -70,7 +70,7 @@ export const GAMES = [
     // Just the regular ruby jewel now (not the ruby+sapphire bonus-jewel
     // pair) — one image per tile, matching every other game.
     emojiImage: getJewelIconDataURL(),
-    tagline: 'Jewel be glad you played this',
+    tagline: 'Jewel be glad gem played this game',
     path: 'games/jewelz/index.html',
     color: '#63B98A', // green still reads well behind the ruby jewel image
     rim: 'rgba(10, 55, 30, 0.30)',
@@ -125,7 +125,7 @@ export const GAMES = [
     // "RAINZ" is already the tile's own title text right next to it, so a
     // letter on the drop would be redundant, same reasoning as the header.
     emojiImage: getRainzHeaderIconDataURL(0),
-    tagline: 'On your marks, wet <br> water you waiting for?',
+    tagline: 'On your marks, wet, water you waiting for?',
     path: 'games/rainz/index.html',
     color: '#4FB2D6',
     rim: 'rgba(5, 55, 75, 0.30)',

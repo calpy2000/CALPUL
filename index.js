@@ -11,13 +11,6 @@ import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
 import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam } from './shared/core/loading-indicator.js';
 
-// TEMPORARY — spinner on-device test. Forces a guaranteed 3s wait before the
-// spinner is hidden, regardless of real network/cache conditions, so we can
-// see with certainty whether the spinner actually paints and stays visible
-// on this device (this is the "back" arrow's destination page). REMOVE this
-// block once the test is done.
-await new Promise((resolve) => setTimeout(resolve, 3000));
-
 // See loading-indicator.js's own comment: this page's whole JS module graph
 // (every import above) has already finished loading by the time this line
 // runs, so the spinner's job is done — everything from here on either

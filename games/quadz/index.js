@@ -29,12 +29,6 @@ import { ALL_WORDS } from './words.js';
 import { getTileIconDataURL } from './tile-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
-// TEMPORARY — spinner on-device test. Forces a guaranteed 3s wait before the
-// spinner is hidden, regardless of real network/cache conditions, so we can
-// see with certainty whether the spinner actually paints and stays visible
-// on this device. REMOVE this block once the test is done.
-await new Promise((resolve) => setTimeout(resolve, 3000));
-
 hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 

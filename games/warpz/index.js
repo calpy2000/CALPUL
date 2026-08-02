@@ -22,10 +22,6 @@ import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getToolMode } from '../../shared/core/tool-mode.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
-import { showDebugOverlay } from '../../shared/core/debug-overlay.js';
-
-// TEMPORARY — spinner investigation. See debug-overlay.js's own comment.
-await showDebugOverlay('WARPZ');
 
 // See loading-indicator.js's own comment: every file imported above
 // (Asteroid.js, Station.js, Maze.js, etc. — the whole reason this page can

@@ -13,6 +13,10 @@
 
 import { GAMES } from './games-registry.js';
 import { hidePageLoadingIndicator, navigateWithSpinner } from './shared/core/loading-indicator.js';
+import { showDebugOverlay } from './shared/core/debug-overlay.js';
+
+// TEMPORARY — spinner investigation. See debug-overlay.js's own comment.
+await showDebugOverlay('WELCOME');
 
 hidePageLoadingIndicator();
 

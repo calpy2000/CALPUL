@@ -10,6 +10,10 @@ import { getDailyStatus } from './core/daily-lock.js';
 import { getStoredTester } from './core/beta-gate.js';
 import { GAMES } from '../games-registry.js';
 import { hidePageLoadingIndicator } from './core/loading-indicator.js';
+import { showDebugOverlay } from './core/debug-overlay.js';
+
+// TEMPORARY — spinner investigation. See debug-overlay.js's own comment.
+await showDebugOverlay('FEEDBACK');
 
 // See loading-indicator.js's own comment: every file imported above has
 // already finished loading by the time this line runs, so the spinner's

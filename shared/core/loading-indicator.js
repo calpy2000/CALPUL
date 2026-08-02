@@ -22,18 +22,37 @@ export function hidePageLoadingIndicator() {
 
 // Forces a genuine yield back to the browser between two DOM changes, so
 // whatever was just shown (a spinner, a disabled input, a hidden panel)
-// actually gets painted before the next thing happens — confirmed, via
-// real on-device testing, to be necessary around `fetch()` specifically:
-// unlike a timer-based await (e.g. `await new Promise(r => setTimeout(r,
-// 3000))`, which reliably lets WebKit paint in the gap), awaiting a fetch()
-// does NOT reliably trigger a repaint on this engine even when the request
-// resolves near-instantly (e.g. served from the service worker's cache) —
-// the DOM change made right before the fetch, and the one made right after
-// it resolves, can both simply never make it to the screen otherwise. Use
-// this immediately before starting a fetch-based wait, and again right
+// actually gets painted before the next thing happens — necessary around
+// `fetch()` specifically: unlike a timer-based await (e.g. `await new
+// Promise(r => setTimeout(r, 3000))`, confirmed via real on-device testing
+// to reliably let WebKit paint in the gap), awaiting a fetch() does NOT
+// reliably trigger a repaint on this engine even when the request resolves
+// near-instantly (e.g. served from the service worker's cache) — the DOM
+// change made right before the fetch, and the one made right after it
+// resolves, can both simply never make it to the screen otherwise.
+//
+// A bare `setTimeout(resolve, 0)` was tried first and is NOT enough — it
+// yields to the event loop, but doesn't guarantee any real wall-clock time
+// passes for WebKit to actually flush a compositor frame in between,  and a
+// real on-device test of the beta gate (freezing exactly the same way as
+// before this existed) confirmed it isn't reliable. This uses the same
+// double-requestAnimationFrame + real millisecond delay already proven to
+// work everywhere else on the site (see navigateWithSpinner() below) —
+// the outer rAF fires at the start of the next frame, the inner one only
+// after THAT frame has actually painted, and the extra setTimeout on top is
+// the same cheap hedge navigateWithSpinner() uses for engines whose
+// rAF-to-paint timing is looser than Chromium's.
+//
+// Use this immediately before starting a fetch-based wait, and again right
 // after it resolves and before revealing whatever comes next.
 export function yieldForPaint() {
-  return new Promise((resolve) => setTimeout(resolve, 0));
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setTimeout(resolve, 100);
+      });
+    });
+  });
 }
 
 // Re-shows the same full-page centered spinner for a LATER wait that isn't

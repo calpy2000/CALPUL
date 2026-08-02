@@ -14,10 +14,11 @@
      as the first statement in this page's own index.js — see that file's
      own comment for why that moment is the right one). -->
 <style>
-  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
+  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
   @keyframes page-loading-reveal{to{opacity:1;pointer-events:auto}}
   .page-loading__spinner{width:68px;height:68px;border-radius:50%;border:6px solid #c7cdd6;border-top-color:#3d5af1;animation:page-loading-spin .8s linear infinite}
   @keyframes page-loading-spin{to{transform:rotate(360deg)}}
+  .page-loading__message{margin:0;padding:0 24px;font:15px/1.4 system-ui,sans-serif;color:#5a6472;text-align:center}
 </style>
 <!-- width=device-width makes the page's CSS-pixel width match the actual
      device screen (rather than a zoomed-out "desktop-site" view); the scale

@@ -10,6 +10,14 @@ import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
 import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam } from './shared/core/loading-indicator.js';
+import { ensureAppReady } from './shared/core/update-gate.js';
+
+// Waits here, BEFORE hiding the spinner, only on a brand-new install or a
+// version update that needs to precache — see update-gate.js's own comment
+// for why this has to run before both hidePageLoadingIndicator() below AND
+// initBetaGate() further down. No-ops almost instantly on every normal
+// return visit once a device is already up to date.
+await ensureAppReady();
 
 // See loading-indicator.js's own comment: this page's whole JS module graph
 // (every import above) has already finished loading by the time this line

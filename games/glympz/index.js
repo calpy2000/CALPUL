@@ -331,7 +331,7 @@ $(function () {
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
     saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>`;
+    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>`;
     // No previous best at all (first-ever play) or a previous best of
     // exactly 0 would make "new best"/"equaled best" messaging read oddly
     // this early on — fall back to the plain WELL DONE message for both.
@@ -339,7 +339,7 @@ $(function () {
     const message = hasNoMeaningfulBest
       ? wellDoneMessage
       : result.isNewBest
-        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
+        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
         : result.isTie
           ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${formatTime(totalSeconds)}</p><p>Try for a personal best tomorrow</p>`
           : wellDoneMessage;

@@ -481,7 +481,7 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
     const message = hasNoMeaningfulBest
       ? wellDoneMessage
       : result.isNewBest
-        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
+        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
         : result.isTie
           ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${formatTime(totalSeconds)}</p><p>Try for a personal best tomorrow</p>`
           : wellDoneMessage;

@@ -104,15 +104,13 @@ export function initToolsPanel(gameIds, { extraActions = [], radioGroups = [] } 
   }
 }
 
-// TEMPORARY diagnostic block — added to help debug a real-device-only
-// "still asked for the code after Add to Home Screen" report that hasn't
-// been reproducible any other way (no access to a real iOS device/Safari
-// to test against directly). Shows exactly the values needed to tell
-// whether the URL a home-screen icon actually launches with has ?code=...
-// on it or not, and whether the page even recognizes itself as running in
-// standalone (home-screen icon) mode at all. Meant to be screenshotted/
-// read off by hand, not pretty — remove once the underlying issue is
-// found and fixed for real.
+// Diagnostic block, dev panel only (see buildDevPanelContent() — no longer
+// shown in the tester-facing panel, since the "still asked for the code
+// after Add to Home Screen" report it was added to debug is now understood
+// and confirmed as a fixed iOS platform behaviour, not a bug — see
+// beta-gate.js's own header comment). Kept here for whoever's testing in
+// dev mode, in case another real-device-only report needs the same kind of
+// values checked by hand later.
 function buildDebugInfoHtml() {
   return `<pre class="dev-panel__debug" id="dev-debug-info"></pre>`;
 }
@@ -184,7 +182,6 @@ function buildTestPanelContent() {
     'div',
     'dev-panel is-hidden',
     `<p class="dev-panel__title">Tester tools<span class="dev-panel__version">V${APP_VERSION}</span></p>
-     ${buildDebugInfoHtml()}
      <button class="dev-panel__btn" id="dev-reset-today" type="button">Reset today's progress</button>
      <button class="dev-panel__btn" id="dev-send-feedback" type="button">Send feedback</button>
      <button class="dev-panel__btn" id="dev-see-instructions" type="button">See tester instructions</button>

@@ -55,11 +55,19 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- defer (not a plain blocking script tag): without it, the browser
+       pauses HTML parsing — and, more importantly, the FIRST PAINT of the
+       whole page, spinner included — to fetch this from a cross-origin CDN
+       before it can render anything, which on a slow/cellular connection is
+       exactly what leaves the page looking blank instead of showing the
+       page-load spinner. defer fetches it in the background and still runs
+       it (in document order, before index.js) once parsing finishes — same
+       effective timing, just non-render-blocking. See loading-indicator.js. -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
   <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
        fireConfetti()) — a small (~5KB) standalone library, no dependency on
-       jQuery or anything else. -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+       jQuery or anything else. defer for the same reason as jQuery above. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
   <script type="module" src="index.js"></script>
 </body>
 </html>

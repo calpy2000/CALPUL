@@ -59,8 +59,16 @@
   <div id="obstacleDebugLabel" class="warpz-obstacle-debug"></div>
 
   <!-- Powers the confetti celebration on a new personal best (see
-       shared/core/shell.js's fireConfetti()). -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+       shared/core/shell.js's fireConfetti()). defer (not a plain blocking
+       script tag): without it, the browser pauses HTML parsing — and, more
+       importantly, the FIRST PAINT of the whole page, spinner included —
+       to fetch this from a cross-origin CDN before it can render anything,
+       which on a slow/cellular connection is exactly what leaves WARPZ (the
+       heaviest page on the site) looking blank instead of showing the
+       page-load spinner. defer fetches it in the background and still runs
+       it (in document order, before index.js) once parsing finishes — same
+       effective timing, just non-render-blocking. See loading-indicator.js. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
   <script type="module" src="index.js"></script>
 </body>
 </html>

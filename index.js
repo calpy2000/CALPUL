@@ -11,14 +11,6 @@ import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
 import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
 import { ensureAppReady } from './shared/core/update-gate.js';
-import { showTraceIfPresent, logTrace } from './shared/core/debug-trace.js'; // TEMPORARY — see that file's own comment
-
-// TEMPORARY — if the PREVIOUS load froze partway through the beta gate, its
-// trace is sitting in localStorage; show it now, before anything else, so
-// this reload (which we already know paints fine) surfaces exactly what
-// happened. No-ops instantly if there's nothing to show, which is every
-// normal visit.
-await showTraceIfPresent();
 
 // Waits here, BEFORE hiding the spinner, only on a brand-new install or a
 // version update that needs to precache — see update-gate.js's own comment
@@ -144,27 +136,25 @@ function renderTiles() {
   });
 }
 
-// Blocks here (top-level await — supported in module scripts) until either
-// a tester code is already stored on this device, or the tester enters a
-// valid one into the gate — see shared/core/beta-gate.js. Nothing below
-// this line runs until that resolves, so the hub tiles never get built (or
-// shown — see the "is-gate-hidden" class in index.html/beta-gate.css)
-// behind a locked gate.
-logTrace('index.js: about to call initBetaGate()'); // TEMPORARY
+// Blocks here (top-level await — supported in module scripts) until a
+// tester code is already stored on this device — see
+// shared/core/beta-gate.js. That's the ONLY way this ever resolves: a
+// tester who still needs to enter a code stays on the gate until they type
+// a valid one, at which point beta-gate.js reloads the whole page rather
+// than resolving here — see its own comment for why. So nothing below this
+// line runs until either this device was already set up, or a fresh reload
+// (post-code-entry) reaches this same line on its own next pass.
 await initBetaGate();
-logTrace('index.js: initBetaGate() resolved'); // TEMPORARY
-// See loading-indicator.js's own comment on yieldForPaint(): initBetaGate()
-// resolves right after a fetch() (either the gate's own testers.json
-// lookup, or the already-stored-code fast path), and that same fetch-based
-// await doesn't reliably let WebKit paint the transition on its own — so
-// without this, the hub reveal right below can end up stuck un-painted too.
+// See loading-indicator.js's own comment on yieldForPaint(): a genuinely
+// new install/update may have just waited on the service worker's own
+// fetch-driven install (see update-gate.js's ensureAppReady(), called
+// above) before reaching this point, and that kind of await doesn't
+// reliably let WebKit paint on its own — this is a defensive guard so the
+// hub reveal right below doesn't inherit that same risk.
 await yieldForPaint();
-logTrace('index.js: yieldForPaint after gate resolved'); // TEMPORARY
 document.getElementById('hub').classList.remove('is-gate-hidden');
-logTrace('index.js: hub revealed (is-gate-hidden removed)'); // TEMPORARY
 
 renderTiles();
-logTrace('index.js: renderTiles() done'); // TEMPORARY
 
 // GAMES.map((game) => game.id) transforms the array of game objects into
 // just an array of their id strings (['solvz', 'glympz', 'jewelz']) — that's

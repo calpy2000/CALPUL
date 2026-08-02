@@ -24,7 +24,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v2.10';
+const CACHE_VERSION = 'v2.11';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 const IMAGE_CACHE = 'pusulz-images'; // no version suffix — permanent, see comment above
 
@@ -54,7 +54,6 @@ const CODE_URLS = [
   'shared/core/beta-gate.js',
   'shared/core/daily-lock.js',
   'shared/core/date-utils.js',
-  'shared/core/debug-trace.js',
   'shared/core/flip-timer.js',
   'shared/core/game-storage.js',
   'shared/core/loading-indicator.js',

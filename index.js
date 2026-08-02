@@ -11,6 +11,14 @@ import { initToolsPanel } from './shared/core/tools-panel.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
 import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
 import { ensureAppReady } from './shared/core/update-gate.js';
+import { showTraceIfPresent, logTrace } from './shared/core/debug-trace.js'; // TEMPORARY — see that file's own comment
+
+// TEMPORARY — if the PREVIOUS load froze partway through the beta gate, its
+// trace is sitting in localStorage; show it now, before anything else, so
+// this reload (which we already know paints fine) surfaces exactly what
+// happened. No-ops instantly if there's nothing to show, which is every
+// normal visit.
+await showTraceIfPresent();
 
 // Waits here, BEFORE hiding the spinner, only on a brand-new install or a
 // version update that needs to precache — see update-gate.js's own comment
@@ -142,16 +150,21 @@ function renderTiles() {
 // this line runs until that resolves, so the hub tiles never get built (or
 // shown — see the "is-gate-hidden" class in index.html/beta-gate.css)
 // behind a locked gate.
+logTrace('index.js: about to call initBetaGate()'); // TEMPORARY
 await initBetaGate();
+logTrace('index.js: initBetaGate() resolved'); // TEMPORARY
 // See loading-indicator.js's own comment on yieldForPaint(): initBetaGate()
 // resolves right after a fetch() (either the gate's own testers.json
 // lookup, or the already-stored-code fast path), and that same fetch-based
 // await doesn't reliably let WebKit paint the transition on its own — so
 // without this, the hub reveal right below can end up stuck un-painted too.
 await yieldForPaint();
+logTrace('index.js: yieldForPaint after gate resolved'); // TEMPORARY
 document.getElementById('hub').classList.remove('is-gate-hidden');
+logTrace('index.js: hub revealed (is-gate-hidden removed)'); // TEMPORARY
 
 renderTiles();
+logTrace('index.js: renderTiles() done'); // TEMPORARY
 
 // GAMES.map((game) => game.id) transforms the array of game objects into
 // just an array of their id strings (['solvz', 'glympz', 'jewelz']) — that's

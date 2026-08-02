@@ -22,6 +22,7 @@
 // tester who's already past the hub never sees this again mid-game.
 
 import { showPageLoadingIndicator, hidePageLoadingIndicator, yieldForPaint } from './loading-indicator.js';
+import { logTrace } from './debug-trace.js'; // TEMPORARY — see that file's own comment
 
 const STORAGE_KEY = 'pusulz_tester';
 
@@ -107,6 +108,7 @@ function showGate() {
 
     panel.addEventListener('submit', async (e) => {
       e.preventDefault();
+      logTrace('submit: preventDefault done'); // TEMPORARY
       const entered = input.value.trim().toUpperCase();
       if (!entered) return;
 
@@ -124,16 +126,21 @@ function showGate() {
       submitBtn.disabled = true;
       input.disabled = true;
       showPageLoadingIndicator();
+      logTrace('disabled inputs + showPageLoadingIndicator done'); // TEMPORARY
       // See loading-indicator.js's own comment on yieldForPaint(): without
       // this, the disabled input/button and the spinner just added above
       // can both silently never make it to the screen before the fetch
       // below starts — a real on-device freeze, not just a missing spinner.
       await yieldForPaint();
+      logTrace('yieldForPaint #1 resolved'); // TEMPORARY
 
       let testers;
       try {
+        logTrace('starting fetchTesters()'); // TEMPORARY
         testers = await fetchTesters();
+        logTrace('fetchTesters() resolved'); // TEMPORARY
       } catch (err) {
+        logTrace('fetchTesters() THREW: ' + (err && err.message)); // TEMPORARY
         hidePageLoadingIndicator();
         submitBtn.disabled = false;
         input.disabled = false;
@@ -142,6 +149,7 @@ function showGate() {
         return;
       }
       const match = Object.entries(testers).find(([, code]) => code === entered);
+      logTrace('match check done: ' + (match ? 'FOUND' : 'not found')); // TEMPORARY
 
       if (!match) {
         hidePageLoadingIndicator();
@@ -154,6 +162,7 @@ function showGate() {
 
       const [name, code] = match;
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ name, code }));
+      logTrace('localStorage.setItem done'); // TEMPORARY
       // Same reasoning as the yieldForPaint() call above, on the other side
       // of the fetch this time — without it, everything from here on
       // (hiding the spinner, resolving, the hub's own reveal right after)
@@ -161,7 +170,9 @@ function showGate() {
       // itself, so the tester never sees anything change until they
       // manually reload, even though the code WAS actually accepted.
       await yieldForPaint();
+      logTrace('yieldForPaint #2 resolved'); // TEMPORARY
       hidePageLoadingIndicator();
+      logTrace('hidePageLoadingIndicator done, about to resolve()'); // TEMPORARY
       resolve();
     });
   });

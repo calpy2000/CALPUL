@@ -57,7 +57,7 @@ export const GAMES = [
     // picked for a clear diagonal color transition) — the same single-crop
     // style used for its in-game header, not the full 5-tile shuffled row.
     emojiImage: getGlympzTileIconDataURL(2),
-    tagline: 'Shuffle the clips to restore the image',
+    tagline: 'Now you see it, Now you don\'t',
     path: 'games/glympz/index.html',
     color: '#6F9BDB',
     rim: 'rgba(20, 40, 90, 0.30)',

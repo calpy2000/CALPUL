@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v2.17';
+const CACHE_VERSION = 'v2.18';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -41,7 +41,7 @@ const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 // forever. Needed because the cache-first strategy below has no expiry of
 // its own — once a device has cached an image under a given filename,
 // nothing else ever tells it to check again.
-const IMAGE_CACHE_VERSION = 'v2';
+const IMAGE_CACHE_VERSION = 'v3';
 const IMAGE_CACHE = `pusulz-images-${IMAGE_CACHE_VERSION}`;
 
 // Generated from the actual repo file tree (excluding games/*/images/,

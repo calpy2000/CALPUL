@@ -4,7 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* flex-end (not center) pins the canvas/tiles/score block a fixed
+     var(--space-sm) above the footer, same as the fixed gap between tiles
+     and score above it — under `center`, any leftover vertical space (on
+     screens where the canvas doesn't need the full height) split evenly
+     above the canvas and below the score, but only the half below the
+     score reads as "the score's margin" since nothing else sits between it
+     and the footer, making that gap look uneven even though it wasn't. */
+  justify-content: flex-end;
   gap: var(--space-sm);
 }
 
@@ -15,10 +22,20 @@
      game-root ALSO has the tile grid + live-score line below it competing
      for vertical space; this lets the canvas shrink to whatever's left
      after those take theirs, instead of demanding the full height and
-     pushing them off-screen. */
+     pushing them off-screen.
+
+     width:100% (not auto) is what actually fixes the "squashed on phone"
+     complaint: with width:auto, an unconstrained canvas falls back to its
+     raw HTML width/height attributes (450x800) as its preferred size before
+     flex-shrink ever applies, which could shrink to a narrower-than-full
+     width even when the screen had width to spare. width:100% instead
+     anchors the preferred size to the stage's own width, so it fills that
+     width whenever there's enough height to allow it — flex:1 1 auto +
+     min-height:0 still let it shrink (both dimensions together, via
+     aspect-ratio) rather than overflow, on screens too short for that. */
   flex: 1 1 auto;
   min-height: 0;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   aspect-ratio: 9 / 16;
   background-color: #1e3a5f;
@@ -38,8 +55,8 @@
 }
 
 .rainz-tile {
-  width: 52px;
-  height: 52px;
+  width: 41.6px; /* 52px * 0.8 */
+  height: 41.6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +64,7 @@
   background-color: #e0f2fe;
   border: 2px solid #38bdf8;
   color: #0369a1;
-  font-size: 24px;
+  font-size: 19.2px; /* 24px * 0.8, scaled down with the tile so letters don't look oversized in the smaller box */
   font-weight: 700;
   text-transform: uppercase;
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -119,9 +136,22 @@
 }
 
 #liveScore {
-  font-size: 1.1rem;
+  font-size: 0.77rem; /* 1.1rem * 0.7 */
   font-weight: 700;
   color: var(--ink);
   min-height: 1.4em; /* reserves space for a line of text even before the game starts, so nothing shifts position once it fills in */
   flex-shrink: 0;
+}
+
+/* RAINZ-only override of the shared shell-footer's top spacing (see
+   shared/shell.css's own .shell-footer rule) — with the tile grid + score
+   line already sitting right above it (unlike WARPZ/JEWELZ, which have
+   nothing there), the footer's usual var(--space-sm) margin ON TOP OF its
+   own var(--space-sm) padding left an overly large gap before the timer
+   pill. Dropping just the margin (keeping the padding, so the footer's own
+   internal breathing room stays consistent with every other game) halves
+   that gap. Safe to scope to this page alone since style.css is only
+   loaded by games/rainz/index.html — no other game is affected. */
+.shell-footer {
+  margin-top: 0;
 }

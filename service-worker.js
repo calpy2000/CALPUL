@@ -14,8 +14,11 @@
 // images) and would burn real cellular data for images a tester might not
 // even see today. Those are cached opportunistically instead, the first
 // time each one is actually requested — see the fetch handler below — into
-// a SEPARATE, permanent cache that (unlike the code cache) is never cleared
-// on a version bump, since curated movie stills never change once set.
+// a SEPARATE cache that (unlike the code cache) survives ordinary
+// CACHE_VERSION bumps, since curated images normally don't change once set —
+// but it has its OWN version (IMAGE_CACHE_VERSION below) for the rare case
+// where an image file's content genuinely does change in place (e.g. a
+// recompression) after some testers have already cached the old bytes.
 //
 // CACHE_VERSION must be bumped BY HAND every time site code changes, kept
 // in sync with shared/core/app-version.js's APP_VERSION by convention only
@@ -24,9 +27,22 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v2.14';
+const CACHE_VERSION = 'v2.17';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
-const IMAGE_CACHE = 'pusulz-images'; // no version suffix — permanent, see comment above
+
+// Bump ONLY when an image file's actual pixel content changes in place
+// (recompression, swapping in a better crop/curation, etc) — NOT on every
+// CACHE_VERSION bump above, since that would force every device to
+// re-download the full 58MB image set on every unrelated code push. A bump
+// here works the same way CACHE_VERSION does for code: it changes this
+// file's bytes, which is what makes the browser install a new worker and
+// run the activate handler below, which deletes the old-versioned image
+// cache so devices re-fetch fresh copies instead of keeping stale ones
+// forever. Needed because the cache-first strategy below has no expiry of
+// its own — once a device has cached an image under a given filename,
+// nothing else ever tells it to check again.
+const IMAGE_CACHE_VERSION = 'v2';
+const IMAGE_CACHE = `pusulz-images-${IMAGE_CACHE_VERSION}`;
 
 // Generated from the actual repo file tree (excluding games/*/images/,
 // tools/ — dev-only curation scripts never served to testers — and .git).
@@ -164,13 +180,20 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
-      // Drops any OLDER version's code cache (this is what makes a version
-      // bump actually free up the previous version's storage) — deliberately
-      // never touches pusulz-images, which has no version suffix and is
-      // meant to persist across every future update indefinitely.
+      // Drops any OLDER version's code OR image cache (this is what makes a
+      // version bump actually free up the previous version's storage, and —
+      // for images specifically — what lets a deliberate IMAGE_CACHE_VERSION
+      // bump force devices to drop stale cached images and re-fetch current
+      // ones, since the fetch handler below otherwise never re-checks a
+      // filename it's already cached).
       const names = await caches.keys();
       await Promise.all(
-        names.filter((name) => name.startsWith('pusulz-code-') && name !== CODE_CACHE).map((name) => caches.delete(name))
+        names
+          .filter((name) =>
+            (name.startsWith('pusulz-code-') && name !== CODE_CACHE) ||
+            (name.startsWith('pusulz-images-') && name !== IMAGE_CACHE)
+          )
+          .map((name) => caches.delete(name))
       );
       // clients.claim() lets this worker start controlling the page that's
       // ALREADY open right now (the one that triggered this install), not

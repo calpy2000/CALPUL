@@ -37,6 +37,33 @@
   gap: var(--space-sm);
 }
 
+/* Shown only once the game ends (see index.js's showAnswerTitle()) — reveals
+   the correct movie title in red, centered, between the header and the grid.
+   position:absolute (positioned relative to #game-stage/.shell-stage, which
+   already establishes the containing block via shared/shell.css's
+   position:relative) takes it OUT of .muveez-stage's normal flex flow
+   entirely, so revealing it never pushes #grid-container down — it just
+   overlays the existing gap that's already there between the header and the
+   grid (the header's own margin-bottom, from shared/shell.css) rather than
+   claiming new space. `display: none` while hidden (not `visibility: hidden`
+   like .muveez-error below) since there's nothing to reserve either way. */
+.muveez-answer-title {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-size: 13.6px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #dc2626;
+  text-align: center;
+}
+
+.muveez-answer-title.is-hidden {
+  display: none;
+}
+
 #grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);

@@ -54,6 +54,13 @@
     <div class="shell-stage" id="game-stage">
       <div id="game-root">
         <div class="muveez-stage">
+          <!-- Reveals the correct movie title once the game ends (win, loss,
+               or revisiting an already-finished day) — see index.js's
+               showAnswerTitle(). Hidden (not just empty) until then via
+               `is-hidden`, since an empty centered <p> would still be a
+               visible content shift the moment it appears. -->
+          <p class="muveez-answer-title is-hidden" id="answer-title"></p>
+
           <div id="grid-container"></div>
 
           <p class="muveez-prompt">Can you guess the movie?</p>

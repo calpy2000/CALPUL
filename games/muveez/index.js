@@ -41,6 +41,7 @@ $(function () {
   const $guessBtn = $('#guess-btn');
   const $error = $('#guess-error');
   const $guessNumber = $('#guess-number');
+  const $answerTitle = $('#answer-title');
 
   // Same daily-image mechanism as GLYMPZ: picks today's numbered .jpg and
   // exposes it as a CSS custom property every tile's background-image reads
@@ -239,12 +240,20 @@ $(function () {
     $input.val(`Answer: ${ANSWER}`).addClass('is-answer-shown');
   }
 
+  // Reveals the correct movie title in the red paragraph between the header
+  // and the grid — called alongside showAnswerInInput() everywhere the game
+  // ends (win, loss, or revisiting an already-finished day).
+  function showAnswerTitle() {
+    $answerTitle.text(ANSWER).removeClass('is-hidden');
+  }
+
   function handleWin() {
     locked = true;
     stopTimer();
     $input.prop('disabled', true);
     $guessBtn.prop('disabled', true);
     showAnswerInInput();
+    showAnswerTitle();
     won = true;
     // Guessing correctly reveals whatever tiles hadn't come up yet — the
     // player doesn't have to keep guessing wrong just to see the full
@@ -299,6 +308,7 @@ $(function () {
     $input.prop('disabled', true);
     $guessBtn.prop('disabled', true);
     showAnswerInInput();
+    showAnswerTitle();
     won = false;
     revealedBatchCount = TOTAL_BATCHES;
     revealUpTo(TOTAL_BATCHES);
@@ -395,6 +405,7 @@ $(function () {
     $input.prop('disabled', true);
     $guessBtn.prop('disabled', true);
     showAnswerInInput();
+    showAnswerTitle();
     // No `celebrate` on this branch either way — this only runs when
     // revisiting a day already finished in an EARLIER session, not on the
     // actual moment of winning/losing, so it shouldn't replay the confetti.

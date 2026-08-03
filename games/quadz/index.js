@@ -221,14 +221,20 @@ $(function () {
     return result;
   }
 
-  // True only if EVERY row and EVERY column of this exact 16-letter
-  // arrangement is simultaneously a valid word — used only when building
-  // each day's puzzle, to make sure the starting scramble isn't
-  // accidentally already solved (see below).
-  function isFullySolvedArrangement(letters16) {
-    for (let r = 0; r < LETTER_SIZE; r++) if (!checkWord(rowWord(letters16, r))) return false;
-    for (let c = 0; c < LETTER_SIZE; c++) if (!checkWord(colWord(letters16, c))) return false;
-    return true;
+  // True if ANY single row or column of this 16-letter arrangement already
+  // spells a valid word — used only when building each day's puzzle, to
+  // make sure the starting scramble doesn't hand the player a free tick on
+  // day one. A lone pre-solved row/column isn't just a mild head start: the
+  // tick that lights up for it makes testers believe THAT word is part of
+  // the actual daily answer, when it's really just shuffle coincidence (the
+  // real answer word for that row/column is whatever's in PUZZLES_366,
+  // which the shuffle has almost certainly scattered elsewhere). Subsumes
+  // the old fully-solved-only check, since a fully solved grid trivially
+  // has every row pre-solved too.
+  function hasAnyPreSolvedLine(letters16) {
+    for (let r = 0; r < LETTER_SIZE; r++) if (checkWord(rowWord(letters16, r))) return true;
+    for (let c = 0; c < LETTER_SIZE; c++) if (checkWord(colWord(letters16, c))) return true;
+    return false;
   }
 
   // Builds one day's puzzle from the curated data: the 4 across words
@@ -245,7 +251,7 @@ $(function () {
     do {
       shuffled = seededShuffle(answerLetters, seed);
       seed += 1000; // jump well ahead in the sequence if another attempt is ever needed
-    } while (isFullySolvedArrangement(shuffled));
+    } while (hasAnyPreSolvedLine(shuffled));
 
     return { rows, answerLetters, startLetters: shuffled };
   }
@@ -688,7 +694,7 @@ $(function () {
     }, { label: 'Resume' });
   } else {
     applyLetters(puzzle.startLetters);
-    updateGridValidity(); // in case the scramble happens to land a row/column on a real word already
+    updateGridValidity(); // initializes the tick cells to their (guaranteed all-false) starting state
     shell.showStartBanner(() => {
       locked = false;
       showHelpToggle();

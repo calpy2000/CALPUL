@@ -265,13 +265,19 @@ $(function () {
     // exactly 0 would make "new best"/"equaled best" messaging read oddly
     // this early on — fall back to the plain WELL DONE message for both.
     const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-    const message = hasNoMeaningfulBest
-      ? wellDoneMessage
-      : result.isNewBest
-        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You got it with ${guessWord}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
-        : result.isTie
-          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${guessWord}</p><p>Try for a personal best tomorrow</p>`
-          : wellDoneMessage;
+    // A first-guess win can't be beaten tomorrow (1 guess is the best
+    // possible score), so "do better tomorrow"/"new best"/"equaled best"
+    // messaging would all read oddly here — this overrides every other
+    // message above regardless of new-best/tie status.
+    const message = guessCount === 1
+      ? `<p class="shell-end-screen__title"><strong>WOWZERZ!!! 🤩🥇🥳</strong></p><p>You got it FIRST TIME!!!</p><p>Treat yourself to a holiday!!!</p>`
+      : hasNoMeaningfulBest
+        ? wellDoneMessage
+        : result.isNewBest
+          ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You got it with ${guessWord}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
+          : result.isTie
+            ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${guessWord}</p><p>Try for a personal best tomorrow</p>`
+            : wellDoneMessage;
     shell.showEndScreen({
       message,
       animateTarget: document.getElementById('grid-container'),

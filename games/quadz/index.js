@@ -492,12 +492,13 @@ $(function () {
 
     const foundSolutionWords = getFoundSolutionWords();
     const foundCountHtml = `<strong>${foundSolutionWords.length}</strong>`;
+    const foundWordOrWords = foundSolutionWords.length === 1 ? 'word' : 'words';
     // Zero found gets a full stop and no dangling "found 0 words ...:"
     // colon with nothing after it — the list (bolded, one per matched
     // word) only appears once there's actually something to show.
     const foundSentence = foundSolutionWords.length > 0
-      ? `So far you have found ${foundCountHtml} words from this solution:<br>${foundSolutionWords.map((w) => `<strong>${w}</strong>`).join(', ')}`
-      : `So far you have found ${foundCountHtml} words from this solution.`;
+      ? `So far you have found ${foundCountHtml} ${foundWordOrWords} from this solution:<br>${foundSolutionWords.map((w) => `<strong>${w}</strong>`).join(', ')}`
+      : `So far you have found ${foundCountHtml} ${foundWordOrWords} from this solution.`;
 
     return {
       eligible: true,

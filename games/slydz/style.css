@@ -153,8 +153,17 @@
   display: none;
 }
 
+/* 0.75em = half of the popover's own line-height (1.5) — the gap BETWEEN
+   sentences, kept separate from line-height itself so it doesn't also
+   stretch the tighter spacing between wrapped lines within one sentence.
+   Zeroed on the last paragraph so the popover doesn't end with a dangling
+   gap below the final line. */
 .help-popover p {
-  margin: 0;
+  margin: 0 0 0.75em;
+}
+
+.help-popover p:last-child {
+  margin-bottom: 0;
 }
 
 /* The CAN / CANNOT verdict inside the help text (see index.js's

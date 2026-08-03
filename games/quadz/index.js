@@ -264,6 +264,23 @@ $(function () {
   console.log(`🧩 QUADZ Daily Puzzle (Day ${todayDayOfYear} of 366):`);
   console.log('One valid solution:', puzzle.rows.join(' / '));
 
+  // Today's own 8-word canonical answer — the 4 stored ACROSS words plus
+  // the 4 DOWN words read off puzzle.answerLetters's own (unshuffled)
+  // arrangement, i.e. exactly what "Reveal solution" shows. Computed once
+  // since the puzzle itself never changes mid-round — used by the help
+  // popover's "words found from this solution" line below (see
+  // getFoundSolutionWords()), which is a stricter question than
+  // checkWord()'s "any dictionary word wins": a row/column can be validly
+  // formed with a real word that ISN'T one of these 8, since QUADZ accepts
+  // any dictionary word, not just the curated one for that line.
+  const SOLUTION_WORDS = [
+    ...puzzle.rows,
+    colWord(puzzle.answerLetters, 0),
+    colWord(puzzle.answerLetters, 1),
+    colWord(puzzle.answerLetters, 2),
+    colWord(puzzle.answerLetters, 3),
+  ];
+
   // Builds all 25 cells of the 5x5 grid, tagging each by role:
   //   rows 0-3, cols 0-3   -> letter tile   (data-row / data-col, 0-indexed)
   //   rows 0-3, col 4      -> row-tick cell (data-tick-row)
@@ -418,11 +435,40 @@ $(function () {
     'aria-label': 'Toggle help',
   }).appendTo('.shell-header');
 
+  // A plain container, not a single <p> — computeHelpMessage() below now
+  // builds its "eligible" html as several separate <p> sentences (see
+  // .help-popover p's margin-bottom in style.css) so the gap BETWEEN
+  // sentences can be a deliberate half-line-height, distinct from the
+  // tighter line-height governing wrapped lines within any one sentence.
   const $helpPopover = $('<div>', {
     class: 'help-popover is-hidden',
-    html: '<p id="quadz-help-text"></p>',
+    html: '<div id="quadz-help-text"></div>',
   }).appendTo('.shell-header');
   const $helpText = $helpPopover.find('#quadz-help-text');
+
+  // Of the rows/columns CURRENTLY sitting valid on the board, which happen
+  // to also be one of today's own 8 SOLUTION_WORDS specifically (rather
+  // than just some other valid dictionary word)? remainingSolutionWords is
+  // consumed as matches are found so a word occurring twice in the
+  // solution can't be credited twice from a single occurrence on the
+  // board.
+  function getFoundSolutionWords() {
+    const remainingSolutionWords = SOLUTION_WORDS.slice();
+    const letters16 = captureLetters();
+    const found = [];
+
+    function tryMatch(word) {
+      const idx = remainingSolutionWords.indexOf(word);
+      if (idx === -1) return;
+      found.push(word);
+      remainingSolutionWords.splice(idx, 1);
+    }
+
+    for (let r = 0; r < LETTER_SIZE; r++) if (rowValid[r]) tryMatch(rowWord(letters16, r));
+    for (let c = 0; c < LETTER_SIZE; c++) if (colValid[c]) tryMatch(colWord(letters16, c));
+
+    return found;
+  }
 
   // Unlike SLYDZ's search (a pure letter-count question), QUADZ's is a
   // real positional constraint search — see canCompleteRemainingCells()
@@ -444,9 +490,27 @@ $(function () {
       ? '<strong class="help-can">CAN</strong>'
       : '<strong class="help-cannot">CANNOT</strong>';
 
+    const foundSolutionWords = getFoundSolutionWords();
+    const foundCountHtml = `<strong>${foundSolutionWords.length}</strong>`;
+    // Zero found gets a full stop and no dangling "found 0 words ...:"
+    // colon with nothing after it — the list (bolded, one per matched
+    // word) only appears once there's actually something to show.
+    const foundSentence = foundSolutionWords.length > 0
+      ? `So far you have found ${foundCountHtml} words from this solution:<br>${foundSolutionWords.map((w) => `<strong>${w}</strong>`).join(', ')}`
+      : `So far you have found ${foundCountHtml} words from this solution.`;
+
     return {
       eligible: true,
-      html: `${validCount} words formed - the remaining letters ${verdict} be used to make up ${remaining} more ${wordOrWords} ✅`,
+      // Each sentence is its own <p> rather than one block joined by <br>s
+      // — see .help-popover p's margin-bottom (style.css) for the actual
+      // gap between them. Keeps that gap independent of line-height, which
+      // still (and only) governs the tighter spacing WITHIN a sentence
+      // that happens to wrap to more than one line inside the popover's
+      // fixed width.
+      html: `<p><strong>${validCount}</strong> words formed.</p>`
+        + `<p>The remaining letters ${verdict} be used to make up ${remaining} more ${wordOrWords}.</p>`
+        + `<p>There is at least one solution to the puzzle and one of these is our solution for today.</p>`
+        + `<p>${foundSentence}</p>`,
     };
   }
 
@@ -482,6 +546,19 @@ $(function () {
     $helpToggle.removeClass('is-active');
     $helpPopover.addClass('is-hidden');
   }
+
+  // Closes the popover on a click/tap anywhere else on the page — e.g. the
+  // grid, header, footer — not just by re-clicking the help toggle itself.
+  // Bound on `document` rather than the popover/toggle, so it naturally
+  // only fires once the click has bubbled past anything that should NOT
+  // close it; excluding clicks that land inside the toggle button or the
+  // popover itself is what stops this from immediately closing the
+  // popover on the very same click that just opened it.
+  document.addEventListener('click', (e) => {
+    if (!helpOn) return;
+    if ($helpToggle[0].contains(e.target) || $helpPopover[0].contains(e.target)) return;
+    turnOffHelp();
+  });
 
   // Only shown while a round is actually being played.
   function showHelpToggle() {

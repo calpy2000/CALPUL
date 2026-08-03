@@ -324,10 +324,25 @@ $(function () {
   function computeHelpMessage() {
     let validCount = 0;
     const remainingLetters = [];
+    // Of the rows CURRENTLY sitting valid, which happen to also be one of
+    // today's own 5 puzzle.words specifically (rather than just some other
+    // valid dictionary word)? remainingSolutionWords is consumed as matches
+    // are found so a word occurring twice in the solution can't be credited
+    // twice from a single occurrence on the board — same approach as
+    // games/quadz/index.js's getFoundSolutionWords(), just over rows only
+    // (SLYDZ has no columns).
+    const foundSolutionWords = [];
+    const remainingSolutionWords = puzzle.words.slice();
     for (let row = 1; row <= SIZE; row++) {
       const letters = getRowLetters(row);
       if (checkRow(letters)) {
         validCount++;
+        const word = letters.join('');
+        const idx = remainingSolutionWords.indexOf(word);
+        if (idx !== -1) {
+          foundSolutionWords.push(word);
+          remainingSolutionWords.splice(idx, 1);
+        }
       } else {
         // A different job for the same `...` spread syntax used above:
         // here it unpacks `letters` (an array of 5 single characters) into
@@ -373,9 +388,26 @@ $(function () {
       ? '<strong class="help-can">CAN</strong>'
       : '<strong class="help-cannot">CANNOT</strong>';
 
+    const foundCountHtml = `<strong>${foundSolutionWords.length}</strong>`;
+    // Zero found gets a full stop and no dangling "found 0 words ...:"
+    // colon with nothing after it — the list (bolded, one per matched
+    // word) only appears once there's actually something to show.
+    const foundSentence = foundSolutionWords.length > 0
+      ? `So far you have found ${foundCountHtml} words from this solution:<br>${foundSolutionWords.map((w) => `<strong>${w}</strong>`).join(', ')}`
+      : `So far you have found ${foundCountHtml} words from this solution.`;
+
     return {
       eligible: true,
-      html: `${validCount} words formed - the remaining letters ${verdict} be used to make up ${remainingRows} more ${wordOrWords} ✅`,
+      // Each sentence is its own <p> rather than one block joined by <br>s
+      // — see .help-popover p's margin-bottom (style.css) for the actual
+      // gap between them. Keeps that gap independent of line-height, which
+      // still (and only) governs the tighter spacing WITHIN a sentence
+      // that happens to wrap to more than one line inside the popover's
+      // fixed width.
+      html: `<p><strong>${validCount}</strong> words formed.</p>`
+        + `<p>The remaining letters ${verdict} be used to make up ${remainingRows} more ${wordOrWords}.</p>`
+        + `<p>There is at least one solution to the puzzle and one of these is our solution for today.</p>`
+        + `<p>${foundSentence}</p>`,
     };
   }
 
@@ -455,9 +487,12 @@ $(function () {
     'aria-label': 'Toggle help',
   }).appendTo('.shell-header');
 
+  // A plain container, not a single <p> — computeHelpMessage() below builds
+  // its "eligible" html as several separate <p> sentences (see .help-popover
+  // p's margin-bottom in style.css), same convention as games/quadz/index.js.
   const $helpPopover = $('<div>', {
     class: 'help-popover is-hidden',
-    html: '<p id="slydz-help-text"></p>',
+    html: '<div id="slydz-help-text"></div>',
   }).appendTo('.shell-header');
   const $helpText = $helpPopover.find('#slydz-help-text');
 
@@ -502,6 +537,19 @@ $(function () {
     $helpToggle.removeClass('is-active');
     $helpPopover.addClass('is-hidden');
   }
+
+  // Closes the popover on a click/tap anywhere else on the page — e.g. the
+  // grid, header, footer — not just by re-clicking the help toggle itself.
+  // Bound on `document` rather than the popover/toggle, so it naturally
+  // only fires once the click has bubbled past anything that should NOT
+  // close it; excluding clicks that land inside the toggle button or the
+  // popover itself is what stops this from immediately closing the
+  // popover on the very same click that just opened it.
+  document.addEventListener('click', (e) => {
+    if (!helpOn) return;
+    if ($helpToggle[0].contains(e.target) || $helpPopover[0].contains(e.target)) return;
+    turnOffHelp();
+  });
 
   // Only shown while a round is actually being played — hidden behind the
   // start banner, and hidden again once the puzzle is solved (see the

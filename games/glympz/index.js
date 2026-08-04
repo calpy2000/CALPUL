@@ -255,7 +255,7 @@ $(function () {
     // Buttons colored from this game's own hub-tile palette (games-registry.js's
     // `color`/`rim`) instead of the shared global blue every game used before.
     accentColor: { bg: '#6F9BDB', ink: '#14285A', rim: 'rgba(20, 40, 90, 0.30)' },
-    instructions: `<p>Move image clips across the grid to form the picture</p><p>When a tile is in the right place you will see a small tick ${TICK_IMG}</p><p>1 clip is always in the correct position at the start</p><p>You are against the clock, so step to it</p>`,
+    instructions: `<p>Move image clips across the grid to form the picture</p><p>When a clip is in the right place you will see a small tick ${TICK_IMG}</p><p>1 clip is always in the correct position at the start</p><p>You are against the clock, so step to it</p>`,
     formatScore: formatTime,
   });
 

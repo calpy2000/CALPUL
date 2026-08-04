@@ -1,17 +1,19 @@
-/* Biased so the grid sits about a third of the way down (not dead center):
-   a 1:3 flex-space ratio above/below pushes it up from true center.
+/* Biased so #grid-container sits at the very TOP of the stage, flush under
+   the header — matches MUVEEZ's #game-root (see games/muveez/style.css)
+   exactly: flex: 0 1 0 on ::before means it never grows past its 0 basis,
+   so it claims none of the leftover vertical space, and ::after's flex: 1 1 0
+   soaks up all of it below instead. That's what makes GLYMPZ's grid land at
+   the same on-screen height as MUVEEZ's, since both games share the same
+   header above #game-root and both put their grid as the first flowed child.
 
    ::before and ::after are "pseudo-elements" — they let CSS insert an extra
    element into the page without it existing in the HTML at all (content: ''
    makes them empty, invisible boxes that only exist for layout purposes).
    Since #game-root is a flex column, these two empty boxes become flex
    items alongside #grid-container itself — one placed before it, one after
-   (their order matches this file's HTML-like ::before/::after naming).
-   flex: 1 1 0 vs flex: 3 1 0 gives the ::after box THREE TIMES as much of
-   the leftover vertical space as the ::before box gets, which is what
-   visually pushes #grid-container up from dead-center — more empty space
-   below it than above. See shared/shell.css for the full breakdown of what
-   the three flex:grow/shrink/basis numbers mean. */
+   (their order matches this file's HTML-like ::before/::after naming). See
+   shared/shell.css for the full breakdown of what the three
+   flex:grow/shrink/basis numbers mean. */
 #game-root {
   width: 100%;
   height: 100%;
@@ -22,12 +24,12 @@
 
 #game-root::before {
   content: '';
-  flex: 1 1 0;
+  flex: 0 1 0;
 }
 
 #game-root::after {
   content: '';
-  flex: 3 1 0;
+  flex: 1 1 0;
 }
 
 #grid-container {

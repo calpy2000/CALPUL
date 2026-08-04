@@ -270,7 +270,7 @@
   bottom: var(--space-sm);
   transform: translateX(-50%);
   width: 90%;
-  max-width: 320px;
+  max-width: 384px; /* 320px * 1.2 — widened so the end-screen's side-by-side .shell-end-screen__actions buttons (see below) fit without overflowing; shared with .shell-overlay's start banner too, so both panels stay the same width as each other */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,7 +296,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-md);
-  max-width: 320px;
+  max-width: 384px; /* matches .shell-overlay/.shell-end-screen's own widened max-width above — this inner one would otherwise still cap content at the old 320px regardless of the outer box's size */
 }
 
 .shell-overlay__instructions,
@@ -352,6 +352,23 @@
    — while the rest of the message stays left-aligned like the instructions
    panel. Centers whatever's on that line, text and/or an inline icon
    <img> alike, since text-align:center centers all inline content. */
+/* Puts the end-screen's "Return to PUSULZ" and "Share Results" buttons on
+   one row instead of stacked (each on its own line, which used to add an
+   extra .shell-end-screen__panel `gap` between them and push the panel's
+   top edge further up the screen). Same recipe as the reveal-confirm
+   dialogs' own two-button row (see e.g. games/quadz/style.css's
+   .reveal-confirm__actions) — align-items:center keeps both buttons'
+   vertical centers level with each other even though .shell-btn--small's
+   smaller font makes it a touch shorter than .shell-btn. Since the panel
+   itself is bottom-anchored (see .shell-end-screen above) and sized to fit
+   its content, this shorter panel automatically sits lower on screen while
+   its bottom edge stays put. */
+.shell-end-screen__actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
 .shell-end-screen__title {
   text-align: center;
   font-size: 1.3em; /* 1.3x the rest of the end-screen message's text — em is relative to the inherited 15px, so this also scales any emoji glyphs within it (they're just characters, sized with the text) */

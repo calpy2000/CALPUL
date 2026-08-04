@@ -3459,97 +3459,97 @@
     "day": 217,
     "rows": [
       "MOST",
-      "ONTO",
+      "INTO",
       "SCAN",
       "SETS"
     ],
     "cols": [
-      "MOSS",
+      "MISS",
       "ONCE",
       "STAT",
       "TONS"
     ],
-    "worstRank": 898
+    "worstRank": 723
   },
   {
     "day": 218,
     "rows": [
-      "SEEK",
-      "TAXI",
-      "USER",
-      "DECK"
+      "SHOW",
+      "LIVE",
+      "ORAL",
+      "TELL"
     ],
     "cols": [
-      "STUD",
-      "EASE",
-      "EXEC",
-      "KIRK"
+      "SLOT",
+      "HIRE",
+      "OVAL",
+      "WELL"
     ],
-    "worstRank": 925
+    "worstRank": 796
   },
   {
     "day": 219,
     "rows": [
-      "THAT",
-      "HOME",
-      "APPS",
-      "NEST"
-    ],
-    "cols": [
-      "THAN",
-      "HOPE",
-      "AMPS",
+      "STAR",
+      "HIDE",
+      "ODDS",
       "TEST"
     ],
-    "worstRank": null
+    "cols": [
+      "SHOT",
+      "TIDE",
+      "ADDS",
+      "REST"
+    ],
+    "worstRank": 811
   },
   {
     "day": 220,
     "rows": [
       "SAID",
-      "EURO",
+      "PURE",
       "ATOM",
-      "TONE"
+      "MONO"
     ],
     "cols": [
-      "SEAT",
+      "SPAM",
       "AUTO",
       "IRON",
-      "DOME"
+      "DEMO"
     ],
-    "worstRank": 900
+    "worstRank": 732
   },
   {
     "day": 221,
     "rows": [
-      "SHOP",
-      "TIDE",
-      "ADDS",
-      "REST"
+      "ANTI",
+      "SORT",
+      "KNEE",
+      "SEEM"
     ],
     "cols": [
-      "STAR",
-      "HIDE",
-      "ODDS",
-      "PEST"
+      "ASKS",
+      "NONE",
+      "TREE",
+      "ITEM"
     ],
-    "worstRank": 820
+    "worstRank": 736
   },
   {
     "day": 222,
     "rows": [
-      "THIS",
-      "EACH",
-      "ALOE",
-      "SEND"
+      "ABLE",
+      "CLAY",
+      "TUNE",
+      "SEES"
     ],
     "cols": [
-      "TEAS",
-      "HALE",
-      "ICON",
-      "SHED"
+      "ACTS",
+      "BLUE",
+      "LANE",
+      "EYES"
     ],
-    "worstRank": null
+    "worstRank": 663
   },
   {
     "day": 223,
@@ -3557,226 +3557,146 @@
       "TEMP",
       "IDEA",
       "EGGS",
-      "SEAS"
+      "SEAT"
     ],
     "cols": [
       "TIES",
       "EDGE",
       "MEGA",
-      "PASS"
+      "PAST"
     ],
-    "worstRank": 913
+    "worstRank": 696
   },
   {
     "day": 224,
     "rows": [
-      "FROM",
-      "AURA",
-      "CLAD",
-      "TELE"
+      "MORE",
+      "EVEN",
+      "TEND",
+      "ARTS"
     ],
     "cols": [
-      "FACT",
-      "RULE",
-      "ORAL",
-      "MADE"
+      "META",
+      "OVER",
+      "RENT",
+      "ENDS"
     ],
-    "worstRank": null
+    "worstRank": 599
   },
   {
     "day": 225,
     "rows": [
-      "PAGE",
-      "AMEN",
-      "REED",
-      "ASKS"
+      "LOSS",
+      "ONCE",
+      "STAT",
+      "TONS"
     ],
     "cols": [
-      "PARA",
-      "AMES",
-      "GEEK",
-      "ENDS"
+      "LOST",
+      "ONTO",
+      "SCAN",
+      "SETS"
     ],
-    "worstRank": null
+    "worstRank": 723
   },
   {
     "day": 226,
     "rows": [
-      "FREE",
-      "LAVA",
-      "AGES",
-      "TENT"
+      "LAST",
+      "ECHO",
+      "GROW",
+      "SEEN"
     ],
     "cols": [
-      "FLAT",
-      "RAGE",
-      "EVEN",
-      "EAST"
+      "LEGS",
+      "ACRE",
+      "SHOE",
+      "TOWN"
     ],
-    "worstRank": null
+    "worstRank": 817
   },
   {
     "day": 227,
     "rows": [
-      "MATT",
-      "ECHO",
-      "SNAP",
-      "SETS"
+      "ACID",
+      "DONE",
+      "DATE",
+      "STOP"
     ],
     "cols": [
-      "MESS",
-      "ACNE",
-      "THAT",
-      "TOPS"
+      "ADDS",
+      "COAT",
+      "INTO",
+      "DEEP"
     ],
-    "worstRank": 847
+    "worstRank": 614
   },
   {
     "day": 228,
     "rows": [
-      "LAID",
-      "EURO",
-      "ATOM",
-      "NONE"
+      "MEAN",
+      "AUTO",
+      "PROS",
+      "SOME"
     ],
     "cols": [
-      "LEAN",
-      "AUTO",
-      "IRON",
-      "DOME"
+      "MAPS",
+      "EURO",
+      "ATOM",
+      "NOSE"
     ],
-    "worstRank": 900
+    "worstRank": 738
   },
   {
     "day": 229,
     "rows": [
-      "CHAT",
-      "RIDE",
-      "ODDS",
-      "PEST"
+      "SHOT",
+      "LIVE",
+      "ORAL",
+      "WELL"
     ],
     "cols": [
-      "CROP",
-      "HIDE",
-      "ADDS",
-      "TEST"
+      "SLOW",
+      "HIRE",
+      "OVAL",
+      "TELL"
     ],
-    "worstRank": 820
+    "worstRank": 796
   },
   {
     "day": 230,
     "rows": [
-      "SCAN",
-      "PALE",
-      "ARTS",
-      "SLOT"
+      "ABLE",
+      "CLAY",
+      "TUNE",
+      "SEED"
     ],
     "cols": [
-      "SPAS",
-      "CARL",
-      "ALTO",
-      "NEST"
+      "ACTS",
+      "BLUE",
+      "LANE",
+      "EYED"
     ],
-    "worstRank": 927
+    "worstRank": 768
   },
   {
     "day": 231,
     "rows": [
-      "THIS",
-      "HERE",
-      "ERIC",
-      "MOST"
+      "INFO",
+      "DEAN",
+      "EARL",
+      "ARMY"
     ],
     "cols": [
-      "THEM",
-      "HERO",
-      "IRIS",
-      "SECT"
+      "IDEA",
+      "NEAR",
+      "FARM",
+      "ONLY"
     ],
-    "worstRank": null
+    "worstRank": 798
   },
   {
     "day": 232,
-    "rows": [
-      "WITH",
-      "IDEA",
-      "GLEN",
-      "SEND"
-    ],
-    "cols": [
-      "WIGS",
-      "IDLE",
-      "TEEN",
-      "HAND"
-    ],
-    "worstRank": null
-  },
-  {
-    "day": 233,
-    "rows": [
-      "FROM",
-      "LOVE",
-      "AMEN",
-      "PART"
-    ],
-    "cols": [
-      "FLAP",
-      "ROMA",
-      "OVER",
-      "MENT"
-    ],
-    "worstRank": null
-  },
-  {
-    "day": 234,
-    "rows": [
-      "HOME",
-      "AVID",
-      "LANG",
-      "FLEE"
-    ],
-    "cols": [
-      "HALF",
-      "OVAL",
-      "MINE",
-      "EDGE"
-    ],
-    "worstRank": null
-  },
-  {
-    "day": 235,
-    "rows": [
-      "SETS",
-      "IDOL",
-      "MINI",
-      "STEM"
-    ],
-    "cols": [
-      "SIMS",
-      "EDIT",
-      "TONE",
-      "SLIM"
-    ],
-    "worstRank": 897
-  },
-  {
-    "day": 236,
-    "rows": [
-      "SAID",
-      "EURO",
-      "ATOM",
-      "LONE"
-    ],
-    "cols": [
-      "SEAL",
-      "AUTO",
-      "IRON",
-      "DOME"
-    ],
-    "worstRank": 922
-  },
-  {
-    "day": 237,
     "rows": [
       "PLOT",
       "RIDE",
@@ -3792,148 +3712,228 @@
     "worstRank": 820
   },
   {
-    "day": 238,
+    "day": 233,
     "rows": [
-      "SAFE",
-      "PRAY",
-      "ACRE",
-      "SHED"
+      "POST",
+      "UNTO",
+      "SCAN",
+      "HERE"
     ],
     "cols": [
-      "SPAS",
-      "ARCH",
-      "FARE",
-      "EYED"
+      "PUSH",
+      "ONCE",
+      "STAR",
+      "TONE"
     ],
-    "worstRank": 927
+    "worstRank": 690
+  },
+  {
+    "day": 234,
+    "rows": [
+      "DISH",
+      "ECHO",
+      "COOL",
+      "KNEE"
+    ],
+    "cols": [
+      "DECK",
+      "ICON",
+      "SHOE",
+      "HOLE"
+    ],
+    "worstRank": 736
+  },
+  {
+    "day": 235,
+    "rows": [
+      "FAST",
+      "INTO",
+      "STAY",
+      "HITS"
+    ],
+    "cols": [
+      "FISH",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "worstRank": 723
+  },
+  {
+    "day": 236,
+    "rows": [
+      "MAPS",
+      "EURO",
+      "ATOM",
+      "LOSE"
+    ],
+    "cols": [
+      "MEAL",
+      "AUTO",
+      "PROS",
+      "SOME"
+    ],
+    "worstRank": 738
+  },
+  {
+    "day": 237,
+    "rows": [
+      "ARMS",
+      "DEEP",
+      "DEMO",
+      "SLOT"
+    ],
+    "cols": [
+      "ADDS",
+      "REEL",
+      "MEMO",
+      "SPOT"
+    ],
+    "worstRank": 813
+  },
+  {
+    "day": 238,
+    "rows": [
+      "DEAL",
+      "RAGE",
+      "USES",
+      "MESS"
+    ],
+    "cols": [
+      "DRUM",
+      "EASE",
+      "AGES",
+      "LESS"
+    ],
+    "worstRank": 845
   },
   {
     "day": 239,
     "rows": [
-      "THAT",
-      "HIRE",
-      "AKIN",
-      "NEAT"
+      "WHAT",
+      "EACH",
+      "NINE",
+      "TREE"
     ],
     "cols": [
-      "THAN",
-      "HIKE",
-      "ARIA",
-      "TENT"
+      "WENT",
+      "HAIR",
+      "ACNE",
+      "THEE"
     ],
-    "worstRank": null
+    "worstRank": 847
   },
   {
     "day": 240,
     "rows": [
       "THIS",
-      "RACE",
-      "ALOE",
-      "POND"
+      "WISH",
+      "IDLE",
+      "NEED"
     ],
     "cols": [
-      "TRAP",
-      "HALO",
-      "ICON",
-      "SEED"
+      "TWIN",
+      "HIDE",
+      "ISLE",
+      "SHED"
     ],
-    "worstRank": null
+    "worstRank": 872
   },
   {
     "day": 241,
     "rows": [
-      "FROM",
-      "LOVE",
-      "AMES",
-      "WARS"
-    ],
-    "cols": [
-      "FLAW",
-      "ROMA",
-      "OVER",
-      "MESS"
-    ],
-    "worstRank": null
-  },
-  {
-    "day": 242,
-    "rows": [
-      "HOME",
-      "ARID",
-      "LANG",
-      "FLEE"
-    ],
-    "cols": [
-      "HALF",
-      "ORAL",
-      "MINE",
-      "EDGE"
-    ],
-    "worstRank": null
-  },
-  {
-    "day": 243,
-    "rows": [
-      "CAST",
-      "ECHO",
-      "NEON",
-      "TREE"
-    ],
-    "cols": [
-      "CENT",
-      "ACER",
-      "SHOE",
-      "TONE"
-    ],
-    "worstRank": 920
-  },
-  {
-    "day": 244,
-    "rows": [
-      "REAL",
-      "AUTO",
-      "IRON",
-      "DOME"
-    ],
-    "cols": [
-      "RAID",
-      "EURO",
-      "ATOM",
-      "LONE"
-    ],
-    "worstRank": 922
-  },
-  {
-    "day": 245,
-    "rows": [
-      "SHOT",
-      "WIDE",
-      "ADDS",
+      "STAR",
+      "NICE",
+      "ARTS",
       "PEST"
     ],
     "cols": [
-      "SWAP",
-      "HIDE",
-      "ODDS",
-      "TEST"
+      "SNAP",
+      "TIRE",
+      "ACTS",
+      "REST"
     ],
     "worstRank": 820
   },
   {
-    "day": 246,
+    "day": 242,
     "rows": [
-      "STEM",
-      "PARA",
-      "AXIS",
-      "SICK"
+      "TIME",
+      "ACID",
+      "SONG",
+      "KNEE"
     ],
     "cols": [
-      "SPAS",
-      "TAXI",
-      "ERIC",
-      "MASK"
+      "TASK",
+      "ICON",
+      "MINE",
+      "EDGE"
     ],
-    "worstRank": 927
+    "worstRank": 736
+  },
+  {
+    "day": 243,
+    "rows": [
+      "PAST",
+      "UNTO",
+      "STAY",
+      "HITS"
+    ],
+    "cols": [
+      "PUSH",
+      "ANTI",
+      "STAT",
+      "TOYS"
+    ],
+    "worstRank": 723
+  },
+  {
+    "day": 244,
+    "rows": [
+      "PATH",
+      "ECHO",
+      "TRIO",
+      "SEND"
+    ],
+    "cols": [
+      "PETS",
+      "ACRE",
+      "THIN",
+      "HOOD"
+    ],
+    "worstRank": 817
+  },
+  {
+    "day": 245,
+    "rows": [
+      "EDIT",
+      "GENE",
+      "GETS",
+      "SPOT"
+    ],
+    "cols": [
+      "EGGS",
+      "DEEP",
+      "INTO",
+      "TEST"
+    ],
+    "worstRank": 642
+  },
+  {
+    "day": 246,
+    "rows": [
+      "SEED",
+      "TAXI",
+      "USES",
+      "DECK"
+    ],
+    "cols": [
+      "STUD",
+      "EASE",
+      "EXEC",
+      "DISK"
+    ],
+    "worstRank": 851
   },
   {
     "day": 247,

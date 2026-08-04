@@ -27,6 +27,17 @@
   font-family: var(--font-body);
   color: var(--ink);
   overflow-y: auto;
+  /* ROLLBACK: this padding-top line was added 2026-08-04, paired with the
+     shell-footer padding-bottom change below and viewport-fit=cover in every
+     game's <meta name="viewport">. env(safe-area-inset-top, 0px) resolves to
+     literally 0px on any device/browser that doesn't report a top inset, so
+     on every device this looked fine on before, this is a no-op. It exists
+     only to counteract viewport-fit=cover's side effect of also removing the
+     browser's OWN automatic top safe-area handling, so a device with a
+     status-bar/notch inset doesn't regress at the top while we fix the
+     bottom below. Delete this line (and its .shell-footer/meta-tag partners)
+     to fully roll back. */
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* grid-template-columns: 1fr auto 1fr splits the header into three columns:
@@ -217,7 +228,15 @@
   align-items: center;
   gap: var(--space-xs);
   text-align: center;
-  padding: var(--space-sm) var(--space-md);
+  /* ROLLBACK: the added env(...) term (paired with .shell's own padding-top
+     and viewport-fit=cover above/in each game's HTML) was added 2026-08-04
+     to fix the footer/timer getting hidden behind Android's gesture-nav bar
+     in standalone-PWA mode on some devices (e.g. Galaxy A17). Resolves to
+     literally var(--space-sm) (i.e. the ORIGINAL value, unchanged) on any
+     device without a bottom inset — so every device this already looked
+     fine on renders byte-identical padding to before. Revert by deleting
+     just the "+ env(...)" part, restoring padding-bottom: var(--space-sm). */
+  padding: var(--space-sm) var(--space-md) calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
   margin: var(--space-sm) 0 var(--space-md);
   font-size: 14px;
   font-weight: 600;

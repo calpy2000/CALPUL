@@ -183,6 +183,62 @@ html, body {
   .hub__grid {
     grid-template-columns: 1fr;
   }
+
+  /* ROLLBACK: everything below this comment, down to the closing brace of
+     this media query, was added 2026-08-04 to fix dead space + tiny text
+     on narrow single-column phones (e.g. Galaxy A17). Delete it to restore
+     the exact prior single-column look — nothing above this point, and
+     nothing outside this media query, is touched.
+
+     Root cause: at 2 columns a tile is roughly square, so .hub__tile's
+     cqmin-based text/icon sizing (which always keys off the container's
+     SHORTER side) and its %-of-width padding/gap both land on sensible
+     values. At 1 column a tile is wide-but-short instead — cqmin still
+     locks onto whichever side is shorter, which is now the cramped ROW
+     HEIGHT (shrinking every icon/text far below what the ample width would
+     allow), while the %-of-width padding/gap stayed pinned to that same
+     now-much-wider width and ate most of the short row regardless — the
+     combination read as "tiny text sitting in a big empty tile." The
+     overrides below re-target both onto the width axis (via vw, since this
+     tile now spans ~the full viewport width), which is the roomy one in
+     this layout, and shrink the width-based padding/gap so freed-up height
+     shows as visible content instead of dead margin. */
+  .hub__tile {
+    padding: 3.2vw 7.3%;
+    gap: 2vw;
+  }
+
+  .hub__tile-row1 {
+    gap: 3vw;
+  }
+
+  .hub__tile-badge,
+  .hub__tile-icon-img {
+    height: 13vw;
+    width: 13vw;
+    max-width: 13vw;
+  }
+
+  .hub__tile-badge {
+    font-size: 6.8vw;
+  }
+
+  .hub__tile-title {
+    font-size: 7.2vw;
+  }
+
+  .hub__tile-tagline {
+    font-size: 4.6vw;
+  }
+
+  .hub__tile-status {
+    font-size: 3.9vw;
+    padding: 1.6vw 3.8vw;
+  }
+
+  .hub__tile-score {
+    font-size: 4.1vw;
+  }
 }
 
 .hub__tile {

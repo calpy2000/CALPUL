@@ -10,6 +10,12 @@
 //   'off'  -> no tools panel at all — the real-player experience
 //
 // Flip this back to 'off' before real players start using the site.
+//
+// HARD RULE: never push/deploy to GitHub (either PUSULZ or CALPUL) while
+// this is set to 'dev'. 'dev' mode is for local-only work (e.g. building a
+// devOnly game like VALUZ before it's ready for testers) — testers must
+// only ever see a push made while this is 'test'. Flip back to 'test'
+// before any push, no exceptions.
 const TOOL_MODE = 'test';
 
 export function getToolMode() {

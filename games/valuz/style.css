@@ -1,0 +1,294 @@
+/* VALUZ-only overrides. Unlike SOLVZ/QUADZ's fixed-square grids (which size
+   themselves via height:100%; aspect-ratio:X off the flex-grown
+   .shell-stage — see shared/shell.css and [[feedback-robust-css-over-magic-numbers]]),
+   VALUZ's board is fundamentally text-driven: each question row's height
+   depends on how many lines its sentence wraps to, which varies by device
+   width/font-size, not a fixed ratio. Forcing an aspect-ratio here would be
+   its own kind of magic-number guess. Instead: width comes from the
+   (widened) stage, height is left intrinsic (grows to fit content), and
+   .shell's own overflow-y:auto (already in shared/shell.css, the page-level
+   safety net) handles the rare short-viewport case by letting the whole
+   page scroll rather than clipping — the browser solving the sizing from
+   the real constraint (content height), same underlying principle as the
+   aspect-ratio approach, just the right technique for THIS content shape. */
+.shell-stage {
+  width: 92%;
+  max-width: 640px;
+}
+
+.board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-md);
+}
+
+/* 5 real columns, matching the spec literally: question / spacer / drop /
+   spacer / answer-tray. Columns 2 and 4 get no elements at all (see
+   index.js's buildBoard comment) — they're pure grid gutter space, so their
+   width alone is what makes them "narrow spacing columns." Column 1 gets
+   the large majority of the width (question text needs it most; the
+   drop/tray tiles only ever hold a couple of characters or a flat colour),
+   and columns 2/4 are kept thin — per the user's explicit follow-up
+   feedback that column 1 was too narrow for readable question text. */
+/* minmax(0, Nfr), not a bare Nfr — a plain `fr` track's default implicit
+   minimum is "auto" (at least as wide as its widest content's min-content
+   size), which content can grow past its proportional fr share. That's
+   exactly what broke column 3 vs 5 being different sizes: column 5's
+   "ANSWERS" label text (an unbreakable single word) has a min-content
+   width bigger than 0.9fr's fair share of the row, so THAT track grew to
+   fit it while column 3 (no such wide content) stayed at its honest
+   proportional size — confirmed via getBoundingClientRect() showing
+   column 3 at 48px and column 5 at 60px despite identical `0.9fr`.
+   minmax(0, Nfr) removes that implicit "auto" floor, so every track is
+   forced to the SAME pure fr-proportional width regardless of what's
+   inside it. */
+.valuz-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 0.1fr) minmax(0, 0.9fr) minmax(0, 0.1fr) minmax(0, 0.9fr);
+  row-gap: var(--space-md);
+  align-items: center;
+}
+
+/* Pulls the category/tagline block up closer to the shell header above it —
+   that gap is mostly shared shell.css's own .shell-header margin-bottom
+   (var(--space-md), used by every game), so rather than touching shared
+   code this is a VALUZ-only negative margin, scoped here since style.css
+   loads after shell.css and can override it just for this page. */
+.valuz-day-header {
+  text-align: center;
+  margin-top: -8px;
+}
+.valuz-day-category {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F3D38;
+}
+.valuz-day-tagline {
+  margin: 2px 0 0;
+  font-size: 13px;
+  font-style: italic;
+  color: #4a5568;
+}
+
+.valuz-col5-label {
+  grid-column: 5;
+  min-width: 0; /* grid items default to min-width:auto (their own content's min-content size), which would override the track's own minmax(0,...) above and push column 5 wide again — this lets the label actually shrink to the track's real (now-equal) width instead */
+  /* Negative margin-bottom, tuned against the real rendered gap (measured
+     via getBoundingClientRect(), not guessed): most of the visible gap
+     below this label isn't the grid's own 16px row-gap at all — it's
+     row 2's OWN track being taller than the small answer tile (that track
+     is sized by the multi-line question-text cell in column 1), so the
+     tile sits vertically CENTERED within a taller row than it needs,
+     landing ~12px below that row's actual top. This negative margin pulls
+     row 2's track upward to compensate, since a grid item's negative
+     margin is included in its own row's auto-sizing. */
+  margin-bottom: -24.9px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0F3D38;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.valuz-tile {
+  user-select: none;
+}
+
+/* --- Question tiles (column 1) --- */
+/* Standard "hanging indent" numbered-list trick: padding-left pushes
+   EVERY line in by 18px, then text-indent:-18px pulls just the FIRST
+   line back out again — since the number is the first inline content on
+   that first line, it lands flush left, while any wrapped second/third
+   line of the question text (no number on it) stays at the full 18px
+   indent. A plain bold number instead of the old circular badge, freeing
+   that space for the question text's own font-size — per the user's
+   explicit "bold texted number with a slight indent" follow-up feedback. */
+.valuz-tile--question {
+  padding: var(--space-sm) calc(var(--space-md) * 0.7) var(--space-sm) calc(var(--space-md) * 0.7 + 18px);
+  text-indent: -18px;
+  background: #F4F9F8;
+  border-radius: 12px;
+  font-size: 15.5px;
+  line-height: 1.4;
+  color: var(--ink);
+  cursor: default; /* becomes .is-clickable (pointer) only once the round is graded — see index.js's markQuestionsClickable() */
+  transition: background-color 0.15s ease;
+}
+
+.valuz-tile--question.is-clickable {
+  cursor: pointer;
+}
+.valuz-tile--question.is-clickable:hover,
+.valuz-tile--question.is-clickable:active {
+  background: #E4F1EF;
+}
+
+.valuz-tile__qnum {
+  margin-right: 6px;
+  font-weight: 800;
+  color: #3FA8A0;
+}
+
+/* --- Slot tiles (columns 3 and 5) — the draggable/droppable squares --- */
+/* Sized to 74% of their (now narrower) column, not the full 100%, per the
+   user's explicit "make the tiles smaller" follow-up feedback — centered
+   via margin:auto so the shrink reads as breathing room around each tile
+   rather than a lopsided gap.
+
+   font-size is a plain vw-based clamp, NOT a `cqi`/container-query value —
+   an earlier version set `container-type: inline-size` on THIS SAME
+   element and sized its own font off `cqi`, which is a real bug: the
+   element's rendered width feeds into CSS Grid's "auto" track-sizing
+   (since these columns are plain `fr` tracks, not fixed pixel widths), but
+   that width was itself being derived from the font-size, which was being
+   derived from the container's own width — a circular dependency that
+   Chromium resolved differently for column 3 vs column 5, producing two
+   visibly different tile sizes after grading (confirmed via
+   getBoundingClientRect() on both columns' tiles — col5 rendered ~24%
+   larger than col3 with identical CSS). A vw-based clamp has no such
+   feedback loop (viewport width can't depend on this element's own size),
+   which is why it's used here despite generally preferring container-
+   relative sizing — that preference doesn't hold when the container being
+   queried is the same element being sized. */
+.valuz-tile--slot {
+  position: relative; /* anchors .valuz-grademark, colour type only */
+  aspect-ratio: 1 / 1;
+  width: 74%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: clamp(14px, 4.5vw, 20px);
+  font-weight: 600;
+  color: #ffffff;
+  background: #3FA8A0;
+  cursor: grab;
+  touch-action: none; /* see shared/input/dom-tile-drag.js — hands touch handling fully to that module instead of the browser's own scroll/zoom gestures */
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+/* Emoji type only (see index.js's typeClass) — white fill + a thin border
+   instead of the flat teal every other type uses, with a notably bigger
+   glyph, since a small emoji on a saturated teal background was hard to
+   make out. Placed right after the base rule (before .is-empty/
+   is-correct/is-incorrect below) so those states still win by plain
+   source order at equal specificity — an empty or graded emoji tile looks
+   like any other type's empty/graded tile, this only changes the
+   "filled, not yet graded" appearance. */
+.valuz-tile--slot.valuz-tile--type-emoji {
+  background: #ffffff;
+  border: 1px solid rgba(63, 168, 160, 0.35);
+  font-size: clamp(26px, 8vw, 38px);
+}
+
+.valuz-tile--slot.is-empty {
+  background: transparent;
+  border: 2px dashed #B7D9D6;
+}
+
+.valuz-tile--slot.is-revealed {
+  cursor: default;
+}
+
+/* Applied by dom-tile-drag.js while this tile is actively being dragged. */
+.valuz-tile--slot.is-dragging {
+  opacity: 0.35;
+}
+
+/* Applied by dom-tile-drag.js while another tile is being dragged OVER this
+   one, as a valid drop target. */
+.valuz-tile--slot.drag-over {
+  box-shadow: 0 0 0 3px var(--accent);
+  transform: scale(1.05);
+}
+
+/* Grading feedback for EVERY answer type: a small badge overlay with a
+   plain text tick/cross glyph (✓/✗, not emoji-presentation), never a
+   background recolor. This was originally colour-type-only (recoloring
+   the tile itself for number/letter/emoji, since a colour tile can't be
+   recolored without erasing its own answer) — the user preferred the
+   badge look enough to drop background-recoloring for every type and use
+   this everywhere instead, so every tile just keeps whatever fill it
+   already had (teal, or white+border for emoji — see
+   .valuz-tile--type-emoji) straight through grading. */
+.valuz-grademark {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.valuz-grademark.is-correct {
+  background: #38A169;
+}
+.valuz-grademark.is-incorrect {
+  background: #E53E3E;
+}
+
+/* Makes every element INSIDE a slot tile ignore mouse/touch events, so a
+   click/drag always resolves to the .valuz-tile--slot element itself —
+   same defensive pattern SOLVZ's .tile * rule uses, needed here because
+   .valuz-grademark is a real child element sitting on top of the tile. */
+.valuz-tile--slot * {
+  pointer-events: none;
+}
+
+.valuz-guess-btn {
+  align-self: center;
+  margin-top: var(--space-sm);
+}
+
+.valuz-guess-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* --- Post-game "more info" popover --- */
+/* position:fixed + inline top/left set by index.js's positionPopover(),
+   since it has to anchor near whichever of the 6 question rows was
+   clicked, not one fixed spot — same visual language as QUADZ/SLYDZ's own
+   .help-popover, just dynamically positioned instead of CSS-anchored to a
+   single button. */
+.more-popover {
+  position: fixed;
+  width: 280px;
+  max-width: 80vw;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  /* #morePopover lives as a direct <body> child (see index.html), OUTSIDE
+     .shell — so it never inherited shared/shell.css's .shell{font-family:
+     var(--font-body)} rule and was silently falling back to the browser's
+     default font instead of the site's Quicksand, which read as
+     "inconsistent" next to everything else on the page. Explicit here
+     since there's nothing else to inherit it from. */
+  font-family: var(--font-body);
+  font-size: 15.5px; /* matches .valuz-tile--question's own font-size, per explicit request — supersedes the earlier "1.5x the original 13px" sizing */
+  line-height: 1.5;
+  color: var(--ink);
+  z-index: 40; /* above .shell-end-screen's own z-index:20 (shared/shell.css), since this needs to layer on top of the end-game panel */
+}
+
+.more-popover.is-hidden {
+  display: none;
+}
+
+.more-popover p {
+  margin: 0;
+}

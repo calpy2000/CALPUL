@@ -36,19 +36,29 @@ import { getTileIconDataURL as getQuadzTileIconDataURL } from './games/quadz/til
 import { getClapperboardIconDataURL } from './games/muveez/icon.js';
 import { getHeaderIconDataURL as getRainzHeaderIconDataURL } from './games/rainz/raindrop-icon.js';
 import { getEnergyOrbIconDataURL as getWarpzOrbIconDataURL, VIOLET_PALETTE as WARPZ_VIOLET_PALETTE } from './games/warpz/energy-orb-icon.js';
+import { getQuestionTileIconDataURL as getValuzTileIconDataURL } from './games/valuz/tile-icon.js';
 
 export const GAMES = [
   {
-    id: 'solvz', // must be unique across all games — used to namespace localStorage keys
-    title: 'SOLVZ',
-    emoji: '➕', // the one game with no generated icon art of its own — shown in a small raised circle on the hub tile
-    tagline: 'Sum thing tells me it all adds up', // subtitle text shown on the hub tile
-    path: 'games/solvz/index.html', // relative link the hub tile points to
-    color: '#E59A63', // deep-but-soft pastel tile fill
-    rim: 'rgba(120, 55, 15, 0.30)', // dark side of the tile's puffy-bevel rim
-    accent: '#F2803A', // more saturated — background for the icon circle only
-    higherIsBetter: false, // score = completion time in seconds
-    scoreIsTime: true, // display formatting: run the raw score through M:SS, not shown as a plain number
+    id: 'valuz', // must be unique across all games — used to namespace localStorage keys
+    title: 'VALUZ',
+    emojiImage: getValuzTileIconDataURL(),
+    tagline: 'You VALMEEZ <br> and I VALUZ',
+    path: 'games/valuz/index.html',
+    color: '#3FA8A0', // teal — distinct from every other game's hue
+    rim: 'rgba(10, 55, 50, 0.30)',
+    higherIsBetter: true, // score = correct matches out of 6
+    scoreIsTime: false, // a plain count (0-6), not a duration
+    // Shows the corner "NEW" ribbon on the hub tile (see index.js's
+    // renderTiles() and .hub__tile-new-ribbon in style.css) — remove once
+    // VALUZ isn't new anymore.
+    isNew: true,
+    // The 9th game, built 2026-08-04+. Was `devOnly: true` (hidden from the
+    // hub tile grid unless TOOL_MODE was 'dev' — see hub index.js's
+    // renderTiles() and shared/core/tool-mode.js) while under construction;
+    // now visible in both dev and test/tester mode, same as every other
+    // game. Swapped to the FIRST tile position (from last) per explicit
+    // request.
   },
   {
     id: 'glympz',
@@ -142,5 +152,18 @@ export const GAMES = [
     rim: 'rgba(55, 85, 5, 0.30)',
     higherIsBetter: true, // score = seconds survived — more is better
     scoreIsTime: true, // it IS a duration, just one where higher wins (unlike SOLVZ/GLYMPZ/SLYDZ/QUADZ)
+  },
+  {
+    id: 'solvz',
+    title: 'SOLVZ',
+    emoji: '➕', // the one game with no generated icon art of its own — shown in a small raised circle on the hub tile
+    tagline: 'Sum thing tells me it all adds up', // subtitle text shown on the hub tile
+    path: 'games/solvz/index.html', // relative link the hub tile points to
+    color: '#E59A63', // deep-but-soft pastel tile fill
+    rim: 'rgba(120, 55, 15, 0.30)', // dark side of the tile's puffy-bevel rim
+    accent: '#F2803A', // more saturated — background for the icon circle only
+    higherIsBetter: false, // score = completion time in seconds
+    scoreIsTime: true, // display formatting: run the raw score through M:SS, not shown as a plain number
+    // Swapped to the LAST tile position (from first) per explicit request.
   },
 ];

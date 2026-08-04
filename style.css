@@ -144,27 +144,47 @@ html, body {
      below — this grid is meant to stay 2-wide across ordinary phone-to-
      desktop sizes ("reactive" in width, not in column count). */
   grid-template-columns: repeat(2, 1fr);
-  /* Row height is now driven by whatever vertical space .hub actually has
-     left (see .hub's own height:100dvh + this element's flex:1 below),
-     NOT by a fixed tile count — this is what replaces the old
-     aspect-ratio:1/1 approach (which sized every tile purely off its
-     WIDTH, with zero regard for how many rows that added up to
-     vertically, which is exactly why 4 rows of square tiles could run off
-     the bottom of a shorter phone).
-     `minmax(100px, 1fr)`: as many rows as exist share the leftover space
-     equally (1fr each), shrinking together as more rows get added — but
-     never below 100px, a floor chosen for the tile's own content (icon +
-     title + tagline + status pill + score) to stay legible, not reverse-
-     engineered from "make 8 tiles fit". On an iPhone 14 (844px viewport,
-     minus the header/padding above and Safari's own chrome) today's 4
-     rows land at roughly ~125-150px each — comfortably above that floor.
-     Once there are enough rows that even 100px each would overflow
-     .hub's own fixed 100dvh height, the floor wins, the grid's natural
-     content height exceeds its flex-allotted space, and overflow-y below
-     turns THAT into a scroll area instead of squeezing tiles smaller or
-     pushing them off-screen — so this keeps working automatically as more
-     games get added later, with no hardcoded tile count anywhere. */
-  grid-auto-rows: minmax(100px, 1fr);
+  /* Row height is capped at 1/4 of the grid's own available height —
+     explicit product rule (up to 4 tiles tall in 2-column mode, then
+     scroll rather than keep shrinking) — NOT derived from however many
+     games currently exist. At exactly 8 games (today's real tester/prod
+     count, 4 rows in 2 columns) this produces the identical result the old
+     plain `1fr` version did — 4 rows, each an even quarter of the
+     available height. The difference only shows up once a 5th row exists
+     (e.g. VALUZ, currently devOnly — see games-registry.js): with plain
+     `1fr`, a 5th row would shrink ALL 5 rows to keep everything crammed on
+     screen; with the cap, the first 4 rows hold their full size and the
+     5th (and any further) row instead pushes the grid's content past its
+     own flex-allotted height, which overflow-y below turns into a scroll
+     area — squeezing tiles smaller was never the goal, it was only ever a
+     side effect of sizing purely off "however many rows currently exist."
+     --hub-row-height is set in index.js (measuring this grid's OWN
+     flex-resolved clientHeight, then dividing by 4) rather than computed
+     here in pure CSS: an earlier version tried `container-type:size` +
+     `25cqh` for a pure-CSS version of the same idea, but that re-created
+     the exact circular-sizing bug found in VALUZ's own tile CSS (see
+     games/valuz/style.css's .valuz-tile--slot comment) — this container's
+     height being sized by cqh, while cqh itself is defined AS a percentage
+     of this same container's height, resolved by evenly dividing among
+     however many rows exist anyway, the very thing this was meant to
+     avoid. Measuring the real box in JS sidesteps that entirely. Falls
+     back to plain `1fr` (the original, non-circular behavior) whenever
+     index.js hasn't set the variable — 4-or-fewer rows, or before the
+     first render pass. */
+  /* --hub-row-height as the WHOLE value (with minmax(100px,1fr) as var()'s
+     OWN fallback), not nested inside a minmax() as just its upper bound —
+     nesting it as the max of minmax(100px, var(...)) was tried first and
+     doesn't work: a plain length as minmax()'s max means "size to content,
+     capped at this," so rows just kept sizing to their natural ~135px
+     content height instead of actually BEING the fixed value. Using the
+     variable as the entire declaration means: unset, it's the original
+     flexible `minmax(100px, 1fr)` (today's real 8-game/4-row case, zero
+     change); set (by index.js's applyRowHeightCap(), only once a 5th+ row
+     would exist), EVERY row becomes that exact fixed pixel height
+     regardless of content, so a 5th row genuinely adds to the grid's total
+     content height instead of shrinking all rows to stay crammed inside
+     it — which is what finally lets overflow-y below do its job. */
+  grid-auto-rows: var(--hub-row-height, minmax(100px, 1fr));
   gap: var(--space-md);
   flex: 1 1 auto;
   min-height: 0; /* the classic flexbox trap: without this, a flex child won't shrink below its own content's natural height, which would silently defeat the minmax() floor above and just push the grid past .hub's 100dvh instead of ever scrolling */
@@ -286,6 +306,7 @@ html, body {
      functional issue: worth re-testing if it ever looks off in practice. */
   gap: 4.2%;
   text-decoration: none; /* this is an <a> link — removes the default underline */
+  position: relative; /* anchors .hub__tile-new-ribbon's absolute positioning to THIS tile, not some further-up ancestor */
   overflow: hidden;
   padding: 7.3%;
   border-radius: 13px;
@@ -320,6 +341,35 @@ html, body {
     0 2px 5px rgba(90, 60, 40, 0.16),
     inset 3px 3px 6px rgba(255, 255, 255, 0.35),
     inset -3px -4px 7px var(--tile-rim, rgba(0, 0, 0, 0.25));
+}
+
+/* "NEW" corner ribbon — opt-in per game via games-registry.js's `isNew`
+   flag (see index.js's renderTiles()), currently only VALUZ. A diagonal
+   banner draped across the tile's own top-right corner; .hub__tile's
+   existing overflow:hidden is what clips it neatly to the tile's rounded
+   corner rather than needing its own corner-radius math. Sized in cqmin,
+   like the rest of this tile's content (see .hub__tile's own
+   container-type:size comment), so it scales with the tile's real
+   rendered size instead of a fixed px guess. Picked from a published
+   mockup gallery of 6 options (ribbon, floating pill, sparkle badge,
+   notification dot, glow outline, corner fold) — this was the winner,
+   moved to the top-right corner per a follow-up tweak (first draft was
+   top-left). */
+.hub__tile-new-ribbon {
+  position: absolute;
+  top: 8cqmin;
+  right: -20cqmin;
+  width: 76cqmin;
+  transform: rotate(45deg);
+  background: #f2b134;
+  color: #4a3400;
+  font-size: 6cqmin;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 1.8cqmin 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
+  z-index: 1; /* sits above .hub__tile-row1/tagline/status/score, none of which set their own z-index */
 }
 
 .hub__tile-row1 {

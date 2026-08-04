@@ -8,6 +8,7 @@ import { getBestScore, getBestScoreDate } from './shared/core/game-storage.js';
 import { getDailyStatus } from './shared/core/daily-lock.js';
 import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
+import { getToolMode } from './shared/core/tool-mode.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
 import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
 import { ensureAppReady } from './shared/core/update-gate.js';
@@ -77,7 +78,12 @@ const grid = document.getElementById('hub-grid');
 // just-cleared data without needing a full page reload.
 function renderTiles() {
   grid.innerHTML = ''; // clears out any previously-rendered tiles first
-  GAMES.forEach((game) => {
+  // devOnly games (e.g. VALUZ, still under construction — see
+  // games-registry.js) only ever show a hub tile in dev mode. TOOL_MODE is
+  // baked into the deployed code (see tool-mode.js) — CALPUL/PUSULZ stay on
+  // 'test', so testers never see a devOnly tile no matter what's pushed.
+  const visibleGames = GAMES.filter((game) => !game.devOnly || getToolMode() === 'dev');
+  visibleGames.forEach((game) => {
     // Building each tile as an <a> (link) element, entirely in JavaScript,
     // rather than writing three near-identical <a> tags by hand in the
     // HTML — this is the same "loop over data, build matching DOM" pattern
@@ -123,7 +129,14 @@ function renderTiles() {
     const iconSlot = game.emojiImage
       ? `<img class="hub__tile-icon-img" src="${game.emojiImage}" alt="">`
       : `<span class="hub__tile-badge">${game.emoji}</span>`;
+    // Opt-in per game via games-registry.js's `isNew` flag — currently only
+    // VALUZ. Picked from a published mockup gallery of 6 options (corner
+    // ribbon, floating pill, sparkle badge, notification dot, glow outline,
+    // corner fold) — see .hub__tile-new-ribbon in style.css for the actual
+    // styling.
+    const newRibbon = game.isNew ? `<span class="hub__tile-new-ribbon">NEW</span>` : '';
     tile.innerHTML = `
+      ${newRibbon}
       <div class="hub__tile-row1">
         ${iconSlot}
         <span class="hub__tile-title">${game.title}</span>
@@ -134,6 +147,61 @@ function renderTiles() {
     `;
     grid.appendChild(tile);
   });
+}
+
+// Caps the hub grid's row height two ways at once, per two explicit user
+// rules:
+//   1. In 2-column mode, show up to 4 rows' worth of height, then scroll
+//      for anything past that — rather than the plain `1fr` in style.css
+//      shrinking EVERY row evenly to cram however many rows exist onto the
+//      screen.
+//   2. A tile must NEVER be taller than it is wide, full stop, regardless
+//      of row count — this was the actual bug report: on a tall/narrow
+//      viewport (e.g. a DevTools panel eating most of the window's width,
+//      leaving a lot of leftover height), rule 1 alone — sizing purely off
+//      "1/4 of available height" — could produce a per-row height BIGGER
+//      than the column's own width, since the two were never compared
+//      against each other. rowHeight is now whichever is smaller: the
+//      4-rows height cap, or the column's actual resolved width.
+//
+// This has to be done in JS, not pure CSS: a `container-type:size` +
+// `cqh`-based version was tried first, but `.hub__grid`'s own height comes
+// from flexbox (flex:1 1 auto against .hub__title's fixed size), and
+// having grid-auto-rows ALSO depend on this same element's queried height
+// turned out to be circular in exactly the way found in VALUZ's own tile
+// CSS (see games/valuz/style.css's .valuz-tile--slot comment) — the
+// browser just fell back to dividing evenly among however many rows
+// existed anyway, the exact behavior this was meant to replace. Measuring
+// the grid's real flex-resolved clientHeight here in JS sidesteps that.
+function applyRowHeightCap() {
+  // Clear back to the CSS default (plain `1fr`, via style.css's
+  // `var(--hub-row-height, 1fr)` fallback) BEFORE measuring — otherwise a
+  // previously-applied fixed row height would pin the grid at its old
+  // size instead of reporting its true current flex-resolved box (e.g.
+  // after a window resize crosses the 2-column/1-column breakpoint).
+  grid.style.removeProperty('--hub-row-height');
+
+  const cs = getComputedStyle(grid);
+  // Reading the ACTUAL resolved column track widths (rather than
+  // re-deriving them from grid.clientWidth by hand) guarantees this can
+  // never disagree with what the grid itself just laid out.
+  const columnWidths = cs.gridTemplateColumns.split(' ').map(parseFloat);
+  const columnCount = columnWidths.length;
+  const columnWidth = columnWidths[0]; // repeat(N, 1fr) — every column is the same width
+
+  // Rule 1's cap only applies in 2-column mode (the user's own words:
+  // "when the tiles are showing in 2 columns") — 1-column mode has no
+  // stated visible-row-count rule, so its only ceiling is rule 2 below.
+  // Subtracting 3 row-gaps up front (the gaps a 4-row layout would have)
+  // is what makes this land on the EXACT same total height 4 rows used to
+  // fill under plain `1fr` — a version that skipped this ran slightly
+  // over the available space even in the plain 4-row case.
+  const gapPx = parseFloat(cs.rowGap) || 0;
+  const fourRowHeightCap = Math.max(100, (grid.clientHeight - gapPx * 3) / 4);
+  const heightBasedCap = columnCount === 2 ? fourRowHeightCap : grid.clientHeight;
+
+  const rowHeight = Math.min(heightBasedCap, columnWidth);
+  grid.style.setProperty('--hub-row-height', `${rowHeight}px`);
 }
 
 // Blocks here (top-level await — supported in module scripts) until a
@@ -155,6 +223,21 @@ await yieldForPaint();
 document.getElementById('hub').classList.remove('is-gate-hidden');
 
 renderTiles();
+applyRowHeightCap();
+// Re-checks on resize (e.g. a desktop window dragged narrower/wider across
+// the 2-column/1-column breakpoint, or a device rotation) so the cap stays
+// correct rather than only being right at whatever size the page happened
+// to load at. rAF-throttled: resize can fire many times per second while
+// actively dragging a window edge, and only the LAST queued measurement
+// before the next paint actually matters.
+let resizeRaf = null;
+window.addEventListener('resize', () => {
+  if (resizeRaf) return;
+  resizeRaf = requestAnimationFrame(() => {
+    resizeRaf = null;
+    applyRowHeightCap();
+  });
+});
 
 // GAMES.map((game) => game.id) transforms the array of game objects into
 // just an array of their id strings (['solvz', 'glympz', 'jewelz']) — that's

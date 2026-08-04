@@ -247,7 +247,7 @@ export function initShell({
     `<div class="shell-end-screen__panel">
        <div class="shell-end-screen__message" id="shell-end-message"></div>
        <div class="shell-end-screen__actions">
-         <button class="shell-btn" id="shell-hub-btn" type="button">Return to <span class="shell-btn__brand">PUSULZ</span></button>
+         <button class="shell-btn" id="shell-hub-btn" type="button">Back to <span class="shell-btn__brand">PUSULZ</span></button>
          <button class="shell-btn shell-btn--small is-hidden" id="shell-share-btn" type="button">Share Results</button>
        </div>
      </div>`

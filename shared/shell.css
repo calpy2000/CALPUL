@@ -365,6 +365,8 @@
    its bottom edge stays put. */
 .shell-end-screen__actions {
   display: flex;
+  flex-wrap: wrap; /* on a screen too narrow to fit both nowrap buttons (see .shell-btn's white-space above) on one line, drops Share Results as a WHOLE onto its own line rather than overflowing the panel or squeezing text mid-word — a graceful, width-agnostic fallback instead of a fixed panel-width guess that only happens to fit specific screen sizes */
+  justify-content: center; /* centers the row when it fits on one line, and centers each wrapped line individually when it doesn't */
   gap: var(--space-sm);
   align-items: center;
 }
@@ -407,6 +409,7 @@
   padding: 7px 20px;
   font-size: 14.4px; /* 20% larger than the button's own base 12px — text size only, padding/shape unchanged */
   font-weight: 500;
+  white-space: nowrap; /* a button's label is always one short phrase (2-3 words) — never let it break mid-word onto a second line inside the pill. Combined with .shell-end-screen__actions's flex-wrap below, a screen too narrow to fit a row of these wraps the WHOLE next button onto its own line instead of mangling text inside one — robust across any device width instead of chasing a magic panel-width number tuned to one screen size. */
   text-transform: lowercase; /* renders the text in lowercase regardless of how it's typed in the HTML/JS */
   letter-spacing: 0.04em; /* "em" is relative to the element's own font-size, so this spacing scales with the text */
   background-color: var(--shell-accent, var(--accent));

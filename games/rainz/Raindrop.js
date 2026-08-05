@@ -11,7 +11,7 @@
 // The shape-tracing and layered drawing itself is shared with
 // raindrop-icon.js's static hub-tile/header icons, so every rendering of
 // "a raindrop" is literally the same drawing code.
-import { drawRaindrop, WILDCARD_LETTER, WILDCARD_PALETTE } from './raindrop-icon.js';
+import { drawRaindrop, WILDCARD_LETTER, WILDCARD_PALETTE, WIDTH_SCALE } from './raindrop-icon.js';
 
 export default class Raindrop {
   static BASE_RADIUS = 19.5; // 26 reduced 25% per playtesting feedback
@@ -92,12 +92,14 @@ export default class Raindrop {
     return this.y + this.radius >= canvasHeight;
   }
 
-  // Simple distance-to-center hit test, with a little extra forgiveness
-  // radius on top of the drop's own size — generous enough for a fingertip
-  // tap to feel reliable, same spirit as JEWELZ's circle-distance jewel
-  // collection check.
+  // Distance-to-center hit test, with a little extra forgiveness on top of
+  // the drop's own size — generous enough for a fingertip tap to feel
+  // reliable, same spirit as JEWELZ's circle-distance jewel collection
+  // check. dx is un-squeezed by WIDTH_SCALE first so the tolerant region
+  // is an ellipse matching draw()'s actual (horizontally squeezed) shape,
+  // rather than a circle sized for the old, wider drop.
   containsPoint(x, y) {
-    const dx = x - this.x;
+    const dx = (x - this.x) / WIDTH_SCALE;
     const dy = y - this.y;
     return Math.sqrt(dx * dx + dy * dy) <= this.radius * 1.15;
   }

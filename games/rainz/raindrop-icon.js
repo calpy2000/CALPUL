@@ -25,6 +25,17 @@ export const LETTER_COLOR = '#4b5563';
 export const WILDCARD_LETTER = '★'; // U+2605 BLACK STAR
 export const WILDCARD_PALETTE = { light: '#fef9c3', deep: '#ca8a04' };
 
+// Horizontal-only squeeze applied to every drawn drop — "Option B" out of
+// four the user compared side by side (a live preview rendered with this
+// exact shape code). Narrows the belly while leaving height untouched
+// (unlike just shrinking BASE_RADIUS, which would shrink both), because a
+// wider canvas (recent change) had made drops visually wide enough to eat
+// back into the spawn-gap headroom pickNonOverlappingX() depends on — see
+// index.js's MIN_RAINDROP_SEPARATION, which is derived from this same
+// constant so the spawn logic's idea of a drop's width always matches what
+// actually gets drawn.
+export const WIDTH_SCALE = 0.8;
+
 // How fast the ring's expand-and-fade cycle repeats, in cycles per second —
 // matches the pacing shown in the "Radar Ping Ring" preview the user chose.
 const WILDCARD_PULSE_SPEED = 0.7;
@@ -69,6 +80,16 @@ export function traceRaindropPath(context, cx, cy, r) {
 // caller (row/header/tile icons never pass a wildcard letter, so the ring
 // never actually draws for them regardless).
 export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
+  // Everything except the letter is drawn in a translate+scale(WIDTH_SCALE,1)
+  // space centered on the drop — a horizontal-only affine squeeze, so the
+  // teardrop's bezier/arc math above needs no changes and stays perfectly
+  // tangent-continuous (no seam), it's just narrower. The letter is drawn
+  // afterward, outside this transform, so glyphs stay their normal shape
+  // instead of getting squished along with the body.
+  context.save();
+  context.translate(x, y);
+  context.scale(WIDTH_SCALE, 1);
+
   if (letter === WILDCARD_LETTER) {
     // The "radar ping" ring: repeatedly expands outward from the drop and
     // fades out, looping forever — drawn BEFORE the drop's own body so it
@@ -79,7 +100,7 @@ export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
     context.strokeStyle = `rgba(202, 138, 4, ${1 - phase})`;
     context.lineWidth = 3;
     context.beginPath();
-    context.arc(x, y, r * (1.1 + phase * 0.9), 0, Math.PI * 2);
+    context.arc(0, 0, r * (1.1 + phase * 0.9), 0, Math.PI * 2);
     context.stroke();
     context.restore();
   }
@@ -88,8 +109,8 @@ export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
   context.shadowColor = 'rgba(0, 0, 0, 0.35)';
   context.shadowBlur = r * 0.41;
   context.shadowOffsetY = r * 0.2;
-  traceRaindropPath(context, x, y, r);
-  const gradient = context.createRadialGradient(x - r * 0.3, y - r * 0.35, r * 0.1, x, y, r * 1.3);
+  traceRaindropPath(context, 0, 0, r);
+  const gradient = context.createRadialGradient(-r * 0.3, -r * 0.35, r * 0.1, 0, 0, r * 1.3);
   gradient.addColorStop(0, palette.light);
   gradient.addColorStop(1, palette.deep);
   context.fillStyle = gradient;
@@ -97,7 +118,7 @@ export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
   context.restore();
 
   context.save();
-  context.translate(x - r * 0.32, y - r * 0.25);
+  context.translate(-r * 0.32, -r * 0.25);
   context.rotate(-20 * (Math.PI / 180));
   context.fillStyle = 'rgba(255, 255, 255, 0.55)';
   context.beginPath();
@@ -106,13 +127,15 @@ export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
   context.restore();
 
   context.save();
-  context.translate(x + r * 0.28, y + r * 0.2);
+  context.translate(r * 0.28, r * 0.2);
   context.rotate(10 * (Math.PI / 180));
   context.fillStyle = 'rgba(255, 255, 255, 0.3)';
   context.beginPath();
   context.ellipse(0, 0, r * 0.14, r * 0.08, 0, 0, Math.PI * 2);
   context.fill();
   context.restore();
+
+  context.restore(); // undo translate+scale before the letter
 
   if (letter) {
     context.fillStyle = LETTER_COLOR;

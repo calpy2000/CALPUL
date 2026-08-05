@@ -23,7 +23,7 @@ import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ALL_WORDS } from './words.js';
-import { getHeaderIconDataURL, getTileIconDataURL, getWildcardIconDataURL, WILDCARD_LETTER } from './raindrop-icon.js';
+import { getHeaderIconDataURL, getTileIconDataURL, getWildcardIconDataURL, WILDCARD_LETTER, WILDCARD_PALETTE, WIDTH_SCALE } from './raindrop-icon.js';
 import { drawUmbrella, getUmbrellaIconDataURL } from './umbrella-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
@@ -130,26 +130,32 @@ function isPointInUmbrella(u, x, y) {
   );
 }
 
-// Checks every umbrella against every not-yet-caught raindrop; a collision
-// bursts both (particles at each one's own position/color) and removes
-// them from play. Only unclicked drops are eligible — one that's already
-// been caught into the tile grid is mid-word (see catchDrop()/tiles) and
-// popping it out from under resolveWord() would leave a dangling
-// reference, so those are left alone here.
+// Checks every umbrella against every raindrop still on screen (caught or
+// not); a collision bursts both (particles at each one's own position/
+// color) and removes them from play. Bursting a CAUGHT (grey) drop also
+// pops the whole word it was part of — resetCaughtDrops() (see below) reverts
+// every OTHER grey drop back to normal and clears the tile grid, same as
+// tapping a caught drop again does, since the word can no longer ever be
+// completed with one of its letters gone. Skipped while `resolving` (the
+// completed word's flash/explode animation is already mid-flight and tiles
+// is off-limits — same guard checkRaindropCollisions() uses) — the drop
+// just stays put in its grey state for that one frame and is fair game
+// again the frame after.
 function checkUmbrellaCollisions() {
   for (let i = umbrellas.length - 1; i >= 0; i--) {
     const umbrella = umbrellas[i];
     for (let j = raindrops.length - 1; j >= 0; j--) {
       const drop = raindrops[j];
-      if (drop.clicked) continue;
+      if (drop.clicked && resolving) continue;
       const dx = drop.x - umbrella.x;
       const dy = drop.y - umbrella.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist <= drop.radius + umbrella.r * 0.85) {
-        createExplosion(drop.x, drop.y, drop.palette.deep, 4, 14);
+        createExplosion(drop.x, drop.y, drop.clicked ? Raindrop.GREY.deep : drop.palette.deep, 4, 14);
         createExplosion(umbrella.x, umbrella.y, umbrella.palette.deep, 5, 18);
         raindrops.splice(j, 1);
         umbrellas.splice(i, 1);
+        if (drop.clicked) resetCaughtDrops();
         break; // this umbrella is gone — stop checking it against other drops
       }
     }
@@ -414,16 +420,22 @@ function createExplosion(startX, startY, color, size, count) {
 // — only y moves), so two drops can NEVER collide unless their x's are
 // within a diameter of each other; if they aren't, they stay in their own
 // vertical column for their whole fall no matter how their speeds differ.
-// MIN_RAINDROP_SEPARATION is exactly one full diameter — the minimum at
-// which two drops just touch without actually overlapping (no extra
-// breathing room beyond that, per the user's request to reduce the margin
-// to zero) — and pickNonOverlappingX() below searches for a spawn x that
-// clears every CURRENTLY on-screen drop by at least that much, guaranteeing
-// no future overlap is even possible, not just "probably fine." Only falls
-// back to a plain random x (overlap possible) when the canvas is so full of
-// drops that no gap that wide is left anywhere — the outlier case the user
-// described.
-const MIN_RAINDROP_SEPARATION = Raindrop.BASE_RADIUS * 2;
+// MIN_RAINDROP_SEPARATION is exactly one full (visual) diameter — the
+// minimum at which two drops just touch without actually overlapping (no
+// extra breathing room beyond that, per the user's request to reduce the
+// margin to zero) — and pickNonOverlappingX() below searches for a spawn x
+// that clears every CURRENTLY on-screen drop by at least that much,
+// guaranteeing no future overlap is even possible, not just "probably
+// fine." Only falls back to a plain random x (overlap possible) when the
+// canvas is so full of drops that no gap that wide is left anywhere — the
+// outlier case the user described.
+//
+// Multiplied by WIDTH_SCALE (raindrop-icon.js's horizontal squeeze) because
+// a drop's actual drawn half-width is now BASE_RADIUS * WIDTH_SCALE, not
+// BASE_RADIUS — using the un-squeezed radius here would reserve more gap
+// than a narrowed drop actually needs, wasting exactly the spawn headroom
+// the squeeze was meant to free up.
+const MIN_RAINDROP_SEPARATION = Raindrop.BASE_RADIUS * WIDTH_SCALE * 2;
 
 // Finds every gap between currently on-screen drops (sorted left to right,
 // bracketed by the canvas's own spawn bounds so the space before the
@@ -458,6 +470,74 @@ function pickNonOverlappingX(margin) {
   return randomBetween(rangeLo, rangeHi);
 }
 
+// pickNonOverlappingX() above only PREVENTS overlap at spawn time — its own
+// comment documents the one outlier case where it can't (canvas saturated
+// with drops, no gap anywhere wide enough), which falls back to a plain
+// random x. This is what actually happens on the rare frame that outlier
+// produces a real collision as two drops' paths cross while falling: reuses
+// the exact same MIN_RAINDROP_SEPARATION threshold pickNonOverlappingX
+// enforces at spawn, so "collide" here means precisely what it means there
+// — center-to-center distance closing inside one full (visual) diameter.
+//
+// raindrops is append-ordered (spawnRaindrop() only ever pushes), so for
+// any colliding pair, the lower-indexed drop is whichever spawned earlier —
+// "the first raindrop" the user's design brief refers to, which explodes —
+// and the higher-indexed one is "the colliding raindrop" that fell into it
+// and survives, immediately turned into a wildcard as the visible result of
+// having just "absorbed" the collision.
+//
+// Finds and handles (at most) one collision, then is called again in a loop
+// by its caller below — simpler than juggling shifted array indices after a
+// splice from inside a single nested-loop pass.
+function findCollidingPair() {
+  for (let i = 0; i < raindrops.length; i++) {
+    for (let j = i + 1; j < raindrops.length; j++) {
+      const dx = raindrops[i].x - raindrops[j].x;
+      const dy = raindrops[i].y - raindrops[j].y;
+      if (Math.sqrt(dx * dx + dy * dy) < MIN_RAINDROP_SEPARATION) return [i, j];
+    }
+  }
+  return null;
+}
+
+function checkRaindropCollisions() {
+  if (resolving) return; // tiles is mid-flash/explode animation — off-limits, same guard onStart's catch handler uses
+
+  for (;;) {
+    const pair = findCollidingPair();
+    if (!pair) return;
+    const [i, j] = pair;
+    const first = raindrops[i];
+    const colliding = raindrops[j];
+
+    if (first.clicked || colliding.clicked) {
+      // Either drop is mid-word — destroying/mutating it here would leave
+      // `tiles` holding a dangling reference resolveWord() isn't expecting
+      // (the same reason checkUmbrellaCollisions() leaves clicked drops
+      // alone entirely). Per the design brief, this collision is spent
+      // entirely as a reset instead: every grey drop goes back to normal
+      // and the answer grid clears, exactly like tapping a caught drop
+      // again does (see resetCaughtDrops()). Returns rather than looping
+      // again — resetCaughtDrops() doesn't move either drop, so the very
+      // same pair would just be "found" again next pass (an infinite loop)
+      // now that neither is clicked anymore; if they're still overlapping
+      // next FRAME, this simply fires again then.
+      resetCaughtDrops();
+      return;
+    }
+
+    createExplosion(first.x, first.y, first.palette.deep, 4, 14);
+    raindrops.splice(i, 1);
+    colliding.letter = WILDCARD_LETTER;
+    colliding.palette = WILDCARD_PALETTE;
+    // Loop again — a third drop could be overlapping this same cluster
+    // (only possible in the already-rare saturated-canvas outlier case),
+    // and the newly-freed gap plus the survivor's new position mean
+    // findCollidingPair() needs a fresh scan rather than reusing stale
+    // indices.
+  }
+}
+
 let lastPaletteIndex = null;
 
 function pickPaletteIndex() {
@@ -472,10 +552,13 @@ function pickPaletteIndex() {
 }
 
 function spawnRaindrop() {
-  // Every drop is exactly BASE_RADIUS now (size no longer varies — see
-  // Raindrop.js), so that alone is a safe margin to keep a drop from
-  // spawning partly off the left/right edge.
-  const margin = Raindrop.BASE_RADIUS;
+  // Every drop is exactly BASE_RADIUS tall now (size no longer varies — see
+  // Raindrop.js) but drawn at BASE_RADIUS * WIDTH_SCALE wide (see
+  // raindrop-icon.js's horizontal squeeze), so that narrower half-width is
+  // the real safe margin to keep a drop from spawning partly off the
+  // left/right edge — using the un-squeezed radius here would just waste
+  // edge space a narrowed drop no longer needs.
+  const margin = Raindrop.BASE_RADIUS * WIDTH_SCALE;
   const x = pickNonOverlappingX(margin);
   // Always pulls from the batch first (so batch boundaries/progression stay
   // exactly as before), THEN may override the result to a wildcard — never
@@ -648,6 +731,7 @@ function animate(currentTime) {
 
     raindrops.forEach((drop) => drop.update(deltaTime));
     checkUmbrellaCollisions();
+    checkRaindropCollisions();
 
     // Game over the instant ANY raindrop — clicked/grey or not — reaches
     // the bottom, exactly as specified. When that happens, EVERY raindrop
@@ -853,11 +937,29 @@ initToolsPanel([GAME_ID], {
     {
       label: 'Spawn a wildcard drop',
       onClick: () => {
-        const drop = new Raindrop(pickNonOverlappingX(Raindrop.BASE_RADIUS), WILDCARD_LETTER);
+        const drop = new Raindrop(pickNonOverlappingX(Raindrop.BASE_RADIUS * WIDTH_SCALE), WILDCARD_LETTER);
         drop.speed *= speedMultiplier;
         raindrops.push(drop);
       },
     },
     { label: `Test word: F${WILDCARD_LETTER}RM (wildcard, valid)`, onClick: () => testCatchWord(`F${WILDCARD_LETTER}RM`) },
+    // Real collisions only ever happen via pickNonOverlappingX()'s rare
+    // saturated-canvas fallback — not practical to wait for by hand.
+    // Spawns two drops directly on top of each other (bypassing that
+    // function entirely) so the very next frame's checkRaindropCollisions()
+    // fires for real, exercising the actual explode/wildcard-transform path
+    // rather than simulating its effects here.
+    {
+      label: 'Force two raindrops to collide',
+      onClick: () => {
+        const x = canvas.width / 2;
+        const first = new Raindrop(x, randomLetter(), pickPaletteIndex());
+        const colliding = new Raindrop(x, randomLetter(), pickPaletteIndex());
+        first.y = colliding.y = 120;
+        first.speed *= speedMultiplier;
+        colliding.speed *= speedMultiplier;
+        raindrops.push(first, colliding);
+      },
+    },
   ],
 });

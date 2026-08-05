@@ -177,13 +177,6 @@ $(function () {
   // the game ends in a loss (see submitGuess() below).
   const MAX_GUESSES = TOTAL_BATCHES;
 
-  // Only used to detect a blank/whitespace-only submission — the actual
-  // answer comparison is isFuzzyMatch() (see fuzzy-match.js), which does
-  // its own much more forgiving normalization.
-  function normalize(str) {
-    return str.trim().toLowerCase();
-  }
-
   // Keeps the black circle badge inside the guess input showing which
   // attempt number the player is ABOUT to make (guessCount is how many
   // guesses have already been submitted, so the next one is guessCount + 1).
@@ -327,16 +320,16 @@ $(function () {
     });
   }
 
-  // The core guess flow: reads the input, ignores a blank submission
-  // (otherwise a player could spam the button with nothing typed just to
-  // farm free tile reveals), counts the attempt, and either wins, loses (if
-  // this was the last of MAX_GUESSES and still wrong), or reveals the next
-  // batch and shows the "Sorry, try again" message.
+  // The core guess flow: reads the input, counts the attempt (a blank/no-idea
+  // submission still counts — it's how a stuck player burns an attempt to
+  // reveal the next batch instead of being forced to type something), and
+  // either wins, loses (if this was the last of MAX_GUESSES and still
+  // wrong), or reveals the next batch and shows the "Sorry, try again"
+  // message.
   function submitGuess() {
     if (locked) return;
 
     const raw = $input.val();
-    if (!normalize(raw)) return; // blank/whitespace-only guess — do nothing
 
     guessCount++;
 

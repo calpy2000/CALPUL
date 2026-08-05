@@ -23,13 +23,6 @@ import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getToolMode } from '../../shared/core/tool-mode.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
-// See loading-indicator.js's own comment: every file imported above
-// (Asteroid.js, Station.js, Maze.js, etc. — the whole reason this page can
-// be slow to appear on a cold/first load) has already finished loading by
-// the time this line runs, so the spinner's job is done here.
-hidePageLoadingIndicator();
-stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
-
 const GAME_ID = 'warpz';
 
 const PLAYER_IMG = `<img src="${getPlayerIconDataURL()}" alt="spaceman" class="warpz-inline-icon">`;
@@ -57,6 +50,22 @@ try {
 } catch (err) {
   console.warn('WARPZ: failed to load sequences.json — the "Sequence" obstacle option will have nothing to run', err);
 }
+
+// hidePageLoadingIndicator() runs AFTER the sequences.json fetch above,
+// NOT as the first statement (the usual convention — see
+// loading-indicator.js's own comment on why "first statement" is normally
+// correct: it only accounts for the JS module graph finishing, not a
+// game's OWN data fetch on top of that). A real bug, found via a user
+// report on VALUZ of "long wait with no spinner" that turned out to
+// affect this file too, since VALUZ's sequences.json-style fetch was
+// originally copied FROM this one: on a slow/cold-cache connection, the
+// spinner was being torn down right as the actual network wait for THIS
+// fetch began, leaving a real gap with nothing on screen. Moving this
+// call down here (rather than wrapping the fetch in its own fresh
+// showPageLoadingIndicator()) is the simpler of the two fixes
+// loading-indicator.js's own rule allows for.
+hidePageLoadingIndicator();
+stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 // --- which obstacle type(s) populate the field this round -----------
 // A dev-tool radio selector (see the `radioGroups` passed to

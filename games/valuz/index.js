@@ -15,9 +15,6 @@ import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam, navigateWithSpinner } from '../../shared/core/loading-indicator.js';
 import { getQuestionTileIconDataURL } from './tile-icon.js';
 
-hidePageLoadingIndicator();
-stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
-
 const GAME_ID = 'valuz';
 
 // Colour-type answers have no text of their own — the tile IS the answer,
@@ -45,6 +42,22 @@ try {
 } catch (err) {
   console.warn('VALUZ: failed to load days.json', err);
 }
+
+// hidePageLoadingIndicator() runs AFTER the days.json fetch above, NOT as
+// the first statement (the usual convention — see loading-indicator.js's
+// own comment on why "first statement" is normally correct). A real bug,
+// found via a user report of "long wait with no spinner": calling it
+// first only accounts for the JS module graph finishing, not this game's
+// OWN data fetch — on a slow/cold-cache connection, the spinner was being
+// torn down right as the actual network wait began, leaving a real gap
+// with nothing on screen. loading-indicator.js's own rule is that a fetch
+// which ISN'T guaranteed-fast must either finish before this call or wrap
+// itself in a fresh showPageLoadingIndicator() — moving this call down
+// here is the simpler of those two options. WARPZ had the identical bug
+// (this ordering was originally copied FROM WARPZ's sequences.json
+// fetch) — fixed there the same way, same commit.
+hidePageLoadingIndicator();
+stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 // --- Which day's content to show ---
 // Real players always get today's actual day-of-year match. A `?day=NNN`
@@ -134,14 +147,18 @@ $(function () {
 
   // --- Building the board ---
   // A single 5-column CSS grid (question / spacer / drop / spacer / tray),
-  // one row per question — the "correct answers" label used to live in an
-  // extra row reserved above column 5, but now lives in .valuz-footer-row
-  // below the grid instead (see index.html), alongside the Guess button.
-  // Every tile is explicitly placed via inline grid-row/grid-column rather
-  // than relying on DOM order (SOLVZ's approach) — simpler here since
-  // columns 2/4 need no elements at all (they're pure grid gutter space,
-  // not tiles), so relying on implicit row-major placement would require
-  // filler divs.
+  // one row per question, PLUS one extra row at the very END (after all 6
+  // questions) reserved for the "correct answers" label, column 5 only.
+  // This label's position has moved twice now: it started as its own row
+  // ABOVE column 5 (inside the grid), then moved to share a row with the
+  // Guess button below the grid — but that put it out of horizontal line
+  // with column 5's own tiles, and the user wanted it back directly under
+  // the LAST question row's column-5 tile instead, so it's back inside the
+  // grid, just at the bottom instead of the top. Every tile is explicitly
+  // placed via inline grid-row/grid-column rather than relying on DOM
+  // order (SOLVZ's approach) — simpler here since columns 2/4 need no
+  // elements at all (they're pure grid gutter space, not tiles), so
+  // relying on implicit row-major placement would require filler divs.
   // Category + tagline for the active day — shown once, above the grid, as
   // ONE centered line ("Movies: match the number with the film") with just
   // the category+colon bold, not two separate lines — per explicit request
@@ -152,11 +169,9 @@ $(function () {
   );
 
   const $grid = $('#valuzGrid');
-  // Lives in .valuz-footer-row now (see index.html), not as a row inside
-  // the grid — moved there per explicit request to reclaim vertical space
-  // at the TOP of the board. Its own CSS mirrors the grid's column
-  // proportions so it still lands exactly under column 5.
-  const $col5Label = $('#col5Label');
+  const LABEL_ROW = QUESTIONS.length + 1; // directly below the last question row
+  const $col5Label = $('<div>', { class: 'valuz-col5-label', id: 'col5Label' }).css({ gridRow: LABEL_ROW, gridColumn: 5 });
+  $grid.append($col5Label);
 
   QUESTIONS.forEach((q, i) => {
     const row = i + 1;

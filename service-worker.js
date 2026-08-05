@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v3.6';
+const CACHE_VERSION = 'v3.7';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -46,9 +46,16 @@ const IMAGE_CACHE = `pusulz-images-${IMAGE_CACHE_VERSION}`;
 
 // Generated from the actual repo file tree (excluding games/*/images/,
 // tools/ — dev-only curation scripts never served to testers — and .git).
-// Keep this in sync by hand when files are added/removed/renamed; a stale
-// entry here just means that one file won't be precached (falls back to a
-// normal network fetch, same as before this existed), not a broken build.
+// Keep this in sync by hand when files are added/removed/renamed.
+//
+// WHEN ADDING A NEW GAME: its entire games/<id>/ file list MUST be added
+// here too, in the same commit that adds it to games-registry.js. This is
+// NOT optional cleanup — a missing entry means that game's first load is a
+// genuine uncached network fetch with nothing covering it (no spinner),
+// since ensureAppReady()/update-gate.js only blocks on THIS list finishing.
+// VALUZ shipped without being added here and reproduced exactly that bug
+// in production (fixed in v3.7) — the fix for a "long wait, no spinner"
+// bug on a specific game is USUALLY here, not in that game's own code.
 const CODE_URLS = [
   './',
   'apple-touch-icon.png',
@@ -142,6 +149,13 @@ const CODE_URLS = [
   'games/solvz/index.js',
   'games/solvz/manifest.json',
   'games/solvz/style.css',
+
+  'games/valuz/days.json',
+  'games/valuz/index.html',
+  'games/valuz/index.js',
+  'games/valuz/manifest.json',
+  'games/valuz/style.css',
+  'games/valuz/tile-icon.js',
 
   'games/warpz/Asteroid.js',
   'games/warpz/Cluster.js',

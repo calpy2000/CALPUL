@@ -103,14 +103,17 @@
    reclaim vertical space at the TOP), but that put it out of horizontal
    line with column 5's own tiles — explicit request to move it back
    directly under column 5, just at the BOTTOM of the grid instead of the
-   top this time. No negative-margin hack needed here (unlike the original
-   top placement): nothing else shares this row, so its height is just
-   whatever the label's own content needs, and the gap to the row above is
-   the grid's own plain row-gap — no cross-row centering offset to correct
-   for. */
+   top this time. The gap to the row above starts as the grid's own plain
+   row-gap, same as every other row — margin-top below then pulls it in
+   further, TARGETING ONLY THIS ONE GAP rather than touching .valuz-grid's
+   row-gap (which is shared by every question row and was tuned
+   separately). Explicit request: shrink this specific gap to 0.3x what
+   it was (row-gap * 0.9 -> row-gap * 0.9 * 0.3), so this margin makes up
+   the difference: -(0.9 - 0.27) = -0.63 of --space-md. */
 .valuz-col5-label {
   grid-column: 5;
   min-width: 0; /* grid items default to min-width:auto (their own content's min-content size), which would override the track's own minmax(0,...) above and push column 5 wide again — this lets the label actually shrink to the track's real (now-equal) width instead */
+  margin-top: -16.3px; /* pulls the label up to close 0.3x of the gap to the row above (measured baseline gap ~23.3px on iPhone 14 -> target ~7px); targets ONLY this one gap rather than touching .valuz-grid's row-gap, which is shared by every question row and was tuned separately */
   text-align: center;
   font-size: 10px;
   font-weight: 700;

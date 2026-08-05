@@ -142,6 +142,7 @@
    however wide the number actually renders — no guessed width to keep in
    sync with anything. */
 .valuz-tile--question {
+  position: relative; /* anchors .valuz-tile__taphint's absolute positioning */
   display: flex;
   align-items: flex-start;
   gap: 6px;
@@ -161,6 +162,35 @@
 .valuz-tile--question.is-clickable:hover,
 .valuz-tile--question.is-clickable:active {
   background: #EBE3F1;
+}
+
+/* "tap" hint pill — bottom-right corner, only shown once the tile is
+   .is-clickable (i.e. the round has been graded — see index.js's
+   markQuestionsClickable()), explicit request: a small nudge that the
+   question can be tapped for more info, placed in the corner LEAST likely
+   to already have question text under it (number pinned top-left, text
+   flowing after it — the bottom-right is what's usually still empty).
+   Always in the DOM (built once in index.js, not injected at grading
+   time) — display:none/flex driven purely by the same .is-clickable class
+   that already gates the tap behavior itself, so the hint and the actual
+   tappability can never disagree with each other. */
+.valuz-tile__taphint {
+  display: none;
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #000000;
+  background: #B0AEB6; /* grey, darker than the question tile's own light-lavender background (#F6F3F9) */
+  padding: 2px 7px;
+  border-radius: 999px;
+  pointer-events: none; /* purely informational — a tap here should still land on the question tile underneath, not get swallowed by this element */
+}
+
+.valuz-tile--question.is-clickable .valuz-tile__taphint {
+  display: inline-block;
 }
 
 .valuz-tile__qnum {

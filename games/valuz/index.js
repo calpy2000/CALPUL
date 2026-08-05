@@ -134,12 +134,14 @@ $(function () {
 
   // --- Building the board ---
   // A single 5-column CSS grid (question / spacer / drop / spacer / tray),
-  // with one extra row on top reserved for the "correct answers" label that
-  // only ever appears above column 5 once graded. Every tile is explicitly
-  // placed via inline grid-row/grid-column rather than relying on DOM
-  // order (SOLVZ's approach) — simpler here since columns 2/4 need no
-  // elements at all (they're pure grid gutter space, not tiles), so
-  // relying on implicit row-major placement would require filler divs.
+  // one row per question — the "correct answers" label used to live in an
+  // extra row reserved above column 5, but now lives in .valuz-footer-row
+  // below the grid instead (see index.html), alongside the Guess button.
+  // Every tile is explicitly placed via inline grid-row/grid-column rather
+  // than relying on DOM order (SOLVZ's approach) — simpler here since
+  // columns 2/4 need no elements at all (they're pure grid gutter space,
+  // not tiles), so relying on implicit row-major placement would require
+  // filler divs.
   // Category + tagline for the active day — shown once, above the grid, as
   // ONE centered line ("Movies: match the number with the film") with just
   // the category+colon bold, not two separate lines — per explicit request
@@ -162,9 +164,19 @@ $(function () {
     // Plain bold number (not a circular badge) — column 1 is narrow enough
     // that the badge's own padding/diameter was eating space the question
     // text needed, per the user's explicit follow-up feedback.
+    //
+    // valuz-tile__taphint ("tap") sits in the bottom-right corner, hidden
+    // by CSS until the tile gets .is-clickable (see markQuestionsClickable()
+    // below) — a small nudge that the question can be tapped for more info
+    // once the round is graded. Bottom-right chosen deliberately: with the
+    // question number pinned top-left and text flowing left-to-right, that
+    // corner is the one LEAST likely to already have text sitting under it
+    // on a given tile, explicit reasoning from the user's own request.
     $('<div>', { class: 'valuz-tile valuz-tile--question', 'data-question-number': q.number })
       .css({ gridRow: row, gridColumn: 1 })
-      .html(`<span class="valuz-tile__qnum">${q.number}</span><span class="valuz-tile__qtext">${q.question}</span>`)
+      .html(
+        `<span class="valuz-tile__qnum">${q.number}</span><span class="valuz-tile__qtext">${q.question}</span><span class="valuz-tile__taphint">tap</span>`
+      )
       .appendTo($grid);
 
     // Emoji type gets an extra modifier class (see .valuz-tile--type-emoji

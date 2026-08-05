@@ -292,7 +292,26 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  /* vw, NOT a % of .shell-stage — deliberately. This used to be `width: 90%`,
+     which resolves against .shell-stage (this panel's positioned ancestor —
+     see its own comment above), and .shell-stage's width is NOT the same in
+     every game: several games (e.g. SOLVZ's `.shell-stage { width: 80%; }`,
+     to keep its two number-grids off the screen edges) narrow it for their
+     own board-sizing reasons that have nothing to do with this panel. That
+     silently narrowed the end-screen right along with the stage, and once
+     it dropped below the ~283px the two .shell-end-screen__actions buttons
+     need combined, flex-wrap (see below) dropped Share Results onto its own
+     line — reproduced on SOLVZ's live end screen (buttons stacked) next to
+     VALUZ's (one row), same shared code, different .shell-stage width.
+     VALUZ had already hit this exact bug once and fixed it by widening ITS
+     OWN .shell-stage from 92% to 96% (see games/valuz/style.css) specifically
+     to pull its end-screen back above that threshold — proven safe on a real
+     device (90% of a 96vw-equivalent stage = 86.4vw). Using that same 86.4vw
+     figure directly here — as a plain viewport-relative width, entirely
+     independent of whatever any given game sets .shell-stage to — is what
+     makes it a fix for every game at once instead of one more per-game
+     workaround the next narrow-stage game will need to rediscover. */
+  width: 86.4vw;
   max-width: 384px; /* 320px * 1.2 — widened so the end-screen's side-by-side .shell-end-screen__actions buttons (see below) fit without overflowing; shared with .shell-overlay's start banner too, so both panels stay the same width as each other */
   display: flex;
   align-items: center;

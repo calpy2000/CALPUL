@@ -15,13 +15,15 @@
    as the default on a phone, not narrower. `.shell` itself is 100vw (see
    shared/shell.css), so 92% here used to mean ~92vw — actually NARROWER
    than the 95vw every other game uses, the opposite of the intent (more
-   room for VALUZ's own question text). That was a real regression, found
-   via a real device screenshot: it narrowed .shell-end-screen (sized as a
-   % of THIS stage) just enough to push its two action buttons onto
-   separate lines on a phone, when every other game's default-width stage
-   keeps them on one line (confirmed by measuring both: the buttons need
-   ~283px combined, the shared default's stage gives them exactly that
-   with ~0px to spare, this stage at 92% gave them ~8px too little). */
+   room for VALUZ's own question text).
+   (This used to ALSO be the fix for .shell-end-screen's two action buttons
+   wrapping onto separate lines — narrowing this stage narrowed that panel
+   right along with it, since it used to size itself as a % of THIS stage.
+   Widening this back to 96% pulled the panel back above the width the
+   buttons needed. That's no longer why this number matters, though — the
+   panel's width is now a fixed vw value in shared/shell.css itself,
+   independent of whatever any given game sets its own .shell-stage to —
+   so this override only affects VALUZ's own question-row width now.) */
 .shell-stage {
   width: 96%;
   max-width: 640px;

@@ -59,7 +59,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 0.1fr) minmax(0, 0.9fr) minmax(0, 0.1fr) minmax(0, 0.9fr);
-  row-gap: calc(var(--space-md) * 0.6); /* 0.6x the original var(--space-md) — explicit request to reclaim vertical space so the end-panel covers fewer rows */
+  row-gap: calc(var(--space-md) * 0.9); /* 0.6x the original var(--space-md), then 1.5x'd back up (0.6 * 1.5 = 0.9) — explicit follow-up request to widen the gap between question rows again */
   align-items: center;
 }
 

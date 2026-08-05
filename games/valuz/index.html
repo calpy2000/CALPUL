@@ -55,7 +55,16 @@
         <div class="board" id="board">
           <div class="valuz-day-header" id="dayHeader"></div>
           <div class="valuz-grid" id="valuzGrid"></div>
-          <button class="shell-btn valuz-guess-btn" id="guessBtn" type="button" disabled>Guess</button>
+          <!-- Guess button + "correct answers" label share one row below
+               the grid, laid out with the SAME column proportions as
+               .valuz-grid itself (see style.css) so the label lands
+               perfectly under column 5 — moved down here (was its own row
+               ABOVE column 5, inside the grid) per explicit request to
+               reclaim vertical space at the top of the board. -->
+          <div class="valuz-footer-row">
+            <button class="shell-btn valuz-guess-btn" id="guessBtn" type="button" disabled>Guess</button>
+            <div class="valuz-col5-label" id="col5Label"></div>
+          </div>
         </div>
       </div>
     </div>

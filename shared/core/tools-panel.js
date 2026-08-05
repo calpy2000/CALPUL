@@ -97,6 +97,19 @@ export function initToolsPanel(gameIds, { extraActions = [], radioGroups = [] } 
     if (!panel.classList.contains('is-hidden')) refreshDebugInfo(panel);
   });
 
+  // Also closes on a tap/click anywhere outside the panel (and outside the
+  // toggle icon itself, which already has its own open/close handler right
+  // above — without excluding it too, this document-level listener would
+  // immediately re-close whatever that handler just opened, since the
+  // toggle icon isn't inside `panel`). Explicit request: previously the
+  // only way to dismiss the panel was tapping the toggle icon a second
+  // time.
+  document.addEventListener('click', (e) => {
+    if (panel.classList.contains('is-hidden')) return;
+    if (panel.contains(e.target) || toggle.contains(e.target)) return;
+    panel.classList.add('is-hidden');
+  });
+
   if (isDev) {
     wireDevPanel(panel, gameIds, extraActions, radioGroups);
   } else {

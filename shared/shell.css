@@ -297,7 +297,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-lg);
   text-align: center;
   background: rgba(96, 98, 104, 0.92); /* a lighter grey than the near-black this used to be — rgba = red/green/blue/alpha, alpha 0.92 means 92% opaque, letting a hint of what's behind it show through */
   z-index: 20; /* stacks above the game content (which mostly doesn't set z-index, so defaults to the base stacking level) */
@@ -307,6 +306,13 @@
 
 .shell-overlay {
   bottom: var(--space-sm);
+  /* 0.6x, matching .shell-end-screen's own reduction below — explicit
+     follow-up request. This same class is also what QUADZ/SLYDZ/GLYMPZ's
+     "Reveal Solution" confirm dialog uses (class="shell-overlay
+     reveal-confirm ..." — see e.g. games/quadz/index.js), so that panel
+     picks up the same reduction automatically, with no separate edit
+     needed there. */
+  padding: calc(var(--space-lg) * 0.6);
 }
 
 /* Sits var(--space-sm) BELOW .shell-stage's own bottom edge (a negative
@@ -318,6 +324,11 @@
    pill, instead of stopping a full gap above the whole footer block. */
 .shell-end-screen {
   bottom: calc(-1 * var(--space-sm));
+  /* 0.6x var(--space-lg) — explicit request, applies to every game (this
+     is shared code) — a smaller panel covers less of the board/question-
+     list underneath it. .shell-overlay above got the same 0.6x treatment
+     as a follow-up request. */
+  padding: calc(var(--space-lg) * 0.6);
 }
 
 /* Both panels start hidden via this class (see shared/core/shell.js) —

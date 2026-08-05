@@ -59,7 +59,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 0.1fr) minmax(0, 0.9fr) minmax(0, 0.1fr) minmax(0, 0.9fr);
-  row-gap: var(--space-md);
+  row-gap: calc(var(--space-md) * 0.6); /* 0.6x the original var(--space-md) — explicit request to reclaim vertical space so the end-panel covers fewer rows */
   align-items: center;
 }
 
@@ -96,19 +96,27 @@
   font-weight: 800;
 }
 
+/* Guess button + "correct answers" label share one row BELOW the grid now
+   (moved out of the grid entirely — it used to be its own row ABOVE
+   column 5, which cost a full row of vertical space at the top of the
+   board, and needed an increasingly fragile negative-margin hack to sit
+   close to the row below it; every tweak to row-gap/padding elsewhere on
+   this page kept throwing that hack's tuned value off, most recently
+   overlapping the tile below it outright). Same column proportions as
+   .valuz-grid itself, so the label still lands exactly under column 5
+   with zero hand-tuned offset needed — this row's own natural height
+   (whichever of the button/label is taller) replaces the old margin math
+   entirely. */
+.valuz-footer-row {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 0.1fr) minmax(0, 0.9fr) minmax(0, 0.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  margin-top: var(--space-sm);
+}
+
 .valuz-col5-label {
   grid-column: 5;
-  min-width: 0; /* grid items default to min-width:auto (their own content's min-content size), which would override the track's own minmax(0,...) above and push column 5 wide again — this lets the label actually shrink to the track's real (now-equal) width instead */
-  /* Negative margin-bottom, tuned against the real rendered gap (measured
-     via getBoundingClientRect(), not guessed): most of the visible gap
-     below this label isn't the grid's own 16px row-gap at all — it's
-     row 2's OWN track being taller than the small answer tile (that track
-     is sized by the multi-line question-text cell in column 1), so the
-     tile sits vertically CENTERED within a taller row than it needs,
-     landing ~12px below that row's actual top. This negative margin pulls
-     row 2's track upward to compensate, since a grid item's negative
-     margin is included in its own row's auto-sizing. */
-  margin-bottom: -24.9px;
+  min-width: 0; /* grid items default to min-width:auto (their own content's min-content size), which would override the track's own minmax(0,...) below and push column 5 wide again — this lets the label actually shrink to the track's real (now-equal) width instead */
   text-align: center;
   font-size: 10px;
   font-weight: 700;
@@ -137,7 +145,7 @@
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  padding: var(--space-sm) calc(var(--space-md) * 0.7);
+  padding: calc(var(--space-sm) * 0.6) calc(var(--space-md) * 0.7 * 0.6); /* both axes taken to 0.6x the previous value — explicit request to reclaim vertical space so the end-panel covers fewer rows */
   background: #F6F3F9;
   border-radius: 12px;
   font-size: 15.5px;
@@ -279,9 +287,14 @@
   pointer-events: none;
 }
 
+/* Spans columns 1-3 of .valuz-footer-row (question+spacer+drop), leaving
+   column 5 free for the label — justify-self:center keeps it centered
+   within that span rather than stretching or pinning to one edge, same
+   visual centering it had as a plain flex child before it moved into this
+   grid row. */
 .valuz-guess-btn {
-  align-self: center;
-  margin-top: var(--space-sm);
+  grid-column: 1 / 4;
+  justify-self: center;
 }
 
 .valuz-guess-btn:disabled {

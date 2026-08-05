@@ -149,14 +149,15 @@ $(function () {
     `<p class="valuz-day-line"><strong>${activeDayData.category}:</strong> ${activeDayData.tagline}</p>`
   );
 
-  const LABEL_ROW = 1;
   const $grid = $('#valuzGrid');
-
-  const $col5Label = $('<div>', { class: 'valuz-col5-label', id: 'col5Label' }).css({ gridRow: LABEL_ROW, gridColumn: 5 });
-  $grid.append($col5Label);
+  // Lives in .valuz-footer-row now (see index.html), not as a row inside
+  // the grid — moved there per explicit request to reclaim vertical space
+  // at the TOP of the board. Its own CSS mirrors the grid's column
+  // proportions so it still lands exactly under column 5.
+  const $col5Label = $('#col5Label');
 
   QUESTIONS.forEach((q, i) => {
-    const row = LABEL_ROW + 1 + i;
+    const row = i + 1;
 
     // Plain bold number (not a circular badge) — column 1 is narrow enough
     // that the badge's own padding/diameter was eating space the question

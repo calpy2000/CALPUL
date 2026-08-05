@@ -2,7 +2,7 @@
   {
     "day": 216,
     "category": "Movies",
-    "tagline": "Match the correct numbers to each movie",
+    "tagline": "match the number with the film",
     "type": "number",
     "questions": [
       {
@@ -46,42 +46,42 @@
   {
     "day": 217,
     "category": "Movies",
-    "tagline": "Match the correct numbers to each movie",
+    "tagline": "match the number with the film",
     "type": "number",
     "questions": [
       {
         "number": 1,
-        "question": "In The Usual Suspects, how many criminals are in the police lineup?",
+        "question": "The Usual Suspects: how many criminals in the police line-up",
         "answer": "5",
         "more": "The iconic scene features Kevin Pollak, Stephen Baldwin, Benicio del Toro, Kevin Spacey and Gabriel Byrne."
       },
       {
         "number": 2,
-        "question": "How many are in the team in the 3rd Ocean's film starring George Clooney?",
+        "question": "3rd Ocean's film (Clooney): how many in the crew",
         "answer": "13",
         "more": "Ocean's Thirteen sees Danny Ocean assemble a crew of thirteen to take down ruthless casino owner Willy Bank."
       },
       {
         "number": 3,
-        "question": "How many prisoners in The Great Escape manage to escape to freedom?",
+        "question": "The Great Escape: how many escapees reach freedom",
         "answer": "3",
         "more": "Of the 76 POWs who escaped through the tunnel, only three ultimately reached safety — most of the rest were recaptured, and 50 were executed."
       },
       {
         "number": 4,
-        "question": "How many barrels does Quint harpoon into the shark in Jaws?",
+        "question": "Jaws: how many barrels harpooned into the shark",
         "answer": "4",
         "more": "Quint shoots four yellow flotation barrels to force the Great White Shark to the surface."
       },
       {
         "number": 5,
-        "question": "How many core superheroes make up the original team in Marvel's The Avengers?",
+        "question": "The Avengers: how many in the original superhero team",
         "answer": "6",
         "more": "The original lineup consists of Iron Man, Captain America, Thor, Black Widow, Hawkeye and Hulk."
       },
       {
         "number": 6,
-        "question": "How many people committed the crime on Murder on the Orient Express?",
+        "question": "Murder on the Orient Express: how many committed the crime",
         "answer": "12",
         "more": "All twelve suspects aboard the train are revealed to have taken turns stabbing the victim, each delivering one blow."
       }

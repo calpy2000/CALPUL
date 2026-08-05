@@ -140,9 +140,13 @@ $(function () {
   // order (SOLVZ's approach) — simpler here since columns 2/4 need no
   // elements at all (they're pure grid gutter space, not tiles), so
   // relying on implicit row-major placement would require filler divs.
-  // Category + tagline for the active day — shown once, above the grid.
+  // Category + tagline for the active day — shown once, above the grid, as
+  // ONE centered line ("Movies: match the number with the film") with just
+  // the category+colon bold, not two separate lines — per explicit request
+  // to reclaim vertical space. Tagline text itself was shortened to fit
+  // this single-line combined form (see days.json).
   $('#dayHeader').html(
-    `<p class="valuz-day-category">${activeDayData.category}</p><p class="valuz-day-tagline">${activeDayData.tagline}</p>`
+    `<p class="valuz-day-line"><strong>${activeDayData.category}:</strong> ${activeDayData.tagline}</p>`
   );
 
   const LABEL_ROW = 1;
@@ -443,7 +447,7 @@ $(function () {
     gameId: GAME_ID,
     title: 'VALUZ',
     emojiImage: getQuestionTileIconDataURL(),
-    accentColor: { bg: '#3FA8A0', ink: '#0F3D38', rim: 'rgba(10, 55, 50, 0.30)' },
+    accentColor: { bg: '#8E6FB3', ink: '#2E1F42', rim: 'rgba(40, 20, 60, 0.30)' },
     instructions: `<p>Drag the 6 answers on the right to match questions on the left</p><p>Then tap guess</p><p>Afterward, tap any question to see more</p>`,
     formatScore,
   });

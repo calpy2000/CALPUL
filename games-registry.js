@@ -45,8 +45,8 @@ export const GAMES = [
     emojiImage: getValuzTileIconDataURL(),
     tagline: 'You VALMEEZ <br> and I VALUZ',
     path: 'games/valuz/index.html',
-    color: '#3FA8A0', // teal — distinct from every other game's hue
-    rim: 'rgba(10, 55, 50, 0.30)',
+    color: '#8E6FB3', // pastel purple — darker than SLYDZ's own violet (#AD82D6), distinct from every other game's hue
+    rim: 'rgba(40, 20, 60, 0.30)',
     higherIsBetter: true, // score = correct matches out of 6
     scoreIsTime: false, // a plain count (0-6), not a duration
     // Shows the corner "NEW" ribbon on the hub tile (see index.js's

@@ -104,6 +104,28 @@
     <!-- Left empty on purpose — index.js fills this in with one tile per
          game, built from games-registry.js, once the page loads. -->
     <div class="hub__grid" id="hub-grid"></div>
+    <!-- "More games" scroll hint — shown/hidden by index.js's
+         updateScrollHint() only when #hub-grid actually has more content
+         below the fold (today: once a 9th+ game exists, since 8 fit
+         exactly in 4 rows). Starts hidden so it never flashes on a page
+         where nothing needs scrolling. A real <button> (not a plain div)
+         since it's tappable — clicking it nudges #hub-grid down by one
+         row (see index.js) rather than just being a static label; a
+         floating div with no pointer-events was the first version, but
+         sitting right on top of a tile made it swallow taps meant for
+         that tile underneath, silently opening the wrong game. -->
+    <button type="button" class="hub__scroll-hint hub__scroll-hint--bottom is-hidden" id="scrollHint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      <span>more games</span>
+    </button>
+    <!-- Mirror image of the pill above — shown once #hub-grid has been
+         scrolled down at all (index.js's updateScrollHint()), pointing UP,
+         nudging back up by one row on click. Same element/behavior, just
+         the opposite edge and direction. -->
+    <button type="button" class="hub__scroll-hint hub__scroll-hint--top is-hidden" id="scrollHintTop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      <span>more games</span>
+    </button>
   </div>
 
   <!-- type="module" is what lets index.js use `import`/`export` statements

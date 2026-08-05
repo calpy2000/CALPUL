@@ -7,13 +7,15 @@
 // tile-icon.js's drawCell(), just with VALUZ's own color and a fixed glyph
 // instead of a per-cell one.
 
-// A warm coral-red, NOT VALUZ's own teal (#3FA8A0, see games-registry.js's
-// `color`) — this icon sits ON TOP of that same teal as the hub tile's
-// background (games-registry.js's `emojiImage`), so using the identical
-// hue made the icon nearly vanish into its own tile. Coral sits roughly
-// opposite teal on the color wheel (teal's hue is ~175°, this is ~5°),
-// giving real contrast against it while still reading fine against the
-// game's own white in-game header, where this same icon is reused.
+// A warm coral-red, NOT VALUZ's own accent purple (#8E6FB3, see
+// games-registry.js's `color`) — this icon sits ON TOP of that same color
+// as the hub tile's background (games-registry.js's `emojiImage`), so a
+// matching hue would make the icon nearly vanish into its own tile.
+// (VALUZ's accent was originally teal — using coral here already fixed an
+// identical-color bug back then; still holds now that the accent's
+// purple, since coral and purple are far enough apart in hue too.) Also
+// reads fine against the game's own white in-game header, where this same
+// icon is reused.
 const TILE_FILL = '#E4574B';
 const GLYPH_COLOR = '#ffffff';
 

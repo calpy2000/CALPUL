@@ -269,24 +269,28 @@
   margin: 0 auto;
 }
 
-/* The start banner ("Play Now") and the end-of-game panel share identical
-   positioning — both anchored a fixed distance above the footer, in every
-   game, regardless of that game's own board/grid/canvas size. They used to
-   be positioned via JS (measuring a game-specific element and placing the
-   panel just below it), but that made the panel's on-screen position depend
-   on each game's own layout — fine for games with a short board, but pushed
-   the panel off-screen entirely for games with a tall one (e.g. JEWELZ's
-   canvas). A single fixed CSS position sits in the same spot everywhere,
-   at the cost of sometimes overlapping the board/grid underneath — an
-   acceptable trade since the panel is meant to be the focus at that moment
-   anyway. position:absolute takes each out of normal document flow
-   entirely, letting them sit on top of the game content instead of pushing
-   it around. */
+/* The start banner ("Play Now") and the end-of-game panel share almost
+   identical positioning — both anchored a fixed distance above the
+   footer, in every game, regardless of that game's own board/grid/canvas
+   size. They used to be positioned via JS (measuring a game-specific
+   element and placing the panel just below it), but that made the panel's
+   on-screen position depend on each game's own layout — fine for games
+   with a short board, but pushed the panel off-screen entirely for games
+   with a tall one (e.g. JEWELZ's canvas). A single fixed CSS position sits
+   in the same spot everywhere, at the cost of sometimes overlapping the
+   board/grid underneath — an acceptable trade since the panel is meant to
+   be the focus at that moment anyway. position:absolute takes each out of
+   normal document flow entirely, letting them sit on top of the game
+   content instead of pushing it around.
+
+   `bottom` is set separately per panel below (not in this shared block)
+   — the end screen sits lower than the start banner now, explicit request
+   so its own bottom edge lands just above the footer's timer instead of
+   stopping a full gap above the whole footer. */
 .shell-overlay,
 .shell-end-screen {
   position: absolute;
   left: 50%;
-  bottom: var(--space-sm);
   transform: translateX(-50%);
   width: 90%;
   max-width: 384px; /* 320px * 1.2 — widened so the end-screen's side-by-side .shell-end-screen__actions buttons (see below) fit without overflowing; shared with .shell-overlay's start banner too, so both panels stay the same width as each other */
@@ -299,6 +303,21 @@
   z-index: 20; /* stacks above the game content (which mostly doesn't set z-index, so defaults to the base stacking level) */
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.shell-overlay {
+  bottom: var(--space-sm);
+}
+
+/* Sits var(--space-sm) BELOW .shell-stage's own bottom edge (a negative
+   offset, extending past the stage's box into the gap before the footer)
+   rather than var(--space-sm) above it like the start banner — measured
+   against the real footer/timer layout (all shared code, so this holds
+   for every game, not just the one it was measured on) so the panel's own
+   bottom edge lands with a small, consistent gap just above the flip-timer
+   pill, instead of stopping a full gap above the whole footer block. */
+.shell-end-screen {
+  bottom: calc(-1 * var(--space-sm));
 }
 
 /* Both panels start hidden via this class (see shared/core/shell.js) —

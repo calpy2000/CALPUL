@@ -191,6 +191,102 @@ html, body {
   overflow-y: auto;
 }
 
+/* "More games" scroll hint — shown only when #hub-grid actually has more
+   content below the fold (index.js's updateScrollHint()), e.g. now that a
+   9th game exists. position:fixed relative to the viewport (not #hub or
+   #hub-grid) so it stays pinned in the same visual spot regardless of
+   #hub-grid's own internal scroll position, with zero positioning-context
+   setup needed on any ancestor. White pill + a small bouncing chevron,
+   picked from a published mockup gallery of 4 options (bottom fade mask,
+   bouncing chevron, peek row, "N more" pill) — this is a refinement of
+   that 4th option: white instead of dark, no game count, not bold.
+
+   A real <button>, tappable — nudges the grid down by one row on click
+   (see index.js). The first version had pointer-events:none (purely
+   informational), but it sits directly on top of whichever tile is
+   underneath, so a tap aimed at the PILL was silently landing on that
+   tile instead and opening the wrong game — button-reset properties
+   below (border/background/font/cursor) undo the browser's default
+   <button> chrome, same idea as .dev-toggle elsewhere on this page. */
+.hub__scroll-hint {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  z-index: 5;
+}
+
+/* Two instances, opposite edges of #hub-grid itself — the original bottom
+   pill (points down, nudges the grid down) and its mirror image at the
+   top (points up, nudges back up, shown only once the grid has actually
+   been scrolled down at all — see index.js's updateScrollHint()). The
+   bottom one anchoring to the viewport's own bottom edge happens to line
+   up with the grid's bottom edge, since the whole point of the row-height
+   cap is keeping the grid's bottom near the screen's bottom — but the
+   grid's TOP edge is nowhere near the viewport's top (the title/beta pill
+   sit above it), so the top pill can't just mirror `bottom: var(--space-md)`
+   as `top: var(--space-md)` — that sits over the title instead of the
+   grid. --hub-grid-top is set in index.js (measuring #hub-grid's own real
+   getBoundingClientRect().top) so this tracks the grid's actual position
+   instead of guessing a fixed viewport offset. */
+.hub__scroll-hint--bottom {
+  bottom: var(--space-md);
+}
+.hub__scroll-hint--top {
+  top: calc(var(--hub-grid-top, 0px) + var(--space-sm));
+}
+
+.hub__scroll-hint:active {
+  transform: translateX(-50%) scale(0.94);
+}
+
+.hub__scroll-hint.is-hidden {
+  opacity: 0;
+  pointer-events: none; /* only while hidden — a fully faded-out pill must not still intercept taps meant for the tile underneath it */
+}
+
+.hub__scroll-hint svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  animation: hub-scroll-hint-bounce 1.6s ease-in-out infinite;
+}
+
+/* The top pill's chevron bounces UPWARD (negative translateY) instead of
+   down, matching its own up-pointing arrow direction. */
+.hub__scroll-hint--top svg {
+  animation-name: hub-scroll-hint-bounce-up;
+}
+
+@keyframes hub-scroll-hint-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@keyframes hub-scroll-hint-bounce-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub__scroll-hint svg {
+    animation: none;
+  }
+}
+
 /* Below the iPhone 14 standard's own width (390px CSS px — narrower than
    the 430px iPhone 14 Pro Max this was designed against, e.g. the 375px
    iPhone X/10), 2 columns would each be uncomfortably narrow, so the grid

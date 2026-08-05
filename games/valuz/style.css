@@ -11,8 +11,19 @@
    page scroll rather than clipping — the browser solving the sizing from
    the real constraint (content height), same underlying principle as the
    aspect-ratio approach, just the right technique for THIS content shape. */
+/* 96%, not the shared default's 95vw — this needs to be AT LEAST as wide
+   as the default on a phone, not narrower. `.shell` itself is 100vw (see
+   shared/shell.css), so 92% here used to mean ~92vw — actually NARROWER
+   than the 95vw every other game uses, the opposite of the intent (more
+   room for VALUZ's own question text). That was a real regression, found
+   via a real device screenshot: it narrowed .shell-end-screen (sized as a
+   % of THIS stage) just enough to push its two action buttons onto
+   separate lines on a phone, when every other game's default-width stage
+   keeps them on one line (confirmed by measuring both: the buttons need
+   ~283px combined, the shared default's stage gives them exactly that
+   with ~0px to spare, this stage at 92% gave them ~8px too little). */
 .shell-stage {
-  width: 92%;
+  width: 96%;
   max-width: 640px;
 }
 
@@ -52,26 +63,37 @@
   align-items: center;
 }
 
-/* Pulls the category/tagline block up closer to the shell header above it —
+/* Pulls the category/tagline line up closer to the shell header above it —
    that gap is mostly shared shell.css's own .shell-header margin-bottom
    (var(--space-md), used by every game), so rather than touching shared
    code this is a VALUZ-only negative margin, scoped here since style.css
-   loads after shell.css and can override it just for this page. */
+   loads after shell.css and can override it just for this page. Pushed
+   further negative than the first pass per explicit "reduce it further"
+   feedback. margin-bottom (also negative) does the same job against the
+   grid below — .board's own flex `gap` still applies underneath both, so
+   this only trims what's ON TOP of that baseline gap, same margin-based
+   technique already used for the "correct answers" label's own row gap
+   above (see .valuz-col5-label). */
 .valuz-day-header {
   text-align: center;
-  margin-top: -8px;
+  margin-top: -16px;
+  margin-bottom: -8px;
 }
-.valuz-day-category {
+
+/* Category + tagline as ONE centered line ("Movies: match the number with
+   the film"), not two stacked lines — explicit request to reclaim vertical
+   space. Only the category+colon (wrapped in <strong> by index.js) is
+   bold; the rest reads as a normal sentence continuation. Tagline text
+   itself was shortened per-day (see days.json) so the combined line still
+   fits on one line rather than wrapping. */
+.valuz-day-line {
   margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: #0F3D38;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #2E1F42;
 }
-.valuz-day-tagline {
-  margin: 2px 0 0;
-  font-size: 13px;
-  font-style: italic;
-  color: #4a5568;
+.valuz-day-line strong {
+  font-weight: 800;
 }
 
 .valuz-col5-label {
@@ -91,7 +113,7 @@
   font-size: 10px;
   font-weight: 700;
   line-height: 1.15;
-  color: #0F3D38;
+  color: #2E1F42;
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
@@ -101,18 +123,22 @@
 }
 
 /* --- Question tiles (column 1) --- */
-/* Standard "hanging indent" numbered-list trick: padding-left pushes
-   EVERY line in by 18px, then text-indent:-18px pulls just the FIRST
-   line back out again — since the number is the first inline content on
-   that first line, it lands flush left, while any wrapped second/third
-   line of the question text (no number on it) stays at the full 18px
-   indent. A plain bold number instead of the old circular badge, freeing
-   that space for the question text's own font-size — per the user's
-   explicit "bold texted number with a slight indent" follow-up feedback. */
+/* Flex row (number, then text), NOT the CSS "hanging indent" trick
+   (padding-left + negative text-indent) tried first — that assumed the
+   number "marker" occupies an exact guessed width (18px), but a real
+   <span> marker with its own margin doesn't reliably match that guess:
+   measured the actual rendered text via Range.getClientRects() and found
+   line 1's text starting 6px to the LEFT of line 2's indent, a real,
+   visible misalignment on wrapped questions. flex here means qtext's own
+   column starts at the exact same x on every line, first or wrapped,
+   however wide the number actually renders — no guessed width to keep in
+   sync with anything. */
 .valuz-tile--question {
-  padding: var(--space-sm) calc(var(--space-md) * 0.7) var(--space-sm) calc(var(--space-md) * 0.7 + 18px);
-  text-indent: -18px;
-  background: #F4F9F8;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: var(--space-sm) calc(var(--space-md) * 0.7);
+  background: #F6F3F9;
   border-radius: 12px;
   font-size: 15.5px;
   line-height: 1.4;
@@ -126,13 +152,18 @@
 }
 .valuz-tile--question.is-clickable:hover,
 .valuz-tile--question.is-clickable:active {
-  background: #E4F1EF;
+  background: #EBE3F1;
 }
 
 .valuz-tile__qnum {
-  margin-right: 6px;
+  flex: none; /* the flex row's gap (set on .valuz-tile--question above) provides the space to qtext now, not a margin on this element */
   font-weight: 800;
-  color: #3FA8A0;
+  color: #8E6FB3;
+}
+
+.valuz-tile__qtext {
+  flex: 1 1 auto;
+  min-width: 0; /* lets the text wrap within its own flex column instead of overflowing past the tile's edge */
 }
 
 /* --- Slot tiles (columns 3 and 5) — the draggable/droppable squares --- */
@@ -168,7 +199,7 @@
   font-size: clamp(14px, 4.5vw, 20px);
   font-weight: 600;
   color: #ffffff;
-  background: #3FA8A0;
+  background: #8E6FB3;
   cursor: grab;
   touch-action: none; /* see shared/input/dom-tile-drag.js — hands touch handling fully to that module instead of the browser's own scroll/zoom gestures */
   transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
@@ -184,13 +215,13 @@
    "filled, not yet graded" appearance. */
 .valuz-tile--slot.valuz-tile--type-emoji {
   background: #ffffff;
-  border: 1px solid rgba(63, 168, 160, 0.35);
+  border: 1px solid rgba(142, 111, 179, 0.35);
   font-size: clamp(26px, 8vw, 38px);
 }
 
 .valuz-tile--slot.is-empty {
   background: transparent;
-  border: 2px dashed #B7D9D6;
+  border: 2px dashed #D9CCE8;
 }
 
 .valuz-tile--slot.is-revealed {

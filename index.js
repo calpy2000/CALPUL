@@ -202,7 +202,51 @@ function applyRowHeightCap() {
 
   const rowHeight = Math.min(heightBasedCap, columnWidth);
   grid.style.setProperty('--hub-row-height', `${rowHeight}px`);
+
+  // Feeds .hub__scroll-hint--top's own `top` (style.css) — the grid's real
+  // position doesn't shift as its OWN content scrolls (overflow-y:auto
+  // scrolls what's inside the box, not the box itself), so this only ever
+  // needs recomputing here, alongside the row-height cap (same "settled
+  // layout, possibly after a resize" moments), not on every scroll.
+  document.getElementById('scrollHintTop').style.setProperty('--hub-grid-top', `${grid.getBoundingClientRect().top}px`);
 }
+
+// Shows/hides the two "more games" pills (see .hub__scroll-hint in
+// style.css) based on #hub-grid's actual scroll position — the bottom one
+// when there's more content below the fold (today, only once a 9th+ game
+// exists — 8 fits exactly in 4 rows, so this stays hidden for the real
+// current tester/prod count), the top one (a mirror image, added per
+// explicit follow-up request) once the grid has been scrolled down at all,
+// meaning earlier games are now above the fold instead. Called right after
+// applyRowHeightCap() (both need a settled layout to measure, and a
+// row-height change can itself flip whether the grid is scrollable) and
+// again on scroll, so each hint disappears once it stops being useful —
+// no point pointing at content the player is already looking at.
+const scrollHint = document.getElementById('scrollHint');
+const scrollHintTop = document.getElementById('scrollHintTop');
+function updateScrollHint() {
+  const isScrollable = grid.scrollHeight > grid.clientHeight + 1; // +1: subpixel layout rounding, not a real overflow
+  const nearTop = grid.scrollTop < 24;
+  scrollHint.classList.toggle('is-hidden', !(isScrollable && nearTop));
+  scrollHintTop.classList.toggle('is-hidden', nearTop);
+}
+
+// Clicking either pill nudges the grid by exactly one row (a tile's own
+// rendered height + the grid's row-gap), not a jump straight to the
+// top/bottom — explicit request: only reveal the ADJACENT row each time.
+// Reads the row height from an actual tile already on the page instead of
+// re-deriving it, so this can never disagree with whatever
+// applyRowHeightCap() just decided.
+function rowStepSize() {
+  const firstTile = grid.children[0];
+  return firstTile ? firstTile.getBoundingClientRect().height + parseFloat(getComputedStyle(grid).rowGap || 0) : 0;
+}
+scrollHint.addEventListener('click', () => {
+  grid.scrollBy({ top: rowStepSize(), behavior: 'smooth' });
+});
+scrollHintTop.addEventListener('click', () => {
+  grid.scrollBy({ top: -rowStepSize(), behavior: 'smooth' });
+});
 
 // Blocks here (top-level await — supported in module scripts) until a
 // tester code is already stored on this device — see
@@ -224,6 +268,10 @@ document.getElementById('hub').classList.remove('is-gate-hidden');
 
 renderTiles();
 applyRowHeightCap();
+updateScrollHint();
+// Hides the hint as soon as the player scrolls away from the top — see
+// updateScrollHint()'s own comment.
+grid.addEventListener('scroll', updateScrollHint);
 // Re-checks on resize (e.g. a desktop window dragged narrower/wider across
 // the 2-column/1-column breakpoint, or a device rotation) so the cap stays
 // correct rather than only being right at whatever size the page happened
@@ -236,6 +284,7 @@ window.addEventListener('resize', () => {
   resizeRaf = requestAnimationFrame(() => {
     resizeRaf = null;
     applyRowHeightCap();
+    updateScrollHint();
   });
 });
 

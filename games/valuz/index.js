@@ -209,7 +209,10 @@ $(function () {
 
   const $grid = $('#valuzGrid');
   const LABEL_ROW = QUESTIONS.length + 1; // directly below the last question row
-  const $col5Label = $('<div>', { class: 'valuz-col5-label', id: 'col5Label' }).css({ gridRow: LABEL_ROW, gridColumn: 5 });
+  // Starts as a "←drag" hint (pointing back at the tray tiles this row's
+  // column-5 slot sits under) — revealCorrectAnswers() below overwrites it
+  // with 'correct answers' once the round ends.
+  const $col5Label = $('<div>', { class: 'valuz-col5-label', id: 'col5Label' }).css({ gridRow: LABEL_ROW, gridColumn: 5 }).html('<span class="valuz-col5-arrow">←</span>drag');
   $grid.append($col5Label);
 
   QUESTIONS.forEach((q, i) => {

@@ -125,6 +125,15 @@
   letter-spacing: 0.02em;
 }
 
+/* The "←" in the pre-reveal "←drag" hint (see index.js) — bold is already
+   inherited from .valuz-col5-label's own font-weight:700, set explicitly
+   again here so it stays bold even if that's ever changed since it's the
+   one thing this span exists to callout. */
+.valuz-col5-arrow {
+  color: #dc2626;
+  font-weight: 700;
+}
+
 .valuz-tile {
   user-select: none;
 }

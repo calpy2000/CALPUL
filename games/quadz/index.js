@@ -401,10 +401,12 @@ $(function () {
   // runs, since the help button attaches to the header that creates.
   let usedHelp = false;
   let revealed = false; // true once the player has given up and seen the answer, for today
+  let rowRevealed = false; // true once the player has used the "Reveal row 1" assist, for today
+  let colRevealed = false; // true once the player has used the "Reveal column 1" assist, for today
 
   // --- Persistence (supports resume-in-progress) ---
   function persistProgress(completed) {
-    saveProgress(GAME_ID, { letters: captureLetters(), seconds: totalSeconds, usedHelp, revealed }, { completed });
+    saveProgress(GAME_ID, { letters: captureLetters(), seconds: totalSeconds, usedHelp, revealed, rowRevealed, colRevealed }, { completed });
   }
 
   // --- Shell (header/footer/start banner/end screen/daily lock) ---
@@ -571,23 +573,187 @@ $(function () {
     turnOffHelp();
   }
 
-  // --- Reveal solution (QUADZ-only) — a deliberately more understated
-  // control than Play/Help, since unlike help this one ENDS today's round
-  // rather than just assisting: a plain text-style button below the board
-  // rather than a header pill. Built once, appended straight into
-  // #game-root (the game's own play area) — shown/hidden on the same
-  // schedule as the help toggle.
+  // --- Reveal slide & swap animation ---
+  // QUADZ never introduces new letters — every letter a reveal needs is
+  // already sitting somewhere else among the same 16 tiles. So instead of
+  // silently overwriting cells, a reveal finds where each needed letter
+  // currently lives and animates it sliding there while the tile that was
+  // occupying that cell slides out to swap into the spot just vacated —
+  // the same two-tile exchange the player performs by dragging, just
+  // triggered automatically. Validated as a standalone prototype (an
+  // Artifact demo) before landing here — see revealRow1()/revealCol1()/
+  // revealSolution() below for how the three reveal buttons each call
+  // into this.
+
+  // For a set of target cells, works out which swaps get each one holding
+  // its required letter. Built as a sequence of BATCHES rather than one
+  // flat list: within a batch, every swap uses two cells untouched by any
+  // OTHER swap in that same batch, so the whole batch can slide in
+  // parallel — which is the common case (a needed letter almost always
+  // exists somewhere outside the target set). A cell only needs a second
+  // batch when the only remaining copy of its letter is trapped inside
+  // another still-wrong target cell (e.g. every full-solution reveal,
+  // where the entire grid is the target set, so "outside" is empty and
+  // this can chain into a genuine multi-step cycle) — the while loop
+  // below just keeps building batches until nothing's left to fix, which
+  // for row/column reveals (4 of 16 cells) resolves in a single batch in
+  // practice, and for a full-solution reveal takes as many batches as the
+  // underlying permutation's longest cycle requires.
+  //
+  // isCorrect(cell)'s role in the source search below is load-bearing, not
+  // cosmetic: QUADZ's daily words repeat letters constantly (this file's
+  // own SLYDZ-comparison note above already flags how common that is), so
+  // a swap's source must never be pulled from a cell that ALREADY holds
+  // its own correct answer — even though its letter happens to match what
+  // some other cell needs. Stealing it would silently corrupt an
+  // already-solved cell, and because only cells that started out wrong
+  // were ever tracked as needing a fix, that corruption would never get
+  // revisited or repaired by a later pass. (Found exactly this way: a
+  // stress test of 20,000 random scrambles against the daily SHOW / LIVE /
+  // ORAL / TELL puzzle failed on over 60% of them before this exclusion
+  // was added, and 0 after — worth re-running that kind of check before
+  // ever touching this function again.) Letter-count conservation
+  // guarantees a valid source always exists among the still-wrong cells
+  // instead, so this exclusion never leaves a cell unresolved.
+  function computeRevealPlan(currentLetters16, targetIndices, targetLetters) {
+    const working = currentLetters16.slice();
+    const targetMap = new Map();
+    targetIndices.forEach((cell, k) => targetMap.set(cell, targetLetters[k]));
+    const isCorrect = (cell) => working[cell] === targetMap.get(cell);
+
+    const batches = [];
+    let guard = 0; // 16 cells can never need more than 16 passes to settle; this just stops a logic error from hanging the page
+    while (targetIndices.some((cell) => !isCorrect(cell)) && guard++ < 16) {
+      const usedThisBatch = new Set();
+      const batch = [];
+      targetIndices.forEach((cell) => {
+        if (usedThisBatch.has(cell) || isCorrect(cell)) return;
+        const need = targetMap.get(cell);
+        // Prefer a source outside the whole target set (keeps this cell's
+        // swap independent of every other target cell's swap); only fall
+        // back to a not-yet-finalized (and NOT already-correct) target
+        // cell if nothing outside has the letter.
+        let source = -1;
+        for (let c = 0; c < 16; c++) {
+          if (c === cell || usedThisBatch.has(c) || targetMap.has(c)) continue;
+          if (working[c] === need) { source = c; break; }
+        }
+        if (source === -1) {
+          for (let c = 0; c < 16; c++) {
+            if (c === cell || usedThisBatch.has(c) || isCorrect(c)) continue;
+            if (working[c] === need) { source = c; break; }
+          }
+        }
+        if (source === -1) return; // letter count guarantee means this shouldn't happen; leave for the next pass rather than throw
+        batch.push([cell, source]);
+        usedThisBatch.add(cell);
+        usedThisBatch.add(source);
+        [working[cell], working[source]] = [working[source], working[cell]];
+      });
+      batches.push(batch);
+    }
+    return batches;
+  }
+
+  function tileElAt(i) {
+    const r = Math.floor(i / LETTER_SIZE), c = i % LETTER_SIZE;
+    return document.querySelector(`.letter-tile[data-row="${r}"][data-col="${c}"]`);
+  }
+
+  const SLIDE_MS = 1000;
+  const SLIDE_EASE = 'cubic-bezier(0.45, 0, 0.2, 1)'; // slow start (pick up) -> fast middle -> slow finish (place)
+
+  // Swaps textContent instantly, then uses a transform to make each tile
+  // LOOK like it hasn't moved yet (still sitting at its old screen position
+  // even though it now shows its new letter), then animates that transform
+  // back to zero — so what the eye sees is the LETTER traveling smoothly
+  // between the two real cells, even though neither DOM element ever
+  // changes which grid cell (data-row/data-col) it belongs to. Standard
+  // FLIP technique; the double rAF is what makes the browser register the
+  // "invert" transform as a real starting point before animating away from it.
+  function slideExchange(elA, elB) {
+    const rectA = elA.getBoundingClientRect();
+    const rectB = elB.getBoundingClientRect();
+    const dx = rectB.left - rectA.left;
+    const dy = rectB.top - rectA.top;
+    const letterA = elA.textContent;
+    const letterB = elB.textContent;
+
+    elA.textContent = letterB;
+    elB.textContent = letterA;
+
+    [[elA, dx, dy], [elB, -dx, -dy]].forEach(([el, tx, ty]) => {
+      el.style.zIndex = '5';
+      el.style.transition = 'none';
+      el.style.transform = `translate(${tx}px, ${ty}px)`;
+    });
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      [elA, elB].forEach((el) => {
+        el.style.transition = `transform ${SLIDE_MS}ms ${SLIDE_EASE}`;
+        el.style.transform = 'translate(0, 0)';
+      });
+    }));
+
+    setTimeout(() => {
+      [elA, elB].forEach((el) => {
+        el.style.zIndex = '';
+        el.style.transition = '';
+        el.style.transform = '';
+      });
+    }, SLIDE_MS + 60);
+  }
+
+  // Plays each batch's swaps in parallel, waits for the slide to finish,
+  // then moves on to the next batch — batches only ever chain when a
+  // reveal's target set can't resolve in one parallel pass (see
+  // computeRevealPlan() above). onDone runs once every batch has played.
+  function playRevealBatches(batches, onDone) {
+    let i = 0;
+    function playNext() {
+      if (i >= batches.length) { onDone(); return; }
+      batches[i++].forEach(([a, b]) => slideExchange(tileElAt(a), tileElAt(b)));
+      setTimeout(playNext, SLIDE_MS + 80);
+    }
+    playNext();
+  }
+
+  // --- Reveal assists (QUADZ-only) — three deliberately understated,
+  // stacked text-style buttons below the board rather than header pills,
+  // forming a difficulty ladder alongside Help: Help (free, never touches
+  // the board) -> Reveal Row 1 -> Reveal Column 1 -> Reveal full solution
+  // (the only one of the three that ENDS today's round — the two partial
+  // reveals let the player keep playing afterwards). Built once, appended
+  // straight into #game-root (the game's own play area) — shown/hidden on
+  // the same schedule as the help toggle, except a partial reveal already
+  // used today stays hidden even while the others are shown (see
+  // showRevealButtons()).
+  const $revealActions = $('<div>', { class: 'reveal-actions' }).appendTo('#game-root');
+  const $revealRowBtn = $('<button>', {
+    class: 'reveal-btn is-hidden',
+    type: 'button',
+    text: 'Reveal row 1',
+  }).appendTo($revealActions);
+  const $revealColBtn = $('<button>', {
+    class: 'reveal-btn is-hidden',
+    type: 'button',
+    text: 'Reveal column 1',
+  }).appendTo($revealActions);
   const $revealBtn = $('<button>', {
     class: 'reveal-btn is-hidden',
     type: 'button',
-    text: 'Reveal solution',
-  }).appendTo('#game-root');
+    text: 'Reveal full solution',
+  }).appendTo($revealActions);
 
-  function showRevealButton() {
+  function showRevealButtons() {
+    if (!rowRevealed) $revealRowBtn.removeClass('is-hidden');
+    if (!colRevealed) $revealColBtn.removeClass('is-hidden');
     $revealBtn.removeClass('is-hidden');
   }
 
-  function hideRevealButton() {
+  function hideRevealButtons() {
+    $revealRowBtn.addClass('is-hidden');
+    $revealColBtn.addClass('is-hidden');
     $revealBtn.addClass('is-hidden');
   }
 
@@ -601,34 +767,120 @@ $(function () {
   // lands centered right over the board like a native dialog would, AND
   // can never visually drift out of sync with the start banner/end-screen
   // the way a fully separate copy of the same CSS eventually did.
+  //
+  // Shared by all three reveal buttons (openRevealConfirm() below fills in
+  // the title/body/confirm-label per target) rather than three near-
+  // identical panels, since the explanation of WHY a reveal might disturb
+  // the board already-placed is the same regardless of how much is being
+  // revealed — only the row/column-specific wording and the "this ends
+  // today's round" sentence (full solution only) differ.
   const $revealConfirm = $('<div>', {
     class: 'shell-overlay reveal-confirm is-hidden',
     html: `
       <div class="shell-overlay__panel reveal-confirm__panel">
         <div class="shell-end-screen__message">
-          <p class="shell-end-screen__title">Reveal today's solution?</p>
-          <p>You won't be able to complete QUADZ yourself today.</p>
+          <p class="shell-end-screen__title reveal-confirm__title"></p>
+          <div class="reveal-confirm__body"></div>
         </div>
         <div class="reveal-confirm__actions">
           <button class="shell-btn" type="button" id="quadz-reveal-cancel">Cancel</button>
-          <button class="shell-btn shell-btn--danger" type="button" id="quadz-reveal-confirm">Reveal Solution</button>
+          <button class="shell-btn shell-btn--danger" type="button" id="quadz-reveal-confirm"></button>
         </div>
       </div>
     `,
   }).appendTo('#game-stage');
 
+  // Same explanation for all three targets: QUADZ always accepts any
+  // dictionary word, not just the curated daily solution (see checkWord()
+  // above), so a row/column the player already solved a different way is a
+  // real, common scenario — not an edge case worth burying in fine print.
+  const REVEAL_EXPLAINER = '<p>For QUADZ there is always a daily solution, with 4 words across and 4 words down.</p>'
+    + '<p>This solution may not be the only way to solve QUADZ, and may not contain any of the valid words you\'ve already found — revealing some or all of it may replace those words.</p>';
+
+  let pendingRevealTarget = null; // 'row' | 'col' | 'full', set while the confirm panel is open
+
+  function openRevealConfirm(target) {
+    pendingRevealTarget = target;
+    const titles = { row: 'Reveal Row 1?', col: 'Reveal Column 1?', full: "Reveal today's solution?" };
+    const confirmLabels = { row: 'Reveal Row 1', col: 'Reveal Column 1', full: 'Reveal Solution' };
+    // Only the full reveal ends the round — that's the one warning worth
+    // calling out on top of the shared explainer above.
+    const endingNote = target === 'full' ? '<p>You won\'t be able to complete QUADZ yourself today.</p>' : '';
+    $revealConfirm.find('.reveal-confirm__title').text(titles[target]);
+    $revealConfirm.find('.reveal-confirm__body').html(REVEAL_EXPLAINER + endingNote);
+    $revealConfirm.find('#quadz-reveal-confirm').text(confirmLabels[target]);
+    $revealConfirm.removeClass('is-hidden');
+  }
+
   $revealConfirm.find('#quadz-reveal-cancel').on('click', () => {
     $revealConfirm.addClass('is-hidden');
+    pendingRevealTarget = null;
   });
   $revealConfirm.find('#quadz-reveal-confirm').on('click', () => {
     $revealConfirm.addClass('is-hidden');
-    revealSolution();
+    if (pendingRevealTarget === 'row') revealRow1();
+    else if (pendingRevealTarget === 'col') revealCol1();
+    else if (pendingRevealTarget === 'full') revealSolution();
+    pendingRevealTarget = null;
   });
 
+  $revealRowBtn.on('click', () => {
+    if (locked || rowRevealed) return;
+    openRevealConfirm('row');
+  });
+  $revealColBtn.on('click', () => {
+    if (locked || colRevealed) return;
+    openRevealConfirm('col');
+  });
   $revealBtn.on('click', () => {
     if (locked) return;
-    $revealConfirm.removeClass('is-hidden');
+    openRevealConfirm('full');
   });
+
+  // Reveals just the day's answer for Row 1 (indices 0-3 of answerLetters)
+  // or Column 1 (indices 0, 4, 8, 12 — see colWord()'s same stride) by
+  // sliding each needed letter in from wherever it currently sits (see the
+  // slide & swap engine above) rather than silently overwriting cells, so
+  // any different word the player already built elsewhere visibly trades
+  // places instead of just vanishing. `locked` goes true only for the
+  // ~1s the tiles are sliding — dragging or firing another reveal mid-
+  // animation would fight the transforms these swaps are driving — then
+  // false again since a partial reveal doesn't end the round: the player
+  // keeps playing, same as if they'd solved that line themselves, so a win
+  // right after one still goes through the normal handleWin() path.
+  function revealRow1() {
+    rowRevealed = true;
+    $revealRowBtn.addClass('is-hidden');
+    locked = true;
+    const targetIndices = [0, 1, 2, 3];
+    const targetLetters = puzzle.answerLetters.slice(0, LETTER_SIZE);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters);
+    playRevealBatches(batches, () => {
+      locked = false;
+      if (updateGridValidity()) {
+        handleWin();
+      } else {
+        persistProgress(false);
+      }
+    });
+  }
+
+  function revealCol1() {
+    colRevealed = true;
+    $revealColBtn.addClass('is-hidden');
+    locked = true;
+    const targetIndices = [0, LETTER_SIZE, LETTER_SIZE * 2, LETTER_SIZE * 3];
+    const targetLetters = targetIndices.map((i) => puzzle.answerLetters[i]);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters);
+    playRevealBatches(batches, () => {
+      locked = false;
+      if (updateGridValidity()) {
+        handleWin();
+      } else {
+        persistProgress(false);
+      }
+    });
+  }
 
   // Locked until Play Now / Resume is pressed.
   let locked = true;
@@ -639,7 +891,7 @@ $(function () {
     locked = true;
     stopTimer();
     hideHelpToggle();
-    hideRevealButton();
+    hideRevealButtons();
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
     saveTodayScore(GAME_ID, totalSeconds);
@@ -669,28 +921,37 @@ $(function () {
   }
 
   // Reachable only via the player's own confirmed choice to give up (see
-  // the $revealBtn click handler above) — reveals the actual solution,
-  // locks the board same as a real finish, but records it as a NON-win (no
-  // submitScore(), no celebrate/confetti) and shows a "better luck
-  // tomorrow" message instead of a congratulations, same spirit as
-  // MUVEEZ's handleLoss() (see games/muveez/index.js).
+  // the $revealBtn click handler above) — reveals the actual solution via
+  // the same slide & swap engine as the two partial reveals (a full-grid
+  // reveal is just that engine's target set being all 16 cells, which can
+  // take more than one batch if the underlying letter permutation has a
+  // longer cycle — see computeRevealPlan() above), locks the board same as
+  // a real finish, but records it as a NON-win (no submitScore(), no
+  // celebrate/confetti) and shows a "better luck tomorrow" message instead
+  // of a congratulations, same spirit as MUVEEZ's handleLoss() (see
+  // games/muveez/index.js). Locking and stopping the timer happen up front
+  // rather than after the slide, same as before — giving up should feel
+  // immediate, only the reveal itself plays out.
   function revealSolution() {
     locked = true;
     stopTimer();
     hideHelpToggle();
-    hideRevealButton();
+    hideRevealButtons();
     revealed = true;
-    applyLetters(puzzle.answerLetters);
-    updateGridValidity();
-    persistProgress(true);
-    // No submitScore() call on this path — isNewBest/isTie are always false,
-    // since giving up never sets a best. usedHelp still reflects whatever
-    // the player actually did before giving up.
-    saveTodayOutcome(GAME_ID, { revealed: true, usedHelp, failed: false, isNewBest: false, isTie: false });
-    shell.showEndScreen({
-      message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>You failed to win the game today</p><p>Better luck tomorrow</p>`,
-      shareText: `🧩 QUADZ — couldn't solve it today!`,
-      // No `celebrate` here — giving up is explicitly not a celebration moment.
+    const targetIndices = Array.from({ length: 16 }, (_, i) => i);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, puzzle.answerLetters);
+    playRevealBatches(batches, () => {
+      updateGridValidity();
+      persistProgress(true);
+      // No submitScore() call on this path — isNewBest/isTie are always false,
+      // since giving up never sets a best. usedHelp still reflects whatever
+      // the player actually did before giving up.
+      saveTodayOutcome(GAME_ID, { revealed: true, usedHelp, failed: false, isNewBest: false, isTie: false });
+      shell.showEndScreen({
+        message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>You failed to win the game today</p><p>Better luck tomorrow</p>`,
+        shareText: `🧩 QUADZ — couldn't solve it today!`,
+        // No `celebrate` here — giving up is explicitly not a celebration moment.
+      });
     });
   }
 
@@ -762,12 +1023,14 @@ $(function () {
     applyLetters(data.letters);
     totalSeconds = data.seconds;
     usedHelp = data.usedHelp || false;
+    rowRevealed = data.rowRevealed || false;
+    colRevealed = data.colRevealed || false;
     updateTimerDisplay();
     updateGridValidity();
     shell.showStartBanner(() => {
       locked = false;
       showHelpToggle();
-      showRevealButton();
+      showRevealButtons();
       startTimer();
     }, { label: 'Resume' });
   } else {
@@ -776,7 +1039,7 @@ $(function () {
     shell.showStartBanner(() => {
       locked = false;
       showHelpToggle();
-      showRevealButton();
+      showRevealButtons();
       totalSeconds = 0;
       updateTimerDisplay();
       startTimer();

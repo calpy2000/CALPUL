@@ -196,13 +196,19 @@
   visibility: hidden;
 }
 
-/* --- Reveal solution (QUADZ-only) — deliberately understated compared to
-   Play/Help, since this one ENDS today's round rather than just assisting.
-   A plain underlined text button rather than a filled pill keeps it from
-   competing visually with the primary actions, while still being
-   discoverable below the board. */
-.reveal-btn {
+/* --- Reveal assists (QUADZ-only) — three deliberately understated links
+   stacked below the board rather than filled pills, forming a difficulty
+   ladder (Row 1 -> Column 1 -> full solution) without competing visually
+   with the primary Play/Help actions. */
+.reveal-actions {
   margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.reveal-btn {
   background: none;
   border: none;
   color: #6b7280;
@@ -220,16 +226,16 @@
   display: none;
 }
 
-/* --- Reveal-solution confirm panel — now carries the shared shell.js
-   start/end panel classes directly (.shell-overlay/.shell-overlay__panel/
-   .shell-end-screen__message — see index.js) rather than a separate near-
-   identical copy of the same positioning/message rules, so it can never
-   visually drift out of sync with those two again. Doesn't collide with
-   those shared panels since this one only ever shows mid-play, never at
-   the same time as the start banner or end screen. Only what's actually
-   unique to this dialog is still styled here: the small "Reveal solution"
-   trigger link above, and the side-by-side two-button row below (shell's
-   own panels only ever stack a single button). */
+/* --- Reveal confirm panel — shared by all three reveal buttons above (see
+   index.js's openRevealConfirm()), carrying the shared shell.js start/end
+   panel classes directly (.shell-overlay/.shell-overlay__panel/
+   .shell-end-screen__message) rather than a separate near-identical copy of
+   the same positioning/message rules, so it can never visually drift out of
+   sync with those two. Doesn't collide with those shared panels since this
+   one only ever shows mid-play, never at the same time as the start banner
+   or end screen. Only what's actually unique to this dialog is still styled
+   here: the side-by-side two-button row below (shell's own panels only ever
+   stack a single button). */
 .reveal-confirm__actions {
   display: flex;
   gap: var(--space-sm);

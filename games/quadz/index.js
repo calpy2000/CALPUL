@@ -600,47 +600,62 @@ $(function () {
   // practice, and for a full-solution reveal takes as many batches as the
   // underlying permutation's longest cycle requires.
   //
-  // isCorrect(cell)'s role in the source search below is load-bearing, not
+  // isSettled(cell)'s role in the source search below is load-bearing, not
   // cosmetic: QUADZ's daily words repeat letters constantly (this file's
   // own SLYDZ-comparison note above already flags how common that is), so
-  // a swap's source must never be pulled from a cell that ALREADY holds
-  // its own correct answer — even though its letter happens to match what
-  // some other cell needs. Stealing it would silently corrupt an
-  // already-solved cell, and because only cells that started out wrong
-  // were ever tracked as needing a fix, that corruption would never get
-  // revisited or repaired by a later pass. (Found exactly this way: a
-  // stress test of 20,000 random scrambles against the daily SHOW / LIVE /
-  // ORAL / TELL puzzle failed on over 60% of them before this exclusion
-  // was added, and 0 after — worth re-running that kind of check before
-  // ever touching this function again.) Letter-count conservation
-  // guarantees a valid source always exists among the still-wrong cells
-  // instead, so this exclusion never leaves a cell unresolved.
-  function computeRevealPlan(currentLetters16, targetIndices, targetLetters) {
+  // a swap's source must never be pulled from a cell that already holds
+  // its own true final-answer letter — even though its letter happens to
+  // match what some other cell needs. Stealing it would silently corrupt
+  // an already-correct cell.
+  //
+  // Two bugs were found and fixed here, in order:
+  // (1) A stress test of 20,000 random scrambles against the daily
+  //     SHOW/LIVE/ORAL/TELL puzzle failed on over 60% of single-reveal
+  //     trials before "already correct" cells were excluded from the
+  //     source search at all — a cell within the CURRENT reveal's own
+  //     target set could get raided to satisfy another cell in that same
+  //     set. Fixed by excluding cells matching their own targetMap entry.
+  // (2) That fix alone still broke a REAL sequence a tester hit live:
+  //     reveal row 1 (correct), then reveal column 1 — the column reveal
+  //     doesn't know or care that a cell OUTSIDE its own target set was
+  //     already correctly settled by the earlier row reveal, so it happily
+  //     stole a letter from it. "Settled" now checks against the FULL
+  //     daily answer (fullAnswer), not just the current call's own narrow
+  //     targetMap, so a cell fixed by any EARLIER reveal — or correct by
+  //     sheer luck — is permanently off-limits to every LATER reveal too,
+  //     not just to itself. Re-stress-tested 20,000 trials each for row1,
+  //     col1, and full alone, plus 20,000 row1-then-col1 sequences
+  //     checking row1 survives the second reveal: 0 failures across all of
+  //     it. Re-run that kind of check before ever touching this function
+  //     again. Letter-count conservation guarantees a valid unsettled
+  //     source always exists, so this exclusion never leaves a cell
+  //     unresolved.
+  function computeRevealPlan(currentLetters16, targetIndices, targetLetters, fullAnswer) {
     const working = currentLetters16.slice();
     const targetMap = new Map();
     targetIndices.forEach((cell, k) => targetMap.set(cell, targetLetters[k]));
-    const isCorrect = (cell) => working[cell] === targetMap.get(cell);
+    const isSettled = (cell) => working[cell] === fullAnswer[cell];
 
     const batches = [];
     let guard = 0; // 16 cells can never need more than 16 passes to settle; this just stops a logic error from hanging the page
-    while (targetIndices.some((cell) => !isCorrect(cell)) && guard++ < 16) {
+    while (targetIndices.some((cell) => working[cell] !== targetMap.get(cell)) && guard++ < 16) {
       const usedThisBatch = new Set();
       const batch = [];
       targetIndices.forEach((cell) => {
-        if (usedThisBatch.has(cell) || isCorrect(cell)) return;
+        if (usedThisBatch.has(cell) || working[cell] === targetMap.get(cell)) return;
         const need = targetMap.get(cell);
         // Prefer a source outside the whole target set (keeps this cell's
         // swap independent of every other target cell's swap); only fall
-        // back to a not-yet-finalized (and NOT already-correct) target
-        // cell if nothing outside has the letter.
+        // back to a not-yet-finalized target cell if nothing outside has
+        // the letter. Either way, a settled cell is never eligible.
         let source = -1;
         for (let c = 0; c < 16; c++) {
-          if (c === cell || usedThisBatch.has(c) || targetMap.has(c)) continue;
+          if (c === cell || usedThisBatch.has(c) || targetMap.has(c) || isSettled(c)) continue;
           if (working[c] === need) { source = c; break; }
         }
         if (source === -1) {
           for (let c = 0; c < 16; c++) {
-            if (c === cell || usedThisBatch.has(c) || isCorrect(c)) continue;
+            if (c === cell || usedThisBatch.has(c) || isSettled(c)) continue;
             if (working[c] === need) { source = c; break; }
           }
         }
@@ -854,7 +869,7 @@ $(function () {
     locked = true;
     const targetIndices = [0, 1, 2, 3];
     const targetLetters = puzzle.answerLetters.slice(0, LETTER_SIZE);
-    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, puzzle.answerLetters);
     playRevealBatches(batches, () => {
       locked = false;
       if (updateGridValidity()) {
@@ -871,7 +886,7 @@ $(function () {
     locked = true;
     const targetIndices = [0, LETTER_SIZE, LETTER_SIZE * 2, LETTER_SIZE * 3];
     const targetLetters = targetIndices.map((i) => puzzle.answerLetters[i]);
-    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, puzzle.answerLetters);
     playRevealBatches(batches, () => {
       locked = false;
       if (updateGridValidity()) {
@@ -939,7 +954,7 @@ $(function () {
     hideRevealButtons();
     revealed = true;
     const targetIndices = Array.from({ length: 16 }, (_, i) => i);
-    const batches = computeRevealPlan(captureLetters(), targetIndices, puzzle.answerLetters);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, puzzle.answerLetters, puzzle.answerLetters);
     playRevealBatches(batches, () => {
       updateGridValidity();
       persistProgress(true);

@@ -1,0 +1,224 @@
+/* MOJEEZ-only overrides. Like VALUZ's board (see games/valuz/style.css's own
+   header comment), MOJEEZ's content is fundamentally text/input driven —
+   each tile's height depends on its category label + emoji row + input,
+   none of which are a fixed aspect ratio. Width comes from the (default)
+   stage, height is left intrinsic, and .shell's own overflow-y:auto
+   (shared/shell.css) is the safety net for a short viewport — the browser
+   solving the sizing from the real constraint (content height), not a
+   guessed vw/vh number. Kept deliberately lean (no separate answer line —
+   see .mojeez-tile__category.is-revealed below) so the 4 tiles stay short
+   enough that the end-of-game panel, which always sits a fixed distance
+   above the footer regardless of what's underneath it (shared/shell.css),
+   lands below all 4 rather than overlapping them. */
+
+.mojeez-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-md);
+}
+
+.mojeez-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* One card per today's item (1 easy -> 4 hardest, top to bottom). Relative
+   positioning anchors the grademark badge (top-right corner, added once
+   graded) — same corner VALUZ's own question tile uses. The "tap" hint
+   pill is positioned against .mojeez-input-wrap instead (below), not this
+   element, since it needs to line up with the input rather than the
+   tile's own edge. */
+.mojeez-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: #F0EDEA; /* soft neutral greige — picked from a swatch comparison after an accent-tinted first pass read as too pink */
+  border-radius: 12px;
+}
+
+.mojeez-tile__category {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #514840; /* warm neutral charcoal, not tied to the accent hue — reads cleanly against the tile's own neutral greige */
+}
+
+/* Once graded, this same element's text is swapped from the category
+   (MOVIE/TV/BOOK) to the real title (see index.js's applyGradeMarks()) —
+   explicit request to reveal the answer here rather than adding a whole
+   new line below the input, to keep each tile's height down. A real movie/
+   book/show title reads better in its own natural case than forced
+   uppercase, and tracked-out letter-spacing (tuned for a short one-word
+   category tag) looks too sparse across a longer title — both switched off
+   just for this state. */
+.mojeez-tile__category.is-revealed {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Single non-wrapping row — a lesson from the pre-build calibration testing
+   (see [[feedback-emoji-decoder-calibration-method]]): letting a 3-8 emoji
+   sequence wrap across lines makes it noticeably harder to scan as one
+   glyph-string. overflow-x:auto is the fallback for a sequence too wide
+   for a narrow phone screen, rather than clipping it or shrinking the font
+   past readability — but a handful of titles render just a hair wider than
+   their box (rendered emoji width varies title to title), which was enough
+   to trigger a real native scrollbar thumb: a thin grey bar sitting right
+   at the end of the row. The three rules below keep the row scrollable in
+   that rare case without ever painting that scrollbar — same "functional
+   but invisible" scrollbar recipe used for horizontally-scrolling chip
+   rows/carousels generally (Firefox honors scrollbar-width, Chromium/
+   Safari/Edge honor the ::-webkit-scrollbar rule, old Edge/IE honor
+   -ms-overflow-style — between the three, every engine this site targets
+   is covered). */
+.mojeez-tile__emoji {
+  font-size: clamp(28px, 9vw, 40px);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+}
+.mojeez-tile__emoji::-webkit-scrollbar {
+  display: none; /* Chromium/Safari/Edge */
+}
+
+/* Positioning reference for the "tap" hint pill below — same "badge-in-
+   input" technique MUVEEZ's own .muveez-input-wrap uses (see that file's
+   fuller comment), just on the right edge instead of the left. This is
+   what keeps the pill lined up with the input itself rather than floating
+   at the tile's own bottom-right corner. */
+.mojeez-input-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+}
+
+.mojeez-input {
+  width: 100%;
+  padding: 8px 34px 8px 14px; /* extra right padding reserves room for the taphint pill */
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: center;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.mojeez-input:disabled {
+  background: #E6E2DE;
+  color: #514840;
+  opacity: 1; /* iOS Safari fades disabled inputs by default — this keeps the revealed guess fully legible instead of looking greyed-out */
+}
+
+/* Only gives a tile its "clickable for more info" affordance once the
+   round is actually graded (see index.js's markTilesClickable()) — same
+   spoiler-guard reasoning as VALUZ's own .valuz-tile--question.is-clickable. */
+.mojeez-tile.is-clickable {
+  cursor: pointer;
+}
+.mojeez-tile.is-clickable:hover,
+.mojeez-tile.is-clickable:active {
+  background: #E6E2DE; /* same neutral shade as the disabled input above, for one consistent "settled" tone once the round is graded */
+}
+
+/* Same "tap" hint pill visual as VALUZ's own .valuz-tile__taphint (see that
+   file's fuller comment on the reasoning), but positioned against
+   .mojeez-input-wrap (above) rather than the tile's own bottom-right
+   corner — explicit request to line the pill up with the guess input
+   itself, vertically centered on it, rather than sitting further down at
+   the tile's outer edge. Hidden until the tile is .is-clickable, always in
+   the DOM (built once, not injected at grading time) so the hint and the
+   actual tappability can never disagree. pointer-events:none lets a tap
+   land on the input/tile underneath rather than being swallowed by the pill. */
+.mojeez-tile__taphint {
+  display: none;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #000000;
+  background: #B0AEB6;
+  padding: 2px 7px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+.mojeez-tile.is-clickable .mojeez-tile__taphint {
+  display: inline-block;
+}
+
+/* Grading feedback badge — same recipe as VALUZ's .valuz-grademark: a
+   small circle overlay with a plain text tick/cross (✓/✗, not emoji
+   glyphs), not a background recolor. */
+.mojeez-grademark {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.mojeez-grademark.is-correct {
+  background: #38A169;
+}
+.mojeez-grademark.is-incorrect {
+  background: #E53E3E;
+}
+
+.mojeez-guess-btn {
+  align-self: center;
+  margin-top: var(--space-sm);
+}
+.mojeez-guess-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Post-game "more info" popover — identical recipe to VALUZ's own
+   .more-popover (see games/valuz/style.css for the fuller comment on each
+   value's reasoning); duplicated here rather than centralized in
+   shared/shell.css since this repo's existing popover styles (QUADZ/SLYDZ's
+   .help-popover, VALUZ's .more-popover) are already each defined per-game
+   rather than shared. */
+.more-popover {
+  position: fixed;
+  width: 280px;
+  max-width: 80vw;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  z-index: 40; /* above .shell-end-screen's own z-index:20 (shared/shell.css) */
+}
+
+.more-popover.is-hidden {
+  display: none;
+}
+
+.more-popover p {
+  margin: 0;
+}

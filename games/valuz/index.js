@@ -17,8 +17,8 @@ import { getQuestionTileIconDataURL } from './tile-icon.js';
 
 const GAME_ID = 'valuz';
 
-// Colour-type answers have no text of their own — the tile IS the answer,
-// shown as a flat fill. Fixed to the 8 named colours the spec allows.
+// Colour-type answers are shown as a flat fill — the tile IS the answer.
+// Fixed to the 8 named colours the spec allows.
 const COLOUR_HEX = {
   red: '#E53E3E',
   yellow: '#ECC94B',
@@ -28,6 +28,40 @@ const COLOUR_HEX = {
   pink: '#D53F8C',
   purple: '#805AD5',
   black: '#1A202C',
+};
+
+// Colour-blind accessibility aid, explicit request: a short text label
+// drawn on top of every colour-type fill, so the colour is identifiable by
+// name even if it can't be distinguished visually. Two letters for every
+// colour except black and blue, which need three ("Bla"/"Blu") since their
+// first two letters alone are ambiguous with each other. COLOUR_LABEL_TEXT
+// is the font colour for each label, picked per swatch (not just black/
+// white globally) by actually computing WCAG contrast ratios of both
+// candidates against each COLOUR_HEX fill and keeping whichever wins —
+// black text turned out to win on every fill except purple and black
+// itself, which was NOT the assumption going in (purple and black looking
+// "dark" doesn't reliably predict which text colour contrasts best; this
+// was measured, not guessed). Every pick clears the WCAG AA threshold
+// (4.5:1) for normal text.
+const COLOUR_LABEL = {
+  red: 'Re',
+  yellow: 'Ye',
+  blue: 'Blu',
+  green: 'Gr',
+  orange: 'Or',
+  pink: 'Pi',
+  purple: 'Pu',
+  black: 'Bla',
+};
+const COLOUR_LABEL_TEXT = {
+  red: '#000000',
+  yellow: '#000000',
+  blue: '#000000',
+  green: '#000000',
+  orange: '#000000',
+  pink: '#000000',
+  purple: '#ffffff',
+  black: '#ffffff',
 };
 
 // Loaded once, up front, via top-level await (valid inside a <script
@@ -123,17 +157,22 @@ $(function () {
   // Every column-3 (drop) and column-5 (tray) tile keeps its CURRENT value
   // in a data-value attribute — the single source of truth read by grading,
   // persistence, and drag-swap alike. Number/letter/emoji types render that
-  // value as plain text; colour type has no text at all, just a flat fill
-  // (recoloring would erase the answer, which is why it needs the separate
-  // check/cross overlay added at grading time instead).
+  // value as plain text; colour type is a flat fill PLUS a short text
+  // label from COLOUR_LABEL (colour-blind accessibility aid, explicit
+  // request — a fill alone isn't colour-blind-identifiable), with the
+  // label's own font colour set per-swatch from COLOUR_LABEL_TEXT rather
+  // than relying on .valuz-tile--slot's default white (which fails badly
+  // on the lighter fills, e.g. yellow).
   function renderSlotValue(tileEl, value) {
     tileEl.dataset.value = value || '';
     tileEl.classList.toggle('is-empty', !value);
     if (ANSWER_TYPE === 'colour') {
       tileEl.style.backgroundColor = value ? COLOUR_HEX[value] : '';
-      tileEl.textContent = '';
+      tileEl.style.color = value ? COLOUR_LABEL_TEXT[value] : '';
+      tileEl.textContent = value ? COLOUR_LABEL[value] : '';
     } else {
       tileEl.style.backgroundColor = '';
+      tileEl.style.color = '';
       tileEl.textContent = value || '';
     }
   }
@@ -197,8 +236,13 @@ $(function () {
     // Emoji type gets an extra modifier class (see .valuz-tile--type-emoji
     // in style.css) — bigger glyph, white fill + thin border instead of
     // the flat teal every other type uses, per explicit request: small
-    // emoji on a saturated teal background were hard to make out.
-    const typeClass = ANSWER_TYPE === 'emoji' ? ' valuz-tile--type-emoji' : '';
+    // emoji on a saturated teal background were hard to make out. Colour
+    // type similarly gets .valuz-tile--type-colour — smaller, non-bold
+    // text for its COLOUR_LABEL accessibility overlay (explicit request:
+    // 0.7x the base size, no bold), since that label is a secondary aid
+    // sitting on top of the fill, not the primary answer content the way
+    // plain text is for number/letter.
+    const typeClass = ANSWER_TYPE === 'emoji' ? ' valuz-tile--type-emoji' : ANSWER_TYPE === 'colour' ? ' valuz-tile--type-colour' : '';
 
     const $drop = $('<div>', { class: `valuz-tile valuz-tile--slot valuz-tile--drop${typeClass}`, 'data-question-number': q.number })
       .css({ gridRow: row, gridColumn: 3 })
@@ -529,11 +573,27 @@ $(function () {
   // "Fill correct answers & guess" mirrors SOLVZ's own "Solve puzzle"
   // shortcut — writes every correct answer straight into column 3 and runs
   // the real grading path, for quickly checking the grading/reveal/popover
-  // flow without dragging by hand. One "Preview day N" button per day
-  // actually loaded from days.json (built dynamically, not hardcoded, so
-  // it always matches whatever content currently exists) reloads the page
-  // with that day forced via ?day=, covering the "today has no authored
-  // content yet" gap during this build-out phase.
+  // flow without dragging by hand.
+  //
+  // Preview buttons are now one per TYPE (number/letter/colour), not one
+  // per individual day — the original one-button-per-day list was fine
+  // when only a handful of days existed, but became unusably long once
+  // dozens of days were authored across the 366-day curation effort. Each
+  // button jumps to a RANDOM day of that type (picked fresh on every
+  // click) rather than a fixed day, so repeated clicks sample different
+  // content instead of always landing on the same one — EXCEPT for any
+  // type listed in PREVIEW_TYPE_OVERRIDES below, which always jumps to
+  // that specific category instead (explicit request: the letter preview
+  // should always show Sherlock Holmes, not a random letter day, since
+  // that's the one being used to sanity-check the type). Matched by
+  // category name rather than a hardcoded day number so this keeps working
+  // even after a future day-shuffle changes which day number that category
+  // lives at. Falls back to the normal random pick if the named category
+  // isn't found (e.g. it gets renamed or removed later), rather than
+  // silently doing nothing. `emoji` is deliberately excluded — the type
+  // was dropped from the curation plan (see project memory), so no button
+  // previews it even if an old emoji day is still sitting in days.json.
+  const PREVIEW_TYPE_OVERRIDES = { letter: 'Sherlock Holmes' };
   function fillCorrectAnswersAndGuess() {
     shell.hideStartBanner();
     if (locked) {
@@ -548,16 +608,24 @@ $(function () {
     gradeRound();
   }
 
-  const previewDayActions = days.map((d) => ({
-    label: `Preview day ${d.day} (${d.category})`,
-    onClick: () => {
-      const url = new URL(window.location.href);
-      url.searchParams.set('day', String(d.day));
-      navigateWithSpinner(url.toString());
-    },
-  }));
+  const PREVIEWABLE_TYPES = ['number', 'letter', 'colour'];
+
+  const previewTypeActions = PREVIEWABLE_TYPES.filter((type) => days.some((d) => d.type === type)).map((type) => {
+    const overrideCategory = PREVIEW_TYPE_OVERRIDES[type];
+    const overrideDay = overrideCategory && days.find((d) => d.type === type && d.category === overrideCategory);
+    return {
+      label: overrideDay ? `Preview ${overrideCategory} (${type})` : `Preview a random ${type} day`,
+      onClick: () => {
+        const matches = days.filter((d) => d.type === type);
+        const pick = overrideDay || matches[Math.floor(Math.random() * matches.length)];
+        const url = new URL(window.location.href);
+        url.searchParams.set('day', String(pick.day));
+        navigateWithSpinner(url.toString());
+      },
+    };
+  });
 
   initToolsPanel([GAME_ID], {
-    extraActions: [{ label: 'Fill correct answers & guess', onClick: fillCorrectAnswersAndGuess }, ...previewDayActions],
+    extraActions: [{ label: 'Fill correct answers & guess', onClick: fillCorrectAnswersAndGuess }, ...previewTypeActions],
   });
 });

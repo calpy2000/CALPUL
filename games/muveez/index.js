@@ -17,7 +17,9 @@ import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ANSWERS_366 } from './answers.js';
-import { isFuzzyMatch } from './fuzzy-match.js';
+// Moved to shared/core/ once MOJEEZ needed the identical fuzzy-matching
+// logic — nothing in that file is MUVEEZ-specific.
+import { isFuzzyMatch } from '../../shared/core/fuzzy-match.js';
 import { getClapperboardIconDataURL } from './icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 

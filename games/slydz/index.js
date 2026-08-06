@@ -465,7 +465,7 @@ $(function () {
     // Buttons colored from this game's own hub-tile palette (games-registry.js's
     // `color`/`rim`) instead of the shared global blue every game used before.
     accentColor: { bg: '#AD82D6', ink: '#371450', rim: 'rgba(55, 20, 80, 0.30)' },
-    instructions: "<p>Drag tiles to swap letters</p><p>Arrange all 5 rows into words to win</p><p>Use help 💡 if you need it</p>",
+    instructions: "<p>Drag tiles to swap letters</p><p>Make 5 letter words ACROSS →</p><p>You don't need to make words down</p><p>Use help 💡 if you need it</p>",
     formatScore: formatTime,
   });
 

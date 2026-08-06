@@ -1,6 +1,12 @@
-// MUVEEZ-only fuzzy answer matching. A guess doesn't need to be a
-// character-for-character match of the stored answer — this file decides
-// how much slack to give and still call it correct.
+// Fuzzy title-guess matching, shared by any game where the player types a
+// free-text guess at a title (MUVEEZ's movie-still reveal, MOJEEZ's
+// emoji-clue guess) rather than picking from fixed choices. Originally
+// MUVEEZ-only (moved here once MOJEEZ needed the identical logic — see
+// MOJEEZ's own index.js) — nothing below is MUVEEZ-specific.
+//
+// A guess doesn't need to be a character-for-character match of the stored
+// answer — this file decides how much slack to give and still call it
+// correct.
 //
 // The pipeline, in order:
 //   1. Lowercase, expand "&" to "and".
@@ -116,11 +122,11 @@ function toleranceFor(normalizedAnswer) {
 // missing any of the required words. This is intentionally one-directional:
 // guessing "Toy Story 2" for the answer "Toy Story" counts (contains it),
 // but guessing "Toy Story" for the answer "Toy Story 2" does not (misses
-// the "2"). The answer set only ever has one entry per franchise "base"
-// name at a time (see the note in games-registry... actually see
-// tools/muveez-curation's dedup pass), so accepting a guess that names the
-// right movie plus something extra is safe — there's no competing
-// same-base answer it could be accidentally confused with.
+// the "2"). Each answer set only ever has one entry per franchise "base"
+// name at a time (see MUVEEZ's tools/muveez-curation dedup pass), so
+// accepting a guess that names the right title plus something extra is
+// safe — there's no competing same-base answer it could be accidentally
+// confused with.
 function containsTokens(guessTokens, answerTokens) {
   if (answerTokens.length === 0 || answerTokens.length > guessTokens.length) return false;
   for (let start = 0; start + answerTokens.length <= guessTokens.length; start++) {

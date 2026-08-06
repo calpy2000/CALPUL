@@ -37,6 +37,7 @@ import { getClapperboardIconDataURL } from './games/muveez/icon.js';
 import { getHeaderIconDataURL as getRainzHeaderIconDataURL } from './games/rainz/raindrop-icon.js';
 import { getEnergyOrbIconDataURL as getWarpzOrbIconDataURL, VIOLET_PALETTE as WARPZ_VIOLET_PALETTE } from './games/warpz/energy-orb-icon.js';
 import { getQuestionTileIconDataURL as getValuzTileIconDataURL } from './games/valuz/tile-icon.js';
+import { getMojeezTileIconDataURL } from './games/mojeez/tile-icon.js';
 
 export const GAMES = [
   {
@@ -152,6 +153,24 @@ export const GAMES = [
     rim: 'rgba(55, 85, 5, 0.30)',
     higherIsBetter: true, // score = seconds survived — more is better
     scoreIsTime: true, // it IS a duration, just one where higher wins (unlike SOLVZ/GLYMPZ/SLYDZ/QUADZ)
+  },
+  {
+    id: 'mojeez', // must be unique across all games — used to namespace localStorage keys
+    title: 'MOJEEZ',
+    emojiImage: getMojeezTileIconDataURL(),
+    tagline: 'There are simply no words for this . . .',
+    path: 'games/mojeez/index.html',
+    color: '#E0787A', // warm coral-red — picked from a swatch comparison against an earlier, too-brown first pass (#C1554D); sits between true red and MUVEEZ's pink (#DD7FA3) without reading as either
+    rim: 'rgba(90, 20, 22, 0.30)',
+    higherIsBetter: true, // score = correct guesses out of 4
+    scoreIsTime: false, // a plain count (0-4), not a duration
+    // Hidden from the hub tile grid unless TOOL_MODE is 'dev' (see
+    // shared/core/tool-mode.js and index.js's renderTiles()) — content is
+    // still just 1 day of 366 and difficulty is still being calibrated
+    // against live testers (see tools/emoji-decoder-calibration/), so
+    // testers must not see this tile yet. Same pattern VALUZ used while
+    // under construction — remove once real content/calibration is ready.
+    devOnly: true,
   },
   {
     id: 'solvz',

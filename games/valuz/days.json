@@ -1,96 +1,8 @@
 [
   {
-    "day": 216,
-    "category": "Movies",
-    "tagline": "match the number with the film",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "The Usual Suspects: how many criminals in the police line-up",
-        "answer": "5",
-        "more": "The iconic scene features Kevin Pollak, Stephen Baldwin, Benicio del Toro, Kevin Spacey and Gabriel Byrne."
-      },
-      {
-        "number": 2,
-        "question": "3rd Ocean's film (Clooney): how many in the crew",
-        "answer": "13",
-        "more": "Ocean's Thirteen sees Danny Ocean assemble a crew of thirteen to take down ruthless casino owner Willy Bank."
-      },
-      {
-        "number": 3,
-        "question": "The Great Escape: how many escapees reach freedom",
-        "answer": "3",
-        "more": "Of the 76 POWs who escaped through the tunnel, only three ultimately reached safety — most of the rest were recaptured, and 50 were executed."
-      },
-      {
-        "number": 4,
-        "question": "Jaws: how many barrels harpooned into the shark",
-        "answer": "4",
-        "more": "Quint shoots four yellow flotation barrels to force the Great White Shark to the surface."
-      },
-      {
-        "number": 5,
-        "question": "The Avengers: how many in the original superhero team",
-        "answer": "6",
-        "more": "The original lineup consists of Iron Man, Captain America, Thor, Black Widow, Hawkeye and Hulk."
-      },
-      {
-        "number": 6,
-        "question": "Murder on the Orient Express: how many committed the crime",
-        "answer": "12",
-        "more": "All twelve suspects aboard the train are revealed to have taken turns stabbing the victim, each delivering one blow."
-      }
-    ]
-  },
-  {
-    "day": 217,
-    "category": "Movies",
-    "tagline": "match the number with the film",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "The Usual Suspects: how many criminals in the police line-up",
-        "answer": "5",
-        "more": "The iconic scene features Kevin Pollak, Stephen Baldwin, Benicio del Toro, Kevin Spacey and Gabriel Byrne."
-      },
-      {
-        "number": 2,
-        "question": "3rd Ocean's film (Clooney): how many in the crew",
-        "answer": "13",
-        "more": "Ocean's Thirteen sees Danny Ocean assemble a crew of thirteen to take down ruthless casino owner Willy Bank."
-      },
-      {
-        "number": 3,
-        "question": "The Great Escape: how many escapees reach freedom",
-        "answer": "3",
-        "more": "Of the 76 POWs who escaped through the tunnel, only three ultimately reached safety — most of the rest were recaptured, and 50 were executed."
-      },
-      {
-        "number": 4,
-        "question": "Jaws: how many barrels harpooned into the shark",
-        "answer": "4",
-        "more": "Quint shoots four yellow flotation barrels to force the Great White Shark to the surface."
-      },
-      {
-        "number": 5,
-        "question": "The Avengers: how many in the original superhero team",
-        "answer": "6",
-        "more": "The original lineup consists of Iron Man, Captain America, Thor, Black Widow, Hawkeye and Hulk."
-      },
-      {
-        "number": 6,
-        "question": "Murder on the Orient Express: how many committed the crime",
-        "answer": "12",
-        "more": "All twelve suspects aboard the train are revealed to have taken turns stabbing the victim, each delivering one blow."
-      }
-    ]
-  },
-  {
     "day": 218,
     "category": "Wimbledon",
-    "tagline": "Match the correct number to each stat",
+    "tagline": "drag numbers to answer each clue",
     "type": "number",
     "questions": [
       {
@@ -133,96 +45,272 @@
   },
   {
     "day": 219,
-    "category": "Periodic Table",
-    "tagline": "It's elemental, my dear Watson",
-    "type": "number",
+    "category": "Sherlock Holmes",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
     "questions": [
       {
         "number": 1,
-        "question": "How many letters are in the element with the longest name?",
-        "answer": "13",
-        "more": "Rutherfordium — named after physicist Ernest Rutherford — is the longest common element name, honouring a scientist widely considered the father of nuclear physics."
+        "question": "2nd letter of the surname of Holmes's arch-nemesis",
+        "answer": "O",
+        "more": "The character is Professor Moriarty."
       },
       {
         "number": 2,
-        "question": "How many total horizontal rows make up the modern periodic table?",
-        "answer": "7",
-        "more": "The seven rows represent the number of electron shells an element possesses."
+        "question": "2nd letter of the surname of the woman who outwitted Holmes",
+        "answer": "D",
+        "more": "The character is Irene Adler."
       },
       {
         "number": 3,
-        "question": "What is the atomic number of Neon, the gas used in glowing signs?",
-        "answer": "10",
-        "more": "Neon is an unreactive noble gas that glows reddish-orange when electrified."
+        "question": "Last letter of the surname of Holmes's landlady",
+        "answer": "N",
+        "more": "The character is Mrs Hudson."
       },
       {
         "number": 4,
-        "question": "What is the atomic number of Calcium, the metal required for strong bones?",
-        "answer": "20",
-        "more": "Calcium is an alkaline earth metal and the fifth most abundant element in the human body."
+        "question": "Middle letter of the 1st word in Holmes's home street name",
+        "answer": "K",
+        "more": "The street is Baker Street."
       },
       {
         "number": 5,
-        "question": "How many naturally occurring elements belong to the Halogen family in Group 17?",
-        "answer": "5",
-        "more": "The five natural halogens are Fluorine, Chlorine, Bromine, Iodine, and Astatine."
+        "question": "Middle letter of the 1st name of Holmes's smarter brother",
+        "answer": "R",
+        "more": "The character is Mycroft Holmes."
       },
       {
         "number": 6,
-        "question": "How many elements start with the letter C?",
-        "answer": "12",
-        "more": "Cadmium, Caesium, Calcium, Californium, Carbon, Cerium, Chlorine, Chromium, Cobalt, Copernicium, Copper, and Curium — twelve in total."
+        "question": "2nd letter of the word Holmes is famously misquoted saying",
+        "answer": "L",
+        "more": "The word is elementary, as in 'Elementary, my dear Watson'."
       }
     ]
   },
   {
     "day": 220,
-    "category": "Sports Terms",
-    "tagline": "In which sports are these terms used?",
-    "type": "emoji",
+    "category": "Sports",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
     "questions": [
       {
         "number": 1,
-        "question": "googly",
-        "answer": "🏏",
-        "more": "A leg-spinner's delivery that unexpectedly spins inward toward a right-handed batsman instead of outward — the sport is cricket."
+        "question": "What colour cap is worn by the starting goalkeeper of a water polo team?",
+        "answer": "red",
+        "more": "Water polo goalkeepers wear a red cap, distinguishing them from teammates' blue or white caps, since only the keeper may use both hands on the ball inside the defensive area."
       },
       {
         "number": 2,
-        "question": "nutmeg",
-        "answer": "⚽",
-        "more": "A skillful move where a player kicks, passes, or dribbles the ball directly through an opponent's legs — the sport is soccer."
+        "question": "In snooker, what colour is the ball that must be potted immediately after the yellow ball when clearing the colours?",
+        "answer": "green",
+        "more": "When clearing the colours at the end of a frame, they must be potted in ascending value order: yellow, green, brown, blue, pink, then black."
       },
       {
         "number": 3,
-        "question": "shank",
-        "answer": "⛳",
-        "more": "A severely mis-hit shot where the ball strikes the club's hosel, causing it to shoot sharply and uncontrollably off-line — the sport is golf."
+        "question": "In rugby union, what colour card does the ref show a player to send them to the sin bin?",
+        "answer": "yellow",
+        "more": "A yellow card sends a rugby union player to the sin bin for 10 minutes, while a red card is a permanent dismissal for the rest of the match."
       },
       {
         "number": 4,
-        "question": "plumber",
-        "answer": "🏒",
-        "more": "Hockey slang for a gritty, blue-collar player who focuses on physical defensive work and battles along the boards rather than highlight-reel skill — the sport is ice hockey."
+        "question": "In cycling, what colour jersey is awarded to the overall leader of the Giro d'Italia race?",
+        "answer": "pink",
+        "more": "The maglia rosa (pink jersey) has been awarded to the Giro d'Italia's overall leader since 1931, its colour chosen to match the pink pages of La Gazzetta dello Sport, the race's founding newspaper."
       },
       {
         "number": 5,
-        "question": "garryowen",
-        "answer": "🏉",
-        "more": "A tactical, high up-and-under kick designed to hang in the air, giving the chasing team time to sprint forward and pressure the catcher — the sport is rugby."
+        "question": "In curling, what colour is the outermost ring of the target area (the house) on the ice?",
+        "answer": "blue",
+        "more": "Curling's house uses a standardised blue outer ring with a white middle ring and red centre, adopted so TV audiences worldwide can judge stone position at a glance."
       },
       {
         "number": 6,
-        "question": "brick",
-        "answer": "🏀",
-        "more": "A heavily mis-hit shot that clangs violently off the rim or backboard with no real chance of going in — the sport is basketball."
+        "question": "In ice hockey, what is the usual colour of the puck?",
+        "answer": "black",
+        "more": "Ice hockey pucks are made of vulcanised rubber and are traditionally black so they stand out clearly against the white ice."
       }
     ]
   },
   {
     "day": 221,
+    "category": "Scotland",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "What century did the Battle of Bannockburn happen in?",
+        "answer": "14",
+        "more": "Robert the Bruce defeated the English army at Bannockburn in 1314."
+      },
+      {
+        "number": 2,
+        "question": "How many UNESCO sites does Scotland have?",
+        "answer": "7",
+        "more": "Scotland's 7 UNESCO sites include Edinburgh's Old and New Towns and St Kilda."
+      },
+      {
+        "number": 3,
+        "question": "How many holes are on a bagpipe chanter?",
+        "answer": "8",
+        "more": "A standard chanter has 8 finger holes: 7 on the front and 1 thumb hole behind."
+      },
+      {
+        "number": 4,
+        "question": "How many whisky regions does Scotland have?",
+        "answer": "5",
+        "more": "The Scotch Whisky Association recognises 5 regions: Highland, Lowland, Speyside, Islay and Campbeltown."
+      },
+      {
+        "number": 5,
+        "question": "How many World Cups has Scotland reached?",
+        "answer": "8",
+        "more": "Scotland reached the World Cup finals in 1954, 58, 74, 78, 82, 86, 90 and 98."
+      },
+      {
+        "number": 6,
+        "question": "How many national parks does Scotland have?",
+        "answer": "2",
+        "more": "Loch Lomond & The Trossachs and the Cairngorms are Scotland's two national parks."
+      }
+    ]
+  },
+  {
+    "day": 222,
+    "category": "Elvis Songs",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Middle letter of the 1st word in Elvis's 1957 hit about prisoners",
+        "answer": "H",
+        "more": "The song is Jailhouse Rock, released in 1957."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the last word in Elvis's song about Lonely Street",
+        "answer": "O",
+        "more": "The song is Heartbreak Hotel, released in 1956."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the 1st word in Elvis's ballad of lost love",
+        "answer": "S",
+        "more": "The song is Always on My Mind, released in 1972."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the 1st word in Elvis's ode to a Nevada city",
+        "answer": "V",
+        "more": "The song is Viva Las Vegas, released in 1964."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the 1st word in Elvis's song about a stiff heart",
+        "answer": "W",
+        "more": "The song is Wooden Heart, released in 1960."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the last word in Elvis's song about poverty",
+        "answer": "G",
+        "more": "The song is In the Ghetto, released in 1969."
+      }
+    ]
+  },
+  {
+    "day": 223,
+    "category": "Golf",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of major titles won by Arnold Palmer",
+        "answer": "7",
+        "more": "Palmer won four Masters, two Open Championships and one US Open."
+      },
+      {
+        "number": 2,
+        "question": "Number of holes in a standard round of golf",
+        "answer": "18",
+        "more": "The 18-hole round became standard after St Andrews set the format in 1764."
+      },
+      {
+        "number": 3,
+        "question": "Number of clubs allowed in a golfer's bag",
+        "answer": "14",
+        "more": "The 14-club limit has been part of golf's rules since the 1930s."
+      },
+      {
+        "number": 4,
+        "question": "Strokes under par for an albatross on a single hole",
+        "answer": "3",
+        "more": "An albatross, also called a double eagle, is one of golf's rarest scores."
+      },
+      {
+        "number": 5,
+        "question": "Diameter of a golf hole in inches, rounded",
+        "answer": "4",
+        "more": "The regulation hole diameter is 4.25 inches."
+      },
+      {
+        "number": 6,
+        "question": "Number of Masters titles won by Jack Nicklaus, a record",
+        "answer": "6",
+        "more": "Nicklaus's six Masters wins are the most by any golfer in the tournament's history."
+      }
+    ]
+  },
+  {
+    "day": 224,
+    "category": "Physics",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of fundamental forces in physics",
+        "answer": "4",
+        "more": "Gravity, electromagnetism, and the strong and weak nuclear forces make up the four fundamental forces."
+      },
+      {
+        "number": 2,
+        "question": "Atomic number of oxygen",
+        "answer": "8",
+        "more": "Oxygen has eight protons in its nucleus, giving it atomic number 8."
+      },
+      {
+        "number": 3,
+        "question": "Number of electrons in a neutral carbon atom",
+        "answer": "6",
+        "more": "A neutral carbon atom has six electrons balancing its six protons."
+      },
+      {
+        "number": 4,
+        "question": "Neutral pH value",
+        "answer": "7",
+        "more": "A pH of 7 is considered neutral, neither acidic nor alkaline."
+      },
+      {
+        "number": 5,
+        "question": "Number of Newton's laws of motion",
+        "answer": "3",
+        "more": "Newton's three laws describe how forces affect the motion of objects."
+      },
+      {
+        "number": 6,
+        "question": "Number of naturally occurring halogen elements",
+        "answer": "5",
+        "more": "Fluorine, chlorine, bromine, iodine and astatine are the five naturally occurring halogens."
+      }
+    ]
+  },
+  {
+    "day": 225,
     "category": "US States",
-    "tagline": "Match the right letter to each question and feel your brain hurting",
+    "tagline": "drag letters to answer each clue",
     "type": "letter",
     "questions": [
       {
@@ -264,46 +352,882 @@
     ]
   },
   {
-    "day": 222,
-    "category": "Sports",
-    "tagline": "Who knew sports were so colourful?",
+    "day": 226,
+    "category": "Musicals",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the musical based on T S Eliot's feline poem",
+        "answer": "C",
+        "more": "The musical is Cats."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the musical about the witches of Oz",
+        "answer": "I",
+        "more": "The musical is Wicked."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the musical set in a 1930s Berlin nightclub",
+        "answer": "A",
+        "more": "The musical is Cabaret."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the musical set on a farm in a new US state",
+        "answer": "O",
+        "more": "The musical is Oklahoma!"
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the last word in the musical about a murderous barber",
+        "answer": "D",
+        "more": "The musical is Sweeney Todd."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the last word in the musical about a Jewish milkman",
+        "answer": "R",
+        "more": "The musical is Fiddler on the Roof."
+      }
+    ]
+  },
+  {
+    "day": 227,
+    "category": "Eurovision Song Contest",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of times the UK has won Eurovision",
+        "answer": "5",
+        "more": "The UK's five wins include Sandie Shaw in 1967 and Bucks Fizz in 1981."
+      },
+      {
+        "number": 2,
+        "question": "Number of times Israel has won Eurovision",
+        "answer": "4",
+        "more": "Israel has won Eurovision four times, including twice in the 1970s."
+      },
+      {
+        "number": 3,
+        "question": "Age Sandra Kim was when she won for Belgium in 1986, the youngest ever",
+        "answer": "13",
+        "more": "Sandra Kim's 1986 win for Belgium at age 13 remains an unbreakable record under current age rules."
+      },
+      {
+        "number": 4,
+        "question": "Consecutive Eurovision wins by Ireland in the 1990s, a record",
+        "answer": "3",
+        "more": "Ireland won three years running from 1992 to 1994, a feat no other country has matched."
+      },
+      {
+        "number": 5,
+        "question": "Maximum points one country can award another in the final",
+        "answer": "12",
+        "more": "Douze points, the maximum score of 12, is one of Eurovision's most famous phrases."
+      },
+      {
+        "number": 6,
+        "question": "Number of countries that competed in the first Eurovision in 1956",
+        "answer": "7",
+        "more": "Seven countries competed in the very first Eurovision Song Contest in Lugano in 1956."
+      }
+    ]
+  },
+  {
+    "day": 228,
+    "category": "Geography",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of countries that border China",
+        "answer": "14",
+        "more": "China shares land borders with 14 countries, tied with Russia."
+      },
+      {
+        "number": 2,
+        "question": "Number of countries in South America",
+        "answer": "12",
+        "more": "South America is made up of twelve sovereign countries."
+      },
+      {
+        "number": 3,
+        "question": "Depth of the Mariana Trench in kilometres, rounded",
+        "answer": "11",
+        "more": "The Mariana Trench reaches a depth of around 11 kilometres, the deepest point in any ocean."
+      },
+      {
+        "number": 4,
+        "question": "Number of countries that share a border with Brazil",
+        "answer": "10",
+        "more": "Brazil shares a border with every South American country except Chile and Ecuador."
+      },
+      {
+        "number": 5,
+        "question": "Number of countries in the Amazon rainforest basin",
+        "answer": "9",
+        "more": "The Amazon rainforest spans nine countries, though most of it lies within Brazil."
+      },
+      {
+        "number": 6,
+        "question": "Number of countries that border France",
+        "answer": "8",
+        "more": "France borders eight countries, including Spain, Belgium and Switzerland."
+      }
+    ]
+  },
+  {
+    "day": 229,
+    "category": "The Simpsons",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the 1st name of the saxophone-playing daughter",
+        "answer": "I",
+        "more": "The character is Lisa Simpson."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the surname of the cheerful next-door neighbour",
+        "answer": "S",
+        "more": "The character is Ned Flanders."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the 1st name of the show's gruff tavern owner",
+        "answer": "E",
+        "more": "The character is Moe Szyslak."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the surname of the elderly nuclear plant owner",
+        "answer": "R",
+        "more": "The character is Mr Burns."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the surname of the incompetent police chief",
+        "answer": "M",
+        "more": "The character is Chief Wiggum."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the fictional US town in the show",
+        "answer": "G",
+        "more": "The town is Springfield."
+      }
+    ]
+  },
+  {
+    "day": 230,
+    "category": "Periodic Table",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "How many letters are in the element with the longest name?",
+        "answer": "13",
+        "more": "Rutherfordium — named after physicist Ernest Rutherford — is the longest common element name, honouring a scientist widely considered the father of nuclear physics."
+      },
+      {
+        "number": 2,
+        "question": "How many total horizontal rows make up the modern periodic table?",
+        "answer": "7",
+        "more": "The seven rows represent the number of electron shells an element possesses."
+      },
+      {
+        "number": 3,
+        "question": "What is the atomic number of Neon, the gas used in glowing signs?",
+        "answer": "10",
+        "more": "Neon is an unreactive noble gas that glows reddish-orange when electrified."
+      },
+      {
+        "number": 4,
+        "question": "What is the atomic number of Calcium, the metal required for strong bones?",
+        "answer": "20",
+        "more": "Calcium is an alkaline earth metal and the fifth most abundant element in the human body."
+      },
+      {
+        "number": 5,
+        "question": "How many naturally occurring elements belong to the Halogen family in Group 17?",
+        "answer": "5",
+        "more": "The five natural halogens are Fluorine, Chlorine, Bromine, Iodine, and Astatine."
+      },
+      {
+        "number": 6,
+        "question": "How many elements start with the letter C?",
+        "answer": "12",
+        "more": "Cadmium, Caesium, Calcium, Californium, Carbon, Cerium, Chlorine, Chromium, Cobalt, Copernicium, Copper, and Curium — twelve in total."
+      }
+    ]
+  },
+  {
+    "day": 231,
+    "category": "Flowers",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the fragrant trumpet-shaped bulb flower",
+        "answer": "Y",
+        "more": "The flower is the lily."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the flower named after a Greek goddess",
+        "answer": "R",
+        "more": "The flower is the iris."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the purple flower used to scent soaps",
+        "answer": "A",
+        "more": "The flower is lavender."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the fragrant flower used in scented tea",
+        "answer": "M",
+        "more": "The flower is jasmine."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the blue flower that carpets spring woodlands",
+        "answer": "L",
+        "more": "The flower is the bluebell."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the tall flower with spotted bell-shaped blooms",
+        "answer": "E",
+        "more": "The flower is foxglove."
+      }
+    ]
+  },
+  {
+    "day": 232,
+    "category": "The World Cup",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of World Cup titles Argentina has won",
+        "answer": "3",
+        "more": "Argentina won in 1978, 1986 and 2022, including Messi's long-awaited triumph."
+      },
+      {
+        "number": 2,
+        "question": "Number of World Cup titles won by Uruguay",
+        "answer": "2",
+        "more": "Uruguay won the very first World Cup in 1930 and again in 1950."
+      },
+      {
+        "number": 3,
+        "question": "Age Pele was when he won his first World Cup in 1958",
+        "answer": "17",
+        "more": "Pele was just 17 when Brazil won the 1958 World Cup in Sweden."
+      },
+      {
+        "number": 4,
+        "question": "Number of World Cup goals scored by Miroslav Klose, the record before 2026",
+        "answer": "16",
+        "more": "Klose's 16 World Cup goals stood as the all-time record from 2014 until 2026."
+      },
+      {
+        "number": 5,
+        "question": "Number of countries that competed in the first World Cup in 1930",
+        "answer": "13",
+        "more": "Just thirteen teams took part in the inaugural 1930 World Cup."
+      },
+      {
+        "number": 6,
+        "question": "Number of different countries that have won the World Cup",
+        "answer": "8",
+        "more": "Brazil, Italy, Germany, Uruguay, France, Argentina, England and Spain have all won the World Cup."
+      }
+    ]
+  },
+  {
+    "day": 233,
+    "category": "Tom Hanks",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of Academy Awards Tom Hanks has won",
+        "answer": "2",
+        "more": "Hanks won Best Actor for Philadelphia in 1994 and Forrest Gump in 1995."
+      },
+      {
+        "number": 2,
+        "question": "Number of Academy Award nominations Tom Hanks has received in total",
+        "answer": "6",
+        "more": "Hanks has been nominated six times, for Big, Philadelphia, Forrest Gump, Saving Private Ryan, Cast Away and A Beautiful Day in the Neighborhood."
+      },
+      {
+        "number": 3,
+        "question": "Number of times Tom Hanks has hosted Saturday Night Live",
+        "answer": "10",
+        "more": "Hanks has hosted SNL ten times and was inducted into the Five-Timers Club in 1990."
+      },
+      {
+        "number": 4,
+        "question": "Number of children Tom Hanks has",
+        "answer": "4",
+        "more": "Hanks has four children: Colin, Elizabeth, Chet and Truman."
+      },
+      {
+        "number": 5,
+        "question": "Number of Toy Story films Tom Hanks has voiced Woody in, as of 2026",
+        "answer": "5",
+        "more": "Toy Story 5 in 2026 marked Hanks' fifth outing voicing Woody."
+      },
+      {
+        "number": 6,
+        "question": "Which Apollo mission Tom Hanks' 1995 film depicts",
+        "answer": "13",
+        "more": "Apollo 13 dramatises the real 1970 mission that was forced to abort its moon landing."
+      }
+    ]
+  },
+  {
+    "day": 234,
+    "category": "Geometry",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Faces on a regular octahedron",
+        "answer": "8",
+        "more": "An octahedron looks like two pyramids joined at their base."
+      },
+      {
+        "number": 2,
+        "question": "Edges on a cube",
+        "answer": "12",
+        "more": "A cube has twelve edges connecting its eight corners."
+      },
+      {
+        "number": 3,
+        "question": "Vertices on a tetrahedron",
+        "answer": "4",
+        "more": "A tetrahedron is a triangular pyramid with four corners."
+      },
+      {
+        "number": 4,
+        "question": "Diagonals in a pentagon",
+        "answer": "5",
+        "more": "A pentagon has five diagonals forming its inner star shape."
+      },
+      {
+        "number": 5,
+        "question": "Vertices on a triangular prism",
+        "answer": "6",
+        "more": "A triangular prism has two triangular ends and three rectangular sides, giving six vertices."
+      },
+      {
+        "number": 6,
+        "question": "Faces on a pentagonal prism",
+        "answer": "7",
+        "more": "A pentagonal prism has seven faces: two pentagons and five rectangles."
+      }
+    ]
+  },
+  {
+    "day": 235,
+    "category": "Movies",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "The Usual Suspects: how many criminals in the police line-up",
+        "answer": "5",
+        "more": "The iconic scene features Kevin Pollak, Stephen Baldwin, Benicio del Toro, Kevin Spacey and Gabriel Byrne."
+      },
+      {
+        "number": 2,
+        "question": "3rd Ocean's film (Clooney): how many in the crew",
+        "answer": "13",
+        "more": "Ocean's Thirteen sees Danny Ocean assemble a crew of thirteen to take down ruthless casino owner Willy Bank."
+      },
+      {
+        "number": 3,
+        "question": "The Great Escape: how many escapees reach freedom",
+        "answer": "3",
+        "more": "Of the 76 POWs who escaped through the tunnel, only three ultimately reached safety — most of the rest were recaptured, and 50 were executed."
+      },
+      {
+        "number": 4,
+        "question": "Jaws: how many barrels harpooned into the shark",
+        "answer": "4",
+        "more": "Quint shoots four yellow flotation barrels to force the Great White Shark to the surface."
+      },
+      {
+        "number": 5,
+        "question": "The Avengers: how many in the original superhero team",
+        "answer": "6",
+        "more": "The original lineup consists of Iron Man, Captain America, Thor, Black Widow, Hawkeye and Hulk."
+      },
+      {
+        "number": 6,
+        "question": "Murder on the Orient Express: how many committed the crime",
+        "answer": "12",
+        "more": "All twelve suspects aboard the train are revealed to have taken turns stabbing the victim, each delivering one blow."
+      }
+    ]
+  },
+  {
+    "day": 236,
+    "category": "Chess",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the piece that moves diagonally",
+        "answer": "I",
+        "more": "The bishop stays on one colour of square for the whole game."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the move where the king shifts toward a rook",
+        "answer": "C",
+        "more": "Castling lets a player move the king two squares toward a rook for safety."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of a move that sacrifices material early",
+        "answer": "T",
+        "more": "A gambit sacrifices a pawn or piece early for a positional or tactical edge."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the German term for a forced bad move",
+        "answer": "Z",
+        "more": "Zugzwang describes a position where any move a player makes weakens their position."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the final phase of a chess game",
+        "answer": "G",
+        "more": "The endgame begins once most pieces have been traded off the board."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the title given to chess's top players",
+        "answer": "R",
+        "more": "Grandmaster is the highest title a chess player can earn, awarded by FIDE."
+      }
+    ]
+  },
+  {
+    "day": 237,
+    "category": "Rock Bands",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "First letter of the virtual band Damon Albarn fronts alongside Blur.",
+        "answer": "G",
+        "more": "Albarn co-created the animated band Gorillaz in 1998."
+      },
+      {
+        "number": 2,
+        "question": "Second letter of Coldplay's singer's surname.",
+        "answer": "A",
+        "more": "Coldplay's frontman is Chris Martin."
+      },
+      {
+        "number": 3,
+        "question": "First letter of The Who's famous drummer's surname.",
+        "answer": "M",
+        "more": "The Who's drummer Keith Moon was known for his wild antics."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the Beatles' pre-Ringo drummer's surname.",
+        "answer": "T",
+        "more": "Pete Best was the Beatles' drummer before Ringo Starr joined in 1962."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of R.E.M.'s singer's surname.",
+        "answer": "I",
+        "more": "R.E.M.'s frontman is Michael Stipe."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the band who had a hit with \"One Day Like This\".",
+        "answer": "B",
+        "more": "Elbow released \"One Day Like This\" in 2008."
+      }
+    ]
+  },
+  {
+    "day": 238,
+    "category": "Furniture",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the long seat built for several people",
+        "answer": "O",
+        "more": "A sofa is a long padded seat designed to comfortably fit more than one person."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the storage furniture with doors and shelves",
+        "answer": "I",
+        "more": "A cabinet is an enclosed piece of furniture with doors and often shelves inside."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the padded footstool for your feet",
+        "answer": "N",
+        "more": "An ottoman is a low padded seat or footstool with no back or arms."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the backless seat for one person",
+        "answer": "L",
+        "more": "A stool is a simple backless seat usually supported on three or four legs."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the low drawer unit in a dining room",
+        "answer": "B",
+        "more": "A sideboard is a long low unit used to store dishes, linen or cutlery in a dining room."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the stacked beds joined by a ladder",
+        "answer": "U",
+        "more": "Bunk beds stack two sleeping platforms to save floor space, joined by a ladder."
+      }
+    ]
+  },
+  {
+    "day": 239,
+    "category": "Birds",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of toes on each of an ostrich's feet",
+        "answer": "2",
+        "more": "The ostrich is the only bird with just two toes on each foot."
+      },
+      {
+        "number": 2,
+        "question": "Continents where penguins live in the wild",
+        "answer": "4",
+        "more": "Wild penguins are found in Antarctica, South America, Africa and Oceania."
+      },
+      {
+        "number": 3,
+        "question": "Number of kiwi bird species, all native to New Zealand",
+        "answer": "5",
+        "more": "New Zealand is home to five recognised species of kiwi."
+      },
+      {
+        "number": 4,
+        "question": "Height of an emu in feet, rounded",
+        "answer": "6",
+        "more": "Emus can stand up to six feet tall, making them Australia's tallest bird."
+      },
+      {
+        "number": 5,
+        "question": "Number of eyelids a bird has on each eye",
+        "answer": "3",
+        "more": "Birds have a third eyelid called a nictitating membrane."
+      },
+      {
+        "number": 6,
+        "question": "Wingspan of a golden eagle in feet, rounded",
+        "answer": "7",
+        "more": "A golden eagle's wingspan can reach around seven feet, similar to a bald eagle's."
+      }
+    ]
+  },
+  {
+    "day": 240,
+    "category": "Confectionary",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Number of colours in a standard bag of M&M's",
+        "answer": "6",
+        "more": "M&M's currently come in six colours: red, orange, yellow, green, blue and brown."
+      },
+      {
+        "number": 2,
+        "question": "Original flavours in Opal Fruits, now known as Starburst",
+        "answer": "4",
+        "more": "Opal Fruits launched in the UK in 1959 with strawberry, lemon, orange and lime flavours."
+      },
+      {
+        "number": 3,
+        "question": "Number of fingers in a snack-size Kit Kat bar",
+        "answer": "2",
+        "more": "The smaller Kit Kat snack size has just two fingers."
+      },
+      {
+        "number": 4,
+        "question": "Number of layers in a Twix bar",
+        "answer": "3",
+        "more": "A Twix bar is made up of biscuit, caramel and chocolate layers."
+      },
+      {
+        "number": 5,
+        "question": "Flavours in a standard packet of Skittles",
+        "answer": "5",
+        "more": "A standard packet of Skittles contains five fruit flavours."
+      },
+      {
+        "number": 6,
+        "question": "Weight of a standard Jelly Baby in grams, rounded",
+        "answer": "7",
+        "more": "The average Jelly Baby weighs around 6.67g, close to the size of a giant novelty version that comes in at 800g."
+      }
+    ]
+  },
+  {
+    "day": 241,
+    "category": "Classic Novels",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the last word in Austen's novel about the Bennets",
+        "answer": "E",
+        "more": "Jane Austen's Pride and Prejudice follows the Bennet sisters, published in 1813."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the 1st word in Dickens's novel about Pip",
+        "answer": "T",
+        "more": "Dickens's Great Expectations follows the orphan Pip, published in 1861."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the last word in Swift's novel about Lilliput",
+        "answer": "V",
+        "more": "Jonathan Swift's Gulliver's Travels satirises society through fantastical voyages, published in 1726."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the last word in Thackeray's novel about Becky Sharp",
+        "answer": "F",
+        "more": "William Thackeray's Vanity Fair follows the scheming Becky Sharp, published in 1848."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the last word in Golding's novel about schoolboys",
+        "answer": "I",
+        "more": "William Golding's Lord of the Flies follows stranded schoolboys, published in 1954."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the 1st word in Bradbury's novel about book-burning",
+        "answer": "A",
+        "more": "Ray Bradbury's Fahrenheit 451 imagines a future where books are burned, published in 1953."
+      }
+    ]
+  },
+  {
+    "day": 242,
+    "category": "Movies",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "The Usual Suspects: how many criminals in the police line-up",
+        "answer": "5",
+        "more": "The iconic scene features Kevin Pollak, Stephen Baldwin, Benicio del Toro, Kevin Spacey and Gabriel Byrne."
+      },
+      {
+        "number": 2,
+        "question": "3rd Ocean's film (Clooney): how many in the crew",
+        "answer": "13",
+        "more": "Ocean's Thirteen sees Danny Ocean assemble a crew of thirteen to take down ruthless casino owner Willy Bank."
+      },
+      {
+        "number": 3,
+        "question": "The Great Escape: how many escapees reach freedom",
+        "answer": "3",
+        "more": "Of the 76 POWs who escaped through the tunnel, only three ultimately reached safety — most of the rest were recaptured, and 50 were executed."
+      },
+      {
+        "number": 4,
+        "question": "Jaws: how many barrels harpooned into the shark",
+        "answer": "4",
+        "more": "Quint shoots four yellow flotation barrels to force the Great White Shark to the surface."
+      },
+      {
+        "number": 5,
+        "question": "The Avengers: how many in the original superhero team",
+        "answer": "6",
+        "more": "The original lineup consists of Iron Man, Captain America, Thor, Black Widow, Hawkeye and Hulk."
+      },
+      {
+        "number": 6,
+        "question": "Murder on the Orient Express: how many committed the crime",
+        "answer": "12",
+        "more": "All twelve suspects aboard the train are revealed to have taken turns stabbing the victim, each delivering one blow."
+      }
+    ]
+  },
+  {
+    "day": 243,
+    "category": "Tools",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the tool used to smooth wood surfaces",
+        "answer": "L",
+        "more": "A hand plane shaves thin layers off wood to smooth or shape it."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the metal bar used to pry things apart",
+        "answer": "W",
+        "more": "A crowbar's curved end and length give leverage to pry things apart."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the tool used to pick up tiny objects",
+        "answer": "S",
+        "more": "Tweezers pinch tiny objects between two fine metal tips."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the tool used to strike a chisel",
+        "answer": "A",
+        "more": "A mallet's soft or wooden head strikes chisels without damaging them."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the tool used to smooth metal",
+        "answer": "F",
+        "more": "A file's rough surface is dragged across metal or wood to smooth it."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the tool that holds a workpiece steady on a bench",
+        "answer": "E",
+        "more": "A vice bolts to a workbench and clamps a workpiece steady."
+      }
+    ]
+  },
+  {
+    "day": 244,
+    "category": "Trees",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the tree with drooping branches by rivers",
+        "answer": "W",
+        "more": "The tree is the willow."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the aromatic tree used to line wardrobes",
+        "answer": "D",
+        "more": "The tree is the cedar."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the tall tree planted in rows as a windbreak",
+        "answer": "R",
+        "more": "The tree is the poplar."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the tree with large fragrant blossoms",
+        "answer": "M",
+        "more": "The tree is the magnolia."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the tree whose nuts flavour chocolate spread",
+        "answer": "Z",
+        "more": "The tree is the hazel."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the African tree with a swollen trunk",
+        "answer": "A",
+        "more": "The tree is the baobab."
+      }
+    ]
+  },
+  {
+    "day": 245,
+    "category": "World Flags",
+    "tagline": "drag colours to answer each clue",
     "type": "colour",
     "questions": [
       {
         "number": 1,
-        "question": "What colour cap is worn by the starting goalkeeper of a water polo team?",
-        "answer": "red",
-        "more": "Water polo goalkeepers wear a red cap, distinguishing them from teammates' blue or white caps, since only the keeper may use both hands on the ball inside the defensive area."
+        "question": "Background colour of Brazil's flag",
+        "answer": "green",
+        "more": "Brazil's flag has a yellow diamond and blue circle on a green background."
       },
       {
         "number": 2,
-        "question": "In snooker, what colour is the ball that must be potted immediately after the yellow ball when clearing the colours?",
-        "answer": "green",
-        "more": "When clearing the colours at the end of a frame, they must be potted in ascending value order: yellow, green, brown, blue, pink, then black."
+        "question": "Top stripe colour on India's flag",
+        "answer": "orange",
+        "more": "India's flag has a saffron stripe on top, white in the middle and green at the bottom."
       },
       {
         "number": 3,
-        "question": "In rugby union, what colour card does the ref show a player to send them to the sin bin?",
-        "answer": "yellow",
-        "more": "A yellow card sends a rugby union player to the sin bin for 10 minutes, while a red card is a permanent dismissal for the rest of the match."
+        "question": "Top stripe colour on Germany's flag",
+        "answer": "black",
+        "more": "Germany's flag has black, red and gold horizontal stripes, black on top."
       },
       {
         "number": 4,
-        "question": "In cycling, what colour jersey is awarded to the overall leader of the Giro d'Italia race?",
-        "answer": "pink",
-        "more": "The maglia rosa (pink jersey) has been awarded to the Giro d'Italia's overall leader since 1931, its colour chosen to match the pink pages of La Gazzetta dello Sport, the race's founding newspaper."
+        "question": "Bottom stripe colour on Bulgaria's flag",
+        "answer": "red",
+        "more": "Bulgaria's flag has white, green and red horizontal stripes, red at the bottom."
       },
       {
         "number": 5,
-        "question": "In curling, what colour is the outermost ring of the target area (the house) on the ice?",
-        "answer": "blue",
-        "more": "Curling's house uses a standardised blue outer ring with a white middle ring and red centre, adopted so TV audiences worldwide can judge stone position at a glance."
+        "question": "Cross colour on Sweden's flag",
+        "answer": "yellow",
+        "more": "Sweden's flag has a yellow Scandinavian cross on a blue background."
       },
       {
         "number": 6,
-        "question": "In ice hockey, what is the usual colour of the puck?",
-        "answer": "black",
-        "more": "Ice hockey pucks are made of vulcanised rubber and are traditionally black so they stand out clearly against the white ice."
+        "question": "Parrot colour on Dominica's flag",
+        "answer": "purple",
+        "more": "Dominica's flag is the only national flag to feature the colour purple, in its Sisserou parrot."
       }
     ]
   }

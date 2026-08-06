@@ -1,0 +1,24 @@
+{
+  "round": 1,
+  "sentToTesters": "2026-08-05",
+  "whatsappNumber": "447778092731",
+  "items": [
+    { "id": "titanic",     "title": "Titanic",            "category": "Movie",     "tier": "easy",    "emoji": "🚢🧊💔🎻" },
+    { "id": "jurassic",    "title": "Jurassic Park",      "category": "Movie",     "tier": "easy",    "emoji": "🦖🏝️🧬🚙" },
+    { "id": "nemo",        "title": "Finding Nemo",       "category": "Movie",     "tier": "medium",  "emoji": "🐠🌊🐢🔍" },
+    { "id": "hunger",      "title": "The Hunger Games",   "category": "Book",      "tier": "medium",  "emoji": "🏹🕊️🔥👧" },
+    { "id": "got",         "title": "Game of Thrones",    "category": "TV series", "tier": "medium",  "emoji": "🔥❄️🐉👑" },
+    { "id": "bttf",        "title": "Back to the Future", "category": "Movie",     "tier": "medium",  "emoji": "⏰🚗⚡📅" },
+    { "id": "gatsby",      "title": "The Great Gatsby",   "category": "Book",      "tier": "hard",    "emoji": "🥂🏙️💚🕺📖" },
+    { "id": "stranger",    "title": "Stranger Things",    "category": "TV series", "tier": "hard",    "emoji": "🚲👦👧🔦👹" },
+    { "id": "hobbit",      "title": "The Hobbit",         "category": "Book",      "tier": "hard",    "emoji": "🧙‍♂️🐉⛰️💰" },
+    { "id": "breakingbad", "title": "Breaking Bad",       "category": "TV series", "tier": "hard",    "emoji": "🧑‍🏫🧪💊🚐" },
+    { "id": "inception",   "title": "Inception",          "category": "Movie",     "tier": "hardest", "emoji": "🌀😴🏙️🔁💭" },
+    { "id": "matrix",      "title": "The Matrix",         "category": "Movie",     "tier": "hardest", "emoji": "🔴🔵💊🕶️0️⃣1️⃣" }
+  ],
+  "resultMessageFormat": {
+    "line1": "Emoji Decoder results — <tester> — <correctCount>/12 correct (human-readable summary)",
+    "line2": "JSON: {\"t\":\"<tester>\",\"at\":\"<ISO timestamp>\",\"r\":[{\"i\":\"<item id>\",\"g\":\"<guess text>\",\"ms\":<time to guess in ms>,\"cm\":\"<optional pre-reveal comment>\",\"cm2\":\"<optional post-reveal comment>\"}, ...]}",
+    "versioningNote": "The answer-reveal step (and its 'cm2' post-reveal comment field) was added mid-round, after the link had already gone out to some testers. Anyone who opened the page before that point kept running the pre-reveal version for their whole session (it's a single-page app, so it doesn't hot-update mid-session even though the URL is unchanged). Their results will simply have no 'cm2' on any item — this is expected, not an error, and doesn't affect scoring/timing (i, g, ms, cm are present in both versions)."
+  }
+}

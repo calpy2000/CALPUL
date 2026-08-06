@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v3.13';
+const CACHE_VERSION = 'v3.14';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -78,6 +78,7 @@ const CODE_URLS = [
   'shared/core/daily-lock.js',
   'shared/core/date-utils.js',
   'shared/core/flip-timer.js',
+  'shared/core/fuzzy-match.js',
   'shared/core/game-storage.js',
   'shared/core/loading-indicator.js',
   'shared/core/shell.js',
@@ -113,8 +114,14 @@ const CODE_URLS = [
   'games/jewelz/player-icon.js',
   'games/jewelz/style.css',
 
+  'games/mojeez/days.json',
+  'games/mojeez/index.html',
+  'games/mojeez/index.js',
+  'games/mojeez/manifest.json',
+  'games/mojeez/style.css',
+  'games/mojeez/tile-icon.js',
+
   'games/muveez/answers.js',
-  'games/muveez/fuzzy-match.js',
   'games/muveez/icon.js',
   'games/muveez/index.html',
   'games/muveez/index.js',

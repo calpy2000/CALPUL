@@ -256,6 +256,18 @@
   font-size: clamp(26px, 8vw, 38px);
 }
 
+/* Colour type only (see index.js's typeClass) — the COLOUR_LABEL text
+   (e.g. "Re", "Bla") is a colour-blind accessibility aid layered on top of
+   the fill, not the primary answer content, so it's sized down (0.8x the
+   base clamp() bounds) and not bold, explicit request — it should read as
+   a small label, not compete visually with the fill itself. Font colour
+   is set per-swatch inline via COLOUR_LABEL_TEXT in index.js, not here,
+   since it varies by which of the 8 colours is showing. */
+.valuz-tile--slot.valuz-tile--type-colour {
+  font-size: clamp(11.2px, 3.6vw, 16px);
+  font-weight: 400;
+}
+
 .valuz-tile--slot.is-empty {
   background: transparent;
   border: 2px dashed #D9CCE8;

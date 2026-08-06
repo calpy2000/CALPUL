@@ -1,0 +1,39 @@
+[
+  {
+    "day": 1,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Titanic",
+        "emoji": "🚢🧊💔🎻",
+        "explain": "🚢🧊 the ship hits the iceberg, 💔 the doomed love story, 🎻 the band that kept playing as it sank."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Hunger Games",
+        "emoji": "🏹🕊️🔥👧",
+        "explain": "🏹 Katniss's weapon, 🕊️ the mockingjay symbol, 🔥 'the girl on fire', 👧 a young tribute fighting to survive."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Hobbit",
+        "emoji": "🧙‍♂️🐉⛰️💰",
+        "explain": "🧙‍♂️ Gandalf, ⛰️ the Lonely Mountain, 🐉💰 Smaug guarding his hoard of treasure inside it."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "The Matrix",
+        "emoji": "🔴🔵💊🕶️0️⃣1️⃣",
+        "explain": "🔴🔵💊 the red pill / blue pill choice, 🕶️ Neo's signature look, 0️⃣1️⃣ the simulated, code-built reality underneath."
+      }
+    ]
+  }
+]

@@ -957,34 +957,16 @@ function drawEverything() {
 // 3-point energy orbs, not a literal shard count.
 //
 // Written as real <p> tags (one per sentence), same authoring convention
-// as the instructions panel, rather than one string with <br> line breaks
-// — that's what lets shared/shell.css's .shell-end-screen__message p rule
-// give this the exact same line-height and inter-sentence spacing as the
-// instructions panel instead of its own separate rhythm. The first <p>
-// also carries shell-end-screen__title so just that line reads as the
-// panel's centered title, while the rest stays left-aligned underneath it.
-function buildResultLine(finalScore, result) {
-  if (finalScore === 0) {
-    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>You failed to score today</p><p>Better luck tomorrow</p>`;
-  }
-  const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-  if (!hasNoMeaningfulBest && result.isNewBest) {
-    return `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${finalScore} points</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`;
-  }
-  if (!hasNoMeaningfulBest && result.isTie) {
-    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best of ${finalScore} points</p><p>Try for a personal best tomorrow</p>`;
-  }
-  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${finalScore} points</p><p>Try and do better tomorrow</p>`;
-}
-
-// Shown instead of buildResultLine() when the round ended via
-// triggerSequenceWin() (the player cleared every step of the sequence)
-// rather than a death — same <p>-per-sentence/title-class convention, but
-// a genuine congratulations rather than a score comparison, since
-// finishing the whole sequence is the actual achievement here regardless
-// of how the score stacks up against a previous best.
-function buildVictoryLine(finalScore) {
-  return `<p class="shell-end-screen__title"><strong>🎉 YOU WON!!! 🎉</strong></p><p>You made it through every obstacle WARPZ has and scored ${finalScore} points</p><p>Outstanding flying, Commander</p>`;
+// Classifies a finished round's outcome for shell.showEndScreen — 'max'
+// when the player cleared the whole obstacle sequence (a boolean win
+// condition, not a score threshold: WARPZ has no numeric score ceiling),
+// 'zero' when they died having scored nothing, or undefined for a normal
+// in-between score. Takes priority over new-best/tie regardless of PB
+// status, same as every other game's 'max'/'zero' outcome.
+function classifyOutcome(finalScore, sequenceCompleted) {
+  if (sequenceCompleted) return 'max';
+  if (finalScore === 0) return 'zero';
+  return undefined;
 }
 
 function animate(currentTime) {
@@ -1671,21 +1653,31 @@ function animate(currentTime) {
     const seconds = Math.floor(survivalTime);
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
     saveTodayScore(GAME_ID, score);
-    // Completing the whole sequence gets its own congratulations message
-    // instead of the normal score-comparison one, and always celebrates
-    // (a win is a win regardless of how the score stacks up) — everything
-    // else about ending the round (score submission, saved progress,
-    // resume-later display) stays identical either way.
-    const resultLine = sequenceCompleted ? buildVictoryLine(score) : buildResultLine(score, result);
-    saveProgress(GAME_ID, { score, seconds, resultLine }, { completed: true });
+    // Completing the whole sequence always celebrates (a win is a win
+    // regardless of how the score stacks up) — everything else about
+    // ending the round (score submission, saved progress, resume-later
+    // display) stays identical either way.
+    const outcome = classifyOutcome(score, sequenceCompleted);
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
+    // panelOutcome/panelIsNewBest saved into progress data (not just
+    // saveTodayOutcome) since the 'completed' reload branch below reads
+    // this same `data` object, matching how `score`/`seconds` already work.
+    saveProgress(GAME_ID, { score, seconds, panelOutcome: outcome, panelIsNewBest: isNewBest }, { completed: true });
     saveTodayOutcome(GAME_ID, {
       revealed: false, usedHelp: false, failed: sequenceCompleted ? false : score === 0,
       isNewBest: result.isNewBest, isTie: result.isTie,
+      panelOutcome: outcome, panelIsNewBest: isNewBest,
     });
 
     liveScoreEl.textContent = '';
     shell.showEndScreen({
-      message: resultLine,
+      outcome,
+      scoreText: String(score),
+      isNewBest,
       shareText: sequenceCompleted ? `☄️ WARPZ — beat the whole gauntlet and scored ${score} points today!` : `☄️ WARPZ — scored ${score} points today!`,
       celebrate: sequenceCompleted || score > 0,
       score,
@@ -1862,9 +1854,20 @@ const shell = initShell({
 });
 
 if (shell.status.status === 'completed') {
-  const { resultLine, seconds, score: finalScore } = shell.status.record.data;
+  const { seconds, score: finalScore, panelOutcome, panelIsNewBest } = shell.status.record.data;
   shell.timer.setSeconds(seconds || 0);
-  shell.showEndScreen({ message: resultLine, shareText: `☄️ WARPZ — scored ${finalScore} points today!` });
+  // Falls back to re-deriving outcome from just the score if this day was
+  // completed before panelOutcome/panelIsNewBest existed (sequenceCompleted
+  // itself isn't persisted, so a pre-existing 'max' day falls back to
+  // 'zero'/undefined based on score alone) — isNewBest defaults to false in
+  // that fallback since there's no stored record of whether it was a
+  // meaningful PB at the time.
+  shell.showEndScreen({
+    outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore, false),
+    scoreText: String(finalScore),
+    isNewBest: panelIsNewBest || false,
+    shareText: `☄️ WARPZ — scored ${finalScore} points today!`,
+  });
 } else {
   drawEverything(); // static preview behind the start banner
   shell.showStartBanner(startGame);

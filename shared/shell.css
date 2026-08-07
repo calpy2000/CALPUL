@@ -220,23 +220,34 @@
   transition: none;
 }
 
+/* One row now — the timer (flip-timer.js's .flip-timer) on the left, the
+   "Best: ..." score text on the right — rather than the two stacked in a
+   centered column. justify-content:space-between pushes them to opposite
+   ends automatically, no matter which renders wider on a given game
+   (footer score text length varies: "Best: 4/6" vs "Best: 2:07"). */
 .shell-footer {
   width: 100%;
   max-width: 480px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: var(--space-xs);
-  text-align: center;
-  /* ROLLBACK: the added env(...) term (paired with .shell's own padding-top
-     and viewport-fit=cover above/in each game's HTML) was added 2026-08-04
-     to fix the footer/timer getting hidden behind Android's gesture-nav bar
-     in standalone-PWA mode on some devices (e.g. Galaxy A17). Resolves to
-     literally var(--space-sm) (i.e. the ORIGINAL value, unchanged) on any
-     device without a bottom inset — so every device this already looked
-     fine on renders byte-identical padding to before. Revert by deleting
-     just the "+ env(...)" part, restoring padding-bottom: var(--space-sm). */
-  padding: var(--space-sm) var(--space-md) calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+  justify-content: space-between;
+  /* Right side gets extra clearance the left doesn't: .dev-toggle (the
+     gear/flask icon — shared/tools-panel.css) is `position:fixed` at
+     `bottom/right: var(--space-md)` with a 36px diameter, floating over
+     whatever's beneath it regardless of this row's own layout. Without
+     this, the right-aligned score text would render underneath it.
+     var(--space-sm) on top of the icon's own footprint is just a small
+     visual gap, not part of the collision math itself. ROLLBACK: the added
+     env(...) term on the bottom value (paired with .shell's own
+     padding-top and viewport-fit=cover above/in each game's HTML) was
+     added 2026-08-04 to fix the footer/timer getting hidden behind
+     Android's gesture-nav bar in standalone-PWA mode on some devices (e.g.
+     Galaxy A17). Resolves to literally var(--space-sm) (i.e. the ORIGINAL
+     value, unchanged) on any device without a bottom inset. Revert by
+     deleting just the "+ env(...)" part, restoring padding-bottom:
+     var(--space-sm). */
+  padding: var(--space-sm) calc(var(--space-md) + 36px + var(--space-sm)) calc(var(--space-sm) + env(safe-area-inset-bottom, 0px)) var(--space-md);
   margin: var(--space-sm) 0 var(--space-md);
   font-size: 14px;
   font-weight: 600;
@@ -292,39 +303,31 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  /* vw, NOT a % of .shell-stage — deliberately. This used to be `width: 90%`,
-     which resolves against .shell-stage (this panel's positioned ancestor —
-     see its own comment above), and .shell-stage's width is NOT the same in
-     every game: several games (e.g. SOLVZ's `.shell-stage { width: 80%; }`,
-     to keep its two number-grids off the screen edges) narrow it for their
-     own board-sizing reasons that have nothing to do with this panel. That
-     silently narrowed the end-screen right along with the stage, and once
-     it dropped below the ~283px the two .shell-end-screen__actions buttons
-     need combined, flex-wrap (see below) dropped Share Results onto its own
-     line — reproduced on SOLVZ's live end screen (buttons stacked) next to
-     VALUZ's (one row), same shared code, different .shell-stage width.
-     VALUZ had already hit this exact bug once and fixed it by widening ITS
-     OWN .shell-stage from 92% to 96% (see games/valuz/style.css) specifically
-     to pull its end-screen back above that threshold — proven safe on a real
-     device (90% of a 96vw-equivalent stage = 86.4vw). Using that same 86.4vw
-     figure directly here — as a plain viewport-relative width, entirely
-     independent of whatever any given game sets .shell-stage to — is what
-     makes it a fix for every game at once instead of one more per-game
-     workaround the next narrow-stage game will need to rediscover. */
-  width: 86.4vw;
-  max-width: 384px; /* 320px * 1.2 — widened so the end-screen's side-by-side .shell-end-screen__actions buttons (see below) fit without overflowing; shared with .shell-overlay's start banner too, so both panels stay the same width as each other */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: rgba(96, 98, 104, 0.92); /* a lighter grey than the near-black this used to be — rgba = red/green/blue/alpha, alpha 0.92 means 92% opaque, letting a hint of what's behind it show through */
   z-index: 20; /* stacks above the game content (which mostly doesn't set z-index, so defaults to the base stacking level) */
-  border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .shell-overlay {
   bottom: var(--space-sm);
+  /* vw, NOT a % of .shell-stage — deliberately. This used to be `width: 90%`,
+     which resolves against .shell-stage (this panel's positioned ancestor —
+     see its own comment above), and .shell-stage's width is NOT the same in
+     every game: several games (e.g. SOLVZ's `.shell-stage { width: 80%; }`,
+     to keep its two number-grids off the screen edges) narrow it for their
+     own board-sizing reasons that have nothing to do with this panel. Using
+     a plain viewport-relative width, entirely independent of whatever any
+     given game sets .shell-stage to, is what makes it consistent for every
+     game at once instead of one more per-game workaround the next
+     narrow-stage game would need to rediscover. .shell-end-screen no longer
+     shares this value — see its own width below. */
+  width: 86.4vw;
+  max-width: 384px; /* 320px * 1.2 — see the width comment above */
+  border-radius: 12px;
   /* 0.6x, matching .shell-end-screen's own reduction below — explicit
      follow-up request. This same class is also what QUADZ/SLYDZ/GLYMPZ's
      "Reveal Solution" confirm dialog uses (class="shell-overlay
@@ -343,6 +346,15 @@
    pill, instead of stopping a full gap above the whole footer block. */
 .shell-end-screen {
   bottom: calc(-1 * var(--space-sm));
+  /* Explicit request: the end screen spans (almost) the full screen width,
+     unlike .shell-overlay's start banner (still a centered card at 86.4vw)
+     — left:50%/translateX(-50%) above still centers it, so a small
+     var(--space-sm) margin on each side is subtracted from 100vw here
+     rather than set as an actual CSS margin (which wouldn't shrink a
+     centered 100vw box's own width, just push it off-center). Rounded
+     corners restored now that it's not flush against the edges. */
+  width: calc(100vw - var(--space-sm) * 2);
+  border-radius: 12px;
   /* 0.6x var(--space-lg) — explicit request, applies to every game (this
      is shared code) — a smaller panel covers less of the board/question-
      list underneath it. .shell-overlay above got the same 0.6x treatment
@@ -358,35 +370,77 @@
   display: none;
 }
 
-.shell-overlay__panel,
-.shell-end-screen__panel {
+.shell-overlay__panel {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-md);
-  max-width: 384px; /* matches .shell-overlay/.shell-end-screen's own widened max-width above — this inner one would otherwise still cap content at the old 320px regardless of the outer box's size */
+  max-width: 384px;
 }
 
-.shell-overlay__instructions,
-.shell-end-screen__message {
+/* End-screen redesign: one horizontal row — emoji, bold headline, message
+   text, Share button — rather than the start banner's stacked column.
+   width:100% (not the 384px cap .shell-overlay__panel keeps) so the row
+   actually spans .shell-end-screen's now-full-screen-width outer card,
+   letting the Share button land at the panel's right edge. Content pieces
+   are currently hardcoded static placeholders (🤩 / HELLO / "message text
+   here" in shell.js) while this layout gets dialed in — real per-game
+   content rules for each slot are a deliberate follow-up, not yet wired. */
+.shell-end-screen__panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.shell-overlay__instructions {
   color: #ffffff;
   font-size: 15px;
-  line-height: 1.35; /* tighter than a default 1.5, for wrapped lines within one sentence — same value for both panels, so wrapped-line spacing reads identically whichever one is showing */
+  line-height: 1.35;
   margin: 0;
 }
 
-/* Both the start-banner instructions and the end-screen message are
-   left-justified rather than centered, and both need width:100% so the
-   text actually has the panel's full width to left-align against —
-   align-items:center on .shell-overlay__panel/.shell-end-screen__panel
-   above would otherwise shrink each of these down to its longest line,
-   which would make text-align:left invisible (a box exactly as wide as
-   its own longest line looks the same whether it's "left-aligned" or
-   "centered" inside itself). */
-.shell-overlay__instructions,
-.shell-end-screen__message {
+/* Left-justified rather than centered, and needs width:100% so the text
+   actually has the panel's full width to left-align against —
+   align-items:center on .shell-overlay__panel above would otherwise shrink
+   this down to its longest line, which would make text-align:left
+   invisible (a box exactly as wide as its own longest line looks the same
+   whether it's "left-aligned" or "centered" inside itself). */
+.shell-overlay__instructions {
   text-align: left;
   width: 100%;
+}
+
+/* The end-screen's message text — one flex item among four in the new
+   single-line row (see .shell-end-screen__panel above). flex:1 lets it
+   claim whatever space the emoji/headline/Share button don't need, and
+   min-width:0 is required for the nowrap+ellipsis truncation below to
+   actually kick in on a flex item (without it, a flex item's default
+   min-width:auto lets it grow past the row instead of truncating). */
+.shell-end-screen__message {
+  color: #ffffff;
+  font-size: 15px;
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shell-end-screen__emoji {
+  font-size: 1.4em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.shell-end-screen__headline {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Each game writes its instructions as one or more real <p> tags, one per
@@ -401,16 +455,17 @@
    pattern (see e.g. games/warpz/index.js's buildResultLine()) to get this
    exact same paragraph spacing — that's opt-in per game (a message built
    with plain <br> line breaks instead just gets the line-height above and
-   no extra gap, which is still a valid, tighter-looking choice), but any
-   game that does use real <p>s here shares this identical rule with the
-   instructions panel rather than needing its own copy. */
-.shell-overlay__instructions p,
-.shell-end-screen__message p {
+   no extra gap, which is still a valid, tighter-looking choice). No longer
+   shared with .shell-end-screen__message: that's now a single truncated
+   line in the redesigned end-screen row (see above), not a multi-paragraph
+   block — <p>-per-sentence messages don't apply there anymore, pending the
+   follow-up pass that redefines what each game passes into the new
+   emoji/headline/message slots. */
+.shell-overlay__instructions p {
   margin: 0 0 var(--space-md) 0;
 }
 
-.shell-overlay__instructions p:last-child,
-.shell-end-screen__message p:last-child {
+.shell-overlay__instructions p:last-child {
   margin-bottom: 0;
 }
 
@@ -419,26 +474,10 @@
    as the panel's title — centered, like the shell header's own icon+title
    — while the rest of the message stays left-aligned like the instructions
    panel. Centers whatever's on that line, text and/or an inline icon
-   <img> alike, since text-align:center centers all inline content. */
-/* Puts the end-screen's "Return to PUSULZ" and "Share Results" buttons on
-   one row instead of stacked (each on its own line, which used to add an
-   extra .shell-end-screen__panel `gap` between them and push the panel's
-   top edge further up the screen). Same recipe as the reveal-confirm
-   dialogs' own two-button row (see e.g. games/quadz/style.css's
-   .reveal-confirm__actions) — align-items:center keeps both buttons'
-   vertical centers level with each other even though .shell-btn--small's
-   smaller font makes it a touch shorter than .shell-btn. Since the panel
-   itself is bottom-anchored (see .shell-end-screen above) and sized to fit
-   its content, this shorter panel automatically sits lower on screen while
-   its bottom edge stays put. */
-.shell-end-screen__actions {
-  display: flex;
-  flex-wrap: wrap; /* on a screen too narrow to fit both nowrap buttons (see .shell-btn's white-space above) on one line, drops Share Results as a WHOLE onto its own line rather than overflowing the panel or squeezing text mid-word — a graceful, width-agnostic fallback instead of a fixed panel-width guess that only happens to fit specific screen sizes */
-  justify-content: center; /* centers the row when it fits on one line, and centers each wrapped line individually when it doesn't */
-  gap: var(--space-sm);
-  align-items: center;
-}
-
+   <img> alike, since text-align:center centers all inline content.
+   Pre-dates the new dedicated .shell-end-screen__headline slot above —
+   likely redundant with it once each game's end-screen content is
+   rewired, but left in place until that follow-up pass. */
 .shell-end-screen__title {
   text-align: center;
   font-size: 1.3em; /* 1.3x the rest of the end-screen message's text — em is relative to the inherited 15px, so this also scales any emoji glyphs within it (they're just characters, sized with the text) */
@@ -492,14 +531,6 @@
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-/* Overrides .shell-btn's own text-transform:lowercase (above) for just the
-   "PUSULZ" brand name inside the end-screen's "Return to PUSULZ" button (see
-   shell.js) — every other word on every .shell-btn still renders lowercase
-   as before; only the brand name itself stays fully capitalized. */
-.shell-btn__brand {
-  text-transform: uppercase;
-}
-
 /* :active is a CSS pseudo-class matching an element WHILE it's being
    pressed (mouse button down / finger touching, not yet released) — this
    makes buttons visibly shrink and nudge down slightly on press, AND flips
@@ -516,11 +547,11 @@
 
 /* Modifier class layered on top of .shell-btn (elements get BOTH classes:
    class="shell-btn shell-btn--small") — overrides just the properties that
-   need to differ for the smaller "Share Results" button, while still
+   need to differ for the smaller "Share" button, while still
    inheriting everything else (border-radius, uppercase text, etc.) from
    .shell-btn. */
 .shell-btn--small {
-  padding: 7px 20px;
+  padding: 7px 10px; /* 0.5x the horizontal padding of .shell-btn's 20px — explicit request, now that Share is the end-screen's only button and doesn't need as much pill width */
   font-size: 12px;
   background-color: #bfdbfe;
   color: #443653; /* matches .shell-btn's own text color above, for the same reason */

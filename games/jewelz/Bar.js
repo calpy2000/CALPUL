@@ -14,20 +14,19 @@
 // unlike the shared/ modules which use named exports like
 // `import { initShell } from ...`).
 //
-// The beveled-rect drawing itself is shared with bar-icon.js's static
-// square icon (used inline in the instructions text — see index.js), so
-// the game and that icon render the exact same bevel treatment.
-import { drawBevelRect } from './bar-icon.js';
+// The saw-blade drawing itself is shared with bar-icon.js's static icons
+// (used inline in the instructions text — see index.js), so the game and
+// those icons render the exact same blade.
+import { drawSawBlade } from './bar-icon.js';
 
 export default class Bar {
     // The constructor runs once, automatically, every time someone writes
-    // `new Bar(x, y, color)` — its job is to set up a fresh object's
-    // starting data. `this` inside a class refers to "the specific object
-    // instance currently being built/used" — `this.x = x` stores the x
-    // argument onto THIS bar specifically, so different Bar instances can
-    // have different x values even though they're built from the same
-    // class.
-    constructor(x, y, hue) {
+    // `new Bar(x, y)` — its job is to set up a fresh object's starting
+    // data. `this` inside a class refers to "the specific object instance
+    // currently being built/used" — `this.x = x` stores the x argument
+    // onto THIS bar specifically, so different Bar instances can have
+    // different x values even though they're built from the same class.
+    constructor(x, y) {
         this.x = x;
         this.y = y;
         this.width = 30;
@@ -41,7 +40,6 @@ export default class Bar {
         const randomMultiplier = lengthMultipliers[Math.floor(Math.random() * lengthMultipliers.length)];
         this.height = this.width * randomMultiplier;
 
-        this.hue = hue; // 0-360 — feeds the neon glow + bevel shading in draw() below
         this.age = 0; // seconds this bar has existed — drives the pulsing glow's phase, see update()
         // A random starting rotation, in radians (JavaScript's trig
         // functions all work in radians, not degrees — Math.PI * 2 radians
@@ -100,12 +98,13 @@ export default class Bar {
         }
     }
 
-    // Draws this bar onto the canvas — neon glow + a pulsing brightness/
-    // blur oscillation + a full 3D bevel on all four sides, picked from the
-    // canvas effects gallery (see tools reference — cyan/magenta/gold
-    // hues, "standard" bevel depth, "standard" pulsing glow). `context`
-    // here is the same `ctx` object passed in from index.js's
-    // drawEverything().
+    // Draws this bar onto the canvas as a serrated saw blade — a matte
+    // brushed-metal gradient with a red hazard glow, deliberately dropping
+    // the old glossy neon-bevel look (see bar-icon.js's drawSawBlade for
+    // the full reasoning: that shine was the same visual language the
+    // collectible jewels use, which read as "another jewel" to testers
+    // rather than "a hazard"). `context` here is the same `ctx` object
+    // passed in from index.js's drawEverything().
     draw(context) {
         context.save();
         // translate() + rotate() — see the longer explanation this used to
@@ -117,19 +116,7 @@ export default class Bar {
         context.rotate(this.angle);
 
         const pulse = 0.5 + 0.5 * Math.sin(this.age * 2.5);
-        const bevel = Math.min(6, this.width / 3, this.height / 3);
-
-        context.save();
-        context.shadowColor = `hsl(${this.hue}, 100%, 60%)`;
-        context.shadowBlur = 10 + pulse * 30;
-        drawBevelRect(context, this.width, this.height, bevel,
-            `hsl(${this.hue}, 90%, ${42 + pulse * 10}%)`,
-            `hsl(${this.hue}, 90%, ${68 + pulse * 15}%)`,
-            `hsl(${this.hue}, 85%, ${18 + pulse * 6}%)`);
-        context.restore(); // shadow only applies to the beveled shape, not the highlight strip below
-
-        context.fillStyle = `rgba(255,255,255,${0.35 + pulse * 0.4})`;
-        context.fillRect(-this.width * 0.09, -this.height / 2 + bevel, this.width * 0.18, this.height - bevel * 2);
+        drawSawBlade(context, this.width, this.height, pulse);
 
         context.restore();
     }

@@ -35,5 +35,42 @@
         "explain": "🔴🔵💊 the red pill / blue pill choice, 🕶️ Neo's signature look, 0️⃣1️⃣ the simulated, code-built reality underneath."
       }
     ]
+  },
+  {
+    "day": 219,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Wizard of Oz",
+        "emoji": "🌪️🦁🤖👠🐕",
+        "explain": "🌪️ the tornado that carries Dorothy to Oz, 🦁 the Cowardly Lion seeking courage, 🤖 the Tin Man seeking a heart, 👠 the ruby slippers that bring her home, 🐕 Toto her loyal dog."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Jaws",
+        "emoji": "🦈🌊🚤🏖️",
+        "explain": "🦈 the great white shark terrorizing the coast, 🌊 the ocean attack, 🚤 the boat hunting it down, 🏖️ the beach town too scared to swim."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Downton Abbey",
+        "emoji": "🏰🔔🎩🍽️",
+        "explain": "🏰 the grand English estate, 🔔 the servants' call-bell system, 🎩 the aristocratic Crawley family, 🍽️ the elaborate upstairs dinners."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Frankenstein",
+        "emoji": "⚡🧟🔬🧵🔥🏔️",
+        "explain": "⚡ the lightning that brings the creature to life, 🧟 the monster himself, 🔬 Victor's lab experiments, 🧵 the stitched-together body, 🔥 the torch-wielding mob that hunts him, 🏔️ the Arctic chase that ends the story."
+      }
+    ]
   }
 ]

@@ -197,10 +197,10 @@
    see its fuller comments for the reasoning) ---
    The confirm panel itself (.reveal-confirm/.reveal-confirm__panel) now
    carries shell.css's own .shell-overlay/.shell-overlay__panel/
-   .shell-end-screen__message classes directly (see index.js) instead of a
+   .shell-overlay__instructions classes directly (see index.js) instead of a
    separate copy of the same positioning/message rules here — that's what
-   keeps it visually identical to the start banner and end-screen without
-   needing to hand-update three places every time one of those changes.
+   keeps it visually identical to the start banner without needing to
+   hand-update multiple places every time that panel changes.
    Only what's actually unique to this dialog is still styled here: the
    small "Reveal solution" trigger link, and the side-by-side two-button
    row (shell's own panels only ever stack a single button). */

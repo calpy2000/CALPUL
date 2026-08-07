@@ -8,7 +8,7 @@
 // needed the identical logic).
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam, navigateWithSpinner } from '../../shared/core/loading-indicator.js';
@@ -215,28 +215,20 @@ $(function () {
     document.querySelectorAll('.mojeez-tile').forEach((el) => el.classList.add('is-clickable'));
   }
 
-  function buildEndMessage(finalScore, result) {
-    const scoreLine = `<p>You matched ${finalScore} out of 4 correctly</p>`;
-    const moreLine = `<p>Tap an answer to see the reveal</p>`;
-    const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-    if (!hasNoMeaningfulBest && result.isNewBest) {
-      return `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p>${scoreLine}${moreLine}`;
-    }
-    if (!hasNoMeaningfulBest && result.isTie) {
-      return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p>${scoreLine}${moreLine}`;
-    }
-    if (finalScore === 4) {
-      return `<p class="shell-end-screen__title"><strong>PERFECT!!! 🎯</strong></p>${scoreLine}${moreLine}`;
-    }
-    if (finalScore === 0) {
-      return `<p class="shell-end-screen__title"><strong>OH NO 😬</strong></p>${scoreLine}${moreLine}`;
-    }
-    return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p>${scoreLine}${moreLine}`;
+  // 'max' (all 4 correct) / 'zero' (none correct) / undefined (a normal
+  // in-between score) — fed into shell.showEndScreen's `outcome`, which
+  // picks the matching one-line copy from end-panel-content.js.
+  function classifyOutcome(finalScore) {
+    if (finalScore === 4) return 'max';
+    if (finalScore === 0) return 'zero';
+    return undefined;
   }
 
-  function showEndScreenForScore(finalScore, result) {
+  function showEndScreenForScore(finalScore, { outcome, isNewBest }) {
     shell.showEndScreen({
-      message: buildEndMessage(finalScore, result),
+      outcome,
+      scoreText: String(finalScore),
+      isNewBest,
       animateTarget: document.getElementById('mojeezBoard'),
       shareText: `🎭 MOJEEZ Day ${activeDayData.day} — matched ${finalScore}/4!`,
       celebrate: finalScore === 4,
@@ -255,18 +247,34 @@ $(function () {
     markTilesClickable();
 
     if (isPreview) {
-      showEndScreenForScore(score, { previousBest: null, isNewBest: false, isTie: false, isFirst: true });
+      showEndScreenForScore(score, { outcome: classifyOutcome(score), isNewBest: false });
       return;
     }
     persistProgress(true);
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
     saveTodayScore(GAME_ID, score);
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const outcome = classifyOutcome(score);
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
     // MOJEEZ has no help/reveal concept of its own (the post-game "more
     // info" popover only ever shows AFTER grading, so it can't have
-    // influenced the guess) — only isNewBest/isTie are meaningful here,
-    // same as VALUZ's identical outcome shape.
-    saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    showEndScreenForScore(score, result);
+    // influenced the guess), same as VALUZ's identical outcome shape.
+    // panelOutcome/panelIsNewBest are the FINAL decision the end panel
+    // showed today, persisted so a page reload can show the identical
+    // scenario without re-deriving it (see the 'completed' branch below).
+    saveTodayOutcome(GAME_ID, {
+      revealed: false,
+      usedHelp: false,
+      failed: false,
+      isNewBest: result.isNewBest,
+      isTie: result.isTie,
+      panelOutcome: outcome,
+      panelIsNewBest: isNewBest,
+    });
+    showEndScreenForScore(score, { outcome, isNewBest });
   }
 
   $guessBtn.on('click', () => {
@@ -361,8 +369,15 @@ $(function () {
     applyGradeMarks();
     markTilesClickable();
     $guessBtn.prop('disabled', true);
+    // Falls back to re-deriving outcome from just the score if this day was
+    // completed before panelOutcome/panelIsNewBest existed — isNewBest
+    // defaults to false in that fallback since there's no stored record of
+    // whether it was a meaningful PB at the time.
+    const storedOutcome = getTodayOutcome(GAME_ID);
     shell.showEndScreen({
-      message: `<p>You already played today's MOJEEZ — you matched ${score} out of 4.</p><p>Tap an answer to see the reveal</p>`,
+      outcome: storedOutcome ? storedOutcome.panelOutcome : classifyOutcome(score),
+      scoreText: String(score),
+      isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
       shareText: `🎭 MOJEEZ Day ${activeDayData.day} — matched ${score}/4!`,
     });
   } else if (shell.status.status === 'in-progress') {

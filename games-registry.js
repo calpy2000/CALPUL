@@ -62,6 +62,24 @@ export const GAMES = [
     // request.
   },
   {
+    id: 'mojeez', // must be unique across all games — used to namespace localStorage keys
+    title: 'MOJEEZ',
+    emojiImage: getMojeezTileIconDataURL(),
+    tagline: 'There are simply no words for this . . .',
+    path: 'games/mojeez/index.html',
+    color: '#E0787A', // warm coral-red — picked from a swatch comparison against an earlier, too-brown first pass (#C1554D); sits between true red and MUVEEZ's pink (#DD7FA3) without reading as either
+    rim: 'rgba(90, 20, 22, 0.30)',
+    higherIsBetter: true, // score = correct guesses out of 4
+    scoreIsTime: false, // a plain count (0-4), not a duration
+    // Same "NEW" ribbon treatment as VALUZ above — remove once MOJEEZ isn't new anymore.
+    isNew: true,
+    // Moved to row 1 / column 2 (from row 5 / column 1) per explicit request.
+    // devOnly removed — now visible to testers (see days.json's fallback:
+    // any day-of-year not yet authored just shows days[0] instead of
+    // breaking, so it's safe to go live even with only 2 of 366 days
+    // populated today).
+  },
+  {
     id: 'glympz',
     title: 'GLYMPZ',
     // A single tile cropped from GLYMPZ's own "solved" master image (slice 2,
@@ -74,22 +92,6 @@ export const GAMES = [
     rim: 'rgba(20, 40, 90, 0.30)',
     higherIsBetter: false, // score = completion time in seconds
     scoreIsTime: true,
-  },
-  {
-    id: 'jewelz',
-    title: 'JEWELZ',
-    // Just the regular ruby jewel now (not the ruby+sapphire bonus-jewel
-    // pair) — one image per tile, matching every other game.
-    emojiImage: getJewelIconDataURL(),
-    tagline: 'Jewel be glad gem played this game',
-    path: 'games/jewelz/index.html',
-    color: '#63B98A', // green still reads well behind the ruby jewel image
-    rim: 'rgba(10, 55, 30, 0.30)',
-    // Unlike the two time-based games above, a HIGHER score is better here
-    // (more jewels collected) — this flag is read by game-storage.js's
-    // submitScore() to decide whether a new score beats the old best.
-    higherIsBetter: true, // score = jewels collected
-    scoreIsTime: false, // it's a plain jewel count, not a duration
   },
   {
     id: 'slydz',
@@ -144,35 +146,6 @@ export const GAMES = [
     scoreIsTime: false, // it's a word count, not a duration
   },
   {
-    id: 'warpz',
-    title: 'WARPZ',
-    emojiImage: getWarpzOrbIconDataURL(WARPZ_VIOLET_PALETTE),
-    tagline: 'In space no one can hear you dream',
-    path: 'games/warpz/index.html',
-    color: '#A8D84A', // lime green — matches this game's own shell accentColor (see games/warpz/index.js)
-    rim: 'rgba(55, 85, 5, 0.30)',
-    higherIsBetter: true, // score = seconds survived — more is better
-    scoreIsTime: true, // it IS a duration, just one where higher wins (unlike SOLVZ/GLYMPZ/SLYDZ/QUADZ)
-  },
-  {
-    id: 'mojeez', // must be unique across all games — used to namespace localStorage keys
-    title: 'MOJEEZ',
-    emojiImage: getMojeezTileIconDataURL(),
-    tagline: 'There are simply no words for this . . .',
-    path: 'games/mojeez/index.html',
-    color: '#E0787A', // warm coral-red — picked from a swatch comparison against an earlier, too-brown first pass (#C1554D); sits between true red and MUVEEZ's pink (#DD7FA3) without reading as either
-    rim: 'rgba(90, 20, 22, 0.30)',
-    higherIsBetter: true, // score = correct guesses out of 4
-    scoreIsTime: false, // a plain count (0-4), not a duration
-    // Hidden from the hub tile grid unless TOOL_MODE is 'dev' (see
-    // shared/core/tool-mode.js and index.js's renderTiles()) — content is
-    // still just 1 day of 366 and difficulty is still being calibrated
-    // against live testers (see tools/emoji-decoder-calibration/), so
-    // testers must not see this tile yet. Same pattern VALUZ used while
-    // under construction — remove once real content/calibration is ready.
-    devOnly: true,
-  },
-  {
     id: 'solvz',
     title: 'SOLVZ',
     emoji: '➕', // the one game with no generated icon art of its own — shown in a small raised circle on the hub tile
@@ -183,6 +156,34 @@ export const GAMES = [
     accent: '#F2803A', // more saturated — background for the icon circle only
     higherIsBetter: false, // score = completion time in seconds
     scoreIsTime: true, // display formatting: run the raw score through M:SS, not shown as a plain number
-    // Swapped to the LAST tile position (from first) per explicit request.
+  },
+  {
+    id: 'jewelz',
+    title: 'JEWELZ',
+    // Just the regular ruby jewel now (not the ruby+sapphire bonus-jewel
+    // pair) — one image per tile, matching every other game.
+    emojiImage: getJewelIconDataURL(),
+    tagline: 'Jewel be glad gem played this game',
+    path: 'games/jewelz/index.html',
+    color: '#63B98A', // green still reads well behind the ruby jewel image
+    rim: 'rgba(10, 55, 30, 0.30)',
+    // Unlike the two time-based games above, a HIGHER score is better here
+    // (more jewels collected) — this flag is read by game-storage.js's
+    // submitScore() to decide whether a new score beats the old best.
+    higherIsBetter: true, // score = jewels collected
+    scoreIsTime: false, // it's a plain jewel count, not a duration
+    // Moved to row 5 / column 1 per explicit request.
+  },
+  {
+    id: 'warpz',
+    title: 'WARPZ',
+    emojiImage: getWarpzOrbIconDataURL(WARPZ_VIOLET_PALETTE),
+    tagline: 'In space no one can hear you dream',
+    path: 'games/warpz/index.html',
+    color: '#A8D84A', // lime green — matches this game's own shell accentColor (see games/warpz/index.js)
+    rim: 'rgba(55, 85, 5, 0.30)',
+    higherIsBetter: true, // score = seconds survived — more is better
+    scoreIsTime: true, // it IS a duration, just one where higher wins (unlike SOLVZ/GLYMPZ/SLYDZ/QUADZ)
+    // Moved to row 5 / column 2 per explicit request.
   },
 ];

@@ -675,28 +675,12 @@ function drawEverything() {
   raindrops.forEach((drop) => drop.draw(ctx));
 }
 
-function buildResultLine(finalScore, result) {
-  // A round that ends with no words formed gets its own dedicated message
-  // rather than folding into the generic "GAME OVER" line below — takes
-  // priority over isNewBest/isTie, since a score of 0 "tying" a previous
-  // best of 0 still isn't something worth congratulating.
-  if (finalScore === 0) {
-    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>You failed to score today</p><p>Better luck tomorrow</p>`;
-  }
-  const wordOrWords = `${finalScore} word${finalScore === 1 ? '' : 's'}`;
-  // No previous best at all (result.isFirst) or a previous best of exactly
-  // 0 would make "new best"/"equaled best" messaging read oddly this early
-  // on — fall back to the plain WELL DONE message for both, same as every
-  // other game.
-  const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-  if (!hasNoMeaningfulBest && result.isNewBest) {
-    return `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${wordOrWords}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`;
-  }
-  // finalScore > 0 is already guaranteed here (the ===0 case returned above).
-  if (!hasNoMeaningfulBest && result.isTie) {
-    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${wordOrWords}</p><p>Try for a personal best tomorrow</p>`;
-  }
-  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${wordOrWords}</p><p>Try and do better tomorrow</p>`;
+// 'zero' (no words formed) or undefined (a normal score) — fed into
+// shell.showEndScreen's `outcome`, which picks the matching one-line copy
+// from end-panel-content.js. RAINZ has no numeric max score (open-ended
+// word count), so 'max' never applies here.
+function classifyOutcome(finalScore) {
+  return finalScore === 0 ? 'zero' : undefined;
 }
 
 // THE GAME LOOP — same self-scheduling requestAnimationFrame pattern as
@@ -780,14 +764,26 @@ function animate(currentTime) {
     liveScoreEl.textContent = '';
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
     saveTodayScore(GAME_ID, score);
-    const resultLine = buildResultLine(score, result);
-    saveProgress(GAME_ID, { score, resultLine, seconds: survivalTime }, { completed: true });
+    const outcome = classifyOutcome(score);
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
+    // panelOutcome/panelIsNewBest saved into progress data (not just
+    // saveTodayOutcome) since the 'completed' reload branch below reads
+    // this same `data` object, matching how `score`/`seconds` already work.
+    saveProgress(GAME_ID, { score, panelOutcome: outcome, panelIsNewBest: isNewBest, seconds: survivalTime }, { completed: true });
     // RAINZ has no reveal/help concept, and only ever ends via a raindrop
     // hitting bottom — a round that formed no words (score === 0) is the
     // closest thing RAINZ has to a "failed" outcome, distinct from a game
     // over that still scored.
-    saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: score === 0, isNewBest: result.isNewBest, isTie: result.isTie });
-    shell.showEndScreen({ message: resultLine, shareText: `🌧️ RAINZ — formed ${score} word${score === 1 ? '' : 's'} today!`, celebrate: score > 0, score });
+    saveTodayOutcome(GAME_ID, {
+      revealed: false, usedHelp: false, failed: score === 0,
+      isNewBest: result.isNewBest, isTie: result.isTie,
+      panelOutcome: outcome, panelIsNewBest: isNewBest,
+    });
+    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `🌧️ RAINZ — formed ${score} word${score === 1 ? '' : 's'} today!`, celebrate: score > 0, score });
     return;
   }
 
@@ -896,9 +892,18 @@ const shell = initShell({
 // progress is only ever saved once, at round end (see the animate() end-
 // of-round block above). An interrupted round just starts fresh next time.
 if (shell.status.status === 'completed') {
-  const { resultLine, seconds, score: finalScore } = shell.status.record.data;
+  const { seconds, score: finalScore, panelOutcome, panelIsNewBest } = shell.status.record.data;
   shell.timer.setSeconds(seconds || 0);
-  shell.showEndScreen({ message: resultLine, shareText: `🌧️ RAINZ — formed ${finalScore} word${finalScore === 1 ? '' : 's'} today!` });
+  // Falls back to re-deriving outcome from just the score if this day was
+  // completed before panelOutcome/panelIsNewBest existed — isNewBest
+  // defaults to false in that fallback since there's no stored record of
+  // whether it was a meaningful PB at the time.
+  shell.showEndScreen({
+    outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore),
+    scoreText: String(finalScore),
+    isNewBest: panelIsNewBest || false,
+    shareText: `🌧️ RAINZ — formed ${finalScore} word${finalScore === 1 ? '' : 's'} today!`,
+  });
 } else {
   drawEverything(); // static (empty) preview behind the start banner
   shell.showStartBanner(startGame);

@@ -2,7 +2,7 @@
 // and both marked columns sum (or multiply/etc.) correctly.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
@@ -471,23 +471,21 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
     saveTodayScore(GAME_ID, totalSeconds);
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
     // SOLVZ has no reveal/help/fail concept — a win is the only way it ever
     // ends — so this only ever carries isNewBest/isTie for the feedback page.
-    saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>`;
-    // No previous best at all (first-ever play) or a previous best of
-    // exactly 0 would make "new best"/"equaled best" messaging read oddly
-    // this early on — fall back to the plain WELL DONE message for both.
-    const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-    const message = hasNoMeaningfulBest
-      ? wellDoneMessage
-      : result.isNewBest
-        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
-        : result.isTie
-          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${formatTime(totalSeconds)}</p><p>Try for a personal best tomorrow</p>`
-          : wellDoneMessage;
+    saveTodayOutcome(GAME_ID, {
+      revealed: false, usedHelp: false, failed: false,
+      isNewBest: result.isNewBest, isTie: result.isTie,
+      panelOutcome: undefined, panelIsNewBest: isNewBest,
+    });
     shell.showEndScreen({
-      message,
+      scoreText: formatTime(totalSeconds),
+      isNewBest,
       animateTarget: document.getElementById('board'),
       shareText: `➕➖✖️➗ SOLVZ — solved in ${formatTime(totalSeconds)}!`,
       celebrate: true,
@@ -565,8 +563,13 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
     applyTileTexts(data.tileTexts);
     totalSeconds = data.seconds;
     updateTimerDisplay();
+    // isNewBest falls back to false if this day was completed before
+    // panelIsNewBest existed — no stored record of whether it was a
+    // meaningful PB at the time.
+    const storedOutcome = getTodayOutcome(GAME_ID);
     shell.showEndScreen({
-      message: `<p>You already solved today's SOLVZ in ${formatTime(totalSeconds)}.</p><p>Hope to see you tomorrow.</p>`,
+      scoreText: formatTime(totalSeconds),
+      isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
       shareText: `➕➖✖️➗ SOLVZ — solved in ${formatTime(totalSeconds)}!`,
     });
   } else if (shell.status.status === 'in-progress') {

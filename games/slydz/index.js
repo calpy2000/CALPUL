@@ -8,7 +8,7 @@
 // are the same for every player on a given day.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
@@ -587,13 +587,17 @@ $(function () {
   // Reuses the shell's own overlay/panel/message classes directly (rather
   // than a separate near-identical copy of the same rules) so this dialog
   // can never visually drift out of sync with the start banner and
-  // end-screen again — same positioning, same line-height/paragraph
-  // spacing, same title-centering, same button shape.
+  // end-screen again — same positioning, same title-centering, same button
+  // shape. Text block reuses .shell-overlay__instructions' styling (same
+  // left-aligned multi-paragraph block the start-banner instructions use) —
+  // NOT .shell-end-screen__message, which is now a single-line-only
+  // truncated element for the redesigned end-of-game panel and would clip
+  // this multi-sentence explainer.
   const $revealConfirm = $('<div>', {
     class: 'shell-overlay reveal-confirm is-hidden',
     html: `
       <div class="shell-overlay__panel reveal-confirm__panel">
-        <div class="shell-end-screen__message">
+        <div class="shell-overlay__instructions">
           <p class="shell-end-screen__title">Reveal today's solution?</p>
           <p>You won't be able to complete SLYDZ yourself today.</p>
         </div>
@@ -632,25 +636,19 @@ $(function () {
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
     saveTodayScore(GAME_ID, totalSeconds);
-    saveTodayOutcome(GAME_ID, { revealed: false, usedHelp, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    // A trailing <p> of its own (rather than appended inside the last
-    // sentence's own <p>) so it gets the exact same paragraph spacing as
-    // every other line, present or not.
-    const helpNote = usedHelp ? '<p>(Solved with help 💡)</p>' : '';
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>Try and do better tomorrow</p>${helpNote}`;
-    // No previous best at all (first-ever play) or a previous best of
-    // exactly 0 would make "new best"/"equaled best" messaging read oddly
-    // this early on — fall back to the plain WELL DONE message for both.
-    const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-    const message = hasNoMeaningfulBest
-      ? wellDoneMessage
-      : result.isNewBest
-        ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You solved it in ${formatTime(totalSeconds)}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>${helpNote}`
-        : result.isTie
-          ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${formatTime(totalSeconds)}</p><p>Try for a personal best tomorrow</p>${helpNote}`
-          : wellDoneMessage;
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
+    saveTodayOutcome(GAME_ID, {
+      revealed: false, usedHelp, failed: false,
+      isNewBest: result.isNewBest, isTie: result.isTie,
+      panelOutcome: undefined, panelIsNewBest: isNewBest,
+    });
     shell.showEndScreen({
-      message,
+      scoreText: formatTime(totalSeconds),
+      isNewBest,
       animateTarget: document.getElementById('grid'),
       shareText: `🔤 SLYDZ — solved in ${formatTime(totalSeconds)}!${usedHelp ? ' (with help 💡)' : ''}`,
       celebrate: true,
@@ -676,9 +674,12 @@ $(function () {
     // No submitScore() call on this path — isNewBest/isTie are always false,
     // since giving up never sets a best. usedHelp still reflects whatever
     // the player actually did before giving up.
-    saveTodayOutcome(GAME_ID, { revealed: true, usedHelp, failed: false, isNewBest: false, isTie: false });
+    saveTodayOutcome(GAME_ID, {
+      revealed: true, usedHelp, failed: false, isNewBest: false, isTie: false,
+      panelOutcome: 'reveal', panelIsNewBest: false,
+    });
     shell.showEndScreen({
-      message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>You failed to win the game today</p><p>Better luck tomorrow</p>`,
+      outcome: 'reveal',
       shareText: `🔤 SLYDZ — couldn't solve it today!`,
       // No `celebrate` here — giving up is explicitly not a celebration moment.
     });
@@ -743,13 +744,17 @@ $(function () {
     // actual moment of winning/revealing, so it shouldn't replay confetti.
     if (revealed) {
       shell.showEndScreen({
-        message: `<p class="shell-end-screen__title"><strong>BAD LUCK 😢</strong></p><p>You failed to win the game today</p><p>Better luck tomorrow</p>`,
+        outcome: 'reveal',
         shareText: `🔤 SLYDZ — couldn't solve it today!`,
       });
     } else {
-      const helpNote = usedHelp ? '<p>(Solved with help 💡)</p>' : '';
+      // isNewBest falls back to false if this day was completed before
+      // panelIsNewBest existed — no stored record of whether it was a
+      // meaningful PB at the time.
+      const storedOutcome = getTodayOutcome(GAME_ID);
       shell.showEndScreen({
-        message: `<p>You already solved today's SLYDZ in ${formatTime(totalSeconds)}.</p><p>Hope to see you tomorrow.</p>${helpNote}`,
+        scoreText: formatTime(totalSeconds),
+        isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
         shareText: `🔤 SLYDZ — solved in ${formatTime(totalSeconds)}!${usedHelp ? ' (with help 💡)' : ''}`,
       });
     }

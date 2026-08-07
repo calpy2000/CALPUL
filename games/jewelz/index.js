@@ -36,7 +36,7 @@ const JEWEL_IMG = `<img src="${getJewelIconDataURL()}" alt="jewel" class="jewelz
 // regular ruby one.
 const BONUS_JEWEL_IMG = `<img src="${getBonusJewelIconDataURL()}" alt="bonus jewel" class="jewelz-inline-icon">`;
 const PLAYER_IMG = `<img src="${getPlayerIconDataURL()}" alt="player" class="jewelz-inline-icon">`;
-const BAR_IMG = `<img src="${getHorizontalBarIconDataURL()}" alt="bar" class="jewelz-inline-icon--bar">`;
+const BAR_IMG = `<img src="${getHorizontalBarIconDataURL()}" alt="blade" class="jewelz-inline-icon--bar">`;
 
 initToolsPanel([GAME_ID], {
   extraActions: [
@@ -131,18 +131,6 @@ let bonusAppearanceCount = 0;
 
 let isPlayerExploded = false;
 let finalSummaryProcessed = false;
-
-// Hues newly-spawned bars are picked from (see the spawn logic inside
-// animate()) — each bar is now drawn with the neon-glow + pulsing + full
-// 3D bevel treatment (see Bar.js's draw()), picked from the canvas effects
-// gallery: cyan, magenta, gold.
-const neonHues = [175, 320, 45];
-
-// Tracks whichever hue the MOST RECENTLY created bar got — including the
-// very first hardcoded one in startGame() — so the spawn logic below can
-// exclude it from the next pick and guarantee two bars never spawn back to
-// back in the same color.
-let lastBarHue = neonHues[0];
 
 // The player's position and size, in the canvas's own internal coordinate
 // space (0,0 top-left, up to canvas.width/height bottom-right) — NOT
@@ -270,30 +258,12 @@ function drawEverything() {
   }
 }
 
-// Builds the end-of-round message text, based on how this score compares to
-// the player's previous best (the `result` object comes straight from
-// game-storage.js's submitScore() — see shared/core/game-storage.js).
-function buildResultLine(finalScore, result) {
-  // A round that ends with nothing collected gets its own dedicated message
-  // rather than folding into the generic "GAME OVER" line below — takes
-  // priority over isFirst/isNewBest/isTie, since a score of 0 "tying" a
-  // previous best of 0 still isn't something worth congratulating.
-  if (finalScore === 0) {
-    return `<p class="shell-end-screen__title"><strong>OH NO!! 😢</strong></p><p>You failed to score today</p><p>Better luck tomorrow</p>`;
-  }
-  // No previous best at all (result.isFirst) or a previous best of exactly
-  // 0 would make "new best"/"equaled best" messaging read oddly this early
-  // on — fall back to the plain WELL DONE message for both, same as every
-  // other game.
-  const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-  if (!hasNoMeaningfulBest && result.isNewBest) {
-    return `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You scored ${finalScore} ${JEWEL_IMG}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`;
-  }
-  // finalScore > 0 is already guaranteed here (the ===0 case returned above).
-  if (!hasNoMeaningfulBest && result.isTie) {
-    return `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${finalScore} ${JEWEL_IMG}</p><p>Try for a personal best tomorrow</p>`;
-  }
-  return `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You scored ${finalScore} ${JEWEL_IMG}</p><p>Try and do better tomorrow</p>`;
+// 'zero' (nothing collected) or undefined (a normal score) — fed into
+// shell.showEndScreen's `outcome`, which picks the matching one-line copy
+// from end-panel-content.js. JEWELZ has no numeric max score (open-ended
+// point accumulation), so 'max' never applies here.
+function classifyOutcome(finalScore) {
+  return finalScore === 0 ? 'zero' : undefined;
 }
 
 // THE GAME LOOP. This function calls itself over and over via
@@ -334,13 +304,6 @@ function animate(currentTime) {
     // late.
     if (survivalTime - lastSpawnTime >= 20) {
       lastSpawnTime += 20;
-      // Picks randomly from whichever hues AREN'T the previous bar's, so
-      // consecutive bars are guaranteed to differ (with only 3 hues total,
-      // "not the same as last time" already gives real variety without
-      // needing full shuffle-bag logic).
-      const hueChoices = neonHues.filter((hue) => hue !== lastBarHue);
-      const spawnHue = hueChoices[Math.floor(Math.random() * hueChoices.length)];
-      lastBarHue = spawnHue;
 
       // Keeps picking a random position until it finds one far enough from
       // the player (150px) — a "rejection sampling" pattern: generate a
@@ -356,7 +319,7 @@ function animate(currentTime) {
         // distance = sqrt((x2-x1)² + (y2-y1)²).
         if (Math.sqrt((spawnX - player.x) ** 2 + (spawnY - player.y) ** 2) > 150) isTooClose = false;
       }
-      bars.push(new Bar(spawnX, spawnY, spawnHue));
+      bars.push(new Bar(spawnX, spawnY));
     }
 
     // Moves/spins every existing bar (see Bar.js's own update() method for
@@ -497,15 +460,27 @@ function animate(currentTime) {
 
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
     saveTodayScore(GAME_ID, score);
-    const resultLine = buildResultLine(score, result);
-    saveProgress(GAME_ID, { score, resultLine, seconds: survivalTime }, { completed: true });
+    const outcome = classifyOutcome(score);
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
+    // panelOutcome/panelIsNewBest saved into progress data (not just
+    // saveTodayOutcome) since the 'completed' reload branch below reads
+    // this same `data` object, matching how `score`/`seconds` already work.
+    saveProgress(GAME_ID, { score, panelOutcome: outcome, panelIsNewBest: isNewBest, seconds: survivalTime }, { completed: true });
     // JEWELZ has no reveal/help concept, and only ever ends via a death — a
     // round that collected nothing (score === 0) is the closest thing JEWELZ
     // has to a "failed" outcome, distinct from a death that still scored.
-    saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: score === 0, isNewBest: result.isNewBest, isTie: result.isTie });
+    saveTodayOutcome(GAME_ID, {
+      revealed: false, usedHelp: false, failed: score === 0,
+      isNewBest: result.isNewBest, isTie: result.isTie,
+      panelOutcome: outcome, panelIsNewBest: isNewBest,
+    });
 
     liveScoreEl.textContent = '';
-    shell.showEndScreen({ message: resultLine, shareText: `💎💎 JEWELZ — scored ${score} 💎 today!`, celebrate: score > 0, score });
+    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `💎💎 JEWELZ — scored ${score} 💎 today!`, celebrate: score > 0, score });
     return; // stops here — no requestAnimationFrame(animate) call below, so the loop naturally stops running
   }
 
@@ -525,7 +500,7 @@ function animate(currentTime) {
 // overrides below) sends it launching up and away at a steep angle instead,
 // so it can't immediately double back down into the player.
 function createFirstBar() {
-  const bar = new Bar(player.x, 0, neonHues[0]);
+  const bar = new Bar(player.x, 0);
   bar.y = player.y - player.radius - bar.height / 2 - 20; // just above the smiley, with a small gap
 
   // Launches upward at a random 30-50 degree angle from the horizontal, to
@@ -545,8 +520,7 @@ function createFirstBar() {
 // off the game loop — called once, when the player presses "Play Now" (see
 // shell.showStartBanner(startGame) near the bottom of this file).
 function startGame() {
-  bars = [createFirstBar()]; // one bar to start (cyan); more spawn over time inside animate()
-  lastBarHue = neonHues[0]; // matches the starting bar above, so the first spawned bar won't repeat it
+  bars = [createFirstBar()]; // one bar to start; more spawn over time inside animate()
   jewels = [];
   particles = [];
   isGameStarted = true;
@@ -602,7 +576,7 @@ const shell = initShell({
   // Buttons colored from this game's own hub-tile palette (games-registry.js's
   // `color`/`rim`) instead of the shared global blue every game used before.
   accentColor: { bg: '#63B98A', ink: '#0A371E', rim: 'rgba(10, 55, 30, 0.30)' },
-  instructions: `<p>Move the face ${PLAYER_IMG} with your finger or mouse</p><p>Avoid the bars ${BAR_IMG} to stay alive</p><p>Grab the JEWELZ ${JEWEL_IMG}${BONUS_JEWEL_IMG} to score</p>`,
+  instructions: `<p>Move the face ${PLAYER_IMG} with your finger or mouse</p><p>Avoid the blades ${BAR_IMG} to stay alive</p><p>Grab the JEWELZ ${JEWEL_IMG}${BONUS_JEWEL_IMG} to score</p>`,
   // formatScore overrides how the shared footer displays the best score —
   // by default it'd just show the raw number; this appends the jewel image
   // to match how the score is shown everywhere else in this game.
@@ -617,9 +591,18 @@ const shell = initShell({
 if (shell.status.status === 'completed') {
   // Already played today — restore and display the saved result exactly as
   // it was, without re-running any game logic.
-  const { resultLine, seconds, score: finalScore } = shell.status.record.data;
+  const { seconds, score: finalScore, panelOutcome, panelIsNewBest } = shell.status.record.data;
   shell.timer.setSeconds(seconds || 0);
-  shell.showEndScreen({ message: resultLine, shareText: `💎💎 JEWELZ — scored ${finalScore} 💎 today!` });
+  // Falls back to re-deriving outcome from just the score if this day was
+  // completed before panelOutcome/panelIsNewBest existed — isNewBest
+  // defaults to false in that fallback since there's no stored record of
+  // whether it was a meaningful PB at the time.
+  shell.showEndScreen({
+    outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore),
+    scoreText: String(finalScore),
+    isNewBest: panelIsNewBest || false,
+    shareText: `💎💎 JEWELZ — scored ${finalScore} 💎 today!`,
+  });
 } else {
   drawEverything(); // static preview behind the start banner
   shell.showStartBanner(startGame);

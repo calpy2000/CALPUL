@@ -13,7 +13,7 @@
 // exists for every day of the year.
 
 import { initShell } from '../../shared/core/shell.js';
-import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../../shared/core/game-storage.js';
+import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ANSWERS_366 } from './answers.js';
@@ -262,28 +262,28 @@ $(function () {
 
     const result = submitScore(GAME_ID, guessCount, { higherIsBetter: false });
     saveTodayScore(GAME_ID, guessCount);
-    saveTodayOutcome(GAME_ID, { revealed: false, usedHelp: false, failed: false, isNewBest: result.isNewBest, isTie: result.isTie });
-    const guessWord = `${guessCount} guess${guessCount === 1 ? '' : 'es'}`;
-    const wellDoneMessage = `<p class="shell-end-screen__title"><strong>WELL DONE 👍</strong></p><p>You got it with ${guessWord}</p><p>Try and do better tomorrow</p>`;
-    // No previous best at all (first-ever play) or a previous best of
-    // exactly 0 would make "new best"/"equaled best" messaging read oddly
-    // this early on — fall back to the plain WELL DONE message for both.
-    const hasNoMeaningfulBest = result.previousBest === null || result.previousBest === 0;
-    // A first-guess win can't be beaten tomorrow (1 guess is the best
-    // possible score), so "do better tomorrow"/"new best"/"equaled best"
-    // messaging would all read oddly here — this overrides every other
-    // message above regardless of new-best/tie status.
-    const message = guessCount === 1
-      ? `<p class="shell-end-screen__title"><strong>WOWZERZ!!! 🤩🥇🥳</strong></p><p>You got it FIRST TIME!!!</p><p>Treat yourself to a holiday!!!</p>`
-      : hasNoMeaningfulBest
-        ? wellDoneMessage
-        : result.isNewBest
-          ? `<p class="shell-end-screen__title"><strong>AMAZING!!! 🏆🥇🥳</strong></p><p>You got it with ${guessWord}</p><p>That is a new <strong style="color: var(--shell-accent)">PERSONAL BEST</strong></p>`
-          : result.isTie
-            ? `<p class="shell-end-screen__title"><strong>CONGRATULATIONS 😊</strong></p><p>You equaled your best score of ${guessWord}</p><p>Try for a personal best tomorrow</p>`
-            : wellDoneMessage;
+    // A first-guess win is MUVEEZ's max score (1 is the best possible guess
+    // count) — takes priority over new-best/tie regardless of PB status,
+    // same as every other game's 'max' outcome.
+    const outcome = guessCount === 1 ? 'max' : undefined;
+    // A meaningful PB needs a real previous best to have beaten — not the
+    // player's first-ever play, and not a previous best of exactly 0 (see
+    // end-panel-content.js's scenario-priority comment).
+    const hasMeaningfulBest = result.previousBest !== null && result.previousBest !== 0;
+    const isNewBest = hasMeaningfulBest && result.isNewBest;
+    saveTodayOutcome(GAME_ID, {
+      revealed: false,
+      usedHelp: false,
+      failed: false,
+      isNewBest: result.isNewBest,
+      isTie: result.isTie,
+      panelOutcome: outcome,
+      panelIsNewBest: isNewBest,
+    });
     shell.showEndScreen({
-      message,
+      outcome,
+      scoreText: String(guessCount),
+      isNewBest,
       animateTarget: document.getElementById('grid-container'),
       shareText: `🎬 MUVEEZ — guessed in ${guessCount}!`,
       celebrate: true,
@@ -312,10 +312,18 @@ $(function () {
     // showAnswerInInput()/revealUpTo() above) — unlike GLYMPZ/SLYDZ/QUADZ's
     // opt-in "give up" button, this isn't a player choice, but it's still a
     // real reveal, so it's recorded as both failed AND revealed.
-    saveTodayOutcome(GAME_ID, { revealed: true, usedHelp: false, failed: true, isNewBest: false, isTie: false });
+    saveTodayOutcome(GAME_ID, {
+      revealed: true,
+      usedHelp: false,
+      failed: true,
+      isNewBest: false,
+      isTie: false,
+      panelOutcome: 'loss',
+      panelIsNewBest: false,
+    });
 
     shell.showEndScreen({
-      message: `<p class="shell-end-screen__title"><strong>COMMISERATIONS 😢</strong></p><p>You failed to guess the movie</p><p>Better luck tomorrow</p>`,
+      outcome: 'loss',
       animateTarget: document.getElementById('grid-container'),
       shareText: `🎬 MUVEEZ — couldn't guess it today!`,
       // No `celebrate` here — a loss is explicitly not a celebration moment.
@@ -404,11 +412,17 @@ $(function () {
     // No `celebrate` on this branch either way — this only runs when
     // revisiting a day already finished in an EARLIER session, not on the
     // actual moment of winning/losing, so it shouldn't replay the confetti.
+    // isNewBest on a win falls back to false if this day was completed
+    // before panelIsNewBest existed — no stored record of whether it was a
+    // meaningful PB at the time.
+    const storedOutcome = won === false ? null : getTodayOutcome(GAME_ID);
     shell.showEndScreen(won === false ? {
-      message: `<p class="shell-end-screen__title"><strong>COMMISERATIONS 😢</strong></p><p>You failed to guess the movie</p><p>Better luck tomorrow</p>`,
+      outcome: 'loss',
       shareText: `🎬 MUVEEZ — couldn't guess it today!`,
     } : {
-      message: `<p>You already guessed today's MUVEEZ in ${guessCount}.</p><p>Hope to see you tomorrow.</p>`,
+      outcome: guessCount === 1 ? 'max' : undefined,
+      scoreText: String(guessCount),
+      isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
       shareText: `🎬 MUVEEZ — guessed in ${guessCount}!`,
     });
   } else if (shell.status.status === 'in-progress') {

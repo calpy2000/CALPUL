@@ -31,6 +31,7 @@ import { getDailyStatus } from './daily-lock.js';
 import { getBestScore, getTodayScore, saveTodayScore } from './game-storage.js';
 import { createFlipTimer } from './flip-timer.js';
 import { navigateWithSpinner } from './loading-indicator.js';
+import { getEndPanelContent } from './end-panel-content.js';
 
 // Small helper to cut down on repetition below: creates a DOM element,
 // optionally gives it a class and some inner HTML, and hands it back — but
@@ -161,6 +162,12 @@ export function initShell({
   });
 
   // --- Footer ---
+  // One row now — timer on the left, "Best: ..." score text on the right
+  // (previously stacked: timer above, score centered below). See
+  // .shell-footer in shell.css for the row layout and the extra right-side
+  // padding that keeps the score text clear of the dev/tester tools gear
+  // icon, which floats fixed over the bottom-right corner regardless of
+  // this row's own layout.
   const footer = el(
     'footer',
     'shell-footer',
@@ -170,7 +177,7 @@ export function initShell({
   // widget and returns { root, setSeconds }. `root` is the actual DOM
   // element to display; `setSeconds` is the function used later to update
   // it. `.prepend()` inserts it as the FIRST child of footer, so it renders
-  // above the "Best: ..." score text.
+  // to the left of the "Best: ..." score text.
   const timer = createFlipTimer();
   footer.prepend(timer.root);
   stage.parentNode.insertBefore(footer, stage.nextSibling);
@@ -244,21 +251,21 @@ export function initShell({
   const endScreen = el(
     'div',
     'shell-end-screen is-hidden',
+    // Emoji/headline/message content is now driven by end-panel-content.js
+    // (see showEndScreen below) — one shared lookup table for every game's
+    // copy across the 4 possible outcomes (max score, loss/zero/reveal, new
+    // PB, normal), rather than each game building its own HTML message.
     `<div class="shell-end-screen__panel">
-       <div class="shell-end-screen__message" id="shell-end-message"></div>
-       <div class="shell-end-screen__actions">
-         <button class="shell-btn" id="shell-hub-btn" type="button">Back to <span class="shell-btn__brand">PUSULZ</span></button>
-         <button class="shell-btn shell-btn--small is-hidden" id="shell-share-btn" type="button">Share Results</button>
-       </div>
+       <span class="shell-end-screen__emoji" id="shell-end-emoji"></span>
+       <span class="shell-end-screen__headline" id="shell-end-headline"></span>
+       <span class="shell-end-screen__message" id="shell-end-message"></span>
+       <button class="shell-btn shell-btn--small is-hidden" id="shell-share-btn" type="button">Share</button>
      </div>`
   );
   stage.appendChild(endScreen);
-  endScreen.querySelector('#shell-hub-btn').onclick = () => {
-    navigateWithSpinner(hubPath); // see the back link's identical reasoning above
-  };
 
   const shareBtn = endScreen.querySelector('#shell-share-btn');
-  const SHARE_LABEL = 'Share Results';
+  const SHARE_LABEL = 'Share';
 
   // `async function` means this function can use `await` inside it to pause
   // until a Promise resolves, and calling it always returns a Promise
@@ -370,10 +377,27 @@ export function initShell({
   // submitScore() call either — see e.g. MUVEEZ's/QUADZ's loss paths) or
   // when just redisplaying an already-completed day's result (that day's
   // score was already stamped the first time it was won).
-  function showEndScreen({ message, animateTarget, shareText, celebrate = false, score = null } = {}) {
-    // .innerHTML (not .textContent) because game messages include <br> tags
-    // for line breaks.
-    endScreen.querySelector('#shell-end-message').innerHTML = message || '';
+  //
+  // `outcome`/`scoreText`/`isNewBest` drive the one-line panel's actual
+  // copy via end-panel-content.js's getEndPanelContent() — see that file
+  // for the full scenario table. Every game classifies its own outcome
+  // ('max' | 'loss' | 'zero' | 'reveal' | undefined for a normal run) and
+  // works out `isNewBest` itself (already accounting for "no meaningful
+  // previous best" suppression — see e.g. games/valuz/index.js) since only
+  // the calling game has the facts needed to do either.
+  function showEndScreen({
+    outcome,
+    scoreText,
+    isNewBest = false,
+    animateTarget,
+    shareText,
+    celebrate = false,
+    score = null,
+  } = {}) {
+    const content = getEndPanelContent({ gameId, outcome, scoreText, isNewBest });
+    endScreen.querySelector('#shell-end-emoji').textContent = content.emoji;
+    endScreen.querySelector('#shell-end-headline').textContent = content.headline;
+    endScreen.querySelector('#shell-end-message').textContent = content.text;
     endScreen.classList.remove('is-hidden');
     if (score !== null) saveTodayScore(gameId, score);
     refreshBestScore();

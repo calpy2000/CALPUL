@@ -10,8 +10,8 @@ import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { getToolMode } from './shared/core/tool-mode.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
-import { hidePageLoadingIndicator, navigateWithSpinner, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
-import { ensureAppReady } from './shared/core/update-gate.js';
+import { hidePageLoadingIndicator, showPageLoadingIndicator, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
+import { ensureAppReady, checkForUpdateBeforeNavigate } from './shared/core/update-gate.js';
 
 // Waits here, BEFORE hiding the spinner, only on a brand-new install or a
 // version update that needs to precache — see update-gate.js's own comment
@@ -104,15 +104,26 @@ function renderTiles() {
     // (stylesheet fetch, that game's own JS module graph, etc.) takes. The
     // heavier games — WARPZ especially, with the most stylesheets/JS of any
     // page — are exactly where that gap was visible before this. preventDefault()
-    // + navigateWithSpinner() (rather than just calling
-    // showPageLoadingIndicator() and letting the plain href navigate on its
-    // own) is what actually guarantees the spinner gets a real painted frame
-    // before navigation begins — see that function's own comment for why a
-    // bare same-tick DOM change right before navigating isn't enough on its
-    // own.
+    // + showPageLoadingIndicator()/yieldForPaint() (rather than just letting
+    // the plain href navigate on its own) is what actually guarantees the
+    // spinner gets a real painted frame before navigation begins — see
+    // yieldForPaint()'s own comment for why a bare same-tick DOM change
+    // right before navigating isn't enough on its own.
+    //
+    // checkForUpdateBeforeNavigate() sits between the paint and the actual
+    // navigation — this is the OTHER place (besides the hub's own initial
+    // load, see ensureAppReady() above) a session picks up a new version: a
+    // tester who's had the hub open for a while, never doing a fresh
+    // reopen, still gets the current game files the moment they actually
+    // tap into a game, rather than only at their next cold start. Safe here
+    // specifically because nothing has started for that game yet — there's
+    // no in-progress play this could ever interrupt.
     tile.addEventListener('click', (e) => {
       e.preventDefault();
-      navigateWithSpinner(game.path);
+      showPageLoadingIndicator();
+      yieldForPaint()
+        .then(() => checkForUpdateBeforeNavigate())
+        .then(() => { window.location.href = game.path; });
     });
     // .style.setProperty() sets a CSS custom property directly on this one
     // element (as an inline style), rather than in a stylesheet — this is

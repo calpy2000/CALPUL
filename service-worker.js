@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v4.5';
+const CACHE_VERSION = 'v4.6';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -188,6 +188,22 @@ const CODE_URLS = [
 ];
 
 self.addEventListener('install', (event) => {
+  // Each URL is fetched with a cache-busting query param tied to
+  // CACHE_VERSION, plus cache: 'reload' — forces a genuine network fetch
+  // for every individual precached file rather than letting the browser's
+  // (or GitHub Pages' CDN's) ordinary HTTP caching hand back stale bytes
+  // for one specific file, even though the SW's OWN cache is otherwise
+  // correctly versioned. Without this, only the top-level service-worker.js
+  // byte-check was guaranteed fresh — an individual file like
+  // app-version.js could still get pulled from a recently-cached copy
+  // while its own Cache-Control window was still running, which is exactly
+  // the kind of timing-dependent staleness that made an update look like
+  // it landed on one page but not another moments later. The query param
+  // never sticks around at runtime — the fetch handler below already
+  // matches with {ignoreSearch:true}, so a plain, un-busted request for
+  // the same URL still finds this entry.
+  const bustedRequests = CODE_URLS.map((url) => new Request(`${url}?sw=${CACHE_VERSION}`, { cache: 'reload' }));
+
   // skipWaiting() so a newly-installed version takes over as soon as this
   // finishes, rather than sitting "waiting" until every open tab/instance of
   // the app is fully closed — update-gate.js is already what makes the
@@ -195,7 +211,7 @@ self.addEventListener('install', (event) => {
   // that depends on it, so there's no risk of the swap happening underneath
   // unfinished work.
   event.waitUntil(
-    caches.open(CODE_CACHE).then((cache) => cache.addAll(CODE_URLS)).then(() => self.skipWaiting())
+    caches.open(CODE_CACHE).then((cache) => cache.addAll(bustedRequests)).then(() => self.skipWaiting())
   );
 });
 

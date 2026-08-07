@@ -10,6 +10,7 @@ import { getDailyStatus } from './core/daily-lock.js';
 import { getStoredTester } from './core/beta-gate.js';
 import { GAMES } from '../games-registry.js';
 import { hidePageLoadingIndicator } from './core/loading-indicator.js';
+import { APP_VERSION } from './core/app-version.js';
 
 // See loading-indicator.js's own comment: every file imported above has
 // already finished loading by the time this line runs, so the spinner's
@@ -341,6 +342,7 @@ function buildMessage() {
     `Tester: ${tester}`,
     `Section: ${section}`,
     `Date: ${todayDateString()}`,
+    `Version: V${APP_VERSION}`,
     `Device: ${device}`,
     `Feedback type: ${feedbackType}`,
     `Satisfaction: ${SATISFACTION_EMOJI[satisfaction]} ${satisfaction}`,
@@ -360,6 +362,7 @@ function buildMessage() {
     `Tester: ${escapeHtml(tester)}<br>` +
     `Section: ${escapeHtml(section)}<br>` +
     `Date: ${todayDateString()}<br>` +
+    `Version: V${APP_VERSION}<br>` +
     `Device: ${escapeHtml(device)}<br>` +
     `Feedback type: ${escapeHtml(feedbackType)}<br>` +
     `Satisfaction: ${SATISFACTION_EMOJI[satisfaction]} ${escapeHtml(satisfaction)}</p>` +

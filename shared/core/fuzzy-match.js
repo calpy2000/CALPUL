@@ -48,6 +48,9 @@ const TENS_WORDS = {
 const ALTERNATE_ANSWERS = {
   'Se7en': ['seven'],
   'F1': ['formula 1', 'formula one'],
+  'The Great British Bake Off': ['bake off', 'gbbo'],
+  'Snow White and the Seven Dwarfs': ['snow white'],
+  'Charlie and the Chocolate Factory': ['willy wonka', 'chocolate factory'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

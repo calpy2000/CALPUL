@@ -72,5 +72,79 @@
         "explain": "⚡ the lightning that brings the creature to life, 🧟 the monster himself, 🔬 Victor's lab experiments, 🧵 the stitched-together body, 🔥 the torch-wielding mob that hunts him, 🏔️ the Arctic chase that ends the story."
       }
     ]
+  },
+  {
+    "day": 220,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Frozen",
+        "emoji": "❄️👸⛄",
+        "explain": "❄️ the literal frozen ice powers, 👸 princess Elsa, ⛄ Olaf the snowman."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "The Great British Bake Off",
+        "emoji": "🎪🎂🧁👩‍🍳⏱️",
+        "explain": "🎪 the famous marquee tent, 🎂🧁 the bakes themselves, 👩‍🍳 the home bakers competing each week, ⏱️ racing against the clock."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Peter Pan",
+        "emoji": "🧚⏳🏴‍☠️🌟🪟",
+        "explain": "🧚 Tinker Bell, ⏳ never growing old in Neverland, 🏴‍☠️ Captain Hook's pirates, 🌟 'second star to the right and straight on till morning,' 🪟 the nursery window they fly out of."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "The Godfather",
+        "emoji": "🍊🤐👔🚬🕯️🍷",
+        "explain": "🍊 the oranges that keep appearing right before someone dies, 🤐 the mafia code of silence, 👔 the family business built on power, 🚬 the old-world cigar-smoking dons, 🕯️ the baptism intercut with murders, 🍷 the long family dinner table."
+      }
+    ]
+  },
+  {
+    "day": 221,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Snow White and the Seven Dwarfs",
+        "emoji": "🍎🪞⛏️",
+        "explain": "🍎 the poisoned apple, 🪞 the magic mirror ('mirror mirror'), ⛏️ the Seven Dwarfs off to work."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Charlie and the Chocolate Factory",
+        "emoji": "🍫🎫👦🏭",
+        "explain": "🍫 the chocolate itself, 🎫 the golden ticket that gets you in, 👦 Charlie, 🏭 Willy Wonka's mysterious factory."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Ghostbusters",
+        "emoji": "👻🧪🔋🚕🏢",
+        "explain": "👻 the ghosts terrorizing the city, 🧪 the homemade proton-pack science, 🔋 the packs' power cells, 🚕 the New York setting, 🏢 their firehouse headquarters."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Moby Dick",
+        "emoji": "🚢🔱⚪😤🌊⚓",
+        "explain": "🚢 the long whaling voyage, 🔱 the harpoon hunt, ⚪ the whale's unnatural white colour at the heart of the obsession, 😤 Captain Ahab's all-consuming revenge, 🌊 the endless open sea, ⚓ a voyage that never comes home."
+      }
+    ]
   }
 ]

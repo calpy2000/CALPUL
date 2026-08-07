@@ -202,10 +202,17 @@
    keeps it visually identical to the start banner without needing to
    hand-update multiple places every time that panel changes.
    Only what's actually unique to this dialog is still styled here: the
-   small "Reveal solution" trigger link, and the side-by-side two-button
+   small "Reveal row/grid" trigger links, and the side-by-side two-button
    row (shell's own panels only ever stack a single button). */
-.reveal-btn {
+.reveal-actions {
   margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.reveal-btn {
   background: none;
   border: none;
   color: #6b7280;

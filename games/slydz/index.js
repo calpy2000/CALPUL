@@ -441,18 +441,21 @@ $(function () {
 
   // --- Persistence (supports resume-in-progress) ---
   function persistProgress(completed) {
-    saveProgress(GAME_ID, { letters: captureLetters(), seconds: totalSeconds, usedHelp, revealed }, { completed });
+    saveProgress(GAME_ID, { letters: captureLetters(), seconds: totalSeconds, usedHelp, revealed, row1Revealed, row2Revealed }, { completed });
   }
 
-  // `usedHelp`/`revealed` are read by persistProgress() above, but only
-  // need to be DECLARED before persistProgress() is ever CALLED (not
-  // before they're merely defined) — every call happens later, from event
-  // handlers/timers, so declaring them here is safe. The rest of the
-  // help-toggle/reveal-solution machinery (their DOM elements and
-  // functions) is built further down, after initShell() runs, since the
-  // help button attaches to the header that initShell() creates.
+  // `usedHelp`/`revealed`/`row1Revealed`/`row2Revealed` are read by
+  // persistProgress() above, but only need to be DECLARED before
+  // persistProgress() is ever CALLED (not before they're merely defined) —
+  // every call happens later, from event handlers/timers, so declaring them
+  // here is safe. The rest of the help-toggle/reveal-solution machinery
+  // (their DOM elements and functions) is built further down, after
+  // initShell() runs, since the help button attaches to the header that
+  // initShell() creates.
   let usedHelp = false;
   let revealed = false; // true once the player has given up and seen the answer, for today
+  let row1Revealed = false; // true once the player has used the "Reveal row 1" assist, for today
+  let row2Revealed = false; // true once the player has used the "Reveal row 2" assist, for today
 
   // --- Shell (header/footer/start banner/end screen/daily lock) ---
   const shell = initShell({
@@ -564,23 +567,167 @@ $(function () {
     turnOffHelp();
   }
 
-  // --- Reveal solution (same feature/styling as games/quadz/index.js —
-  // see its fuller comments for the full reasoning) — a deliberately more
-  // understated control than Play/Help, since it ENDS today's round rather
-  // than just assisting: a plain text-style button below the board, and a
-  // custom confirm panel styled/positioned like the shared shell.js start/
-  // end panels instead of the browser's native confirm() dialog. ---
+  // --- Reveal slide & swap animation (ported from games/quadz/index.js —
+  // see its fuller comments for the full design reasoning, including the
+  // two real bugs found stress-testing this exact algorithm) ---
+  // SLYDZ never introduces new letters — every letter a reveal needs is
+  // already sitting somewhere else among the same 25 tiles. So instead of
+  // silently overwriting cells, a reveal finds where each needed letter
+  // currently lives and animates it sliding there while the tile that was
+  // occupying that cell slides out to swap into the spot just vacated — the
+  // same two-tile exchange the player performs by dragging, just triggered
+  // automatically.
+
+  // For a set of target cells, works out which swaps get each one holding
+  // its required letter, as a sequence of parallel-safe batches. `isSettled`
+  // checks against the whole `fullAnswer`, not just this call's own
+  // `targetMap` — that's what stops an earlier reveal's already-correct
+  // cells (or, for the branching full-grid reveal below, a row the player
+  // solved themselves) from ever being raided as a swap source by a later
+  // one.
+  function computeRevealPlan(currentLetters, targetIndices, targetLetters, fullAnswer) {
+    const working = currentLetters.slice();
+    const targetMap = new Map();
+    targetIndices.forEach((cell, k) => targetMap.set(cell, targetLetters[k]));
+    const isSettled = (cell) => working[cell] === fullAnswer[cell];
+
+    const batches = [];
+    let guard = 0; // TOTAL_TILES cells can never need more than TOTAL_TILES passes to settle; this just stops a logic error from hanging the page
+    while (targetIndices.some((cell) => working[cell] !== targetMap.get(cell)) && guard++ < TOTAL_TILES) {
+      const usedThisBatch = new Set();
+      const batch = [];
+      targetIndices.forEach((cell) => {
+        if (usedThisBatch.has(cell) || working[cell] === targetMap.get(cell)) return;
+        const need = targetMap.get(cell);
+        // Prefer a source outside the whole target set; only fall back to a
+        // not-yet-finalized target cell if nothing outside has the letter.
+        // Either way, a settled cell is never eligible.
+        let source = -1;
+        for (let c = 0; c < TOTAL_TILES; c++) {
+          if (c === cell || usedThisBatch.has(c) || targetMap.has(c) || isSettled(c)) continue;
+          if (working[c] === need) { source = c; break; }
+        }
+        if (source === -1) {
+          for (let c = 0; c < TOTAL_TILES; c++) {
+            if (c === cell || usedThisBatch.has(c) || isSettled(c)) continue;
+            if (working[c] === need) { source = c; break; }
+          }
+        }
+        if (source === -1) return; // letter count guarantee means this shouldn't happen; leave for the next pass rather than throw
+        batch.push([cell, source]);
+        usedThisBatch.add(cell);
+        usedThisBatch.add(source);
+        [working[cell], working[source]] = [working[source], working[cell]];
+      });
+      batches.push(batch);
+    }
+    return batches;
+  }
+
+  // Flat tile index (0-24, row-major) -> its DOM element, via the same
+  // data-row/data-col attributes buildGrid() set (1-indexed, unlike QUADZ's
+  // 0-indexed letter-tile grid).
+  function tileElAt(i) {
+    const r = Math.floor(i / SIZE) + 1, c = (i % SIZE) + 1;
+    return document.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+  }
+
+  const SLIDE_MS = 1000;
+  const SLIDE_EASE = 'cubic-bezier(0.45, 0, 0.2, 1)'; // slow start (pick up) -> fast middle -> slow finish (place)
+
+  // Swaps textContent instantly, then uses a transform to make each tile
+  // LOOK like it hasn't moved yet, then animates that transform back to
+  // zero — so what the eye sees is the LETTER traveling smoothly between
+  // the two real cells, even though neither DOM element ever changes which
+  // grid cell it belongs to. Standard FLIP technique, identical to
+  // games/quadz/index.js's slideExchange().
+  function slideExchange(elA, elB) {
+    const rectA = elA.getBoundingClientRect();
+    const rectB = elB.getBoundingClientRect();
+    const dx = rectB.left - rectA.left;
+    const dy = rectB.top - rectA.top;
+    const letterA = elA.textContent;
+    const letterB = elB.textContent;
+
+    elA.textContent = letterB;
+    elB.textContent = letterA;
+
+    [[elA, dx, dy], [elB, -dx, -dy]].forEach(([el, tx, ty]) => {
+      el.style.zIndex = '5';
+      el.style.transition = 'none';
+      el.style.transform = `translate(${tx}px, ${ty}px)`;
+    });
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      [elA, elB].forEach((el) => {
+        el.style.transition = `transform ${SLIDE_MS}ms ${SLIDE_EASE}`;
+        el.style.transform = 'translate(0, 0)';
+      });
+    }));
+
+    setTimeout(() => {
+      [elA, elB].forEach((el) => {
+        el.style.zIndex = '';
+        el.style.transition = '';
+        el.style.transform = '';
+      });
+    }, SLIDE_MS + 60);
+  }
+
+  // Plays each batch's swaps in parallel, waits for the slide to finish,
+  // then moves on to the next batch. onDone runs once every batch has
+  // played.
+  function playRevealBatches(batches, onDone) {
+    let i = 0;
+    function playNext() {
+      if (i >= batches.length) { onDone(); return; }
+      batches[i++].forEach(([a, b]) => slideExchange(tileElAt(a), tileElAt(b)));
+      setTimeout(playNext, SLIDE_MS + 80);
+    }
+    playNext();
+  }
+
+  // Row 1's flat indices are [0..SIZE-1], row 2's are [SIZE..2*SIZE-1], etc.
+  function rowIndices(row) {
+    const base = (row - 1) * SIZE;
+    return Array.from({ length: SIZE }, (_, c) => base + c);
+  }
+
+  // --- Reveal assists (same feature/styling as games/quadz/index.js — see
+  // its fuller comments for the full reasoning) — three deliberately
+  // understated, stacked text-style buttons below the board, forming a
+  // difficulty ladder alongside Help: Help (free, never touches the board)
+  // -> Reveal Row 1 -> Reveal Row 2 -> Reveal full grid (the only one of
+  // the three that ENDS today's round — the two partial reveals let the
+  // player keep playing afterwards). Shown/hidden on the same schedule as
+  // the help toggle, except a partial reveal already used today stays
+  // hidden even while the others are shown (see showRevealButtons()).
+  const $revealActions = $('<div>', { class: 'reveal-actions' }).appendTo('#game-root');
+  const $revealRow1Btn = $('<button>', {
+    class: 'reveal-btn is-hidden',
+    type: 'button',
+    text: 'Reveal row 1',
+  }).appendTo($revealActions);
+  const $revealRow2Btn = $('<button>', {
+    class: 'reveal-btn is-hidden',
+    type: 'button',
+    text: 'Reveal row 2',
+  }).appendTo($revealActions);
   const $revealBtn = $('<button>', {
     class: 'reveal-btn is-hidden',
     type: 'button',
-    text: 'Reveal solution',
-  }).appendTo('#game-root');
+    text: 'Reveal full grid',
+  }).appendTo($revealActions);
 
-  function showRevealButton() {
+  function showRevealButtons() {
+    if (!row1Revealed) $revealRow1Btn.removeClass('is-hidden');
+    if (!row2Revealed) $revealRow2Btn.removeClass('is-hidden');
     $revealBtn.removeClass('is-hidden');
   }
 
-  function hideRevealButton() {
+  function hideRevealButtons() {
+    $revealRow1Btn.addClass('is-hidden');
+    $revealRow2Btn.addClass('is-hidden');
     $revealBtn.addClass('is-hidden');
   }
 
@@ -593,38 +740,117 @@ $(function () {
   // NOT .shell-end-screen__message, which is now a single-line-only
   // truncated element for the redesigned end-of-game panel and would clip
   // this multi-sentence explainer.
+  // Shared by all three reveal buttons (openRevealConfirm() below fills in
+  // the title/body/confirm-label per target) rather than three near-
+  // identical panels — only the row-specific wording and the "this ends
+  // today's round" sentence (full grid only) differ.
   const $revealConfirm = $('<div>', {
     class: 'shell-overlay reveal-confirm is-hidden',
     html: `
       <div class="shell-overlay__panel reveal-confirm__panel">
         <div class="shell-overlay__instructions">
-          <p class="shell-end-screen__title">Reveal today's solution?</p>
-          <p>You won't be able to complete SLYDZ yourself today.</p>
+          <p class="shell-end-screen__title reveal-confirm__title"></p>
+          <div class="reveal-confirm__body"></div>
         </div>
         <div class="reveal-confirm__actions">
           <button class="shell-btn" type="button" id="slydz-reveal-cancel">Cancel</button>
-          <button class="shell-btn shell-btn--danger" type="button" id="slydz-reveal-confirm">Reveal Solution</button>
+          <button class="shell-btn shell-btn--danger" type="button" id="slydz-reveal-confirm"></button>
         </div>
       </div>
     `,
   }).appendTo('#game-stage');
 
+  // Same explanation for all three targets: SLYDZ always accepts any
+  // dictionary word, not just the curated daily solution (see checkRow()
+  // above), so a row the player already solved a different way is a real,
+  // common scenario — not an edge case worth burying in fine print.
+  const REVEAL_EXPLAINER = '<p>For SLYDZ there is always a daily solution, with 5 words across.</p>'
+    + '<p>This solution may not be the only way to solve SLYDZ, and may not contain any of the valid words you\'ve already found — revealing some or all of it may replace those words.</p>';
+
+  let pendingRevealTarget = null; // 'row1' | 'row2' | 'full', set while the confirm panel is open
+
+  function openRevealConfirm(target) {
+    pendingRevealTarget = target;
+    const titles = { row1: 'Reveal Row 1?', row2: 'Reveal Row 2?', full: "Reveal today's solution?" };
+    const confirmLabels = { row1: 'Reveal Row 1', row2: 'Reveal Row 2', full: 'Reveal Solution' };
+    // Only the full reveal ends the round — that's the one warning worth
+    // calling out on top of the shared explainer above.
+    const endingNote = target === 'full' ? '<p>You won\'t be able to complete SLYDZ yourself today.</p>' : '';
+    $revealConfirm.find('.reveal-confirm__title').text(titles[target]);
+    $revealConfirm.find('.reveal-confirm__body').html(REVEAL_EXPLAINER + endingNote);
+    $revealConfirm.find('#slydz-reveal-confirm').text(confirmLabels[target]);
+    $revealConfirm.removeClass('is-hidden');
+  }
+
   $revealConfirm.find('#slydz-reveal-cancel').on('click', () => {
     $revealConfirm.addClass('is-hidden');
+    pendingRevealTarget = null;
   });
   $revealConfirm.find('#slydz-reveal-confirm').on('click', () => {
     $revealConfirm.addClass('is-hidden');
-    revealSolution();
+    if (pendingRevealTarget === 'row1') revealRow1();
+    else if (pendingRevealTarget === 'row2') revealRow2();
+    else if (pendingRevealTarget === 'full') revealSolution();
+    pendingRevealTarget = null;
   });
 
+  $revealRow1Btn.on('click', () => {
+    if (locked || row1Revealed) return;
+    openRevealConfirm('row1');
+  });
+  $revealRow2Btn.on('click', () => {
+    if (locked || row2Revealed) return;
+    openRevealConfirm('row2');
+  });
   $revealBtn.on('click', () => {
     if (locked) return;
-    $revealConfirm.removeClass('is-hidden');
+    openRevealConfirm('full');
   });
 
   // Locked until Play Now / Resume is pressed — otherwise tiles are
   // draggable underneath the start banner.
   let locked = true;
+
+  // Reveals just the day's answer for row 1 or row 2 by sliding each needed
+  // letter in from wherever it currently sits (see the slide & swap engine
+  // above) rather than silently overwriting cells, so any different word
+  // the player already built elsewhere visibly trades places instead of
+  // just vanishing. `locked` goes true only for the ~1s the tiles are
+  // sliding — a partial reveal doesn't end the round, so a win right after
+  // one still goes through the normal handleWin() path.
+  function revealRow1() {
+    row1Revealed = true;
+    $revealRow1Btn.addClass('is-hidden');
+    locked = true;
+    const targetIndices = rowIndices(1);
+    const targetLetters = puzzle.answerLetters.slice(0, SIZE);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, puzzle.answerLetters);
+    playRevealBatches(batches, () => {
+      locked = false;
+      if (updateRowValidity()) {
+        handleWin();
+      } else {
+        persistProgress(false);
+      }
+    });
+  }
+
+  function revealRow2() {
+    row2Revealed = true;
+    $revealRow2Btn.addClass('is-hidden');
+    locked = true;
+    const targetIndices = rowIndices(2);
+    const targetLetters = puzzle.answerLetters.slice(SIZE, SIZE * 2);
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, puzzle.answerLetters);
+    playRevealBatches(batches, () => {
+      locked = false;
+      if (updateRowValidity()) {
+        handleWin();
+      } else {
+        persistProgress(false);
+      }
+    });
+  }
 
   // Shared by both a real player win and the dev "Solve puzzle" shortcut
   // below — see games/glympz/index.js's handleWin() for the same pattern.
@@ -632,7 +858,7 @@ $(function () {
     locked = true;
     stopTimer();
     hideHelpToggle();
-    hideRevealButton();
+    hideRevealButtons();
     persistProgress(true);
     const result = submitScore(GAME_ID, totalSeconds, { higherIsBetter: false });
     saveTodayScore(GAME_ID, totalSeconds);
@@ -657,31 +883,95 @@ $(function () {
   }
 
   // Reachable only via the player's own confirmed choice to give up (see
-  // the $revealConfirm wiring above) — reveals the actual solution, locks
-  // the board same as a real finish, but records it as a NON-win (no
-  // submitScore(), no celebrate/confetti) and shows a "better luck
-  // tomorrow" message instead of a congratulations, same spirit as
-  // MUVEEZ's handleLoss() (see games/muveez/index.js).
+  // the $revealConfirm wiring above) — reveals a solution via the same
+  // slide & swap engine as the two partial reveals, locks the board same as
+  // a real finish, but records it as a NON-win (no submitScore(), no
+  // celebrate/confetti) and shows a "better luck tomorrow" message instead
+  // of a congratulations, same spirit as MUVEEZ's handleLoss() (see
+  // games/muveez/index.js).
+  //
+  // Which solution gets revealed depends on how far the player got: if
+  // they've already built up at least HELP_MIN_CORRECT_WORDS valid rows of
+  // their own AND the leftover letters can still be rearranged into that
+  // many more valid words (the exact same search computeHelpMessage()'s
+  // CAN/CANNOT verdict runs), the reveal shows THAT solution instead of the
+  // daily one — leaving their own already-solved rows completely untouched
+  // (they're `isSettled` in computeRevealPlan() below, since `answer`
+  // copies their CURRENT letters) and only sliding the still-unsolved rows
+  // into the newly-found words. Falls back to the guaranteed daily solution
+  // (puzzle.answerLetters) whenever the player hasn't found enough words
+  // yet for that search to even run, or it ran and genuinely found no way
+  // to complete the remaining rows.
   function revealSolution() {
     locked = true;
     stopTimer();
     hideHelpToggle();
-    hideRevealButton();
+    hideRevealButtons();
     revealed = true;
-    applyLetters(puzzle.answerLetters);
-    updateRowValidity();
-    persistProgress(true);
-    // No submitScore() call on this path — isNewBest/isTie are always false,
-    // since giving up never sets a best. usedHelp still reflects whatever
-    // the player actually did before giving up.
-    saveTodayOutcome(GAME_ID, {
-      revealed: true, usedHelp, failed: false, isNewBest: false, isTie: false,
-      panelOutcome: 'reveal', panelIsNewBest: false,
-    });
-    shell.showEndScreen({
-      outcome: 'reveal',
-      shareText: `🔤 SLYDZ — couldn't solve it today!`,
-      // No `celebrate` here — giving up is explicitly not a celebration moment.
+
+    let validCount = 0;
+    const remainingLetters = [];
+    const rows = [];
+    for (let row = 1; row <= SIZE; row++) {
+      const letters = getRowLetters(row);
+      const valid = checkRow(letters);
+      if (valid) validCount++;
+      else remainingLetters.push(...letters);
+      rows.push({ row, valid, letters });
+    }
+
+    let targetIndices = null;
+    let targetLetters = null;
+    let fullAnswer = puzzle.answerLetters;
+
+    if (validCount >= HELP_MIN_CORRECT_WORDS) {
+      const poolCounts = letterCounts(remainingLetters.join(''));
+      const candidates = WORD_LETTER_COUNTS.filter((entry) => fitsWithin(entry.counts, poolCounts));
+      const foundWords = canFormFromCounts(poolCounts, SIZE - validCount, candidates, new Map());
+      if (foundWords !== null) {
+        // already-valid rows keep their CURRENT letters in `answer` (so
+        // computeRevealPlan()'s isSettled() protects them from ever being
+        // touched); the still-invalid rows get the newly-found words.
+        const answer = new Array(TOTAL_TILES);
+        let wordIdx = 0;
+        rows.forEach(({ row, valid, letters }) => {
+          const base = (row - 1) * SIZE;
+          if (valid) {
+            for (let c = 0; c < SIZE; c++) answer[base + c] = letters[c];
+          } else {
+            const word = foundWords[wordIdx++];
+            for (let c = 0; c < SIZE; c++) answer[base + c] = word[c];
+          }
+        });
+        targetIndices = [];
+        rows.filter((r) => !r.valid).forEach((r) => targetIndices.push(...rowIndices(r.row)));
+        targetLetters = targetIndices.map((i) => answer[i]);
+        fullAnswer = answer;
+      }
+    }
+
+    if (targetIndices === null) {
+      targetIndices = Array.from({ length: TOTAL_TILES }, (_, i) => i);
+      targetLetters = puzzle.answerLetters;
+      fullAnswer = puzzle.answerLetters;
+    }
+
+    const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, fullAnswer);
+    playRevealBatches(batches, () => {
+      updateRowValidity();
+      persistProgress(true);
+      // No submitScore() call on this path — isNewBest/isTie are always false,
+      // since giving up never sets a best. usedHelp still reflects whatever
+      // the player actually did before giving up.
+      saveTodayOutcome(GAME_ID, {
+        revealed: true, usedHelp, failed: false, isNewBest: false, isTie: false,
+        panelOutcome: 'reveal', panelIsNewBest: false,
+      });
+      shell.showEndScreen({
+        outcome: 'reveal',
+        shareText: `🔤 SLYDZ — couldn't solve it today!`,
+        // No `celebrate` here — giving up is explicitly not a celebration moment.
+      });
     });
   }
 
@@ -763,12 +1053,14 @@ $(function () {
     applyLetters(data.letters);
     totalSeconds = data.seconds;
     usedHelp = data.usedHelp || false;
+    row1Revealed = data.row1Revealed || false;
+    row2Revealed = data.row2Revealed || false;
     updateTimerDisplay();
     updateRowValidity();
     shell.showStartBanner(() => {
       locked = false;
       showHelpToggle();
-      showRevealButton();
+      showRevealButtons();
       startTimer();
     }, { label: 'Resume' });
   } else {
@@ -777,7 +1069,7 @@ $(function () {
     shell.showStartBanner(() => {
       locked = false;
       showHelpToggle();
-      showRevealButton();
+      showRevealButtons();
       totalSeconds = 0;
       updateTimerDisplay();
       startTimer();

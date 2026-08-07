@@ -6,4 +6,4 @@
 // every push to GitHub — so it roughly tracks "how many pushes since the
 // last major version." MAJOR only changes when the user explicitly asks
 // for it, which also resets MINOR back to 1.
-export const APP_VERSION = '4.1';
+export const APP_VERSION = '4.2';

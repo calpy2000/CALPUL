@@ -487,7 +487,7 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
       scoreText: formatTime(totalSeconds),
       isNewBest,
       animateTarget: document.getElementById('board'),
-      shareText: `➕➖✖️➗ SOLVZ — solved in ${formatTime(totalSeconds)}!`,
+      shareText: `➗ SOLVZ - got it in ${formatTime(totalSeconds)}`,
       celebrate: true,
       score: totalSeconds,
     });
@@ -570,7 +570,7 @@ col 3: ${r1c3} ${opC3} ${r3c3} = ${ansC3} (${computeOp(r1c3, opC3, r3c3)})`);
     shell.showEndScreen({
       scoreText: formatTime(totalSeconds),
       isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
-      shareText: `➕➖✖️➗ SOLVZ — solved in ${formatTime(totalSeconds)}!`,
+      shareText: `➗ SOLVZ - got it in ${formatTime(totalSeconds)}`,
     });
   } else if (shell.status.status === 'in-progress') {
     // Mid-solve from earlier today — restore the saved arrangement/time,

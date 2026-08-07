@@ -928,7 +928,7 @@ $(function () {
     shell.showEndScreen({
       scoreText: formatTime(totalSeconds),
       isNewBest,
-      shareText: `🧩 QUADZ — solved in ${formatTime(totalSeconds)}!${usedHelp ? ' (with help 💡)' : ''}`,
+      shareText: `🔢 QUADZ - solved in ${formatTime(totalSeconds)}`,
       celebrate: true,
       score: totalSeconds,
     });
@@ -966,7 +966,7 @@ $(function () {
       });
       shell.showEndScreen({
         outcome: 'reveal',
-        shareText: `🧩 QUADZ — couldn't solve it today!`,
+        shareText: `🔢 QUADZ - did not solve today`,
         // No `celebrate` here — giving up is explicitly not a celebration moment.
       });
     });
@@ -1026,7 +1026,7 @@ $(function () {
     if (revealed) {
       shell.showEndScreen({
         outcome: 'reveal',
-        shareText: `🧩 QUADZ — couldn't solve it today!`,
+        shareText: `🔢 QUADZ - did not solve today`,
       });
     } else {
       // isNewBest falls back to false if this day was completed before
@@ -1036,7 +1036,7 @@ $(function () {
       shell.showEndScreen({
         scoreText: formatTime(totalSeconds),
         isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
-        shareText: `🧩 QUADZ — solved in ${formatTime(totalSeconds)}!${usedHelp ? ' (with help 💡)' : ''}`,
+        shareText: `🔢 QUADZ - solved in ${formatTime(totalSeconds)}`,
       });
     }
   } else if (shell.status.status === 'in-progress') {

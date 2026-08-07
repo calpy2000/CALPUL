@@ -480,7 +480,7 @@ function animate(currentTime) {
     });
 
     liveScoreEl.textContent = '';
-    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `💎💎 JEWELZ — scored ${score} 💎 today!`, celebrate: score > 0, score });
+    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `💎 JEWELZ - scored ${score} today`, celebrate: score > 0, score });
     return; // stops here — no requestAnimationFrame(animate) call below, so the loop naturally stops running
   }
 
@@ -601,7 +601,7 @@ if (shell.status.status === 'completed') {
     outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore),
     scoreText: String(finalScore),
     isNewBest: panelIsNewBest || false,
-    shareText: `💎💎 JEWELZ — scored ${finalScore} 💎 today!`,
+    shareText: `💎 JEWELZ - scored ${finalScore} today`,
   });
 } else {
   drawEverything(); // static preview behind the start banner

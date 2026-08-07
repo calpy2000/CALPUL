@@ -783,7 +783,7 @@ function animate(currentTime) {
       isNewBest: result.isNewBest, isTie: result.isTie,
       panelOutcome: outcome, panelIsNewBest: isNewBest,
     });
-    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `🌧️ RAINZ — formed ${score} word${score === 1 ? '' : 's'} today!`, celebrate: score > 0, score });
+    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `🌧️ RAINZ - formed ${score} word${score === 1 ? '' : 's'} today`, celebrate: score > 0, score });
     return;
   }
 
@@ -902,7 +902,7 @@ if (shell.status.status === 'completed') {
     outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore),
     scoreText: String(finalScore),
     isNewBest: panelIsNewBest || false,
-    shareText: `🌧️ RAINZ — formed ${finalScore} word${finalScore === 1 ? '' : 's'} today!`,
+    shareText: `🌧️ RAINZ - formed ${finalScore} word${finalScore === 1 ? '' : 's'} today`,
   });
 } else {
   drawEverything(); // static (empty) preview behind the start banner

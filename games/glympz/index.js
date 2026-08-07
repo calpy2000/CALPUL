@@ -349,7 +349,7 @@ $(function () {
       scoreText: formatTime(totalSeconds),
       isNewBest,
       animateTarget: document.getElementById('grid-container'),
-      shareText: `🟥 GLYMPZ 🟩 — solved in ${formatTime(totalSeconds)}!`,
+      shareText: `🟥 GLYMPZ 🟩 - solved in ${formatTime(totalSeconds)}`,
       celebrate: true,
       score: totalSeconds,
     });
@@ -377,7 +377,7 @@ $(function () {
     });
     shell.showEndScreen({
       outcome: 'reveal',
-      shareText: `🟥 GLYMPZ 🟩 — couldn't solve it today!`,
+      shareText: `🟥 GLYMPZ 🟩 - did not solve today`,
       // No `celebrate` here — giving up is explicitly not a celebration moment.
     });
   }
@@ -442,7 +442,7 @@ $(function () {
     if (revealed) {
       shell.showEndScreen({
         outcome: 'reveal',
-        shareText: `🟥 GLYMPZ 🟩 — couldn't solve it today!`,
+        shareText: `🟥 GLYMPZ 🟩 - did not solve today`,
       });
     } else {
       // isNewBest falls back to false if this day was completed before
@@ -452,7 +452,7 @@ $(function () {
       shell.showEndScreen({
         scoreText: formatTime(totalSeconds),
         isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
-        shareText: `🟥 GLYMPZ 🟩 — solved in ${formatTime(totalSeconds)}!`,
+        shareText: `🟥 GLYMPZ 🟩 - solved in ${formatTime(totalSeconds)}`,
       });
     }
   } else if (shell.status.status === 'in-progress') {

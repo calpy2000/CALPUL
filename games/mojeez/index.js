@@ -230,7 +230,7 @@ $(function () {
       scoreText: String(finalScore),
       isNewBest,
       animateTarget: document.getElementById('mojeezBoard'),
-      shareText: `🎭 MOJEEZ Day ${activeDayData.day} — matched ${finalScore}/4!`,
+      shareText: `🙂 MOJEEZ - ${finalScore}/4`,
       celebrate: finalScore === 4,
       score: isPreview ? null : finalScore,
     });
@@ -378,7 +378,7 @@ $(function () {
       outcome: storedOutcome ? storedOutcome.panelOutcome : classifyOutcome(score),
       scoreText: String(score),
       isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
-      shareText: `🎭 MOJEEZ Day ${activeDayData.day} — matched ${score}/4!`,
+      shareText: `🙂 MOJEEZ - ${score}/4`,
     });
   } else if (shell.status.status === 'in-progress') {
     const { data } = shell.status.record;

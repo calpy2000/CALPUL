@@ -1678,7 +1678,7 @@ function animate(currentTime) {
       outcome,
       scoreText: String(score),
       isNewBest,
-      shareText: sequenceCompleted ? `☄️ WARPZ — beat the whole gauntlet and scored ${score} points today!` : `☄️ WARPZ — scored ${score} points today!`,
+      shareText: sequenceCompleted ? `☄️ WARPZ - scored ${score} points today and completed the whole course!` : `☄️ WARPZ - scored ${score} points today`,
       celebrate: sequenceCompleted || score > 0,
       score,
     });
@@ -1866,7 +1866,7 @@ if (shell.status.status === 'completed') {
     outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore, false),
     scoreText: String(finalScore),
     isNewBest: panelIsNewBest || false,
-    shareText: `☄️ WARPZ — scored ${finalScore} points today!`,
+    shareText: `☄️ WARPZ - scored ${finalScore} points today`,
   });
 } else {
   drawEverything(); // static preview behind the start banner

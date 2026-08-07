@@ -411,7 +411,7 @@ $(function () {
       scoreText: String(finalScore),
       isNewBest,
       animateTarget: document.getElementById('board'),
-      shareText: `❓ VALUZ Day ${activeDayData.day} (${activeDayData.category}) — matched ${finalScore}/6!`,
+      shareText: `❓ VALUZ - ${finalScore}/6`,
       celebrate: finalScore === 6,
       score: isPreview ? null : finalScore,
     });
@@ -560,7 +560,7 @@ $(function () {
       outcome: storedOutcome ? storedOutcome.panelOutcome : classifyOutcome(score),
       scoreText: String(score),
       isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
-      shareText: `❓ VALUZ Day ${activeDayData.day} (${activeDayData.category}) — matched ${score}/6!`,
+      shareText: `❓ VALUZ - ${score}/6`,
     });
   } else if (shell.status.status === 'in-progress') {
     const { data } = shell.status.record;

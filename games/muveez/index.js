@@ -285,7 +285,7 @@ $(function () {
       scoreText: String(guessCount),
       isNewBest,
       animateTarget: document.getElementById('grid-container'),
-      shareText: `🎬 MUVEEZ — guessed in ${guessCount}!`,
+      shareText: `🎬 MUVEEZ - guessed in ${guessCount}`,
       celebrate: true,
       score: guessCount,
     });
@@ -325,7 +325,7 @@ $(function () {
     shell.showEndScreen({
       outcome: 'loss',
       animateTarget: document.getElementById('grid-container'),
-      shareText: `🎬 MUVEEZ — couldn't guess it today!`,
+      shareText: `🎬 MUVEEZ - did not guess today`,
       // No `celebrate` here — a loss is explicitly not a celebration moment.
     });
   }
@@ -418,12 +418,12 @@ $(function () {
     const storedOutcome = won === false ? null : getTodayOutcome(GAME_ID);
     shell.showEndScreen(won === false ? {
       outcome: 'loss',
-      shareText: `🎬 MUVEEZ — couldn't guess it today!`,
+      shareText: `🎬 MUVEEZ - did not guess today`,
     } : {
       outcome: guessCount === 1 ? 'max' : undefined,
       scoreText: String(guessCount),
       isNewBest: storedOutcome ? storedOutcome.panelIsNewBest : false,
-      shareText: `🎬 MUVEEZ — guessed in ${guessCount}!`,
+      shareText: `🎬 MUVEEZ - guessed in ${guessCount}`,
     });
   } else if (shell.status.status === 'in-progress') {
     const { data } = shell.status.record;

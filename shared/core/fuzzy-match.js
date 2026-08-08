@@ -51,6 +51,13 @@ const ALTERNATE_ANSWERS = {
   'The Great British Bake Off': ['bake off', 'gbbo'],
   'Snow White and the Seven Dwarfs': ['snow white'],
   'Charlie and the Chocolate Factory': ['willy wonka', 'chocolate factory'],
+  'Doctor Who': ['dr who'],
+  'A Christmas Carol': ['christmas carol', 'scrooge'],
+  'Fawlty Towers': ['faulty towers'],
+  'The Little Mermaid': ['little mermaid'],
+  "Charlotte's Web": ['charlottes web'],
+  'Indiana Jones and the Raiders of the Lost Ark': ['raiders of the lost ark', 'indiana jones'],
+  'M*A*S*H': ['mash'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

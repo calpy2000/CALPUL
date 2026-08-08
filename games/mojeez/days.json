@@ -146,5 +146,153 @@
         "explain": "🚢 the long whaling voyage, 🔱 the harpoon hunt, ⚪ the whale's unnatural white colour at the heart of the obsession, 😤 Captain Ahab's all-consuming revenge, 🌊 the endless open sea, ⚓ a voyage that never comes home."
       }
     ]
+  },
+  {
+    "day": 222,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Aladdin",
+        "emoji": "🧞🪔🐒",
+        "explain": "🧞 the genie granted from the lamp, 🪔 the magic lamp itself, 🐒 Abu, Aladdin's mischievous monkey sidekick."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Doctor Who",
+        "emoji": "🕰️🌀🤖🧣🔵",
+        "explain": "🕰️ constant time travel, 🌀 the swirling time vortex, 🤖 the robotic alien villains, 🧣 the Doctor's iconic long scarf, 🔵 the blue police box that's really a time machine."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Dracula",
+        "emoji": "🧛🦇🩸🏰⚰️🌙",
+        "explain": "🧛 Count Dracula himself, 🦇 his bat form, 🩸 the blood he feeds on, 🏰 his Transylvanian castle, ⚰️ the coffin he rests in by day, 🌙 the night he only ever moves by."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Casablanca",
+        "emoji": "✈️🎹💔🥂🌍🚬🛂",
+        "explain": "✈️ the fateful plane departure at the airport, 🎹 'As Time Goes By' played on the piano, 💔 the doomed wartime romance, 🥂 Rick's Café Américain, 🌍 the WWII refugee crossroads setting, 🚬 the smoky noir atmosphere, 🛂 the letters of transit everyone's desperate for."
+      }
+    ]
+  },
+  {
+    "day": 223,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Shrek",
+        "emoji": "🧌🐴🧅",
+        "explain": "🧌 Shrek the ogre, 🐴 Donkey his talking sidekick, 🧅 his famous \"ogres are like onions\" line."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "A Christmas Carol",
+        "emoji": "👻⛓️🎄💰",
+        "explain": "👻 the three ghosts who visit Scrooge, ⛓️ Marley's chains, 🎄 the Christmas setting itself, 💰 Scrooge's miserly obsession with money before his change of heart."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Fawlty Towers",
+        "emoji": "🏨😤🔔🚗🧔🍽️",
+        "explain": "🏨 the chaotic small hotel, 😤 Basil Fawlty's constant simmering rage, 🔔 the front desk where disasters unfold, 🚗 his infamous breakdown beating his car with a branch, 🧔 Basil's own exasperated moustache, 🍽️ the dining-room chaos every episode circles back to."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Wuthering Heights",
+        "emoji": "🌫️🏚️💔👻🌾⛈️🐕",
+        "explain": "🌫️ the wild, windswept Yorkshire moors, 🏚️ the isolated Wuthering Heights house, 💔 Heathcliff and Cathy's destructive, doomed love, 👻 Cathy's ghost said to haunt the moors, 🌾 the untamed moorland setting, ⛈️ the stormy gothic atmosphere, 🐕 the dogs recurring throughout the story."
+      }
+    ]
+  },
+  {
+    "day": 224,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "Matilda",
+        "emoji": "📚🧠✋",
+        "explain": "📚 Matilda's love of books, 🧠 her genius mind, ✋ her telekinetic powers."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Die Hard",
+        "emoji": "🏢💥🦶🎄",
+        "explain": "🏢 the Nakatomi Plaza skyscraper under siege, 💥 the explosive action, 🦶 John McClane fighting barefoot, 🎄 the Christmas Eve setting."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Shining",
+        "emoji": "🏨❄️🪓👦🌀🩸",
+        "explain": "🏨 the isolated Overlook Hotel, ❄️ snowed in for the winter, 🪓 Jack's iconic axe, 👦 Danny and his psychic \"shining\" visions, 🌀 the hedge maze chase at the climax, 🩸 the blood-flooded elevator image burned into film history."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Great Expectations",
+        "emoji": "👰🕰️🎂🏚️⛓️💍🕯️",
+        "explain": "👰 the jilted Miss Havisham, frozen in her wedding dress, 🕰️ every clock in her house stopped at the moment she was jilted, 🎂 her rotting wedding cake left untouched for decades, 🏚️ the decaying Satis House, ⛓️ Pip's secret connection to the escaped convict Magwitch, 💍 the wedding that never happened, 🕯️ the dim, candlelit gloom she lives in."
+      }
+    ]
+  },
+  {
+    "day": 225,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Little Mermaid",
+        "emoji": "🧜‍♀️🐚🎤",
+        "explain": "🧜‍♀️ Ariel the mermaid, 🐚 her underwater world, 🎤 the voice she trades away to Ursula."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Charlotte's Web",
+        "emoji": "🕷️🕸️🐷🚜",
+        "explain": "🕷️ Charlotte the spider, 🕸️ her web where she weaves messages, 🐷 Wilbur the pig she's trying to save, 🚜 the farm they both live on."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Indiana Jones and the Raiders of the Lost Ark",
+        "emoji": "🤠🐍🗺️📦😱🔥",
+        "explain": "🤠 Indiana Jones's adventurer look, 🐍 his fear of snakes, 🗺️ the hunt across ancient ruins, 📦 the mysterious wooden crate the Ark is sealed in, 😱 the horrifying finale when it's finally opened, 🔥 the face-melting climax."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "M*A*S*H",
+        "emoji": "🚁⛺🩺😂🔫🍸📢",
+        "explain": "🚁 the helicopters bringing in wounded soldiers, ⛺ the army field hospital tents, 🩺 the doctors and medics at work, 😂 the dark comedy woven through the chaos, 🔫 the Korean War backdrop the whole show is set against, 🍸 the Swamp tent's off-duty drinking, 📢 the camp's constant loudspeaker announcements."
+      }
+    ]
   }
 ]

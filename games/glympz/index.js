@@ -8,12 +8,32 @@ import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getTileIconDataURL } from './row-icon.js';
-import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { stripReloadParam, loadDailyImage } from '../../shared/core/loading-indicator.js';
 
-hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 const GAME_ID = 'glympz';
+
+// Picks today's image: dayOfYear() (see shared/core/date-utils.js) returns a
+// number 1-366, and this project ships one numbered .jpg per day in the
+// images/ folder (1.jpg, 2.jpg, ... 366.jpg) — so "today's puzzle" is really
+// just "load the image file whose name matches today's day-of-year."
+// document.documentElement is the <html> element; .style.setProperty(...)
+// sets a CSS custom property directly on it (inline), which style.css then
+// reads back with background-image: var(--daily-image, ...) — this is how
+// the SAME CSS rule ends up showing a DIFFERENT image every day, without
+// editing any CSS file. Set here (not inside the jQuery-ready block below)
+// since it doesn't need the DOM at all, and the spinner wait right after
+// needs it set before that wait begins.
+const imageFileName = `${dayOfYear()}.jpg`;
+const imageUrl = `./images/${imageFileName}`;
+document.documentElement.style.setProperty('--daily-image', `url('${imageUrl}')`);
+
+// See loading-indicator.js's own comment for why this waits on the image
+// (deliberately not precached) rather than the old hidePageLoadingIndicator()
+// call that used to fire here regardless of whether the image had even
+// started loading, leaving the page looking "ready" with visibly blank tiles.
+await loadDailyImage(imageUrl, "Loading today's image — this'll only take a moment");
 
 // See the matching comment in games/solvz/index.js for what $(function(){})
 // does (runs once the page's HTML is ready).
@@ -28,19 +48,6 @@ $(function () {
   // (see .tick-mark in style.css), so the instructions show the real
   // in-game visual rather than describing it in words alone.
   const TICK_IMG = `<span class="glympz-inline-tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>`;
-
-  // Picks today's image: dayOfYear() (see shared/core/date-utils.js)
-  // returns a number 1-366, and this project ships one numbered .jpg per
-  // day in the images/ folder (1.jpg, 2.jpg, ... 366.jpg) — so "today's
-  // puzzle" is really just "load the image file whose name matches today's
-  // day-of-year." document.documentElement is the <html> element;
-  // .style.setProperty(...) sets a CSS custom property directly on it
-  // (inline), which style.css then reads back with
-  // background-image: var(--daily-image, ...) — this is how the SAME CSS
-  // rule ends up showing a DIFFERENT image every day, without editing any
-  // CSS file.
-  const imageFileName = `${dayOfYear()}.jpg`;
-  document.documentElement.style.setProperty('--daily-image', `url('./images/${imageFileName}')`);
 
   let totalSeconds = 0;
   let timerInterval = null;

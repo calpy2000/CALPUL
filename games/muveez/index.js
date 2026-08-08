@@ -21,15 +21,24 @@ import { ANSWERS_366 } from './answers.js';
 // logic — nothing in that file is MUVEEZ-specific.
 import { isFuzzyMatch } from '../../shared/core/fuzzy-match.js';
 import { getClapperboardIconDataURL } from './icon.js';
-import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { stripReloadParam, loadDailyImage } from '../../shared/core/loading-indicator.js';
 
-hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 
 const GAME_ID = 'muveez';
 
 const PLACEHOLDER_ANSWER = 'correct movie title';
 const ANSWER = ANSWERS_366[dayOfYear() - 1] || PLACEHOLDER_ANSWER;
+
+// Same daily-image mechanism as GLYMPZ: picks today's numbered .jpg and
+// exposes it as a CSS custom property every tile's background-image reads
+// from (see style.css). See the fuller explanation of the "one big image,
+// sliced via background-position" trick in games/glympz/index.js, and of
+// loadDailyImage() itself in loading-indicator.js.
+const imageFileName = `${dayOfYear()}.jpg`;
+const imageUrl = `./images/${imageFileName}`;
+document.documentElement.style.setProperty('--daily-image', `url('${imageUrl}')`);
+await loadDailyImage(imageUrl, "Loading today's image — this'll only take a moment");
 
 $(function () {
 
@@ -44,13 +53,6 @@ $(function () {
   const $error = $('#guess-error');
   const $guessNumber = $('#guess-number');
   const $answerTitle = $('#answer-title');
-
-  // Same daily-image mechanism as GLYMPZ: picks today's numbered .jpg and
-  // exposes it as a CSS custom property every tile's background-image reads
-  // from (see style.css). See the fuller explanation of the "one big image,
-  // sliced via background-position" trick in games/glympz/index.js.
-  const imageFileName = `${dayOfYear()}.jpg`;
-  document.documentElement.style.setProperty('--daily-image', `url('./images/${imageFileName}')`);
 
   // --- Seeded PRNG + shuffle — same technique as SOLVZ/GLYMPZ/SLYDZ (see the
   // fullest explanation of this exact trick in games/solvz/index.js) —

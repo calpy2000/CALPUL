@@ -1,3 +1,5 @@
+import { setLoadingMessage } from './loading-indicator.js';
+
 // Registers the site's service worker (see ../../service-worker.js) and, if
 // it needs to install/update, adds a message to the already-visible
 // #pageLoading spinner and waits for that install to genuinely finish before
@@ -121,21 +123,4 @@ function markChecked() {
   } catch {
     // ignore — worst case this device just checks every time
   }
-}
-
-// Shared by both messages above — reuses the same paragraph across both
-// stages of a single check (rather than addReadyMessage()'s old
-// add-once-and-never-touch-again behavior) so a check that upgrades from
-// "checking" to "a real update was found" reads as one line updating in
-// place, not a second line appearing alongside the first.
-function setLoadingMessage(text) {
-  const el = document.getElementById('pageLoading');
-  if (!el) return;
-  let msg = el.querySelector('.page-loading__message');
-  if (!msg) {
-    msg = document.createElement('p');
-    msg.className = 'page-loading__message';
-    el.appendChild(msg);
-  }
-  msg.textContent = text;
 }

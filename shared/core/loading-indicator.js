@@ -20,6 +20,52 @@ export function hidePageLoadingIndicator() {
   if (el) el.remove();
 }
 
+// Adds/updates a one-line message under the spinner, on whichever
+// #pageLoading is currently on screen. Shared by shared/core/update-gate.js
+// (its own "checking"/"loading updated files" messages) and any game that
+// needs a real, possibly-slow asset fetch before the page is actually
+// usable — currently GLYMPZ/MUVEEZ's daily image, the one genuinely slow
+// un-precached load left on either page (see service-worker.js's own
+// comment for why those images are deliberately excluded from the code
+// precache). Reuses the same paragraph across repeated calls (rather than
+// appending a new one each time) so a message that changes mid-wait reads
+// as one line updating in place.
+export function setLoadingMessage(text) {
+  const el = document.getElementById('pageLoading');
+  if (!el) return;
+  let msg = el.querySelector('.page-loading__message');
+  if (!msg) {
+    msg = document.createElement('p');
+    msg.className = 'page-loading__message';
+    el.appendChild(msg);
+  }
+  msg.textContent = text;
+}
+
+// Shows `message` on the already-visible spinner, waits for `url` to
+// actually finish loading (success OR error — this must never hang the
+// spinner forever, e.g. on a 404 for an uncurated day), then hides the
+// spinner. Used by GLYMPZ/MUVEEZ for their daily image — see
+// service-worker.js's own comment for why that image is deliberately left
+// OUT of the code precache (58MB combined across every day isn't worth
+// forcing on every device), which means a first-ever view of a given day's
+// specific image is a genuine, possibly slow network fetch that nothing
+// else covers. Call this instead of hidePageLoadingIndicator() (not in
+// addition to it) once the image URL/CSS custom property is already set —
+// on a repeat view (image already cached) this resolves in well under the
+// spinner's own 200ms reveal delay, so it adds no visible wait at all in
+// the common case.
+export async function loadDailyImage(url, message) {
+  setLoadingMessage(message);
+  await new Promise((resolve) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = resolve;
+    img.src = url;
+  });
+  hidePageLoadingIndicator();
+}
+
 // Forces a genuine yield back to the browser between two DOM changes, so
 // whatever was just shown (a spinner, a disabled input, a hidden panel)
 // actually gets painted before the next thing happens — necessary around

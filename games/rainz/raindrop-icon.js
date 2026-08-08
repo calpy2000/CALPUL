@@ -36,6 +36,26 @@ export const WILDCARD_PALETTE = { light: '#fef9c3', deep: '#ca8a04' };
 // actually gets drawn.
 export const WIDTH_SCALE = 0.8;
 
+// Vertical-only squeeze, same spirit as WIDTH_SCALE above but independent
+// of it — shrinks the drop's height by 10% while leaving its width exactly
+// as drawn (WIDTH_SCALE unchanged). Applied as its own scale() axis (see
+// drawRaindrop() below) rather than folded into BASE_RADIUS, since changing
+// BASE_RADIUS would shrink width too. Raindrop.js's touchesBottom() derives
+// its visual-bottom-edge check from this same constant, so the "reaches the
+// bottom" game-over trigger stays lined up with what's actually drawn.
+export const HEIGHT_SCALE = 0.9;
+
+// The letter is drawn at 1.3x its ORIGINAL size, independent of (i.e. on
+// top of) the drop's own 1.2x enlargement (see Raindrop.js's BASE_RADIUS)
+// — since the letter grows faster than the drop containing it, it now
+// fills more of the drop than before, rather than just scaling up
+// alongside it at the same proportion. 0.95 was the original letter-size-
+// to-radius ratio; dividing by 1.2 cancels out the automatic scaling the
+// letter would otherwise get for free from the drop's own growth (since
+// font size is computed as r * ratio), leaving only the letter's own 1.3x
+// on top.
+const LETTER_RADIUS_RATIO = 0.95 * 1.3 / 1.2; // ≈ 1.029
+
 // How fast the ring's expand-and-fade cycle repeats, in cycles per second —
 // matches the pacing shown in the "Radar Ping Ring" preview the user chose.
 const WILDCARD_PULSE_SPEED = 0.7;
@@ -80,15 +100,16 @@ export function traceRaindropPath(context, cx, cy, r) {
 // caller (row/header/tile icons never pass a wildcard letter, so the ring
 // never actually draws for them regardless).
 export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
-  // Everything except the letter is drawn in a translate+scale(WIDTH_SCALE,1)
-  // space centered on the drop — a horizontal-only affine squeeze, so the
-  // teardrop's bezier/arc math above needs no changes and stays perfectly
-  // tangent-continuous (no seam), it's just narrower. The letter is drawn
-  // afterward, outside this transform, so glyphs stay their normal shape
-  // instead of getting squished along with the body.
+  // Everything except the letter is drawn in a translate+scale(WIDTH_SCALE,
+  // HEIGHT_SCALE) space centered on the drop — an independent per-axis
+  // affine squeeze, so the teardrop's bezier/arc math above needs no
+  // changes and stays perfectly tangent-continuous (no seam), it's just
+  // narrower/shorter. The letter is drawn afterward, outside this
+  // transform, so glyphs stay their normal shape instead of getting
+  // squished along with the body.
   context.save();
   context.translate(x, y);
-  context.scale(WIDTH_SCALE, 1);
+  context.scale(WIDTH_SCALE, HEIGHT_SCALE);
 
   if (letter === WILDCARD_LETTER) {
     // The "radar ping" ring: repeatedly expands outward from the drop and
@@ -139,7 +160,7 @@ export function drawRaindrop(context, x, y, r, letter, palette, age = 0) {
 
   if (letter) {
     context.fillStyle = LETTER_COLOR;
-    context.font = `700 ${Math.round(r * 0.95)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+    context.font = `700 ${Math.round(r * LETTER_RADIUS_RATIO)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(letter, x, y + r * 0.05);

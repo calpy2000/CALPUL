@@ -11,10 +11,10 @@
 // The shape-tracing and layered drawing itself is shared with
 // raindrop-icon.js's static hub-tile/header icons, so every rendering of
 // "a raindrop" is literally the same drawing code.
-import { drawRaindrop, WILDCARD_LETTER, WILDCARD_PALETTE, WIDTH_SCALE } from './raindrop-icon.js';
+import { drawRaindrop, WILDCARD_LETTER, WILDCARD_PALETTE, WIDTH_SCALE, HEIGHT_SCALE } from './raindrop-icon.js';
 
 export default class Raindrop {
-  static BASE_RADIUS = 19.5; // 26 reduced 25% per playtesting feedback
+  static BASE_RADIUS = 23.4; // 19.5 * 1.2 — drops enlarged 20% (same aspect ratio, since WIDTH_SCALE's horizontal squeeze is untouched); MIN_RAINDROP_SEPARATION/spawn margin in index.js derive from this, so lane math adjusts automatically
   static BASE_SPEED = 10; // pixels per second — 55 -> 27.5 -> 15 -> 10 across three rounds of playtesting feedback
 
   // Eight {light, deep} color pairs a drop's gradient is built from — one
@@ -82,14 +82,16 @@ export default class Raindrop {
   }
 
   // True the MOMENT this drop first touches the bottom edge (its lowest
-  // point — the bulb's bottom, at y + radius, since the tip points up, not
-  // down) — index.js's game-over check uses this (see the design brief:
-  // ANY drop touching the bottom ends the round, clicked or not). This
-  // used to only fire once the drop had fallen fully PAST the bottom
-  // (y - radius > canvasHeight), letting it visibly fall through before
-  // the game ended — fixed to fire on first contact instead.
+  // point — the bulb's bottom, at y + radius * HEIGHT_SCALE, since the tip
+  // points up, not down, and HEIGHT_SCALE is the vertical squeeze
+  // drawRaindrop() actually renders the bulb at — see raindrop-icon.js)
+  // — index.js's game-over check uses this (see the design brief: ANY drop
+  // touching the bottom ends the round, clicked or not). This used to only
+  // fire once the drop had fallen fully PAST the bottom (y - radius >
+  // canvasHeight), letting it visibly fall through before the game ended —
+  // fixed to fire on first contact instead.
   touchesBottom(canvasHeight) {
-    return this.y + this.radius >= canvasHeight;
+    return this.y + this.radius * HEIGHT_SCALE >= canvasHeight;
   }
 
   // Distance-to-center hit test, with a little extra forgiveness on top of

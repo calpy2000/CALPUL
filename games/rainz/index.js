@@ -176,6 +176,22 @@ const START_PERIOD = 10; // seconds before the ramp begins
 const SPEED_FACTOR = 1.0196875; // each post-ramp spawn is 1.96875% faster than the last (2.625% reduced 25% per follow-up feedback)
 let speedMultiplier = 1; // compounds once survivalTime passes START_PERIOD; reset in startGame()
 
+// Past RAMP_DECAY_START, the per-spawn growth INCREMENT (the "+1.96875%"
+// part of SPEED_FACTOR) itself decays smoothly toward zero, halving every
+// RAMP_DECAY_HALFLIFE seconds — so speedMultiplier keeps compounding on
+// every spawn, just by smaller and smaller steps the longer a round runs.
+// The increment only ever shrinks toward zero, never flips sign, so both
+// raindrop speed and (via randomSpawnInterval()'s √speedMultiplier below)
+// spawn rate are guaranteed to keep climbing every spawn, just decelerating
+// — neither can ever drop back down.
+const RAMP_DECAY_START = 120; // 2 minutes
+const RAMP_DECAY_HALFLIFE = 60; // 1 minute — matches the "0.5x every minute" ask
+function currentSpeedFactor() {
+  if (survivalTime <= RAMP_DECAY_START) return SPEED_FACTOR;
+  const decay = Math.pow(0.5, (survivalTime - RAMP_DECAY_START) / RAMP_DECAY_HALFLIFE);
+  return 1 + (SPEED_FACTOR - 1) * decay;
+}
+
 // As drops fall faster, each one also crosses the screen faster — without
 // spawning them more often too, the number actually on screen at once
 // would keep dropping the longer a round runs, leaving fewer and fewer

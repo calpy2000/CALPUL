@@ -25,7 +25,7 @@ const COLOUR_HEX = {
   blue: '#3182CE',
   green: '#38A169',
   orange: '#DD6B20',
-  pink: '#D53F8C',
+  pink: '#F687B3', // lighter shade per explicit request — the original #D53F8C read as too close to red
   purple: '#805AD5',
   black: '#1A202C',
 };

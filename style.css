@@ -287,24 +287,32 @@ html, body {
   }
 }
 
-/* Below the iPhone 14 standard's own width (390px CSS px — narrower than
-   the 430px iPhone 14 Pro Max this was designed against, e.g. the 375px
-   iPhone X/10), 2 columns would each be uncomfortably narrow, so the grid
-   drops to a single column instead — this doubles the row count for the
-   same tile count, so it's this breakpoint, not tile count, that decides
-   whether the grid needs to scroll on a given phone. The tile itself still
-   just reads its container's size via cqmin as before — nothing about the
-   tile's own CSS needs to know which breakpoint it's in. */
-@media (max-width: 389px) {
+/* Was originally pegged to 389px ("below the iPhone 14 standard's own
+   390px width") on the assumption that CSS viewport width tracks physical
+   phone size the same way on every platform. It doesn't: mainstream Android
+   phones — flagship (e.g. Galaxy S26) and budget (e.g. Galaxy A17) alike —
+   commonly report a 360px CSS viewport width by default regardless of
+   actual screen size, which was landing the *entire* Android install base
+   in single-column while iPhones (390-430px) stayed 2-wide. Lowered to
+   340px so 360px phones get the same 2-column grid as iPhone; this now
+   only catches genuinely narrow viewports (e.g. a 320px iPhone SE 1st-gen,
+   or an Android app in split-screen/multi-window) where 2 columns really
+   would be uncomfortably narrow. The tile itself still just reads its
+   container's size via cqmin as before — nothing about the tile's own CSS
+   needs to know which breakpoint it's in. */
+@media (max-width: 340px) {
   .hub__grid {
     grid-template-columns: 1fr;
   }
 
   /* ROLLBACK: everything below this comment, down to the closing brace of
      this media query, was added 2026-08-04 to fix dead space + tiny text
-     on narrow single-column phones (e.g. Galaxy A17). Delete it to restore
-     the exact prior single-column look — nothing above this point, and
-     nothing outside this media query, is touched.
+     on narrow single-column phones — tuned against a Galaxy A17, which at
+     the time fell under this breakpoint (it no longer does, now that the
+     breakpoint above was lowered to 340px; kept here for whatever device
+     genuinely does land under 340px). Delete it to restore the exact prior
+     single-column look — nothing above this point, and nothing outside
+     this media query, is touched.
 
      Root cause: at 2 columns a tile is roughly square, so .hub__tile's
      cqmin-based text/icon sizing (which always keys off the container's

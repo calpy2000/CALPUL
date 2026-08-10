@@ -182,8 +182,8 @@ export const GAMES = [
     path: 'games/warpz/index.html',
     color: '#A8D84A', // lime green — matches this game's own shell accentColor (see games/warpz/index.js)
     rim: 'rgba(55, 85, 5, 0.30)',
-    higherIsBetter: true, // score = seconds survived — more is better
-    scoreIsTime: true, // it IS a duration, just one where higher wins (unlike SOLVZ/GLYMPZ/SLYDZ/QUADZ)
+    higherIsBetter: true, // score = star shards + energy orbs collected — more is better
+    scoreIsTime: false, // a plain points count, not a duration (own end panel/share text already says "points")
     // Moved to row 5 / column 2 per explicit request.
   },
 ];

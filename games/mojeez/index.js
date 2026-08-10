@@ -91,11 +91,19 @@ $(function () {
   // guess-number badge (see games/muveez/style.css), just on the right edge
   // instead of the left. This is also what keeps the pill lined up with the
   // input regardless of how tall the rest of the tile ends up being.
+  //
+  // .mojeez-zoom-badge sits in the tile's own top-right corner (not gated
+  // behind grading, unlike the taphint pill) so a player can enlarge an
+  // unclear emoji sequence before ever guessing — see openZoom() below.
   const $board = $('#mojeezBoard');
   ITEMS.forEach((item) => {
     $('<div>', { class: 'mojeez-tile', 'data-item-number': item.number })
       .html(
-        `<span class="mojeez-tile__category">${item.category}</span>
+        `<button type="button" class="mojeez-zoom-badge" data-item-number="${item.number}" aria-label="Zoom this emoji">
+           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="15.3" y1="15.3" x2="20.5" y2="20.5"></line></svg>
+           zoom
+         </button>
+         <span class="mojeez-tile__category">${item.category}</span>
          <div class="mojeez-tile__emoji">${item.emoji}</div>
          <div class="mojeez-input-wrap">
            <input type="text" class="mojeez-input" data-item-number="${item.number}" placeholder="Your guess" autocomplete="off" autocapitalize="off" spellcheck="false" disabled>
@@ -104,6 +112,58 @@ $(function () {
       )
       .appendTo($board);
   });
+
+  // --- Emoji zoom (badge -> full-width card, anchored on the tile itself) ---
+  // A single shared card (see index.html's #zoomSheet/#zoomScrim), filled
+  // in with whichever item's badge was tapped, then vertically positioned
+  // right next to THAT tile (see positionZoomSheet — same
+  // getBoundingClientRect + flip-if-no-room-below technique positionPopover
+  // uses further down for #morePopover) rather than pinned to the bottom of
+  // the viewport, so the enlarged emoji appears where the player was
+  // already looking instead of requiring a glance all the way down the
+  // screen. Independent of grading/lock state, since reading the clue is
+  // the whole point. stopPropagation keeps the tap from also bubbling up
+  // into the post-grade "more info" tile-click handler further down.
+  const $zoomScrim = $('#zoomScrim');
+  const $zoomSheet = $('#zoomSheet');
+  const $zoomSheetEmoji = $('#zoomSheetEmoji');
+
+  // Only the vertical position varies — the card itself is full viewport
+  // width (see .mojeez-zoom-sheet's left:8px/right:8px in style.css), so
+  // there's no horizontal offset left to compute.
+  function positionZoomSheet(tileEl) {
+    const rect = tileEl.getBoundingClientRect();
+    const sheetEl = $zoomSheet[0];
+    const sheetRect = sheetEl.getBoundingClientRect();
+    let top = rect.bottom + 10;
+    if (top + sheetRect.height > window.innerHeight - 8) {
+      top = Math.max(8, rect.top - sheetRect.height - 10); // flip above the tile if there's no room below
+    }
+    sheetEl.style.top = `${top}px`;
+  }
+
+  function openZoom(itemNumber) {
+    const item = ITEMS.find((it) => it.number === itemNumber);
+    hideMorePopover();
+    $zoomSheetEmoji.html(item.emoji);
+    positionZoomSheet(tileFor(itemNumber));
+    $zoomScrim.addClass('is-open');
+    $zoomSheet.addClass('is-open');
+  }
+  function closeZoom() {
+    $zoomScrim.removeClass('is-open');
+    $zoomSheet.removeClass('is-open');
+  }
+
+  $(document).on('click', '.mojeez-zoom-badge', function (e) {
+    e.stopPropagation();
+    openZoom(Number(this.dataset.itemNumber));
+  });
+  $zoomScrim.on('click', closeZoom);
+  // A position computed from getBoundingClientRect() at open-time goes
+  // stale if the page then scrolls — same fix positionPopover's own
+  // scroll listener needs, for the same reason (see further down).
+  window.addEventListener('scroll', closeZoom, true);
 
   function enableInputs() {
     document.querySelectorAll('.mojeez-input').forEach((el) => { el.disabled = false; });

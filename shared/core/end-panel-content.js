@@ -56,6 +56,23 @@ const GAME_COPY = {
   },
 };
 
+// VALUZ and MOJEEZ are the only two games with a per-tile "more info"
+// popover (tap a graded tile to see its explanation — see each game's own
+// index.js and shared/feedback.js's mention of the same mechanism). Their
+// end-panel gets a "tap for more" hint so players discover it; no other
+// game has this popover, so no other game gets the hint.
+//
+// `tapHint` is a plain boolean, not baked into `text` as HTML — shell.js
+// renders it as a SEPARATE sibling element from the truncating message
+// span, not a child of it. It has to live outside that span: the message
+// span needs overflow:hidden for its own text-overflow:ellipsis
+// truncation to work, and that clips ANY descendant that visually grows
+// past the box (e.g. the taphint pill's throb animation), not just
+// overflowing text. Keeping the hint as a sibling means it's never
+// truncated and never clipped, regardless of how long the game's own
+// message text is.
+const GAMES_WITH_TAP_HINT = ['valuz', 'mojeez'];
+
 // `outcome` is one of 'max' | 'loss' | 'zero' | 'reveal' | undefined
 // (undefined = a normal completed run, further split by `isNewBest`).
 // `scoreText` is a pre-formatted display value (e.g. "4", "2:07", "3
@@ -66,11 +83,12 @@ export function getEndPanelContent({ gameId, outcome, scoreText, isNewBest = fal
   if (!copy) {
     throw new Error(`end-panel-content.js: no copy defined for gameId "${gameId}"`);
   }
+  const tapHint = GAMES_WITH_TAP_HINT.includes(gameId);
 
-  if (outcome === 'max') return { emoji: '🎉', headline: 'WOW!!', text: copy.max };
-  if (outcome === 'loss') return { emoji: '🙁', headline: 'BAD LUCK', text: copy.loss };
-  if (outcome === 'zero') return { emoji: '🙁', headline: 'BAD LUCK', text: 'you scored zero!' };
-  if (outcome === 'reveal') return { emoji: '🙁', headline: 'BAD LUCK', text: 'you revealed the answer' };
-  if (isNewBest) return { emoji: '🤩', headline: 'WELL DONE', text: "that's a new PB" };
-  return { emoji: '👍🏼', headline: 'NICE', text: copy.normal(scoreText) };
+  if (outcome === 'max') return { emoji: '🎉', headline: 'WOW!!', text: copy.max, tapHint };
+  if (outcome === 'loss') return { emoji: '🙁', headline: 'BAD LUCK', text: copy.loss, tapHint };
+  if (outcome === 'zero') return { emoji: '🙁', headline: 'BAD LUCK', text: 'you scored zero!', tapHint };
+  if (outcome === 'reveal') return { emoji: '🙁', headline: 'BAD LUCK', text: 'you revealed the answer', tapHint };
+  if (isNewBest) return { emoji: '🤩', headline: 'WELL DONE', text: "that's a new PB", tapHint };
+  return { emoji: '👍🏼', headline: 'NICE', text: copy.normal(scoreText), tapHint };
 }

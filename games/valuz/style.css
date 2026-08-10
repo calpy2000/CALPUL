@@ -191,10 +191,16 @@
   font-weight: 400;
   letter-spacing: 0.03em;
   color: #000000;
-  background: #B0AEB6; /* grey, darker than the question tile's own light-lavender background (#F6F3F9) */
+  background: #F0C14B; /* bright amber gold — picked from a swatch comparison against the tile's own light-lavender background (#F6F3F9), same shade used by MOJEEZ's and the end-panel's tap pills */
   padding: 2px 7px;
   border-radius: 999px;
   pointer-events: none; /* purely informational — a tap here should still land on the question tile underneath, not get swallowed by this element */
+  animation: valuz-taphint-throb 1s ease-in-out infinite; /* explicit request: draw the eye to the hint once it appears */
+}
+
+@keyframes valuz-taphint-throb {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
 }
 
 .valuz-tile--question.is-clickable .valuz-tile__taphint {
@@ -383,4 +389,15 @@
 
 .more-popover p {
   margin: 0;
+}
+
+/* Colours the bold-underlined answer letter red (e.g. "Jail<u>h</u>ouse" —
+   see days.json's letter-type "more" text, which always wraps that
+   specific letter in <strong><u>...</u></strong>). Targeting the <u> tag
+   directly rather than adding a class to all 72 entries in days.json —
+   <u> is never used in this popover for anything else, so this alone is
+   enough to catch every occurrence. Same red as .valuz-col5-arrow above,
+   reused rather than picking a second red for the same page. */
+.more-popover u {
+  color: #dc2626;
 }

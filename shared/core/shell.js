@@ -258,7 +258,7 @@ export function initShell({
     `<div class="shell-end-screen__panel">
        <span class="shell-end-screen__emoji" id="shell-end-emoji"></span>
        <span class="shell-end-screen__headline" id="shell-end-headline"></span>
-       <span class="shell-end-screen__message" id="shell-end-message"></span>
+       <span class="shell-end-screen__message-group"><span class="shell-end-screen__message" id="shell-end-message"></span><span class="shell-end-screen__taphint-suffix is-hidden" id="shell-end-taphint-suffix"> - <span class="shell-end-screen__taphint">tap</span> for more</span></span>
        <button class="shell-btn shell-btn--small is-hidden" id="shell-share-btn" type="button">Share</button>
      </div>`
   );
@@ -398,6 +398,11 @@ export function initShell({
     endScreen.querySelector('#shell-end-emoji').textContent = content.emoji;
     endScreen.querySelector('#shell-end-headline').textContent = content.headline;
     endScreen.querySelector('#shell-end-message').textContent = content.text;
+    // Separate sibling element, not part of the truncating message span
+    // above — see end-panel-content.js's comment on why the taphint pill
+    // has to live outside it (its throb animation would get clipped by
+    // the message span's own overflow:hidden otherwise).
+    endScreen.querySelector('#shell-end-taphint-suffix').classList.toggle('is-hidden', !content.tapHint);
     endScreen.classList.remove('is-hidden');
     if (score !== null) saveTodayScore(gameId, score);
     refreshBestScore();

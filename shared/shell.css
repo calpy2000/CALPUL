@@ -412,21 +412,91 @@
   width: 100%;
 }
 
-/* The end-screen's message text — one flex item among four in the new
-   single-line row (see .shell-end-screen__panel above). flex:1 lets it
-   claim whatever space the emoji/headline/Share button don't need, and
-   min-width:0 is required for the nowrap+ellipsis truncation below to
-   actually kick in on a flex item (without it, a flex item's default
-   min-width:auto lets it grow past the row instead of truncating). */
+/* Wraps .shell-end-screen__message and .shell-end-screen__taphint-suffix
+   (see both below) — THIS is the flex item that claims whatever space the
+   emoji/headline/Share button don't need (flex:1, min-width:0 for the
+   ellipsis truncation inside to work), not the message span itself. That
+   distinction matters: if the message span carried flex:1 directly, it
+   would stretch to fill the whole row even when its actual text is much
+   shorter, leaving a big empty gap before the taphint suffix that followed
+   it (which starts wherever the stretched box happens to end, not where
+   the visible text ends). Wrapping both in a tightly-fitted flex group
+   (no gap) keeps the hint flush against the text while still letting the
+   text shrink+ellipsis first when the row is tight. */
+.shell-end-screen__message-group {
+  display: flex;
+  align-items: baseline;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .shell-end-screen__message {
   color: #ffffff;
   font-size: 15px;
-  flex: 1 1 auto;
+  /* flex-grow:0 (not 1) — it must NOT stretch to fill
+     .shell-end-screen__message-group's box, only shrink when the group
+     itself is too narrow. flex-grow:1 here was the actual bug: even after
+     moving flex:1 up to the group (so the GROUP claims the row's leftover
+     space), a flex-grow:1 CHILD still stretches to fill 100% of ITS
+     container's box the exact same way — so the gap just reappeared
+     between the text and the taphint suffix instead of being fixed. With
+     flex-grow:0, any leftover space collects after the suffix instead
+     (harmless — same place a short message already left blank space
+     before the Share button, pre-dating this feature). */
+  flex: 0 1 auto;
   min-width: 0;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Sibling of .shell-end-screen__message inside .shell-end-screen__message-
+   group above, NOT a child of the message span — deliberately outside the
+   truncating span. overflow-x:hidden (needed there for text-overflow:
+   ellipsis) forces the used value of overflow-y to auto too per spec,
+   even when overflow-y is explicitly set to visible, so the taphint
+   pill's throb was getting its bottom edge clipped when it lived inside
+   that span. Living as a sibling sidesteps that entirely — flex:none so
+   it always renders at full size, never shrunk or truncated. Toggled via
+   .is-hidden per game (see shell.js's showEndScreen) — only VALUZ/MOJEEZ
+   show it. */
+.shell-end-screen__taphint-suffix {
+  color: #ffffff;
+  font-size: 15px;
+  flex: none;
+  white-space: nowrap;
+}
+
+/* No generic `.is-hidden { display:none }` rule exists anywhere in this
+   codebase — every other use of the class (.shell-overlay.is-hidden,
+   .shell-end-screen.is-hidden above) defines its own display:none, so
+   this element needs its own too or it would stay visible — and show
+   "tap for more" — for every game, not just VALUZ/MOJEEZ. */
+.shell-end-screen__taphint-suffix.is-hidden {
+  display: none;
+}
+
+/* Same grey pill visual as VALUZ's .valuz-tile__taphint and MOJEEZ's
+   .mojeez-tile__taphint (see those files) — so the word "tap" reads as
+   the same UI element wherever it appears, not just styled text. Same 1s
+   scale throb as the tile pills too, explicit request to match
+   completely rather than leave this one static. */
+.shell-end-screen__taphint {
+  display: inline-block;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #000000;
+  background: #F0C14B; /* bright amber gold — same shade used by VALUZ's and MOJEEZ's tile tap pills */
+  padding: 2px 7px;
+  border-radius: 999px;
+  animation: shell-end-taphint-throb 1s ease-in-out infinite;
+}
+
+@keyframes shell-end-taphint-throb {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
 }
 
 .shell-end-screen__emoji {

@@ -59,6 +59,21 @@
        own #morePopover. -->
   <div class="more-popover is-hidden" id="morePopover"></div>
 
+  <!-- Shared emoji-zoom card — one global element (not one per tile),
+       opened by whichever tile's .mojeez-zoom-badge was tapped, filled in
+       AND repositioned next to that same tile by index.js's openZoom()
+       (see positionZoomSheet), so the enlarged emoji shows up where the
+       player was already looking rather than at a fixed spot on screen.
+       Available from the start of the round (not gated behind grading
+       like #morePopover), since its whole point is helping a player read
+       an unclear emoji sequence BEFORE they guess. #zoomScrim sits behind
+       it and doubles as the "tap outside to close" target. -->
+  <div class="mojeez-zoom-scrim" id="zoomScrim"></div>
+  <div class="mojeez-zoom-sheet" id="zoomSheet">
+    <div class="mojeez-zoom-sheet__emoji" id="zoomSheetEmoji"></div>
+    <div class="mojeez-zoom-sheet__caption">tap outside to close</div>
+  </div>
+
   <!-- jQuery, loaded from a public CDN — see the matching comment in
        SOLVZ's own index.html for why defer is required here (must not
        block first paint) and why the load order still guarantees it runs

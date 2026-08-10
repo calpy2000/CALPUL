@@ -26,9 +26,11 @@
 }
 
 /* One card per today's item (1 easy -> 4 hardest, top to bottom). Relative
-   positioning anchors the grademark badge (top-right corner, added once
-   graded) — same corner VALUZ's own question tile uses. The "tap" hint
-   pill is positioned against .mojeez-input-wrap instead (below), not this
+   positioning anchors both the zoom badge (top-right corner, always
+   present) and the grademark badge (top-left corner, added once graded) —
+   the two corners were split between them specifically so they never
+   overlap once a tile is both zoomable and graded. The "tap" hint pill is
+   positioned against .mojeez-input-wrap instead (below), not this
    element, since it needs to line up with the input rather than the
    tile's own edge. */
 .mojeez-tile {
@@ -91,6 +93,40 @@
   display: none; /* Chromium/Safari/Edge */
 }
 
+/* Always-visible "enlarge this clue" control — deliberately NOT gated
+   behind grading (unlike the taphint pill below), since it exists to help
+   a player read an unclear emoji sequence before they've guessed at all.
+   A pill rather than a plain icon circle (like the grademark) because it
+   pairs the magnifying-glass glyph with the word "zoom" — feedback during
+   design was that an icon-only magnifying glass read as a 5th emoji clue
+   on a screen already full of them, where a pill matching the "tap" hint's
+   own icon+label pattern reads unambiguously as a UI control. Opens
+   #zoomSheet — see index.js's openZoom(). */
+.mojeez-zoom-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3.5px 10px 3.5px 8px;
+  border: none;
+  border-radius: 999px;
+  background: #A8A29A; /* medium warm grey (trying this in place of accentColor.bg's coral) — warm-toned to sit with the tile's own #F0EDEA/#514840 neutral family rather than a cold grey */
+  color: #4A1518; /* accentColor.ink — kept for now, still reads clearly against this grey */
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500; /* deliberately not bold — the icon alone carries enough weight, and bold text read as shouting at this size */
+  letter-spacing: 0.03em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* same weight as .mojeez-grademark's own shadow */
+  cursor: pointer;
+}
+.mojeez-zoom-badge svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
 /* Positioning reference for the "tap" hint pill below — same "badge-in-
    input" technique MUVEEZ's own .muveez-input-wrap uses (see that file's
    fuller comment), just on the right edge instead of the left. This is
@@ -151,10 +187,20 @@
   font-weight: 400;
   letter-spacing: 0.03em;
   color: #000000;
-  background: #B0AEB6;
+  background: #F0C14B; /* bright amber gold — same shade used by VALUZ's and the end-panel's tap pills */
   padding: 2px 7px;
   border-radius: 999px;
   pointer-events: none;
+  animation: mojeez-taphint-throb 1s ease-in-out infinite; /* explicit request: draw the eye to the hint once it appears */
+}
+
+/* Keeps the base translateY(-50%) centering at every keyframe — the pill's
+   position is percentage-based on ITS OWN height, so animating scale
+   without re-stating translateY here would make it drift vertically as it
+   grows/shrinks instead of pulsing in place. */
+@keyframes mojeez-taphint-throb {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.4); }
 }
 .mojeez-tile.is-clickable .mojeez-tile__taphint {
   display: inline-block;
@@ -162,11 +208,12 @@
 
 /* Grading feedback badge — same recipe as VALUZ's .valuz-grademark: a
    small circle overlay with a plain text tick/cross (✓/✗, not emoji
-   glyphs), not a background recolor. */
+   glyphs), not a background recolor. Left corner (not right) so it never
+   collides with .mojeez-zoom-badge, which owns the top-right corner. */
 .mojeez-grademark {
   position: absolute;
   top: -6px;
-  right: -6px;
+  left: -6px;
   width: 22px;
   height: 22px;
   display: flex;
@@ -221,4 +268,74 @@
 
 .more-popover p {
   margin: 0;
+}
+
+/* Shared emoji-zoom card — one global element (see index.html), filled in
+   by index.js's openZoom() and vertically repositioned (see
+   positionZoomSheet — same getBoundingClientRect + flip-if-no-room-below
+   technique positionPopover below uses) to sit right next to whichever
+   tile's .mojeez-zoom-badge was tapped, rather than pinned to the bottom
+   of the viewport, so the enlarged emoji appears right where the player
+   was already looking. Full viewport width (minus an 8px gutter, the same
+   safety margin positionPopover clamps to) rather than a narrower centered
+   card, so the emoji gets the most room to render large. Sits above
+   .more-popover's own z-index:40 so it always wins in the unlikely case
+   both are open. No .is-hidden toggle (unlike .more-popover above): the
+   card stays in the DOM at opacity:0 so its size can be measured via
+   getBoundingClientRect() before it's shown (opacity doesn't affect
+   layout, unlike display:none). */
+.mojeez-zoom-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 16, 14, 0);
+  pointer-events: none;
+  transition: background 0.2s ease;
+  z-index: 45;
+}
+.mojeez-zoom-scrim.is-open {
+  background: rgba(20, 16, 14, 0.45);
+  pointer-events: auto;
+}
+
+.mojeez-zoom-sheet {
+  position: fixed;
+  left: 8px;
+  right: 8px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 18px 22px;
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease;
+  z-index: 46;
+  /* Not inherited from .shell, since this card is a sibling of .shell
+     rather than a descendant (see index.html) — same reason .more-popover
+     above needs this same declaration on itself. Without it this fell back
+     to the browser's default UI font instead of Quicksand. */
+  font-family: var(--font-body);
+}
+.mojeez-zoom-sheet.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Deliberately the OPPOSITE of .mojeez-tile__emoji's own single-line +
+   horizontal-scroll recipe: at this much larger zoomed size, a long
+   sequence wraps onto a second line instead of scrolling, since scrolling
+   isn't obviously discoverable and this panel exists purely so every
+   emoji is readable, not to stay compact. Default text wrapping already
+   breaks between whole emoji rather than splitting one apart, since each
+   is its own atomic grapheme cluster. */
+.mojeez-zoom-sheet__emoji {
+  font-size: clamp(38px, 14.4vw, 70px); /* 0.8x the original clamp(48px, 18vw, 88px) — first pass rendered a little too large */
+  line-height: 1.3;
+}
+
+.mojeez-zoom-sheet__caption {
+  margin-top: 10px;
+  font-size: 17.6px; /* 1.6x the original 11px */
+  font-weight: 500;
+  color: #514840;
 }

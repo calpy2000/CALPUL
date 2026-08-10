@@ -107,7 +107,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* White ring keeps the badge legible even when the tile's own photo slice
+     is a similar green (grass/foliage tiles) — the ring's contrast comes
+     from the badge itself rather than depending on what's underneath. */
+  box-shadow: 0 0 0 2.5px #ffffff, 0 2px 5px rgba(0, 0, 0, 0.35);
   z-index: 5;
 }
 
@@ -147,7 +150,7 @@
   height: 16px;
   background-color: #39cc51;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 2.5px #ffffff, 0 2px 5px rgba(0, 0, 0, 0.35);
   vertical-align: middle;
 }
 

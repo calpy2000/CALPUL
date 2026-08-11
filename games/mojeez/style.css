@@ -155,6 +155,7 @@
   background: #E6E2DE;
   color: #514840;
   opacity: 1; /* iOS Safari fades disabled inputs by default — this keeps the revealed guess fully legible instead of looking greyed-out */
+  pointer-events: none; /* disabled inputs never dispatch click events at all, so without this a tap here is silently swallowed instead of bubbling to .mojeez-tile's "more info" popover handler */
 }
 
 /* Only gives a tile its "clickable for more info" affordance once the

@@ -13,7 +13,7 @@ import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ALL_WORDS, COMMON_WORDS } from './words.js';
-import { getTileDataURL } from './tile-icon.js';
+import { getArrowIconDataURL } from './tile-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
@@ -462,9 +462,9 @@ $(function () {
     gameId: GAME_ID,
     title: 'SLYDZ',
     emoji: '🔤',
-    // Same single 'S' tile shown on this game's hub tile — see
+    // Same squiggly arrow tile shown on this game's hub tile — see
     // games/slydz/tile-icon.js and games-registry.js.
-    emojiImage: getTileDataURL('S'),
+    emojiImage: getArrowIconDataURL(),
     // Buttons colored from this game's own hub-tile palette (games-registry.js's
     // `color`/`rim`) instead of the shared global blue every game used before.
     accentColor: { bg: '#AD82D6', ink: '#371450', rim: 'rgba(55, 20, 80, 0.30)' },

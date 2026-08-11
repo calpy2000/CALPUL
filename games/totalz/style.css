@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  padding-top: var(--space-sm);
+  padding-top: 5.6px; /* var(--space-sm) [8px] x 0.7 */
 }
 
 /* --- Target card --- */
@@ -49,7 +49,7 @@
 }
 
 .totalz-target__label {
-  font-size: 1.02rem; /* 0.68rem x 1.5 */
+  font-size: 0.816rem; /* 0.68rem x 1.5 x 0.8 */
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #1D4E78;
@@ -64,13 +64,13 @@
 }
 
 .totalz-target__min-required {
-  font-size: 1.02rem; /* 0.68rem x 1.5 */
+  font-size: 0.816rem; /* 0.68rem x 1.5 x 0.8 */
   color: #1D4E78;
   opacity: 0.7;
 }
 
 .totalz-target__delta {
-  font-size: 1.23rem; /* 0.82rem x 1.5 */
+  font-size: 0.984rem; /* 0.82rem x 1.5 x 0.8 */
   font-variant-numeric: tabular-nums;
   color: #1D4E78;
   opacity: 0.8;
@@ -92,7 +92,7 @@
   padding: 6px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2.1px; /* 3px x 0.7 */
 }
 
 .totalz-ledger__empty {
@@ -114,7 +114,7 @@
   margin-top: auto;
   flex: none;
   text-align: center;
-  font-size: 1.05rem; /* 0.7rem x 1.5 */
+  font-size: 0.84rem; /* 0.7rem x 1.5 x 0.8 */
   color: #9aa0a6;
   padding-top: var(--space-sm);
 }
@@ -163,7 +163,7 @@
 .totalz-prompt {
   flex: none;
   text-align: center;
-  font-size: 1.14rem; /* 0.76rem x 1.5 */
+  font-size: 0.912rem; /* 0.76rem x 1.5 x 0.8 */
   color: #6b7280;
   padding: 0 4px;
   min-height: 1.1em;

@@ -26,7 +26,7 @@ import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { PUZZLES_366 } from './puzzles.js';
 import { ALL_WORDS } from './words.js';
-import { getTileIconDataURL } from './tile-icon.js';
+import { getCheckerboardIconDataURL } from './tile-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 
 hidePageLoadingIndicator();
@@ -414,9 +414,9 @@ $(function () {
     gameId: GAME_ID,
     title: 'QUADZ',
     emoji: '✅',
-    // Same single tick-cell tile shown on this game's hub tile — see
+    // Same 4x4 checkerboard shown on this game's hub tile — see
     // games/quadz/tile-icon.js and games-registry.js.
-    emojiImage: getTileIconDataURL('✓', true),
+    emojiImage: getCheckerboardIconDataURL(),
     // Buttons colored from this game's own hub-tile palette (games-registry.js's
     // `color`/`rim`) instead of the shared global blue every game used before.
     accentColor: { bg: '#DFAE55', ink: '#5A3705', rim: 'rgba(90, 55, 5, 0.30)' },

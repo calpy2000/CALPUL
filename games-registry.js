@@ -30,9 +30,9 @@
 // game's own header (and JEWELZ's live bonus-jewel gameplay, which still
 // uses getBonusJewelIconDataURL itself) is untouched.
 import { getJewelIconDataURL } from './games/jewelz/jewel-icon.js';
-import { getTileDataURL as getSlydzTileDataURL } from './games/slydz/tile-icon.js';
+import { getArrowIconDataURL as getSlydzArrowIconDataURL } from './games/slydz/tile-icon.js';
 import { getTileIconDataURL as getGlympzTileIconDataURL } from './games/glympz/row-icon.js';
-import { getTileIconDataURL as getQuadzTileIconDataURL } from './games/quadz/tile-icon.js';
+import { getCheckerboardIconDataURL as getQuadzCheckerboardIconDataURL } from './games/quadz/tile-icon.js';
 import { getClapperboardIconDataURL } from './games/muveez/icon.js';
 import { getHeaderIconDataURL as getRainzHeaderIconDataURL } from './games/rainz/raindrop-icon.js';
 import { getEnergyOrbIconDataURL as getWarpzOrbIconDataURL, VIOLET_PALETTE as WARPZ_VIOLET_PALETTE } from './games/warpz/energy-orb-icon.js';
@@ -115,9 +115,9 @@ export const GAMES = [
   {
     id: 'slydz',
     title: 'SLYDZ',
-    // A single 'S' tile in SLYDZ's own solved-tile style, not the full
-    // 5-tile "SLYDZ" row — same single-crop style used for its header.
-    emojiImage: getSlydzTileDataURL('S'),
+    // A squiggly "loop and swoosh" arrow in SLYDZ's own tile-box style —
+    // evokes a tile sliding into place — same image used for its header.
+    emojiImage: getSlydzArrowIconDataURL(),
     tagline: 'this game is <br> letter-ally amazing',
     path: 'games/slydz/index.html',
     color: '#AD82D6',
@@ -128,9 +128,9 @@ export const GAMES = [
   {
     id: 'quadz',
     title: 'QUADZ',
-    // A single tick cell (not the full "A B C D + tick" row) — the
-    // checkmark reads as "solved" on its own without needing a letter.
-    emojiImage: getQuadzTileIconDataURL('✓', true),
+    // A 4x4 checkerboard echoing the real board's own shape (amber, deep
+    // brown, tick-green) — replaces the earlier single-tick-cell icon.
+    emojiImage: getQuadzCheckerboardIconDataURL(),
     tagline: '4 across meets 4 down <br> is that a clue?',
     path: 'games/quadz/index.html',
     color: '#DFAE55',

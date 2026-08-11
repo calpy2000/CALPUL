@@ -54,6 +54,9 @@ const GAME_COPY = {
   solvz: {
     normal: (s) => `you solved it in ${s}`,
   },
+  totalz: {
+    normal: (s) => `you solved it in ${s}`,
+  },
 };
 
 // VALUZ and MOJEEZ are the only two games with a per-tile "more info"

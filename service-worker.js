@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v4.18';
+const CACHE_VERSION = 'v4.19';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -157,6 +157,12 @@ const CODE_URLS = [
   'games/solvz/index.js',
   'games/solvz/manifest.json',
   'games/solvz/style.css',
+
+  'games/totalz/days.json',
+  'games/totalz/index.html',
+  'games/totalz/index.js',
+  'games/totalz/manifest.json',
+  'games/totalz/style.css',
 
   'games/valuz/days.json',
   'games/valuz/index.html',

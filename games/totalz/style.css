@@ -1,0 +1,283 @@
+/* The operator list in the start-banner instructions (see index.js's
+   `instructions` string) — sized in em so it scales relative to whatever
+   the shared .shell-overlay__instructions base size is, rather than a
+   fixed px/rem value that could drift out of proportion if that base ever
+   changes. */
+.totalz-instr-ops {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #C9A227;
+}
+
+/* TOTALZ board — a vertical stack (target card, workings ledger, prompt,
+   keypad) rather than a fixed-aspect grid, so it uses a simple flex column
+   filling #game-root instead of SOLVZ's height-driven aspect-ratio sizing
+   (that pattern is built for a fixed-shape image/letter grid — TOTALZ's
+   content genuinely grows/shrinks with how many lines the player has built,
+   so a flexible column fits better here). */
+/* column, not row: .reveal-btn (appended as a sibling of .totalz-board by
+   index.js, matching GLYMPZ/QUADZ's own reveal button placement) needs to
+   sit BELOW the board, not beside it. */
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totalz-board {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-sm);
+}
+
+/* --- Target card --- */
+.totalz-target {
+  background: #eaf3fb; /* pale tint of the tile's own light blue (#A9D0F5) */
+  border: 1.5px solid #A9D0F5;
+  border-radius: 12px;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex: none;
+}
+
+.totalz-target__label {
+  font-size: 1.02rem; /* 0.68rem x 1.5 */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1D4E78;
+  opacity: 0.85;
+}
+
+.totalz-target__value {
+  font-weight: 700;
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+  color: #1D4E78;
+}
+
+.totalz-target__min-required {
+  font-size: 1.02rem; /* 0.68rem x 1.5 */
+  color: #1D4E78;
+  opacity: 0.7;
+}
+
+.totalz-target__delta {
+  font-size: 1.23rem; /* 0.82rem x 1.5 */
+  font-variant-numeric: tabular-nums;
+  color: #1D4E78;
+  opacity: 0.8;
+}
+
+.totalz-target__delta.is-match {
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* --- Workings ledger --- */
+.totalz-ledger {
+  flex: 1;
+  min-height: 120px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.totalz-ledger__empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 0.82rem;
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* Pinned to the bottom of the panel — margin-top:auto pushes it down to
+   fill any leftover space in the ledger's flex column when there's only a
+   few rows; once rows fill/overflow the panel it just sits after the last
+   row instead, still inside the scrollable area. */
+.totalz-ledger__hint {
+  margin-top: auto;
+  flex: none;
+  text-align: center;
+  font-size: 1.05rem; /* 0.7rem x 1.5 */
+  color: #9aa0a6;
+  padding-top: var(--space-sm);
+}
+
+.totalz-line {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.6rem; /* 1rem x 1.6 */
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-sm) 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.totalz-line:hover {
+  background: var(--paper);
+}
+
+.totalz-line__expr {
+  color: #6b7280;
+}
+
+.totalz-line__result {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.totalz-line--ghost {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.totalz-line--ghost:hover {
+  background: none;
+}
+
+.totalz-line.is-solved {
+  background: #eaf3fb;
+}
+
+.totalz-line.is-solved .totalz-line__result {
+  color: #1D4E78;
+}
+
+/* --- Prompt --- */
+.totalz-prompt {
+  flex: none;
+  text-align: center;
+  font-size: 1.14rem; /* 0.76rem x 1.5 */
+  color: #6b7280;
+  padding: 0 4px;
+  min-height: 1.1em;
+}
+
+.totalz-prompt b {
+  color: #1D4E78;
+  font-weight: 700;
+}
+
+/* --- Keypad --- */
+.totalz-keypad {
+  flex: none;
+  padding-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.totalz-row {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.totalz-row--numbers {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.totalz-row--operators {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.totalz-tile {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  border-radius: 9px;
+  border: 1.5px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease, border-color 0.1s ease, background 0.1s ease;
+}
+
+.totalz-row--numbers .totalz-tile {
+  padding: 12px 4px;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.totalz-row--operators .totalz-tile {
+  padding: 12px 2px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.totalz-tile:active:not(.is-disabled) {
+  transform: scale(0.94);
+}
+
+@media (hover: hover) {
+  .totalz-tile:not(.is-disabled):hover {
+    border-color: #4B94D6;
+    background: #eaf3fb;
+  }
+}
+
+.totalz-tile.is-armed {
+  background: #4B94D6;
+  border-color: #4B94D6;
+  color: #ffffff;
+}
+
+.totalz-tile.is-used {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.totalz-tile.is-disabled {
+  background: #eceef0;
+  color: #b3b9bf;
+  border-color: #eceef0;
+  cursor: default;
+}
+
+/* --- Reveal solution — same feature/styling as games/glympz/index.js and
+   games/quadz/index.js: an understated text-link trigger below the keypad,
+   and a custom confirm panel that carries shell.css's own .shell-overlay/
+   .shell-overlay__panel/.shell-overlay__instructions classes directly
+   (see index.js) instead of a separate copy of the same positioning/message
+   rules here. Only what's actually unique to this dialog is styled here:
+   the trigger link, and the side-by-side two-button row. */
+.reveal-btn {
+  margin-top: 0;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+  align-self: center;
+}
+
+.reveal-btn:hover {
+  color: var(--ink);
+}
+
+.reveal-btn.is-hidden {
+  display: none;
+}
+
+.reveal-confirm__actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}

@@ -224,11 +224,15 @@ function applyRowHeightCap() {
 
 // Shows/hides the two "more games" pills (see .hub__scroll-hint in
 // style.css) based on #hub-grid's actual scroll position — the bottom one
-// when there's more content below the fold (today, only once a 9th+ game
-// exists — 8 fits exactly in 4 rows, so this stays hidden for the real
-// current tester/prod count), the top one (a mirror image, added per
-// explicit follow-up request) once the grid has been scrolled down at all,
-// meaning earlier games are now above the fold instead. Called right after
+// whenever there's still content below the fold, the top one whenever
+// there's content above it, regardless of how many rows are hidden in
+// either direction. (Previous version gated the bottom pill on "near the
+// top", which only worked by coincidence when there was ever just one
+// hidden row below — with 11 games leaving TWO rows below the 4-row cap,
+// scrolling down one row hid the bottom pill even though a whole second
+// row was still off-screen. Checking actual remaining scroll distance in
+// each direction, instead of an implicit "one row" assumption, is what
+// makes this correct for any row count.) Called right after
 // applyRowHeightCap() (both need a settled layout to measure, and a
 // row-height change can itself flip whether the grid is scrollable) and
 // again on scroll, so each hint disappears once it stops being useful —
@@ -236,10 +240,11 @@ function applyRowHeightCap() {
 const scrollHint = document.getElementById('scrollHint');
 const scrollHintTop = document.getElementById('scrollHintTop');
 function updateScrollHint() {
-  const isScrollable = grid.scrollHeight > grid.clientHeight + 1; // +1: subpixel layout rounding, not a real overflow
-  const nearTop = grid.scrollTop < 24;
-  scrollHint.classList.toggle('is-hidden', !(isScrollable && nearTop));
-  scrollHintTop.classList.toggle('is-hidden', nearTop);
+  // -1/+1: subpixel layout rounding, not a real overflow/offset.
+  const hasContentBelow = grid.scrollTop + grid.clientHeight < grid.scrollHeight - 1;
+  const hasContentAbove = grid.scrollTop > 1;
+  scrollHint.classList.toggle('is-hidden', !hasContentBelow);
+  scrollHintTop.classList.toggle('is-hidden', !hasContentAbove);
 }
 
 // Clicking either pill nudges the grid by exactly one row (a tile's own

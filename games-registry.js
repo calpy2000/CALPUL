@@ -62,6 +62,24 @@ export const GAMES = [
     // request.
   },
   {
+    id: 'totalz', // must be unique across all games — used to namespace localStorage keys
+    title: 'TOTALZ',
+    emoji: '🟰', // same "no generated icon art of its own" pattern as SOLVZ's ➕ — shown in a small raised circle on the hub tile
+    tagline: 'Why was 6 afraid of 7? <br> Because 7 8 9',
+    path: 'games/totalz/index.html',
+    color: '#A9D0F5', // light blue pastel — airier than GLYMPZ (#6F9BDB) and RAINZ (#4FB2D6), distinct from both
+    rim: 'rgba(25, 60, 95, 0.30)',
+    accent: '#8ED9A0', // light pastel green — background for the icon circle only
+    higherIsBetter: false, // score = completion time in seconds
+    scoreIsTime: true,
+    isNew: true,
+    // devOnly removed — now visible to testers (see index.js's
+    // renderTiles() and shared/core/tool-mode.js), same as MOJEEZ's own
+    // history above.
+    // 11th game. Inserted at row 1 / column 2 per explicit request — MOJEEZ
+    // and everything after it shifted along by one array position.
+  },
+  {
     id: 'mojeez', // must be unique across all games — used to namespace localStorage keys
     title: 'MOJEEZ',
     emojiImage: getMojeezTileIconDataURL(),
@@ -73,7 +91,8 @@ export const GAMES = [
     scoreIsTime: false, // a plain count (0-4), not a duration
     // Same "NEW" ribbon treatment as VALUZ above — remove once MOJEEZ isn't new anymore.
     isNew: true,
-    // Moved to row 1 / column 2 (from row 5 / column 1) per explicit request.
+    // Was row 1 / column 2; shifted to row 2 / column 1 when TOTALZ was
+    // inserted ahead of it (see TOTALZ's own comment above).
     // devOnly removed — now visible to testers (see days.json's fallback:
     // any day-of-year not yet authored just shows days[0] instead of
     // breaking, so it's safe to go live even with only 2 of 366 days

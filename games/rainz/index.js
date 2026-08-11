@@ -900,7 +900,7 @@ const shell = initShell({
   // Buttons colored from this game's own hub-tile palette (games-registry.js's
   // `color`/`rim`) instead of the shared global blue every game used before.
   accentColor: { bg: '#4FB2D6', ink: '#05374B', rim: 'rgba(5, 55, 75, 0.30)' },
-  instructions: `<p>Tap a falling raindrop ${LETTER_DROP_IMG} to use its letter</p><p>Catch 4 letters in a row to spell a word and score a point</p><p>If you make a mistake, tap the raindrop again to start on a new word</p><p>A wildcard ${WILDCARD_IMG} can be used as any letter</p><p>Drag an umbrella ${UMBRELLA_IMG} to burst a raindrop</p><p>The game ends when a raindrop reaches the bottom</p>`,
+  instructions: `<p>Tap a falling raindrop ${LETTER_DROP_IMG} to use its letter</p><p>Tap 4 raindrops to spell a 4 letter word and score</p><p>If you make a mistake, tap the raindrop again to start a new word</p><p>A wildcard ${WILDCARD_IMG} can be used as any letter</p><p>Drag an umbrella ${UMBRELLA_IMG} to burst a raindrop</p><p>The game ends when a raindrop reaches the bottom</p>`,
   formatScore: (score) => `${score} word${score === 1 ? '' : 's'}`,
 });
 

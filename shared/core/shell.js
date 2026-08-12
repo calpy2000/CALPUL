@@ -397,7 +397,11 @@ export function initShell({
     const content = getEndPanelContent({ gameId, outcome, scoreText, isNewBest });
     endScreen.querySelector('#shell-end-emoji').textContent = content.emoji;
     endScreen.querySelector('#shell-end-headline').textContent = content.headline;
-    endScreen.querySelector('#shell-end-message').textContent = content.text;
+    // innerHTML (not textContent) so a game's copy can include inline markup
+    // (e.g. RAINZ's '<strong>WON</strong>' — see end-panel-content.js) — safe
+    // since every GAME_COPY string is a fixed, hand-written literal, never
+    // user-supplied text.
+    endScreen.querySelector('#shell-end-message').innerHTML = content.text;
     // Separate sibling element, not part of the truncating message span
     // above — see end-panel-content.js's comment on why the taphint pill
     // has to live outside it (its throb animation would get clipped by

@@ -81,6 +81,7 @@ window.addEventListener('pagehide', () => { pageIsUnloading = true; });
 
 let survivalTime = 0; // shown in the shared header timer, same as JEWELZ's survival time
 let score = 0; // words formed this round
+let didWin = false; // true once all 4 tiles are caught as wildcards at once — see resolveWord()'s isAllWildcards branch
 let finalSummaryProcessed = false; // same guard as JEWELZ's — flips once, stops the loop for good
 
 let raindrops = [];
@@ -396,7 +397,34 @@ function nextRaindropLetter() {
 const WILDCARD_BASE_FREQUENCY = 0.1; // 1 in 10, on average
 function isWildcardSpawn() {
   const jitter = 0.5 + Math.random(); // 0.5x-1.5x
-  return Math.random() < WILDCARD_BASE_FREQUENCY * jitter;
+  if (Math.random() >= WILDCARD_BASE_FREQUENCY * jitter) return false;
+  return !wildcardCapReached();
+}
+
+// Keeps an outright win (catching all 4 tiles as wildcards at once — see
+// resolveWord()'s isAllWildcards branch) out of reach for the first
+// WILDCARD_WIN_CAP_PERIOD seconds by never letting more than
+// WILDCARD_WIN_CAP wildcards exist on screen at once during that window —
+// otherwise a lucky player could find 4 already sitting on screen within
+// the first few seconds and win almost immediately. Two separate code
+// paths mint a wildcard raindrop — a direct spawn (isWildcardSpawn() above)
+// and a collision between two non-wildcard drops (checkRaindropCollisions()
+// below) — so both check this same cap; gating spawns alone wouldn't be
+// enough, since a collision could still push the count past the cap on its
+// own, independent of the spawn roll.
+const WILDCARD_WIN_CAP_PERIOD = 90; // seconds
+const WILDCARD_WIN_CAP = 3; // max wildcards allowed on screen during the cap period
+
+// Every wildcard currently in play — still falling OR already caught
+// (clicked) into a tile mid-word — counts toward the cap, since a caught
+// wildcard is still visibly "on the screen" and only needs 3 more to
+// complete the win.
+function countWildcardsInPlay() {
+  return raindrops.filter((drop) => drop.letter === WILDCARD_LETTER).length;
+}
+
+function wildcardCapReached() {
+  return survivalTime < WILDCARD_WIN_CAP_PERIOD && countWildcardsInPlay() >= WILDCARD_WIN_CAP;
 }
 
 // A word can contain any number of wildcard letters (see WILDCARD_LETTER)
@@ -544,8 +572,15 @@ function checkRaindropCollisions() {
 
     createExplosion(first.x, first.y, first.palette.deep, 4, 14);
     raindrops.splice(i, 1);
-    colliding.letter = WILDCARD_LETTER;
-    colliding.palette = WILDCARD_PALETTE;
+    // Skips the wildcard conversion (the colliding drop just survives with
+    // its own original letter/color) if that conversion would push the
+    // on-screen wildcard count past the cap during the cap window — see
+    // WILDCARD_WIN_CAP above. No-op check if colliding is already a
+    // wildcard itself (re-converting it wouldn't change the count anyway).
+    if (colliding.letter === WILDCARD_LETTER || !wildcardCapReached()) {
+      colliding.letter = WILDCARD_LETTER;
+      colliding.palette = WILDCARD_PALETTE;
+    }
     // Loop again — a third drop could be overlapping this same cluster
     // (only possible in the already-rare saturated-canvas outlier case),
     // and the newly-freed gap plus the survivor's new position mean
@@ -631,7 +666,13 @@ function resetCaughtDrops() {
 function resolveWord() {
   resolving = true;
   const word = tiles.map((d) => d.letter).join('');
-  const isValid = isValidWordWithWildcards(word);
+  // All 4 tiles being wildcards is an outright win (see WILDCARD_WIN_CAP's
+  // comment) — skipping isValidWordWithWildcards() for this case isn't just
+  // an optimization (that function's worst case is a full 26^4 recursive
+  // search when every letter is a wildcard), it's also unconditionally true
+  // anyway, since a wildcard matches any letter.
+  const isAllWildcards = tiles.every((d) => d.letter === WILDCARD_LETTER);
+  const isValid = isAllWildcards ? true : isValidWordWithWildcards(word);
   const caughtDrops = tiles.slice(); // snapshot — `tiles` gets cleared before the drops themselves are dealt with
 
   tileEls.forEach((el) => el.classList.add(isValid ? 'flash-success' : 'flash-fail'));
@@ -646,6 +687,29 @@ function resolveWord() {
       });
       score += 1;
       liveScoreEl.textContent = `Words: ${score}`;
+
+      if (isAllWildcards) {
+        // Same grand-finale treatment as the "a raindrop hit bottom" ending
+        // in animate() (every remaining raindrop explodes at its own
+        // position/color) — just triggered by a catch instead of a loss.
+        // Tiles are cleared directly here (rather than through the usual
+        // 'exploding' animation + second setTimeout below, which is skipped
+        // once isGameOver is true) for the same reason animate()'s own
+        // bottom-touch branch clears them directly rather than relying on
+        // resolveWord()'s own timers.
+        didWin = true;
+        isGameOver = true;
+        raindrops.forEach((drop) => {
+          createExplosion(drop.x, drop.y, drop.clicked ? Raindrop.GREY.deep : drop.palette.deep, 5, 20);
+        });
+        raindrops = [];
+        tileEls.forEach((el) => {
+          el.textContent = '';
+          el.classList.remove('filled', 'flash-success', 'flash-fail', 'exploding');
+        });
+        resolving = false;
+        return;
+      }
     } else {
       // Back to their original color and clickable again — still falling,
       // never removed from `raindrops` in the first place.
@@ -691,11 +755,12 @@ function drawEverything() {
   raindrops.forEach((drop) => drop.draw(ctx));
 }
 
-// 'zero' (no words formed) or undefined (a normal score) — fed into
+// 'max' (won by catching all 4 wildcards at once — see didWin), 'zero' (no
+// words formed) or undefined (a normal score) — fed into
 // shell.showEndScreen's `outcome`, which picks the matching one-line copy
-// from end-panel-content.js. RAINZ has no numeric max score (open-ended
-// word count), so 'max' never applies here.
+// from end-panel-content.js.
 function classifyOutcome(finalScore) {
+  if (didWin) return 'max';
   return finalScore === 0 ? 'zero' : undefined;
 }
 
@@ -799,7 +864,10 @@ function animate(currentTime) {
       isNewBest: result.isNewBest, isTie: result.isTie,
       panelOutcome: outcome, panelIsNewBest: isNewBest,
     });
-    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `🌧️ RAINZ - formed ${score} word${score === 1 ? '' : 's'} today`, celebrate: score > 0, score });
+    const shareText = didWin
+      ? '🌧️ RAINZ - caught all 4 wildcards and won! ⭐'
+      : `🌧️ RAINZ - formed ${score} word${score === 1 ? '' : 's'} today`;
+    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText, celebrate: didWin || score > 0, score });
     return;
   }
 
@@ -828,6 +896,7 @@ function startGame() {
   umbrellas = createDefaultUmbrellas(); // back to the full row at their default spots
   draggedUmbrella = null;
   score = 0;
+  didWin = false;
 
   liveScoreEl.textContent = `Words: ${score}`;
   spawnRaindrop(); // first drop appears immediately rather than waiting out the usual spawn gap
@@ -900,7 +969,7 @@ const shell = initShell({
   // Buttons colored from this game's own hub-tile palette (games-registry.js's
   // `color`/`rim`) instead of the shared global blue every game used before.
   accentColor: { bg: '#4FB2D6', ink: '#05374B', rim: 'rgba(5, 55, 75, 0.30)' },
-  instructions: `<p>Tap a falling raindrop ${LETTER_DROP_IMG} to use its letter</p><p>Tap 4 raindrops to spell a 4 letter word and score</p><p>If you make a mistake, tap the raindrop again to start a new word</p><p>A wildcard ${WILDCARD_IMG} can be used as any letter</p><p>Drag an umbrella ${UMBRELLA_IMG} to burst a raindrop</p><p>The game ends when a raindrop reaches the bottom</p>`,
+  instructions: `<p>Tap a falling raindrop ${LETTER_DROP_IMG} to use its letter</p><p>Tap 4 raindrops to spell a 4 letter word and score</p><p>If you make a mistake, tap the raindrop again to start a new word</p><p>A wildcard ${WILDCARD_IMG} can be used as any letter</p><p>You <strong>WIN</strong> by tapping 4 wildcards ${WILDCARD_IMG} in sequence</p><p>Drag an umbrella ${UMBRELLA_IMG} to burst a raindrop</p><p>Its game over when a raindrop reaches the bottom</p>`,
   formatScore: (score) => `${score} word${score === 1 ? '' : 's'}`,
 });
 
@@ -914,11 +983,14 @@ if (shell.status.status === 'completed') {
   // completed before panelOutcome/panelIsNewBest existed — isNewBest
   // defaults to false in that fallback since there's no stored record of
   // whether it was a meaningful PB at the time.
+  const reloadOutcome = panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore);
   shell.showEndScreen({
-    outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore),
+    outcome: reloadOutcome,
     scoreText: String(finalScore),
     isNewBest: panelIsNewBest || false,
-    shareText: `🌧️ RAINZ - formed ${finalScore} word${finalScore === 1 ? '' : 's'} today`,
+    shareText: reloadOutcome === 'max'
+      ? '🌧️ RAINZ - caught all 4 wildcards and won! ⭐'
+      : `🌧️ RAINZ - formed ${finalScore} word${finalScore === 1 ? '' : 's'} today`,
   });
 } else {
   drawEverything(); // static (empty) preview behind the start banner
@@ -964,6 +1036,11 @@ initToolsPanel([GAME_ID], {
       },
     },
     { label: `Test word: F${WILDCARD_LETTER}RM (wildcard, valid)`, onClick: () => testCatchWord(`F${WILDCARD_LETTER}RM`) },
+    // Catching all 4 wildcards at once (the win condition — see
+    // resolveWord()'s isAllWildcards branch) only spawns naturally around
+    // 1-in-10^4 catches even outside the first-minute cap — not practical
+    // to wait for by hand.
+    { label: `Test win: ${WILDCARD_LETTER.repeat(4)} (all wildcards)`, onClick: () => testCatchWord(WILDCARD_LETTER.repeat(4)) },
     // Real collisions only ever happen via pickNonOverlappingX()'s rare
     // saturated-canvas fallback — not practical to wait for by hand.
     // Spawns two drops directly on top of each other (bypassing that

@@ -40,6 +40,7 @@ const GAME_COPY = {
     normal: (s) => `you scored ${s} points`,
   },
   rainz: {
+    max: 'you got 4 wildcards &amp; <strong>WON</strong>',
     normal: (s) => `you scored ${s} points`,
   },
   glympz: {

@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v4.21';
+const CACHE_VERSION = 'v4.22';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -98,6 +98,12 @@ const CODE_URLS = [
   'shared/shell.css',
   'shared/tokens.css',
   'shared/tools-panel.css',
+
+  'games/culuz/index.html',
+  'games/culuz/index.js',
+  'games/culuz/manifest.json',
+  'games/culuz/style.css',
+  'games/culuz/tile-icon.js',
 
   'games/glympz/index.html',
   'games/glympz/index.js',

@@ -57,6 +57,14 @@ const GAME_COPY = {
   totalz: {
     normal: (s) => `you solved it in ${s}`,
   },
+  culuz: {
+    // Outcome is always exactly 'max' (tapped the gold star) or 'loss' (5
+    // fails used) — never a normal/undefined completion — but `normal` is
+    // still supplied for parity with every other game's copy table.
+    max: 'you found the gold star',
+    loss: 'you ran out of chances',
+    normal: (s) => `you scored ${s} points`,
+  },
 };
 
 // VALUZ and MOJEEZ are the only two games with a per-tile "more info"

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Inline page-load spinner CSS — see the matching comment in the hub's
+     own index.html for why this is duplicated inline on every page rather
+     than centralized in tokens.css. -->
+<style>
+  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
+  @keyframes page-loading-reveal{to{opacity:1;pointer-events:auto}}
+  .page-loading__spinner{width:68px;height:68px;border-radius:50%;border:6px solid #c7cdd6;border-top-color:#3d5af1;animation:page-loading-spin .8s linear infinite}
+  @keyframes page-loading-spin{to{transform:rotate(360deg)}}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<!-- Standalone home-screen launch (no Safari chrome) — see the matching
+     comment in the hub's own index.html. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Android/Samsung Internet/Chrome equivalent — see the matching comment
+     in the hub's own index.html. -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3d5af1">
+<title>CULUZ</title>
+<!-- Same apple-touch-icon as every page — see the matching comment in the
+     hub's own index.html. -->
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<!-- Same load order convention as every other game — see the matching
+     comment in games/totalz/index.html. -->
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="../../shared/shell.css">
+<link rel="stylesheet" href="../../shared/tools-panel.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Page-load spinner — see shared/tokens.css's .page-loading rules and
+       shared/core/loading-indicator.js. Same convention on every page. -->
+  <div class="page-loading" id="pageLoading" aria-hidden="true"><div class="page-loading__spinner"></div></div>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as every
+       other game, and same canvas-only approach as JEWELZ/WARPZ — nothing
+       here is a DOM element the game draws with, it's all Canvas drawing
+       commands in index.js. -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <canvas id="culuzCanvas" width="450" height="800"></canvas>
+        <!-- Filled in by index.js with "Score: N" while a round is in
+             progress, and the "Fails left" discs — same below-canvas info
+             row convention as WARPZ's #liveScore. -->
+        <div id="culuzInfoRow">
+          <span id="culuzLiveScore"></span>
+          <span id="culuzFailsRow"><span id="culuzFailsLabel">Fails left</span><span id="culuzFailsDiscs"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Powers the confetti celebration on winning (tapping the gold star) —
+       see shared/core/shell.js's fireConfetti(). defer so it doesn't block
+       first paint/the page-load spinner — see the matching comment in
+       games/warpz/index.html. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

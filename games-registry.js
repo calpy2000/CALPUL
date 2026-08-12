@@ -38,28 +38,27 @@ import { getHeaderIconDataURL as getRainzHeaderIconDataURL } from './games/rainz
 import { getEnergyOrbIconDataURL as getWarpzOrbIconDataURL, VIOLET_PALETTE as WARPZ_VIOLET_PALETTE } from './games/warpz/energy-orb-icon.js';
 import { getQuestionTileIconDataURL as getValuzTileIconDataURL } from './games/valuz/tile-icon.js';
 import { getMojeezTileIconDataURL } from './games/mojeez/tile-icon.js';
+import { getPentagonIconDataURL as getCuluzPentagonIconDataURL } from './games/culuz/tile-icon.js';
 
 export const GAMES = [
   {
-    id: 'valuz', // must be unique across all games — used to namespace localStorage keys
-    title: 'VALUZ',
-    emojiImage: getValuzTileIconDataURL(),
-    tagline: 'You VALMEEZ <br> and I VALUZ',
-    path: 'games/valuz/index.html',
-    color: '#8E6FB3', // pastel purple — darker than SLYDZ's own violet (#AD82D6), distinct from every other game's hue
-    rim: 'rgba(40, 20, 60, 0.30)',
-    higherIsBetter: true, // score = correct matches out of 6
-    scoreIsTime: false, // a plain count (0-6), not a duration
-    // Shows the corner "NEW" ribbon on the hub tile (see index.js's
-    // renderTiles() and .hub__tile-new-ribbon in style.css) — remove once
-    // VALUZ isn't new anymore.
-    isNew: true,
-    // The 9th game, built 2026-08-04+. Was `devOnly: true` (hidden from the
-    // hub tile grid unless TOOL_MODE was 'dev' — see hub index.js's
-    // renderTiles() and shared/core/tool-mode.js) while under construction;
-    // now visible in both dev and test/tester mode, same as every other
-    // game. Swapped to the FIRST tile position (from last) per explicit
-    // request.
+    id: 'culuz', // must be unique across all games — used to namespace localStorage keys
+    title: 'CULUZ',
+    emojiImage: getCuluzPentagonIconDataURL(),
+    tagline: "Don't be square - lets get into shape",
+    path: 'games/culuz/index.html',
+    color: '#46A06A', // darker shade of green than JEWELZ's own pastel (#63B98A), lightened from an initial #3E8E5E per explicit feedback (picked "Option A" from a swatch comparison against JEWELZ/WARPZ's own greens)
+    rim: 'rgba(10, 45, 25, 0.30)',
+    higherIsBetter: true, // score = correct taps scored before failing out or winning
+    scoreIsTime: false, // a plain count, not a duration
+    isNew: true, // corner "NEW" ribbon — see index.js's renderTiles() and .hub__tile-new-ribbon in style.css
+    // devOnly removed per explicit request, to preview CULUZ under
+    // TOOL_MODE 'test' (the tester-facing tools panel) — same pattern
+    // VALUZ/MOJEEZ/TOTALZ went through once they were ready. Nothing has
+    // been pushed, so this is still local-only either way.
+    // 12th game. Inserted at row 1 / column 1 per explicit request — every
+    // other game (including VALUZ, moved to row 2 / column 2) shifted along
+    // by one array position.
   },
   {
     id: 'totalz', // must be unique across all games — used to namespace localStorage keys
@@ -97,6 +96,23 @@ export const GAMES = [
     // any day-of-year not yet authored just shows days[0] instead of
     // breaking, so it's safe to go live even with only 2 of 366 days
     // populated today).
+  },
+  {
+    id: 'valuz', // must be unique across all games — used to namespace localStorage keys
+    title: 'VALUZ',
+    emojiImage: getValuzTileIconDataURL(),
+    tagline: 'You VALMEEZ <br> and I VALUZ',
+    path: 'games/valuz/index.html',
+    color: '#8E6FB3', // pastel purple — darker than SLYDZ's own violet (#AD82D6), distinct from every other game's hue
+    rim: 'rgba(40, 20, 60, 0.30)',
+    higherIsBetter: true, // score = correct matches out of 6
+    scoreIsTime: false, // a plain count (0-6), not a duration
+    // Shows the corner "NEW" ribbon on the hub tile (see index.js's
+    // renderTiles() and .hub__tile-new-ribbon in style.css) — remove once
+    // VALUZ isn't new anymore.
+    isNew: true,
+    // Moved to row 2 / column 2 when CULUZ was inserted at row 1 / column 1
+    // (see CULUZ's own comment above) — was previously the first tile.
   },
   {
     id: 'glympz',

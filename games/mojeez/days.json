@@ -294,5 +294,116 @@
         "explain": "🚁 the helicopters bringing in wounded soldiers, ⛺ the army field hospital tents, 🩺 the doctors and medics at work, 😂 the dark comedy woven through the chaos, 🔫 the Korean War backdrop the whole show is set against, 🍸 the Swamp tent's off-duty drinking, 📢 the camp's constant loudspeaker announcements."
       }
     ]
+  },
+  {
+    "day": 226,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Sherlock Holmes",
+        "emoji": "🕵️🔍🎻",
+        "explain": "🕵️ the detective himself, 🔍 his magnifying glass, 🎻 his violin."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Da Vinci Code",
+        "emoji": "🖼️🏛️🔢🗝️⛪",
+        "explain": "🖼️ the Mona Lisa at the heart of the mystery, 🏛️ the Louvre, 🔢 the cipher-cracking, 🗝️ the cryptex, ⛪ the church conspiracy."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Dad's Army",
+        "emoji": "🪖👴⚔️🚨🏖️",
+        "explain": "🪖 the Home Guard helmets, 👴 the older-than-usual soldiers, ⚔️ their under-equipped weaponry, 🚨 constant invasion-panic, 🏖️ the seaside town of Walmington-on-Sea."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Brave New World",
+        "emoji": "🧪👶💊🏭🎭👑🌎",
+        "explain": "🧪 lab-engineered humans, 👶 test-tube babies, 💊 the soma drug, 🏭 the hatchery, 🎭 enforced conformity, 👑 the Alpha/caste hierarchy, 🌎 the dystopian world order."
+      }
+    ]
+  },
+  {
+    "day": 227,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Chicken Run",
+        "emoji": "🐔🏃🚧✈️🥧",
+        "explain": "🐔 the chickens, 🏃 their escape attempt, 🚧 the fenced-in farm they're trapped on, ✈️ their homemade escape flight, 🥧 the pie machine threatening them."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Interview with the Vampire",
+        "emoji": "🧛🩸🎙️🕯️🌙",
+        "explain": "🧛 the vampire, 🩸 his bloodlust, 🎙️ the framing device of the taped interview, 🕯️ the gothic candlelit setting, 🌙 his nocturnal existence."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "National Treasure",
+        "emoji": "📜🗺️💰🕵️🦅🔑",
+        "explain": "📜 the Declaration of Independence, 🗺️ the hidden treasure map, 💰 the treasure itself, 🕵️ the amateur-historian hero, 🦅 the American iconography, 🔑 the hidden clues."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Poirot",
+        "emoji": "🥸🥚🧠⏰",
+        "explain": "🥸 his famous moustache, 🥚 his egg-shaped head, 🧠 his \"little grey cells\", ⏰ his obsessive precision."
+      }
+    ]
+  },
+  {
+    "day": 228,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Mr. Bean",
+        "emoji": "🧸🚗🤐🫘",
+        "explain": "🧸 his teddy bear, 🚗 his little car, 🤐 his near-wordless comedy, 🫘 Bean himself."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Willy Wonka & the Chocolate Factory",
+        "emoji": "🎫🍫🏭🎩",
+        "explain": "🎫 the golden ticket, 🍫 the chocolate itself, 🏭 the factory, 🎩 Wonka's top hat."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Jurassic World",
+        "emoji": "🦖🧬🌎🚪🚧",
+        "explain": "🦖 the dinosaurs, 🧬 their cloned DNA, 🌎 the island park's world of creatures, 🚪 the gates, 🚧 the containment breaking down."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The BFG",
+        "emoji": "👂💭🫙😊✨",
+        "explain": "👂 his giant ears (he hears everything), 💭 the dreams he collects, 🫙 the jars he keeps them in, 😊 his gentle nature, ✨ the dream-magic itself."
+      }
+    ]
   }
 ]

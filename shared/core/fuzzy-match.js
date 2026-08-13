@@ -58,6 +58,8 @@ const ALTERNATE_ANSWERS = {
   "Charlotte's Web": ['charlottes web'],
   'Indiana Jones and the Raiders of the Lost Ark': ['raiders of the lost ark', 'indiana jones'],
   'M*A*S*H': ['mash'],
+  'Willy Wonka & the Chocolate Factory': ['charlie and the chocolate factory', 'willy wonka', 'chocolate factory'],
+  'Jurassic World': ['jurassic park'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

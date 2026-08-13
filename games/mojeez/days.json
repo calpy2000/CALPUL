@@ -405,5 +405,190 @@
         "explain": "👂 his giant ears (he hears everything), 💭 the dreams he collects, 🫙 the jars he keeps them in, 😊 his gentle nature, ✨ the dream-magic itself."
       }
     ]
+  },
+  {
+    "day": 229,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "Little Women",
+        "emoji": "👧👧👧👧✍️",
+        "explain": "👧👧👧👧 the four March sisters, ✍️ Jo's ambition to become a writer."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Secret Garden",
+        "emoji": "🤫🌷🗝️🐦🌳",
+        "explain": "🤫 the hidden secret, 🌷 the garden brought back to life, 🗝️ the key that unlocks it, 🐦 the robin who leads the way in, 🌳 the walled, overgrown grounds."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Blackadder",
+        "emoji": "⬛🐍🎭👑",
+        "explain": "⬛ \"Black\", 🐍 \"-adder\" (a snake), 🎭 the historical-comedy format, 👑 the different royal courts each series is set in."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Watership Down",
+        "emoji": "🐰🐰💦🚢⬇️",
+        "explain": "🐰🐰 the rabbit protagonists — the title itself splits into \"Water\" + \"ship\" + \"Down\": 💦🚢⬇️."
+      }
+    ]
+  },
+  {
+    "day": 230,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Ratatouille",
+        "emoji": "🐀👨‍🍳🗼🍽️",
+        "explain": "🐀 Remy the rat, 👨‍🍳 his secret chef ambitions, 🗼 the Paris setting, 🍽️ the fine-dining kitchen he takes over."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Jane Eyre",
+        "emoji": "👩‍🏫🏰🔥👰‍♀️",
+        "explain": "👩‍🏫 Jane the governess, 🏰 Thornfield Hall, 🔥 the climactic fire, 👰‍♀️ the secret first wife hidden away."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Groundhog Day",
+        "emoji": "🦫📅🔁⏰",
+        "explain": "🦫 the groundhog at the centre of it, 📅 the same date, 🔁 the time loop, ⏰ waking up to it over and over."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Gulliver's Travels",
+        "emoji": "🧍👫🪢⛵🌍",
+        "explain": "🧍 Gulliver towering over 👫 the tiny Lilliputians, 🪢 tied down by their ropes, ⛵ the voyages, 🌍 the different lands he washes up in."
+      }
+    ]
+  },
+  {
+    "day": 231,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Hercules",
+        "emoji": "💪⚡⛰️",
+        "explain": "💪 his superhuman strength, ⚡ his father Zeus's lightning, ⛰️ his home on Mount Olympus."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Frasier",
+        "emoji": "🎙️🧠🍷",
+        "explain": "🎙️ his call-in radio show, 🧠 his psychiatry practice, 🍷 his wine-snob, opera-loving taste."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Pocahontas",
+        "emoji": "🍃🏞️🕊️👸💧",
+        "explain": "🍃 her connection to nature, 🏞️ the riverbend, 🕊️ the wind/spirit motif, 👸 the Powhatan princess, 💧 'just around the riverbend'."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Picture of Dorian Gray",
+        "emoji": "🖼️🧑➡️👴🔪💋😈",
+        "explain": "🖼️ the enchanted portrait, 🧑➡️👴 Dorian staying young while the portrait ages in his place, 🔪 the ending where he stabs it, 💋 his vanity, 😈 the corruption hidden beneath his beauty."
+      }
+    ]
+  },
+  {
+    "day": 232,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Night at the Museum",
+        "emoji": "🌃🏛️🦖💡",
+        "explain": "🌃 the night setting, 🏛️ the museum, 🦖 its exhibits coming to life, 💡 the night watchman on duty."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Mummy",
+        "emoji": "🧟‍♂️🏜️📜🐫🏺⚰️",
+        "explain": "🧟‍♂️ the mummy himself, 🏜️ the Egyptian desert, 📜 the ancient curse, 🐫 the expedition, 🏺 the tomb artifacts, ⚰️ his sarcophagus."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Anne of Green Gables",
+        "emoji": "👧🟩🏡",
+        "explain": "👧 Anne, 🟩 the green gables of the farmhouse, 🏡 the home she's taken in at."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Mulan",
+        "emoji": "⚔️🐉👘🎖️🏹",
+        "explain": "⚔️ her sword, 🐉 Mushu the dragon, 👘 her traditional dress, 🎖️ the military rank she earns in disguise, 🏹 the battle skills she masters."
+      }
+    ]
+  },
+  {
+    "day": 233,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Parent Trap",
+        "emoji": "👧👧🪤💔👨‍👩‍👧✈️",
+        "explain": "👧👧 the identical twins, 🪤 the trap they set, 💔 their separated parents, 👨‍👩‍👧 reuniting the family, ✈️ the flight swap that kicks it all off."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "TV",
+        "title": "The X-Files",
+        "emoji": "👽🛸📁🔦🔬",
+        "explain": "👽 the alien conspiracy, 🛸 the UFO sightings, 📁 the files, 🔦 the investigation, 🔬 the FBI's fringe-science division."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Wind in the Willows",
+        "emoji": "🌬️🌳🐀🚗🐸🛶",
+        "explain": "🌬️ the literal wind, 🌳 the willow-lined riverbank, 🐀 Ratty, 🚗 Toad's reckless motorcar obsession, 🐸 Toad himself, 🛶 the river journeys."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Beauty and the Beast",
+        "emoji": "🌹🏰🐻📚",
+        "explain": "🌹 the enchanted rose, 🏰 the cursed castle, 🐻 the Beast, 📚 Belle's love of books."
+      }
+    ]
   }
 ]

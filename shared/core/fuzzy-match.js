@@ -60,6 +60,7 @@ const ALTERNATE_ANSWERS = {
   'M*A*S*H': ['mash'],
   'Willy Wonka & the Chocolate Factory': ['charlie and the chocolate factory', 'willy wonka', 'chocolate factory'],
   'Jurassic World': ['jurassic park'],
+  'The Picture of Dorian Gray': ['dorian gray'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

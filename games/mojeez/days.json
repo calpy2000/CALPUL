@@ -775,5 +775,190 @@
         "explain": "⛪ \"Vicar\" (the church), 👩‍💼 the female vicar herself, 😂 the village comedy, 🐷 the rural Dibley setting."
       }
     ]
+  },
+  {
+    "day": 239,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "The Three Musketeers",
+        "emoji": "3️⃣⚔️🤠🏇",
+        "explain": "3️⃣ the literal number, ⚔️ their swordfighting, 🤠 their swashbuckling adventurer style, 🏇 their horseback duels and chases."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "A Tale of Two Cities",
+        "emoji": "📕2️⃣🏙️🌆",
+        "explain": "📕 \"A Tale\", 2️⃣ the literal \"Two\", 🏙️🌆 the two different cities (London and Paris)."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Oliver Twist",
+        "emoji": "👦🍲🌀🧔🏼‍♂️🗝️🎯",
+        "explain": "👦 the orphan boy, 🍲 \"please sir, I want some more\", 🌀 \"Twist\", 🧔🏼‍♂️ Fagin, 🗝️ his path to freedom, 🎯 Bullseye, Bill Sikes's dog."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "David Copperfield",
+        "emoji": "✡️🪙🍀👶📖✍️",
+        "explain": "✡️ \"David\" (a Star of David), 🪙 \"Copper-\" (a coin), 🍀 \"-field\" (a green field), 👶 his difficult childhood, 📖 the sprawling autobiographical novel, ✍️ his growth into a writer."
+      }
+    ]
+  },
+  {
+    "day": 240,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Jumanji",
+        "emoji": "🎲🌴🦁🏠🐘🌋🦟",
+        "explain": "🎲 the magical board game, 🌴 the jungle it unleashes, 🦁 the wild animals, 🏠 the house overrun by chaos, 🐘 a stampede, 🌋 volcanic eruptions, 🦟 giant mosquitoes."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Count of Monte Cristo",
+        "emoji": "1️⃣2️⃣3️⃣⛓️🏝️🗡️📜",
+        "explain": "1️⃣2️⃣3️⃣ \"Count\", ⛓️ his wrongful imprisonment, 🏝️ the island fortress, 🗡️ his revenge, 📜 the letter that framed him."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Emma",
+        "emoji": "Ⓜ️💘👰‍♀️😬🎀",
+        "explain": "Ⓜ️ \"M\" (sounds like the first half of \"Emma\"), 💘 her matchmaking schemes, 👰‍♀️ the marriages she engineers, 😬 her meddling gone wrong, 🎀 the genteel Regency setting."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Persuasion",
+        "emoji": "🗣️💌⚓👴🌊🎻",
+        "explain": "🗣️ being talked out of love, 💌 the letters exchanged, ⚓ Captain Wentworth's naval career, 👴 the years-later reunion, 🌊 the seaside setting, 🎻 the quiet, restrained romance."
+      }
+    ]
+  },
+  {
+    "day": 241,
+    "items": [
+      {
+        "number": 1,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Space Jam",
+        "emoji": "🏀🚀🐰🛸",
+        "explain": "🏀 the basketball game, 🚀 the alien invaders, 🐰 Bugs Bunny and the Looney Tunes, 🛸 their spaceship."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Big",
+        "emoji": "🎹🧒➡️🧑🎪",
+        "explain": "🎹 the giant floor piano, 🧒➡️🧑 a boy wished into an adult overnight, 🎪 the carnival Zoltar machine."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Labyrinth",
+        "emoji": "🌀👑🍼🧝",
+        "explain": "🌀 the maze, 👑 the Goblin King, 🍼 the baby brother she must rescue, 🧝 the goblin creatures."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "'Allo 'Allo!",
+        "emoji": "👋🏼👋🏼🥖🎭🍽️🤫",
+        "explain": "👋🏼👋🏼 \"'Allo 'Allo\" (hello, hello), 🥖 the French setting, 🎭 the constant disguises and farce, 🍽️ René's café, 🤫 \"Listen very carefully, I shall say this only once\"."
+      }
+    ]
+  },
+  {
+    "day": 242,
+    "items": [
+      {
+        "number": 1,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The NeverEnding Story",
+        "emoji": "♾️📖🐉⚫🐴",
+        "explain": "♾️ the never-ending tale, 📖 the magic book that pulls him in, 🐉 Falkor the luckdragon, ⚫ The Nothing, 🐴 Artax lost in the Swamp of Sadness."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Are You Being Served?",
+        "emoji": "🏬🙋‍♂️😆👔👜👗",
+        "explain": "🏬 the department store, 🙋‍♂️ \"are you being served?\", 😆 the innuendo-laden comedy, 👔 the menswear department, 👜 ladies' accessories, 👗 ladies' wear."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Yes Minister",
+        "emoji": "🏛️🤝😏📋",
+        "explain": "🏛️ Whitehall, 🤝 the political manoeuvring, 😏 sly civil-service scheming, 📋 the bureaucratic paperwork."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "Last of the Summer Wine",
+        "emoji": "👴👴👴🏞️☀️🍷",
+        "explain": "👴👴👴 the trio of elderly friends, 🏞️ the Yorkshire countryside, ☀️ \"Summer\", 🍷 \"Wine\"."
+      }
+    ]
+  },
+  {
+    "day": 243,
+    "items": [
+      {
+        "number": 1,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Princess Bride",
+        "emoji": "👸👰⚔️🐀💍",
+        "explain": "👸 the princess, 👰 the bride, ⚔️ Inigo Montoya's revenge duel, 🐀 the Rodents of Unusual Size, 💍 the wedding at the heart of it."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Vanity Fair",
+        "emoji": "💄🎪👗🃏",
+        "explain": "💄 the vanity and social climbing, 🎪 the \"fair\" of the title, 👗 the high-society fashion, 🃏 its wry, satirical tone."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Absolutely Fabulous",
+        "emoji": "🥂👛💄✨🚬👗",
+        "explain": "🥂 the champagne-fuelled excess, 👛 designer handbags, 💄 the glamour, ✨ \"fabulous\", 🚬 the cigarette holder, 👗 the fashion-PR world."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Big Fish",
+        "emoji": "🐟📖👨‍👦",
+        "explain": "🐟 the tall \"big fish\" stories, 📖 the mythologised memories, 👨‍👦 the father-son relationship at its heart."
+      }
+    ]
   }
 ]

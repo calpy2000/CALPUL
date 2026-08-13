@@ -63,6 +63,7 @@ const ALTERNATE_ANSWERS = {
   'The Picture of Dorian Gray': ['dorian gray'],
   'Only Fools and Horses': ['fools and horses'],
   '101 Dalmatians': ['one hundred and one dalmatians'],
+  'Absolutely Fabulous': ['ab fab'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

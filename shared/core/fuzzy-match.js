@@ -61,6 +61,8 @@ const ALTERNATE_ANSWERS = {
   'Willy Wonka & the Chocolate Factory': ['charlie and the chocolate factory', 'willy wonka', 'chocolate factory'],
   'Jurassic World': ['jurassic park'],
   'The Picture of Dorian Gray': ['dorian gray'],
+  'Only Fools and Horses': ['fools and horses'],
+  '101 Dalmatians': ['one hundred and one dalmatians'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

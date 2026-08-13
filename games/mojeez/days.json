@@ -590,5 +590,190 @@
         "explain": "🌹 the enchanted rose, 🏰 the cursed castle, 🐻 the Beast, 📚 Belle's love of books."
       }
     ]
+  },
+  {
+    "day": 234,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Cinderella",
+        "emoji": "👠🎃🕛🪄🧹",
+        "explain": "👠 the glass slipper, 🎃 the pumpkin carriage, 🕛 the midnight deadline, 🪄 the fairy godmother's magic, 🧹 her life as a servant before the ball."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Black Beauty",
+        "emoji": "⬛🐴💔",
+        "explain": "⬛ \"Black\", 🐴 Beauty the horse, 💔 the hardship and cruelty he endures."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Call of the Wild",
+        "emoji": "🐕‍🦺❄️🛷🐺⛏️🏔️🌟",
+        "explain": "🐕‍🦺 Buck the sled dog, ❄️ the frozen Yukon, 🛷 the sled-dog trade, 🐺 the wild wolf pack calling him back, ⛏️ the gold-rush setting, 🏔️ the wilderness, 🌟 the primal pull of \"the call\"."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "A Study in Scarlet",
+        "emoji": "🔍🩸🟥🕵️🧑‍⚕️📖",
+        "explain": "🔍 the investigation (\"a study\"), 🩸 the murder, 🟥 \"Scarlet\", 🕵️ Holmes, 🧑‍⚕️ Dr. Watson, 📖 the novel itself."
+      }
+    ]
+  },
+  {
+    "day": 235,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Sleeping Beauty",
+        "emoji": "😴🧵👑💋",
+        "explain": "😴 \"Sleeping\", 🧵 the spinning wheel that pricks her, 👑 the princess, 💋 true love's kiss."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "White Fang",
+        "emoji": "⬜🐺🦷❄️🏔️",
+        "explain": "⬜ \"White\", 🐺 the wolf-dog, 🦷 \"Fang\", ❄️ the frozen wilderness, 🏔️ the Yukon setting."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Hound of the Baskervilles",
+        "emoji": "🐕‍🦺👻🌫️🕵️",
+        "explain": "🐕‍🦺 the spectral hound, 👻 its ghostly legend, 🌫️ the misty moor, 🕵️ Holmes investigating."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Only Fools and Horses",
+        "emoji": "🤯🤯🐴🐴🛻💰🍺",
+        "explain": "🤯🤯 Del Boy and Rodney, the two 'fools', 🐴🐴 the two 'horses' of the title, 🛻 their rickety market-trader van, 💰 their endless get-rich-quick schemes, 🍺 the Nag's Head pub."
+      }
+    ]
+  },
+  {
+    "day": 236,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "101 Dalmatians",
+        "emoji": "1️⃣0️⃣1️⃣🐕🧥",
+        "explain": "1️⃣0️⃣1️⃣ the literal number, 🐕 the spotted dalmatians, 🧥 Cruella's fur-coat obsession."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Robinson Crusoe",
+        "emoji": "🏝️⛵👣🐐🌴",
+        "explain": "🏝️ the deserted island, ⛵ the shipwreck, 👣 the famous footprint in the sand, 🐐 the goats he raises, 🌴 his years of solitary survival."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Princess Diaries",
+        "emoji": "👸📖🖋️🔄👧🚗",
+        "explain": "👸 discovering she's royalty, 📖🖋️ the diaries she writes in, 🔄 her makeover transformation, 👧 an ordinary teenage girl, 🚗 the limo ride that changes everything."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "EastEnders",
+        "emoji": "🍻🏙️⏹️😱📢",
+        "explain": "🍻 the Queen Vic pub, 🏙️ the East London setting, ⏹️ Albert Square, 😱 the dramatic plot twists, 📢 the gossip and drama."
+      }
+    ]
+  },
+  {
+    "day": 237,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Legally Blonde",
+        "emoji": "👱‍♀️⚖️🎀👠🎓",
+        "explain": "👱‍♀️ \"Blonde\", ⚖️ \"Legally\" (the law degree), 🎀 her signature pink aesthetic, 👠 her fashion-forward style, 🎓 Harvard Law."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Dirty Dancing",
+        "emoji": "💩💃🕺🏖️",
+        "explain": "💩 \"Dirty\", 💃 \"Dancing\", 🕺 her dance partner, 🏖️ the summer resort setting."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Miracle on 34th Street",
+        "emoji": "🎅⚖️3️⃣4️⃣🏬",
+        "explain": "🎅 Santa Claus, ⚖️ the courtroom trial to prove he's real, 3️⃣4️⃣ \"34th Street\", 🏬 the department store."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Coronation Street",
+        "emoji": "👑🛣️🏘️",
+        "explain": "👑 \"Coronation\", 🛣️ \"Street\", 🏘️ the terraced-house neighbourhood."
+      }
+    ]
+  },
+  {
+    "day": 238,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Elf",
+        "emoji": "🧝🎄🍬🎁🎅",
+        "explain": "🧝 the elf himself, 🎄 the Christmas setting, 🍬 his sugar-obsessed diet, 🎁 the presents, 🎅 Santa's workshop."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Sound of Music",
+        "emoji": "🎵⛰️👨‍👩‍👧‍👦🎶🌼🎻",
+        "explain": "🎵 \"Sound\", ⛰️ the Austrian Alps, 👨‍👩‍👧‍👦 the large Von Trapp family, 🎶 more music, 🌼 Edelweiss, 🎻 the singing-family theme."
+      },
+      {
+        "number": 3,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Cheers",
+        "emoji": "🍻😄🏙️",
+        "explain": "🍻 \"Cheers\" (the toast), 😄 the friendly regulars, 🏙️ the Boston bar setting."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "The Vicar of Dibley",
+        "emoji": "⛪👩‍💼😂🐷",
+        "explain": "⛪ \"Vicar\" (the church), 👩‍💼 the female vicar herself, 😂 the village comedy, 🐷 the rural Dibley setting."
+      }
+    ]
   }
 ]

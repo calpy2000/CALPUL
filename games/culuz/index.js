@@ -2,8 +2,15 @@
 // filled with a colour and labelled with two words (a colour name + a shape
 // name) that may or may not actually match what's shown. Tap a shape whose
 // label is fully correct to score; tap one that isn't and it costs one of 5
-// fails. A gold star starts appearing once the difficulty ramp finishes —
-// tapping it wins the round outright.
+// fails — as does going IDLE_FAIL_THRESHOLD seconds without a tap that
+// hits any object at all. A gold star starts appearing once the difficulty
+// ramp finishes —
+// its colour and label can both lie like any other object's, but tapping
+// the *actual* gold star with a correct label is the only thing that wins
+// the round outright and scores 100 points; a correctly-labelled decoy of
+// another colour just scores 1 point like a normal object, and an
+// incorrectly-labelled star (gold or not) costs a fail like any other
+// wrong tap.
 //
 // Ported from a standalone prototype (built and iterated on in isolation
 // before this integration — see the prototype's own history for the design
@@ -26,20 +33,35 @@ stripReloadParam();
 
 const SHAPE_NAMES = ['square', 'circle', 'triangle', 'ellipse', 'rectangle', 'pentagon', 'hexagon', 'octagon', 'diamond'];
 
+// Colours below were jointly re-optimized (not tuned pair-by-pair) so every
+// pair in the set — not just the ones a tester happened to flag — clears a
+// safe separation margin under protanopia, deuteranopia, and tritanopia
+// simulation, in addition to normal vision. blue/black were already fine
+// and stayed put; every other value moved. See CULUZ colour-check artifact
+// (2026-08-14) for the full before/after and per-vision-type numbers.
 const COLOURS = {
-  yellow: '#F5C518',
-  orange: '#F2872E',
-  red: '#E14B4B',
-  pink: '#F26FA1',
+  yellow: '#FFFE33',
+  orange: '#FC7905',
+  red: '#C52E1C',
+  pink: '#DF7097',
   blue: '#3E63DD',
-  green: '#2FA84F',
-  purple: '#8C52FF',
+  green: '#15A54A',
+  purple: '#B938FA',
   black: '#242424',
-  brown: '#8B5A2B',
+  brown: '#73341D',
 };
 const COLOUR_NAMES = Object.keys(COLOURS); // captured before 'gold' is added below, so it's never picked for normal objects
 const GOLD = '#F6C445';
 COLOURS.gold = GOLD; // usable via COLOURS[...] lookups, but excluded from COLOUR_NAMES/randChoice
+
+// Gold star's own fill/word vocabulary: every normal colour plus the
+// exclusive 'gold' itself, minus 'yellow' — yellow and gold read as near-
+// identical at a glance (by design, gold is meant to evoke a bright warm
+// yellow), so a star that's genuinely yellow-filled-and-correctly-labelled,
+// or gold-filled-but-lyingly-labelled-'Yellow', would be a legitimate "that
+// looked like the gold star" complaint either way. Dropping yellow from
+// this pool entirely avoids the whole ambiguity rather than picking a side.
+const GOLD_STAR_COLOUR_NAMES = [...COLOUR_NAMES.filter((n) => n !== 'yellow'), 'gold'];
 
 // Fixed internal canvas resolution (see index.html) — CSS scales the
 // element itself, same convention as JEWELZ/WARPZ (see shared/input/
@@ -53,39 +75,53 @@ const FADE_IN_DURATION = 0.7; // seconds, fixed throughout
 const FADE_OUT_DURATION = 0.7; // seconds, fixed throughout
 const POP_DURATION = 0.5;
 const TOTAL_FAILS = 5;
-const CORRECT_PROBABILITY = 0.5;
+const IDLE_FAIL_THRESHOLD = 10; // seconds — no tapped (hit) object at all costs a fail, same as a wrong tap
 const GLOW_BLUR_FACTOR = 0.5; // relative to object radius
 const MIN_SPAWN_GAP = 10; // px breathing room between object edges, on top of not overlapping at all
 
-// Difficulty ramp: over the first RAMP_DURATION seconds of a round, hold
-// time shrinks, the concurrent-object cap grows, and spawns get more
-// frequent (chosen so the cap is actually reachable: at the ramp's end,
-// HOLD_END / SPAWN_INTERVAL_END ~= CONCURRENT_END). Everything is pinned
-// at its END value once RAMP_DURATION is reached.
+// Difficulty ramp: hold time shrinks, the concurrent-object cap grows,
+// spawns get more frequent, and correct/incorrect drifts away from 1:1 —
+// all four move linearly with elapsed time and keep moving at the same
+// rate past RAMP_DURATION, they do NOT plateau there. RAMP_DURATION is just
+// the point each *_START/*_END pair was tuned around (chosen so the cap is
+// actually reachable: at that point, HOLD_END / SPAWN_INTERVAL_END ~=
+// CONCURRENT_END). HOLD_MIN/SPAWN_INTERVAL_MIN are only safety floors for
+// rounds that run far longer than the ramp was tuned for, so the maths
+// can't reach zero/negative durations.
 const RAMP_DURATION = 180; // seconds (3 minutes)
-const HOLD_START = 3.0, HOLD_END = 1.5; // seconds, fully visible ("stays on screen")
-const CONCURRENT_START = 1, CONCURRENT_END = 5;
+const HOLD_START = 3.0, HOLD_END = 1.0; // seconds, fully visible ("stays on screen")
+const HOLD_MIN = 0.15; // seconds
+const CONCURRENT_START = 1, CONCURRENT_END = 6;
 const SPAWN_INTERVAL_START = 1.0, SPAWN_INTERVAL_END = 0.5; // seconds, average gap between spawns
+const SPAWN_INTERVAL_MIN = 0.1; // seconds
 const SPAWN_VARIANCE_FRACTION = 0.3; // +/- 30% of the current interval
+const CORRECT_PROBABILITY_START = 0.5, CORRECT_PROBABILITY_END = 1 / 3; // 1:1 -> 2:1 incorrect:correct
 
 // Gold star: a bonus win-condition object, only starts appearing once the
-// difficulty ramp finishes.
-const GOLD_STAR_INTERVAL_BASE = 15; // seconds
-const GOLD_STAR_INTERVAL_VARIANCE = 3; // +/- seconds
+// difficulty ramp finishes. Interval/variance have been halved twice from
+// an original 15s +/- 3s (first a 3x request, then a further 2x request),
+// scaled together each time so the variance stays the same proportion
+// (20%) of the interval.
+const GOLD_STAR_INTERVAL_BASE = 2.5; // seconds
+const GOLD_STAR_INTERVAL_VARIANCE = 0.5; // +/- seconds
 
-function rampProgress(elapsed) { return clamp(elapsed / RAMP_DURATION, 0, 1); }
+function rampProgress(elapsed) { return Math.max(0, elapsed / RAMP_DURATION); } // uncapped above 1 on purpose — see comment above
 function currentHoldDuration(elapsed) {
   const p = rampProgress(elapsed);
-  return HOLD_START + (HOLD_END - HOLD_START) * p;
+  return Math.max(HOLD_MIN, HOLD_START + (HOLD_END - HOLD_START) * p);
 }
 function currentMaxConcurrent(elapsed) {
   const p = rampProgress(elapsed);
-  return Math.round(CONCURRENT_START + (CONCURRENT_END - CONCURRENT_START) * p);
+  return Math.max(1, Math.round(CONCURRENT_START + (CONCURRENT_END - CONCURRENT_START) * p));
 }
 function currentSpawnInterval(elapsed) {
   const p = rampProgress(elapsed);
-  const base = SPAWN_INTERVAL_START + (SPAWN_INTERVAL_END - SPAWN_INTERVAL_START) * p;
+  const base = Math.max(SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_START + (SPAWN_INTERVAL_END - SPAWN_INTERVAL_START) * p);
   return base * randRange(1 - SPAWN_VARIANCE_FRACTION, 1 + SPAWN_VARIANCE_FRACTION);
+}
+function currentCorrectProbability(elapsed) {
+  const p = rampProgress(elapsed);
+  return clamp(CORRECT_PROBABILITY_START + (CORRECT_PROBABILITY_END - CORRECT_PROBABILITY_START) * p, 0, 1);
 }
 
 // ---------- Utilities ----------
@@ -238,6 +274,7 @@ let didWin = false;
 let finalSummaryProcessed = false;
 let lastTime = 0;
 let gameElapsed = 0;
+let idleTimer = 0; // seconds since the last tap that actually hit an object — reset in handleTap(), ticks up in update()
 let spawnCooldown = 0;
 let wasBelowCap = true;
 let goldStarCooldown = 0;
@@ -256,6 +293,44 @@ function updateFailsUI() {
   const discs = failsDiscsEl.children;
   for (let i = 0; i < discs.length; i++) {
     discs[i].classList.toggle('used', i < failsUsed);
+  }
+  // failsUsed only ever increases by 1 per call, so the disc that just
+  // flipped to .used is always index failsUsed-1 — no need to diff against
+  // the previous state to find it. Guarded for failsUsed===0 (the reset
+  // call at round start), where there's nothing to burst.
+  const justUsed = discs[failsUsed - 1];
+  if (justUsed) spawnFailDiscBurst(justUsed);
+}
+
+// Spawns a one-shot flash + shockwave ring + outward particle burst on a
+// fail disc the moment it's used — see the .exploding/.culuz-fail-shockwave/
+// .culuz-fail-particle rules in style.css for the actual animation.
+const FAIL_BURST_COLORS = ['#e5484d', '#ff8a80', '#ffffff'];
+function spawnFailDiscBurst(discEl) {
+  discEl.classList.remove('exploding');
+  void discEl.offsetWidth; // forces a reflow so re-adding the class restarts the animation, in case this ever fires twice on the same disc
+  discEl.classList.add('exploding');
+
+  const shockwave = document.createElement('span');
+  shockwave.className = 'culuz-fail-shockwave';
+  shockwave.addEventListener('animationend', () => shockwave.remove());
+  setTimeout(() => shockwave.remove(), 700); // animationend won't fire under prefers-reduced-motion, so back it with a timeout too
+  discEl.appendChild(shockwave);
+
+  const count = 14;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2 + randRange(-0.3, 0.3);
+    const dist = randRange(30, 56);
+    const particle = document.createElement('span');
+    particle.className = 'culuz-fail-particle';
+    particle.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+    particle.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
+    particle.style.setProperty('--rot', `${randRange(0, 360)}deg`);
+    particle.style.setProperty('--size', `${randRange(3, 8).toFixed(1)}px`);
+    particle.style.setProperty('--pcolor', randChoice(FAIL_BURST_COLORS));
+    particle.addEventListener('animationend', () => particle.remove());
+    setTimeout(() => particle.remove(), 700); // same reduced-motion fallback as the shockwave
+    discEl.appendChild(particle);
   }
 }
 
@@ -281,7 +356,7 @@ function spawnObject(elapsed) {
 
   let displayColourWord = fillColorName;
   let displayShapeWord = shape;
-  const wantsCorrect = Math.random() < CORRECT_PROBABILITY;
+  const wantsCorrect = Math.random() < currentCorrectProbability(elapsed);
   if (!wantsCorrect) {
     // Exactly one word is wrong, chosen randomly — never both, so an
     // incorrect object always still has one genuinely correct word.
@@ -318,8 +393,17 @@ function spawnObject(elapsed) {
   return true;
 }
 
-// Always correct ("gold star"), tapping it wins the game. Reuses the same
-// rendering/pop/particle pipeline as normal objects via COLOURS.gold.
+// Only tapping the *actual* gold star with a correct label wins the game —
+// see the isGoldStar branch in popObject() for why a correctly-labelled
+// non-gold star doesn't. Same currentCorrectProbability coin flip and
+// one-word-wrong rule as normal objects, so it can't be told apart from a
+// decoy on sight. The star's actual fill colour varies (not always
+// literally gold) — GOLD_STAR_COLOUR_NAMES is the shared fill/word
+// vocabulary, so a star can be e.g. genuinely blue-filled and lyingly
+// labelled "Gold Star", same as any normal object's colour-word can lie
+// about its fill. Shape is always 'star' itself (only the shape *word* can
+// lie). Reuses the same rendering/pop/particle pipeline as normal objects
+// via COLOURS.gold.
 function spawnGoldStar(elapsed) {
   const r = BASE_RADIUS * randRange(0.9, 1.1);
   const spot = pickSpawnPosition(r);
@@ -328,15 +412,30 @@ function spawnGoldStar(elapsed) {
   const hold = currentHoldDuration(elapsed);
   const lifetime = FADE_IN_DURATION + hold + FADE_OUT_DURATION;
 
+  const fillColorName = randChoice(GOLD_STAR_COLOUR_NAMES);
+  let displayColourWord = fillColorName;
+  let displayShapeWord = 'star';
+  const wantsCorrect = Math.random() < currentCorrectProbability(elapsed);
+  if (!wantsCorrect) {
+    if (Math.random() < 0.5) {
+      displayColourWord = randChoiceExcept(GOLD_STAR_COLOUR_NAMES, fillColorName);
+    } else {
+      displayShapeWord = randChoiceExcept(SHAPE_NAMES, 'star');
+    }
+  }
+  const isCorrect = displayColourWord === fillColorName && displayShapeWord === 'star';
+
+  const [word1Color, word2Color] = pickTextColors(fillColorName);
+
   objects.push({
     shape: 'star',
-    fillColorName: 'gold',
-    displayColourWord: 'gold',
-    displayShapeWord: 'star',
-    isCorrect: true,
+    fillColorName,
+    displayColourWord,
+    displayShapeWord,
+    isCorrect,
     isGoldStar: true,
-    word1Color: 'black',
-    word2Color: 'black',
+    word1Color,
+    word2Color,
     r,
     x: spot.x,
     y: spot.y,
@@ -383,8 +482,28 @@ function popObject(obj) {
   }
 
   if (obj.isGoldStar) {
-    isGameOver = true;
-    didWin = true;
+    // Winning requires the *actual* gold star, correctly labelled — a
+    // correctly-labelled decoy star (e.g. genuinely blue, truthfully
+    // labelled "Blue Star") is just a normal safe tap worth 1 point, same
+    // as any other correct object. Otherwise the colour-varying decoys
+    // would be pointless: any correctly-labelled star would win outright
+    // regardless of what colour it actually was.
+    if (obj.isCorrect && obj.fillColorName === 'gold') {
+      score += 100;
+      liveScoreEl.textContent = `Score: ${score}`;
+      isGameOver = true;
+      didWin = true;
+    } else if (obj.isCorrect) {
+      score += 1;
+      liveScoreEl.textContent = `Score: ${score}`;
+    } else {
+      failsUsed += 1;
+      updateFailsUI();
+      if (failsUsed >= TOTAL_FAILS) {
+        isGameOver = true;
+        didWin = false;
+      }
+    }
     return;
   }
 
@@ -410,6 +529,7 @@ function handleTap(x, y) {
     if (obj.state !== 'alive') continue;
     const hitR = obj.r * 1.05;
     if ((x - obj.x) ** 2 + (y - obj.y) ** 2 <= hitR * hitR) {
+      idleTimer = 0; // only a tap that actually hits an object counts — see IDLE_FAIL_THRESHOLD
       popObject(obj);
       break;
     }
@@ -461,6 +581,22 @@ function update(dt) {
             ? GOLD_STAR_INTERVAL_BASE + randRange(-GOLD_STAR_INTERVAL_VARIANCE, GOLD_STAR_INTERVAL_VARIANCE)
             : 0.15; // couldn't find room, retry shortly
         }
+      }
+    }
+
+    // Idle penalty: going IDLE_FAIL_THRESHOLD seconds without a tap that
+    // actually hit an object costs a fail, same as a wrong tap — checked
+    // last in this block (after this frame's own spawn logic already ran)
+    // so a fail triggered here can't leave one extra object spawned into an
+    // already-over round.
+    idleTimer += dt;
+    if (idleTimer >= IDLE_FAIL_THRESHOLD) {
+      idleTimer = 0;
+      failsUsed += 1;
+      updateFailsUI();
+      if (failsUsed >= TOTAL_FAILS) {
+        isGameOver = true;
+        didWin = false;
       }
     }
   }
@@ -532,13 +668,17 @@ function drawParticles(obj) {
   const FADE_START = 0.75;
   const iconAlpha = growth > FADE_START ? clamp(1 - (growth - FADE_START) / (1 - FADE_START), 0, 1) : 1;
 
+  const isWinningTap = obj.isGoldStar && obj.isCorrect && obj.fillColorName === 'gold';
+  const glyph = isWinningTap ? '100' : obj.isCorrect ? '✓' : '✗';
+  const sizeFactor = isWinningTap ? 0.45 : 0.65; // '100' is 3 characters wide, so it needs a smaller factor than a single glyph to read at a comparable size
+
   ctx.save();
   ctx.globalAlpha = iconAlpha;
   ctx.fillStyle = obj.isCorrect ? '#2ecc71' : '#ff5555';
-  ctx.font = '700 ' + (obj.r * 0.65 * scale) + 'px ' + FONT_STACK;
+  ctx.font = '700 ' + (obj.r * sizeFactor * scale) + 'px ' + FONT_STACK;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(obj.isCorrect ? '✓' : '✗', obj.x, obj.y);
+  ctx.fillText(glyph, obj.x, obj.y);
   ctx.restore();
 
   obj.particles.forEach((p) => {
@@ -618,6 +758,7 @@ function startGame() {
   didWin = false;
   finalSummaryProcessed = false;
   gameElapsed = 0;
+  idleTimer = 0;
   spawnCooldown = randRange(0.3, SPAWN_INTERVAL_START);
   wasBelowCap = true;
   goldStarCooldown = 0;
@@ -637,6 +778,14 @@ initToolsPanel([GAME_ID], {
     // waiting a full 3 minutes for the gold star) isn't practical to do by
     // hand for every test pass — same reasoning as WARPZ/JEWELZ's own
     // "force game over" dev shortcut.
+    {
+      label: 'Skip to 3:00 (stars)',
+      onClick: () => {
+        if (!isGameStarted || isGameOver) return;
+        gameElapsed = RAMP_DURATION;
+        shell.timer.setSeconds(gameElapsed); // update() also does this every frame, but set it immediately so the header doesn't lag a frame behind the jump
+      },
+    },
     {
       label: 'Force win',
       onClick: () => {
@@ -665,7 +814,7 @@ const shell = initShell({
   title: 'CULUZ',
   emojiImage: getPentagonIconDataURL(),
   accentColor: { bg: '#46A06A', ink: '#0B3320', rim: 'rgba(10, 45, 25, 0.30)' },
-  instructions: `<p>Look closely at each shape</p><p>If the text matches what you see, tap to score</p><p>If it doesn't match, leave it alone</p><p>You have 5 chances to fail</p><p>Tap on a correct gold star ⭐ to win the game</p>`,
+  instructions: `<p>Look closely at each shape</p><p>If the text matches what you see, tap to score</p><p>If it doesn't match, leave it alone</p><p>You have 5 chances to fail, but don't hang around - if you wait more than 10 seconds to tap that is a fail</p><p>Tap on a correct gold star ⭐ to earn <strong>100 pts</strong> and win the game</p>`,
   formatScore: (s) => `${s} pts`,
 });
 

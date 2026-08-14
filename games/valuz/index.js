@@ -19,14 +19,21 @@ const GAME_ID = 'valuz';
 
 // Colour-type answers are shown as a flat fill — the tile IS the answer.
 // Fixed to the 8 named colours the spec allows.
+//
+// Values below are the same jointly-optimized set applied to CULUZ (not
+// tuned in isolation against this game's own `black`) — six colours were
+// picked together, alongside a fixed blue/black, to maximize the *worst*
+// pairwise separation across every colour in the set under protanopia,
+// deuteranopia, and tritanopia simulation, not just normal vision. See the
+// CULUZ colour-check artifact (2026-08-14) for the full method and numbers.
 const COLOUR_HEX = {
-  red: '#E53E3E',
-  yellow: '#ECC94B',
-  blue: '#3182CE',
-  green: '#38A169',
-  orange: '#DD6B20',
-  pink: '#F687B3', // lighter shade per explicit request — the original #D53F8C read as too close to red
-  purple: '#805AD5',
+  red: '#C52E1C',
+  yellow: '#FFFE33',
+  blue: '#3E63DD',
+  green: '#15A54A',
+  orange: '#FC7905',
+  pink: '#DF7097',
+  purple: '#B938FA',
   black: '#1A202C',
 };
 
@@ -42,7 +49,10 @@ const COLOUR_HEX = {
 // itself, which was NOT the assumption going in (purple and black looking
 // "dark" doesn't reliably predict which text colour contrasts best; this
 // was measured, not guessed). Every pick clears the WCAG AA threshold
-// (4.5:1) for normal text.
+// (4.5:1) for normal text. Re-measured against the 2026-08-14 palette
+// above — red and blue got darker/more saturated and now favour white
+// text instead of black; purple got brighter and flipped the other way,
+// to black text.
 const COLOUR_LABEL = {
   red: 'Re',
   yellow: 'Ye',
@@ -54,13 +64,13 @@ const COLOUR_LABEL = {
   black: 'Bla',
 };
 const COLOUR_LABEL_TEXT = {
-  red: '#000000',
+  red: '#ffffff',
   yellow: '#000000',
-  blue: '#000000',
+  blue: '#ffffff',
   green: '#000000',
   orange: '#000000',
   pink: '#000000',
-  purple: '#ffffff',
+  purple: '#000000',
   black: '#ffffff',
 };
 

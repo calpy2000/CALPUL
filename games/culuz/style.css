@@ -65,6 +65,7 @@
 }
 
 .culuz-fail-disc {
+  position: relative; /* anchors the .culuz-fail-particle burst spawned into it */
   width: 0.85rem;
   height: 0.85rem;
   border-radius: 50%;
@@ -77,4 +78,62 @@
   background: transparent;
   box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.45) inset;
   opacity: 0.6;
+}
+
+/* Fires once, the moment a disc flips to .used (see spawnFailDiscBurst in
+   index.js) — a bright flash + punchy scale kick on the disc itself, an
+   expanding ring shockwave, and a spray of particle spans thrown outward at
+   random angles/distances/sizes (set as --dx/--dy/--rot/--size/--pcolor
+   inline per particle), mirroring the same fling-and-fade shape as the
+   canvas's own object-pop particles, just done in CSS since this is a plain
+   DOM element, not canvas-drawn. Sized deliberately bigger than the disc
+   itself, so z-index keeps it from being clipped visually by neighbours. */
+@keyframes culuz-fail-disc-flash {
+  0% { transform: scale(1); background: #e5484d; }
+  20% { transform: scale(2.6); background: #ffffff; box-shadow: 0 0 22px 8px rgba(229, 72, 77, 1); }
+  100% { transform: scale(1); background: transparent; box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.45) inset; }
+}
+.culuz-fail-disc.exploding {
+  animation: culuz-fail-disc-flash 0.55s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  z-index: 2;
+}
+
+@keyframes culuz-fail-shockwave {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; border-width: 3px; }
+  100% { transform: translate(-50%, -50%) scale(6); opacity: 0; border-width: 0.5px; }
+}
+.culuz-fail-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  border: 3px solid #e5484d;
+  pointer-events: none;
+  animation: culuz-fail-shockwave 0.6s cubic-bezier(0.1, 0.6, 0.3, 1) forwards;
+}
+
+@keyframes culuz-fail-particle-fly {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--rot)) scale(0.2); opacity: 0; }
+}
+.culuz-fail-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size, 5px);
+  height: var(--size, 5px);
+  border-radius: 50%;
+  background: var(--pcolor, #e5484d);
+  pointer-events: none;
+  animation: culuz-fail-particle-fly 0.65s cubic-bezier(0.12, 0.65, 0.25, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .culuz-fail-disc.exploding,
+  .culuz-fail-shockwave,
+  .culuz-fail-particle {
+    animation: none;
+  }
 }

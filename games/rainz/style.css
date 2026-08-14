@@ -133,6 +133,13 @@
   width: auto;
   height: 16px;
   vertical-align: middle;
+  /* Visually 1.4x bigger per explicit request, WITHOUT touching height/width
+     — transform doesn't participate in layout/reflow at all, so the box
+     these icons reserve in the text (and therefore line-height and word-
+     wrap points) stays exactly 16px/auto, the same box the comment above
+     already tuned to avoid inflating line height. A height/width change
+     here would silently reopen that exact bug. */
+  transform: scale(1.4);
 }
 
 #liveScore {

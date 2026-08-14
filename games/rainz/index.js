@@ -460,6 +460,25 @@ function createExplosion(startX, startY, color, size, count) {
   }
 }
 
+// The all-wildcards win bonus callout — a "100" that grows then fades right
+// where the last wildcard raindrop caught (the 4th, completing tile) just
+// exploded, same shape as CULUZ's own gold-star pop text: eased growth
+// across the whole duration, fading only in the last quarter rather than
+// the whole time. Pushed into the shared `particles` array (flagged
+// isCallout) rather than kept as separate state, specifically so it's
+// covered by the SAME "wait for particles.length===0" gate animate()
+// already uses to hold off finalSummaryProcessed — otherwise the end
+// screen could cover it mid-animation if it outlived the other explosion
+// particles from the same catch.
+const CALLOUT_DURATION = 0.7; // seconds
+const CALLOUT_BASE_FONT_SIZE = 34; // px, before the 1.5x grown scale below
+function spawnWinCallout(x, y) {
+  particles.push({
+    x, y, vx: 0, vy: 0, color: '#2ecc71', size: 0, alpha: 1, life: 1,
+    isCallout: true, calloutElapsed: 0,
+  });
+}
+
 // A raindrop's x never changes after it spawns (see Raindrop.js's update()
 // — only y moves), so two drops can NEVER collide unless their x's are
 // within a diameter of each other; if they aren't, they stay in their own
@@ -685,31 +704,54 @@ function resolveWord() {
         createExplosion(drop.x, drop.y, drop.palette.deep, 4, 14);
         raindrops = raindrops.filter((d) => d !== drop); // removed from play entirely
       });
-      score += 1;
-      liveScoreEl.textContent = `Words: ${score}`;
 
       if (isAllWildcards) {
+        // 100-point win bonus (matching CULUZ's own gold-star bonus)
+        // instead of the usual +1 for a normal word.
+        score += 100;
+        liveScoreEl.textContent = `Words: ${score}`;
+
         // Same grand-finale treatment as the "a raindrop hit bottom" ending
         // in animate() (every remaining raindrop explodes at its own
         // position/color) — just triggered by a catch instead of a loss.
-        // Tiles are cleared directly here (rather than through the usual
-        // 'exploding' animation + second setTimeout below, which is skipped
-        // once isGameOver is true) for the same reason animate()'s own
-        // bottom-touch branch clears them directly rather than relying on
-        // resolveWord()'s own timers.
         didWin = true;
         isGameOver = true;
         raindrops.forEach((drop) => {
           createExplosion(drop.x, drop.y, drop.clicked ? Raindrop.GREY.deep : drop.palette.deep, 5, 20);
         });
         raindrops = [];
+
+        // Tiles get the normal .exploding treatment (this branch used to
+        // clear them instantly with no animation at all) plus a "100"
+        // callout, same idea as CULUZ's gold-star pop-text. Safe to defer
+        // cleanup with its own timer here, unlike the shared cleanup path
+        // below — there's no race with a DIFFERENT game-over source to
+        // guard against, since this branch just set isGameOver itself and
+        // raindrops is already emptied above, so animate()'s own
+        // bottom-touch branch can't also fire in the meantime.
         tileEls.forEach((el) => {
-          el.textContent = '';
-          el.classList.remove('filled', 'flash-success', 'flash-fail', 'exploding');
+          el.classList.remove('flash-success', 'flash-fail');
+          el.classList.add('exploding');
         });
-        resolving = false;
+        // caughtDrops is filled in catch order, so the last entry is the
+        // 4th/completing wildcard — the callout appears exactly where that
+        // one just exploded (see the createExplosion() call above), not
+        // the tile row.
+        const lastCaught = caughtDrops[caughtDrops.length - 1];
+        spawnWinCallout(lastCaught.x, lastCaught.y);
+
+        setTimeout(() => {
+          tileEls.forEach((el) => {
+            el.textContent = '';
+            el.classList.remove('filled', 'exploding');
+          });
+          resolving = false;
+        }, 350);
         return;
       }
+
+      score += 1;
+      liveScoreEl.textContent = `Words: ${score}`;
     } else {
       // Back to their original color and clickable again — still falling,
       // never removed from `raindrops` in the first place.
@@ -739,6 +781,26 @@ function drawEverything() {
   umbrellas.forEach((u) => drawUmbrella(ctx, u.x, u.y, u.r, u.palette));
 
   particles.forEach((p) => {
+    if (p.isCallout) {
+      // Ease-out-quad growth across the whole duration (same curve CULUZ's
+      // own gold-star pop-text uses), settling at 1.5x CALLOUT_BASE_FONT_SIZE
+      // — fades only in the last quarter rather than the whole time.
+      const growth = Math.min(1, p.calloutElapsed / CALLOUT_DURATION);
+      const scale = 1 - (1 - growth) * (1 - growth);
+      const FADE_START = 0.75;
+      const alpha = growth > FADE_START ? Math.max(0, 1 - (growth - FADE_START) / (1 - FADE_START)) : 1;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = p.color;
+      ctx.font = `800 ${CALLOUT_BASE_FONT_SIZE * 1.5 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
+      ctx.shadowBlur = 6;
+      ctx.fillText('100', p.x, p.y);
+      ctx.restore();
+      return;
+    }
     ctx.save();
     ctx.globalAlpha = p.alpha;
     ctx.fillStyle = p.color;
@@ -828,12 +890,16 @@ function animate(currentTime) {
   }
 
   particles.forEach((p) => {
+    if (p.isCallout) {
+      p.calloutElapsed += deltaTime;
+      return; // stays put and grows/fades in drawEverything() — no position/life decay
+    }
     p.x += p.vx;
     p.y += p.vy;
     p.life -= deltaTime * 1.5;
     p.alpha = Math.max(0, p.life);
   });
-  particles = particles.filter((p) => p.life > 0);
+  particles = particles.filter((p) => (p.isCallout ? p.calloutElapsed < CALLOUT_DURATION : p.life > 0));
 
   drawEverything();
 
@@ -969,7 +1035,7 @@ const shell = initShell({
   // Buttons colored from this game's own hub-tile palette (games-registry.js's
   // `color`/`rim`) instead of the shared global blue every game used before.
   accentColor: { bg: '#4FB2D6', ink: '#05374B', rim: 'rgba(5, 55, 75, 0.30)' },
-  instructions: `<p>Tap a falling raindrop ${LETTER_DROP_IMG} to use its letter</p><p>Tap 4 raindrops to spell a 4 letter word and score</p><p>If you make a mistake, tap the raindrop again to start a new word</p><p>A wildcard ${WILDCARD_IMG} can be used as any letter</p><p>You <strong>WIN</strong> by tapping 4 wildcards ${WILDCARD_IMG} in sequence</p><p>Drag an umbrella ${UMBRELLA_IMG} to burst a raindrop</p><p>Its game over when a raindrop reaches the bottom</p>`,
+  instructions: `<p>Tap a falling raindrop ${LETTER_DROP_IMG} to use its letter</p><p>Tap 4 raindrops to spell a 4 letter word and score</p><p>If you make a mistake, tap the raindrop again to start a new word</p><p>A wildcard ${WILDCARD_IMG} can be used as any letter</p><p>You <strong>WIN</strong> by tapping 4 wildcards ${WILDCARD_IMG} in sequence - earning <strong>100 pts</strong></p><p>Drag an umbrella ${UMBRELLA_IMG} to burst a raindrop</p><p>Its game over when a raindrop reaches the bottom</p>`,
   formatScore: (score) => `${score} word${score === 1 ? '' : 's'}`,
 });
 
@@ -1033,6 +1099,21 @@ initToolsPanel([GAME_ID], {
         const drop = new Raindrop(pickNonOverlappingX(Raindrop.BASE_RADIUS * WIDTH_SCALE), WILDCARD_LETTER);
         drop.speed *= speedMultiplier;
         raindrops.push(drop);
+      },
+    },
+    // Unlike "Test win" below (which jumps straight to resolveWord() via
+    // testCatchWord, skipping any falling/tapping), this spawns 4 real
+    // wildcard raindrops in close succession so the actual catch-by-catch
+    // flow — and the win animation it triggers (tile explode + "100"
+    // callout, see spawnWinCallout()) — can be watched end to end.
+    {
+      label: 'Spawn 4 wildcard drops',
+      onClick: () => {
+        for (let i = 0; i < 4; i++) {
+          const drop = new Raindrop(pickNonOverlappingX(Raindrop.BASE_RADIUS * WIDTH_SCALE), WILDCARD_LETTER);
+          drop.speed *= speedMultiplier;
+          raindrops.push(drop);
+        }
       },
     },
     { label: `Test word: F${WILDCARD_LETTER}RM (wildcard, valid)`, onClick: () => testCatchWord(`F${WILDCARD_LETTER}RM`) },

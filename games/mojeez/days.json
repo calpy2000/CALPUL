@@ -57,19 +57,19 @@
       },
       {
         "number": 3,
-        "tier": "medium",
-        "category": "TV",
-        "title": "Downton Abbey",
-        "emoji": "🏰🔔🎩🍽️",
-        "explain": "🏰 the grand English estate, 🔔 the servants' call-bell system, 🎩 the aristocratic Crawley family, 🍽️ the elaborate upstairs dinners."
-      },
-      {
-        "number": 4,
         "tier": "hard",
         "category": "Book",
         "title": "Frankenstein",
         "emoji": "⚡🧟🔬🧵🔥🏔️",
         "explain": "⚡ the lightning that brings the creature to life, 🧟 the monster himself, 🔬 Victor's lab experiments, 🧵 the stitched-together body, 🔥 the torch-wielding mob that hunts him, 🏔️ the Arctic chase that ends the story."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The BFG",
+        "emoji": "👂💭🫙😊✨",
+        "explain": "👂 his giant ears (he hears everything), 💭 the dreams he collects, 🫙 the jars he keeps them in, 😊 his gentle nature, ✨ the dream-magic itself."
       }
     ]
   },
@@ -346,14 +346,14 @@
       {
         "number": 2,
         "tier": "medium",
-        "category": "Book",
-        "title": "Interview with the Vampire",
-        "emoji": "🧛🩸🎙️🕯️🌙",
-        "explain": "🧛 the vampire, 🩸 his bloodlust, 🎙️ the framing device of the taped interview, 🕯️ the gothic candlelit setting, 🌙 his nocturnal existence."
+        "category": "TV",
+        "title": "Downton Abbey",
+        "emoji": "🏰🔔🎩🍽️",
+        "explain": "🏰 the grand English estate, 🔔 the servants' call-bell system, 🎩 the aristocratic Crawley family, 🍽️ the elaborate upstairs dinners."
       },
       {
         "number": 3,
-        "tier": "medium",
+        "tier": "hard",
         "category": "Movie",
         "title": "National Treasure",
         "emoji": "📜🗺️💰🕵️🦅🔑",
@@ -361,11 +361,11 @@
       },
       {
         "number": 4,
-        "tier": "hard",
-        "category": "TV",
-        "title": "Poirot",
-        "emoji": "🥸🥚🧠⏰",
-        "explain": "🥸 his famous moustache, 🥚 his egg-shaped head, 🧠 his \"little grey cells\", ⏰ his obsessive precision."
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Mulan",
+        "emoji": "⚔️🐉👘🎖️🏹",
+        "explain": "⚔️ her sword, 🐉 Mushu the dragon, 👘 her traditional dress, 🎖️ the military rank she earns in disguise, 🏹 the battle skills she masters."
       }
     ]
   },
@@ -382,27 +382,27 @@
       },
       {
         "number": 2,
-        "tier": "easy",
-        "category": "Movie",
-        "title": "Willy Wonka & the Chocolate Factory",
-        "emoji": "🎫🍫🏭🎩",
-        "explain": "🎫 the golden ticket, 🍫 the chocolate itself, 🏭 the factory, 🎩 Wonka's top hat."
+        "tier": "medium",
+        "category": "Book",
+        "title": "Interview with the Vampire",
+        "emoji": "🧛🩸🎙️🕯️🌙",
+        "explain": "🧛 the vampire, 🩸 his bloodlust, 🎙️ the framing device of the taped interview, 🕯️ the gothic candlelit setting, 🌙 his nocturnal existence."
       },
       {
         "number": 3,
-        "tier": "medium",
-        "category": "Movie",
-        "title": "Jurassic World",
-        "emoji": "🦖🧬🌎🚪🚧",
-        "explain": "🦖 the dinosaurs, 🧬 their cloned DNA, 🌎 the island park's world of creatures, 🚪 the gates, 🚧 the containment breaking down."
+        "tier": "hard",
+        "category": "TV",
+        "title": "Poirot",
+        "emoji": "🥸🥚🧠🔍⏰",
+        "explain": "🥸 his famous moustache, 🥚 his egg-shaped head, 🧠 his \"little grey cells\", 🔍 his investigative eye, ⏰ his obsessive precision."
       },
       {
         "number": 4,
         "tier": "hardest",
-        "category": "Book",
-        "title": "The BFG",
-        "emoji": "👂💭🫙😊✨",
-        "explain": "👂 his giant ears (he hears everything), 💭 the dreams he collects, 🫙 the jars he keeps them in, 😊 his gentle nature, ✨ the dream-magic itself."
+        "category": "Movie",
+        "title": "Labyrinth",
+        "emoji": "🌀👑🍼🧝",
+        "explain": "🌀 the maze, 👑 the Goblin King, 🍼 the baby brother she must rescue, 🧝 the goblin creatures."
       }
     ]
   },
@@ -412,18 +412,18 @@
       {
         "number": 1,
         "tier": "easy",
-        "category": "Book",
-        "title": "Little Women",
-        "emoji": "👧👧👧👧✍️",
-        "explain": "👧👧👧👧 the four March sisters, ✍️ Jo's ambition to become a writer."
+        "category": "Movie",
+        "title": "Willy Wonka & the Chocolate Factory",
+        "emoji": "🎫🍫🏭🎩",
+        "explain": "🎫 the golden ticket, 🍫 the chocolate itself, 🏭 the factory, 🎩 Wonka's top hat."
       },
       {
         "number": 2,
         "tier": "medium",
-        "category": "Book",
-        "title": "The Secret Garden",
-        "emoji": "🤫🌷🗝️🐦🌳",
-        "explain": "🤫 the hidden secret, 🌷 the garden brought back to life, 🗝️ the key that unlocks it, 🐦 the robin who leads the way in, 🌳 the walled, overgrown grounds."
+        "category": "Movie",
+        "title": "Jurassic World",
+        "emoji": "🦖🧬🌎🚪🚧",
+        "explain": "🦖 the dinosaurs, 🧬 their cloned DNA, 🌎 the island park's world of creatures, 🚪 the gates, 🚧 the containment breaking down."
       },
       {
         "number": 3,
@@ -436,10 +436,10 @@
       {
         "number": 4,
         "tier": "hardest",
-        "category": "Book",
-        "title": "Watership Down",
-        "emoji": "🐰🐰💦🚢⬇️",
-        "explain": "🐰🐰 the rabbit protagonists — the title itself splits into \"Water\" + \"ship\" + \"Down\": 💦🚢⬇️."
+        "category": "TV",
+        "title": "'Allo 'Allo!",
+        "emoji": "👋🏼👋🏼🥖🎭🍽️🤫",
+        "explain": "👋🏼👋🏼 \"'Allo 'Allo\" (hello, hello), 🥖 the French setting, 🎭 the constant disguises and farce, 🍽️ René's café, 🤫 \"Listen very carefully, I shall say this only once\"."
       }
     ]
   },
@@ -456,7 +456,7 @@
       },
       {
         "number": 2,
-        "tier": "medium",
+        "tier": "hardest",
         "category": "Book",
         "title": "Jane Eyre",
         "emoji": "👩‍🏫🏰🔥👰‍♀️",
@@ -486,34 +486,34 @@
       {
         "number": 1,
         "tier": "easy",
-        "category": "Movie",
-        "title": "Hercules",
-        "emoji": "💪⚡⛰️",
-        "explain": "💪 his superhuman strength, ⚡ his father Zeus's lightning, ⛰️ his home on Mount Olympus."
+        "category": "Book",
+        "title": "Little Women",
+        "emoji": "👧👧👧👧✍️",
+        "explain": "👧👧👧👧 the four March sisters, ✍️ Jo's ambition to become a writer."
       },
       {
         "number": 2,
         "tier": "medium",
-        "category": "TV",
-        "title": "Frasier",
-        "emoji": "🎙️👨🏾‍⚕️🛋️🍷",
-        "explain": "🎙️ his call-in radio show, 👨🏾‍⚕️ his psychiatry practice, 🛋️ the therapist's couch, 🍷 his wine-snob, opera-loving taste."
+        "category": "Book",
+        "title": "The Secret Garden",
+        "emoji": "🤫🌷🗝️🐦🌳",
+        "explain": "🤫 the hidden secret, 🌷 the garden brought back to life, 🗝️ the key that unlocks it, 🐦 the robin who leads the way in, 🌳 the walled, overgrown grounds."
       },
       {
         "number": 3,
-        "tier": "medium",
-        "category": "Movie",
-        "title": "Pocahontas",
-        "emoji": "🍃🏞️🕊️👸💧💘🤠",
-        "explain": "🍃 her connection to nature, 🏞️ the riverbend, 🕊️ the wind/spirit motif, 👸 the Powhatan princess, 💧 'just around the riverbend', 💘 the forbidden romance, 🤠 John Smith, the English settler she falls for."
+        "tier": "hard",
+        "category": "Book",
+        "title": "Watership Down",
+        "emoji": "🐰🐰💦🚢⬇️",
+        "explain": "🐰🐰 the rabbit protagonists — the title itself splits into \"Water\" + \"ship\" + \"Down\": 💦🚢⬇️."
       },
       {
         "number": 4,
-        "tier": "hard",
-        "category": "Book",
-        "title": "The Picture of Dorian Gray",
-        "emoji": "🖼️🧑➡️👴🔪💋😈",
-        "explain": "🖼️ the enchanted portrait, 🧑➡️👴 Dorian staying young while the portrait ages in his place, 🔪 the ending where he stabs it, 💋 his vanity, 😈 the corruption hidden beneath his beauty."
+        "tier": "hardest",
+        "category": "TV",
+        "title": "Last of the Summer Wine",
+        "emoji": "👴👴👴🏞️☀️🍷",
+        "explain": "👴👴👴 the trio of elderly friends, 🏞️ the Yorkshire countryside, ☀️ \"Summer\", 🍷 \"Wine\"."
       }
     ]
   },
@@ -532,25 +532,25 @@
         "number": 2,
         "tier": "medium",
         "category": "Movie",
-        "title": "The Mummy",
-        "emoji": "🧟‍♂️🏜️📜🐫🏺⚰️",
-        "explain": "🧟‍♂️ the mummy himself, 🏜️ the Egyptian desert, 📜 the ancient curse, 🐫 the expedition, 🏺 the tomb artifacts, ⚰️ his sarcophagus."
+        "title": "Hercules",
+        "emoji": "💪⚡⛰️",
+        "explain": "💪 his superhuman strength, ⚡ his father Zeus's lightning, ⛰️ his home on Mount Olympus."
       },
       {
         "number": 3,
-        "tier": "medium",
+        "tier": "hard",
         "category": "Book",
-        "title": "Anne of Green Gables",
-        "emoji": "👧🟩🏡",
-        "explain": "👧 Anne, 🟩 the green gables of the farmhouse, 🏡 the home she's taken in at."
+        "title": "The Picture of Dorian Gray",
+        "emoji": "🖼️🧑➡️👴🔪💋😈",
+        "explain": "🖼️ the enchanted portrait, 🧑➡️👴 Dorian staying young while the portrait ages in his place, 🔪 the ending where he stabs it, 💋 his vanity, 😈 the corruption hidden beneath his beauty."
       },
       {
         "number": 4,
-        "tier": "hard",
+        "tier": "hardest",
         "category": "Movie",
-        "title": "Mulan",
-        "emoji": "⚔️🐉👘🎖️🏹",
-        "explain": "⚔️ her sword, 🐉 Mushu the dragon, 👘 her traditional dress, 🎖️ the military rank she earns in disguise, 🏹 the battle skills she masters."
+        "title": "Big Fish",
+        "emoji": "🐟📖👨‍👦",
+        "explain": "🐟 the tall \"big fish\" stories, 📖 the mythologised memories, 👨‍👦 the father-son relationship at its heart."
       }
     ]
   },
@@ -567,15 +567,15 @@
       },
       {
         "number": 2,
-        "tier": "easy",
+        "tier": "medium",
         "category": "TV",
-        "title": "The X-Files",
-        "emoji": "👽🛸📁🔦🔬",
-        "explain": "👽 the alien conspiracy, 🛸 the UFO sightings, 📁 the files, 🔦 the investigation, 🔬 the FBI's fringe-science division."
+        "title": "Frasier",
+        "emoji": "🎙️👨🏾‍⚕️🛋️🍷",
+        "explain": "🎙️ his call-in radio show, 👨🏾‍⚕️ his psychiatry practice, 🛋️ the therapist's couch, 🍷 his wine-snob, opera-loving taste."
       },
       {
         "number": 3,
-        "tier": "medium",
+        "tier": "hard",
         "category": "Book",
         "title": "The Wind in the Willows",
         "emoji": "🌬️🌳🐀🚗🐸🛶",
@@ -583,11 +583,11 @@
       },
       {
         "number": 4,
-        "tier": "medium",
-        "category": "Movie",
-        "title": "Beauty and the Beast",
-        "emoji": "🌹🏰🐻📚",
-        "explain": "🌹 the enchanted rose, 🏰 the cursed castle, 🐻 the Beast, 📚 Belle's love of books."
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Anna Karenina",
+        "emoji": "👩🚂💔👗🎭🍷",
+        "explain": "👩 Anna herself, 🚂 the train central to her fate, 💔 her doomed affair, 👗 Russian aristocratic society, 🎭 the drama of it all, 🍷 high-society decadence."
       }
     ]
   },
@@ -634,39 +634,76 @@
       {
         "number": 1,
         "tier": "easy",
-        "category": "Movie",
-        "title": "Sleeping Beauty",
-        "emoji": "😴🧵👑💋",
-        "explain": "😴 \"Sleeping\", 🧵 the spinning wheel that pricks her, 👑 the princess, 💋 true love's kiss."
+        "category": "TV",
+        "title": "The X-Files",
+        "emoji": "👽🛸📁🔦🔬",
+        "explain": "👽 the alien conspiracy, 🛸 the UFO sightings, 📁 the files, 🔦 the investigation, 🔬 the FBI's fringe-science division."
       },
       {
         "number": 2,
         "tier": "medium",
+        "category": "Movie",
+        "title": "Pocahontas",
+        "emoji": "🍃🏞️🕊️👸💘🤠",
+        "explain": "🍃 her connection to nature, 🏞️ the riverbend, 🕊️ the wind/spirit motif, 👸 the Powhatan princess, 💘 the forbidden romance, 🤠 John Smith, the English settler she falls for."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Beauty and the Beast",
+        "emoji": "🌹🏰🐻📚",
+        "explain": "🌹 the enchanted rose, 🏰 the cursed castle, 🐻 the Beast, 📚 Belle's love of books."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
         "category": "Book",
-        "title": "White Fang",
-        "emoji": "⬜🐺🦷❄️🏔️",
-        "explain": "⬜ \"White\", 🐺 the wolf-dog, 🦷 \"Fang\", ❄️ the frozen wilderness, 🏔️ the Yukon setting."
+        "title": "The Brothers Karamazov",
+        "emoji": "🧑🏻‍🤝‍👨🏻🔪⚖️🍸✝️🌾💭",
+        "explain": "🧑🏻‍🤝‍👨🏻 the brothers, 🔪 their father's murder, ⚖️ the trial, 🍸 their reckless father, ✝️ the novel's religious questioning, 🌾 rural Russia, 💭 its philosophical weight."
+      }
+    ]
+  },
+  {
+    "day": 236,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Sleeping Beauty",
+        "emoji": "😴👑🧵🫅🏻💋",
+        "explain": "😴 \"Sleeping\", 🧵 the spinning wheel that pricks her, 👑 her royal crown, 🫅🏻 the princess herself, 💋 true love's kiss."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Mummy",
+        "emoji": "🧟‍♂️🏜️📜🐫🏺⚰️",
+        "explain": "🧟‍♂️ the mummy himself, 🏜️ the Egyptian desert, 📜 the ancient curse, 🐫 the expedition, 🏺 the tomb artifacts, ⚰️ his sarcophagus."
       },
       {
         "number": 3,
         "tier": "hard",
         "category": "Book",
         "title": "The Hound of the Baskervilles",
-        "emoji": "🐕‍🦺👻🌫️🕵️",
-        "explain": "🐕‍🦺 the spectral hound, 👻 its ghostly legend, 🌫️ the misty moor, 🕵️ Holmes investigating."
+        "emoji": "🐕‍🦺👻🌫️🕵️🧑‍⚕️",
+        "explain": "🐕‍🦺 the spectral hound, 👻 its ghostly legend, 🌫️ the misty moor, 🕵️ Holmes investigating, 🧑‍⚕️ Dr. Watson at his side."
       },
       {
         "number": 4,
-        "tier": "hard",
-        "category": "TV",
-        "title": "Only Fools and Horses",
-        "emoji": "🤯🤯🐴🐴🛻💰🍺",
-        "explain": "🤯🤯 Del Boy and Rodney, the two 'fools', 🐴🐴 the two 'horses' of the title, 🛻 their rickety market-trader van, 💰 their endless get-rich-quick schemes, 🍺 the Nag's Head pub."
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Middlemarch",
+        "emoji": "➡️⬅️🚶🏘️💍📚",
+        "explain": "➡️⬅️ \"Middle\", 🚶 \"march\" (walking), 🏘️ the provincial English town, 💍 its interwoven marriage plots, 📚 Dorothea's intellectual idealism."
       }
     ]
   },
   {
-    "day": 236,
+    "day": 237,
     "items": [
       {
         "number": 1,
@@ -680,30 +717,30 @@
         "number": 2,
         "tier": "medium",
         "category": "Book",
-        "title": "Robinson Crusoe",
-        "emoji": "🏝️⛵👣🐐🌴",
-        "explain": "🏝️ the deserted island, ⛵ the shipwreck, 👣 the famous footprint in the sand, 🐐 the goats he raises, 🌴 his years of solitary survival."
+        "title": "Anne of Green Gables",
+        "emoji": "👧🟩🏡",
+        "explain": "👧 Anne, 🟩 the green gables of the farmhouse, 🏡 the home she's taken in at."
       },
       {
         "number": 3,
-        "tier": "medium",
-        "category": "Movie",
-        "title": "The Princess Diaries",
-        "emoji": "👸📖🖋️🔄👧🚗",
-        "explain": "👸 discovering she's royalty, 📖🖋️ the diaries she writes in, 🔄 her makeover transformation, 👧 an ordinary teenage girl, 🚗 the limo ride that changes everything."
+        "tier": "hard",
+        "category": "TV",
+        "title": "Only Fools and Horses",
+        "emoji": "🤯🤯🐴🐴🛻💰🍺",
+        "explain": "🤯🤯 Del Boy and Rodney, the two 'fools', 🐴🐴 the two 'horses' of the title, 🛻 their rickety market-trader van, 💰 their endless get-rich-quick schemes, 🍺 the Nag's Head pub."
       },
       {
         "number": 4,
-        "tier": "hard",
-        "category": "TV",
-        "title": "EastEnders",
-        "emoji": "🍻🏙️⏹️😱📢",
-        "explain": "🍻 the Queen Vic pub, 🏙️ the East London setting, ⏹️ Albert Square, 😱 the dramatic plot twists, 📢 the gossip and drama."
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Little Dorrit",
+        "emoji": "👧🔒💰😇👴🧑",
+        "explain": "👧 \"Little\" Amy Dorrit, 🔒 the Marshalsea debtors' prison, 💰 the family's debts, 😇 her selfless devotion, 👴 her father William, 🧑 Arthur Clennam."
       }
     ]
   },
   {
-    "day": 237,
+    "day": 238,
     "items": [
       {
         "number": 1,
@@ -716,63 +753,26 @@
       {
         "number": 2,
         "tier": "medium",
-        "category": "Movie",
-        "title": "Dirty Dancing",
-        "emoji": "💩💃🕺🏖️",
-        "explain": "💩 \"Dirty\", 💃 \"Dancing\", 🕺 her dance partner, 🏖️ the summer resort setting."
+        "category": "Book",
+        "title": "White Fang",
+        "emoji": "⬜🐺🦷❄️🏔️",
+        "explain": "⬜ \"White\", 🐺 the wolf-dog, 🦷 \"Fang\", ❄️ the frozen wilderness, 🏔️ the Yukon setting."
       },
       {
         "number": 3,
-        "tier": "medium",
-        "category": "Movie",
-        "title": "Miracle on 34th Street",
-        "emoji": "🎅⚖️3️⃣4️⃣🏬",
-        "explain": "🎅 Santa Claus, ⚖️ the courtroom trial to prove he's real, 3️⃣4️⃣ \"34th Street\", 🏬 the department store."
+        "tier": "hard",
+        "category": "TV",
+        "title": "EastEnders",
+        "emoji": "🍻🏙️⏹️😱📢",
+        "explain": "🍻 the Queen Vic pub, 🏙️ the East London setting, ⏹️ Albert Square, 😱 the dramatic plot twists, 📢 the gossip and drama."
       },
       {
         "number": 4,
-        "tier": "hard",
-        "category": "TV",
-        "title": "Coronation Street",
-        "emoji": "👑🛣️🏘️",
-        "explain": "👑 \"Coronation\", 🛣️ \"Street\", 🏘️ the terraced-house neighbourhood."
-      }
-    ]
-  },
-  {
-    "day": 238,
-    "items": [
-      {
-        "number": 1,
-        "tier": "easy",
-        "category": "Movie",
-        "title": "Elf",
-        "emoji": "🧝🎄🍬🎁🎅",
-        "explain": "🧝 the elf himself, 🎄 the Christmas setting, 🍬 his sugar-obsessed diet, 🎁 the presents, 🎅 Santa's workshop."
-      },
-      {
-        "number": 2,
-        "tier": "easy",
-        "category": "Movie",
-        "title": "The Sound of Music",
-        "emoji": "🎵⛰️👨‍👩‍👧‍👦🎶🌼🎻",
-        "explain": "🎵 \"Sound\", ⛰️ the Austrian Alps, 👨‍👩‍👧‍👦 the large Von Trapp family, 🎶 more music, 🌼 Edelweiss, 🎻 the singing-family theme."
-      },
-      {
-        "number": 3,
-        "tier": "easy",
-        "category": "TV",
-        "title": "Cheers",
-        "emoji": "🍻😄🏙️",
-        "explain": "🍻 \"Cheers\" (the toast), 😄 the friendly regulars, 🏙️ the Boston bar setting."
-      },
-      {
-        "number": 4,
-        "tier": "hard",
-        "category": "TV",
-        "title": "The Vicar of Dibley",
-        "emoji": "⛪👩‍💼😂🐷",
-        "explain": "⛪ \"Vicar\" (the church), 👩‍💼 the female vicar herself, 😂 the village comedy, 🐷 the rural Dibley setting."
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Tess of the d'Urbervilles",
+        "emoji": "👩🤱⚰️👰‍♀️🙍‍♂️🗡️😢",
+        "explain": "👩 Tess herself, 🤱 the baby she has out of wedlock, ⚰️ its death, 👰‍♀️ her eventual marriage, 🙍‍♂️ Alec, who wronged her, 🗡️ the violence that follows, 😢 the tragedy of it all."
       }
     ]
   },
@@ -855,35 +855,35 @@
     "items": [
       {
         "number": 1,
-        "tier": "medium",
+        "tier": "easy",
         "category": "Movie",
-        "title": "Space Jam",
-        "emoji": "🏀🚀🐰🛸",
-        "explain": "🏀 the basketball game, 🚀 the alien invaders, 🐰 Bugs Bunny and the Looney Tunes, 🛸 their spaceship."
+        "title": "Elf",
+        "emoji": "🧝🎄🍬🎁🎅",
+        "explain": "🧝 the elf himself, 🎄 the Christmas setting, 🍬 his sugar-obsessed diet, 🎁 the presents, 🎅 Santa's workshop."
       },
       {
         "number": 2,
-        "tier": "hard",
-        "category": "Movie",
-        "title": "Big",
-        "emoji": "🎹🧒➡️🧑🎪",
-        "explain": "🎹 the giant floor piano, 🧒➡️🧑 a boy wished into an adult overnight, 🎪 the carnival Zoltar machine."
+        "tier": "medium",
+        "category": "Book",
+        "title": "Robinson Crusoe",
+        "emoji": "🏝️⛵👣🐐🌴",
+        "explain": "🏝️ the deserted island, ⛵ the shipwreck, 👣 the famous footprint in the sand, 🐐 the goats he raises, 🌴 his years of solitary survival."
       },
       {
         "number": 3,
         "tier": "hard",
-        "category": "Movie",
-        "title": "Labyrinth",
-        "emoji": "🌀👑🍼🧝",
-        "explain": "🌀 the maze, 👑 the Goblin King, 🍼 the baby brother she must rescue, 🧝 the goblin creatures."
+        "category": "TV",
+        "title": "Coronation Street",
+        "emoji": "👑🛣️🏘️",
+        "explain": "👑 \"Coronation\", 🛣️ \"Street\", 🏘️ the terraced-house neighbourhood."
       },
       {
         "number": 4,
         "tier": "hardest",
         "category": "TV",
-        "title": "'Allo 'Allo!",
-        "emoji": "👋🏼👋🏼🥖🎭🍽️🤫",
-        "explain": "👋🏼👋🏼 \"'Allo 'Allo\" (hello, hello), 🥖 the French setting, 🎭 the constant disguises and farce, 🍽️ René's café, 🤫 \"Listen very carefully, I shall say this only once\"."
+        "title": "Better Call Saul",
+        "emoji": "👨‍⚖️📞😏📉💵🚗",
+        "explain": "👨‍⚖️ the lawyer, 📞 \"Call\", 😏 his sleazy charm, 📉 his moral decline, 💵 his get-rich schemes, 🚗 his distinctive car."
       }
     ]
   },
@@ -892,35 +892,35 @@
     "items": [
       {
         "number": 1,
-        "tier": "medium",
+        "tier": "easy",
         "category": "Movie",
-        "title": "The NeverEnding Story",
-        "emoji": "♾️📖🐉⚫🐴",
-        "explain": "♾️ the never-ending tale, 📖 the magic book that pulls him in, 🐉 Falkor the luckdragon, ⚫ The Nothing, 🐴 Artax lost in the Swamp of Sadness."
+        "title": "The Sound of Music",
+        "emoji": "🎵⛰️👨‍👩‍👧‍👦🎶🌼🎻",
+        "explain": "🎵 \"Sound\", ⛰️ the Austrian Alps, 👨‍👩‍👧‍👦 the large Von Trapp family, 🎶 more music, 🌼 Edelweiss, 🎻 the singing-family theme."
       },
       {
         "number": 2,
-        "tier": "hard",
-        "category": "TV",
-        "title": "Are You Being Served?",
-        "emoji": "🏬🙋‍♂️😆👔👜👗",
-        "explain": "🏬 the department store, 🙋‍♂️ \"are you being served?\", 😆 the innuendo-laden comedy, 👔 the menswear department, 👜 ladies' accessories, 👗 ladies' wear."
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Space Jam",
+        "emoji": "🏀👨🏾‍🦲🚀🐰🛸",
+        "explain": "🏀 the basketball game, 👨🏾‍🦲 Michael Jordan, 🚀 the alien invaders, 🐰 Bugs Bunny and the Looney Tunes, 🛸 their spaceship."
       },
       {
         "number": 3,
-        "tier": "hard",
-        "category": "TV",
-        "title": "Yes Minister",
-        "emoji": "🏛️🤝😏📋",
-        "explain": "🏛️ Whitehall, 🤝 the political manoeuvring, 😏 sly civil-service scheming, 📋 the bureaucratic paperwork."
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Sing",
+        "emoji": "🎤🐨🎭🏆🎵🗣️",
+        "explain": "🎤 \"Sing\", 🐨 Buster Moon the koala theatre owner, 🎭 the singing competition, 🏆 the prize at stake, 🎵 the music, 🗣️ the auditions."
       },
       {
         "number": 4,
-        "tier": "hardest",
+        "tier": "hard",
         "category": "TV",
-        "title": "Last of the Summer Wine",
-        "emoji": "👴👴👴🏞️☀️🍷",
-        "explain": "👴👴👴 the trio of elderly friends, 🏞️ the Yorkshire countryside, ☀️ \"Summer\", 🍷 \"Wine\"."
+        "title": "Absolutely Fabulous",
+        "emoji": "🥂👛💄✨🚬👗",
+        "explain": "🥂 the champagne-fuelled excess, 👛 designer handbags, 💄 the glamour, ✨ \"fabulous\", 🚬 the cigarette holder, 👗 the fashion-PR world."
       }
     ]
   },
@@ -929,35 +929,35 @@
     "items": [
       {
         "number": 1,
-        "tier": "medium",
-        "category": "Movie",
-        "title": "The Princess Bride",
-        "emoji": "👸👰⚔️🐀💍",
-        "explain": "👸 the princess, 👰 the bride, ⚔️ Inigo Montoya's revenge duel, 🐀 the Rodents of Unusual Size, 💍 the wedding at the heart of it."
+        "tier": "easy",
+        "category": "TV",
+        "title": "Cheers",
+        "emoji": "🍻😄🏙️",
+        "explain": "🍻 \"Cheers\" (the toast), 😄 the friendly regulars, 🏙️ the Boston bar setting."
       },
       {
         "number": 2,
-        "tier": "hard",
-        "category": "Book",
-        "title": "Vanity Fair",
-        "emoji": "💄🎪👗🃏",
-        "explain": "💄 the vanity and social climbing, 🎪 the \"fair\" of the title, 👗 the high-society fashion, 🃏 its wry, satirical tone."
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The NeverEnding Story",
+        "emoji": "♾️📖🐉⚫🚫🐴",
+        "explain": "♾️ the never-ending tale, 📖 the magic book that pulls him in, 🐉 Falkor the luckdragon, ⚫ The Nothing, 🚫 the story that never ends, 🐴 Artax lost in the Swamp of Sadness."
       },
       {
         "number": 3,
-        "tier": "hard",
-        "category": "TV",
-        "title": "Absolutely Fabulous",
-        "emoji": "🥂👛💄✨🚬👗",
-        "explain": "🥂 the champagne-fuelled excess, 👛 designer handbags, 💄 the glamour, ✨ \"fabulous\", 🚬 the cigarette holder, 👗 the fashion-PR world."
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Karate Kid",
+        "emoji": "🥋🦵🚗",
+        "explain": "🥋 \"Karate\", 🦵 the crane kick, 🚗 \"wax on, wax off\" — Mr. Miyagi's car-polishing training."
       },
       {
         "number": 4,
-        "tier": "hardest",
-        "category": "Movie",
-        "title": "Big Fish",
-        "emoji": "🐟📖👨‍👦",
-        "explain": "🐟 the tall \"big fish\" stories, 📖 the mythologised memories, 👨‍👦 the father-son relationship at its heart."
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Scarlet Letter",
+        "emoji": "🟥🅰️✉️😔⛪",
+        "explain": "🟥 \"Scarlet\", 🅰️ the literal letter she's forced to wear, ✉️ \"Letter\", 😔 her public shame, ⛪ the Puritan community that condemns her."
       }
     ]
   },
@@ -975,26 +975,26 @@
       {
         "number": 2,
         "tier": "medium",
-        "category": "Book",
-        "title": "War and Peace",
-        "emoji": "⚔️✌🏼❄️",
-        "explain": "⚔️ \"War\", ✌🏼 \"Peace\", ❄️ Napoleon's disastrous Russian winter retreat."
+        "category": "Movie",
+        "title": "The Princess Bride",
+        "emoji": "👸👰⚔️🐀💍",
+        "explain": "👸 the princess, 👰 the bride, ⚔️ Inigo Montoya's revenge duel, 🐀 the Rodents of Unusual Size, 💍 the wedding at the heart of it."
       },
       {
         "number": 3,
         "tier": "hard",
-        "category": "Book",
-        "title": "Anna Karenina",
-        "emoji": "👩🚂💔👗🎭🍷",
-        "explain": "👩 Anna herself, 🚂 the train central to her fate, 💔 her doomed affair, 👗 Russian aristocratic society, 🎭 the drama of it all, 🍷 high-society decadence."
+        "category": "TV",
+        "title": "The Vicar of Dibley",
+        "emoji": "⛪👩‍💼😂🐷",
+        "explain": "⛪ \"Vicar\" (the church), 👩‍💼 the female vicar herself, 😂 the village comedy, 🐷 the rural Dibley setting."
       },
       {
         "number": 4,
-        "tier": "hardest",
+        "tier": "hard",
         "category": "Book",
-        "title": "The Brothers Karamazov",
-        "emoji": "🧑🏻‍🤝‍👨🏻🔪⚖️🍸✝️🌾💭",
-        "explain": "🧑🏻‍🤝‍👨🏻 the brothers, 🔪 their father's murder, ⚖️ the trial, 🍸 their reckless father, ✝️ the novel's religious questioning, 🌾 rural Russia, 💭 its philosophical weight."
+        "title": "Uncle Tom's Cabin",
+        "emoji": "👨🏿‍🦲🛖⛓️✊🌾😢",
+        "explain": "👨🏿‍🦲 \"Uncle\" Tom, 🛖 his \"Cabin\", ⛓️ the chains of slavery, ✊ the fight for freedom, 🌾 the plantation setting, 😢 its portrayal of suffering."
       }
     ]
   },
@@ -1013,25 +1013,25 @@
         "number": 2,
         "tier": "medium",
         "category": "Book",
-        "title": "The Scarlet Letter",
-        "emoji": "🟥🅰️✉️😔⛪",
-        "explain": "🟥 \"Scarlet\", 🅰️ the literal letter she's forced to wear, ✉️ \"Letter\", 😔 her public shame, ⛪ the Puritan community that condemns her."
+        "title": "War and Peace",
+        "emoji": "⚔️✌🏼❄️",
+        "explain": "⚔️ \"War\", ✌🏼 \"Peace\", ❄️ Napoleon's disastrous Russian winter retreat."
       },
       {
         "number": 3,
         "tier": "hard",
-        "category": "Book",
-        "title": "Uncle Tom's Cabin",
-        "emoji": "👨🏿‍🦲🛖⛓️✊🌾😢",
-        "explain": "👨🏿‍🦲 \"Uncle\" Tom, 🛖 his \"Cabin\", ⛓️ the chains of slavery, ✊ the fight for freedom, 🌾 the plantation setting, 😢 its portrayal of suffering."
+        "category": "Movie",
+        "title": "Big",
+        "emoji": "🎹🧒➡️🧑🎪",
+        "explain": "🎹 the giant floor piano, 🧒➡️🧑 a boy wished into an adult overnight, 🎪 the carnival Zoltar machine."
       },
       {
         "number": 4,
-        "tier": "hardest",
-        "category": "Book",
-        "title": "Middlemarch",
-        "emoji": "➡️⬅️🚶🏘️💍📚",
-        "explain": "➡️⬅️ \"Middle\", 🚶 \"march\" (walking), 🏘️ the provincial English town, 💍 its interwoven marriage plots, 📚 Dorothea's intellectual idealism."
+        "tier": "hard",
+        "category": "TV",
+        "title": "Succession",
+        "emoji": "🧔🏼‍♂️👑💼⚔️👨‍👩‍👧‍👦📈💰",
+        "explain": "🧔🏼‍♂️ the ageing patriarch, 👑 the media empire's throne, 💼 the corporate power struggle, ⚔️ the family infighting, 👨‍👩‍👧‍👦 the dysfunctional Roy family, 📈 the business stakes, 💰 the fortune at stake."
       }
     ]
   },
@@ -1088,8 +1088,8 @@
         "tier": "medium",
         "category": "Movie",
         "title": "Point Break",
-        "emoji": "🏄‍♂️🌊🏦👮🕶️",
-        "explain": "🏄‍♂️ the surfers, 🌊 the waves \"breaking\", 🏦 the bank robberies, 👮 the FBI agent undercover, 🕶️ their cool, adrenaline-fuelled lifestyle."
+        "emoji": "🏄‍♂️🌊🏦👮🎭",
+        "explain": "🏄‍♂️ the surfers, 🌊 the waves \"breaking\", 🏦 the bank robberies, 👮 the FBI agent undercover, 🎭 the ex-president masks they wear to pull the heists."
       },
       {
         "number": 3,
@@ -1125,8 +1125,8 @@
         "tier": "medium",
         "category": "Movie",
         "title": "Alien",
-        "emoji": "👽🚀😱",
-        "explain": "👽 the alien itself, 🚀 the spaceship, 😱 the terror it unleashes."
+        "emoji": "👽🧑‍🚀🚀😱",
+        "explain": "👽 the alien itself, 🧑‍🚀 the doomed spaceship crew, 🚀 the spaceship, 😱 the terror it unleashes."
       },
       {
         "number": 3,
@@ -1151,35 +1151,35 @@
     "items": [
       {
         "number": 1,
-        "tier": "easy",
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Princess Diaries",
+        "emoji": "👸📖🖋️🔄👧🚗",
+        "explain": "👸 discovering she's royalty, 📖🖋️ the diaries she writes in, 🔄 her makeover transformation, 👧 an ordinary teenage girl, 🚗 the limo ride that changes everything."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
         "category": "Movie",
         "title": "Coco",
         "emoji": "💀🎸🌼🕯️🪅",
         "explain": "💀 the Land of the Dead, 🎸 Miguel's forbidden passion for music, 🌼 the marigold-petal bridge to the afterlife, 🕯️ the family ofrenda altar, 🪅 the festive Día de los Muertos setting."
       },
       {
-        "number": 2,
-        "tier": "medium",
-        "category": "TV",
-        "title": "Desperate Housewives",
-        "emoji": "😩🏠👩‍👩‍👩‍👩🤫🌷🔪",
-        "explain": "😩 \"Desperate\", 🏠 \"Housewives\", 👩‍👩‍👩‍👩 the group of friends, 🤫 the secrets they keep, 🌷 the picture-perfect suburb, 🔪 the dark crimes underneath."
-      },
-      {
         "number": 3,
         "tier": "hard",
         "category": "TV",
-        "title": "Succession",
-        "emoji": "🧔🏼‍♂️👑💼⚔️👨‍👩‍👧‍👦📈💰",
-        "explain": "🧔🏼‍♂️ the ageing patriarch, 👑 the media empire's throne, 💼 the corporate power struggle, ⚔️ the family infighting, 👨‍👩‍👧‍👦 the dysfunctional Roy family, 📈 the business stakes, 💰 the fortune at stake."
+        "title": "Are You Being Served?",
+        "emoji": "🏬🙋‍♂️🤣👔👜👗",
+        "explain": "🏬 the department store, 🙋‍♂️ \"are you being served?\", 🤣 the innuendo-laden comedy, 👔 the menswear department, 👜 ladies' accessories, 👗 ladies' wear."
       },
       {
         "number": 4,
-        "tier": "hardest",
-        "category": "Book",
-        "title": "Little Dorrit",
-        "emoji": "👧🔒💰😇👴🧑",
-        "explain": "👧 \"Little\" Amy Dorrit, 🔒 the Marshalsea debtors' prison, 💰 the family's debts, 😇 her selfless devotion, 👴 her father William, 🧑 Arthur Clennam."
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Rock",
+        "emoji": "🪨🏝️🔒☠️🔫🪖",
+        "explain": "🪨 \"The Rock\" (Alcatraz's nickname), 🏝️ the island prison, 🔒 the hostage lockdown, ☠️ the chemical weapon threat, 🔫 the firefight, 🪖 the military assault."
       }
     ]
   },
@@ -1262,35 +1262,35 @@
     "items": [
       {
         "number": 1,
-        "tier": "easy",
+        "tier": "medium",
         "category": "Movie",
-        "title": "Moana",
-        "emoji": "🌊⛵🐔🌺",
-        "explain": "🌊 the ocean she's drawn to, ⛵ her voyaging canoe, 🐔 Heihei, her hapless chicken companion, 🌺 the Polynesian setting."
+        "title": "Dirty Dancing",
+        "emoji": "💩💃🕺🏖️",
+        "explain": "💩 \"Dirty\", 💃 \"Dancing\", 🕺 her dance partner, 🏖️ the summer resort setting."
       },
       {
         "number": 2,
         "tier": "medium",
-        "category": "Movie",
-        "title": "Sing",
-        "emoji": "🎤🐨🎭🏆🎵🗣️",
-        "explain": "🎤 \"Sing\", 🐨 Buster Moon the koala theatre owner, 🎭 the singing competition, 🏆 the prize at stake, 🎵 the music, 🗣️ the auditions."
+        "category": "TV",
+        "title": "Desperate Housewives",
+        "emoji": "😩🏠👩‍👩‍👩‍👩🤫🌷🔪",
+        "explain": "😩 \"Desperate\", 🏠 \"Housewives\", 👩‍👩‍👩‍👩 the group of friends, 🤫 the secrets they keep, 🌷 the picture-perfect suburb, 🔪 the dark crimes underneath."
       },
       {
         "number": 3,
         "tier": "hard",
-        "category": "Movie",
-        "title": "The Rock",
-        "emoji": "🪨🏝️🔒☠️🔫🪖",
-        "explain": "🪨 \"The Rock\" (Alcatraz's nickname), 🏝️ the island prison, 🔒 the hostage lockdown, ☠️ the chemical weapon threat, 🔫 the firefight, 🪖 the military assault."
+        "category": "TV",
+        "title": "Yes Minister",
+        "emoji": "🏛️🤝😏📋🧑🏻‍💼👩‍💼",
+        "explain": "🏛️ Whitehall, 🤝 the political manoeuvring, 😏 sly civil-service scheming, 📋 the bureaucratic paperwork, 🧑🏻‍💼👩‍💼 the ministerial advisors pulling the strings."
       },
       {
         "number": 4,
-        "tier": "hardest",
-        "category": "Book",
-        "title": "Tess of the d'Urbervilles",
-        "emoji": "👩🤱⚰️👰‍♀️🙍‍♂️🗡️😢",
-        "explain": "👩 Tess herself, 🤱 the baby she has out of wedlock, ⚰️ its death, 👰‍♀️ her eventual marriage, 🙍‍♂️ Alec, who wronged her, 🗡️ the violence that follows, 😢 the tragedy of it all."
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Zootopia",
+        "emoji": "🐰👮🦊🏙️",
+        "explain": "🐰 the rookie rabbit cop, 👮 her police badge, 🦊 her con-artist fox partner, 🏙️ the animal city they work in."
       }
     ]
   },
@@ -1311,7 +1311,7 @@
         "category": "Movie",
         "title": "Rambo",
         "emoji": "🪖🔫💪🔪🚁",
-        "explain": "🪖 the Vietnam veteran, 🔫 his guerrilla warfare, 💪 his one-man-army strength, 🔪 his combat knife, 🚁 the helicopter assaults."
+        "explain": "🪖 John Rambo, the traumatized Vietnam vet, 🔫 the one-man war he wages against the small-town police who provoke him, 💪 his relentless survivalist strength, 🔪 the huge combat knife he lives off the land with, 🚁 the helicopter gunships sent to hunt him down in the forest."
       },
       {
         "number": 3,
@@ -1336,35 +1336,35 @@
     "items": [
       {
         "number": 1,
-        "tier": "easy",
-        "category": "TV",
-        "title": "Zootopia",
-        "emoji": "🐰👮🦊🏙️",
-        "explain": "🐰 the rookie rabbit cop, 👮 her police badge, 🦊 her con-artist fox partner, 🏙️ the animal city they work in."
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Miracle on 34th Street",
+        "emoji": "🎅⚖️3️⃣4️⃣🏬",
+        "explain": "🎅 Santa Claus, ⚖️ the courtroom trial to prove he's real, 3️⃣4️⃣ \"34th Street\", 🏬 the department store."
       },
       {
         "number": 2,
         "tier": "medium",
         "category": "Movie",
-        "title": "The Karate Kid",
-        "emoji": "🥋🦵🚗",
-        "explain": "🥋 \"Karate\", 🦵 the crane kick, 🚗 \"wax on, wax off\" — Mr. Miyagi's car-polishing training."
+        "title": "Moana",
+        "emoji": "👧🏽🌊⛵🐔🌺",
+        "explain": "👧🏽 Moana herself, 🌊 the ocean she's drawn to, ⛵ her voyaging canoe, 🐔 Heihei, her hapless chicken companion, 🌺 the Polynesian setting."
       },
       {
         "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Vanity Fair",
+        "emoji": "💄🎪👗🃏",
+        "explain": "💄 the vanity and social climbing, 🎪 the \"fair\" of the title, 👗 the high-society fashion, 🃏 its wry, satirical tone."
+      },
+      {
+        "number": 4,
         "tier": "hard",
         "category": "TV",
         "title": "Mad Men",
         "emoji": "🚬🍸🤬🤵🤵📺",
         "explain": "🚬 the era-authentic smoking, 🍸 the cocktail culture, 🤬 \"Mad\", 🤵🤵 \"Men\" — the sharp-suited ad executives, 📺 the advertising industry they work in."
-      },
-      {
-        "number": 4,
-        "tier": "hardest",
-        "category": "TV",
-        "title": "Better Call Saul",
-        "emoji": "👨‍⚖️📞😏📉💵🚗",
-        "explain": "👨‍⚖️ the lawyer, 📞 \"Call\", 😏 his sleazy charm, 📉 his moral decline, 💵 his get-rich schemes, 🚗 his distinctive car."
       }
     ]
   },
@@ -1384,8 +1384,8 @@
         "tier": "medium",
         "category": "Movie",
         "title": "Ferris Bueller's Day Off",
-        "emoji": "🏫🚫🏙️🎉",
-        "explain": "🏫 school, 🚫 skipping it, 🏙️ the Chicago adventure, 🎉 his famous \"day off\"."
+        "emoji": "👦🏻👦👧🏻🏫🚘🏙️🎉",
+        "explain": "👦🏻 Ferris, 👦 his best friend Cameron, 👧🏻 his girlfriend Sloane, 🏫 the school day he's faking sick to skip, 🚘 the joyride in Cameron's dad's prized Ferrari, 🏙️ their day exploring Chicago, 🎉 his legendary \"day off\"."
       },
       {
         "number": 3,
@@ -1400,8 +1400,8 @@
         "tier": "hardest",
         "category": "Book",
         "title": "The Age of Innocence",
-        "emoji": "⏳😇💍🏛️🎭🌹",
-        "explain": "⏳ \"Age\", 😇 \"Innocence\", 💍 the repressed engagement, 🏛️ Gilded Age New York high society, 🎭 its social facade, 🌹 the forbidden romance beneath it."
+        "emoji": "⏳😇💍🏛️🎭🚫🌹",
+        "explain": "⏳ \"Age\", 😇 \"Innocence\", 💍 the repressed engagement, 🏛️ Gilded Age New York high society, 🎭 its social facade, 🚫 the forbidden desire held back, 🌹 the romance beneath it all."
       }
     ]
   },

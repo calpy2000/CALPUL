@@ -1117,8 +1117,8 @@
         "tier": "easy",
         "category": "Movie",
         "title": "Rocky",
-        "emoji": "🥊🏃‍♂️🪜💪🏆",
-        "explain": "🥊 the boxing, 🏃‍♂️ his training montage, 🪜 the famous Philadelphia steps, 💪 his underdog strength, 🏆 the triumphant finish."
+        "emoji": "🥊🏃🏽🪜💪🏆",
+        "explain": "🥊 the boxing, 🏃🏽 his training montage, 🪜 the famous Philadelphia steps, 💪 his underdog strength, 🏆 the triumphant finish."
       },
       {
         "number": 2,
@@ -1141,8 +1141,8 @@
         "tier": "hardest",
         "category": "Book",
         "title": "Nicholas Nickleby",
-        "emoji": "🧑👦😢",
-        "explain": "🧑 the young protagonist, 👦 the mistreated boys at Dotheboys Hall, 😢 their suffering."
+        "emoji": "👦🏻👨‍👩‍👧‍👦🏻👨⚰️🏫👨🏻‍🎓😪",
+        "explain": "👦🏻 the boy Nicholas, 👨‍👩‍👧‍👦🏻 his family, 👨 his father, ⚰️ who dies, 🏫 Dotheboys Hall, 👨🏻‍🎓 the students there, 😪 who are mistreated and unhappy."
       }
     ]
   },
@@ -1178,8 +1178,8 @@
         "tier": "hardest",
         "category": "Book",
         "title": "Little Dorrit",
-        "emoji": "👧🔒💰😇",
-        "explain": "👧 \"Little\" Amy Dorrit, 🔒 the Marshalsea debtors' prison, 💰 the family's debts, 😇 her selfless devotion."
+        "emoji": "👧🔒💰😇👴🧑",
+        "explain": "👧 \"Little\" Amy Dorrit, 🔒 the Marshalsea debtors' prison, 💰 the family's debts, 😇 her selfless devotion, 👴 her father William, 🧑 Arthur Clennam."
       }
     ]
   },
@@ -1205,18 +1205,18 @@
       {
         "number": 3,
         "tier": "hard",
-        "category": "Book",
-        "title": "Silas Marner",
-        "emoji": "🧶💰👧❤️‍🩹🏚️🔥",
-        "explain": "🧶 his weaving trade, 💰 the gold he hoards, 👧 Eppie, the orphan girl who transforms him, ❤️‍🩹 his healing from isolation, 🏚️ his humble cottage, 🔥 the warmth restored to his life."
+        "category": "TV",
+        "title": "Deadwood",
+        "emoji": "💀🪵🤠🔫",
+        "explain": "💀 \"Dead\", 🪵 \"Wood\", 🤠 the lawless Old West town, 🔫 its constant violence."
       },
       {
         "number": 4,
         "tier": "hardest",
         "category": "Book",
         "title": "Jude the Obscure",
-        "emoji": "🌫️📚💔",
-        "explain": "🌫️ \"Obscure\", 📚 his scholarly ambitions, 💔 his doomed, tragic love."
+        "emoji": "👨👨‍👩‍👧‍👦🏻📚💔⚰️⚰️⚰️",
+        "explain": "👨 Jude, 👨‍👩‍👧‍👦🏻 his family, 📚 his thwarted scholarly ambitions, 💔 his doomed love, ⚰️⚰️⚰️ the tragic deaths of his children."
       }
     ]
   },
@@ -1236,24 +1236,24 @@
         "tier": "medium",
         "category": "TV",
         "title": "Lethal Weapon",
-        "emoji": "👮‍♂️👮🔫🎄",
-        "explain": "👮‍♂️👮 the mismatched cop duo, 🔫 \"Weapon\", 🎄 the Christmas setting."
+        "emoji": "👮🏾👮🔫🎄",
+        "explain": "👮🏾👮 the mismatched cop duo, 🔫 \"Weapon\", 🎄 the Christmas setting."
       },
       {
         "number": 3,
         "tier": "hard",
-        "category": "Book",
-        "title": "Far from the Madding Crowd",
-        "emoji": "👩‍🌾🐑👥💌⚔️🔫",
-        "explain": "👩‍🌾 Bathsheba, the farmer, 🐑 sheep farming, 👥 \"Crowd\", 💌 her three suitors' letters, ⚔️ Sergeant Troy's sword, 🔫 Boldwood's gun."
+        "category": "Movie",
+        "title": "Rio",
+        "emoji": "🦜🎉🏖️🕺💃",
+        "explain": "🦜 Blu the macaw, 🎉 Rio's carnival, 🏖️ the Brazilian setting, 🕺💃 the samba dancing."
       },
       {
         "number": 4,
         "tier": "hardest",
         "category": "Book",
         "title": "Agnes Grey",
-        "emoji": "👩‍🏫📖⛪💪",
-        "explain": "👩‍🏫 Agnes the governess, 📖 her account of the role, ⛪ her moral and religious integrity, 💪 her quiet inner strength."
+        "emoji": "👩‍🏫📖⛪👨‍👩‍👧‍👦🏻💘👰‍♀️",
+        "explain": "👩‍🏫 Agnes the governess, 📖 her account of the role, ⛪ her moral and religious integrity, 👨‍👩‍👧‍👦🏻 the families she works for, 💘 her eventual romance, 👰‍♀️ her marriage at the story's end."
       }
     ]
   },
@@ -1272,25 +1272,25 @@
         "number": 2,
         "tier": "medium",
         "category": "Movie",
-        "title": "Con Air",
-        "emoji": "🚔✈️🔒💪🦅",
-        "explain": "🚔 \"Con\" (convict), ✈️ \"Air\", 🔒 the prisoner transport, 💪 the ex-military hero, 🦅 the plane's distinctive tail art."
+        "title": "Sing",
+        "emoji": "🎤🐨🎭🏆🎵🗣️",
+        "explain": "🎤 \"Sing\", 🐨 Buster Moon the koala theatre owner, 🎭 the singing competition, 🏆 the prize at stake, 🎵 the music, 🗣️ the auditions."
       },
       {
         "number": 3,
         "tier": "hard",
         "category": "Movie",
         "title": "The Rock",
-        "emoji": "🪨🏝️🔒☠️",
-        "explain": "🪨 \"The Rock\" (Alcatraz's nickname), 🏝️ the island prison, 🔒 the hostage lockdown, ☠️ the chemical weapon threat."
+        "emoji": "🪨🏝️🔒☠️🔫🪖",
+        "explain": "🪨 \"The Rock\" (Alcatraz's nickname), 🏝️ the island prison, 🔒 the hostage lockdown, ☠️ the chemical weapon threat, 🔫 the firefight, 🪖 the military assault."
       },
       {
         "number": 4,
         "tier": "hardest",
         "category": "Book",
         "title": "Tess of the d'Urbervilles",
-        "emoji": "👩🌾💔🗿🩸😢🌙",
-        "explain": "👩 Tess herself, 🌾 the rural farm setting, 💔 her tragic fate, 🗿 the standing stones of the story's ending, 🩸 its violence, 😢 its sorrow, 🌙 the moonlit night it closes on."
+        "emoji": "👩🤱⚰️👰‍♀️🙍‍♂️🗡️😢",
+        "explain": "👩 Tess herself, 🤱 the baby she has out of wedlock, ⚰️ its death, 👰‍♀️ her eventual marriage, 🙍‍♂️ Alec, who wronged her, 🗡️ the violence that follows, 😢 the tragedy of it all."
       }
     ]
   },
@@ -1310,16 +1310,16 @@
         "tier": "medium",
         "category": "Movie",
         "title": "Rambo",
-        "emoji": "🪖🔫💪",
-        "explain": "🪖 the Vietnam veteran, 🔫 his guerrilla warfare, 💪 his one-man-army strength."
+        "emoji": "🪖🔫💪🔪🚁",
+        "explain": "🪖 the Vietnam veteran, 🔫 his guerrilla warfare, 💪 his one-man-army strength, 🔪 his combat knife, 🚁 the helicopter assaults."
       },
       {
         "number": 3,
         "tier": "hard",
         "category": "TV",
         "title": "Boardwalk Empire",
-        "emoji": "🎩🍸👑🔫🌊🎡",
-        "explain": "🎩 the 1920s gangster style, 🍸 Prohibition-era bootlegging, 👑 \"Empire\", 🔫 organised crime, 🌊 the Atlantic City boardwalk, 🎡 its famous pier."
+        "emoji": "🚶‍♂️‍➡️🎩🍸👑🔫🌊🎡",
+        "explain": "🚶‍♂️‍➡️ \"Boardwalk\" (walking), 🎩 the 1920s gangster style, 🍸 Prohibition-era bootlegging, 👑 \"Empire\", 🔫 organised crime, 🌊 the Atlantic City boardwalk, 🎡 its famous pier."
       },
       {
         "number": 4,
@@ -1355,8 +1355,8 @@
         "tier": "hard",
         "category": "TV",
         "title": "Mad Men",
-        "emoji": "🕴️🚬🍸",
-        "explain": "🕴️ the sharp-suited ad executives, 🚬 the era-authentic smoking, 🍸 the cocktail culture of Madison Avenue."
+        "emoji": "🚬🍸🤬🤵🤵📺",
+        "explain": "🚬 the era-authentic smoking, 🍸 the cocktail culture, 🤬 \"Mad\", 🤵🤵 \"Men\" — the sharp-suited ad executives, 📺 the advertising industry they work in."
       },
       {
         "number": 4,
@@ -1392,8 +1392,8 @@
         "tier": "hard",
         "category": "TV",
         "title": "The Sopranos",
-        "emoji": "🤵🔫🛋️🧠🍝",
-        "explain": "🤵 the mob boss, 🔫 organised crime, 🛋️ his therapist's couch, 🧠 his psychological struggles, 🍝 the Italian-American family at its centre."
+        "emoji": "🤵🔫🛋️🧠🍝🕴️👨‍👩‍👧‍👦",
+        "explain": "🤵 the mob boss, 🔫 organised crime, 🛋️ his therapist's couch, 🧠 his psychological struggles, 🍝 the Italian-American family at its centre, 🕴️ the gangster underworld, 👨‍👩‍👧‍👦 his own family."
       },
       {
         "number": 4,
@@ -1402,6 +1402,117 @@
         "title": "The Age of Innocence",
         "emoji": "⏳😇💍🏛️🎭🌹",
         "explain": "⏳ \"Age\", 😇 \"Innocence\", 💍 the repressed engagement, 🏛️ Gilded Age New York high society, 🎭 its social facade, 🌹 the forbidden romance beneath it."
+      }
+    ]
+  },
+  {
+    "day": 256,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Black Panther",
+        "emoji": "⬛🐆👨🏾‍🦱👑🌍",
+        "explain": "⬛ \"Black\", 🐆 \"Panther\", 👨🏾‍🦱 T'Challa, 👑 the king, 🌍 Wakanda."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Avengers",
+        "emoji": "🦸‍♂️🦸‍♀️🛡️⚡🔨🕷️🏹",
+        "explain": "🦸‍♂️🦸‍♀️ the assembled superheroes, 🛡️ Captain America's shield, ⚡ Thor's lightning, 🔨 his hammer, 🕷️ Black Widow, 🏹 Hawkeye."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Iron Man",
+        "emoji": "🦾🧔🏻‍♂️🤖🔴🟡",
+        "explain": "🦾 his mechanical suit, 🧔🏻‍♂️ Tony Stark, 🤖 the metal armour, 🔴 the red, 🟡 gold colours."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "The Wire",
+        "emoji": "📞👮💊☎️📶",
+        "explain": "📞 \"The Wire\" (a wiretap), 👮 the police investigation, 💊 the Baltimore drug trade, ☎️📶 the wiretapping at the heart of it."
+      }
+    ]
+  },
+  {
+    "day": 257,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Wonder Woman",
+        "emoji": "👩⭐🪢🛡️⚔️",
+        "explain": "👩 \"Woman\", ⭐ \"Wonder\", 🪢 her lasso of truth, 🛡️ her bracelets, ⚔️ her Amazon warrior skills."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Diary of a Wimpy Kid",
+        "emoji": "📖🖋️🧒🏫😬📉",
+        "explain": "📖🖋️ the diary, 🧒 Greg Heffley, 🏫 middle school, 😬 his awkward mishaps, 📉 his quest to be popular."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "The Big Bang Theory",
+        "emoji": "💥💥💥🤓🔬",
+        "explain": "💥💥💥 \"Big Bang\", 🤓 the nerdy physicists, 🔬 their science-obsessed lives."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Silas Marner",
+        "emoji": "🧶💰👧❤️‍🩹🏚️🔥",
+        "explain": "🧶 his weaving trade, 💰 the gold he hoards, 👧 Eppie, the orphan girl who transforms him, ❤️‍🩹 his healing from isolation, 🏚️ his humble cottage, 🔥 the warmth restored to his life."
+      }
+    ]
+  },
+  {
+    "day": 258,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Guardians of the Galaxy",
+        "emoji": "🚀🌌🦝🌳🎵🎧🔫",
+        "explain": "🚀 their spaceship, 🌌 \"Galaxy\", 🦝 Rocket the raccoon, 🌳 Groot, 🎵 the mixtape soundtrack, 🎧 Star-Lord's Walkman, 🔫 their space-outlaw action."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "James and the Giant Peach",
+        "emoji": "🧒🍑🦗🐞🕷️",
+        "explain": "🧒 James, 🍑 the giant peach, 🦗 the Old Green Grasshopper, 🐞 Ladybird, 🕷️ Miss Spider — his insect friends."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Seinfeld",
+        "emoji": "😂🤣🗽👨🏻👨🏻‍🦱🤓👩🏻",
+        "explain": "😂🤣 the comedy, 🗽 the New York setting, 👨🏻 Jerry, 👨🏻‍🦱 George, 🤓 Kramer, 👩🏻 Elaine — the four friends at the show's centre."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Far from the Madding Crowd",
+        "emoji": "👩‍🌾🐑❔💌🧑🏻‍🌾🥷🏻🤵🏻",
+        "explain": "👩‍🌾 Bathsheba the farmer, 🐑 her sheep farm, ❔ her dilemma over which suitor to choose, 💌 the love letters exchanged, 🧑🏻‍🌾 Gabriel Oak, the loyal shepherd, 🥷🏻 Sergeant Troy, the dashing soldier, 🤵🏻 Boldwood, the wealthy gentleman farmer — her three suitors."
       }
     ]
   }

@@ -171,16 +171,16 @@
         "tier": "hard",
         "category": "Book",
         "title": "Dracula",
-        "emoji": "🧛🦇🩸🏰⚰️🌙",
-        "explain": "🧛 Count Dracula himself, 🦇 his bat form, 🩸 the blood he feeds on, 🏰 his Transylvanian castle, ⚰️ the coffin he rests in by day, 🌙 the night he only ever moves by."
+        "emoji": "🧛🦇🩸🏰⚰️🌙🇷🇴",
+        "explain": "🧛 Count Dracula himself, 🦇 his bat form, 🩸 the blood he feeds on, 🏰🇷🇴 his Transylvanian castle in Romania, ⚰️ the coffin he rests in by day, 🌙 the night he only ever moves by."
       },
       {
         "number": 4,
         "tier": "hardest",
         "category": "Movie",
         "title": "Casablanca",
-        "emoji": "✈️🎹💔🥂🌍🚬🛂",
-        "explain": "✈️ the fateful plane departure at the airport, 🎹 'As Time Goes By' played on the piano, 💔 the doomed wartime romance, 🥂 Rick's Café Américain, 🌍 the WWII refugee crossroads setting, 🚬 the smoky noir atmosphere, 🛂 the letters of transit everyone's desperate for."
+        "emoji": "✈️🎹💔🥂🇲🇦🚬🛂",
+        "explain": "✈️ the fateful plane departure at the airport, 🎹 \"As Time Goes By\" played on the piano, 💔 the doomed wartime romance, 🥂 Rick's Café Américain, 🇲🇦 the Moroccan setting at the WWII refugee crossroads, 🚬 the smoky noir atmosphere, 🛂 the letters of transit everyone's desperate for."
       }
     ]
   },
@@ -290,8 +290,8 @@
         "tier": "hardest",
         "category": "TV",
         "title": "M*A*S*H",
-        "emoji": "🚁⛺🩺😂🔫🍸📢",
-        "explain": "🚁 the helicopters bringing in wounded soldiers, ⛺ the army field hospital tents, 🩺 the doctors and medics at work, 😂 the dark comedy woven through the chaos, 🔫 the Korean War backdrop the whole show is set against, 🍸 the Swamp tent's off-duty drinking, 📢 the camp's constant loudspeaker announcements."
+        "emoji": "🚁⛺🩺😂🇰🇷🍸📢",
+        "explain": "🚁 the helicopters bringing in wounded soldiers, ⛺ the army field hospital tents, 🩺 the doctors and medics at work, 😂 the dark comedy woven through the chaos, 🇰🇷 the Korean War backdrop the whole show is set against, 🍸 the Swamp tent's off-duty drinking, 📢 the camp's constant loudspeaker announcements."
       }
     ]
   },
@@ -311,8 +311,8 @@
         "tier": "medium",
         "category": "Book",
         "title": "The Da Vinci Code",
-        "emoji": "🖼️🏛️🔢🗝️⛪",
-        "explain": "🖼️ the Mona Lisa at the heart of the mystery, 🏛️ the Louvre, 🔢 the cipher-cracking, 🗝️ the cryptex, ⛪ the church conspiracy."
+        "emoji": "🖼️🏛️🔢🗝️⛪🇫🇷",
+        "explain": "🖼️ the Mona Lisa at the heart of the mystery, 🏛️🇫🇷 the Louvre in Paris, 🔢 the cipher-cracking, 🗝️ the cryptex, ⛪ the church conspiracy."
       },
       {
         "number": 3,
@@ -356,16 +356,16 @@
         "tier": "hard",
         "category": "Movie",
         "title": "National Treasure",
-        "emoji": "📜🗺️💰🕵️🦅🔑",
-        "explain": "📜 the Declaration of Independence, 🗺️ the hidden treasure map, 💰 the treasure itself, 🕵️ the amateur-historian hero, 🦅 the American iconography, 🔑 the hidden clues."
+        "emoji": "📜🗺️💰🕵️🦅🔑🇺🇸",
+        "explain": "📜 the Declaration of Independence, 🗺️ the hidden treasure map, 💰 the treasure itself, 🕵️ the amateur-historian hero, 🦅🇺🇸 the American iconography, 🔑 the hidden clues."
       },
       {
         "number": 4,
         "tier": "hardest",
         "category": "Movie",
         "title": "Mulan",
-        "emoji": "⚔️🐉👘🎖️🏹",
-        "explain": "⚔️ her sword, 🐉 Mushu the dragon, 👘 her traditional dress, 🎖️ the military rank she earns in disguise, 🏹 the battle skills she masters."
+        "emoji": "⚔️🐉👘🎖️🏹🇨🇳",
+        "explain": "⚔️ her sword, 🐉 Mushu the dragon, 👘 her traditional dress, 🎖️ the military rank she earns in disguise, 🏹 the battle skills she masters, 🇨🇳 the Chinese setting."
       }
     ]
   },
@@ -393,8 +393,8 @@
         "tier": "hard",
         "category": "TV",
         "title": "Poirot",
-        "emoji": "🥸🥚🧠🔍⏰",
-        "explain": "🥸 his famous moustache, 🥚 his egg-shaped head, 🧠 his \"little grey cells\", 🔍 his investigative eye, ⏰ his obsessive precision."
+        "emoji": "🥸🥚🧠🔍⏰🇧🇪",
+        "explain": "🥸 his famous moustache, 🥚 his egg-shaped head, 🧠 his \"little grey cells\", 🔍 his investigative eye, ⏰ his obsessive precision, 🇧🇪 the Belgian detective (not French, as people often assume)."
       },
       {
         "number": 4,
@@ -438,8 +438,8 @@
         "tier": "hardest",
         "category": "TV",
         "title": "'Allo 'Allo!",
-        "emoji": "👋🏼👋🏼🥖🎭🍽️🤫",
-        "explain": "👋🏼👋🏼 \"'Allo 'Allo\" (hello, hello), 🥖 the French setting, 🎭 the constant disguises and farce, 🍽️ René's café, 🤫 \"Listen very carefully, I shall say this only once\"."
+        "emoji": "👋🏼👋🏼🥖🎭🍽️🤫🇫🇷",
+        "explain": "👋🏼👋🏼 \"'Allo 'Allo\" (hello, hello), 🥖🇫🇷 the French setting, 🎭 the constant disguises and farce, 🍽️ René's café, 🤫 \"Listen very carefully, I shall say this only once\"."
       }
     ]
   },
@@ -451,8 +451,8 @@
         "tier": "easy",
         "category": "Movie",
         "title": "Ratatouille",
-        "emoji": "🐀👨‍🍳🗼🍽️",
-        "explain": "🐀 Remy the rat, 👨‍🍳 his secret chef ambitions, 🗼 the Paris setting, 🍽️ the fine-dining kitchen he takes over."
+        "emoji": "🐀👨‍🍳🗼🍽️🇫🇷",
+        "explain": "🐀 Remy the rat, 👨‍🍳 his secret chef ambitions, 🗼🇫🇷 the Paris setting, 🍽️ the fine-dining kitchen he takes over."
       },
       {
         "number": 2,
@@ -533,8 +533,8 @@
         "tier": "medium",
         "category": "Movie",
         "title": "Hercules",
-        "emoji": "💪⚡⛰️",
-        "explain": "💪 his superhuman strength, ⚡ his father Zeus's lightning, ⛰️ his home on Mount Olympus."
+        "emoji": "💪⚡⛰️🇬🇷",
+        "explain": "💪 his superhuman strength, ⚡ his father Zeus's lightning, ⛰️ his home on Mount Olympus, 🇬🇷 the Greek mythology setting."
       },
       {
         "number": 3,
@@ -586,8 +586,8 @@
         "tier": "hardest",
         "category": "Book",
         "title": "Anna Karenina",
-        "emoji": "👩🚂💔👗🎭🍷",
-        "explain": "👩 Anna herself, 🚂 the train central to her fate, 💔 her doomed affair, 👗 Russian aristocratic society, 🎭 the drama of it all, 🍷 high-society decadence."
+        "emoji": "👩🚂💔👗🎭🍷🇷🇺",
+        "explain": "👩 Anna herself, 🚂 the train central to her fate, 💔 her doomed affair, 👗🇷🇺 Russian aristocratic society, 🎭 the drama of it all, 🍷 high-society decadence."
       }
     ]
   },
@@ -615,8 +615,8 @@
         "tier": "hard",
         "category": "Book",
         "title": "The Call of the Wild",
-        "emoji": "🐕‍🦺❄️🛷🐺⛏️🏔️🌟",
-        "explain": "🐕‍🦺 Buck the sled dog, ❄️ the frozen Yukon, 🛷 the sled-dog trade, 🐺 the wild wolf pack calling him back, ⛏️ the gold-rush setting, 🏔️ the wilderness, 🌟 the primal pull of \"the call\"."
+        "emoji": "🐕‍🦺❄️🛷🐺⛏️🏔️🇨🇦",
+        "explain": "🐕‍🦺 Buck the sled dog, ❄️ the frozen Yukon, 🛷 the sled-dog trade, 🐺 the wild wolf pack calling him back, ⛏️ the gold-rush setting, 🏔️ the wilderness, 🇨🇦 the Canadian setting."
       },
       {
         "number": 4,
@@ -660,8 +660,8 @@
         "tier": "hardest",
         "category": "Book",
         "title": "The Brothers Karamazov",
-        "emoji": "🧑🏻‍🤝‍👨🏻🔪⚖️🍸✝️🌾💭",
-        "explain": "🧑🏻‍🤝‍👨🏻 the brothers, 🔪 their father's murder, ⚖️ the trial, 🍸 their reckless father, ✝️ the novel's religious questioning, 🌾 rural Russia, 💭 its philosophical weight."
+        "emoji": "🧑🏻‍🤝‍👨🏻🔪⚖️🍸✝️🇷🇺💭",
+        "explain": "🧑🏻‍🤝‍👨🏻 the brothers, 🔪 their father's murder, ⚖️ the trial, 🍸 their reckless father, ✝️ the novel's religious questioning, 🇷🇺 rural Russia, 💭 its philosophical weight."
       }
     ]
   },
@@ -681,8 +681,8 @@
         "tier": "medium",
         "category": "Movie",
         "title": "The Mummy",
-        "emoji": "🧟‍♂️🏜️📜🐫🏺⚰️",
-        "explain": "🧟‍♂️ the mummy himself, 🏜️ the Egyptian desert, 📜 the ancient curse, 🐫 the expedition, 🏺 the tomb artifacts, ⚰️ his sarcophagus."
+        "emoji": "🧟‍♂️🏜️📜🐫🏺⚰️🇪🇬",
+        "explain": "🧟‍♂️ the mummy himself, 🏜️🇪🇬 the Egyptian desert, 📜 the ancient curse, 🐫 the expedition, 🏺 the tomb artifacts, ⚰️ his sarcophagus."
       },
       {
         "number": 3,
@@ -718,8 +718,8 @@
         "tier": "medium",
         "category": "Book",
         "title": "Anne of Green Gables",
-        "emoji": "👧🟩🏡",
-        "explain": "👧 Anne, 🟩 the green gables of the farmhouse, 🏡 the home she's taken in at."
+        "emoji": "👧🟩🏡🇨🇦",
+        "explain": "👧 Anne, 🟩 the green gables of the farmhouse, 🏡 the home she's taken in at, 🇨🇦 the Prince Edward Island, Canada setting."
       },
       {
         "number": 3,
@@ -755,8 +755,8 @@
         "tier": "medium",
         "category": "Book",
         "title": "White Fang",
-        "emoji": "⬜🐺🦷❄️🏔️",
-        "explain": "⬜ \"White\", 🐺 the wolf-dog, 🦷 \"Fang\", ❄️ the frozen wilderness, 🏔️ the Yukon setting."
+        "emoji": "⬜🐺🦷❄️🏔️🇨🇦",
+        "explain": "⬜ \"White\", 🐺 the wolf-dog, 🦷 \"Fang\", ❄️ the frozen wilderness, 🏔️🇨🇦 the Yukon setting in Canada."
       },
       {
         "number": 3,
@@ -792,8 +792,8 @@
         "tier": "medium",
         "category": "Book",
         "title": "A Tale of Two Cities",
-        "emoji": "📕2️⃣🏙️🌆",
-        "explain": "📕 \"A Tale\", 2️⃣ the literal \"Two\", 🏙️🌆 the two different cities (London and Paris)."
+        "emoji": "📕2️⃣🏙️🌆🇬🇧🇫🇷",
+        "explain": "📕 \"A Tale\", 2️⃣ the literal \"Two\", 🏙️🌆 the two different cities, 🇬🇧 London, 🇫🇷 and Paris."
       },
       {
         "number": 3,
@@ -895,8 +895,8 @@
         "tier": "easy",
         "category": "Movie",
         "title": "The Sound of Music",
-        "emoji": "🎵⛰️👨‍👩‍👧‍👦🎶🌼🎻",
-        "explain": "🎵 \"Sound\", ⛰️ the Austrian Alps, 👨‍👩‍👧‍👦 the large Von Trapp family, 🎶 more music, 🌼 Edelweiss, 🎻 the singing-family theme."
+        "emoji": "🎵⛰️👨‍👩‍👧‍👦🎶🌼🎻🇦🇹",
+        "explain": "🎵 \"Sound\", ⛰️🇦🇹 the Austrian Alps, 👨‍👩‍👧‍👦 the large Von Trapp family, 🎶 more music, 🌼 Edelweiss, 🎻 the singing-family theme."
       },
       {
         "number": 2,
@@ -1014,8 +1014,8 @@
         "tier": "medium",
         "category": "Book",
         "title": "War and Peace",
-        "emoji": "⚔️✌🏼❄️",
-        "explain": "⚔️ \"War\", ✌🏼 \"Peace\", ❄️ Napoleon's disastrous Russian winter retreat."
+        "emoji": "⚔️✌🏼❄️🇫🇷🇷🇺",
+        "explain": "⚔️ \"War\", ✌🏼 \"Peace\", ❄️ Napoleon's disastrous Russian winter retreat, 🇫🇷 Napoleon's France, 🇷🇺 invading Russia."
       },
       {
         "number": 3,
@@ -1162,8 +1162,8 @@
         "tier": "medium",
         "category": "Movie",
         "title": "Coco",
-        "emoji": "💀🎸🌼🕯️🪅",
-        "explain": "💀 the Land of the Dead, 🎸 Miguel's forbidden passion for music, 🌼 the marigold-petal bridge to the afterlife, 🕯️ the family ofrenda altar, 🪅 the festive Día de los Muertos setting."
+        "emoji": "💀🎸🌼🕯️🪅🇲🇽",
+        "explain": "💀 the Land of the Dead, 🎸 Miguel's forbidden passion for music, 🌼 the marigold-petal bridge to the afterlife, 🕯️ the family ofrenda altar, 🪅🇲🇽 the festive Día de los Muertos setting in Mexico."
       },
       {
         "number": 3,
@@ -1244,8 +1244,8 @@
         "tier": "hard",
         "category": "Movie",
         "title": "Rio",
-        "emoji": "🦜🎉🏖️🕺💃",
-        "explain": "🦜 Blu the macaw, 🎉 Rio's carnival, 🏖️ the Brazilian setting, 🕺💃 the samba dancing."
+        "emoji": "🦜🎉🏖️🕺💃🇧🇷",
+        "explain": "🦜 Blu the macaw, 🎉 Rio's carnival, 🏖️🇧🇷 the Brazilian setting, 🕺💃 the samba dancing."
       },
       {
         "number": 4,
@@ -1513,6 +1513,339 @@
         "title": "Far from the Madding Crowd",
         "emoji": "👩‍🌾🐑❔💌🧑🏻‍🌾🥷🏻🤵🏻",
         "explain": "👩‍🌾 Bathsheba the farmer, 🐑 her sheep farm, ❔ her dilemma over which suitor to choose, 💌 the love letters exchanged, 🧑🏻‍🌾 Gabriel Oak, the loyal shepherd, 🥷🏻 Sergeant Troy, the dashing soldier, 🤵🏻 Boldwood, the wealthy gentleman farmer — her three suitors."
+      }
+    ]
+  },
+  {
+    "day": 259,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Up",
+        "emoji": "⬆️🎈🏠👴👦🏻🐕",
+        "explain": "⬆️ 'Up' — the balloons lifting the house, 🎈 the thousands of balloons, 🏠 Carl's house flying to Paradise Falls, 👴 Carl, the elderly widower, 👦🏻 Russell, the eager young scout who stows away, 🐕 Dug the talking dog."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Heidi",
+        "emoji": "👧⛰️🐐👴🇨🇭",
+        "explain": "👧 Heidi, the young Swiss girl, ⛰️ her home high in the Alps, 🐐 the goats she herds, 👴 her grandfather who raises her, 🇨🇭 the Swiss setting."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Amelie",
+        "emoji": "👩🏻🇫🇷🎨😊🕵️‍♀️",
+        "explain": "👩🏻 Amélie, the whimsical Parisian, 🇫🇷 the Montmartre, Paris setting, 🎨 her quirky, artistic view of the world, 😊 the secret happiness she spreads, 🕵️‍♀️ the playful schemes she orchestrates to help others."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Evita",
+        "emoji": "👑🎤🇦🇷😢🏛️",
+        "explain": "👑 her rise to power as First Lady, 🎤 the iconic musical numbers, 🇦🇷 Argentina, the country she came to embody, 😢 'Don't Cry for Me Argentina', 🏛️ the balcony speech to the adoring crowds."
+      }
+    ]
+  },
+  {
+    "day": 260,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Ice Age",
+        "emoji": "❄️🦣🦥🐅👶",
+        "explain": "❄️ the Ice Age setting, 🦣 Manny the woolly mammoth, 🦥 Sid the sloth, 🐅 Diego the saber-toothed tiger, 👶 the human baby they protect."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Bluey",
+        "emoji": "🐶🔵👨‍👩‍👧‍👦🇦🇺",
+        "explain": "🐶 Bluey the Blue Heeler puppy, 🔵 'Blue', 👨‍👩‍👧‍👦 her family, 🇦🇺 the Australian setting."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Roman Holiday",
+        "emoji": "👸🏻🛵🇮🇹🏛️📰🕶️",
+        "explain": "👸🏻 the princess secretly escaping her royal duties, 🛵 the Vespa scooter ride through the city, 🇮🇹 the Roman setting, 🏛️ the ancient ruins she tours, 📰 the journalist who's secretly writing her story, 🕶️ her iconic sunglasses-and-scarf disguise."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Amadeus",
+        "emoji": "🎼🎹😈🇦🇹👨‍🎤",
+        "explain": "🎼 the classical compositions, 🎹 Mozart's genius at the piano, 😈 Salieri's consuming jealousy, 🇦🇹 the Vienna, Austria setting, 👨‍🎤 Mozart's flamboyant, larger-than-life persona."
+      }
+    ]
+  },
+  {
+    "day": 261,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Paddington",
+        "emoji": "🐻🥪🚂🇵🇪🇬🇧",
+        "explain": "🐻 Paddington the bear, 🥪 his beloved marmalade sandwiches, 🚂 Paddington Station, where he's found and named after, 🇵🇪 Darkest Peru, where he's from, 🇬🇧 London, his new adopted home."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Wicked",
+        "emoji": "🟢🧙‍♀️🧹🎓🪄",
+        "explain": "🟢 Elphaba's green skin, 🧙‍♀️ her destiny as a witch, 🧹 the broomstick she masters, 🎓 Shiz University where she trains, 🪄 the magic at the heart of Oz."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Braveheart",
+        "emoji": "💪❤️⚔️😤🏴󠁧󠁢󠁳󠁣󠁴󠁿🐎",
+        "explain": "💪 'Brave', ❤️ 'Heart', ⚔️ the brutal medieval battles, 😤 his rallying cry for freedom, 🏴󠁧󠁢󠁳󠁣󠁴󠁿 the Scottish rebellion against English rule, 🐎 the cavalry charges."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Ulysses",
+        "emoji": "🇮🇪🚶🕐📆💭📖",
+        "explain": "🇮🇪 the Dublin, Ireland setting, 🚶 Leopold Bloom's wandering, 🕐📆 the entire story unfolding in a single day, 💭 the stream-of-consciousness style, 📖 the sprawling, famously dense novel."
+      }
+    ]
+  },
+  {
+    "day": 262,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Scooby-Doo",
+        "emoji": "🐕🚐👻🧟",
+        "explain": "🐕 Scooby-Doo the Great Dane, 🚐 the Mystery Machine van, 👻🧟 the 'ghosts' and monsters they investigate (always unmasked as a hoax)."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "My Big Fat Greek Wedding",
+        "emoji": "💍👰🏻‍♀️👨‍👩‍👧‍👦🇬🇷",
+        "explain": "💍 the wedding at the heart of it, 👰🏻‍♀️ Toula the bride, 👨‍👩‍👧‍👦 her huge, loud family, 🇬🇷 the Greek-American setting and heritage."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Gladiator",
+        "emoji": "⚔️🛡️🏛️🦁🐎",
+        "explain": "⚔️🛡️ his gladiator combat, 🏛️ the Colosseum arena, 🦁 the lion he fights in it, 🐎 his former life as a Roman general."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "To the Lighthouse",
+        "emoji": "2️⃣💡🏠🌊👨‍👩‍👧‍👦🏴󠁧󠁢󠁳󠁣󠁴󠁿🎨",
+        "explain": "2️⃣ 'To' (sounds like 'two'), 💡 'Light', 🏠 'House' — the title spelled out, 🌊 the windswept coastal setting, 👨‍👩‍👧‍👦 the Ramsay family, 🏴󠁧󠁢󠁳󠁣󠁴󠁿 the Scottish setting, 🎨 Lily Briscoe's unfinished painting."
+      }
+    ]
+  },
+  {
+    "day": 263,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Jungle Book",
+        "emoji": "🐺👦🐻🐆📖🌴🇮🇳",
+        "explain": "🐺 the wolves who raise Mowgli, 👦 Mowgli himself, 🐻 Baloo the bear, 🐆 Bagheera the panther (and Shere Khan the tiger he must escape), 📖 'Book', 🌴 the dense jungle, 🇮🇳 the Indian setting."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Robin Hood",
+        "emoji": "🏹🌳💰➡️👐",
+        "explain": "🏹 his archery, 🌳 Sherwood Forest, 💰➡️👐 stealing from the rich to give to the poor."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Where the Wild Things Are",
+        "emoji": "👦⛵🏝️🦁👑🍽️",
+        "explain": "👦 Max, sent to bed without supper, ⛵ his voyage to the island, 🏝️ where the Wild Things live, 🦁 the Wild Things he meets there, 👑 the crown they make him king of, 🍽️ the supper waiting for him when he returns home."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The Unbearable Lightness of Being",
+        "emoji": "🚫🐻💡🎈🐝💑🇨🇿",
+        "explain": "🚫🐻 'Unbearable' (un-bear-able), 💡🎈 'Lightness' (light + buoyant), 🐝 'Being' (sounds like 'bee-ing'), 💑 Tomas and Tereza's entangled love affair, 🇨🇿 the Prague Spring, Czechoslovakia setting."
+      }
+    ]
+  },
+  {
+    "day": 264,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Kung Fu Panda",
+        "emoji": "🐼🥋🐉🇨🇳🐒🦗",
+        "explain": "🐼 Po the panda, 🥋 the kung fu he trains in, 🐉 the legendary Dragon Warrior title he's chosen for, 🇨🇳 the Chinese setting, 🐒🦗 Master Monkey and Master Mantis, two of the Furious Five."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Miss Marple",
+        "emoji": "👵🧶🔍🏘️🩸🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "explain": "👵 the elderly amateur sleuth, 🧶 her knitting, 🔍 her sharp powers of observation, 🏘️ the quiet English village setting, 🩸 the murders she keeps stumbling into, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 the English setting."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "One Flew Over the Cuckoo's Nest",
+        "emoji": "1️⃣🕊️🐦🪺🏥👩🏼‍⚕️⚡",
+        "explain": "1️⃣ 'One', 🕊️ 'Flew', 🐦 'Cuckoo's', 🪺 'Nest' — the title spelled out in rebus, 🏥 the psychiatric hospital it's set in, 👩🏼‍⚕️ the strict Nurse Ratched, ⚡ the electroshock treatments."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The Name of the Rose",
+        "emoji": "⛪👴🔍📚🌹🇮🇹🕯️",
+        "explain": "⛪ the medieval Italian monastery, 👴 William, the elderly monk-detective, 🔍 his investigation into a string of murders, 📚 the forbidden book at the heart of the mystery, 🌹 'Rose', 🇮🇹 the Italian setting, 🕯️ the candlelit scriptorium where it all unfolds."
+      }
+    ]
+  },
+  {
+    "day": 265,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "Winnie the Pooh",
+        "emoji": "🐻🍯🐷🐴🌳🦘🐰",
+        "explain": "🐻 Winnie the Pooh, the honey-loving bear, 🍯 his beloved honey pot, 🐷 Piglet, his best friend, 🐴 Eeyore, the gloomy donkey, 🌳 the Hundred Acre Wood they live in, 🦘 Kanga and Roo, 🐰 Rabbit."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Zorro",
+        "emoji": "⚔️🦹🏻‍♂️🇲🇽🐴🦊",
+        "explain": "⚔️ his swordsmanship, 🦹🏻‍♂️ the masked vigilante himself, 🇲🇽 Spanish colonial California (then part of Mexico), 🐴 his black horse, 🦊 'Zorro' — Spanish for 'fox'."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Hunchback of Notre-Dame",
+        "emoji": "🔔⛪👹💃🇫🇷",
+        "explain": "🔔 Quasimodo, the bell-ringer, ⛪ Notre-Dame cathedral, 👹 the gargoyles he lives among, 💃 Esmeralda, the dancer he loves, 🇫🇷 the Paris setting."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Citizen Kane",
+        "emoji": "👂🏻🏙️🧘🏻🎣",
+        "explain": "👂🏻 'sounds like', 🏙️🧘🏻 'Citizen' (city + zen), 🎣 'Kane' (cane)."
+      }
+    ]
+  },
+  {
+    "day": 266,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Peppa Pig",
+        "emoji": "🌶️🐷💦👨‍👩‍👧‍👦🇬🇧",
+        "explain": "🌶️ 'Peppa' (sounds like pepper), 🐷 Peppa the piglet, 💦 her favourite muddy puddles, 👨‍👩‍👧‍👦 her family — Mummy, Daddy, and little brother George, 🇬🇧 the British setting."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "King Kong",
+        "emoji": "🦍👑🏝️🗽✈️👩",
+        "explain": "🦍 King Kong, the giant ape, 👑 'King', 🏝️ Skull Island where he's found, 🗽 New York City he's brought to, ✈️ the biplanes that attack him atop the skyscraper, 👩 the woman he's fatally drawn to — 'beauty killed the beast.'"
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Don Quixote",
+        "emoji": "👂🏻✅🔑❓☕🐴🇪🇸",
+        "explain": "👂🏻 'sounds like', ✅🔑❓☕ 'done-key-how-tea' (Don Quixote), 🐴 Rocinante, his broken-down old horse, 🇪🇸 the Spanish setting."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Barbie",
+        "emoji": "🎀👱‍♀️🏠🩷🤠",
+        "explain": "🎀 her signature pink aesthetic, 👱‍♀️ Barbie herself, 🏠 her Dreamhouse in Barbieland, 🩷 pink, 🤠 Ken, forever in her shadow."
+      }
+    ]
+  },
+  {
+    "day": 267,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "The Very Hungry Caterpillar",
+        "emoji": "🐛😋🍏🍭🦋",
+        "explain": "🐛 the caterpillar, 😋 'Hungry' — endlessly eating, 🍏🍭 the fruit and sweets he munches through, 🦋 the butterfly he transforms into."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Bambi",
+        "emoji": "🦌🌲🐇🔫",
+        "explain": "🦌 Bambi the young deer, 🌲 the forest he grows up in, 🐇 Thumper his rabbit friend, 🔫 the hunter whose gunshot kills his mother."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Chinatown",
+        "emoji": "🇨🇳🌆🕵️‍♂️💧🚬🕶️😏",
+        "explain": "🇨🇳 'China', 🌆 'Town' — the title itself, 🕵️‍♂️ private eye Jake Gittes, 💧 the water-rights conspiracy at its core, 🚬 the smoky 1930s noir atmosphere, 🕶️ his hardboiled detective look, 😏 the femme fatale pulling him into the mystery."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Nightmare Before Christmas",
+        "emoji": "😱🎃🎄🎅🏻💀🧵",
+        "explain": "😱 'Nightmare', 🎃 Jack Skellington, the Pumpkin King of Halloween Town, 🎄 'Christmas' — the holiday he tries to take over, 🎅🏻 Santa, who Jack kidnaps to take his place, 💀 his skeleton form, 🧵 Sally, the stitched ragdoll who loves him."
       }
     ]
   }

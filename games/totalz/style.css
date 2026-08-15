@@ -106,17 +106,38 @@
   padding: var(--space-lg) var(--space-md);
 }
 
-/* Pinned to the bottom of the panel — margin-top:auto pushes it down to
-   fill any leftover space in the ledger's flex column when there's only a
-   few rows; once rows fill/overflow the panel it just sits after the last
-   row instead, still inside the scrollable area. */
-.totalz-ledger__hint {
+/* Reset button, pinned to the bottom of the panel — margin-top:auto pushes
+   it down to fill any leftover space in the ledger's flex column when
+   there's only a few rows; once rows fill/overflow the panel it just sits
+   after the last row instead, still inside the scrollable area. Shares
+   .totalz-line's own left/right padding (var(--space-sm) 10px) so the
+   button's right edge lines up with .totalz-line__result above it without
+   a separately hand-picked offset. */
+.totalz-ledger__reset-row {
   margin-top: auto;
   flex: none;
-  text-align: center;
-  font-size: 0.84rem; /* 0.7rem x 1.5 x 0.8 */
-  color: #9aa0a6;
-  padding-top: var(--space-sm);
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-sm) 10px;
+}
+
+.totalz-ledger__reset-btn {
+  padding: 4px 16px;
+  border-radius: 999px;
+  /* Same light-blue trio as .totalz-target (border/background) and
+     .totalz-line.is-solved (background), per explicit request to shade
+     this button to match the target panel rather than invent a new colour. */
+  border: 1px solid #A9D0F5;
+  background: #eaf3fb;
+  color: #1D4E78;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.totalz-ledger__reset-btn:hover {
+  background: #A9D0F5;
 }
 
 .totalz-line {
@@ -126,11 +147,6 @@
   justify-content: space-between;
   padding: var(--space-sm) 10px;
   border-radius: 8px;
-  cursor: pointer;
-}
-
-.totalz-line:hover {
-  background: var(--paper);
 }
 
 .totalz-line__expr {
@@ -144,11 +160,6 @@
 
 .totalz-line--ghost {
   opacity: 0.55;
-  cursor: default;
-}
-
-.totalz-line--ghost:hover {
-  background: none;
 }
 
 .totalz-line.is-solved {

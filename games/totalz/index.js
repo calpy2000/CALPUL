@@ -163,15 +163,8 @@ $(function () {
       const text = isFirst
         ? `${base} ${opSymbol(pendingOp)} ${operand}`
         : `${opSymbol(pendingOp)} ${operand}`;
-      // "before" snapshot: undo whatever numbers THIS line consumed — both
-      // the left and right operand if it's the first line (both were
-      // picked to build it), or just inherit the prior line's after-state
-      // otherwise.
-      const usedBeforeSnapshot = isFirst
-        ? used.map((u, i) => (i === idx || i === pendingLeftIdx ? false : u))
-        : committed[committed.length - 1].usedAfterSnapshot;
       used[idx] = true;
-      committed.push({ text, resultAfter: result, usedBeforeSnapshot, usedAfterSnapshot: used.slice() });
+      committed.push({ text, resultAfter: result });
       pendingLeft = null;
       pendingLeftIdx = null;
       pendingOp = null;
@@ -203,27 +196,10 @@ $(function () {
         result = Math.sqrt(base);
         text = isFirst ? `√${base}` : `√`;
       }
-      // unary ops don't consume a number, EXCEPT when they're the very
-      // first line — then they're squaring/rooting the one number already
-      // picked into pendingLeft, so undoing this line must free that
-      // number too.
-      const usedBeforeSnapshot = isFirst
-        ? used.map((u, i) => (i === pendingLeftIdx ? false : u))
-        : committed[committed.length - 1].usedAfterSnapshot;
-      committed.push({ text, resultAfter: result, usedBeforeSnapshot, usedAfterSnapshot: used.slice() });
+      committed.push({ text, resultAfter: result });
       pendingLeft = null;
       pendingLeftIdx = null;
     }
-  }
-
-  function truncateTo(lineIndex) {
-    const snap = committed[lineIndex].usedBeforeSnapshot;
-    used = snap.slice();
-    committed = committed.slice(0, lineIndex);
-    pendingLeft = null;
-    pendingLeftIdx = null;
-    pendingOp = null;
-    pendingTransform = null;
   }
 
   // --- Timer ---
@@ -279,10 +255,9 @@ $(function () {
     if (!hasRows) {
       $ledger.html('<div class="totalz-ledger__empty">tap a number to begin</div>');
     } else {
-      committed.forEach((line, i) => {
+      committed.forEach((line) => {
         const $row = $('<div>', { class: 'totalz-line' + (line.resultAfter === target ? ' is-solved' : '') })
           .html(`<span class="totalz-line__expr">${line.text} =</span><span class="totalz-line__result">${line.resultAfter}</span>`);
-        if (!locked) $row.on('click', () => { truncateTo(i); render(); });
         $ledger.append($row);
       });
       if (pendingLeft !== null && !committed.length) {
@@ -291,11 +266,22 @@ $(function () {
     }
     const lastLine = $ledger.children().last();
     if (lastLine.length) lastLine[0].scrollIntoView({ block: 'nearest' });
-    // Persistent hint pinned to the bottom of the panel (not replacing the
-    // per-move .totalz-prompt below it) — only shown once there's actually
-    // a row to tap, i.e. never alongside the empty state.
+    // Reset button pinned to the bottom of the panel, right-aligned to
+    // match the result column above it (same row padding as .totalz-line,
+    // so its right edge lines up without a hand-picked offset) — only
+    // shown once there's actually something to reset, and hidden once the
+    // round is over (locked covers both "not started yet" and "already
+    // won/revealed", same as the row-tap hint this replaced did).
     if (hasRows && !locked) {
-      $ledger.append('<div class="totalz-ledger__hint">tap any row to clear it</div>');
+      const $resetRow = $('<div>', { class: 'totalz-ledger__reset-row' });
+      $('<button>', { class: 'totalz-ledger__reset-btn', type: 'button', text: 'reset' })
+        .on('click', () => {
+          resetPuzzleState();
+          persistProgress(false);
+          render();
+        })
+        .appendTo($resetRow);
+      $ledger.append($resetRow);
     }
 
     const ph = phase();

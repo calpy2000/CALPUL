@@ -97,6 +97,12 @@ const SPAWN_INTERVAL_MIN = 0.1; // seconds
 const SPAWN_VARIANCE_FRACTION = 0.3; // +/- 30% of the current interval
 const CORRECT_PROBABILITY_START = 0.5, CORRECT_PROBABILITY_END = 1 / 3; // 1:1 -> 2:1 incorrect:correct
 
+// If CORRECT_DROUGHT_LIMIT seconds pass with no correct object spawned, the
+// next spawnObject() call is forced correct regardless of the usual
+// currentCorrectProbability() roll — caps how long a player can go without
+// ever seeing a safe tap, throughout the whole round (not just the start).
+const CORRECT_DROUGHT_LIMIT = 5; // seconds
+
 // Gold star: a bonus win-condition object, only starts appearing once the
 // difficulty ramp finishes. Interval/variance have been halved twice from
 // an original 15s +/- 3s (first a 3x request, then a further 2x request),
@@ -275,6 +281,7 @@ let finalSummaryProcessed = false;
 let lastTime = 0;
 let gameElapsed = 0;
 let idleTimer = 0; // seconds since the last tap that actually hit an object — reset in handleTap(), ticks up in update()
+let lastCorrectSpawnElapsed = 0; // gameElapsed at the last correct-object spawn — drives CORRECT_DROUGHT_LIMIT below, reset in startGame()
 let spawnCooldown = 0;
 let wasBelowCap = true;
 let goldStarCooldown = 0;
@@ -356,7 +363,9 @@ function spawnObject(elapsed) {
 
   let displayColourWord = fillColorName;
   let displayShapeWord = shape;
-  const wantsCorrect = Math.random() < currentCorrectProbability(elapsed);
+  const inDrought = elapsed - lastCorrectSpawnElapsed >= CORRECT_DROUGHT_LIMIT;
+  const wantsCorrect = inDrought || Math.random() < currentCorrectProbability(elapsed);
+  if (wantsCorrect) lastCorrectSpawnElapsed = elapsed;
   if (!wantsCorrect) {
     // Exactly one word is wrong, chosen randomly — never both, so an
     // incorrect object always still has one genuinely correct word.
@@ -759,6 +768,7 @@ function startGame() {
   finalSummaryProcessed = false;
   gameElapsed = 0;
   idleTimer = 0;
+  lastCorrectSpawnElapsed = 0;
   spawnCooldown = randRange(0.3, SPAWN_INTERVAL_START);
   wasBelowCap = true;
   goldStarCooldown = 0;

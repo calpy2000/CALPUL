@@ -118,7 +118,7 @@
    short "lookup table" of colors visually compact. */
 .tile.number { background-color: #c3ecc9; color: var(--ink); }
 .tile.operator { background-color: #f6c9dd; color: var(--ink); }
-.tile.blank { background-color: #e2e2e2; color: var(--ink); }
+.tile.blank { background-color: #ffffff; color: var(--ink); }
 .tile.white-blank { background-color: #ffffff; color: var(--ink); }
 .tile.equals { background-color: #ffffff; color: var(--ink); }
 

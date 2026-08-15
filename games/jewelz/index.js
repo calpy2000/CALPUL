@@ -1,5 +1,8 @@
 // JEWELZ — move a face around a canvas, dodging spinning bars and
 // collecting jewels that appear in timed waves, for as long as possible.
+// A rare purple mega jewel starts appearing after 90s and, if collected,
+// ends the round immediately as an outright win (worth 50 points) — same
+// "instant win on the special one" idea as CULUZ's gold star.
 //
 // Unlike SOLVZ/GLYMPZ (which build their game out of HTML elements you can
 // inspect in DevTools), everything visible here is drawn by JavaScript onto
@@ -11,7 +14,7 @@
 
 import Bar from './Bar.js';
 import Jewel from './Jewel.js';
-import { getJewelIconDataURL, getBonusJewelIconDataURL, BONUS_JEWEL_STYLE } from './jewel-icon.js';
+import { getJewelIconDataURL, getBonusJewelIconDataURL, BONUS_JEWEL_STYLE, getMegaJewelIconDataURL, MEGA_JEWEL_STYLE } from './jewel-icon.js';
 import { drawPlayerFace, getPlayerIconDataURL } from './player-icon.js';
 import { getHorizontalBarIconDataURL } from './bar-icon.js';
 import { initShell } from '../../shared/core/shell.js';
@@ -25,6 +28,13 @@ stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools r
 
 const GAME_ID = 'jewelz';
 
+// How long a mega jewel stays on screen in total: 0.4s pop-in + 0.5s idle
+// (the "stays on screen once faded in for 0.5 seconds" spec) + 0.4s shrink-
+// out — matches how Jewel.js's own spawnDuration/despawnDuration already
+// work, same as the bonus jewel's maxLifetime already accounts for its own
+// pop-in/out on top of how long it's actually collectible.
+const MEGA_JEWEL_LIFETIME = 1.3;
+
 // Inline <img> tags, pre-built once, reused everywhere the corresponding
 // emoji used to appear in rendered HTML (live score, footer best score,
 // end-of-round message, instructions). Text-only surfaces (shareText, going
@@ -35,6 +45,11 @@ const JEWEL_IMG = `<img src="${getJewelIconDataURL()}" alt="jewel" class="jewelz
 // so both jewel colors a player might see in play are shown, not just the
 // regular ruby one.
 const BONUS_JEWEL_IMG = `<img src="${getBonusJewelIconDataURL()}" alt="bonus jewel" class="jewelz-inline-icon">`;
+// Mega jewel — the instant-win, instant-game-over gem (see the independent
+// mega-jewel spawn timer inside animate()) — shown alongside the other two
+// in the instructions text so all three jewel types a player might see are
+// explained up front.
+const MEGA_JEWEL_IMG = `<img src="${getMegaJewelIconDataURL()}" alt="mega jewel" class="jewelz-inline-icon">`;
 const PLAYER_IMG = `<img src="${getPlayerIconDataURL()}" alt="player" class="jewelz-inline-icon">`;
 const BAR_IMG = `<img src="${getHorizontalBarIconDataURL()}" alt="blade" class="jewelz-inline-icon--bar">`;
 
@@ -66,6 +81,40 @@ initToolsPanel([GAME_ID], {
         bonusJewel.label = '3';
         jewels.push(bonusJewel);
       },
+    },
+    // Same idea as "Spawn bonus jewel" above — the mega jewel only spawns
+    // once every ~15s and only starting 90s into a round, which isn't
+    // practical to wait out by hand for every test pass.
+    {
+      label: 'Spawn mega jewel',
+      onClick: () => {
+        const megaJewel = new Jewel(
+          Math.min(player.x + 100, canvas.width - 40),
+          player.y
+        );
+        megaJewel.style = MEGA_JEWEL_STYLE;
+        megaJewel.radius = 30;
+        megaJewel.maxLifetime = MEGA_JEWEL_LIFETIME;
+        megaJewel.value = 50;
+        megaJewel.label = '50';
+        megaJewel.isMega = true;
+        jewels.push(megaJewel);
+      },
+    },
+    // Unlike "Spawn mega jewel" above (which drops one in immediately,
+    // bypassing the mega jewel's own timer entirely), this fast-forwards
+    // survivalTime itself to exactly the mega jewel's own 90s spawn
+    // threshold — so the NEXT frame's normal `survivalTime >=
+    // nextMegaSpawnTime` check (see animate()'s mega jewel spawn block)
+    // fires it for real, at the same point in the round a 90-second
+    // playthrough would naturally reach it: same bar count built up by
+    // then (the 20s bar-spawn check below also compares against
+    // survivalTime, so it catches up over the next few frames too), same
+    // jewel wave state. Useful for eyeballing what that whole stage of the
+    // round actually feels like, not just the jewel object in isolation.
+    {
+      label: 'Jump to mega jewel stage (90s)',
+      onClick: () => { survivalTime = 90; },
     },
   ],
 });
@@ -128,6 +177,17 @@ let nextWavePhase = 'active';
 // value each, just more of them on screen simultaneously, so the maximum
 // score per bonus phase escalates from 3 to 6 to 9 and then stays there.
 let bonusAppearanceCount = 0;
+
+// --- Mega jewel (50-point, instant-win) spawn timer ---
+// Runs on its own independent schedule, separate from the regular/bonus
+// wave state machine above (same "independent schedule" approach CULUZ's
+// gold star uses) — survivalTime value at which the next mega jewel should
+// spawn. Starts at 90 (its first appearance, per the user's spec) and gets
+// pushed forward by a random 11-19s (15s +/- 4s) interval every time one
+// spawns, so appearances never overlap given how briefly (MEGA_JEWEL_LIFETIME)
+// each one stays on screen.
+let nextMegaSpawnTime = 90;
+let didWinMegaJewel = false; // true once the round ended by collecting a mega jewel, rather than dying to a bar
 
 let isPlayerExploded = false;
 let finalSummaryProcessed = false;
@@ -258,11 +318,13 @@ function drawEverything() {
   }
 }
 
-// 'zero' (nothing collected) or undefined (a normal score) — fed into
-// shell.showEndScreen's `outcome`, which picks the matching one-line copy
-// from end-panel-content.js. JEWELZ has no numeric max score (open-ended
-// point accumulation), so 'max' never applies here.
-function classifyOutcome(finalScore) {
+// 'max' (won by collecting a mega jewel), 'zero' (nothing collected), or
+// undefined (a normal score) — fed into shell.showEndScreen's `outcome`,
+// which picks the matching one-line copy from end-panel-content.js. Score
+// still accumulates open-endedly either way — 'max' here means "won the
+// round outright," not "hit a numeric ceiling."
+function classifyOutcome(finalScore, wonMegaJewel) {
+  if (wonMegaJewel) return 'max';
   return finalScore === 0 ? 'zero' : undefined;
 }
 
@@ -391,6 +453,28 @@ function animate(currentTime) {
         jewelCycleTimer = 0;
       }
     }
+
+    // --- Mega jewel spawn ---
+    // Independent of the wave state machine above — checked every frame
+    // against its own survivalTime threshold rather than being folded into
+    // jewelPhase, since it can land at any point during a 'waiting',
+    // 'active', or 'bonus' phase.
+    if (survivalTime >= nextMegaSpawnTime) {
+      const megaX = 40 + Math.random() * (canvas.width - 80);
+      const megaY = 40 + Math.random() * (canvas.height - 80);
+      const megaJewel = new Jewel(megaX, megaY);
+      megaJewel.style = MEGA_JEWEL_STYLE; // amethyst, distinct from the regular ruby and bonus sapphire
+      megaJewel.radius = 30;
+      megaJewel.maxLifetime = MEGA_JEWEL_LIFETIME;
+      megaJewel.value = 50;
+      megaJewel.label = '50';
+      megaJewel.isMega = true; // flags this one for the win-on-collect handling below
+      jewels.push(megaJewel);
+      // Advances by a random 11-19s (15s average, +/- 4s) rather than
+      // reading off survivalTime again next time, so a late frame can't
+      // shrink the following gap.
+      nextMegaSpawnTime += 15 + (Math.random() * 8 - 4);
+    }
   }
 
   // Updates every jewel's own internal animation state (spawning in,
@@ -426,9 +510,22 @@ function animate(currentTime) {
         const distance = Math.sqrt((jewels[i].x - player.x) ** 2 + (jewels[i].y - player.y) ** 2);
         if (distance < (player.radius + jewels[i].radius)) {
           createExplosion(jewels[i].x, jewels[i].y, jewels[i].style.glowColor, 4, 12);
-          score += jewels[i].value; // regular jewel = 1, bonus jewel = 3
+          score += jewels[i].value; // regular jewel = 1, bonus jewel = 3, mega jewel = 50
           jewels[i].triggerDespawn();
           liveScoreEl.innerHTML = `Score: ${JEWEL_IMG} = ${score}`;
+          if (jewels[i].isMega) {
+            // Instant win, like CULUZ's gold star — the round ends here,
+            // not from a bar collision, so isPlayerExploded is deliberately
+            // left false (the player didn't die; the face stays visible).
+            // A second, bigger celebratory burst on top of the regular
+            // collection sparkle above marks this as a special moment,
+            // echoing the two-layer burst the bar-collision death uses.
+            isGameOver = true;
+            isDragging = false;
+            didWinMegaJewel = true;
+            createExplosion(jewels[i].x, jewels[i].y, jewels[i].style.glowColor, 6, 24);
+            createExplosion(jewels[i].x, jewels[i].y, '#facc15', 4, 16);
+          }
         }
       }
     }
@@ -460,7 +557,7 @@ function animate(currentTime) {
 
     const result = submitScore(GAME_ID, score, { higherIsBetter: true });
     saveTodayScore(GAME_ID, score);
-    const outcome = classifyOutcome(score);
+    const outcome = classifyOutcome(score, didWinMegaJewel);
     // A meaningful PB needs a real previous best to have beaten — not the
     // player's first-ever play, and not a previous best of exactly 0 (see
     // end-panel-content.js's scenario-priority comment).
@@ -470,9 +567,9 @@ function animate(currentTime) {
     // saveTodayOutcome) since the 'completed' reload branch below reads
     // this same `data` object, matching how `score`/`seconds` already work.
     saveProgress(GAME_ID, { score, panelOutcome: outcome, panelIsNewBest: isNewBest, seconds: survivalTime }, { completed: true });
-    // JEWELZ has no reveal/help concept, and only ever ends via a death — a
-    // round that collected nothing (score === 0) is the closest thing JEWELZ
-    // has to a "failed" outcome, distinct from a death that still scored.
+    // JEWELZ ends either via a death or via collecting the mega jewel — a
+    // round that collected nothing (score === 0, only possible on a death)
+    // is the closest thing JEWELZ has to a "failed" outcome.
     saveTodayOutcome(GAME_ID, {
       revealed: false, usedHelp: false, failed: score === 0,
       isNewBest: result.isNewBest, isTie: result.isTie,
@@ -480,7 +577,13 @@ function animate(currentTime) {
     });
 
     liveScoreEl.textContent = '';
-    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText: `💎 JEWELZ - scored ${score} today`, celebrate: score > 0, score });
+    // shareText is plain text (goes straight to the clipboard, not the
+    // HTML-rendered end panel — see the JEWEL_IMG-vs-emoji comment near the
+    // top of this file), so it uses a literal "&" rather than "&amp;".
+    const shareText = didWinMegaJewel
+      ? `💎 JEWELZ - found the mega gem & WON, scored ${score} today`
+      : `💎 JEWELZ - scored ${score} today`;
+    shell.showEndScreen({ outcome, scoreText: String(score), isNewBest, shareText, celebrate: score > 0, score });
     return; // stops here — no requestAnimationFrame(animate) call below, so the loop naturally stops running
   }
 
@@ -534,6 +637,8 @@ function startGame() {
   waveJewelsSpawned = false;
   nextWavePhase = 'active'; // first wave after the initial wait is always a regular one
   bonusAppearanceCount = 0; // fresh escalation (1 -> 2 -> 3 bonus jewels) each round
+  nextMegaSpawnTime = 90; // first mega jewel appears 90s into the round
+  didWinMegaJewel = false;
   score = 0;
 
   liveScoreEl.innerHTML = `Score: ${JEWEL_IMG} = ${score}`;
@@ -576,7 +681,7 @@ const shell = initShell({
   // Buttons colored from this game's own hub-tile palette (games-registry.js's
   // `color`/`rim`) instead of the shared global blue every game used before.
   accentColor: { bg: '#63B98A', ink: '#0A371E', rim: 'rgba(10, 55, 30, 0.30)' },
-  instructions: `<p>Move the face ${PLAYER_IMG} with your finger or mouse</p><p>Avoid the blades ${BAR_IMG} to stay alive</p><p>Grab the JEWELZ ${JEWEL_IMG}${BONUS_JEWEL_IMG} to score</p>`,
+  instructions: `<p>Move the face ${PLAYER_IMG} with your finger or mouse</p><p>Avoid the blades ${BAR_IMG} to stay alive</p><p>Grab the JEWELZ ${JEWEL_IMG}${BONUS_JEWEL_IMG} to score</p><p>Grab the mega gem ${MEGA_JEWEL_IMG} for 50 points &amp; an instant <strong>WIN</strong></p>`,
   // formatScore overrides how the shared footer displays the best score —
   // by default it'd just show the raw number; this appends the jewel image
   // to match how the score is shown everywhere else in this game.
@@ -596,12 +701,18 @@ if (shell.status.status === 'completed') {
   // Falls back to re-deriving outcome from just the score if this day was
   // completed before panelOutcome/panelIsNewBest existed — isNewBest
   // defaults to false in that fallback since there's no stored record of
-  // whether it was a meaningful PB at the time.
+  // whether it was a meaningful PB at the time. A pre-mega-jewel save can
+  // never re-derive to 'max' this way (there's no saved flag for HOW the
+  // round ended, only the final score), which is fine — those rounds never
+  // could have won in the first place.
+  const reloadOutcome = panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore, false);
   shell.showEndScreen({
-    outcome: panelOutcome !== undefined ? panelOutcome : classifyOutcome(finalScore),
+    outcome: reloadOutcome,
     scoreText: String(finalScore),
     isNewBest: panelIsNewBest || false,
-    shareText: `💎 JEWELZ - scored ${finalScore} today`,
+    shareText: reloadOutcome === 'max'
+      ? `💎 JEWELZ - found the mega gem & WON, scored ${finalScore} today`
+      : `💎 JEWELZ - scored ${finalScore} today`,
   });
 } else {
   drawEverything(); // static preview behind the start banner

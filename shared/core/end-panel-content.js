@@ -37,6 +37,7 @@ const GAME_COPY = {
     normal: (s) => `you scored ${s} points`,
   },
   jewelz: {
+    max: 'you found the mega gem &amp; <strong>WON</strong>',
     normal: (s) => `you scored ${s} points`,
   },
   rainz: {

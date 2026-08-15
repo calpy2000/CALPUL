@@ -20,6 +20,14 @@ export const JEWEL_STYLE = { facets: 8, hue: 350, glowColor: '#f43f5e' }; // rub
 // regular ruby one at a glance, on top of its size/label/lifetime.
 export const BONUS_JEWEL_STYLE = { facets: 12, hue: 210, glowColor: '#38bdf8' }; // sapphire
 
+// The mega jewel (see index.js's independent mega-jewel spawn timer) — worth
+// 50 points and ends the round the instant it's collected, so it needs to
+// read as unmistakably different/rarer than the other two at a glance: a
+// distinct purple hue, plus a doubled `glowBlur` (see drawFacetedGem below,
+// which falls back to 16 for the other two styles that don't set this) so
+// it visibly glows harder than any other jewel in the game.
+export const MEGA_JEWEL_STYLE = { facets: 10, hue: 275, glowColor: '#a855f7', glowBlur: 32 }; // amethyst
+
 // How fast the gem's facets actually rotate, in radians/sec — PI is a half
 // turn per second, i.e. 180 degrees/sec (half of the original 360deg/sec,
 // per the user's explicit request to slow it down 0.5x). Previously the
@@ -38,7 +46,7 @@ const SPIN_RATE = Math.PI;
 export function drawFacetedGem(context, x, y, r, style, t, label) {
   context.save();
   context.shadowColor = style.glowColor;
-  context.shadowBlur = 16;
+  context.shadowBlur = style.glowBlur || 16;
   // Recenters the origin on the gem and rotates the whole coordinate space —
   // everything below is drawn relative to (0, 0) so it comes out already
   // spun into place, same trick Bar.js uses for its own rotation.
@@ -102,4 +110,10 @@ let cachedBonusJewelIconDataURL = null;
 export function getBonusJewelIconDataURL() {
   if (!cachedBonusJewelIconDataURL) cachedBonusJewelIconDataURL = renderIconDataURL(BONUS_JEWEL_STYLE);
   return cachedBonusJewelIconDataURL;
+}
+
+let cachedMegaJewelIconDataURL = null;
+export function getMegaJewelIconDataURL() {
+  if (!cachedMegaJewelIconDataURL) cachedMegaJewelIconDataURL = renderIconDataURL(MEGA_JEWEL_STYLE);
+  return cachedMegaJewelIconDataURL;
 }

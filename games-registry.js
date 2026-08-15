@@ -51,7 +51,6 @@ export const GAMES = [
     rim: 'rgba(10, 45, 25, 0.30)',
     higherIsBetter: true, // score = correct taps scored before failing out or winning
     scoreIsTime: false, // a plain count, not a duration
-    isNew: true, // corner "NEW" ribbon — see index.js's renderTiles() and .hub__tile-new-ribbon in style.css
     // devOnly removed per explicit request, to preview CULUZ under
     // TOOL_MODE 'test' (the tester-facing tools panel) — same pattern
     // VALUZ/MOJEEZ/TOTALZ went through once they were ready. Nothing has
@@ -71,7 +70,6 @@ export const GAMES = [
     accent: '#8ED9A0', // light pastel green — background for the icon circle only
     higherIsBetter: false, // score = completion time in seconds
     scoreIsTime: true,
-    isNew: true,
     // devOnly removed — now visible to testers (see index.js's
     // renderTiles() and shared/core/tool-mode.js), same as MOJEEZ's own
     // history above.
@@ -88,8 +86,6 @@ export const GAMES = [
     rim: 'rgba(90, 20, 22, 0.30)',
     higherIsBetter: true, // score = correct guesses out of 4
     scoreIsTime: false, // a plain count (0-4), not a duration
-    // Same "NEW" ribbon treatment as VALUZ above — remove once MOJEEZ isn't new anymore.
-    isNew: true,
     // Was row 1 / column 2; shifted to row 2 / column 1 when TOTALZ was
     // inserted ahead of it (see TOTALZ's own comment above).
     // devOnly removed — now visible to testers (see days.json's fallback:
@@ -107,10 +103,6 @@ export const GAMES = [
     rim: 'rgba(40, 20, 60, 0.30)',
     higherIsBetter: true, // score = correct matches out of 6
     scoreIsTime: false, // a plain count (0-6), not a duration
-    // Shows the corner "NEW" ribbon on the hub tile (see index.js's
-    // renderTiles() and .hub__tile-new-ribbon in style.css) — remove once
-    // VALUZ isn't new anymore.
-    isNew: true,
     // Moved to row 2 / column 2 when CULUZ was inserted at row 1 / column 1
     // (see CULUZ's own comment above) — was previously the first tile.
   },

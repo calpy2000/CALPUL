@@ -19,17 +19,26 @@
 //      previous best of exactly 0 — see each game's showAsPB calculation)
 //   4. fallback          — a normal, unremarkable completed run
 const GAME_COPY = {
+  // VALUZ and MOJEEZ also carry `zero`/`newPB` overrides (every other game
+  // falls back to the generic text below getEndPanelContent's copy.zero/
+  // copy.newPB lookups) — these two are the tightest fit on the end-panel
+  // row (see GAMES_WITH_TAP_HINT below), so their copy across all 4
+  // scenarios was deliberately shortened together as one pass.
   valuz: {
-    max: 'a full house, take a bow',
-    normal: (s) => `you got ${s} right`,
+    max: 'full house 🥳',
+    normal: (s) => `${s} right`,
+    zero: '0️⃣ today',
+    newPB: 'a new PB 🥇',
   },
   mojeez: {
-    max: '4 for 4, impressive!',
-    normal: (s) => `you got ${s} right`,
+    max: 'full house 🥳',
+    normal: (s) => `${s} right`,
+    zero: '0️⃣ today',
+    newPB: 'a new PB 🥇',
   },
   muveez: {
     max: 'you got it in 1, what a ⭐',
-    loss: 'you failed to guess the movie',
+    loss: 'you failed to guess it',
     normal: (s) => `you got it in ${s}`,
   },
   warpz: {
@@ -37,7 +46,7 @@ const GAME_COPY = {
     normal: (s) => `you scored ${s} points`,
   },
   jewelz: {
-    max: 'you found the mega gem &amp; <strong>WON</strong>',
+    max: 'you won the game 🥳',
     normal: (s) => `you scored ${s} points`,
   },
   rainz: {
@@ -98,10 +107,10 @@ export function getEndPanelContent({ gameId, outcome, scoreText, isNewBest = fal
   }
   const tapHint = GAMES_WITH_TAP_HINT.includes(gameId);
 
-  if (outcome === 'max') return { emoji: '🎉', headline: 'WOW!!', text: copy.max, tapHint };
-  if (outcome === 'loss') return { emoji: '🙁', headline: 'BAD LUCK', text: copy.loss, tapHint };
-  if (outcome === 'zero') return { emoji: '🙁', headline: 'BAD LUCK', text: 'you scored zero!', tapHint };
-  if (outcome === 'reveal') return { emoji: '🙁', headline: 'BAD LUCK', text: 'you revealed the answer', tapHint };
-  if (isNewBest) return { emoji: '🤩', headline: 'WELL DONE', text: "that's a new PB", tapHint };
+  if (outcome === 'max') return { emoji: '🎉', headline: 'WOW!', text: copy.max, tapHint };
+  if (outcome === 'loss') return { emoji: '🙁', headline: 'OH NO', text: copy.loss, tapHint };
+  if (outcome === 'zero') return { emoji: '🙁', headline: 'OH NO', text: copy.zero || 'you scored zero!', tapHint };
+  if (outcome === 'reveal') return { emoji: '🙁', headline: 'OH NO', text: 'you revealed the answer', tapHint };
+  if (isNewBest) return { emoji: '🤩', headline: 'WOW!', text: copy.newPB || "that's a new PB", tapHint };
   return { emoji: '👍🏼', headline: 'NICE', text: copy.normal(scoreText), tapHint };
 }

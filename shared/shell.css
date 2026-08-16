@@ -360,6 +360,11 @@
      list underneath it. .shell-overlay above got the same 0.6x treatment
      as a follow-up request. */
   padding: calc(var(--space-lg) * 0.6);
+  /* Right side tightened further than the other three sides — explicit
+     request, to reclaim end-screen row width for the message text (this is
+     the gap between the Share button's right edge and the panel's own right
+     edge). Left/top/bottom stay at the 0.6x value above. */
+  padding-right: 8px;
 }
 
 /* Both panels start hidden via this class (see shared/core/shell.js) —
@@ -390,7 +395,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--space-sm);
+  /* No blanket gap — flexbox gap is one uniform value between every pair of
+     children, but emoji-headline and headline-message need a tighter gap
+     than message-message-group-button, so each pair's spacing is set as its
+     own margin-right below instead (see .shell-end-screen__emoji,
+     .shell-end-screen__headline, .shell-end-screen__message-group). */
+  gap: 0;
   width: 100%;
 }
 
@@ -428,6 +438,7 @@
   align-items: baseline;
   flex: 1 1 auto;
   min-width: 0;
+  margin-right: var(--space-sm); /* space before the Share button — see .shell-end-screen__panel's gap:0 comment above */
 }
 
 .shell-end-screen__message {
@@ -503,6 +514,7 @@
   font-size: 1.4em;
   line-height: 1;
   flex-shrink: 0;
+  margin-right: 3px; /* tighter than the row's old blanket 8px gap — see .shell-end-screen__panel's gap:0 comment */
 }
 
 .shell-end-screen__headline {
@@ -511,6 +523,7 @@
   font-size: 15px;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-right: 3px; /* tighter than the row's old blanket 8px gap — see .shell-end-screen__panel's gap:0 comment */
 }
 
 /* Each game writes its instructions as one or more real <p> tags, one per
@@ -621,7 +634,7 @@
    inheriting everything else (border-radius, uppercase text, etc.) from
    .shell-btn. */
 .shell-btn--small {
-  padding: 7px 10px; /* 0.5x the horizontal padding of .shell-btn's 20px — explicit request, now that Share is the end-screen's only button and doesn't need as much pill width */
+  padding: 7px 5px; /* tightened further from 10px — explicit request, to reclaim end-screen row width for the message text */
   font-size: 12px;
   background-color: #bfdbfe;
   color: #443653; /* matches .shell-btn's own text color above, for the same reason */

@@ -10,6 +10,7 @@
 import { initShell } from '../../shared/core/shell.js';
 import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
+import { watchFitToStage } from '../../shared/core/fit-to-stage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam, navigateWithSpinner } from '../../shared/core/loading-indicator.js';
@@ -539,6 +540,15 @@ $(function () {
     instructions: `<p>Drag the 6 answers on the right to match questions on the left</p><p>Then tap guess</p><p>Afterward, tap any question to see more</p>`,
     formatScore,
   });
+
+  // Shrinks #board (via --fit-scale, see style.css) just enough that it —
+  // plus room for the start-banner/end-screen panel, which shell.css
+  // positions against #game-stage's own box, not against wherever this
+  // content's real bottom edge lands — fits inside the stage on any device,
+  // with no page scroll needed. Must run after initShell() above, not
+  // before: #game-stage's real height isn't known until the header/footer
+  // it builds actually exist in the DOM. See shared/core/fit-to-stage.js.
+  watchFitToStage(document.getElementById('game-stage'), document.getElementById('board'));
 
   if (isPreview) {
     // Dev preview of a day that isn't today's real puzzle — never restore

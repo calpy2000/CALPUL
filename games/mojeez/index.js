@@ -10,6 +10,7 @@
 import { initShell } from '../../shared/core/shell.js';
 import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
+import { watchFitToStage } from '../../shared/core/fit-to-stage.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam, navigateWithSpinner } from '../../shared/core/loading-indicator.js';
 import { isFuzzyMatch } from '../../shared/core/fuzzy-match.js';
@@ -407,6 +408,13 @@ $(function () {
     instructions: '<p>Guess movies, TV shows & books from emojis</p><p>Then tap guess</p><p>Afterwards tap an answer to see the reveal</p>',
     formatScore,
   });
+
+  // Shrinks .mojeez-stage (via --fit-scale, see style.css) just enough that
+  // it — plus room for the start-banner/end-screen panel — fits inside the
+  // stage on any device, no page scroll needed. See VALUZ's own index.js
+  // and shared/core/fit-to-stage.js for the fuller reasoning; same fix,
+  // same root cause.
+  watchFitToStage(document.getElementById('game-stage'), document.querySelector('.mojeez-stage'));
 
   if (isPreview) {
     // Dev preview of a day that isn't today's real puzzle — never restore

@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.2';
+const CACHE_VERSION = 'v5.3';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -78,6 +78,7 @@ const CODE_URLS = [
   'shared/core/daily-lock.js',
   'shared/core/date-utils.js',
   'shared/core/end-panel-content.js',
+  'shared/core/fit-to-stage.js',
   'shared/core/flip-timer.js',
   'shared/core/fuzzy-match.js',
   'shared/core/game-storage.js',

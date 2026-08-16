@@ -1,28 +1,34 @@
 /* MOJEEZ-only overrides. Like VALUZ's board (see games/valuz/style.css's own
    header comment), MOJEEZ's content is fundamentally text/input driven —
    each tile's height depends on its category label + emoji row + input,
-   none of which are a fixed aspect ratio. Width comes from the (default)
-   stage, height is left intrinsic, and .shell's own overflow-y:auto
-   (shared/shell.css) is the safety net for a short viewport — the browser
-   solving the sizing from the real constraint (content height), not a
-   guessed vw/vh number. Kept deliberately lean (no separate answer line —
-   see .mojeez-tile__category.is-revealed below) so the 4 tiles stay short
-   enough that the end-of-game panel, which always sits a fixed distance
-   above the footer regardless of what's underneath it (shared/shell.css),
-   lands below all 4 rather than overlapping them. */
+   none of which are a fixed aspect ratio.
+
+   The original plan (kept deliberately lean so the 4 tiles reliably fit
+   above the end-of-game panel — see .mojeez-tile__category.is-revealed
+   below) turned out not to hold: the panel is position:absolute against
+   #game-stage's own flex box, not against wherever this content's real
+   bottom edge lands, so on a tight device (confirmed on an iPhone 8 and an
+   iPhone 16 Pro) it still overlapped the last tile and the guess button
+   even at this "lean" size. Same root cause and same fix as VALUZ's board —
+   see that file's own header comment for the fuller explanation. Every size
+   below that scales with content height is expressed as
+   calc(base * var(--fit-scale, 1)), and index.js sets --fit-scale on
+   .mojeez-stage (via shared/core/fit-to-stage.js) once the real stage size
+   is known. --fit-scale defaults to 1 (a no-op) on any device where today's
+   4 tiles already fit, which is the common case. */
 
 .mojeez-stage {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--space-md);
+  gap: calc(var(--space-md) * var(--fit-scale, 1));
 }
 
 .mojeez-board {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: calc(var(--space-sm) * var(--fit-scale, 1));
 }
 
 /* One card per today's item (1 easy -> 4 hardest, top to bottom). Relative
@@ -38,14 +44,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
+  gap: calc(var(--space-xs) * var(--fit-scale, 1));
+  padding: calc(var(--space-sm) * var(--fit-scale, 1)) calc(var(--space-md) * var(--fit-scale, 1));
   background: #F0EDEA; /* soft neutral greige — picked from a swatch comparison after an accent-tinted first pass read as too pink */
   border-radius: 12px;
 }
 
 .mojeez-tile__category {
-  font-size: 13px;
+  font-size: calc(13px * var(--fit-scale, 1));
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -81,7 +87,7 @@
    -ms-overflow-style — between the three, every engine this site targets
    is covered). */
 .mojeez-tile__emoji {
-  font-size: clamp(28px, 9vw, 40px);
+  font-size: calc(clamp(28px, 9vw, 40px) * var(--fit-scale, 1));
   line-height: 1.2;
   white-space: nowrap;
   overflow-x: auto;
@@ -140,12 +146,12 @@
 
 .mojeez-input {
   width: 100%;
-  padding: 8px 34px 8px 14px; /* extra right padding reserves room for the taphint pill */
+  padding: calc(8px * var(--fit-scale, 1)) calc(34px * var(--fit-scale, 1)) calc(8px * var(--fit-scale, 1)) calc(14px * var(--fit-scale, 1)); /* extra right padding reserves room for the taphint pill */
   border: none;
   border-radius: 999px;
   background: #ffffff;
   font-family: inherit;
-  font-size: 15px;
+  font-size: calc(15px * var(--fit-scale, 1));
   text-align: center;
   color: var(--ink);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
@@ -235,7 +241,12 @@
 
 .mojeez-guess-btn {
   align-self: center;
-  margin-top: var(--space-sm);
+  margin-top: calc(var(--space-sm) * var(--fit-scale, 1));
+  /* Overrides shared/shell.css's .shell-btn base padding/font-size (7px 20px
+     / 14.4px) with the same values run through --fit-scale — see VALUZ's
+     own .valuz-guess-btn for the matching reasoning. */
+  padding: calc(7px * var(--fit-scale, 1)) calc(20px * var(--fit-scale, 1));
+  font-size: calc(14.4px * var(--fit-scale, 1));
 }
 .mojeez-guess-btn:disabled {
   opacity: 0.45;

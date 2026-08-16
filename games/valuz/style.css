@@ -4,13 +4,28 @@
    VALUZ's board is fundamentally text-driven: each question row's height
    depends on how many lines its sentence wraps to, which varies by device
    width/font-size, not a fixed ratio. Forcing an aspect-ratio here would be
-   its own kind of magic-number guess. Instead: width comes from the
-   (widened) stage, height is left intrinsic (grows to fit content), and
-   .shell's own overflow-y:auto (already in shared/shell.css, the page-level
-   safety net) handles the rare short-viewport case by letting the whole
-   page scroll rather than clipping — the browser solving the sizing from
-   the real constraint (content height), same underlying principle as the
-   aspect-ratio approach, just the right technique for THIS content shape. */
+   its own kind of magic-number guess.
+
+   Relying on page-level scrolling as the overflow fallback (the original
+   plan here) turned out to have a real bug: shared/shell.css's
+   .shell-end-screen panel is position:absolute against #game-stage's own
+   flex-resolved box, not against wherever this content's real (possibly
+   taller) bottom edge ends up — so on a device/content combination where
+   the 6 question rows are taller than the stage, the panel (and the
+   start-banner overlay before it) lands mid-content instead of below all of
+   it, covering the last row(s) and the guess button. Confirmed on an
+   iPhone 16 Pro with a long-question day and (worse) on an iPhone 8 with
+   MOJEEZ's equivalent content.
+
+   Fixed instead via shared/core/fit-to-stage.js: every size below that
+   scales with content height (font-size, padding, row-gap) is expressed as
+   calc(base * var(--fit-scale, 1)), and index.js sets --fit-scale on #board
+   after the real stage size is known, shrinking just enough that the whole
+   board + the end-panel's reserved space fits inside the stage — no
+   scrolling needed on any device, at the cost of slightly smaller text on
+   the few device/content combinations that actually need it. --fit-scale
+   defaults to 1 (i.e. these calc()s are no-ops) on every device where
+   today's content already fits, which is the common case. */
 /* 96%, not the shared default's 95vw — this needs to be AT LEAST as wide
    as the default on a phone, not narrower. `.shell` itself is 100vw (see
    shared/shell.css), so 92% here used to mean ~92vw — actually NARROWER
@@ -34,7 +49,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--space-md);
+  gap: calc(var(--space-md) * var(--fit-scale, 1));
 }
 
 /* 5 real columns, matching the spec literally: question / spacer / drop /
@@ -61,7 +76,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 0.1fr) minmax(0, 0.9fr) minmax(0, 0.1fr) minmax(0, 0.9fr);
-  row-gap: calc(var(--space-md) * 0.9); /* 0.6x the original var(--space-md), then 1.5x'd back up (0.6 * 1.5 = 0.9) — explicit follow-up request to widen the gap between question rows again */
+  row-gap: calc(var(--space-md) * 0.9 * var(--fit-scale, 1)); /* 0.6x the original var(--space-md), then 1.5x'd back up (0.6 * 1.5 = 0.9) — explicit follow-up request to widen the gap between question rows again */
   align-items: center;
 }
 
@@ -90,7 +105,7 @@
    fits on one line rather than wrapping. */
 .valuz-day-line {
   margin: 0;
-  font-size: 14.5px;
+  font-size: calc(14.5px * var(--fit-scale, 1));
   font-weight: 500;
   color: #2E1F42;
 }
@@ -117,7 +132,7 @@
   min-width: 0; /* grid items default to min-width:auto (their own content's min-content size), which would override the track's own minmax(0,...) above and push column 5 wide again — this lets the label actually shrink to the track's real (now-equal) width instead */
   margin-top: -16.3px; /* pulls the label up to close 0.3x of the gap to the row above (measured baseline gap ~23.3px on iPhone 14 -> target ~7px); targets ONLY this one gap rather than touching .valuz-grid's row-gap, which is shared by every question row and was tuned separately */
   text-align: center;
-  font-size: 10px;
+  font-size: calc(10px * var(--fit-scale, 1));
   font-weight: 700;
   line-height: 1.15;
   color: #2E1F42;
@@ -153,11 +168,11 @@
   position: relative; /* anchors .valuz-tile__taphint's absolute positioning */
   display: flex;
   align-items: flex-start;
-  gap: 6px;
-  padding: calc(var(--space-sm) * 0.6) calc(var(--space-md) * 0.7 * 0.6); /* both axes taken to 0.6x the previous value — explicit request to reclaim vertical space so the end-panel covers fewer rows */
+  gap: calc(6px * var(--fit-scale, 1));
+  padding: calc(var(--space-sm) * 0.6 * var(--fit-scale, 1)) calc(var(--space-md) * 0.7 * 0.6 * var(--fit-scale, 1)); /* both axes taken to 0.6x the previous value — explicit request to reclaim vertical space so the end-panel covers fewer rows */
   background: #F6F3F9;
   border-radius: 12px;
-  font-size: 15.5px;
+  font-size: calc(15.5px * var(--fit-scale, 1));
   line-height: 1.4;
   color: var(--ink);
   cursor: default; /* becomes .is-clickable (pointer) only once the round is graded — see index.js's markQuestionsClickable() */
@@ -242,13 +257,13 @@
 .valuz-tile--slot {
   position: relative; /* anchors .valuz-grademark, colour type only */
   aspect-ratio: 1 / 1;
-  width: 74%;
+  width: calc(74% * var(--fit-scale, 1));
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  font-size: clamp(14px, 4.5vw, 20px);
+  font-size: calc(clamp(14px, 4.5vw, 20px) * var(--fit-scale, 1));
   font-weight: 600;
   color: #ffffff;
   background: #8E6FB3;
@@ -268,7 +283,7 @@
 .valuz-tile--slot.valuz-tile--type-emoji {
   background: #ffffff;
   border: 1px solid rgba(142, 111, 179, 0.35);
-  font-size: clamp(26px, 8vw, 38px);
+  font-size: calc(clamp(26px, 8vw, 38px) * var(--fit-scale, 1));
 }
 
 /* Colour type only (see index.js's typeClass) — the COLOUR_LABEL text
@@ -279,7 +294,7 @@
    is set per-swatch inline via COLOUR_LABEL_TEXT in index.js, not here,
    since it varies by which of the 8 colours is showing. */
 .valuz-tile--slot.valuz-tile--type-colour {
-  font-size: clamp(11.2px, 3.6vw, 16px);
+  font-size: calc(clamp(11.2px, 3.6vw, 16px) * var(--fit-scale, 1));
   font-weight: 400;
 }
 
@@ -348,7 +363,14 @@
    positioning needed here. */
 .valuz-guess-btn {
   align-self: center;
-  margin-top: var(--space-sm);
+  margin-top: calc(var(--space-sm) * var(--fit-scale, 1));
+  /* Overrides shared/shell.css's .shell-btn base padding/font-size (7px 20px
+     / 14.4px) with the same values run through --fit-scale — this button
+     lives inside #board, the element index.js's fit-to-stage.js scales, so
+     it needs to shrink along with the rest of the board's content on a
+     device/day that needs it, not stay pinned at full size. */
+  padding: calc(7px * var(--fit-scale, 1)) calc(20px * var(--fit-scale, 1));
+  font-size: calc(14.4px * var(--fit-scale, 1));
 }
 
 .valuz-guess-btn:disabled {

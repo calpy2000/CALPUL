@@ -55,8 +55,21 @@ export function setLoadingMessage(text) {
 // on a repeat view (image already cached) this resolves in well under the
 // spinner's own 200ms reveal delay, so it adds no visible wait at all in
 // the common case.
+//
+// The yieldForPaint() before the image wait starts is required, not
+// decorative — confirmed via real device testing (2026-08-16, GLYMPZ, iOS
+// standalone PWA): a cold first-of-the-day image fetch (nothing cached yet
+// for that day's filename) genuinely can take several real seconds, and
+// without forcing a paint first, this message — and even the plain
+// CSS-only spinner already sitting in the page's static HTML — never made
+// it to the screen at all for the whole wait, same class of bug
+// yieldForPaint()'s own comment describes for fetch(). The symptom wasn't
+// "message shows too briefly to notice," it was a genuinely blank/frozen
+// screen for the entire multi-second wait, then the fully-loaded game
+// appearing all at once.
 export async function loadDailyImage(url, message) {
   setLoadingMessage(message);
+  await yieldForPaint();
   await new Promise((resolve) => {
     const img = new Image();
     img.onload = resolve;

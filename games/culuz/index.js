@@ -48,7 +48,7 @@ const COLOURS = {
   green: '#15A54A',
   purple: '#B938FA',
   black: '#242424',
-  brown: '#73341D',
+  brown: '#9C6B45',
 };
 const COLOUR_NAMES = Object.keys(COLOURS); // captured before 'gold' is added below, so it's never picked for normal objects
 const GOLD = '#F6C445';

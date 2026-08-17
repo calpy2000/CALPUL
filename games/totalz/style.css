@@ -292,3 +292,166 @@
   gap: var(--space-sm);
   align-items: center;
 }
+
+/* --- Experimental bracket-mode input (see index.js's renderBrackets() —
+   only active when the dev panel's "Input model" radio is set to
+   "Brackets + Enter"; classic mode's own rules above are untouched). All
+   scoped under .totalz-board--brackets so nothing here can leak into or
+   collide with the shipped classic layout. --- */
+
+/* Classic's number row is a 3x2 grid (3 columns, so the six tiles wrap to
+   two rows) — bracket mode instead lays all six out in one row, matching
+   the prototype this was built from. Nine keys instead of classic's six
+   operators (+ − × ÷ x² √x, plus ( ) and Enter) needs its own column count
+   too. Height is fixed and centered via flex rather than left to
+   padding+line-height, so the operator row's bigger glyphs (below) can't
+   end up taller than the number row above it. */
+.totalz-board--brackets .totalz-row--numbers {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.totalz-board--brackets .totalz-row--operators {
+  grid-template-columns: repeat(9, 1fr);
+  /* Prototype used a tighter 4px gap for this 9-key row instead of the
+     shared .totalz-row's 8px (fine for classic's 6 keys, too much for
+     nine) — matching it back gives each key the width the prototype had,
+     which is what the Enter label below is actually sized for. */
+  gap: 4px;
+}
+
+.totalz-board--brackets .totalz-tile {
+  height: 46px;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.totalz-board--brackets .totalz-row--numbers .totalz-tile {
+  font-size: 1.2rem;
+}
+
+.totalz-board--brackets .totalz-row--operators .totalz-tile {
+  font-size: 1.3rem;
+}
+
+/* Three operator groups, three tints, so arithmetic / transforms /
+   brackets read apart at a glance instead of nine identical-looking keys.
+   Transforms borrow the game's own gold instructions-text colour
+   (.totalz-instr-ops); brackets get a violet used nowhere else on this
+   page. The .is-armed override has to come after these (same specificity,
+   so source order decides) or an armed transform tile would lose its blue
+   "active" fill to the plain group tint. */
+.totalz-tile--op-main {
+  background: #eaf3fb;
+}
+
+.totalz-tile--op-transform {
+  background: #faf0d6;
+}
+
+.totalz-tile--op-bracket {
+  background: #efe9fb;
+}
+
+.totalz-board--brackets .totalz-tile--op-main.is-armed,
+.totalz-board--brackets .totalz-tile--op-transform.is-armed,
+.totalz-board--brackets .totalz-tile--op-bracket.is-armed {
+  background: #4B94D6;
+  border-color: #4B94D6;
+  color: #ffffff;
+}
+
+/* .is-disabled (existing, shared with classic mode) has to win back over
+   the group tints above when the whole board is locked — same
+   equal-specificity/source-order issue as .is-armed above. */
+.totalz-board--brackets .totalz-tile--op-main.is-disabled,
+.totalz-board--brackets .totalz-tile--op-transform.is-disabled,
+.totalz-board--brackets .totalz-tile--op-bracket.is-disabled {
+  background: #eceef0;
+  color: #b3b9bf;
+  border-color: #eceef0;
+}
+
+/* font-size only, scoped with the same three-class weight as
+   .totalz-board--brackets .totalz-row--operators .totalz-tile above (which
+   sets font-size: 1.3rem for every tile in the row) — a plain single-class
+   selector is LOWER specificity than that rule, so its own font-size would
+   silently lose regardless of source order or the value used. Background/
+   color/cursor deliberately stay OUT of this rule and live in the two
+   lower-specificity rules below instead, so .is-ready's green fill can
+   still win over the default grey the normal way (higher specificity than
+   plain .totalz-enter-btn) — bundling them in here once already broke
+   that (the ready state showed only its border-color changing, since
+   background/color/cursor were being pinned by this 3-class rule no
+   matter what .is-ready said). */
+.totalz-board--brackets .totalz-row--operators .totalz-enter-btn {
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.totalz-enter-btn {
+  font-family: inherit;
+  font-weight: 700;
+  background: #eceef0;
+  color: #b3b9bf;
+  cursor: not-allowed;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.totalz-enter-btn.is-ready {
+  background: #278a53;
+  border-color: #278a53;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* In-progress row — the expression typed since the last Enter, shown as
+   the ledger's own last row (dimmed) rather than a separate input line,
+   with an inline "< del" link (styled to match .totalz-line__expr's own
+   grey, no border/fill) instead of a full backspace button. */
+.totalz-board--brackets .totalz-line--ghost {
+  opacity: 0.72;
+}
+
+.totalz-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #4B94D6;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: totalz-caret-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .totalz-caret {
+    animation: none;
+  }
+}
+
+@keyframes totalz-caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.totalz-line__del {
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.totalz-line__del:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.totalz-line__del:active {
+  opacity: 0.7;
+}

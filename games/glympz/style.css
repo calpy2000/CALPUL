@@ -80,6 +80,17 @@
   box-shadow: 0 0 0 3px var(--accent) inset;
 }
 
+/* A tile in its correct spot (tick showing) is locked — can no longer be
+   picked up or swapped into (see index.js's canDrag/canSwap). Same inward
+   ring treatment as .drag-over above, but in the tick's own green rather
+   than the drag-hover blue, and a plain cursor so it doesn't invite a
+   pickup attempt. Faint rather than the tick badge's full-strength green,
+   since up to 36 of these can be showing at once by the end of a round. */
+.tile.is-locked {
+  box-shadow: 0 0 0 2px rgba(57, 204, 81, 0.55) inset;
+  cursor: default;
+}
+
 /* Triggered briefly on both tiles involved in a swap (see index.js's
    onSwap — the class is added, then removed 200ms later) — plays the
    tilePop keyframe animation once. */

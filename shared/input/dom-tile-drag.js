@@ -44,6 +44,14 @@ function getClientCoords(e) {
 // `isLocked()`: caller-supplied function checked on every drag attempt —
 //   returning true blocks dragging entirely (used while a start banner is
 //   showing, or after a puzzle is already solved).
+// `canDrag(tile)`: caller-supplied function deciding whether THIS SPECIFIC
+//   tile can be picked up at all (e.g. GLYMPZ locks a tile once it's in its
+//   correct spot). Defaults to always-draggable, so every existing caller
+//   that doesn't pass this keeps behaving exactly as before. Different from
+//   canSwap(a, b) above: canSwap only blocks the DROP (the tile still lifts
+//   and follows the pointer, then snaps back on release); canDrag stops the
+//   pick-up itself, so a locked tile never visually lifts in the first
+//   place.
 // `onSwap(a, b)`: caller-supplied function that actually performs whatever
 //   "swap" means for that specific game.
 export function enableTileDragSwap({
@@ -51,6 +59,7 @@ export function enableTileDragSwap({
   tileSelector = '.tile',
   canSwap = () => true,
   isLocked = () => false,
+  canDrag = () => true,
   onSwap,
 }) {
   // These variables live in the closure created by this function call, so
@@ -78,7 +87,7 @@ export function enableTileDragSwap({
     // .tile * { pointer-events: none; } shows up in every game's CSS, so
     // clicks on a tile's inner content still land on the tile itself.
     const tile = e.target.closest(tileSelector);
-    if (!tile || !container.contains(tile) || tile.classList.contains('is-animating')) return;
+    if (!tile || !container.contains(tile) || tile.classList.contains('is-animating') || !canDrag(tile)) return;
 
     const coords = getClientCoords(e);
     startX = coords.x;

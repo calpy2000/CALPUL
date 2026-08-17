@@ -12,9 +12,26 @@ import { initShell } from '../../shared/core/shell.js';
 import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
-import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, stripReloadParam, reloadWithSpinner } from '../../shared/core/loading-indicator.js';
 
 const GAME_ID = 'totalz';
+
+// Experimental alternate input model: type a full bracketed expression (a
+// real recursive-descent parser with standard operator precedence, not
+// just a left-to-right chain) and press Enter to fold it into the running
+// total, instead of the shipped tap-a-number-then-operator chain. Off by
+// default for everyone — only switchable via the dev panel's radio group
+// (see initToolsPanel() below), which only ever renders in dev mode
+// (TOOL_MODE 'dev' in tool-mode.js), so this never changes what a tester
+// or real player sees on its own.
+const INPUT_MODE_KEY = 'totalz_input_mode';
+function getInputMode() {
+  return localStorage.getItem(INPUT_MODE_KEY) === 'brackets' ? 'brackets' : 'classic';
+}
+function setInputMode(mode) {
+  localStorage.setItem(INPUT_MODE_KEY, mode);
+}
+const inputMode = getInputMode();
 
 // Loaded once, up front, via top-level await (valid inside a <script
 // type="module">) — same pattern MOJEEZ/VALUZ use for their own JSON data.
@@ -73,6 +90,11 @@ $(function () {
   // --- Pure game-state helpers (state machine only — no DOM here) ---
 
   let numbers, used, committed, pendingLeft, pendingLeftIdx, pendingOp, pendingTransform;
+  // Bracket-mode's own parallel state — kept fully separate from the
+  // classic fields above (rather than reusing e.g. `used`) so switching
+  // input modes never leaves one mode's half-finished attempt bleeding
+  // into the other's.
+  let brUsed, brWorkingValue, brStream, brLedger, brPendingTransform;
   let locked = true; // unlocked once Play Now / Resume is pressed
   let revealed = false;
   let totalSeconds = 0;
@@ -82,6 +104,8 @@ $(function () {
   const minRequired = activeDayData.minRequired;
   const knownSolutionTrail = activeDayData.trail;
 
+  if (inputMode === 'brackets') $('#board').addClass('totalz-board--brackets');
+
   function resetPuzzleState() {
     numbers = activeDayData.numbers.slice();
     used = numbers.map(() => false);
@@ -90,6 +114,11 @@ $(function () {
     pendingLeftIdx = null;
     pendingOp = null;
     pendingTransform = null;
+    brUsed = numbers.map(() => false);
+    brWorkingValue = null;
+    brStream = [];
+    brLedger = [];
+    brPendingTransform = null;
   }
   resetPuzzleState();
 
@@ -130,6 +159,7 @@ $(function () {
   }
 
   function currentValue() {
+    if (inputMode === 'brackets') return brWorkingValue;
     if (committed.length) return committed[committed.length - 1].resultAfter;
     return pendingLeft;
   }
@@ -202,6 +232,155 @@ $(function () {
     }
   }
 
+  // --- Bracket-mode state machine (only used when inputMode === 'brackets')
+  //
+  // Unlike the classic chain above, this treats everything typed since the
+  // last Enter as ONE continuous expression — parsed with real operator
+  // precedence (× ÷ bind tighter than + −) and explicit brackets, not
+  // left-to-right reduction. Enter re-parses the whole thing (the prior
+  // running total, brWorkingValue, prepended as if it were the first
+  // token) and, if it parses cleanly end-to-end, collapses it into the new
+  // running total and starts a fresh stream. Reuses applyBinary/
+  // binaryValid from the classic code above — same "every intermediate
+  // value must stay a positive integer, division exact" rule applies at
+  // every level, including inside brackets.
+  //
+  // Every brDoX() function below is a RAW mutator with no side effects
+  // (no persist/render/win-check) — same split as pickNumber/pickOperator
+  // above, and for the same reason: replayKnownTrailBrackets() (used by
+  // both the reveal and dev "Solve puzzle" paths) needs to drive these
+  // directly without accidentally triggering a live win/persist mid-replay.
+  // Real taps call the matching brDoX() then afterMove() themselves (see
+  // renderBrackets() below).
+
+  function brParseFactor(toks, pos) {
+    const t = toks[pos];
+    if (!t) return null;
+    if (t.t === 'num') return { value: t.value, pos: pos + 1 };
+    if (t.t === 'lp') {
+      const inner = brParseExpr(toks, pos + 1);
+      if (!inner) return null;
+      const close = toks[inner.pos];
+      if (!close || close.t !== 'rp') return null;
+      return { value: inner.value, pos: inner.pos + 1 };
+    }
+    return null;
+  }
+
+  function brParseTerm(toks, pos) {
+    const left = brParseFactor(toks, pos);
+    if (!left) return null;
+    let val = left.value;
+    let p = left.pos;
+    while (toks[p] && toks[p].t === 'op' && (toks[p].k === '*' || toks[p].k === '/')) {
+      const opk = toks[p].k;
+      const right = brParseFactor(toks, p + 1);
+      if (!right) return null;
+      if (!binaryValid(val, opk, right.value)) return null;
+      val = applyBinary(val, opk, right.value);
+      p = right.pos;
+    }
+    return { value: val, pos: p };
+  }
+
+  function brParseExpr(toks, pos) {
+    const left = brParseTerm(toks, pos);
+    if (!left) return null;
+    let val = left.value;
+    let p = left.pos;
+    while (toks[p] && toks[p].t === 'op' && (toks[p].k === '+' || toks[p].k === '-')) {
+      const opk = toks[p].k;
+      const right = brParseTerm(toks, p + 1);
+      if (!right) return null;
+      if (!binaryValid(val, opk, right.value)) return null;
+      val = applyBinary(val, opk, right.value);
+      p = right.pos;
+    }
+    return { value: val, pos: p };
+  }
+
+  function brVirtualStream() {
+    if (brWorkingValue !== null) return [{ t: 'num', value: brWorkingValue }, ...brStream];
+    return brStream;
+  }
+
+  // Full-stream validity check backing Enter's disabled state: must have
+  // typed something new since the last collapse, AND that plus whatever's
+  // already banked must parse as one complete expression (balanced
+  // brackets, no dangling operator) with no leftover tokens.
+  function brTryParseFull() {
+    if (brStream.length === 0) return null;
+    const toks = brVirtualStream();
+    const r = brParseExpr(toks, 0);
+    return r && r.pos === toks.length ? r.value : null;
+  }
+
+  function brRenderTokenText(tok) {
+    if (tok.t === 'op') return opSymbol(tok.k);
+    if (tok.t === 'lp') return '(';
+    if (tok.t === 'rp') return ')';
+    if (tok.transform === 'sq') return `${tok.raw}²`;
+    if (tok.transform === 'rt') return `√${tok.raw}`;
+    return `${tok.raw}`;
+  }
+
+  function brRenderStreamText(toks) {
+    return toks.map(brRenderTokenText).join(' ');
+  }
+
+  function brDoTapNumber(idx) {
+    if (brUsed[idx]) return;
+    const raw = numbers[idx];
+    let value = raw;
+    let transform = null;
+    if (brPendingTransform) {
+      const tv = transformValue(raw, brPendingTransform);
+      if (tv !== null) { value = tv; transform = brPendingTransform; }
+    }
+    brStream.push({ t: 'num', raw, transform, value, poolIdx: idx });
+    brUsed[idx] = true;
+    brPendingTransform = null;
+  }
+
+  function brDoTapOp(k) {
+    brStream.push({ t: 'op', k });
+  }
+
+  function brDoTapParen(which) {
+    brStream.push({ t: which === '(' ? 'lp' : 'rp' });
+  }
+
+  function brDoTapTransform(key) {
+    // Arms/disarms a transform for the NEXT number tapped — tapping the
+    // same one again disarms it, tapping the other swaps which is armed.
+    // Persists across other taps (an operator or bracket in between
+    // doesn't clear it) until a number actually consumes it.
+    brPendingTransform = brPendingTransform === key ? null : key;
+  }
+
+  function brDoTapBackspace() {
+    if (brStream.length === 0) return;
+    const popped = brStream.pop();
+    if (popped.t === 'num') brUsed[popped.poolIdx] = false;
+  }
+
+  function brDoTapEnter() {
+    const result = brTryParseFull();
+    if (result === null) return;
+    const text = brRenderStreamText(brStream);
+    brLedger.push({ text, result });
+    brWorkingValue = result;
+    brStream = [];
+  }
+
+  function brDoReset() {
+    brUsed = numbers.map(() => false);
+    brWorkingValue = null;
+    brStream = [];
+    brLedger = [];
+    brPendingTransform = null;
+  }
+
   // --- Timer ---
 
   function formatTime(secs) {
@@ -229,7 +408,9 @@ $(function () {
 
   function persistProgress(completed) {
     saveProgress(GAME_ID, {
+      mode: inputMode,
       committed, used, pendingLeft, pendingLeftIdx, pendingOp, pendingTransform,
+      brUsed, brWorkingValue, brStream, brLedger, brPendingTransform,
       seconds: totalSeconds, revealed,
     }, { completed });
   }
@@ -237,6 +418,11 @@ $(function () {
   // --- Rendering ---
 
   function render() {
+    if (inputMode === 'brackets') renderBrackets();
+    else renderClassic();
+  }
+
+  function renderClassic() {
     $('#totalz-target-value').text(target);
     $('#totalz-min-required').text(`needs ${minRequired}+ numbers`);
 
@@ -332,6 +518,121 @@ $(function () {
     });
   }
 
+  // Bracket-mode's own render — same target card / ledger / prompt /
+  // keypad DOM ids as renderClassic() above (so both modes share the exact
+  // same page shell), but the ledger shows the in-progress expression as
+  // its own last row (not a separate line), the operator row grows to nine
+  // keys (+ − × ÷ x² √x ( ) plus a real Enter button, three tints so the
+  // arithmetic/transform/bracket groups read apart — see
+  // .totalz-board--brackets in style.css), and nothing is disabled while
+  // playing except an already-used number and Enter itself, which only
+  // enables once brTryParseFull() says the typed expression is complete
+  // and valid.
+  function renderBrackets() {
+    $('#totalz-target-value').text(target);
+    $('#totalz-min-required').text(`needs ${minRequired}+ numbers`);
+
+    const cur = currentValue();
+    const $delta = $('#totalz-delta');
+    if (cur === null) {
+      $delta.text('').removeClass('is-match');
+    } else if (cur === target) {
+      $delta.text('MATCH!').addClass('is-match');
+    } else {
+      $delta.text(`${Math.abs(target - cur)} away`).removeClass('is-match');
+    }
+
+    const parsed = brTryParseFull();
+    const hasRows = brLedger.length > 0 || brStream.length > 0;
+
+    const $ledger = $('#totalz-ledger').empty();
+    if (!hasRows) {
+      $ledger.html('<div class="totalz-ledger__empty">tap a number to begin</div>');
+    } else {
+      brLedger.forEach((line) => {
+        const $row = $('<div>', { class: 'totalz-line' + (line.result === target ? ' is-solved' : '') })
+          .html(`<span class="totalz-line__expr">${line.text} =</span><span class="totalz-line__result">${line.result}</span>`);
+        $ledger.append($row);
+      });
+
+      if (brStream.length > 0 && !locked) {
+        const $ghost = $('<div>', { class: 'totalz-line totalz-line--ghost' });
+        $('<span>', { class: 'totalz-line__expr' }).text(brRenderStreamText(brStream) + ' ').append('<span class="totalz-caret"></span>').appendTo($ghost);
+        $('<button>', { class: 'totalz-line__del', type: 'button', text: '‹ del' })
+          .on('click', () => { brDoTapBackspace(); afterMove(); })
+          .appendTo($ghost);
+        $ledger.append($ghost);
+      }
+
+      if (hasRows && !locked) {
+        const $resetRow = $('<div>', { class: 'totalz-ledger__reset-row' });
+        $('<button>', { class: 'totalz-ledger__reset-btn', type: 'button', text: 'reset' })
+          .on('click', () => { brDoReset(); persistProgress(false); render(); })
+          .appendTo($resetRow);
+        $ledger.append($resetRow);
+      }
+    }
+    const lastLine = $ledger.children().last();
+    if (lastLine.length) lastLine[0].scrollIntoView({ block: 'nearest' });
+
+    const $prompt = $('#totalz-prompt');
+    if (locked) {
+      $prompt.text('');
+    } else if (brStream.length === 0) {
+      $prompt.html(brWorkingValue === null ? 'tap a <b>number</b> to start' : 'tap an <b>operator</b> or <b>number</b> to continue');
+    } else if (parsed !== null) {
+      $prompt.html('valid — press <b>Enter</b> to fold it in');
+    } else {
+      $prompt.text('keep building…');
+    }
+
+    const $numberRow = $('#totalz-number-row').empty();
+    numbers.forEach((v, i) => {
+      const enabled = !locked && !brUsed[i];
+      const $tile = $('<div>', { class: 'totalz-tile' + (enabled ? '' : ' is-disabled') + (brUsed[i] ? ' is-used' : ''), text: v });
+      if (enabled) $tile.on('click', () => { brDoTapNumber(i); afterMove(); });
+      $numberRow.append($tile);
+    });
+
+    const $operatorRow = $('#totalz-operator-row').empty();
+    const BRACKET_KEYS = [
+      { key: '+', label: '+', group: 'main', kind: 'op' },
+      { key: '-', label: '−', group: 'main', kind: 'op' },
+      { key: '*', label: '×', group: 'main', kind: 'op' },
+      { key: '/', label: '÷', group: 'main', kind: 'op' },
+      { key: 'sq', label: 'x²', group: 'transform', kind: 'transform' },
+      { key: 'rt', label: '√x', group: 'transform', kind: 'transform' },
+      { key: '(', label: '(', group: 'bracket', kind: 'paren' },
+      { key: ')', label: ')', group: 'bracket', kind: 'paren' },
+    ];
+    BRACKET_KEYS.forEach((def) => {
+      const armed = def.kind === 'transform' && brPendingTransform === def.key;
+      const $tile = $('<div>', {
+        class: `totalz-tile totalz-tile--op-${def.group}` + (locked ? ' is-disabled' : '') + (armed ? ' is-armed' : ''),
+        text: def.label,
+      });
+      if (!locked) {
+        $tile.on('click', () => {
+          if (def.kind === 'op') brDoTapOp(def.key);
+          else if (def.kind === 'transform') brDoTapTransform(def.key);
+          else brDoTapParen(def.key);
+          afterMove();
+        });
+      }
+      $operatorRow.append($tile);
+    });
+
+    const enterReady = parsed !== null && !locked;
+    const $enterBtn = $('<button>', {
+      class: 'totalz-tile totalz-enter-btn' + (enterReady ? ' is-ready' : ''),
+      type: 'button',
+      text: 'Enter',
+    });
+    $enterBtn.prop('disabled', !enterReady);
+    if (enterReady) $enterBtn.on('click', () => { brDoTapEnter(); afterMove(); });
+    $operatorRow.append($enterBtn);
+  }
+
   // Runs after every player-initiated move — re-renders, then checks
   // whether that move just hit the target (kept OUT of pickNumber/
   // pickOperator themselves so revealSolution() can replay the same
@@ -344,6 +645,18 @@ $(function () {
 
   // --- Shell integration ---
 
+  // Bracket mode gets its own instructions — the classic ones ("use the
+  // operators, one number at a time") no longer describe how the keypad
+  // actually works once ( ) and Enter are in play. Classic's copy below is
+  // untouched.
+  const classicInstructions =
+    '<p>Use the six numbers to make the TARGET</p><p>Use any number once</p><p>Use <span class="totalz-instr-ops">+&nbsp;&nbsp;&nbsp;−&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;÷&nbsp;&nbsp;&nbsp;x²&nbsp;&nbsp;&nbsp;√x</span> <br> as many times as you want</p>';
+  const bracketInstructions =
+    '<p>Use the six numbers to make the TARGET</p>' +
+    '<p>Use any number once</p>' +
+    '<p>Type a calculation with <span class="totalz-instr-ops">+&nbsp;&nbsp;−&nbsp;&nbsp;×&nbsp;&nbsp;÷&nbsp;&nbsp;x²&nbsp;&nbsp;√x&nbsp;&nbsp;(&nbsp;&nbsp;)</span></p>' +
+    '<p>Tap <strong>Enter</strong> to lock it in, then keep building until you hit the TARGET</p>';
+
   const shell = initShell({
     gameId: GAME_ID,
     title: 'TOTALZ',
@@ -352,7 +665,7 @@ $(function () {
     // field (same pattern SOLVZ uses for its own ➕ badge).
     emojiBadge: { glyph: '🟰', accent: '#8ED9A0' },
     accentColor: { bg: '#A9D0F5', ink: '#1D4E78', rim: 'rgba(25, 60, 95, 0.30)' },
-    instructions: '<p>Use the six numbers to make the TARGET</p><p>Use any number once</p><p>Use <span class="totalz-instr-ops">+&nbsp;&nbsp;&nbsp;−&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;÷&nbsp;&nbsp;&nbsp;x²&nbsp;&nbsp;&nbsp;√x</span> <br> as many times as you want</p>',
+    instructions: inputMode === 'brackets' ? bracketInstructions : classicInstructions,
     formatScore: formatTime,
   });
 
@@ -448,13 +761,43 @@ $(function () {
     }
   }
 
+  // Bracket-mode's own version of replayKnownTrail() above — same trail
+  // data, same "drive the raw mutators directly, no side effects" split
+  // (see the brDoX() functions' own header comment), just re-expressed as
+  // bracket-mode taps: a 'first' step's optional transform is armed via
+  // brDoTapTransform() BEFORE the number (prefix-arm, not the postfix
+  // apply-to-total the classic model used), and every step ends with
+  // brDoTapEnter() so the ledger comes out with the same one-row-per-step
+  // shape as the classic reveal. No authored day currently produces a
+  // standalone 'unary' step (a transform with no accompanying number) —
+  // brackets mode's arm-then-tap-a-number model has no way to apply a
+  // transform directly to the running total, so that step type is just
+  // skipped here rather than crashing if one ever shows up.
+  function replayKnownTrailBrackets() {
+    brDoReset();
+    for (const step of knownSolutionTrail) {
+      if (step.type === 'first') {
+        if (step.transform) brDoTapTransform(step.transform);
+        brDoTapNumber(numbers.indexOf(step.raw));
+      } else if (step.type === 'binary') {
+        brDoTapOp(step.op);
+        if (step.transform) brDoTapTransform(step.transform);
+        brDoTapNumber(numbers.indexOf(step.raw));
+      } else if (step.type === 'unary') {
+        continue;
+      }
+      brDoTapEnter();
+    }
+  }
+
   // Reachable only via the player's own confirmed choice to give up.
   function revealSolution() {
     locked = true;
     stopTimer();
     hideRevealButton();
     revealed = true;
-    replayKnownTrail();
+    if (inputMode === 'brackets') replayKnownTrailBrackets();
+    else replayKnownTrail();
     render();
     persistProgress(true);
     // No submitScore() call on this path — giving up never sets a best.
@@ -474,24 +817,61 @@ $(function () {
   function solvePuzzle() {
     shell.hideStartBanner();
     locked = false;
-    replayKnownTrail();
+    if (inputMode === 'brackets') replayKnownTrailBrackets();
+    else replayKnownTrail();
     handleWin();
   }
 
-  initToolsPanel([GAME_ID], { extraActions: [{ label: 'Solve puzzle', onClick: solvePuzzle }] });
+  initToolsPanel([GAME_ID], {
+    extraActions: [{ label: 'Solve puzzle', onClick: solvePuzzle }],
+    radioGroups: [{
+      label: 'Input model',
+      name: 'totalz-input-mode',
+      options: [
+        { value: 'classic', label: 'Classic (chain)' },
+        { value: 'brackets', label: 'Brackets + Enter' },
+      ],
+      get: () => inputMode,
+      set: (value) => { setInputMode(value); reloadWithSpinner(); },
+    }],
+  });
 
   // Same three-way daily-status branch as every other game — see
   // games/solvz/index.js for the fuller explanation of what each status
   // means, and games/glympz/index.js/games/quadz/index.js for the
   // additional `revealed` sub-branch within 'completed'.
-  if (!isPreviewOnly && shell.status.status === 'completed') {
-    const { data } = shell.status.record;
+  //
+  // canResume adds a fourth consideration on top of the usual three: a
+  // saved record only counts as resumable if it was saved under the SAME
+  // input mode currently active. Old saves (from before this feature
+  // existed) have no `mode` field at all, which defaults to 'classic' —
+  // so classic mode's resume behaviour is completely unchanged. Switching
+  // modes mid-day, or a saved 'brackets' record while classic is active
+  // (or vice versa), just falls through to the fresh-start branch instead
+  // of trying to restore a shape the active mode doesn't understand.
+  const savedMode = (shell.status.record && shell.status.record.data && shell.status.record.data.mode) || 'classic';
+  const canResume = !isPreviewOnly && savedMode === inputMode;
+
+  function restoreClassicFields(data) {
     committed = data.committed || [];
     used = data.used || numbers.map(() => false);
     pendingLeft = data.pendingLeft ?? null;
     pendingLeftIdx = data.pendingLeftIdx ?? null;
     pendingOp = data.pendingOp ?? null;
     pendingTransform = data.pendingTransform ?? null;
+  }
+
+  function restoreBracketFields(data) {
+    brUsed = data.brUsed || numbers.map(() => false);
+    brWorkingValue = data.brWorkingValue ?? null;
+    brStream = data.brStream || [];
+    brLedger = data.brLedger || [];
+    brPendingTransform = data.brPendingTransform ?? null;
+  }
+
+  if (canResume && shell.status.status === 'completed') {
+    const { data } = shell.status.record;
+    if (inputMode === 'brackets') restoreBracketFields(data); else restoreClassicFields(data);
     totalSeconds = data.seconds || 0;
     revealed = data.revealed || false;
     updateClockDisplay();
@@ -509,14 +889,9 @@ $(function () {
         shareText: `🟰 TOTALZ - solved in ${formatTime(totalSeconds)}`,
       });
     }
-  } else if (!isPreviewOnly && shell.status.status === 'in-progress') {
+  } else if (canResume && shell.status.status === 'in-progress') {
     const { data } = shell.status.record;
-    committed = data.committed || [];
-    used = data.used || numbers.map(() => false);
-    pendingLeft = data.pendingLeft ?? null;
-    pendingLeftIdx = data.pendingLeftIdx ?? null;
-    pendingOp = data.pendingOp ?? null;
-    pendingTransform = data.pendingTransform ?? null;
+    if (inputMode === 'brackets') restoreBracketFields(data); else restoreClassicFields(data);
     totalSeconds = data.seconds || 0;
     updateClockDisplay();
     render();

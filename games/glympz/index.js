@@ -210,21 +210,40 @@ $(function () {
     }).get();
   }
 
-  // Shows/hides each tile's checkmark badge based on whether its current
-  // position matches its original ("correct") position.
+  // A tile counts as "locked" once it's sitting in its own correct spot —
+  // same test the tick mark itself uses. Once locked, it can no longer be
+  // picked up or swapped into (see canDrag/canSwap on
+  // enableTileDragSwap() below) — permanently for the rest of today's
+  // round, since a tile's current/correct order only ever change via a
+  // swap, and locked tiles are excluded from swaps on both sides.
+  function isTileLocked(tile) {
+    const $t = $(tile);
+    const current = parseInt($t.data('current-order'), 10);
+    const correct = parseInt($t.data('correct-order'), 10);
+    return current === correct;
+  }
+
+  // Shows/hides each tile's checkmark badge (and locked styling) based on
+  // whether its current position matches its original ("correct")
+  // position.
   function updateTickVisibility() {
     $('.tile').each(function () {
-      const current = parseInt($(this).data('current-order'), 10);
-      const correct = parseInt($(this).data('correct-order'), 10);
+      // Named isCorrect, not `locked` — that name's already taken by the
+      // outer whole-board lock flag (shell start-banner/finished state),
+      // and shadowing it here would be a landmine for anyone reading this
+      // closure later.
+      const isCorrect = isTileLocked(this);
       // .toggleClass(name, condition) is jQuery shorthand: adds the class
       // if `condition` is true, removes it if false — one call instead of
       // an if/else with separate .addClass()/.removeClass() branches.
-      $(this).find('.tick-mark').toggleClass('is-hidden', current !== correct);
+      $(this).find('.tick-mark').toggleClass('is-hidden', !isCorrect);
+      $(this).toggleClass('is-locked', isCorrect);
     });
   }
 
   function removeTicks() {
     $('.tick-mark').addClass('is-hidden');
+    $('.tile').removeClass('is-locked'); // whole board is about to lock anyway (win/reveal) — no reason to keep the per-tile ring showing once ticks themselves are hidden
   }
 
   function checkWinCondition() {
@@ -262,7 +281,7 @@ $(function () {
     // Buttons colored from this game's own hub-tile palette (games-registry.js's
     // `color`/`rim`) instead of the shared global blue every game used before.
     accentColor: { bg: '#6F9BDB', ink: '#14285A', rim: 'rgba(20, 40, 90, 0.30)' },
-    instructions: `<p>Move image clips across the grid to form the picture</p><p>When a clip is in the right place you will see a small tick ${TICK_IMG}</p><p>1 clip is always in the correct position at the start</p><p>You are against the clock, so step to it</p>`,
+    instructions: `<p>Move image clips across the grid to form the picture</p><p>When a clip is in the right place you will see a small tick ${TICK_IMG} and it locks in place</p><p>1 clip is always in the correct position at the start</p><p>You are against the clock, so step to it</p>`,
     formatScore: formatTime,
   });
 
@@ -403,7 +422,13 @@ $(function () {
     container: document.getElementById('game-root'),
     tileSelector: '.tile',
     isLocked: () => locked,
-    canSwap: () => true, // unlike SOLVZ, any tile here can swap with any other tile — there's no "type" distinction
+    // A tile already showing its tick can't be picked up (canDrag) or swapped
+    // into (canSwap checks BOTH tiles, not just the one being dragged) —
+    // otherwise dropping some other tile onto a correct one's spot would
+    // knock it back out of place. Beyond that, any tile can still swap with
+    // any other (unlike SOLVZ, there's no "type" distinction here).
+    canDrag: (tile) => !isTileLocked(tile),
+    canSwap: (a, b) => !isTileLocked(a) && !isTileLocked(b),
     onSwap: (a, b) => {
       const $a = $(a), $b = $(b);
       const aPos = parseInt($a.data('current-order'), 10);

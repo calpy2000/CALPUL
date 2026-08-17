@@ -15,6 +15,9 @@ import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { ALL_WORDS, COMMON_WORDS } from './words.js';
 import { getArrowIconDataURL } from './tile-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added

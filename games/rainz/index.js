@@ -26,6 +26,9 @@ import { ALL_WORDS } from './words.js';
 import { getHeaderIconDataURL, getTileIconDataURL, getWildcardIconDataURL, WILDCARD_LETTER, WILDCARD_PALETTE, WIDTH_SCALE } from './raindrop-icon.js';
 import { drawUmbrella, getUmbrellaIconDataURL } from './umbrella-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added

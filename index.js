@@ -10,8 +10,15 @@ import { todayDateString } from './shared/core/date-utils.js';
 import { initToolsPanel } from './shared/core/tools-panel.js';
 import { getToolMode } from './shared/core/tool-mode.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
+import { requireStandalone } from './shared/core/install-gate.js';
 import { hidePageLoadingIndicator, showPageLoadingIndicator, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
 import { ensureAppReady, checkForUpdateBeforeNavigate } from './shared/core/update-gate.js';
+
+// Must come before everything else, including ensureAppReady() — a tab
+// that isn't launched from the Home Screen icon gets blocked here and
+// never reaches any of the update/beta-gate/tile logic below. See
+// install-gate.js's own header comment for why.
+await requireStandalone();
 
 // Waits here, BEFORE hiding the spinner, only on a brand-new install or a
 // version update that needs to precache — see update-gate.js's own comment

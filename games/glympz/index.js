@@ -9,6 +9,9 @@ import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getTileIconDataURL } from './row-icon.js';
 import { stripReloadParam, loadDailyImage } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 

@@ -28,6 +28,9 @@ import { PUZZLES_366 } from './puzzles.js';
 import { ALL_WORDS } from './words.js';
 import { getCheckerboardIconDataURL } from './tile-icon.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added

@@ -22,6 +22,9 @@ import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { getToolMode } from '../../shared/core/tool-mode.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 const GAME_ID = 'warpz';
 

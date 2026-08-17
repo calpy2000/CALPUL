@@ -7,6 +7,9 @@ import { enableTileDragSwap } from '../../shared/input/dom-tile-drag.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added

@@ -22,6 +22,9 @@ import { ANSWERS_366 } from './answers.js';
 import { isFuzzyMatch } from '../../shared/core/fuzzy-match.js';
 import { getClapperboardIconDataURL } from './icon.js';
 import { stripReloadParam, loadDailyImage } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added
 

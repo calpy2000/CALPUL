@@ -22,6 +22,9 @@ import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore } from '../
 import { enableCanvasPointerDrag } from '../../shared/input/canvas-pointer.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 hidePageLoadingIndicator();
 stripReloadParam(); // cleans up the harmless ?_r=... param a dev/tester tools reset may have added

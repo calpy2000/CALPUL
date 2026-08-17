@@ -15,6 +15,9 @@ import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
 import { hidePageLoadingIndicator, stripReloadParam, navigateWithSpinner } from '../../shared/core/loading-indicator.js';
 import { getQuestionTileIconDataURL } from './tile-icon.js';
+import { requireStandalone } from '../../shared/core/install-gate.js';
+
+await requireStandalone();
 
 const GAME_ID = 'valuz';
 

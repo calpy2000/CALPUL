@@ -55,9 +55,10 @@ function injectStyles() {
     .install-gate__body{font-size:0.95rem;line-height:1.5;color:var(--ink,#1b1f27);margin:0;opacity:0.85}
     .install-gate__steps-block{width:100%;text-align:left;background:#fff;border-radius:14px;padding:var(--space-md,16px) var(--space-md,16px) var(--space-md,16px) 2.1em;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
     .install-gate__steps-heading{font-size:0.75rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent,#3d5af1);margin:0 0 var(--space-sm,8px) -0.6em}
-    .install-gate__steps{margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-sm,8px)}
-    .install-gate__steps li{font-size:0.95rem;line-height:1.4;color:var(--ink,#1b1f27)}
+    .install-gate__steps{margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-sm,10px)}
+    .install-gate__steps li{display:flex;align-items:center;gap:8px;font-size:0.95rem;line-height:1.35;color:var(--ink,#1b1f27)}
     .install-gate__steps + .install-gate__steps-heading{margin-top:var(--space-md,16px)}
+    .install-gate__step-icon{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(61,90,241,0.12);color:var(--accent,#3d5af1)}
     .install-gate__step-note{font-size:0.82rem;line-height:1.4;color:var(--ink,#1b1f27);opacity:0.7;margin:var(--space-sm,8px) 0 0}
     .install-gate__preview{display:flex;flex-direction:column;align-items:center;gap:var(--space-xs,4px);background:#dfe3ea;border-radius:16px;padding:var(--space-md,16px) var(--space-lg,24px)}
     .install-gate__preview-tile{width:60px;height:60px;border-radius:15px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.25)}
@@ -89,21 +90,33 @@ function detectPlatform() {
   return 'other';
 }
 
+// Small inline glyphs (not real Apple/Google icon assets — plain SVG
+// approximations) so a tester can visually match what they're looking for
+// on their own screen, not just read a name. currentColor lets each pick up
+// .install-gate__step-icon's own color via CSS rather than being hardcoded.
+const MORE_ICON_SVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><circle cx="7.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="16.5" cy="12" r="1.4" fill="currentColor"/></svg>`;
+const SHARE_ICON_SVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7.5 7.5L12 3l4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="5" y="10.5" width="14" height="10" rx="2.5" stroke="currentColor" stroke-width="1.7"/></svg>`;
+
+function stepIcon(svg) {
+  return `<span class="install-gate__step-icon">${svg}</span>`;
+}
+
 const IOS_STEPS = `
-  <p class="install-gate__steps-heading">On iPhone (Safari)</p>
+  <p class="install-gate__steps-heading">Here's what you need to do (iPhone, Safari)</p>
   <ol class="install-gate__steps">
-    <li>Tap the <strong>Share</strong> icon (square with an arrow, along the bottom of the screen)</li>
-    <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
-    <li>Tap <strong>"Add"</strong> in the top-right</li>
+    <li>${stepIcon(MORE_ICON_SVG)}<span>Tap the <strong>&#8226;&#8226;&#8226;</strong> icon next to the address bar</span></li>
+    <li>${stepIcon(SHARE_ICON_SVG)}<span>Tap the <strong>Share</strong> icon</span></li>
+    <li><span>Scroll down and tap <strong>"Add to Home Screen"</strong></span></li>
   </ol>
+  <p class="install-gate__step-note">Don't tap <strong>"Add Bookmark"</strong> at any point — that's a different option nearby, and it won't create a working Home Screen icon.</p>
 `;
 
 const ANDROID_STEPS = `
-  <p class="install-gate__steps-heading">On Android (Chrome)</p>
+  <p class="install-gate__steps-heading">Here's what you need to do (Android, Chrome)</p>
   <ol class="install-gate__steps">
-    <li>Tap the <strong>&#8942;</strong> menu (three dots, top-right of Chrome)</li>
-    <li>Tap <strong>"Add to Home screen"</strong> (some phones show <strong>"Install app"</strong> instead)</li>
-    <li>Confirm with <strong>"Add"</strong> or <strong>"Install"</strong></li>
+    <li><span>Tap the <strong>&#8942;</strong> menu (three dots, top-right of Chrome)</span></li>
+    <li><span>Tap <strong>"Add to Home screen"</strong> (some phones show <strong>"Install app"</strong> instead)</span></li>
+    <li><span>Confirm with <strong>"Add"</strong> or <strong>"Install"</strong></span></li>
   </ol>
   <p class="install-gate__step-note">If Chrome shows its own pop-up suggesting you install PUSULZ before you even get to the menu, you can tap that instead — same result.</p>
 `;
@@ -123,6 +136,12 @@ function tileIconPath(platform) {
   return platform === 'ios' ? 'apple-touch-icon.png' : 'icon-192.png';
 }
 
+function deviceLabel(platform) {
+  if (platform === 'ios') return 'iPhone';
+  if (platform === 'android') return 'Android phone';
+  return 'phone';
+}
+
 function showGate() {
   return new Promise(() => {
     hidePageLoadingIndicator();
@@ -134,13 +153,14 @@ function showGate() {
       <div class="install-gate__panel">
         <img class="install-gate__icon" src="${siteUrl('icon-192.png')}" alt="">
         <h1 class="install-gate__title">Add PUSULZ to your Home Screen</h1>
-        <p class="install-gate__body">PUSULZ is built to run as an installed app, not a browser tab — a few games don't display correctly otherwise. Follow the steps below, right here in your browser.</p>
+        <p class="install-gate__body">Testers, I can tell you're still accessing PUSULZ by tapping a link or typing the address (URL) directly. While the games do work that way, the page ends up squashed, which is a problem for some games. To fix this, we need to add a PUSULZ tile to your Home Screen — then you just tap that every day to play.</p>
         <div class="install-gate__steps-block">${stepsHtml(platform)}</div>
+        <p class="install-gate__body">When this is done, you'll see a tile on your ${deviceLabel(platform)} that looks like this:</p>
         <div class="install-gate__preview">
           <div class="install-gate__preview-tile"><img src="${siteUrl(tileIconPath(platform))}" alt=""></div>
           <span class="install-gate__preview-label">PUSULZ</span>
         </div>
-        <p class="install-gate__preview-caption">This is what the new icon on your Home Screen will look like — tap it to open PUSULZ from now on.</p>
+        <p class="install-gate__body">Simply tap that tile every day to access PUSULZ.</p>
         <p class="install-gate__note">Already installed? Close this tab and open PUSULZ from its icon instead.</p>
       </div>
     `;

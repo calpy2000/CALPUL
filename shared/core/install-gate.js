@@ -102,9 +102,9 @@ function stepIcon(svg) {
 }
 
 const IOS_STEPS = `
-  <p class="install-gate__steps-heading">Here's what you need to do (iPhone, Safari)</p>
+  <p class="install-gate__steps-heading">What to do (iPhone, Safari)</p>
   <ol class="install-gate__steps">
-    <li>${stepIcon(MORE_ICON_SVG)}<span>Tap the <strong>&#8226;&#8226;&#8226;</strong> icon next to the address bar</span></li>
+    <li>${stepIcon(MORE_ICON_SVG)}<span>Tap the <strong>&#8226;&#8226;&#8226;</strong> icon next to the address bar, at the bottom right of this page below</span></li>
     <li>${stepIcon(SHARE_ICON_SVG)}<span>Tap the <strong>Share</strong> icon</span></li>
     <li><span>Scroll down and tap <strong>"Add to Home Screen"</strong></span></li>
   </ol>
@@ -112,7 +112,7 @@ const IOS_STEPS = `
 `;
 
 const ANDROID_STEPS = `
-  <p class="install-gate__steps-heading">Here's what you need to do (Android, Chrome)</p>
+  <p class="install-gate__steps-heading">What to do (Android, Chrome)</p>
   <ol class="install-gate__steps">
     <li><span>Tap the <strong>&#8942;</strong> menu (three dots, top-right of Chrome)</span></li>
     <li><span>Tap <strong>"Add to Home screen"</strong> (some phones show <strong>"Install app"</strong> instead)</span></li>

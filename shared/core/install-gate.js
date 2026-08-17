@@ -161,6 +161,7 @@ function showGate() {
           <span class="install-gate__preview-label">PUSULZ</span>
         </div>
         <p class="install-gate__body">Simply tap that tile every day to access PUSULZ.</p>
+        <p class="install-gate__body">The first time you tap the tile, you will need to enter your 6-letter user code that was sent to you by WhatsApp — so make sure you have this handy.</p>
         <p class="install-gate__note">Already installed? Close this tab and open PUSULZ from its icon instead.</p>
       </div>
     `;

@@ -150,37 +150,28 @@ export function initShell({
   // (the .shell div from each game's HTML).
   stage.parentNode.insertBefore(header, stage);
 
-  // Tries the browser's own back navigation first, rather than always
-  // forcing a full window.location.href reload of the hub. A fresh
-  // navigation re-executes EVERY module in the hub's whole JS graph from
-  // scratch every single time (re-registers the service worker, rebuilds
-  // all 12 tiles from localStorage, etc.) — genuinely real work, regardless
-  // of how well-cached the individual files are, which is why that path
-  // can occasionally take several real seconds if anything else on the
-  // device is briefly competing for CPU right at that moment. Real browser
-  // back navigation can instead restore the hub from the back-forward
-  // cache (bfcache) — the ENTIRE page frozen exactly as it was, with zero
-  // re-execution — which is instant when it applies. It reliably applies
-  // here specifically because every game is only ever reached via a real
-  // navigation FROM the hub's own tile click (install-gate.js blocks every
-  // other path in), so the hub is always the immediately preceding history
-  // entry.
+  // Reverted 2026-08-18: tried using history.back() here to take advantage
+  // of the back-forward cache (bfcache) instead of always doing a full
+  // reload. Real device testing showed an indefinite hang (bad enough to
+  // need a force-quit) — confirmed on BOTH iOS Safari AND Android Chrome,
+  // both specifically in installed/standalone mode, ruling out a
+  // WebKit-only quirk. Best guess: something about history.back() inside
+  // an installed PWA specifically (on either engine) doesn't behave like a
+  // normal browser tab's back navigation — possibly pagehide firing
+  // (disarming the fallback timer that used to be here) without the actual
+  // navigation ever completing, leaving no way out. Not chasing this
+  // further for now — back to the simple, already-proven-reliable
+  // full-reload approach.
   //
-  // Guarded with a fallback rather than trusted blindly: if there's no
-  // history to go back to, or the page hasn't actually left within a short
-  // window (bfcache wasn't eligible for some reason, or back() silently
-  // did nothing), fall back to the normal full-reload navigation with its
-  // spinner — same as before this change — so "back" always works
-  // regardless of whether the fast path was available this time.
+  // Shows the spinner on THIS (still-current) page the instant "back" is
+  // tapped, rather than relying only on the hub's own spinner timing — see
+  // loading-indicator.js's navigateWithSpinner() for why preventDefault() +
+  // a manual navigate (rather than just letting the plain <a href> fire on
+  // its own) is what actually guarantees the spinner gets a real painted
+  // frame before navigation begins.
   header.querySelector('.shell-header__back').addEventListener('click', (e) => {
     e.preventDefault();
-    if (window.history.length <= 1) {
-      navigateWithSpinner(hubPath);
-      return;
-    }
-    const fallbackTimer = setTimeout(() => navigateWithSpinner(hubPath), 500);
-    window.addEventListener('pagehide', () => clearTimeout(fallbackTimer), { once: true });
-    window.history.back();
+    navigateWithSpinner(hubPath);
   });
 
   // --- Footer ---

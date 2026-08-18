@@ -307,24 +307,6 @@ renderTiles();
 applyRowHeightCap();
 updateScrollHint();
 
-// A tester returning from a game via shell.js's back link (see its own
-// comment) may be restored from the back-forward cache (bfcache) rather
-// than a fresh load — the ENTIRE page frozen exactly as it was BEFORE they
-// tapped into that game, with no JS re-executing at all. Without this,
-// they'd see the tile they just played still showing yesterday's "Not
-// played today"/old best score, since nothing would re-check localStorage.
-// pageshow's event.persisted is true specifically on a bfcache restore
-// (false on a normal fresh load, where this would just be redundant with
-// the renderTiles() call above) — re-running the same render/layout calls
-// used on first load brings the tile grid back in sync with whatever
-// actually happened while this page was frozen.
-window.addEventListener('pageshow', (event) => {
-  if (!event.persisted) return;
-  renderTiles();
-  applyRowHeightCap();
-  updateScrollHint();
-});
-
 // Hides the hint as soon as the player scrolls away from the top — see
 // updateScrollHint()'s own comment.
 grid.addEventListener('scroll', updateScrollHint);

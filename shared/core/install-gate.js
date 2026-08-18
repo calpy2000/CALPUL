@@ -25,8 +25,18 @@
 // blocking message and never resolves, same "never resolves — a real
 // navigation replaces the page instead of revealing content in place"
 // idiom beta-gate.js uses.
+//
+// Skipped entirely when TOOL_MODE is 'dev' — local testing (e.g. a plain
+// browser tab against a local server) would otherwise hit this same block
+// screen every time, which is exactly what 'dev' mode already exists to
+// avoid for other things (the fuller dev panel, etc.). Safe by
+// construction, not just by convention: tool-mode.js's own hard rule is
+// that nothing is ever pushed while TOOL_MODE is 'dev', so this bypass can
+// never reach a real tester or player — only 'test'/'off' pushes do, and
+// both of those still enforce the gate exactly as before.
 
 import { hidePageLoadingIndicator } from './loading-indicator.js';
+import { getToolMode } from './tool-mode.js';
 
 function isStandalone() {
   return (
@@ -170,6 +180,7 @@ function showGate() {
 }
 
 export async function requireStandalone() {
+  if (getToolMode() === 'dev') return;
   if (isStandalone()) return;
   await showGate();
 }

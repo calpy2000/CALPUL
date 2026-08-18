@@ -1,4 +1,4 @@
-import { setLoadingMessage } from './loading-indicator.js';
+import { setLoadingMessage, yieldForPaint } from './loading-indicator.js';
 
 // Registers the site's service worker (see ../../service-worker.js) and, if
 // it needs to install/update, adds a message to the already-visible
@@ -84,6 +84,13 @@ async function checkForUpdate(reg) {
   // below. Same sentence shape/wording as that message on purpose, so the
   // two read as one continuous thought if this one gets replaced by it.
   setLoadingMessage("Checking for game file updates — this'll only take a moment");
+  // Without this, WebKit (Safari/iOS) can leave the message set in the DOM
+  // but never actually paint it before reg.update()'s own network round-trip
+  // blocks everything — a blank spinner with no visible text for the whole
+  // wait, same class of bug already fixed this same way in beta-gate.js and
+  // MOJEEZ/GLYMPZ's loadDailyImage(). See yieldForPaint()'s own comment for
+  // why a bare await on a fetch-like call isn't enough on its own.
+  await yieldForPaint();
   await reg.update().catch(() => {}); // e.g. offline — fall through to whatever's already installed
 
   // installing/waiting only has a value when there's a NEW version that

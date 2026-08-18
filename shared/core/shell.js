@@ -32,6 +32,7 @@ import { getBestScore, getTodayScore, saveTodayScore } from './game-storage.js';
 import { createFlipTimer } from './flip-timer.js';
 import { navigateWithSpinner } from './loading-indicator.js';
 import { getEndPanelContent } from './end-panel-content.js';
+import { startServiceWorkerKeepAlive } from './sw-keepalive.js';
 
 // Small helper to cut down on repetition below: creates a DOM element,
 // optionally gives it a class and some inner HTML, and hands it back — but
@@ -100,6 +101,12 @@ export function initShell({
   // global blue if a game doesn't pass this.
   accentColor = null,
 }) {
+  // Keeps the Service Worker warm for as long as this game page stays open
+  // — see sw-keepalive.js's own comment for why. Called once per game here
+  // (initShell()'s single entry point) rather than requiring every game's
+  // own index.js to remember to call it individually.
+  startServiceWorkerKeepAlive();
+
   // Every game's HTML is required to already contain these two elements
   // (see the convention comment at the top of the file). getElementById
   // returns `null` if nothing matches, so this check fails loudly with a

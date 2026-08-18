@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.18';
+const CACHE_VERSION = 'v5.19';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -88,6 +88,7 @@ const CODE_URLS = [
   'shared/core/loading-indicator.js',
   'shared/core/player-id.js',
   'shared/core/shell.js',
+  'shared/core/sw-keepalive.js',
   'shared/core/tool-mode.js',
   'shared/core/tools-panel.js',
   'shared/core/update-gate.js',

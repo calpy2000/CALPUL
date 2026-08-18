@@ -20,8 +20,14 @@
 //
 // Hub-only: nothing here is imported by any individual game page, so a
 // tester who's already past the hub never sees this again mid-game.
+//
+// Skipped entirely when TOOL_MODE is 'dev' — same reasoning and same
+// safety net as install-gate.js's own dev-mode bypass: local testing
+// shouldn't need a stored/typed code every time, and this can never reach
+// a real tester since nothing is ever pushed while TOOL_MODE is 'dev'.
 
 import { showPageLoadingIndicator, hidePageLoadingIndicator, yieldForPaint, reloadWithSpinner } from './loading-indicator.js';
+import { getToolMode } from './tool-mode.js';
 
 const STORAGE_KEY = 'pusulz_tester';
 
@@ -223,6 +229,7 @@ async function tryCodeFromUrl() {
 // code, triggers a real page reload rather than ever resolving — see
 // showGate()'s own comment for why.
 export async function initBetaGate() {
+  if (getToolMode() === 'dev') return;
   if (getStoredTester()) return;
   if (await tryCodeFromUrl()) return;
   await showGate();

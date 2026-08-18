@@ -11,6 +11,8 @@ import { initToolsPanel } from './shared/core/tools-panel.js';
 import { getToolMode } from './shared/core/tool-mode.js';
 import { initBetaGate, clearStoredTester } from './shared/core/beta-gate.js';
 import { requireStandalone } from './shared/core/install-gate.js';
+import { getOrCreatePlayerId } from './shared/core/player-id.js';
+import { logGameEntry } from './shared/core/activity-log.js';
 import { hidePageLoadingIndicator, showPageLoadingIndicator, reloadWithSpinner, stripReloadParam, yieldForPaint } from './shared/core/loading-indicator.js';
 import { ensureAppReady, checkForUpdateBeforeNavigate } from './shared/core/update-gate.js';
 
@@ -19,6 +21,13 @@ import { ensureAppReady, checkForUpdateBeforeNavigate } from './shared/core/upda
 // never reaches any of the update/beta-gate/tile logic below. See
 // install-gate.js's own header comment for why.
 await requireStandalone();
+
+// Generates the anonymous proxy player ID on first-ever standalone launch,
+// then just reads the same one back on every visit after — see
+// player-id.js's own comment for why this is the earliest point that can
+// stand in for "the tile was just added." Not used for anything yet beyond
+// existing and being verifiable in the dev panel's debug info.
+getOrCreatePlayerId();
 
 // Waits here, BEFORE hiding the spinner, only on a brand-new install or a
 // version update that needs to precache — see update-gate.js's own comment
@@ -127,6 +136,11 @@ function renderTiles() {
     // no in-progress play this could ever interrupt.
     tile.addEventListener('click', (e) => {
       e.preventDefault();
+      // Fire-and-forget — not part of the .then() chain below, so a slow or
+      // failed request never delays or blocks the actual navigation. See
+      // activity-log.js's own comment for the once-per-tester-per-game-per-
+      // day throttling this already does internally.
+      logGameEntry(game.id, game.title);
       showPageLoadingIndicator();
       yieldForPaint()
         .then(() => checkForUpdateBeforeNavigate())

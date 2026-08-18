@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.14';
+const CACHE_VERSION = 'v5.15';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -73,10 +73,12 @@ const CODE_URLS = [
   'welcome.js',
 
   'shared/beta-gate.css',
+  'shared/core/activity-log.js',
   'shared/core/app-version.js',
   'shared/core/beta-gate.js',
   'shared/core/daily-lock.js',
   'shared/core/date-utils.js',
+  'shared/core/device-info.js',
   'shared/core/end-panel-content.js',
   'shared/core/fit-to-stage.js',
   'shared/core/flip-timer.js',
@@ -84,6 +86,7 @@ const CODE_URLS = [
   'shared/core/game-storage.js',
   'shared/core/install-gate.js',
   'shared/core/loading-indicator.js',
+  'shared/core/player-id.js',
   'shared/core/shell.js',
   'shared/core/tool-mode.js',
   'shared/core/tools-panel.js',

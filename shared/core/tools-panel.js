@@ -136,10 +136,12 @@ function refreshDebugInfo(panel) {
   // not a normal browser tab" — undefined on every other browser/OS.
   const standalone = 'standalone' in window.navigator ? String(window.navigator.standalone) : 'not iOS Safari';
   const stored = localStorage.getItem('pusulz_tester') || '(none)';
+  const playerId = localStorage.getItem('pusulz_player_id') || '(none — hub not visited yet on this device)';
   el.textContent =
     `url: ${window.location.href}\n` +
     `standalone: ${standalone}\n` +
     `stored tester: ${stored}\n` +
+    `player id: ${playerId}\n` +
     `referrer: ${document.referrer || '(none)'}`;
 }
 

@@ -1,10 +1,9 @@
-// TOTALZ — a daily numbers puzzle (Countdown-numbers-round style). Six
-// numbers (2 "large" from 25/50/75/100, 4 "small" from 2-9) and a 3-digit
-// target. Build a running total by tapping a number, then an operator, then
-// another number, repeated — plus two unary operators (x²/√x) that can
-// transform either the running total directly, or the NEXT number about to
-// be combined in (armed before tapping it, e.g. "− √25 (5)"). Every day's
-// target is constructed (not randomly picked) so it's always reachable, and
+// TOTALZ — a daily numbers puzzle. Six numbers (2 "large" from 25/50/75/100,
+// 4 "small" from 2-9) and a 3-digit target. Type a bracketed expression
+// using the six numbers (real operator precedence — × ÷ bind tighter than
+// + −, explicit ( ) grouping) and press Enter to fold it into the running
+// total, repeated until the total hits the target. Every day's target is
+// constructed (not randomly picked) so it's always reachable, and
 // independently verified to genuinely need at least `minRequired` of the 6
 // numbers — see tools/totalz-generation/ for how days.json was built.
 
@@ -12,29 +11,12 @@ import { initShell } from '../../shared/core/shell.js';
 import { saveProgress, submitScore, saveTodayOutcome, saveTodayScore, getTodayOutcome } from '../../shared/core/game-storage.js';
 import { dayOfYear } from '../../shared/core/date-utils.js';
 import { initToolsPanel } from '../../shared/core/tools-panel.js';
-import { hidePageLoadingIndicator, stripReloadParam, reloadWithSpinner } from '../../shared/core/loading-indicator.js';
+import { hidePageLoadingIndicator, stripReloadParam } from '../../shared/core/loading-indicator.js';
 import { requireStandalone } from '../../shared/core/install-gate.js';
 
 await requireStandalone();
 
 const GAME_ID = 'totalz';
-
-// Experimental alternate input model: type a full bracketed expression (a
-// real recursive-descent parser with standard operator precedence, not
-// just a left-to-right chain) and press Enter to fold it into the running
-// total, instead of the shipped tap-a-number-then-operator chain. Off by
-// default for everyone — only switchable via the dev panel's radio group
-// (see initToolsPanel() below), which only ever renders in dev mode
-// (TOOL_MODE 'dev' in tool-mode.js), so this never changes what a tester
-// or real player sees on its own.
-const INPUT_MODE_KEY = 'totalz_input_mode';
-function getInputMode() {
-  return localStorage.getItem(INPUT_MODE_KEY) === 'brackets' ? 'brackets' : 'classic';
-}
-function setInputMode(mode) {
-  localStorage.setItem(INPUT_MODE_KEY, mode);
-}
-const inputMode = getInputMode();
 
 // Loaded once, up front, via top-level await (valid inside a <script
 // type="module">) — same pattern MOJEEZ/VALUZ use for their own JSON data.
@@ -92,11 +74,7 @@ $(function () {
 
   // --- Pure game-state helpers (state machine only — no DOM here) ---
 
-  let numbers, used, committed, pendingLeft, pendingLeftIdx, pendingOp, pendingTransform;
-  // Bracket-mode's own parallel state — kept fully separate from the
-  // classic fields above (rather than reusing e.g. `used`) so switching
-  // input modes never leaves one mode's half-finished attempt bleeding
-  // into the other's.
+  let numbers;
   let brUsed, brWorkingValue, brStream, brLedger, brPendingTransform;
   let locked = true; // unlocked once Play Now / Resume is pressed
   let revealed = false;
@@ -107,16 +85,10 @@ $(function () {
   const minRequired = activeDayData.minRequired;
   const knownSolutionTrail = activeDayData.trail;
 
-  if (inputMode === 'brackets') $('#board').addClass('totalz-board--brackets');
+  $('#board').addClass('totalz-board--brackets');
 
   function resetPuzzleState() {
     numbers = activeDayData.numbers.slice();
-    used = numbers.map(() => false);
-    committed = [];
-    pendingLeft = null;
-    pendingLeftIdx = null;
-    pendingOp = null;
-    pendingTransform = null;
     brUsed = numbers.map(() => false);
     brWorkingValue = null;
     brStream = [];
@@ -146,114 +118,36 @@ $(function () {
   }
 
   // Applies a unary transform to a NUMBER (as opposed to the running
-  // total) — lets "√25" or "3²" be used as the right-hand operand of a
-  // binary step, e.g. "27 − √25 (5) = 22". Returns null if undefined
-  // (rooting a non-perfect-square).
+  // total) — lets "√25" or "3²" be used as an operand within the typed
+  // expression, e.g. "27 − √25". Returns null if undefined (rooting a
+  // non-perfect-square).
   function transformValue(n, transformKey) {
     if (!transformKey) return n;
     if (transformKey === 'sq') return n * n;
     if (transformKey === 'rt') return Number.isInteger(Math.sqrt(n)) ? Math.sqrt(n) : null;
   }
 
-  function operandDisplay(rawNumber, transformKey, effectiveValue) {
-    if (!transformKey) return `${rawNumber}`;
-    if (transformKey === 'sq') return `${rawNumber}² (${effectiveValue})`;
-    return `√${rawNumber} (${effectiveValue})`;
-  }
-
   function currentValue() {
-    if (inputMode === 'brackets') return brWorkingValue;
-    if (committed.length) return committed[committed.length - 1].resultAfter;
-    return pendingLeft;
+    return brWorkingValue;
   }
 
-  function phase() {
-    if (pendingOp !== null) return 'need_second';
-    if (currentValue() === null) return 'need_first';
-    return 'need_operator';
-  }
-
-  function anyValidNumberFor(opKey) {
-    const base = currentValue();
-    return numbers.some((v, i) => !used[i] && binaryValid(base, opKey, v));
-  }
-
-  function pickNumber(idx) {
-    const value = numbers[idx];
-    const ph = phase();
-    if (ph === 'need_first') {
-      used[idx] = true;
-      pendingLeft = value;
-      pendingLeftIdx = idx;
-    } else if (ph === 'need_second') {
-      const effective = transformValue(value, pendingTransform);
-      if (effective === null) return;
-      const isFirst = committed.length === 0;
-      const base = isFirst ? pendingLeft : committed[committed.length - 1].resultAfter;
-      if (!binaryValid(base, pendingOp, effective)) return;
-      const result = applyBinary(base, pendingOp, effective);
-      const operand = operandDisplay(value, pendingTransform, effective);
-      const text = isFirst
-        ? `${base} ${opSymbol(pendingOp)} ${operand}`
-        : `${opSymbol(pendingOp)} ${operand}`;
-      used[idx] = true;
-      committed.push({ text, resultAfter: result });
-      pendingLeft = null;
-      pendingLeftIdx = null;
-      pendingOp = null;
-      pendingTransform = null;
-    }
-  }
-
-  function pickOperator(opKey, kind) {
-    const ph = phase();
-    if (kind === 'binary') {
-      if (ph !== 'need_operator') return;
-      pendingOp = opKey;
-      pendingTransform = null;
-    } else if (ph === 'need_second') {
-      // arm/disarm a transform to apply to the NEXT number picked, rather
-      // than to the running total — tapping the same one again disarms it,
-      // tapping the other one swaps which transform is armed.
-      pendingTransform = pendingTransform === opKey ? null : opKey;
-    } else if (ph === 'need_operator') {
-      const base = currentValue();
-      let result;
-      let text;
-      const isFirst = committed.length === 0;
-      if (opKey === 'sq') {
-        result = base * base;
-        text = isFirst ? `${base}²` : `²`;
-      } else {
-        if (!Number.isInteger(Math.sqrt(base))) return;
-        result = Math.sqrt(base);
-        text = isFirst ? `√${base}` : `√`;
-      }
-      committed.push({ text, resultAfter: result });
-      pendingLeft = null;
-      pendingLeftIdx = null;
-    }
-  }
-
-  // --- Bracket-mode state machine (only used when inputMode === 'brackets')
+  // --- Bracket input model ---
   //
-  // Unlike the classic chain above, this treats everything typed since the
-  // last Enter as ONE continuous expression — parsed with real operator
-  // precedence (× ÷ bind tighter than + −) and explicit brackets, not
-  // left-to-right reduction. Enter re-parses the whole thing (the prior
-  // running total, brWorkingValue, prepended as if it were the first
-  // token) and, if it parses cleanly end-to-end, collapses it into the new
-  // running total and starts a fresh stream. Reuses applyBinary/
-  // binaryValid from the classic code above — same "every intermediate
-  // value must stay a positive integer, division exact" rule applies at
-  // every level, including inside brackets.
+  // Everything typed since the last Enter is treated as ONE continuous
+  // expression — parsed with real operator precedence (× ÷ bind tighter
+  // than + −) and explicit brackets, not left-to-right reduction. Enter
+  // re-parses the whole thing (the prior running total, brWorkingValue,
+  // prepended as if it were the first token) and, if it parses cleanly
+  // end-to-end, collapses it into the new running total and starts a fresh
+  // stream. Uses applyBinary/binaryValid above — every intermediate value
+  // must stay a positive integer, division exact, at every level including
+  // inside brackets.
   //
-  // Every brDoX() function below is a RAW mutator with no side effects
-  // (no persist/render/win-check) — same split as pickNumber/pickOperator
-  // above, and for the same reason: replayKnownTrailBrackets() (used by
-  // both the reveal and dev "Solve puzzle" paths) needs to drive these
-  // directly without accidentally triggering a live win/persist mid-replay.
-  // Real taps call the matching brDoX() then afterMove() themselves (see
+  // Every brDoX() function below is a RAW mutator with no side effects (no
+  // persist/render/win-check) — replayKnownTrailBrackets() (used by both
+  // the reveal and dev "Solve puzzle" paths) needs to drive these directly
+  // without accidentally triggering a live win/persist mid-replay. Real
+  // taps call the matching brDoX() then afterMove() themselves (see
   // renderBrackets() below).
 
   function brParseFactor(toks, pos) {
@@ -411,8 +305,7 @@ $(function () {
 
   function persistProgress(completed) {
     saveProgress(GAME_ID, {
-      mode: inputMode,
-      committed, used, pendingLeft, pendingLeftIdx, pendingOp, pendingTransform,
+      mode: 'brackets',
       brUsed, brWorkingValue, brStream, brLedger, brPendingTransform,
       seconds: totalSeconds, revealed,
     }, { completed });
@@ -421,111 +314,13 @@ $(function () {
   // --- Rendering ---
 
   function render() {
-    if (inputMode === 'brackets') renderBrackets();
-    else renderClassic();
+    renderBrackets();
   }
 
-  function renderClassic() {
-    $('#totalz-target-value').text(target);
-    $('#totalz-min-required').text(`needs ${minRequired}+ numbers`);
-
-    const cur = currentValue();
-    const $delta = $('#totalz-delta');
-    if (cur === null) {
-      $delta.text('').removeClass('is-match');
-    } else if (cur === target) {
-      $delta.text('MATCH!').addClass('is-match');
-    } else {
-      $delta.text(`${Math.abs(target - cur)} away`).removeClass('is-match');
-    }
-
-    const $ledger = $('#totalz-ledger').empty();
-    const hasRows = committed.length > 0 || pendingLeft !== null;
-    if (!hasRows) {
-      $ledger.html('<div class="totalz-ledger__empty">tap a number to begin</div>');
-    } else {
-      committed.forEach((line) => {
-        const $row = $('<div>', { class: 'totalz-line' + (line.resultAfter === target ? ' is-solved' : '') })
-          .html(`<span class="totalz-line__expr">${line.text} =</span><span class="totalz-line__result">${line.resultAfter}</span>`);
-        $ledger.append($row);
-      });
-      if (pendingLeft !== null && !committed.length) {
-        $ledger.append(`<div class="totalz-line totalz-line--ghost"><span class="totalz-line__expr">${pendingLeft} …</span><span></span></div>`);
-      }
-    }
-    const lastLine = $ledger.children().last();
-    if (lastLine.length) lastLine[0].scrollIntoView({ block: 'nearest' });
-    // Reset button pinned to the bottom of the panel, right-aligned to
-    // match the result column above it (same row padding as .totalz-line,
-    // so its right edge lines up without a hand-picked offset) — only
-    // shown once there's actually something to reset, and hidden once the
-    // round is over (locked covers both "not started yet" and "already
-    // won/revealed", same as the row-tap hint this replaced did).
-    if (hasRows && !locked) {
-      const $resetRow = $('<div>', { class: 'totalz-ledger__reset-row' });
-      $('<button>', { class: 'totalz-ledger__reset-btn', type: 'button', text: 'reset' })
-        .on('click', () => {
-          resetPuzzleState();
-          persistProgress(false);
-          render();
-        })
-        .appendTo($resetRow);
-      $ledger.append($resetRow);
-    }
-
-    const ph = phase();
-    const $prompt = $('#totalz-prompt');
-    if (locked) {
-      $prompt.text('');
-    } else {
-      $prompt.html(ph === 'need_first' ? 'tap a <b>number</b> to start'
-        : ph === 'need_second'
-          ? (pendingTransform
-              ? `tap a <b>number</b> to apply ${opSymbol(pendingTransform)}`
-              : 'tap a <b>number</b> — or arm <b>√x / x²</b> to transform it first')
-          : 'tap an <b>operator</b> to continue');
-    }
-
-    const $numberRow = $('#totalz-number-row').empty();
-    numbers.forEach((v, i) => {
-      let enabled = !locked && (ph === 'need_first' || ph === 'need_second') && !used[i];
-      if (enabled && ph === 'need_second') {
-        const effective = transformValue(v, pendingTransform);
-        enabled = effective !== null && binaryValid(cur, pendingOp, effective);
-      }
-      const $tile = $('<div>', { class: 'totalz-tile' + (enabled ? '' : ' is-disabled') + (used[i] ? ' is-used' : ''), text: v });
-      if (enabled) $tile.on('click', () => { pickNumber(i); afterMove(); });
-      $numberRow.append($tile);
-    });
-
-    const $operatorRow = $('#totalz-operator-row').empty();
-    OPERATORS.forEach((op) => {
-      let enabled = !locked && (ph === 'need_operator' || ph === 'need_second');
-      let armed = false;
-      if (!locked && ph === 'need_operator') {
-        if (op.kind === 'binary') enabled = anyValidNumberFor(op.key);
-        if (op.key === 'rt') enabled = Number.isInteger(Math.sqrt(cur));
-        // repeated squaring blows past Number.MAX_SAFE_INTEGER fast — cap
-        // it so results stay exact and displayable.
-        if (op.key === 'sq') enabled = cur * cur <= 999999;
-      } else if (!locked && ph === 'need_second') {
-        if (op.kind === 'binary') enabled = false;
-        else {
-          armed = pendingTransform === op.key;
-          enabled = armed || numbers.some((v, i) => !used[i] && transformValue(v, op.key) !== null && binaryValid(cur, pendingOp, transformValue(v, op.key)));
-        }
-      }
-      const $tile = $('<div>', { class: 'totalz-tile' + (enabled ? '' : ' is-disabled') + (armed ? ' is-armed' : ''), text: op.label });
-      if (enabled) $tile.on('click', () => { pickOperator(op.key, op.kind); afterMove(); });
-      $operatorRow.append($tile);
-    });
-  }
-
-  // Bracket-mode's own render — same target card / ledger / prompt /
-  // keypad DOM ids as renderClassic() above (so both modes share the exact
-  // same page shell), but the ledger shows the in-progress expression as
-  // its own last row (not a separate line), the operator row grows to nine
-  // keys (+ − × ÷ x² √x ( ) plus a real Enter button, three tints so the
+  // Same target card / ledger / prompt / keypad DOM ids every other game
+  // convention uses — the ledger shows the in-progress expression as its
+  // own last row (not a separate line), the operator row has nine keys
+  // (+ − × ÷ x² √x ( ) plus a real Enter button, three tints so the
   // arithmetic/transform/bracket groups read apart — see
   // .totalz-board--brackets in style.css), and nothing is disabled while
   // playing except an already-used number and Enter itself, which only
@@ -637,9 +432,9 @@ $(function () {
   }
 
   // Runs after every player-initiated move — re-renders, then checks
-  // whether that move just hit the target (kept OUT of pickNumber/
-  // pickOperator themselves so revealSolution() can replay the same
-  // functions without accidentally re-triggering a "win").
+  // whether that move just hit the target (kept OUT of the brDoX()
+  // mutators themselves so revealSolution() can replay the same functions
+  // without accidentally re-triggering a "win").
   function afterMove() {
     persistProgress(false);
     render();
@@ -648,13 +443,7 @@ $(function () {
 
   // --- Shell integration ---
 
-  // Bracket mode gets its own instructions — the classic ones ("use the
-  // operators, one number at a time") no longer describe how the keypad
-  // actually works once ( ) and Enter are in play. Classic's copy below is
-  // untouched.
-  const classicInstructions =
-    '<p>Use the six numbers to make the TARGET</p><p>Use any number once</p><p>Use <span class="totalz-instr-ops">+&nbsp;&nbsp;&nbsp;−&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;÷&nbsp;&nbsp;&nbsp;x²&nbsp;&nbsp;&nbsp;√x</span> <br> as many times as you want</p>';
-  const bracketInstructions =
+  const instructions =
     '<p>Use the six numbers to make the TARGET</p>' +
     '<p>Use any number once</p>' +
     '<p>Type a calculation with <span class="totalz-instr-ops">+&nbsp;&nbsp;−&nbsp;&nbsp;×&nbsp;&nbsp;÷&nbsp;&nbsp;x²&nbsp;&nbsp;√x&nbsp;&nbsp;(&nbsp;&nbsp;)</span></p>' +
@@ -668,7 +457,7 @@ $(function () {
     // field (same pattern SOLVZ uses for its own ➕ badge).
     emojiBadge: { glyph: '🟰', accent: '#8ED9A0' },
     accentColor: { bg: '#A9D0F5', ink: '#1D4E78', rim: 'rgba(25, 60, 95, 0.30)' },
-    instructions: inputMode === 'brackets' ? bracketInstructions : classicInstructions,
+    instructions,
     formatScore: formatTime,
   });
 
@@ -740,40 +529,18 @@ $(function () {
     });
   }
 
-  // Replays the day's known-correct trail through the same pickNumber/
-  // pickOperator functions the player uses (guaranteed to land exactly on
-  // target, since that trail is exactly how this target was constructed —
-  // see totalz-generation's offline generator), so the ledger ends up
-  // showing a real, valid solution rather than some separate hardcoded
-  // display. Shared by the actual reveal-and-give-up path and the dev
-  // "Solve puzzle" shortcut below (which simulates a genuine WIN, not a
-  // reveal).
-  function replayKnownTrail() {
-    resetPuzzleState();
-    for (const step of knownSolutionTrail) {
-      if (step.type === 'first') {
-        pickNumber(numbers.indexOf(step.raw));
-        if (step.transform) pickOperator(step.transform, 'unary');
-      } else if (step.type === 'binary') {
-        pickOperator(step.op, 'binary');
-        if (step.transform) pickOperator(step.transform, 'unary');
-        pickNumber(numbers.indexOf(step.raw));
-      } else if (step.type === 'unary') {
-        pickOperator(step.transform, 'unary');
-      }
-    }
-  }
-
-  // Bracket-mode's own version of replayKnownTrail() above — same trail
-  // data, same "drive the raw mutators directly, no side effects" split
-  // (see the brDoX() functions' own header comment), just re-expressed as
-  // bracket-mode taps: a 'first' step's optional transform is armed via
-  // brDoTapTransform() BEFORE the number (prefix-arm, not the postfix
-  // apply-to-total the classic model used), and every step ends with
-  // brDoTapEnter() so the ledger comes out with the same one-row-per-step
-  // shape as the classic reveal. No authored day currently produces a
-  // standalone 'unary' step (a transform with no accompanying number) —
-  // brackets mode's arm-then-tap-a-number model has no way to apply a
+  // Replays the day's known-correct trail through the same brDoX() mutators
+  // the player uses (guaranteed to land exactly on target, since that
+  // trail is exactly how this target was constructed — see
+  // totalz-generation's offline generator), so the ledger ends up showing a
+  // real, valid solution rather than some separate hardcoded display.
+  // Shared by the actual reveal-and-give-up path and the dev "Solve
+  // puzzle" shortcut below (which simulates a genuine WIN, not a reveal).
+  // A 'first' step's optional transform is armed via brDoTapTransform()
+  // BEFORE the number, and every step ends with brDoTapEnter() so the
+  // ledger comes out with one row per step. No authored day currently
+  // produces a standalone 'unary' step (a transform with no accompanying
+  // number) — the arm-then-tap-a-number model has no way to apply a
   // transform directly to the running total, so that step type is just
   // skipped here rather than crashing if one ever shows up.
   function replayKnownTrailBrackets() {
@@ -799,8 +566,7 @@ $(function () {
     stopTimer();
     hideRevealButton();
     revealed = true;
-    if (inputMode === 'brackets') replayKnownTrailBrackets();
-    else replayKnownTrail();
+    replayKnownTrailBrackets();
     render();
     persistProgress(true);
     // No submitScore() call on this path — giving up never sets a best.
@@ -820,23 +586,12 @@ $(function () {
   function solvePuzzle() {
     shell.hideStartBanner();
     locked = false;
-    if (inputMode === 'brackets') replayKnownTrailBrackets();
-    else replayKnownTrail();
+    replayKnownTrailBrackets();
     handleWin();
   }
 
   initToolsPanel([GAME_ID], {
     extraActions: [{ label: 'Solve puzzle', onClick: solvePuzzle }],
-    radioGroups: [{
-      label: 'Input model',
-      name: 'totalz-input-mode',
-      options: [
-        { value: 'classic', label: 'Classic (chain)' },
-        { value: 'brackets', label: 'Brackets + Enter' },
-      ],
-      get: () => inputMode,
-      set: (value) => { setInputMode(value); reloadWithSpinner(); },
-    }],
   });
 
   // Same three-way daily-status branch as every other game — see
@@ -844,25 +599,17 @@ $(function () {
   // means, and games/glympz/index.js/games/quadz/index.js for the
   // additional `revealed` sub-branch within 'completed'.
   //
-  // canResume adds a fourth consideration on top of the usual three: a
-  // saved record only counts as resumable if it was saved under the SAME
-  // input mode currently active. Old saves (from before this feature
-  // existed) have no `mode` field at all, which defaults to 'classic' —
-  // so classic mode's resume behaviour is completely unchanged. Switching
-  // modes mid-day, or a saved 'brackets' record while classic is active
-  // (or vice versa), just falls through to the fresh-start branch instead
-  // of trying to restore a shape the active mode doesn't understand.
+  // canResume also checks the saved record's own `mode` field is
+  // 'brackets' — a leftover safety net from when this game briefly had two
+  // input models (classic was removed entirely; see
+  // [[project_totalz_bracket_input_mode]] in project memory for that
+  // history and how to recover the old code if it's ever wanted back). Any
+  // save from before that removal has no `mode` field (or `'classic'`),
+  // which fails this check and falls straight through to the fresh-start
+  // branch instead of trying to restore a shape this file no longer
+  // understands.
   const savedMode = (shell.status.record && shell.status.record.data && shell.status.record.data.mode) || 'classic';
-  const canResume = !isPreviewOnly && savedMode === inputMode;
-
-  function restoreClassicFields(data) {
-    committed = data.committed || [];
-    used = data.used || numbers.map(() => false);
-    pendingLeft = data.pendingLeft ?? null;
-    pendingLeftIdx = data.pendingLeftIdx ?? null;
-    pendingOp = data.pendingOp ?? null;
-    pendingTransform = data.pendingTransform ?? null;
-  }
+  const canResume = !isPreviewOnly && savedMode === 'brackets';
 
   function restoreBracketFields(data) {
     brUsed = data.brUsed || numbers.map(() => false);
@@ -874,7 +621,7 @@ $(function () {
 
   if (canResume && shell.status.status === 'completed') {
     const { data } = shell.status.record;
-    if (inputMode === 'brackets') restoreBracketFields(data); else restoreClassicFields(data);
+    restoreBracketFields(data);
     totalSeconds = data.seconds || 0;
     revealed = data.revealed || false;
     updateClockDisplay();
@@ -894,7 +641,7 @@ $(function () {
     }
   } else if (canResume && shell.status.status === 'in-progress') {
     const { data } = shell.status.record;
-    if (inputMode === 'brackets') restoreBracketFields(data); else restoreClassicFields(data);
+    restoreBracketFields(data);
     totalSeconds = data.seconds || 0;
     updateClockDisplay();
     render();

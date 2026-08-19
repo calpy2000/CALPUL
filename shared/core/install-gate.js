@@ -60,10 +60,14 @@ function injectStyles() {
   style.textContent = `
     .install-gate{position:fixed;inset:0;z-index:2000;overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;background:var(--paper,#eef0f3);font-family:var(--font-body,sans-serif);padding:var(--space-lg,24px);text-align:center}
     .install-gate__panel{max-width:380px;width:100%;display:flex;flex-direction:column;align-items:center;gap:var(--space-md,16px);padding-top:var(--space-lg,24px)}
-    .install-gate__icon{width:72px;height:72px;border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+    .install-gate__logo{display:flex;justify-content:center;gap:clamp(4px,2vw,8px);margin:0}
+    .install-gate__logo-tile-wrap{--tilt:0deg;display:inline-flex;transform:rotate(var(--tilt))}
+    .install-gate__logo-tile{--letter-rotate:0deg;--flip-x:1;width:clamp(28px,8vw,40px);height:clamp(28px,8vw,40px);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:clamp(16px,4.5vw,22px);color:#ffffff;box-shadow:inset 2px 2px 4px rgba(255,255,255,0.5),inset -2px -3px 5px rgba(0,0,0,0.28);transform:scaleX(var(--flip-x)) rotate(var(--letter-rotate))}
+    .install-gate__logo-tile.is-mirrored{--flip-x:-1}
+    .install-gate__logo-tile.is-upside-down{--letter-rotate:180deg}
     .install-gate__title{font-size:1.25rem;font-weight:700;color:var(--ink,#1b1f27);margin:0;line-height:1.3}
     .install-gate__body{font-size:0.95rem;line-height:1.5;color:var(--ink,#1b1f27);margin:0;opacity:0.85}
-    .install-gate__steps-block{width:100%;text-align:left;background:#fff;border-radius:14px;padding:var(--space-md,16px) var(--space-md,16px) var(--space-md,16px) 2.1em;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+    .install-gate__steps-block{width:100%;text-align:left;background:#fff;border-radius:14px;margin-top:var(--space-md,16px);padding:var(--space-md,16px) var(--space-md,16px) var(--space-md,16px) 2.1em;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
     .install-gate__steps-heading{font-size:0.75rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent,#3d5af1);margin:0 0 var(--space-sm,8px) -0.6em}
     .install-gate__steps{margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-sm,10px)}
     .install-gate__steps li{display:flex;align-items:center;gap:8px;font-size:0.95rem;line-height:1.35;color:var(--ink,#1b1f27)}
@@ -161,9 +165,16 @@ function showGate() {
     gate.className = 'install-gate';
     gate.innerHTML = `
       <div class="install-gate__panel">
-        <img class="install-gate__icon" src="${siteUrl('icon-192.png')}" alt="">
-        <h1 class="install-gate__title">Add PUSULZ to your Home Screen</h1>
-        <p class="install-gate__body">Testers, I can tell you're still accessing PUSULZ by tapping a link or typing the address (URL) directly. While the games do work that way, the page ends up squashed, which is a problem for some games. To fix this, we need to add a PUSULZ tile to your Home Screen — then you just tap that every day to play.</p>
+        <div class="install-gate__logo">
+          <span class="install-gate__logo-tile-wrap" style="--tilt: -22deg"><span class="install-gate__logo-tile is-mirrored" style="background:#E59A63">P</span></span>
+          <span class="install-gate__logo-tile-wrap" style="--tilt: 18deg"><span class="install-gate__logo-tile" style="background:#6F9BDB">U</span></span>
+          <span class="install-gate__logo-tile-wrap" style="--tilt: -27deg"><span class="install-gate__logo-tile is-mirrored" style="background:#63B98A">S</span></span>
+          <span class="install-gate__logo-tile-wrap" style="--tilt: 16deg"><span class="install-gate__logo-tile" style="background:#AD82D6">U</span></span>
+          <span class="install-gate__logo-tile-wrap" style="--tilt: 24deg"><span class="install-gate__logo-tile" style="background:#DFAE55">L</span></span>
+          <span class="install-gate__logo-tile-wrap" style="--tilt: -19deg"><span class="install-gate__logo-tile is-upside-down" style="background:#DD7FA3">Z</span></span>
+        </div>
+        <h1 class="install-gate__title">Welcome to Beta Testing</h1>
+        <p class="install-gate__body">Whether you're new to PUSULZ or an old hand - it is key to access the games by creating a PUSULZ app tile on your phone - this means that you get the best player experience on your screen.<br>So go ahead and create that PUSULZ tile now using the instructions below, its really easy.</p>
         <div class="install-gate__steps-block">${stepsHtml(platform)}</div>
         <p class="install-gate__body">When this is done, you'll see a tile on your ${deviceLabel(platform)} that looks like this:</p>
         <div class="install-gate__preview">

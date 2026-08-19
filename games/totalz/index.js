@@ -159,7 +159,20 @@ $(function () {
       if (!inner) return null;
       const close = toks[inner.pos];
       if (!close || close.t !== 'rp') return null;
-      return { value: inner.value, pos: inner.pos + 1 };
+      let value = inner.value;
+      // A transform tapped on a completed "(...)" group lives on its
+      // closing-paren token (see brDoTapTransform) — applied here to the
+      // group's own computed value, same as a bare number's transform is
+      // applied to its raw value. Null (e.g. rooting a non-perfect-square
+      // group result) fails this parse, same as any other invalid step —
+      // in practice the button that would produce this is greyed out
+      // before it can be tapped, so this is a safety net, not the path.
+      if (close.transform) {
+        const tv = transformValue(value, close.transform);
+        if (tv === null) return null;
+        value = tv;
+      }
+      return { value, pos: inner.pos + 1 };
     }
     return null;
   }
@@ -215,14 +228,34 @@ $(function () {
   function brRenderTokenText(tok) {
     if (tok.t === 'op') return opSymbol(tok.k);
     if (tok.t === 'lp') return '(';
-    if (tok.t === 'rp') return ')';
+    // A group's own √ transform is rendered as a prefix on its matching
+    // "(" instead (standard notation: "√(4 + 5)", not "(4 + 5)√") — see
+    // brRenderStreamText's prefix pass below. x² stays a suffix here since
+    // "(5 + 2)²" already reads naturally left-to-right.
+    if (tok.t === 'rp') return tok.transform === 'sq' ? ')²' : ')';
     if (tok.transform === 'sq') return `${tok.raw}²`;
     if (tok.transform === 'rt') return `√${tok.raw}`;
     return `${tok.raw}`;
   }
 
+  // Two passes: first find every "(" whose matching ")" carries a root
+  // transform (so it can be prefixed with √), then render token-by-token.
+  // Matching is done with a simple depth counter, same idea as
+  // trailingGroupOpenIndex() below but over the whole stream instead of
+  // just from the end.
   function brRenderStreamText(toks) {
-    return toks.map(brRenderTokenText).join(' ');
+    const rootPrefixLp = new Set();
+    const openStack = [];
+    toks.forEach((tok, i) => {
+      if (tok.t === 'lp') openStack.push(i);
+      else if (tok.t === 'rp') {
+        const openIdx = openStack.pop();
+        if (tok.transform === 'rt' && openIdx !== undefined) rootPrefixLp.add(openIdx);
+      }
+    });
+    return toks
+      .map((tok, i) => (rootPrefixLp.has(i) ? `√${brRenderTokenText(tok)}` : brRenderTokenText(tok)))
+      .join(' ');
   }
 
   function brDoTapNumber(idx) {
@@ -244,14 +277,137 @@ $(function () {
   }
 
   function brDoTapParen(which) {
-    brStream.push({ t: which === '(' ? 'lp' : 'rp' });
+    if (which === '(') {
+      // A transform armed BEFORE this "(" is tapped must apply to the
+      // WHOLE group once it closes, not get grabbed by the first number
+      // typed inside it (e.g. "[x²] ( 5 + 2 )" should square the 7, not
+      // just the 5) — captured here on the lp token and cleared out of
+      // brPendingTransform so brDoTapNumber() can't consume it early.
+      brStream.push({ t: 'lp', pendingTransform: brPendingTransform });
+      brPendingTransform = null;
+      return;
+    }
+    // rp carries an explicit transform field (null, not just absent) since
+    // a completed group can have a transform applied post-hoc, same as a
+    // number token — see brApplyTransformToTrailingGroup().
+    const rp = { t: 'rp', transform: null };
+    brStream.push(rp);
+    // If the "(" this closes had a transform armed before it was opened,
+    // apply it now that the group's value is actually known — reuses the
+    // exact same post-hoc application (and its silent-no-op-on-invalid-
+    // root behavior) as tapping a transform after an already-closed group.
+    const openIdx = trailingGroupOpenIndex();
+    if (openIdx !== null) {
+      const lp = brStream[openIdx];
+      if (lp.pendingTransform) {
+        brApplyTransformToTrailingGroup(rp, lp.pendingTransform);
+        lp.pendingTransform = null;
+      }
+    }
+  }
+
+  // The pending transform captured on the innermost currently-open "("
+  // (if any) — read-only lookup used only so the operator row's own
+  // armed-highlight keeps glowing while the player is still typing inside
+  // a bracket whose closing transform is already decided. brDoTapParen()
+  // is what actually reads/clears the real thing when "(" / ")" are tapped.
+  function innermostOpenPendingTransform() {
+    const openStack = [];
+    for (const tok of brStream) {
+      if (tok.t === 'lp') openStack.push(tok);
+      else if (tok.t === 'rp') openStack.pop();
+    }
+    return openStack.length > 0 ? openStack[openStack.length - 1].pendingTransform : null;
+  }
+
+  // Index of the "(" matching the trailing ")" in brStream, walking
+  // backward with a paren-depth counter. Returns null if the stream
+  // doesn't currently end on a completed group.
+  function trailingGroupOpenIndex() {
+    const closeIdx = brStream.length - 1;
+    if (closeIdx < 0 || brStream[closeIdx].t !== 'rp') return null;
+    let depth = 0;
+    for (let i = closeIdx; i >= 0; i--) {
+      if (brStream[i].t === 'rp') depth++;
+      else if (brStream[i].t === 'lp') {
+        depth--;
+        if (depth === 0) return i;
+      }
+    }
+    return null;
+  }
+
+  // The trailing group's own computed value, ignoring whatever transform
+  // is (or isn't) already sitting on its closing paren — used both to
+  // validate a new transform tap and to decide whether √x should be
+  // greyed out for this group. Parses brStream directly (not the virtual
+  // stream with brWorkingValue prepended) since a "(...)" is always typed
+  // fresh within the current turn. Returns null if the group somehow
+  // isn't cleanly parseable (shouldn't happen for a genuinely completed
+  // group, but keeps this a safe no-op rather than a crash if it ever is).
+  function trailingGroupRawValue() {
+    const openIdx = trailingGroupOpenIndex();
+    if (openIdx === null) return null;
+    const closeIdx = brStream.length - 1;
+    const inner = brParseExpr(brStream, openIdx + 1);
+    return inner && inner.pos === closeIdx ? inner.value : null;
+  }
+
+  // If the stream's last token is a plain number, tapping a transform
+  // applies retroactively to THAT number instead of arming for the next
+  // one — lets "5 then x²" match "x² then 5" (testers found the
+  // before-only order confusing). Toggles/swaps in place, same rules as
+  // the arm path below: same key tapped again reverts to the raw value,
+  // the other key swaps which transform is applied. transformValue() is
+  // always computed off .raw (not .value), so swapping never compounds.
+  function brApplyTransformToTrailingNumber(tok, key) {
+    if (tok.transform === key) {
+      tok.transform = null;
+      tok.value = tok.raw;
+      return true;
+    }
+    const tv = transformValue(tok.raw, key);
+    if (tv === null) return true; // e.g. rooting a non-perfect square — silent no-op, same as the arm-then-tap path
+    tok.transform = key;
+    tok.value = tv;
+    return true;
+  }
+
+  // Same idea as brApplyTransformToTrailingNumber() but for a completed
+  // "(...)" group — the transform lives on the closing-paren token and is
+  // applied to the group's own computed value (via trailingGroupRawValue),
+  // never to a value that already has some other transform baked in, so
+  // swapping sq<->rt never compounds.
+  function brApplyTransformToTrailingGroup(tok, key) {
+    if (tok.transform === key) {
+      tok.transform = null;
+      return true;
+    }
+    const rawValue = trailingGroupRawValue();
+    if (rawValue === null) return true; // not cleanly parseable — bail as a no-op
+    const tv = transformValue(rawValue, key);
+    if (tv === null) return true; // e.g. rooting a group whose value isn't a perfect square — silent no-op
+    tok.transform = key;
+    return true;
   }
 
   function brDoTapTransform(key) {
-    // Arms/disarms a transform for the NEXT number tapped — tapping the
+    const trailing = brStream[brStream.length - 1];
+    if (trailing && trailing.t === 'num') {
+      brApplyTransformToTrailingNumber(trailing, key);
+      return;
+    }
+    if (trailing && trailing.t === 'rp') {
+      brApplyTransformToTrailingGroup(trailing, key);
+      return;
+    }
+    // No number or completed group to apply to yet — arms/disarms a
+    // transform for the NEXT number OR "(" tapped instead. Tapping the
     // same one again disarms it, tapping the other swaps which is armed.
-    // Persists across other taps (an operator or bracket in between
-    // doesn't clear it) until a number actually consumes it.
+    // Persists across other taps (an operator in between doesn't clear
+    // it) until consumed — either immediately by a number (brDoTapNumber)
+    // or deferred onto a "(" to be applied to the whole group once it
+    // closes (brDoTapParen(), see its own comment).
     brPendingTransform = brPendingTransform === key ? null : key;
   }
 
@@ -386,7 +542,12 @@ $(function () {
 
     const $numberRow = $('#totalz-number-row').empty();
     numbers.forEach((v, i) => {
-      const enabled = !locked && !brUsed[i];
+      // While √x is armed for the NEXT number (not deferred onto an open
+      // "(" — see brDoTapParen()), a number without an integer root can't
+      // produce a valid tap here at all — grey it out instead of letting
+      // the tap silently fall through untransformed.
+      const rootArmBlocked = brPendingTransform === 'rt' && transformValue(v, 'rt') === null;
+      const enabled = !locked && !brUsed[i] && !rootArmBlocked;
       const $tile = $('<div>', { class: 'totalz-tile' + (enabled ? '' : ' is-disabled') + (brUsed[i] ? ' is-used' : ''), text: v });
       if (enabled) $tile.on('click', () => { brDoTapNumber(i); afterMove(); });
       $numberRow.append($tile);
@@ -403,13 +564,40 @@ $(function () {
       { key: '(', label: '(', group: 'bracket', kind: 'paren' },
       { key: ')', label: ')', group: 'bracket', kind: 'paren' },
     ];
+    // Trailing number or completed group in the stream (if any) — needed
+    // so x²/√x can show their state relative to what was just tapped,
+    // not just a pending arm for the next number. See brDoTapTransform()'s
+    // comment for why groups only ever get the post-hoc path.
+    const trailingTok = brStream[brStream.length - 1];
+    const trailingIsNum = !!trailingTok && trailingTok.t === 'num';
+    const trailingIsGroup = !!trailingTok && trailingTok.t === 'rp';
+    // Only actually computed (via a small re-parse) when a group is
+    // trailing — trailingGroupRawValue() is cheap but there's no reason to
+    // run it on every render when it isn't needed.
+    const trailingGroupRaw = trailingIsGroup ? trailingGroupRawValue() : null;
     BRACKET_KEYS.forEach((def) => {
-      const armed = def.kind === 'transform' && brPendingTransform === def.key;
+      const armed = def.kind === 'transform' && (
+        brPendingTransform === def.key ||
+        (trailingIsNum && trailingTok.transform === def.key) ||
+        (trailingIsGroup && trailingTok.transform === def.key) ||
+        innermostOpenPendingTransform() === def.key
+      );
+      // √x specifically can't apply to a trailing number/group that isn't
+      // a perfect square — greyed out rather than a silent no-op tap, so
+      // testers can see up front it doesn't apply here (the "before-only"
+      // ordering bug report was exactly this kind of invisible failure).
+      // Root arming for a NOT-YET-tapped number is left alone — which
+      // number comes next isn't known yet, so there's nothing to block.
+      const rootBlocked = def.key === 'rt' && (
+        (trailingIsNum && trailingTok.transform !== 'rt' && transformValue(trailingTok.raw, 'rt') === null) ||
+        (trailingIsGroup && trailingTok.transform !== 'rt' && (trailingGroupRaw === null || transformValue(trailingGroupRaw, 'rt') === null))
+      );
+      const disabled = locked || rootBlocked;
       const $tile = $('<div>', {
-        class: `totalz-tile totalz-tile--op-${def.group}` + (locked ? ' is-disabled' : '') + (armed ? ' is-armed' : ''),
+        class: `totalz-tile totalz-tile--op-${def.group}` + (disabled ? ' is-disabled' : '') + (armed ? ' is-armed' : ''),
         text: def.label,
       });
-      if (!locked) {
+      if (!disabled) {
         $tile.on('click', () => {
           if (def.kind === 'op') brDoTapOp(def.key);
           else if (def.kind === 'transform') brDoTapTransform(def.key);

@@ -160,24 +160,17 @@ export function drawPlayerFace(context, x, y, r, t, showAntenna = true) {
   drawHelmetFrame(context, x, cy, r, t, showAntenna);
 }
 
-// A fixed animation phase the static icon freezes on (no blink, a slight
-// smile-forward bob) — same idea as jewel-icon.js's ICON_PHASE.
-const ICON_PHASE = 1.0;
-const ICON_RENDER_SIZE = 128;
-
-// Renders the player once onto an off-screen (never-attached) canvas and
-// returns it as a PNG data URL — used as a plain <img src="..."> anywhere
-// the game needs to refer to "the player" outside the actual canvas, e.g.
-// the instructions text (see index.js).
-let cachedPlayerIconDataURL = null;
+// Used as a plain <img src="..."> anywhere the game needs to refer to "the
+// player" outside the actual canvas — the instructions text and this
+// game's own header icon (see index.js's initShell() call; the HUB TILE
+// icon is the energy orb instead, see energy-orb-icon.js). Used to be
+// rendered at runtime onto an off-screen canvas (ICON_PHASE=1.0: no blink,
+// a slight smile-forward bob, antenna showing) and returned as a
+// toDataURL() PNG string every single visit into this game — precomputed
+// once (2026-08-19) into a real PNG file instead. See
+// project_gamehub_back_button_delay memory for the investigation.
+// Regenerate from drawPlayerFace() above (t=1.0) if the player's look ever
+// changes.
 export function getPlayerIconDataURL() {
-  if (!cachedPlayerIconDataURL) {
-    const canvas = document.createElement('canvas');
-    canvas.width = ICON_RENDER_SIZE;
-    canvas.height = ICON_RENDER_SIZE;
-    const context = canvas.getContext('2d');
-    drawPlayerFace(context, ICON_RENDER_SIZE / 2, ICON_RENDER_SIZE / 2, ICON_RENDER_SIZE * 0.4, ICON_PHASE);
-    cachedPlayerIconDataURL = canvas.toDataURL('image/png');
-  }
-  return cachedPlayerIconDataURL;
+  return new URL('./images/player-icon.png', import.meta.url).href;
 }

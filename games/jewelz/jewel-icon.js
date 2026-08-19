@@ -81,39 +81,26 @@ export function drawFacetedGem(context, x, y, r, style, t, label) {
   context.restore();
 }
 
-// The fixed animation phase the static icon freezes on — picked by eye for
-// a mid-brightness, visibly-faceted look (t=0 would freeze every facet at
-// its dimmest, since sin(0)=0).
-const ICON_PHASE = 0.6;
-const ICON_RENDER_SIZE = 128; // rendered once at a fixed resolution; consumers scale down via CSS
-
-// Renders a gem once onto an off-screen (never-attached) canvas and returns
-// it as a PNG data URL. Used as a plain <img src="..."> wherever the emoji
-// used to go (see shell.js and the hub root index.js).
-function renderIconDataURL(style) {
-  const canvas = document.createElement('canvas');
-  canvas.width = ICON_RENDER_SIZE;
-  canvas.height = ICON_RENDER_SIZE;
-  const context = canvas.getContext('2d');
-  drawFacetedGem(context, ICON_RENDER_SIZE / 2, ICON_RENDER_SIZE / 2, ICON_RENDER_SIZE * 0.42, style, ICON_PHASE);
-  return canvas.toDataURL('image/png');
-}
-
-// Cached after the first call each, since neither image ever changes.
-let cachedJewelIconDataURL = null;
+// These three used to be rendered at runtime onto an off-screen canvas via
+// drawFacetedGem() (ICON_PHASE=0.6, same style objects above) and returned
+// as a toDataURL() PNG string — deterministic, so every render produced a
+// byte-identical image. Precomputed once (2026-08-19) into real PNG files
+// instead, since a full-reload navigation was re-running that canvas work
+// from scratch on every single visit to this game (and every hub load, via
+// games-registry.js) — see project_gamehub_back_button_delay memory for the
+// investigation. Resolved relative to THIS file's own location (same
+// import.meta.url trick install-gate.js's siteUrl() uses) so it works
+// regardless of which page imports it. Regenerate these PNGs from
+// drawFacetedGem() + the style constants above if the gem's look ever
+// changes.
 export function getJewelIconDataURL() {
-  if (!cachedJewelIconDataURL) cachedJewelIconDataURL = renderIconDataURL(JEWEL_STYLE);
-  return cachedJewelIconDataURL;
+  return new URL('./images/jewel-icon.png', import.meta.url).href;
 }
 
-let cachedBonusJewelIconDataURL = null;
 export function getBonusJewelIconDataURL() {
-  if (!cachedBonusJewelIconDataURL) cachedBonusJewelIconDataURL = renderIconDataURL(BONUS_JEWEL_STYLE);
-  return cachedBonusJewelIconDataURL;
+  return new URL('./images/bonus-jewel-icon.png', import.meta.url).href;
 }
 
-let cachedMegaJewelIconDataURL = null;
 export function getMegaJewelIconDataURL() {
-  if (!cachedMegaJewelIconDataURL) cachedMegaJewelIconDataURL = renderIconDataURL(MEGA_JEWEL_STYLE);
-  return cachedMegaJewelIconDataURL;
+  return new URL('./images/mega-jewel-icon.png', import.meta.url).href;
 }

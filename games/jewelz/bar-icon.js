@@ -86,22 +86,14 @@ export function getBarIconDataURL() {
 // A landscape (3:1) blade icon for the instructions text (see index.js) —
 // real blades are tall and spin through every angle in play (see Bar.js),
 // but one laid on its side, long and thin, reads more clearly as "a blade"
-// in a small static inline icon than the square used above. Rotating the
-// canvas 90° (rather than teaching drawSawBlade a second orientation) keeps
-// there being exactly one silhouette to maintain.
-let cachedHorizontalBarIconDataURL = null;
+// in a small static inline icon than the square used above.
+//
+// Used to be rendered at runtime onto an off-screen canvas (rotated 90°,
+// same drawSawBlade() call, ICON_PHASE=0.6) and returned as a toDataURL()
+// PNG string every single visit — precomputed once (2026-08-19) into a real
+// PNG file instead, same reasoning as jewel-icon.js's own version of this
+// change (see that file and project_gamehub_back_button_delay memory).
+// Regenerate from drawSawBlade() above if the blade's look ever changes.
 export function getHorizontalBarIconDataURL() {
-  if (!cachedHorizontalBarIconDataURL) {
-    const canvasW = 180, canvasH = 60;
-    const bladeLength = 165, bladeThickness = 55;
-    const canvas = document.createElement('canvas');
-    canvas.width = canvasW;
-    canvas.height = canvasH;
-    const context = canvas.getContext('2d');
-    context.translate(canvasW / 2, canvasH / 2);
-    context.rotate(Math.PI / 2);
-    drawSawBlade(context, bladeThickness, bladeLength, iconPulse());
-    cachedHorizontalBarIconDataURL = canvas.toDataURL('image/png');
-  }
-  return cachedHorizontalBarIconDataURL;
+  return new URL('./images/horizontal-bar-icon.png', import.meta.url).href;
 }

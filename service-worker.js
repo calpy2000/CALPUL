@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.19';
+const CACHE_VERSION = 'v5.20';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -120,6 +120,11 @@ const CODE_URLS = [
   'games/jewelz/Bar.js',
   'games/jewelz/Jewel.js',
   'games/jewelz/bar-icon.js',
+  'games/jewelz/images/bonus-jewel-icon.png',
+  'games/jewelz/images/horizontal-bar-icon.png',
+  'games/jewelz/images/jewel-icon.png',
+  'games/jewelz/images/mega-jewel-icon.png',
+  'games/jewelz/images/player-icon.png',
   'games/jewelz/index.html',
   'games/jewelz/index.js',
   'games/jewelz/jewel-icon.js',
@@ -194,6 +199,11 @@ const CODE_URLS = [
   'games/warpz/Zapper.js',
   'games/warpz/asteroid-icon.js',
   'games/warpz/energy-orb-icon.js',
+  'games/warpz/images/energy-orb-icon-cyan.png',
+  'games/warpz/images/energy-orb-icon-violet.png',
+  'games/warpz/images/player-icon.png',
+  'games/warpz/images/skull-icon.png',
+  'games/warpz/images/star-shard-icon.png',
   'games/warpz/index.html',
   'games/warpz/index.js',
   'games/warpz/manifest.json',

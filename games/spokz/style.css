@@ -1,0 +1,463 @@
+:root {
+  --spokz-accent: #F2E27A; /* pastel lemon-yellow — this game's own hub-tile/accent color, distinct from QUADZ's gold and SOLVZ's orange */
+  --spokz-ink: #4A3D0D; /* deep olive-brown — text-on-accent, and the ink every tile's letter is drawn in */
+  --tile-empty-border: #cbc6b0;
+  --tile-filled-border: #8a7f55;
+  --tile-valid-bg: #cdeee3;
+  --tile-valid-border: #2f9e7d;
+  --tile-amber-bg: #fbe4b8;
+  --tile-amber-border: #d99a2b;
+  --tile-invalid-bg: #f6d3ce;
+  --tile-invalid-border: #c1554d;
+  --tray-bg: #f4f0dd;
+}
+
+/* "Clue" banner — a line directly under the header, above the board.
+   Left-aligned with a hanging indent: "Clue:" is a fixed-width label (flex
+   item, non-wrapping) and the description sits in its own column beside
+   it, via display:flex rather than text-indent — that's what keeps a
+   wrapped second line starting under the description's own column
+   instead of sliding back to the left margin under "Clue:" itself. */
+.clue-banner {
+  /* Negative top margin pulls this up against .shell-header's own 16px
+     bottom margin (shared/shell.css — not something to touch, every other
+     game relies on it) instead of stacking on top of it. */
+  margin: -10px 0 0;
+  padding: 0 var(--space-lg) 2px;
+  /* .shell (shared/shell.css) is a flex column with align-items:center —
+     without an explicit width, this shrinks to fit its own content and
+     then gets centered as a whole block, which makes text-align:left
+     invisible (a box exactly as wide as its longest line looks identical
+     whether "left-aligned" or "centered" inside itself). Same fix shell.css
+     itself documents on .shell-overlay__instructions for the same reason. */
+  width: 100%;
+  max-width: 480px; /* matches .shell-header's own max-width, so the two rows line up */
+  display: flex;
+  gap: 6px;
+  text-align: left;
+  font-size: 15px; /* matches shared/shell.css's .shell-overlay__instructions (the start-banner instructions text) */
+  color: #5c6472;
+  line-height: 1.4;
+}
+
+.clue-label {
+  flex: none;
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--spokz-ink);
+}
+
+.clue-text {
+  flex: 1;
+}
+
+/* Same width-driven "bias above dead-center" flex-spacer trick as QUADZ/
+   SLYDZ's own #game-root (see games/slydz/style.css for the fuller
+   explanation) — .spokz-board (star + tray together) is the flex child
+   that gets pushed toward the top of the available space.
+
+   Both .star and .tray-wrap below read a --fit-scale custom property (via
+   calc(base * var(--fit-scale, 1))) that index.js's watchFitToStage() call
+   sets on #game-root — SPOKZ is unusual among the grid games in having TWO
+   stacked pieces of content (the star AND the tray) that both need to fit
+   above the footer without scrolling, the same problem VALUZ/MOJEEZ solved
+   this way (see shared/core/fit-to-stage.js) rather than QUADZ/SLYDZ's
+   single aspect-ratio-bound grid, which never needs it. */
+#game-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-root::before {
+  content: '';
+  flex: 0.05 1 0; /* shrunk further from 0.2 — tightens the gap between the clue banner and the star even more */
+}
+
+#game-root::after {
+  content: '';
+  flex: 3 1 0;
+}
+
+.spokz-board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.star {
+  position: relative;
+  /* The 500px base is deliberately larger than any real phone's available
+     width — max-width is what actually binds on every device, so the star
+     fills as much of the screen as it reasonably can. The calc() base only
+     takes over (shrinking below that) when --fit-scale drops below 1,
+     i.e. when watchFitToStage() decides the star+tray combo needs to
+     shrink to fit the available height without scrolling. */
+  width: calc(500px * var(--fit-scale, 1));
+  max-width: 96%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.center-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 17%;
+  height: 17%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--spokz-accent);
+  color: var(--spokz-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: calc(clamp(22px, 7.5vw, 36px) * var(--fit-scale, 1));
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+}
+
+/* Reset button — positioned INSIDE .star's own percentage coordinate
+   system (index.js sets its `top`/`right` to match POS_RADII_PCT's own
+   last value, i.e. the same height as the lowest spoke tile), pinned to
+   the right edge. Same pill shape/sizing/weight as TOTALZ's own reset
+   button (games/totalz/style.css's .totalz-ledger__reset-btn), just
+   reskinned to SPOKZ's own accent instead of TOTALZ's blue. */
+.reset-btn {
+  position: absolute;
+  transform: translateY(-50%);
+  padding: 4px 16px;
+  border-radius: 999px;
+  border: 1px solid #d8c65a;
+  background: #fbf6da;
+  color: var(--spokz-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.reset-btn:hover {
+  background: var(--spokz-accent);
+}
+
+.reset-btn.is-hidden {
+  display: none;
+}
+
+.tile {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+/* --- Spoke tiles (18 of them — the empty circles a spoke's own 3 letters
+   land in). Positioned by index.js's buildStar() as left/top percentages
+   of .star; sizing here just needs to match that same 12.5% diameter. --- */
+.spoke-tile {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+  background: #ffffff;
+  border: 2px solid var(--tile-empty-border);
+  font-size: calc(clamp(18px, 6.2vw, 28px) * var(--fit-scale, 1));
+  color: #1b1f27;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.spoke-tile.is-filled {
+  border: 2px solid var(--tile-filled-border);
+}
+
+/* Three-way feedback once a spoke's 3 circles are all full (a spoke with
+   1-2 circles still empty stays neutral either way, since none of this is
+   knowable yet):
+     green  — spells one of TODAY'S 6 solution words specifically
+     amber  — spells a DIFFERENT real 4-letter word (still counts as a
+              win for this spoke — SPOKZ's "any real word wins" rule is
+              unchanged — amber is purely a hint that it isn't the word
+              this puzzle was built around)
+     red    — doesn't spell a real word at all */
+.spoke-tile.is-valid {
+  background: var(--tile-valid-bg);
+  border: 2px solid var(--tile-valid-border);
+}
+
+.spoke-tile.is-amber {
+  background: var(--tile-amber-bg);
+  border: 2px solid var(--tile-amber-border);
+}
+
+.spoke-tile.is-invalid {
+  background: var(--tile-invalid-bg);
+  border: 2px solid var(--tile-invalid-border);
+}
+
+/* --- Locked spoke tiles — permanently un-draggable the instant a spoke
+   turns green, whether the player found that word themselves or it came
+   from "Reveal 1st word"/"Reveal 2nd word"/giving up (a revealed spoke is
+   always green too, since it's always planted with exactly its own
+   solution word — see index.js's updateValidity()/canDrag/canSwap). Same
+   lock badge as QUADZ/SLYDZ (a single mask-image icon colored via
+   currentColor, so it always matches whatever ink color the tile itself
+   is currently showing — no separate per-state color to keep in sync).
+   No extra tile-color change beyond the existing green .is-valid look:
+   the badge alone is the "locked" signal, same simplification QUADZ's own
+   revealed tiles use. Badge color is the same dark green as the valid
+   border (--tile-valid-border) rather than currentColor — is-locked in
+   SPOKZ is now ALWAYS paired with is-valid (see updateValidity()), so a
+   fixed green reads more intentional than inheriting whatever the tile's
+   own text-ink color happens to be. */
+.tile.is-locked {
+  cursor: default;
+}
+
+.tile.is-locked::after {
+  content: '';
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  width: 28%;
+  height: 28%;
+  min-width: 11px;
+  min-height: 11px;
+  background-color: var(--tile-valid-border);
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTTEyIDJhNSA1IDAgMCAxIDUgNXYzYTMgMyAwIDAgMSAzIDN2NmEzIDMgMCAwIDEgLTMgM2gtMTBhMyAzIDAgMCAxIC0zIC0zdi02YTMgMyAwIDAgMSAzIC0zdi0zYTUgNSAwIDAgMSA1IC01bTAgMTJhMiAyIDAgMCAwIC0xLjk5NSAxLjg1bC0uMDA1IC4xNWEyIDIgMCAxIDAgMiAtMm0wIC0xMGEzIDMgMCAwIDAgLTMgM3YzaDZ2LTNhMyAzIDAgMCAwIC0zIC0zIi8+PC9zdmc+");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTTEyIDJhNSA1IDAgMCAxIDUgNXYzYTMgMyAwIDAgMSAzIDN2NmEzIDMgMCAwIDEgLTMgM2gtMTBhMyAzIDAgMCAxIC0zIC0zdi02YTMgMyAwIDAgMSAzIC0zdi0zYTUgNSAwIDAgMSA1IC01bTAgMTJhMiAyIDAgMCAwIC0xLjk5NSAxLjg1bC0uMDA1IC4xNWEyIDIgMCAxIDAgMiAtMm0wIC0xMGEzIDMgMCAwIDAgLTMgM3YzaDZ2LTNhMyAzIDAgMCAwIC0zIC0zIi8+PC9zdmc+");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.tray-wrap {
+  width: calc(500px * var(--fit-scale, 1)); /* same "max-width actually binds" reasoning as .star above */
+  max-width: 96%;
+  margin: calc(14px * var(--fit-scale, 1)) auto 0;
+  background: var(--tray-bg);
+  border-radius: calc(14px * var(--fit-scale, 1));
+  padding: calc(10px * var(--fit-scale, 1));
+}
+
+.tray {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1.4%;
+}
+
+.tray-tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #ffffff;
+  border: 2px solid var(--tile-filled-border);
+  font-size: calc(clamp(15px, 4.8vw, 22px) * var(--fit-scale, 1));
+  color: #1b1f27;
+}
+
+.tray-tile:empty {
+  border: 2px solid var(--tile-empty-border);
+}
+
+.tile.is-dragging {
+  opacity: 0.35;
+}
+
+.tile.drag-over {
+  box-shadow: 0 0 0 3px var(--accent);
+  transform: scale(1.05);
+}
+
+.tile-swapped {
+  animation: tilePop 0.2s ease-in-out;
+}
+
+@keyframes tilePop {
+  0% { transform: scale(1); z-index: 20; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); z-index: 20; }
+}
+
+.tile * {
+  pointer-events: none;
+}
+
+/* --- Win spin — the whole wheel (center circle + all 18 spoke tiles,
+   since they're all positioned inside .star) does one full rotation,
+   fast-to-slow, the instant the puzzle is solved. Triggered by index.js
+   adding this class in handleWin(); removed on the next reset so a later
+   day's win replays it rather than staying at a stale rotated state (the
+   360deg endpoint is visually identical to 0deg, so nothing looks off
+   either way, but removing it keeps the class list accurate). */
+.star.is-win-spinning {
+  animation: spokzWinSpin 2s cubic-bezier(0.13, 0.85, 0.3, 1) forwards;
+}
+
+@keyframes spokzWinSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Reveal assists — identical language/styling to QUADZ/SLYDZ's own
+   (see games/quadz/style.css for the fuller comment): deliberately
+   understated links below the board, forming a difficulty ladder alongside
+   Help. --- */
+.reveal-actions {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.reveal-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.reveal-btn:hover {
+  color: var(--ink);
+}
+
+.reveal-btn.is-hidden {
+  display: none;
+}
+
+.reveal-confirm__actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+/* --- Help toggle (SPOKZ-only) — same language/formatting as QUADZ/SLYDZ's
+   own copies (see games/quadz/style.css's fuller comment on why this is
+   duplicated per-game rather than centralized), reskinned to SPOKZ's own
+   pastel-yellow accent. --- */
+.shell-header {
+  position: relative;
+  z-index: 10;
+}
+
+.help-toggle {
+  grid-column: 3;
+  justify-self: end;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.help-toggle.is-hidden {
+  display: none;
+}
+
+.help-toggle.is-active {
+  background: var(--spokz-accent);
+  color: var(--spokz-ink);
+  border-color: #d8c65a;
+  box-shadow: 0 2px 12px rgba(242, 226, 122, 0.6);
+}
+
+.help-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-xs);
+  width: 240px;
+  /* The static rules panel is a lot taller than the old dynamic 2-3
+     sentence hint ever was (9 paragraphs + 3 color-legend illustrations) —
+     capped and scrollable so it can never run off the bottom of a short
+     screen. */
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  z-index: 30;
+}
+
+.help-popover.is-hidden {
+  display: none;
+}
+
+.help-popover p {
+  margin: 0 0 0.75em;
+}
+
+.help-popover p:last-child {
+  margin-bottom: 0;
+}
+
+/* The 3 "what each color means" illustrations in the help popover — a
+   literal 4-circle miniature of a real spoke (see index.js's miniRow()),
+   reusing the exact same tokens the real board's is-valid/is-amber/
+   is-invalid classes draw from, so these examples can never drift out of
+   sync with what the tiles actually look like. */
+.help-mini-row {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 10px;
+}
+
+.help-mini-tile {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.help-mini-tile--center {
+  background: var(--spokz-accent);
+  color: var(--spokz-ink);
+}
+
+.help-mini-tile--green {
+  background: var(--tile-valid-bg);
+  border: 2px solid var(--tile-valid-border);
+  color: #1b1f27;
+}
+
+.help-mini-tile--amber {
+  background: var(--tile-amber-bg);
+  border: 2px solid var(--tile-amber-border);
+  color: #1b1f27;
+}
+
+.help-mini-tile--red {
+  background: var(--tile-invalid-bg);
+  border: 2px solid var(--tile-invalid-border);
+  color: #1b1f27;
+}

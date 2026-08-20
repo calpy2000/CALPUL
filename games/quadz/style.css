@@ -132,6 +132,38 @@
   transform: scale(1.05);
 }
 
+/* Reveal-locked tiles — the 4 cells of a row/column handed over via
+   "Reveal row 1"/"Reveal column 1" (see index.js's isRevealLocked()),
+   permanently un-draggable for the rest of today's round. Stays the same
+   bright amber as every other letter tile — the lock badge alone is the
+   signal, no separate muted color needed (a prior version tried a muted
+   sepia variant; dropped per explicit feedback once the badge itself
+   became legible enough to carry the distinction on its own). */
+.tile.letter-tile.is-reveal-locked {
+  cursor: default;
+  position: relative;
+}
+
+/* A single mask-image icon (Tabler's "lock", filled) colored via
+   background-color: currentColor — SLYDZ's own copy of this same badge
+   (see games/slydz/style.css) uses the identical data URI, just against
+   its own tile ink color, so the icon itself only needs maintaining once. */
+.tile.letter-tile.is-reveal-locked::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 16px; /* fixed, not relative to tile size — validated against the real tile-size range (iPhone 8 ~63px up to the shell's 450px stage cap ~82px) via a mockup comparison; the swing in relative size across that range read fine */
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTTEyIDJhNSA1IDAgMCAxIDUgNXYzYTMgMyAwIDAgMSAzIDN2NmEzIDMgMCAwIDEgLTMgM2gtMTBhMyAzIDAgMCAxIC0zIC0zdi02YTMgMyAwIDAgMSAzIC0zdi0zYTUgNSAwIDAgMSA1IC01bTAgMTJhMiAyIDAgMCAwIC0xLjk5NSAxLjg1bC0uMDA1IC4xNWEyIDIgMCAxIDAgMiAtMm0wIC0xMGEzIDMgMCAwIDAgLTMgM3YzaDZ2LTNhMyAzIDAgMCAwIC0zIC0zIi8+PC9zdmc+");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTTEyIDJhNSA1IDAgMCAxIDUgNXYzYTMgMyAwIDAgMSAzIDN2NmEzIDMgMCAwIDEgLTMgM2gtMTBhMyAzIDAgMCAxIC0zIC0zdi02YTMgMyAwIDAgMSAzIC0zdi0zYTUgNSAwIDAgMSA1IC01bTAgMTJhMiAyIDAgMCAwIC0xLjk5NSAxLjg1bC0uMDA1IC4xNWEyIDIgMCAxIDAgMiAtMm0wIC0xMGEzIDMgMCAwIDAgLTMgM3YzaDZ2LTNhMyAzIDAgMCAwIC0zIC0zIi8+PC9zdmc+");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
 /* Deliberately no "word just became valid" highlight on letter tiles — see
    the design note in index.js: every letter serves BOTH a row and a column
    simultaneously, so highlighting the tiles themselves would be ambiguous

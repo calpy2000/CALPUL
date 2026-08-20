@@ -814,13 +814,40 @@ $(function () {
   // draggable underneath the start banner.
   let locked = true;
 
+  // A row counts as "reveal-locked" once it's been handed to the player
+  // via "Reveal row 1"/"Reveal row 2" — permanent for the rest of today's
+  // round (row1Revealed/row2Revealed never reset until the next calendar
+  // day), unlike the transient `locked` flag above which only covers the
+  // ~1s a reveal/animation is actually playing.
+  function isRevealLocked(row) {
+    return (row1Revealed && row === 1) || (row2Revealed && row === 2);
+  }
+
+  // Re-applies the is-reveal-locked class to every tile from scratch —
+  // cheap enough (TOTAL_TILES cells) to just call after anything that
+  // could have changed row1Revealed/row2Revealed, rather than trying to
+  // patch just the affected row by hand. Layers on TOP of .valid-word in
+  // style.css (a revealed row is always a valid word) rather than
+  // replacing its look, so a locked row still reads as "a valid word" —
+  // just with an added ring color + lock badge marking it as no longer
+  // movable.
+  function applyRevealLockStyling() {
+    for (let row = 1; row <= SIZE; row++) {
+      $(`.tile[data-row="${row}"]`).toggleClass('is-reveal-locked', isRevealLocked(row));
+    }
+  }
+
   // Reveals just the day's answer for row 1 or row 2 by sliding each needed
   // letter in from wherever it currently sits (see the slide & swap engine
   // above) rather than silently overwriting cells, so any different word
   // the player already built elsewhere visibly trades places instead of
   // just vanishing. `locked` goes true only for the ~1s the tiles are
   // sliding — a partial reveal doesn't end the round, so a win right after
-  // one still goes through the normal handleWin() path.
+  // one still goes through the normal handleWin() path. The revealed row's
+  // own tiles become permanently un-draggable (see canDrag/canSwap below)
+  // and get their own "locked" look the instant the slide-in finishes, not
+  // before — otherwise the styling would visually fight the letters still
+  // sliding into place.
   function revealRow1() {
     row1Revealed = true;
     $revealRow1Btn.addClass('is-hidden');
@@ -830,6 +857,7 @@ $(function () {
     const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, puzzle.answerLetters);
     playRevealBatches(batches, () => {
       locked = false;
+      applyRevealLockStyling();
       if (updateRowValidity()) {
         handleWin();
       } else {
@@ -847,6 +875,7 @@ $(function () {
     const batches = computeRevealPlan(captureLetters(), targetIndices, targetLetters, puzzle.answerLetters);
     playRevealBatches(batches, () => {
       locked = false;
+      applyRevealLockStyling();
       if (updateRowValidity()) {
         handleWin();
       } else {
@@ -994,7 +1023,13 @@ $(function () {
     container: document.getElementById('game-root'),
     tileSelector: '.tile',
     isLocked: () => locked,
-    canSwap: () => true, // any letter tile can swap with any other — no type restriction like SOLVZ's number/operator rule
+    // A reveal-locked row's tiles can't be picked up (canDrag) AND can't be
+    // dropped onto either (canSwap checks the DROP TARGET `b`) — without
+    // that second check, some other tile could still be dragged ONTO a
+    // "locked" cell and silently overwrite its letter, even though the
+    // locked tile itself could never be picked up to start that drag.
+    canDrag: (tile) => !isRevealLocked(Number(tile.dataset.row)),
+    canSwap: (a, b) => !isRevealLocked(Number(b.dataset.row)),
     onSwap: (a, b) => {
       turnOffHelp(); // per the design brief: moving a tile always closes any open help text
 
@@ -1030,8 +1065,17 @@ $(function () {
     totalSeconds = data.seconds;
     usedHelp = data.usedHelp || false; // `|| false` covers old saves from before this field existed
     revealed = data.revealed || false;
+    // Also restores the reveal-locked STYLING for a day finished in an
+    // earlier session — previously only read in the in-progress branch
+    // below, which meant revisiting an already-completed day lost track of
+    // which row(s) had been revealed (cosmetically only, since a completed
+    // round can't be dragged anyway, but applyRevealLockStyling() needs
+    // these to show the right row as locked).
+    row1Revealed = data.row1Revealed || false;
+    row2Revealed = data.row2Revealed || false;
     updateTimerDisplay();
     updateRowValidity();
+    applyRevealLockStyling();
     // No `celebrate` on this branch either way — this only runs when
     // revisiting a day already finished in an EARLIER session, not on the
     // actual moment of winning/revealing, so it shouldn't replay confetti.
@@ -1060,6 +1104,7 @@ $(function () {
     row2Revealed = data.row2Revealed || false;
     updateTimerDisplay();
     updateRowValidity();
+    applyRevealLockStyling();
     shell.showStartBanner(() => {
       locked = false;
       showHelpToggle();

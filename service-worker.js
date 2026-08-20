@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.22';
+const CACHE_VERSION = 'v5.25';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -169,6 +169,15 @@ const CODE_URLS = [
   'games/slydz/style.css',
   'games/slydz/tile-icon.js',
   'games/slydz/words.js',
+
+  'games/spokz/index.html',
+  'games/spokz/index.js',
+  'games/spokz/manifest.json',
+  'games/spokz/puzzles.js',
+  'games/spokz/style.css',
+  'games/spokz/themed-days.js',
+  'games/spokz/tile-icon.js',
+  'games/spokz/words.js',
 
   'games/solvz/index.html',
   'games/solvz/index.js',

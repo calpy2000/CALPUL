@@ -39,8 +39,24 @@ import { getEnergyOrbIconDataURL as getWarpzOrbIconDataURL, VIOLET_PALETTE as WA
 import { getQuestionTileIconDataURL as getValuzTileIconDataURL } from './games/valuz/tile-icon.js';
 import { getMojeezTileIconDataURL } from './games/mojeez/tile-icon.js';
 import { getPentagonIconDataURL as getCuluzPentagonIconDataURL } from './games/culuz/tile-icon.js';
+import { getSpokzIconDataURL } from './games/spokz/tile-icon.js';
 
 export const GAMES = [
+  {
+    id: 'spokz', // must be unique across all games — used to namespace localStorage keys
+    title: 'SPOKZ',
+    emojiImage: getSpokzIconDataURL(),
+    tagline: 'ba der ba der<br>thats all SPOKZ',
+    path: 'games/spokz/index.html',
+    color: '#F2E27A', // pastel lemon-yellow — picked to sit clearly apart from QUADZ's gold (#DFAE55) and SOLVZ's orange (#E59A63), the two closest existing hues
+    rim: 'rgba(74, 61, 13, 0.30)',
+    higherIsBetter: false, // score = completion time in seconds
+    scoreIsTime: true,
+    isNew: true, // shows the "NEW" ribbon (see style.css's .hub__tile-new-ribbon)
+    devOnly: true, // brand new — hidden from testers (TOOL_MODE 'test') until proven in dev, same launch pattern every other game went through
+    // 13th game. Inserted at row 1 / column 1 per explicit request — every
+    // other game shifted along by one array position.
+  },
   {
     id: 'culuz', // must be unique across all games — used to namespace localStorage keys
     title: 'CULUZ',

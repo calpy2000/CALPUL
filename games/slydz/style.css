@@ -86,6 +86,46 @@
   box-shadow: inset 0 0 0 3px #6b21a8;
 }
 
+/* Reveal-locked tiles — a row handed over via "Reveal row 1"/"Reveal row 2"
+   (see index.js's isRevealLocked()), permanently un-draggable for the rest
+   of today's round. A revealed row is always a real word, so .valid-word
+   (above) is already applied at the same time — this is deliberately just
+   a MODIFIER on top of that look (same light bg, same purple text) rather
+   than a competing style, per the brief: it should still read as "a valid
+   word", just with the ring switched to a neutral slate (instead of the
+   same purple as the text) and a small lock badge added, so a word the
+   player is still free to rearrange never gets confused with one that's
+   now fixed. */
+.tile.valid-word.is-reveal-locked {
+  box-shadow: inset 0 0 0 3px #6b7280;
+  cursor: default;
+  position: relative;
+}
+
+/* A single mask-image icon (Tabler's "lock", filled) colored via
+   background-color: currentColor — QUADZ's own copy of this same badge
+   (see games/quadz/style.css) uses the identical data URI, just against
+   its own tile ink color, so the icon itself only needs maintaining once.
+   Fixed 16px, not relative to tile size — validated against the real
+   tile-size range (iPhone 8 up to the shell's 450px stage cap) via a
+   mockup comparison; the swing in relative size across that range read
+   fine. */
+.tile.valid-word.is-reveal-locked::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTTEyIDJhNSA1IDAgMCAxIDUgNXYzYTMgMyAwIDAgMSAzIDN2NmEzIDMgMCAwIDEgLTMgM2gtMTBhMyAzIDAgMCAxIC0zIC0zdi02YTMgMyAwIDAgMSAzIC0zdi0zYTUgNSAwIDAgMSA1IC01bTAgMTJhMiAyIDAgMCAwIC0xLjk5NSAxLjg1bC0uMDA1IC4xNWEyIDIgMCAxIDAgMiAtMm0wIC0xMGEzIDMgMCAwIDAgLTMgM3YzaDZ2LTNhMyAzIDAgMCAwIC0zIC0zIi8+PC9zdmc+");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTTEyIDJhNSA1IDAgMCAxIDUgNXYzYTMgMyAwIDAgMSAzIDN2NmEzIDMgMCAwIDEgLTMgM2gtMTBhMyAzIDAgMCAxIC0zIC0zdi02YTMgMyAwIDAgMSAzIC0zdi0zYTUgNSAwIDAgMSA1IC01bTAgMTJhMiAyIDAgMCAwIC0xLjk5NSAxLjg1bC0uMDA1IC4xNWEyIDIgMCAxIDAgMiAtMm0wIC0xMGEzIDMgMCAwIDAgLTMgM3YzaDZ2LTNhMyAzIDAgMCAwIC0zIC0zIi8+PC9zdmc+");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
 /* Same "pop" swap animation used by SOLVZ/GLYMPZ. */
 .tile-swapped {
   animation: tilePop 0.2s ease-in-out;

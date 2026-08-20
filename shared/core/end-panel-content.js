@@ -76,6 +76,9 @@ const GAME_COPY = {
     loss: 'you ran out of chances',
     normal: (s) => `you scored ${s} points`,
   },
+  spokz: {
+    normal: (s) => `you solved it in ${s}`,
+  },
 };
 
 // VALUZ and MOJEEZ are the only two games with a per-tile "more info"

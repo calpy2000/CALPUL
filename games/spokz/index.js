@@ -141,6 +141,39 @@ $(function () {
   buildStar();
   $centerCircle.text(CENTER_LETTER);
 
+  // A thin grey stem + arrowhead running along each spoke's own centerline
+  // — a discreet reminder that a spoke's word reads center -> outer, not
+  // the other way round. Spans exactly the same radial range as the
+  // spoke's own 3 tiles (from the first tile's own center to the last
+  // tile's own center). Sits BEHIND the spoke tiles (see style.css's
+  // z-index on .spoke-tile vs .spoke-arrow) — since every tile is an
+  // opaque circle whether empty or filled, the tiles themselves cover the
+  // arrow wherever they sit, leaving it visible only in the gaps between
+  // tiles (plus the arrowhead poking out past the last tile). Built as ONE
+  // rotated div per spoke: its un-rotated width IS the stem length (same
+  // for every spoke, since POS_RADII_PCT is the same for all 6), positioned
+  // at the first tile's own center and rotated to point outward along that
+  // spoke's own angle — see style.css's .spoke-arrow/::after for the
+  // stem/arrowhead itself. Purely decorative — pointer-events:none, never
+  // part of the drag/swap surface.
+  const ARROW_LENGTH_PCT = POS_RADII_PCT[2] - POS_RADII_PCT[0]; // first tile's center -> last tile's center
+  function buildDirectionArrows() {
+    SPOKE_ANGLES_DEG.forEach((angleDeg) => {
+      const theta = (angleDeg * Math.PI) / 180;
+      const innerX = 50 + POS_RADII_PCT[0] * Math.cos(theta);
+      const innerY = 50 + POS_RADII_PCT[0] * Math.sin(theta);
+      $('<div>', { class: 'spoke-arrow' })
+        .css({
+          left: innerX + '%',
+          top: innerY + '%',
+          width: ARROW_LENGTH_PCT + '%',
+          transform: `translateY(-50%) rotate(${angleDeg}deg)`,
+        })
+        .appendTo($star);
+    });
+  }
+  buildDirectionArrows();
+
   function buildTray(letters) {
     $tray.empty();
     letters.forEach((letter, i) => {
@@ -517,12 +550,17 @@ $(function () {
   // Works out which of the 36 tiles (18 spoke + 18 tray) still need to
   // change to satisfy the given targets, then groups the required swaps
   // into "batches" that can each slide in parallel. A spoke cell counts as
-  // permanently "settled" the moment it holds ITS OWN correct final
-  // letter — never raided as a swap source for a DIFFERENT target, even if
-  // its letter happens to match what that target needs (same fix QUADZ's
-  // computeRevealPlan() needed for repeated letters). Tray cells are never
-  // "settled" this way — their final state is blank, which doesn't
-  // protect one that's currently holding a real letter.
+  // permanently "settled" the moment it's is-locked (see updateValidity()
+  // — spelling one of TODAY'S 6 solution words, in ANY spoke, not just the
+  // one SPOKE_SUFFIXES canonically assigns it to) — never raided as a swap
+  // source for a DIFFERENT target, even if its letter happens to match
+  // what that target needs (same fix QUADZ's computeRevealPlan() needed
+  // for repeated letters — generalized here from "matches this spoke's
+  // fixed canonical letter" to "is actually locked", since a solved spoke
+  // in SPOKZ can legitimately hold a different word than its canonical
+  // position). Tray cells are never "settled" this way — their final
+  // state is blank, which doesn't protect one that's currently holding a
+  // real letter.
   function computeRevealPlan(targets) {
     const allEls = [...allSpokeTileEls(), ...allTrayTileEls()];
     const spokeCount = 18; // indices below this are spoke cells
@@ -534,8 +572,7 @@ $(function () {
 
     function isSettled(idx) {
       if (idx >= spokeCount) return false;
-      const i = Math.floor(idx / 3), p = idx % 3;
-      return working[idx] === SPOKE_SUFFIXES[i][p];
+      return allEls[idx].classList.contains('is-locked');
     }
 
     const batches = [];
@@ -604,6 +641,31 @@ $(function () {
     return null;
   }
 
+  // The board's own currently-locked spokes, read back as full words (see
+  // updateValidity() — is-locked only gets set once a spoke correctly
+  // spells one of today's own SOLUTION words). SPOKZ lets a solution word
+  // be placed in ANY spoke, not just the one SPOKE_SUFFIXES canonically
+  // assigns it to, so this can't be figured out just by spoke index.
+  function solutionWordsOnBoard() {
+    const words = [];
+    for (let i = 0; i < 6; i++) {
+      if (spokeTileEl(i, 0).classList.contains('is-locked')) {
+        words.push(CENTER_LETTER + getSpokeLetters(i).join(''));
+      }
+    }
+    return words;
+  }
+
+  // The first of today's 6 solution words that ISN'T already correctly on
+  // the board anywhere (see solutionWordsOnBoard() above) — i.e. the next
+  // word a partial reveal should place. Returns null only if every
+  // solution word is already on the board, which shouldn't normally be
+  // reachable (that's a win, and the reveal buttons hide on a win).
+  function pickUnsolvedSolutionWord() {
+    const onBoard = solutionWordsOnBoard();
+    return SOLUTION.find((word) => !onBoard.includes(word)) || null;
+  }
+
   function showRevealButtons() {
     if (!firstRevealUsed) $revealFirstBtn.removeClass('is-hidden');
     if (!secondRevealUsed) $revealSecondBtn.removeClass('is-hidden');
@@ -659,7 +721,8 @@ $(function () {
     $revealConfirm.addClass('is-hidden');
     if (pendingRevealTarget === 'first' || pendingRevealTarget === 'second') {
       const spokeIndex = pickUnsolvedSpoke();
-      if (spokeIndex !== null) revealSpokeWord(spokeIndex, pendingRevealTarget);
+      const word = pickUnsolvedSolutionWord();
+      if (spokeIndex !== null && word) revealSpokeWord(spokeIndex, word, pendingRevealTarget);
     } else if (pendingRevealTarget === 'full') {
       revealSolution();
     }
@@ -679,17 +742,19 @@ $(function () {
     openRevealConfirm('full');
   });
 
-  // Reveals one spoke's own 3 letters, sliding each in from wherever it
+  // Reveals `word` into spoke `i`, sliding each letter in from wherever it
   // currently sits. `locked` goes true only for the ~1s the tiles are
   // sliding — a partial reveal doesn't end the round, so a win right after
   // one still goes through the normal handleWin() path. `which` is just
   // 'first'/'second' — which reveal-button this use counts against, not
-  // which spoke (the spoke index `i` is picked by the caller).
-  function revealSpokeWord(i, which) {
+  // which spoke or word (both are picked by the caller, via
+  // pickUnsolvedSpoke()/pickUnsolvedSolutionWord()).
+  function revealSpokeWord(i, word, which) {
     if (which === 'first') { firstRevealUsed = true; $revealFirstBtn.addClass('is-hidden'); }
     else { secondRevealUsed = true; $revealSecondBtn.addClass('is-hidden'); }
     locked = true;
-    const targets = [0, 1, 2].map((p) => ({ el: spokeTileEl(i, p), letter: SPOKE_SUFFIXES[i][p] }));
+    const letters = word.slice(1).split('');
+    const targets = [0, 1, 2].map((p) => ({ el: spokeTileEl(i, p), letter: letters[p] }));
     playRevealPlan(computeRevealPlan(targets), () => {
       locked = false;
       if (updateValidity()) {

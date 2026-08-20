@@ -170,14 +170,16 @@
   position: absolute;
   width: 12.5%;
   height: 12.5%;
-  background: #ffffff;
+  background: none; /* transparent while empty, so the direction arrow underneath (see .spoke-arrow) shows through — .is-filled below fills it in solid once a letter lands */
   border: 2px solid var(--tile-empty-border);
   font-size: calc(clamp(18px, 6.2vw, 28px) * var(--fit-scale, 1));
   color: #1b1f27;
   transition: background 0.2s ease, border-color 0.2s ease;
+  z-index: 1; /* above .spoke-arrow's centerline stem, so a FILLED tile hides the arrow segment directly behind it (an empty tile has no fill, so the arrow still shows through) */
 }
 
 .spoke-tile.is-filled {
+  background: #ffffff;
   border: 2px solid var(--tile-filled-border);
 }
 
@@ -203,6 +205,36 @@
 .spoke-tile.is-invalid {
   background: var(--tile-invalid-bg);
   border: 2px solid var(--tile-invalid-border);
+}
+
+/* --- Spoke direction arrows — see index.js's buildDirectionArrows() for
+   the positioning math. Each is ONE div: its own width/height/rotation are
+   set inline per-spoke (that's the stem itself, anchored at its left-center
+   so rotation sweeps it from the inner tile's point to the outer tile's
+   point); the arrowhead is a CSS border-triangle sitting at its right
+   (i.e. outward, post-rotation) end. Thickness fixed (not scaled by
+   --fit-scale, same as the lock badge below) — a small fixed decoration,
+   not part of the main tile grid. */
+.spoke-arrow {
+  position: absolute;
+  height: 1px;
+  background: #aab0ba;
+  transform-origin: 0% 50%;
+  pointer-events: none;
+  z-index: 0; /* below .spoke-tile — see the comment there */
+}
+
+.spoke-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid #aab0ba;
+  transform: translateY(-50%);
 }
 
 /* --- Locked spoke tiles — permanently un-draggable the instant a spoke

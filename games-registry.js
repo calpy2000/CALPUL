@@ -53,7 +53,9 @@ export const GAMES = [
     higherIsBetter: false, // score = completion time in seconds
     scoreIsTime: true,
     isNew: true, // shows the "NEW" ribbon (see style.css's .hub__tile-new-ribbon)
-    devOnly: true, // brand new — hidden from testers (TOOL_MODE 'test') until proven in dev, same launch pattern every other game went through
+    // devOnly removed per explicit request, to make SPOKZ visible under
+    // TOOL_MODE 'test' (the tester-facing tools panel) — same pattern
+    // CULUZ/TOTALZ/MOJEEZ went through once they were ready.
     // 13th game. Inserted at row 1 / column 1 per explicit request — every
     // other game shifted along by one array position.
   },

@@ -54,7 +54,9 @@ export const GAMES = [
     higherIsBetter: false, // score = completion time in seconds
     scoreIsTime: true,
     isNew: true, // shows the "NEW" ribbon (see style.css's .hub__tile-new-ribbon)
-    devOnly: true, // only visible under TOOL_MODE 'dev' — see shared/core/tool-mode.js. Remove once ready for testers, same pattern every other game's own history in this file documents.
+    // devOnly removed per explicit request, to make NEYBUZ visible under
+    // TOOL_MODE 'test' — same pattern SPOKZ/CULUZ/others' own history in
+    // this file documents.
     // 14th game. Inserted at row 1 / column 1 per explicit request — every
     // other game (including SPOKZ, moved to row 1 / column 2) shifted along
     // by one array position.

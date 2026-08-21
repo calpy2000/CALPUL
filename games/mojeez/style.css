@@ -58,6 +58,16 @@
   color: #514840; /* warm neutral charcoal, not tied to the accent hue — reads cleanly against the tile's own neutral greige */
 }
 
+/* Difficulty tier appended in parens after the category, e.g. MOVIE (hard)
+   — --accent is the shared brand blue (shared/tokens.css), same one used
+   for buttons/links/highlights app-wide. Overrides the parent's uppercase
+   back to lowercase, since days.json's tier values (easy/medium/hard/
+   hardest) are meant to display as-is here, unlike the category text. */
+.mojeez-tile__tier {
+  color: var(--accent);
+  text-transform: lowercase;
+}
+
 /* Once graded, this same element's text is swapped from the category
    (MOVIE/TV/BOOK) to the real title (see index.js's applyGradeMarks()) —
    explicit request to reveal the answer here rather than adding a whole

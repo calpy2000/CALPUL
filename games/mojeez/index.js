@@ -107,7 +107,7 @@ $(function () {
            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="15.3" y1="15.3" x2="20.5" y2="20.5"></line></svg>
            zoom
          </button>
-         <span class="mojeez-tile__category">${item.category}</span>
+         <span class="mojeez-tile__category">${item.category} (<span class="mojeez-tile__tier">${item.tier}</span>)</span>
          <div class="mojeez-tile__emoji">${item.emoji}</div>
          <div class="mojeez-input-wrap">
            <input type="text" class="mojeez-input" data-item-number="${item.number}" placeholder="Your guess" autocomplete="off" autocapitalize="off" spellcheck="false" disabled>

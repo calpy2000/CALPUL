@@ -605,15 +605,17 @@ $(function () {
 
     let fullAnswer = deriveFullAnswer(board);
     if (!fullAnswer) {
-      // Only "reveal full solution" gets this fallback — a free swap has
-      // no safety net, so the player can genuinely reach a board with no
-      // completion that keeps every current green tile fixed. Rebuild one
-      // that overrides whichever green tiles don't fit instead (see
-      // deriveBestEffortAnswer's own comment). Tiers 1/2 stay hidden in
-      // this state (see updateRevealButtons) so this path is normally
-      // unreached for them — bail rather than partially reveal against a
-      // shifting target.
-      if (tier !== 3) return;
+      // A free swap has no safety net, so the player can genuinely reach a
+      // board with no completion that keeps every current green tile
+      // fixed. Every reveal tier falls back the same way here: rebuild an
+      // answer that overrides whichever green tiles don't fit instead of
+      // giving up (see deriveBestEffortAnswer's own comment) — tiers 1/2
+      // then reveal toward THAT answer exactly like normal, via the same
+      // chooseSafeCycleSet() search below, which already re-verifies
+      // solvability of whatever it lands on regardless of where fullAnswer
+      // came from. That's what guarantees the pill reads YES again once
+      // the reveal lands — not a special case, just the existing safety
+      // check doing its job against a different (still fully valid) target.
       fullAnswer = deriveBestEffortAnswer(board);
       if (!fullAnswer) return; // shouldn't happen — see that function's own comment
     }
@@ -676,22 +678,24 @@ $(function () {
   }
 
   function updateRevealButtons() {
-    const solved = getRedIndices(board).length === 0;
+    const redCount = getRedIndices(board).length;
+    const solved = redCount === 0;
     // A free swap has no solvability guard (unlike a reveal), so a player
-    // can genuinely swap themselves into a dead end — offering a PARTIAL
-    // reveal there would just silently no-op (deriveFullAnswer has
-    // nothing to give against a target that isn't decided yet), which
-    // read as "the button doesn't work". Hide those. "Reveal full
-    // solution" is exempt — doReveal()'s own fallback (see
-    // deriveBestEffortAnswer) always has something to offer there, so it
-    // stays available no matter how tangled the board gets.
-    const unsolvable = !solved && !isSolvableBoard(board);
-    $revealBtn1.toggleClass('is-hidden', solved || unsolvable || reveal1Used || locked);
+    // can genuinely swap themselves into a dead end — every reveal tier
+    // stays available regardless (doReveal()'s deriveBestEffortAnswer
+    // fallback always has something to offer, overriding whichever green
+    // tiles don't fit rather than giving up), so none of these hide on
+    // unsolvability anymore.
+    $revealBtn1.toggleClass('is-hidden', solved || reveal1Used || locked);
     // sequential: "4 more" only appears once "4" has actually been used
-    $revealBtn2.toggleClass('is-hidden', solved || unsolvable || !reveal1Used || reveal2Used || locked);
+    $revealBtn2.toggleClass('is-hidden', solved || !reveal1Used || reveal2Used || locked);
     $revealBtn3.toggleClass('is-hidden', solved || locked);
-    $revealBtn1.prop('disabled', revealAnimating);
-    $revealBtn2.prop('disabled', revealAnimating);
+    // "Reveal 4"/"4 more" grey out (stay visible, just disabled) once 4 or
+    // fewer red tiles remain — revealing "4" at that point would just
+    // finish the board anyway, so "Reveal full solution" is the only
+    // reveal tier that still makes sense as a distinct choice.
+    $revealBtn1.prop('disabled', revealAnimating || redCount <= 4);
+    $revealBtn2.prop('disabled', revealAnimating || redCount <= 4);
     $revealBtn3.prop('disabled', revealAnimating);
     updateUndoButton();
   }

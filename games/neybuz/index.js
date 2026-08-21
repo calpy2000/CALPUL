@@ -154,6 +154,41 @@ function deriveFullAnswer(board) {
   return res.found ? res.board : null;
 }
 
+// Fallback for "reveal full solution" when the board itself is no longer
+// solvable (an ordinary swap has no safety net, unlike a reveal, so a
+// player can genuinely paint themselves into a corner). deriveFullAnswer()
+// has nothing to offer there — no completion keeps EVERY current green
+// tile fixed — so this rebuilds one from an empty board instead, greedily
+// re-adding each currently-green tile (in board order) only when it still
+// leaves a solvable board. Whichever green tiles don't survive that get
+// overridden right along with the reds — "keep what still fits, forget
+// the rest" is the whole point of this path. Always succeeds: an empty
+// fixed set is trivially solvable (every curated distribution is
+// feasibility-checked), so the greedy walk can never dead-end.
+function deriveBestEffortAnswer(board) {
+  const good = computeGoodMask(board);
+  const totalPool = () => {
+    const p = [0, 0, 0, 0, 0];
+    board.forEach((v) => p[v - 1]++);
+    return p;
+  };
+  const poolFor = (fixed) => {
+    const p = totalPool();
+    fixed.forEach((v) => { if (v !== null) p[v - 1]--; });
+    return p;
+  };
+
+  let fixed = new Array(TOTAL_TILES).fill(null);
+  for (let i = 0; i < TOTAL_TILES; i++) {
+    if (!good[i]) continue;
+    const trial = fixed.slice();
+    trial[i] = board[i];
+    if (solveWithFixed(trial, poolFor(trial), 500000).found) fixed = trial;
+  }
+  const res = solveWithFixed(fixed, poolFor(fixed), 6000000);
+  return res.found ? res.board : null;
+}
+
 function getRedIndices(board) {
   const good = computeGoodMask(board);
   const red = [];
@@ -568,8 +603,20 @@ $(function () {
     const redIndices = getRedIndices(board);
     if (redIndices.length === 0) return;
 
-    const fullAnswer = deriveFullAnswer(board);
-    if (!fullAnswer) return; // shouldn't happen — the pill guarantees solvability
+    let fullAnswer = deriveFullAnswer(board);
+    if (!fullAnswer) {
+      // Only "reveal full solution" gets this fallback — a free swap has
+      // no safety net, so the player can genuinely reach a board with no
+      // completion that keeps every current green tile fixed. Rebuild one
+      // that overrides whichever green tiles don't fit instead (see
+      // deriveBestEffortAnswer's own comment). Tiers 1/2 stay hidden in
+      // this state (see updateRevealButtons) so this path is normally
+      // unreached for them — bail rather than partially reveal against a
+      // shifting target.
+      if (tier !== 3) return;
+      fullAnswer = deriveBestEffortAnswer(board);
+      if (!fullAnswer) return; // shouldn't happen — see that function's own comment
+    }
 
     // A reveal isn't a single undoable "move" the way a swap is, and
     // undoing back through it could un-green tiles the reveal deliberately
@@ -577,13 +624,22 @@ $(function () {
     // whatever came before it.
     lastMove = null;
 
+    // Cells that actually need to change to reach fullAnswer. Normally
+    // identical to redIndices (deriveFullAnswer never touches a green
+    // cell), but the best-effort fallback above CAN override a green cell
+    // that didn't survive its greedy keep-pass — computed by comparison
+    // rather than assumed to be "just the currently-red ones" so those
+    // overridden tiles get correctly swapped into place too.
+    const cellsToRemap = [];
+    for (let i = 0; i < TOTAL_TILES; i++) if (board[i] !== fullAnswer[i]) cellsToRemap.push(i);
+
     let chosen;
     if (tier === 3) {
-      chosen = findCycles(redIndices, fullAnswer, board);
+      chosen = findCycles(cellsToRemap, fullAnswer, board);
     } else {
       let best = { subset: [], gain: -Infinity, score: Infinity };
       for (let attempt = 0; attempt < 40; attempt++) {
-        const res = chooseSafeCycleSet(board, findCycles(redIndices, fullAnswer, board), 4);
+        const res = chooseSafeCycleSet(board, findCycles(cellsToRemap, fullAnswer, board), 4);
         if (res.score < best.score) best = res;
         if (best.gain === 4) break;
       }
@@ -622,14 +678,18 @@ $(function () {
   function updateRevealButtons() {
     const solved = getRedIndices(board).length === 0;
     // A free swap has no solvability guard (unlike a reveal), so a player
-    // can genuinely swap themselves into a dead end — offering a reveal
-    // there would just silently no-op (deriveFullAnswer has nothing to
-    // give), which read as "the button doesn't work". Hide instead.
+    // can genuinely swap themselves into a dead end — offering a PARTIAL
+    // reveal there would just silently no-op (deriveFullAnswer has
+    // nothing to give against a target that isn't decided yet), which
+    // read as "the button doesn't work". Hide those. "Reveal full
+    // solution" is exempt — doReveal()'s own fallback (see
+    // deriveBestEffortAnswer) always has something to offer there, so it
+    // stays available no matter how tangled the board gets.
     const unsolvable = !solved && !isSolvableBoard(board);
     $revealBtn1.toggleClass('is-hidden', solved || unsolvable || reveal1Used || locked);
     // sequential: "4 more" only appears once "4" has actually been used
     $revealBtn2.toggleClass('is-hidden', solved || unsolvable || !reveal1Used || reveal2Used || locked);
-    $revealBtn3.toggleClass('is-hidden', solved || unsolvable || locked);
+    $revealBtn3.toggleClass('is-hidden', solved || locked);
     $revealBtn1.prop('disabled', revealAnimating);
     $revealBtn2.prop('disabled', revealAnimating);
     $revealBtn3.prop('disabled', revealAnimating);

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Inline page-load spinner CSS — see the matching comment in the hub's
+     own index.html for why this is duplicated inline on every page rather
+     than centralized in tokens.css. -->
+<style>
+  .page-loading{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#eef0f3;opacity:0;pointer-events:none;animation:page-loading-reveal 0s 200ms forwards}
+  @keyframes page-loading-reveal{to{opacity:1;pointer-events:auto}}
+  .page-loading__spinner{width:68px;height:68px;border-radius:50%;border:6px solid #c7cdd6;border-top-color:#3d5af1;animation:page-loading-spin .8s linear infinite}
+  @keyframes page-loading-spin{to{transform:rotate(360deg)}}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<!-- Standalone home-screen launch (no Safari chrome) — see the matching
+     comment in the hub's own index.html. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Android/Samsung Internet/Chrome equivalent — see the matching comment
+     in the hub's own index.html. -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#D6B8EC">
+<title>NEYBUZ</title>
+<!-- Same apple-touch-icon as every page — see the matching comment in the
+     hub's own index.html. -->
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<!-- Same load order convention as every other game — see the matching
+     comment in games/solvz/index.html. -->
+<link rel="stylesheet" href="../../shared/tokens.css">
+<link rel="stylesheet" href="../../shared/shell.css">
+<link rel="stylesheet" href="../../shared/tools-panel.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Page-load spinner — see shared/tokens.css's .page-loading rules and
+       shared/core/loading-indicator.js. Same convention on every page. -->
+  <div class="page-loading" id="pageLoading" aria-hidden="true"><div class="page-loading__spinner"></div></div>
+
+  <!-- Same .shell > .shell-stage#game-stage > #game-root convention as
+       every other game. #board holds the 25 tiles (built by index.js). -->
+  <div class="shell" id="app-shell">
+    <div class="shell-stage" id="game-stage">
+      <div id="game-root">
+        <div class="difficulty-line">
+          <span>Today's difficulty: <span class="difficulty-line__tier" id="difficultyTier"></span></span>
+          <button type="button" class="undo-btn is-hidden" id="undoBtn" aria-label="Undo last move" title="Undo last move">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+            undo
+          </button>
+        </div>
+        <div class="neybuz-board" id="board"></div>
+        <div class="verdict-row">
+          <span>Puzzle can be solved from these green tiles?</span>
+          <span class="pill-wrap">
+            <span class="pill" id="pill">
+              <span class="pill-face yes">YES</span>
+              <span class="pill-face no">NO</span>
+            </span>
+          </span>
+        </div>
+        <div class="reveal-actions" id="revealActions">
+          <button class="reveal-btn is-hidden" id="revealBtn1" type="button">Reveal 4 tiles</button>
+          <button class="reveal-btn is-hidden" id="revealBtn2" type="button">Reveal 4 more tiles</button>
+          <button class="reveal-btn is-hidden" id="revealBtn3" type="button">Reveal full solution</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- defer (not a plain blocking script tag): without it, the browser
+       pauses HTML parsing — and, more importantly, the FIRST PAINT of the
+       whole page, spinner included — to fetch this from a cross-origin CDN
+       before it can render anything, which on a slow/cellular connection is
+       exactly what leaves the page looking blank instead of showing the
+       page-load spinner. defer fetches it in the background and still runs
+       it (in document order, before index.js) once parsing finishes — same
+       effective timing, just non-render-blocking. See loading-indicator.js. -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+  <!-- Powers the confetti celebration on a win (see shared/core/shell.js's
+       fireConfetti()) — a small (~5KB) standalone library, no dependency on
+       jQuery or anything else. defer for the same reason as jQuery above. -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

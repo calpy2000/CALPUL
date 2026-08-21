@@ -40,8 +40,25 @@ import { getQuestionTileIconDataURL as getValuzTileIconDataURL } from './games/v
 import { getMojeezTileIconDataURL } from './games/mojeez/tile-icon.js';
 import { getPentagonIconDataURL as getCuluzPentagonIconDataURL } from './games/culuz/tile-icon.js';
 import { getSpokzIconDataURL } from './games/spokz/tile-icon.js';
+import { getNeybuzIconDataURL } from './games/neybuz/tile-icon.js';
 
 export const GAMES = [
+  {
+    id: 'neybuz', // must be unique across all games — used to namespace localStorage keys
+    title: 'NEYBUZ',
+    emojiImage: getNeybuzIconDataURL(),
+    tagline: 'everybody needs good NEYBUZ',
+    path: 'games/neybuz/index.html',
+    color: '#D6B8EC', // light purple pastel — deliberately lighter than both SLYDZ (#AD82D6) and VALUZ (#8E6FB3), picked against those two directly
+    rim: 'rgba(70, 30, 100, 0.30)',
+    higherIsBetter: false, // score = completion time in seconds
+    scoreIsTime: true,
+    isNew: true, // shows the "NEW" ribbon (see style.css's .hub__tile-new-ribbon)
+    devOnly: true, // only visible under TOOL_MODE 'dev' — see shared/core/tool-mode.js. Remove once ready for testers, same pattern every other game's own history in this file documents.
+    // 14th game. Inserted at row 1 / column 1 per explicit request — every
+    // other game (including SPOKZ, moved to row 1 / column 2) shifted along
+    // by one array position.
+  },
   {
     id: 'spokz', // must be unique across all games — used to namespace localStorage keys
     title: 'SPOKZ',
@@ -56,8 +73,8 @@ export const GAMES = [
     // devOnly removed per explicit request, to make SPOKZ visible under
     // TOOL_MODE 'test' (the tester-facing tools panel) — same pattern
     // CULUZ/TOTALZ/MOJEEZ went through once they were ready.
-    // 13th game. Inserted at row 1 / column 1 per explicit request — every
-    // other game shifted along by one array position.
+    // Was row 1 / column 1; shifted to row 1 / column 2 when NEYBUZ was
+    // inserted ahead of it (see NEYBUZ's own comment above).
   },
   {
     id: 'culuz', // must be unique across all games — used to namespace localStorage keys

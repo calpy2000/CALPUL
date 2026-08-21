@@ -1,0 +1,246 @@
+/* NEYBUZ — 5x5 grid, values 1-5. Rearrange so no tile touches another tile
+   that's the same number or one away from it. Uses the shared drag-swap
+   engine (shared/input/dom-tile-drag.js) — see its own file for the
+   .tile/.is-dragging/.drag-over/.is-animating classes this relies on. */
+
+:root {
+  --neybuz-good-bg: #C3ECD3;
+  --neybuz-good-border: #1F6242;
+  --neybuz-bad-bg: #F7CBC5;
+  --neybuz-bad-border: #8C2E27;
+  --neybuz-tile-text: #1B2430;
+  --neybuz-accent: #8E5FB0; /* darker version of the hub tile's own light purple, for in-game UI accents */
+}
+
+#game-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md, 16px);
+  padding: var(--space-md, 16px) var(--space-md, 16px) var(--space-lg, 24px);
+}
+
+.difficulty-line {
+  width: min(100%, 420px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm, 8px);
+  font-size: 14px;
+  color: var(--ink);
+}
+/* --accent is the shared brand blue (shared/tokens.css), same one MOJEEZ
+   uses for its own difficulty tier tag — kept lowercase to match
+   CURATED_DISTS' tier names (easy/medium/hard/hardest) as-is. */
+.difficulty-line__tier {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Same understated text-link look as .reveal-btn below, just with a small
+   leading icon — undo isn't a reveal-confirm-worthy action (it only ever
+   unwinds the player's own last swap), so it skips that dialog entirely. */
+.undo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-family: var(--font-body);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+.undo-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.undo-btn:hover { color: var(--ink); }
+.undo-btn:disabled { color: #b7bcc4; text-decoration: none; cursor: not-allowed; }
+.undo-btn.is-hidden { display: none; }
+
+.neybuz-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  aspect-ratio: 1 / 1;
+  width: min(100%, 420px);
+  gap: 0;
+  touch-action: none;
+  user-select: none;
+  border-radius: 12px;
+  overflow: hidden; /* clips the corner tiles' square corners into this rounded outer shape, so the tiles can stay perfectly flush (radius:0) with zero visible gap between them, while the board as a whole still reads as one rounded tile */
+  box-shadow: 0 1px 2px rgba(24,34,51,0.06), 0 8px 24px rgba(24,34,51,0.08);
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: clamp(20px, 5.5vw, 32px);
+  font-variant-numeric: tabular-nums;
+  color: var(--neybuz-tile-text);
+  background: var(--neybuz-bad-bg);
+  /* no border-radius — rounded corners are what let the board's own
+     background peek through as a thin white line at each tile boundary
+     under gap:0; square corners tile perfectly flush with none */
+  border-top: 4.5px solid var(--neybuz-bad-border);
+  border-left: 4.5px solid var(--neybuz-bad-border);
+  border-right: 4.5px solid var(--neybuz-bad-border);
+  border-bottom: 4.5px solid var(--neybuz-bad-border);
+  cursor: grab;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+/* Required by the shared drag engine (see dom-tile-drag.js's own comment):
+   a tile has no text-node children here, but this stays as a defensive
+   guard against ever adding one (e.g. a lock badge) without remembering it. */
+.tile * { pointer-events: none; }
+
+.tile.good { background: var(--neybuz-good-bg); }
+.tile.is-dragging { opacity: 0.55; z-index: 100; }
+.tile.drag-over { box-shadow: inset 0 0 0 3px var(--neybuz-accent); }
+.tile.is-reveal-locked { cursor: default; }
+.tile.is-selected { box-shadow: 0 0 0 3px var(--neybuz-accent); transform: scale(0.94); z-index: 2; }
+
+/* --- Live solvability pill --- */
+.verdict-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink);
+  width: min(100%, 420px);
+}
+.pill-wrap {
+  perspective: 500px;
+  display: inline-block;
+  width: 58px;
+  height: 25px;
+  flex: none;
+}
+.pill {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+.pill-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  border: 1.5px solid;
+  backface-visibility: hidden;
+}
+.pill-face.yes { background: var(--neybuz-good-bg); color: var(--neybuz-tile-text); border-color: var(--neybuz-good-border); }
+.pill-face.no {
+  background: var(--neybuz-bad-bg);
+  color: var(--neybuz-tile-text);
+  border-color: var(--neybuz-bad-border);
+  transform: rotateY(180deg);
+}
+
+/* --- Reveal buttons — same understated link-style as SPOKZ/SLYDZ's own
+   .reveal-actions/.reveal-btn (each game styles these itself; not shared
+   CSS — see games/spokz/style.css for the reference pattern). --- */
+.reveal-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.reveal-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-family: var(--font-body);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.reveal-btn:hover { color: var(--ink); }
+.reveal-btn:disabled { color: #b7bcc4; text-decoration: none; cursor: not-allowed; }
+.reveal-btn.is-hidden { display: none; }
+
+/* --- Reveal confirm dialog: reuses shell.js's own .shell-overlay /
+   .shell-overlay__panel classes (see games/spokz/index.js's
+   openRevealConfirm for the reference pattern) so it can never visually
+   drift out of sync with the start banner/end screen — only the
+   game-specific action-row layout below is new. --- */
+.reveal-confirm__actions {
+  display: flex;
+  gap: var(--space-sm, 8px);
+  justify-content: center;
+  margin-top: var(--space-md, 16px);
+}
+
+/* --- Help toggle/popover — same placement and shape as SPOKZ/SLYDZ's own
+   (each game styles these itself; not shared CSS). --- */
+.help-wrap {
+  grid-column: 3;
+  justify-self: end;
+  position: relative; /* positioning reference for .help-popover below — see index.js's own comment on why this can't be #game-stage */
+}
+
+/* .shell-header (this wrap's own parent) and .shell-stage (the board's
+   parent) are sibling flex items with neither one setting a z-index of its
+   own — so with nothing said here, the WHOLE header box paints below the
+   WHOLE stage box in DOM order, dragging the popover behind the grid along
+   with it regardless of its own z-index (that only wins comparisons among
+   .shell-header's own descendants, never against .shell-stage as a unit).
+   Lifting the header itself above that outer comparison is what lets the
+   popover clear the grid underneath. */
+.shell-header {
+  position: relative;
+  z-index: 5;
+}
+.help-toggle {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+.help-toggle.is-active { background: var(--neybuz-accent); color: #fff; border-color: var(--neybuz-accent); }
+.help-toggle.is-hidden { display: none; }
+
+.help-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-xs, 4px);
+  width: 360px; /* 1.5x the original 240px, explicit request */
+  max-width: calc(100vw - 32px); /* keeps it from overflowing the viewport on narrow phones now that it's wider */
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: var(--space-md, 16px);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  z-index: 30;
+}
+.help-popover.is-hidden { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pill, .pill-face { transition: none !important; }
+}

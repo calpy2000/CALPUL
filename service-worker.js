@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.29';
+const CACHE_VERSION = 'v5.38';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -145,6 +145,12 @@ const CODE_URLS = [
   'games/muveez/index.js',
   'games/muveez/manifest.json',
   'games/muveez/style.css',
+
+  'games/neybuz/index.html',
+  'games/neybuz/index.js',
+  'games/neybuz/manifest.json',
+  'games/neybuz/style.css',
+  'games/neybuz/tile-icon.js',
 
   'games/quadz/index.html',
   'games/quadz/index.js',

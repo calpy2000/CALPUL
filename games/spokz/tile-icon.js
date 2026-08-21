@@ -71,16 +71,17 @@ export function drawSpokzIcon(context, x, y, size) {
   context.restore();
 }
 
-const ICON_RENDER_SIZE = 96;
-let cachedIconDataURL = null;
+// Static PNG (images/tile-icon.png), not a runtime canvas render — this
+// function used to draw + toDataURL() on every single page load (module
+// scope, unconditional), which is exactly the class of per-visit cost that
+// was root-caused as a contributor to the "long delay tapping back to the
+// hub" bug on JEWELZ/WARPZ (see project_gamehub_back_button_delay memory)
+// and, once audited, confirmed here too. drawSpokzIcon() above is UNCHANGED
+// and still the source of truth if this icon's design ever needs to
+// change — regenerate images/tile-icon.png from it (e.g. via a headless
+// Chrome + CDP one-off, see that same memory's own note on the technique)
+// rather than hand-editing the PNG. import.meta.url-relative, not a bare
+// relative path — see sw-keepalive.js's own comment for why that matters.
 export function getSpokzIconDataURL() {
-  if (!cachedIconDataURL) {
-    const canvas = document.createElement('canvas');
-    canvas.width = ICON_RENDER_SIZE;
-    canvas.height = ICON_RENDER_SIZE;
-    const context = canvas.getContext('2d');
-    drawSpokzIcon(context, ICON_RENDER_SIZE / 2, ICON_RENDER_SIZE / 2, ICON_RENDER_SIZE * 0.82);
-    cachedIconDataURL = canvas.toDataURL('image/png');
-  }
-  return cachedIconDataURL;
+  return new URL('./images/tile-icon.png', import.meta.url).href;
 }

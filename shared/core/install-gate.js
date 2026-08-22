@@ -129,10 +129,11 @@ const ANDROID_STEPS = `
   <p class="install-gate__steps-heading">What to do (Android, Chrome)</p>
   <ol class="install-gate__steps">
     <li><span>Tap the <strong>&#8942;</strong> menu (three dots, top-right of Chrome)</span></li>
-    <li><span>Tap <strong>"Add to Home screen"</strong> (some phones show <strong>"Install app"</strong> instead)</span></li>
+    <li><span>Scroll down and tap <strong>"Add to Home screen"</strong> — on newer Chrome this is called <strong>"Install and create shortcut"</strong> instead, or you might see <strong>"Install app"</strong></span></li>
     <li><span>Confirm with <strong>"Add"</strong> or <strong>"Install"</strong></span></li>
   </ol>
   <p class="install-gate__step-note">If Chrome shows its own pop-up suggesting you install PUSULZ before you even get to the menu, you can tap that instead — same result.</p>
+  <p class="install-gate__step-note">Don't see any of these options in the menu? Fully close Chrome (swipe it away from your recent apps, don't just go back), reopen this link, wait a few seconds for the page to finish loading, then check the menu again.</p>
 `;
 
 function stepsHtml(platform) {

@@ -27,7 +27,7 @@
 // browser notice a new version exists at all — that byte-for-byte diff is
 // the actual trigger for reinstalling and re-precaching, not anything
 // clever inside this file.
-const CACHE_VERSION = 'v5.43';
+const CACHE_VERSION = 'v6.1';
 const CODE_CACHE = `pusulz-code-${CACHE_VERSION}`;
 
 // Bump ONLY when an image file's actual pixel content changes in place
@@ -62,7 +62,9 @@ const CODE_URLS = [
   'favicon.ico',
   'games-registry.js',
   'icon-192.png',
+  'icon-192-maskable.png',
   'icon-512.png',
+  'icon-512-maskable.png',
   'index.html',
   'index.js',
   'manifest.json',

@@ -108,7 +108,6 @@ function detectPlatform() {
 // approximations) so a tester can visually match what they're looking for
 // on their own screen, not just read a name. currentColor lets each pick up
 // .install-gate__step-icon's own color via CSS rather than being hardcoded.
-const MORE_ICON_SVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><circle cx="7.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="16.5" cy="12" r="1.4" fill="currentColor"/></svg>`;
 const SHARE_ICON_SVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7.5 7.5L12 3l4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="5" y="10.5" width="14" height="10" rx="2.5" stroke="currentColor" stroke-width="1.7"/></svg>`;
 
 function stepIcon(svg) {
@@ -118,8 +117,7 @@ function stepIcon(svg) {
 const IOS_STEPS = `
   <p class="install-gate__steps-heading">What to do (iPhone, Safari)</p>
   <ol class="install-gate__steps">
-    <li>${stepIcon(MORE_ICON_SVG)}<span>Tap the <strong>&#8226;&#8226;&#8226;</strong> icon next to the address bar, at the bottom right of this page below</span></li>
-    <li>${stepIcon(SHARE_ICON_SVG)}<span>Tap the <strong>Share</strong> icon</span></li>
+    <li>${stepIcon(SHARE_ICON_SVG)}<span>Look near the address bar for the <strong>Share</strong> icon (a square with an arrow pointing up) and tap it — on some iPhones you'll need to tap the <strong>&#8226;&#8226;&#8226;</strong> "More" icon first to find it</span></li>
     <li><span>Scroll down and tap <strong>"Add to Home Screen"</strong></span></li>
   </ol>
   <p class="install-gate__step-note">Don't tap <strong>"Add Bookmark"</strong> at any point — that's a different option nearby, and it won't create a working Home Screen icon.</p>

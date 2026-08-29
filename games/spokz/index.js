@@ -65,17 +65,24 @@ $(function () {
     return result;
   }
 
-  // THEMED_DAYS's index 0 is pinned to this real calendar day-of-year
-  // (2026-08-20, verified against shared/core/date-utils.js's own
-  // dayOfYear() logic — don't hand-recompute this by arithmetic, it's
-  // easy to get off by one against leap-year/timezone edge cases).
-  // Everything from here on cycles through the 8 curated days repeatedly
-  // (day 239 wraps back to index 0 again) rather than falling back to
-  // PUZZLES_366's plain set — only 8 themed days exist so far, so cycling
-  // keeps every future day showing real curated content instead of hitting
-  // undefined puzzle data once the 8 run out. Revisit once more themed
-  // days exist.
-  const THEMED_START_DAY = 231;
+  // THEMED_DAYS now holds 60 entries: the original 8 (indices 0-7) plus a
+  // 52-day batch appended 2026-08-29 (indices 8-59, see themed-days.js's
+  // own header comment for how that batch is ordered). THEMED_START_DAY
+  // was moved from 231 to 233 specifically so index 8 — the first day of
+  // the new batch — lands on 2026-08-29 itself. Verified by actually
+  // running shared/core/date-utils.js's own dayOfYear() at commit time
+  // (241, not the naively-expected 240) rather than hand-computing it —
+  // a first attempt at 232 landed on day-of-year 240 by hand-arithmetic
+  // but was off by one because that calculation crossed the BST/GMT
+  // daylight-saving transition, exactly the kind of edge case this
+  // function is easy to get wrong by hand for. Point is: the new content
+  // is what actually starts showing today and each day after, with the
+  // original 8 cycling back in afterward rather than being dropped.
+  // Everything cycles through all 60 days repeatedly once they run out,
+  // rather than falling back to PUZZLES_366's plain set — keeps every
+  // future day showing real curated content instead of hitting undefined
+  // puzzle data. Revisit once more themed days exist.
+  const THEMED_START_DAY = 233;
 
   // Builds one day's puzzle from THEMED_DAYS: each entry's 6 words already
   // all share their first letter (that's the day's center letter), so
@@ -98,7 +105,7 @@ $(function () {
   const puzzle = buildDailyPuzzle(todayDayOfYear);
   // `let`, not `const` — the dev-tools "preview a pool type" shortcuts
   // (see previewThemedDay() below) reassign these to jump straight to any
-  // of THEMED_DAYS's 8 entries without a page reload. Every other place in
+  // of THEMED_DAYS's entries without a page reload. Every other place in
   // this file that reads them still just reads a plain variable, so
   // nothing downstream needs to know previewing happened.
   let CENTER_LETTER = puzzle.centerLetter;
@@ -910,10 +917,18 @@ $(function () {
     showRevealButtons();
   }
 
+  // One preview button per pool TYPE (not per day) — THEMED_DAYS now holds
+  // 60 entries across 8 pool types, so mapping every entry here would give
+  // 60 buttons with mostly-duplicate labels. Jumps to that type's first
+  // occurrence in THEMED_DAYS as a representative example.
+  const firstIndexByPoolType = new Map();
+  THEMED_DAYS.forEach((day, i) => {
+    if (!firstIndexByPoolType.has(day.poolType)) firstIndexByPoolType.set(day.poolType, i);
+  });
   initToolsPanel([GAME_ID], {
     extraActions: [
       { label: 'Solve puzzle', onClick: solvePuzzle },
-      ...THEMED_DAYS.map((day, i) => ({ label: `Preview: ${day.poolType}`, onClick: () => previewThemedDay(i) })),
+      ...[...firstIndexByPoolType.entries()].map(([poolType, i]) => ({ label: `Preview: ${poolType}`, onClick: () => previewThemedDay(i) })),
     ],
   });
 

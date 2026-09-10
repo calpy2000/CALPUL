@@ -1,221 +1,401 @@
-Day,Type,Category,Tag Line,Question Number,Select,Question,Answer,More
-225,colour,World Flags,Match the colour to each flag fact,1,,Circle colour on Japan's flag,red,Japan's flag features a red circle representing the sun on a white background
-,,,,2,,Maple leaf colour on Canada's flag,red,Canada's flag has a red maple leaf on a white background adopted in 1965
-,,,,3,,Background colour of Turkey's flag,red,Turkey's flag has a white star and crescent on a red background
-,,,,4,Y,Background colour of Brazil's flag,green,Brazil's flag has a yellow diamond and blue circle on a green background
-,,,,5,,Diamond colour on Brazil's flag,yellow,The yellow diamond on Brazil's flag represents the country's wealth
-,,,,6,,Circle colour on Brazil's flag,blue,The blue circle on Brazil's flag features a starry sky and the motto Order and Progress
-,,,,7,,Colour nearest the flagpole on Ireland's flag,green,Ireland's tricolour has green nearest the flagpole then white then orange
-,,,,8,,Outer stripe colour on Ireland's flag,orange,The orange stripe on Ireland's flag represents the country's Protestant minority
-,,,,9,Y,Top stripe colour on India's flag,orange,India's flag has a saffron stripe on top white in the middle and green at the bottom
-,,,,10,,Wheel colour at the centre of India's flag,blue,A navy blue Ashoka Chakra wheel sits at the centre of India's white stripe
-,,,,11,,Y-shape colour on South Africa's flag,green,South Africa's flag has a green Y-shape splitting red and blue bands
-,,,,12,,Diagonal cross colour on Jamaica's flag,yellow,Jamaica's flag has a gold diagonal cross dividing green and black triangles
-,,,,13,Y,Top stripe colour on Germany's flag,black,Germany's flag has black red and gold horizontal stripes black on top
-,,,,14,,Bottom stripe colour on Germany's flag,yellow,Germany's bottom stripe is gold representing the country's ideals of unity
-,,,,15,,Middle stripe colour on Belgium's flag,yellow,Belgium's flag has black yellow and red vertical stripes yellow in the middle
-,,,,16,Y,Bottom stripe colour on Bulgaria's flag,red,Bulgaria's flag has white green and red horizontal stripes red at the bottom
-,,,,17,,Widest stripe colour on Spain's flag,yellow,Spain's flag has a wide yellow stripe between two narrower red stripes
-,,,,18,Y,Cross colour on Sweden's flag,yellow,Sweden's flag has a yellow Scandinavian cross on a blue background
-,,,,19,,Background colour of Sweden's flag,blue,Sweden's flag design is one of the oldest still in use dating to the 1600s
-,,,,20,Y,Parrot colour on Dominica's flag,purple,Dominica's flag is the only national flag to feature the colour purple in its Sisserou parrot
-235,letter,Tools,Match the right letter to each tool clue,1,,First letter of the tool used to drive nails into wood,H,A hammer's flat head drives nails while its claw end pulls them out
-,,,,2,,Middle letter of the tool with a rotating bit used to bore holes,I,A power drill spins a bit to bore holes into wood metal or masonry
-,,,,3,,Last letter of the tool used to turn screws,R,A screwdriver's tip is shaped to match a screw's slot or cross head
-,,,,4,,First letter of the tool used to grip and twist nuts and bolts,W,A wrench's jaws grip a bolt head so it can be turned
-,,,,5,,Middle letter of the tool used to cut wood by hand,A,A hand saw's teeth cut through wood as it is pushed and pulled
-,,,,6,Y,2nd letter of the tool used to smooth wood surfaces,L,A hand plane shaves thin layers off wood to smooth or shape it
-,,,,7,,Last letter of the tool with two pivoting arms used to grip small objects,S,Pliers use two pivoting arms to grip twist or bend small objects
-,,,,8,,Second letter of the tool with a sharp blade used to carve wood,H,A chisel's sharp edge carves or shapes wood when struck with a mallet
-,,,,9,Y,Middle letter of the metal bar used to pry things apart,W,A crowbar's curved end and length give leverage to pry things apart
-,,,,10,,First letter of the tool used to check if a surface is perfectly horizontal,L,A spirit level uses a bubble in liquid to show if a surface is flat
-,,,,11,Y,Last letter of the tool used to pick up tiny objects,S,Tweezers pinch tiny objects between two fine metal tips
-,,,,12,,Second letter of the tool with two pivoting blades used to cut paper or fabric,C,Scissors use two pivoting blades to cut paper card or fabric
-,,,,13,,Middle letter of the tool used to split logs of wood,X,An axe's heavy wedge-shaped head splits logs along the grain
-,,,,14,,Last letter of the fine-toothed hand saw used to cut metal,W,A hacksaw's fine teeth are designed to cut through metal
-,,,,15,Y,2nd letter of the tool used to strike a chisel,A,A mallet's soft or wooden head strikes chisels without damaging them
-,,,,16,,Middle letter of the adjustable tool used to grip pipes,N,A spanner's jaws or ring grip a nut or bolt so it can be turned
-,,,,17,Y,1st letter of the tool used to smooth metal,F,A file's rough surface is dragged across metal or wood to smooth it
-,,,,18,,Last letter of the tool used to hold pieces together tightly while glue dries,P,A clamp squeezes two pieces together and holds them in place
-,,,,19,,Second letter of the sharp retractable-blade tool used to cut boxes,T,A utility knife's blade retracts into the handle for safe storage
-,,,,20,Y,Last letter of the tool that holds a workpiece steady on a bench,E,A vice bolts to a workbench and clamps a workpiece steady
-236,letter,Furniture,Match the right letter to each furniture clue,1,,Middle letter of the item you sit on with a back and four legs,A,A chair typically has a seat back and four legs to support one person
-,,,,2,,First letter of the flat-topped furniture used for eating or working,T,Tables come in countless shapes but always provide a flat surface
-,,,,3,Y,2nd letter of the long seat built for several people,O,A sofa is a long padded seat designed to comfortably fit more than one person
-,,,,4,,Middle letter of the furniture you sleep on,E,Beds have been used for sleeping in some form for thousands of years
-,,,,5,,Last letter of the furniture with drawers used for studying or working,K,A desk provides a flat surface for writing reading or using a computer
-,,,,6,,First letter of the tall cupboard used to hang and store clothes,W,A wardrobe typically has a rail for hanging clothes plus shelves or drawers
-,,,,7,,Second letter of the shelved furniture used to store books,O,A bookcase is made up of open shelves designed to hold books upright
-,,,,8,Y,Middle letter of the storage furniture with doors and shelves,I,A cabinet is an enclosed piece of furniture with doors and often shelves inside
-,,,,9,,Second letter of the chest of drawers used to store folded clothes,R,A dresser is a chest of drawers often paired with a mirror on top
-,,,,10,Y,Last letter of the padded footstool for your feet,N,An ottoman is a low padded seat or footstool with no back or arms
-,,,,11,,First letter of the long backless seat found in parks and hallways,B,A bench is a long seat often without a back built for more than one person
-,,,,12,Y,Last letter of the backless seat for one person,L,A stool is a simple backless seat usually supported on three or four legs
-,,,,13,,Last letter of the doored storage furniture typically found in a kitchen,D,A cupboard is an enclosed cabinet most often used to store crockery or food
-,,,,14,Y,Middle letter of the low drawer unit in a dining room,B,A sideboard is a long low unit used to store dishes linen or cutlery in a dining room
-,,,,15,,Second letter of the reclining chair that tilts back with a footrest,E,A recliner tilts backward and raises a footrest for extra comfort
-,,,,16,,First letter of the fold-flat sofa bed popular in small apartments,F,A futon is a padded mattress that can fold to double as a sofa
-,,,,17,Y,2nd letter of the stacked beds joined by a ladder,U,Bunk beds stack two sleeping platforms to save floor space joined by a ladder
-,,,,18,,First letter of the small table placed beside a bed,N,A nightstand sits beside a bed holding a lamp clock or bedside items
-,,,,19,,Second letter of the two-seat sofa designed for couples,O,A loveseat is a small sofa built to comfortably seat exactly two people
-,,,,20,,First letter of the padded frame at the top end of a bed,H,A headboard is a panel that forms the top end of a bed frame
-237,letter,Elvis Songs,Match the right letter to each Elvis clue,1,Y,Middle letter of the 1st word in Elvis's 1957 hit about prisoners,H,The song is Jailhouse Rock released in 1957
-,,,,2,,Last letter of the first word in Elvis's song comparing a lover to a crying canine,D,The song is Hound Dog released in 1956
-,,,,3,Y,2nd letter of the last word in Elvis's song about Lonely Street,O,The song is Heartbreak Hotel released in 1956
-,,,,4,,Middle letter of the last word in Elvis's 1969 hit about being caught in a trap,N,The song is Suspicious Minds released in 1969
-,,,,5,,Last letter of the first word in Elvis's disco-era hit about fiery romance,G,The song is Burning Love released in 1972
-,,,,6,,Last letter of the last word in Elvis's song warning not to step on his footwear,S,The song is Blue Suede Shoes released in 1956
-,,,,7,,First letter of the last word in Elvis's gentle title track from his debut film,T,The song is Love Me Tender the title track from Elvis's 1956 film
-,,,,8,,First letter of the last word in Elvis's song asking a lover not to be unkind,C,The song is Don't Be Cruel released in 1956
-,,,,9,,Second letter of the last word in Elvis's song about an undeliverable love letter,E,The song is Return to Sender released in 1962
-,,,,10,,Second letter of the first word in Elvis's song about a rainy search across a US state,E,The song is Kentucky Rain released in 1970
-,,,,11,Y,Last letter of the 1st word in Elvis's ballad of lost love,S,The song is Always on My Mind released in 1972
-,,,,12,Y,1st letter of the 1st word in Elvis's ode to a Nevada city,V,The song is Viva Las Vegas released in 1964
-,,,,13,,Last letter of the last word in Elvis's song calling a lover a lucky token,M,The song is Good Luck Charm released in 1962
-,,,,14,,Second letter of the last word in Elvis's song about a younger sibling,I,The song is Little Sister released in 1961
-,,,,15,,Last letter of the last word in Elvis's gospel-tinged hit set in a small church,L,The song is Crying in the Chapel recorded in 1960
-,,,,16,Y,1st letter of the 1st word in Elvis's song about a stiff heart,W,The song is Wooden Heart released in 1960
-,,,,17,,Middle letter of the first word in Elvis's song comparing himself to a cuddly stuffed animal,D,The song is Teddy Bear released in 1957
-,,,,18,,Middle letter of the first word in Elvis's early rockabilly song about a puzzling locomotive,T,The song is Mystery Train released in 1955
-,,,,19,,Second letter of the last word in Elvis's song about a lover secretly wicked,I,The song is Devil in Disguise released in 1963
-,,,,20,Y,1st letter of the last word in Elvis's song about poverty,G,The song is In the Ghetto released in 1969
-238,letter,Classic Novels,Match the right letter to each novel clue,1,Y,Last letter of the last word in Austen's novel about the Bennets,E,Jane Austen's Pride and Prejudice follows the Bennet sisters published in 1813
-,,,,2,,Last letter of the first word in Emily Bronte's novel set on the Yorkshire moors,G,Emily Bronte's Wuthering Heights is set on the Yorkshire moors published in 1847
-,,,,3,,Second letter of the last word in Charlotte Bronte's novel about an orphaned governess,Y,Charlotte Bronte's Jane Eyre follows an orphaned governess published in 1847
-,,,,4,,First letter of the first word in Herman Melville's novel about a giant white whale,M,Herman Melville's Moby-Dick follows the hunt for a giant white whale published in 1851
-,,,,5,,Second letter of Mary Shelley's title about a scientist's monstrous creation,R,Mary Shelley's Frankenstein was published in 1818
-,,,,6,,Middle letter of Bram Stoker's title about a Transylvanian vampire,C,Bram Stoker's Dracula was published in 1897
-,,,,7,,First letter of the last word in Louisa May Alcott's novel about the March sisters,W,Louisa May Alcott's Little Women follows the March sisters published in 1868
-,,,,8,,First letter of the last word in Tolstoy's sweeping novel set during the Napoleonic Wars,P,Tolstoy's War and Peace is set during the Napoleonic Wars published in 1869
-,,,,9,,Second letter of the last word in Dostoevsky's novel about a guilt-ridden murderer,U,Dostoevsky's Crime and Punishment follows a guilt-ridden murderer published in 1866
-,,,,10,,First letter of the last word in Tolstoy's tragic novel about a doomed aristocratic affair,K,Tolstoy's Anna Karenina follows a tragic aristocratic affair published in 1877
-,,,,11,Y,Last letter of the 1st word in Dickens's novel about Pip,T,Dickens's Great Expectations follows the orphan Pip published in 1861
-,,,,12,,Last letter of the last word in Dickens's novel about a boy who asks for more gruel,T,Dickens's Oliver Twist follows a workhouse orphan published in 1838
-,,,,13,,Second letter of the last word in Defoe's novel about a shipwrecked castaway,R,Daniel Defoe's Robinson Crusoe follows a shipwrecked castaway published in 1719
-,,,,14,Y,Middle letter of the last word in Swift's novel about Lilliput,V,Jonathan Swift's Gulliver's Travels satirises society through fantastical voyages published in 1726
-,,,,15,,Last letter of the first word in Robert Louis Stevenson's novel about pirates and buried gold,E,Robert Louis Stevenson's Treasure Island follows a hunt for buried pirate gold published in 1883
-,,,,16,,First letter of George Eliot's title about a fictional English town,M,George Eliot's Middlemarch is set in a fictional English town published in 1871-72
-,,,,17,Y,1st letter of the last word in Thackeray's novel about Becky Sharp,F,William Thackeray's Vanity Fair follows the scheming Becky Sharp published in 1848
-,,,,18,,Last letter of the last word in Aldous Huxley's dystopian novel about a genetically engineered society,D,Aldous Huxley's Brave New World imagines a genetically engineered dystopia published in 1932
-,,,,19,Y,Middle letter of the last word in Golding's novel about schoolboys,I,William Golding's Lord of the Flies follows stranded schoolboys published in 1954
-,,,,20,Y,2nd letter of the 1st word in Bradbury's novel about book-burning,A,Ray Bradbury's Fahrenheit 451 imagines a future where books are burned published in 1953
-239,letter,Musicals,Match the right letter to each musical clue,1,,First letter of the first word in the musical about rival gangs the Jets and Sharks,W,The musical is West Side Story a modern retelling of Romeo and Juliet
-,,,,2,,Middle letter of the musical set in a 1920s jail full of murderous showgirls,C,The musical is Chicago following Roxie Hart and Velma Kelly
-,,,,3,,Last letter of the musical about a 1950s high school romance between Danny and Sandy,E,The musical is Grease
-,,,,4,Y,1st letter of the musical based on T S Eliot's feline poem,C,The musical is Cats
-,,,,5,Y,2nd letter of the musical about the witches of Oz,I,The musical is Wicked
-,,,,6,,Second letter of the musical about America's first Treasury Secretary told through hip-hop,A,The musical is Hamilton
-,,,,7,,Last letter of the rock musical about young artists living with HIV in New York,T,The musical is Rent
-,,,,8,Y,Middle letter of the musical set in a 1930s Berlin nightclub,A,The musical is Cabaret
-,,,,9,Y,1st letter of the musical set on a farm in a new US state,O,The musical is Oklahoma!
-,,,,10,,Second letter of the musical about a workhouse orphan who asks for more,L,The musical is Oliver!
-,,,,11,,Last letter of the musical about a Depression-era orphan and her dog Sandy,E,The musical is Annie
-,,,,12,,Last letter of the first word in the musical built around ABBA's greatest hits,A,The musical is Mamma Mia!
-,,,,13,,Middle letter of the musical about a plus-size teen chasing dance-show stardom in 1960s Baltimore,S,The musical is Hairspray
-,,,,14,,Middle letter of the musical about a gifted girl with telekinetic powers based on Roald Dahl,I,The musical is Matilda
-,,,,15,,First letter of the last word in the musical about a shoe factory saved by a drag queen,B,The musical is Kinky Boots
-,,,,16,Y,Last letter of the last word in the musical about a murderous barber,D,The musical is Sweeney Todd
-,,,,17,,Second letter of the last word in the musical about a doomed romance during the Vietnam War,A,The musical is Miss Saigon
-,,,,18,,Last letter of the musical about Argentina's iconic First Lady,A,The musical is Evita
-,,,,19,,Middle letter of the Stephen Sondheim musical about a bachelor's circle of married friends,P,The musical is Company
-,,,,20,Y,1st letter of the last word in the musical about a Jewish milkman,R,The musical is Fiddler on the Roof
-240,letter,Sherlock Holmes,Match the right letter to each Holmes clue,1,,Last letter of the surname of the detective who lives at 221B Baker Street,S,The character is Sherlock Holmes
-,,,,2,,First letter of the surname of Holmes's loyal friend a former army doctor,W,The character is Dr John Watson
-,,,,3,Y,2nd letter of the surname of Holmes's arch-nemesis,O,The character is Professor Moriarty
-,,,,4,Y,2nd letter of the surname of the woman who outwitted Holmes,D,The character is Irene Adler
-,,,,5,Y,Last letter of the surname of Holmes's landlady,N,The character is Mrs Hudson
-,,,,6,,First letter of the surname of the Scotland Yard inspector who often seeks Holmes's help,L,The character is Inspector Lestrade
-,,,,7,Y,Middle letter of the 1st word in Holmes's home street name,K,The street is Baker Street
-,,,,8,,Last letter of the name of Holmes's distinctive checked hunting cap,R,The item is the deerstalker hat
-,,,,9,Y,Middle letter of the 1st name of Holmes's smarter brother,R,The character is Mycroft Holmes
-,,,,10,,Last letter of the Swiss waterfall where Holmes battles Moriarty,H,The location is the Reichenbach Falls
-,,,,11,,First letter of the London police force that regularly consults Holmes,S,The organisation is Scotland Yard
-,,,,12,,Second letter of the name for the horse-drawn cab common in Victorian London,A,The vehicle is a hansom cab
-,,,,13,,Middle letter of the Devon country estate haunted by a legendary hound,R,The estate is Baskerville Hall
-,,,,14,,Last letter of the material commonly used to make Holmes's pipe,M,The material is meerschaum
-,,,,15,,Second letter of the instrument Holmes plays to help himself think,I,The instrument is the violin
-,,,,16,,First letter of the optical tool Holmes famously uses to examine clues,M,The tool is a magnifying glass
-,,,,17,,Second letter of the country where Irene Adler's famous scandal took place,O,The country is Bohemia
-,,,,18,,Middle letter of the drug Holmes was known to use as a seven-percent solution,A,The drug is cocaine
-,,,,19,,Last letter of the object Holmes is most often depicted smoking,E,The object is a pipe
-,,,,20,Y,2nd letter of the word Holmes is famously misquoted saying,L,The word is elementary as in Elementary my dear Watson
-241,letter,The Simpsons,Match the right letter to each Simpsons clue,1,,Middle letter of the first name of the bald doughnut-loving father in Springfield,M,The character is Homer Simpson
-,,,,2,,First letter of the first name of the blue-haired Simpson family matriarch,M,The character is Marge Simpson
-,,,,3,,Last letter of the first name of the mischievous skateboarding Simpson son,T,The character is Bart Simpson
-,,,,4,Y,2nd letter of the 1st name of the saxophone-playing daughter,I,The character is Lisa Simpson
-,,,,5,,First letter of the first name of the pacifier-sucking Simpson baby,M,The character is Maggie Simpson
-,,,,6,Y,Last letter of the surname of the cheerful next-door neighbour,S,The character is Ned Flanders
-,,,,7,Y,Last letter of the 1st name of the show's gruff tavern owner,E,The character is Moe Szyslak
-,,,,8,Y,Middle letter of the surname of the elderly nuclear plant owner,R,The character is Mr Burns
-,,,,9,,Second letter of the surname of Bart's nerdy allergy-prone best friend,I,The character is Milhouse Van Houten
-,,,,10,Y,Last letter of the surname of the incompetent police chief,M,The character is Chief Wiggum
-,,,,11,,Middle letter of the surname of Springfield Elementary's put-upon principal,N,The character is Principal Skinner
-,,,,12,,Last letter of the first name of the Kwik-E-Mart's Indian-American proprietor,U,The character is Apu Nahasapeemapetilon
-,,,,13,,First letter of the first name of Krusty's scheming deep-voiced rival on the show,S,The character is Sideshow Bob
-,,,,14,,Middle letter of the surname of the beer mascot who bursts through walls with a slogan,F,The character is Duffman
-,,,,15,,Second letter of the first name of Homer's overweight beer-loving best friend,A,The character is Barney Gumble
-,,,,16,,First letter of the first name of Springfield Elementary's accident-prone bus driver,O,The character is Otto Mann
-,,,,17,,Last letter of the first name of Springfield Elementary's short-tempered Scottish groundskeeper,E,The character is Groundskeeper Willie
-,,,,18,Y,Middle letter of the fictional US town in the show,G,The town is Springfield
-,,,,19,,First letter of the fictional beer brand seen throughout the show,D,The brand is Duff Beer
-,,,,20,,Second letter of the first name of Springfield's chaotic children's TV clown,R,The character is Krusty the Clown
-242,letter,Trees,Match the right letter to each tree clue,1,,First letter of the tree whose acorns are a favourite food of squirrels,O,The tree is the oak
-,,,,2,,Last letter of the tree known for its distinctive white papery bark,H,The tree is the birch
-,,,,3,,First letter of the tree tapped in Canada to produce a sweet syrup,M,The tree is the maple
-,,,,4,Y,Last letter of the tree with drooping branches by rivers,W,The tree is the willow
-,,,,5,,Second letter of the evergreen tree traditionally decorated at Christmas,I,The tree is the pine
-,,,,6,Y,Middle letter of the aromatic tree used to line wardrobes,D,The tree is the cedar
-,,,,7,,Last letter of the tree once devastated across Europe by Dutch disease,M,The tree is the elm hit hard by Dutch elm disease
-,,,,8,,First letter of the tree whose wood is traditionally used to make cricket bails and hockey sticks,A,The tree is the ash
-,,,,9,,Last letter of the tree that produces edible nuts inside spiky green husks,H,The tree is the beech whose nuts are called beechmast
-,,,,10,,First letter of the tree whose nuts are roasted at Christmas,C,The tree is the chestnut
-,,,,11,,Second letter of the tree that produces winged helicopter seeds,Y,The tree is the sycamore
-,,,,12,Y,Last letter of the tall tree planted in rows as a windbreak,R,The tree is the poplar
-,,,,13,,Second letter of the conical evergreen tree a common choice for Christmas,P,The tree is the spruce
-,,,,14,,Middle letter of the towering coastal tree among the tallest living things on Earth,W,The tree is the redwood
-,,,,15,,Middle letter of the tall narrow evergreen tree common in Mediterranean cemeteries,R,The tree is the cypress
-,,,,16,Y,1st letter of the tree with large fragrant blossoms,M,The tree is the magnolia
-,,,,17,,Last letter of the tree whose nuts flavour cakes and are toxic to dogs,T,The tree is the walnut
-,,,,18,Y,Middle letter of the tree whose nuts flavour chocolate spread,Z,The tree is the hazel
-,,,,19,,First letter of the tree traditionally linked with protection in Celtic folklore,R,The tree is the rowan
-,,,,20,Y,2nd letter of the African tree with a swollen trunk,A,The tree is the baobab
-243,letter,Flowers,Match the right letter to each flower clue,1,,First letter of the flower traditionally given as a symbol of love often red,R,The flower is the rose
-,,,,2,,Last letter of the flower famous for a 17th-century Dutch trading frenzy,P,The flower is the tulip at the centre of Tulip Mania
-,,,,3,,First letter of the simple white flower with a yellow centre a childhood chain favourite,D,The flower is the daisy
-,,,,4,,Middle letter of the tall flower that tracks the sun's movement across the sky,L,The flower is the sunflower
-,,,,5,Y,Last letter of the fragrant trumpet-shaped bulb flower,Y,The flower is the lily
-,,,,6,,Second letter of the exotic flower prized for its intricate symmetrical blooms,R,The flower is the orchid
-,,,,7,,Last letter of the trumpet-shaped yellow flower that blooms in early spring,L,The flower is the daffodil
-,,,,8,,Last letter of the flower whose seeds are used in baking and on bagels,Y,The flower is the poppy
-,,,,9,Y,2nd letter of the flower named after a Greek goddess,R,The flower is the iris
-,,,,10,,Middle letter of the flower that closes its petals at night and opens with the sun,O,The flower is the peony
-,,,,11,,Middle letter of the frilly flower traditionally worn in a buttonhole,A,The flower is the carnation
-,,,,12,,First letter of the tall flower with a large golden bloom also a French royal symbol,M,The flower is the marigold
-,,,,13,Y,2nd letter of the purple flower used to scent soaps,A,The flower is lavender
-,,,,14,,Last letter of the small purple flower closely related to the pansy,T,The flower is the violet
-,,,,15,Y,Middle letter of the fragrant flower used in scented tea,M,The flower is jasmine
-,,,,16,,First letter of the large tropical flower often seen in Hawaiian garlands,H,The flower is the hibiscus
-,,,,17,,Second letter of the white star-shaped flower that carpets woodland floors in early spring,N,The flower is the snowdrop
-,,,,18,Y,Last letter of the blue flower that carpets spring woodlands,L,The flower is the bluebell
-,,,,19,,Middle letter of the yellow flower with a glossy buttery sheen to its petals,E,The flower is the buttercup
-,,,,20,Y,Last letter of the tall flower with spotted bell-shaped blooms,E,The flower is foxglove
-244,letter,Chess,Match the right letter to each chess clue,1,,First letter of the piece that must never be placed in checkmate,K,In chess checkmating the king ends the game
-,,,,2,,Middle letter of the most powerful piece on the board combining rook and bishop moves,E,The queen can move any number of squares in any direction
-,,,,3,,Last letter of the piece that moves only in straight lines also used when castling,K,The rook moves horizontally or vertically and is involved in castling
-,,,,4,Y,2nd letter of the piece that moves diagonally,I,The bishop stays on one colour of square for the whole game
-,,,,5,,Last letter of the only piece that can jump over other pieces,T,The knight moves in an L-shape and is the only piece that can jump over others
-,,,,6,,First letter of the weakest piece which can promote upon reaching the far rank,P,Pawns can promote to a queen rook bishop or knight upon reaching the eighth rank
-,,,,7,,First letter of the winning move that traps the king with no legal escape,C,Checkmate occurs when a king is attacked and has no legal way to escape
-,,,,8,Y,1st letter of the move where the king shifts toward a rook,C,Castling lets a player move the king two squares toward a rook for safety
-,,,,9,,Middle letter of the drawn position where a player has no legal move but isn't in check,E,Stalemate results in a draw even if one side has far more material
-,,,,10,Y,Last letter of an opening move that sacrifices material early,T,A gambit sacrifices a pawn or piece early for a positional or tactical edge
-,,,,11,,Second letter of the tactic where one piece attacks two enemy pieces at once,O,A fork is a tactic where a single piece often a knight attacks two targets at once
-,,,,12,Y,1st letter of the German term for a forced bad move,Z,Zugzwang describes a position where any move a player makes weakens their position
-,,,,13,Y,Middle letter of the final phase of a chess game,G,The endgame begins once most pieces have been traded off the board
-,,,,14,,Second letter of the Italian term for developing a bishop onto the long diagonal,I,A fianchetto develops a bishop to g2 g7 b2 or b7 along the long diagonal
-,,,,15,,Last letter of the aggressive opening for Black beginning 1.e4 c5,N,The Sicilian Defence is one of the most popular responses to 1.e4
-,,,,16,Y,2nd letter of the title given to chess's top players,R,Grandmaster is the highest title a chess player can earn awarded by FIDE
-,,,,17,,Last letter of the term for a horizontal row of eight squares on the board,K,A rank is one of the eight horizontal rows on a chessboard numbered 1 to 8
-,,,,18,,Second letter of the process where a pawn becomes a queen or other piece on the back row,R,Pawn promotion most often results in a new queen the strongest piece
-,,,,19,,Middle letter of the situation when a king is under direct attack,E,A king in check must move out of attack block it or capture the attacker
-,,,,20,,Middle letter of the first phase of a chess game before the middlegame,N,The opening phase focuses on piece development and king safety
+﻿Day,Type,Category,Tag Line,Question Number,Select,Question,Answer,More
+246,number,The Olympics,drag numbers to answer each clue,1,Y,"Olympic rings, number of",5,The five interlocking rings represent the five inhabited continents joined by Olympism.
+,,,,2,,Years between each Summer Olympics,4,The four-year gap is called an Olympiad.
+,,,,3,,Sports contested at the first modern Olympics in 1896,9,"Athens 1896 featured athletics, cycling, fencing, gymnastics, shooting, swimming, tennis, weightlifting and wrestling."
+,,,,4,Y,Events in a men's decathlon,10,The decathlon spans track and field events over two days.
+,,,,5,,Events in a women's heptathlon,7,The heptathlon combines seven track and field disciplines.
+,,,,6,,"Marathon distance in miles, to the nearest mile",26,"The official distance is 26.2 miles, fixed after the 1908 London Games."
+,,,,7,Y,Michael Phelps' total Olympic medal count,28,Phelps is the most decorated Olympian in history.
+,,,,8,,Michael Phelps' Olympic gold medal count,23,Phelps won golds across four different Olympic Games.
+,,,,9,,Usain Bolt's Olympic gold medal count,8,"Bolt won three golds at each of Beijing 2008, London 2012 and Rio 2016."
+,,,,10,Y,Age of the youngest ever individual Olympic gold medallist,13,US diver Marjorie Gestring won gold at the 1936 Berlin Games.
+,,,,11,,Medal types awarded at the Olympics,3,"Gold, silver and bronze have been awarded since the 1904 Games."
+,,,,12,,Times the modern Olympics have been cancelled by World Wars,3,"The 1916, 1940 and 1944 Games were all cancelled."
+,,,,13,,Players on court for one team in Olympic basketball,5,Basketball has been a full Olympic medal sport since 1936.
+,,,,14,,Minimum age in years for elite Olympic gymnastics,16,The age rule was raised to protect younger gymnasts from the pressures of elite competition.
+,,,,15,,Continents represented by the Olympic rings,5,"Africa, the Americas, Asia, Europe and Oceania are each represented by one ring."
+,,,,16,Y,Edition number of the Tokyo 2020 Summer Olympiad,32,It was officially the Games of the XXXII Olympiad despite being held in 2021.
+,,,,17,,Length of an Olympic swimming pool in metres,50,"A long-course pool is 50 metres, exactly double a short-course pool."
+,,,,18,,Racing lanes in an Olympic swimming pool,8,The pool is built with 10 lanes but only 8 are used for racing.
+,,,,19,Y,Players on court for one team in Olympic volleyball,6,Indoor volleyball has been an Olympic sport since 1964.
+,,,,20,,Sets needed to win an Olympic volleyball match,3,Matches are played as the best of five sets.
+247,number,Formula 1,drag numbers to answer each clue,1,,Wheels on a Formula 1 car,4,"Despite the huge speeds involved, F1 cars remain conventional four-wheeled single-seaters."
+,,,,2,Y,Points awarded for a race win,25,The current scoring system was introduced in 2010.
+,,,,3,,Points awarded for 2nd place,18,The gap between 1st and 2nd is the largest step in the points table.
+,,,,4,,"Points awarded for the fastest lap, if finishing in the top 10",1,The fastest-lap bonus point was reintroduced in 2019.
+,,,,5,,Drivers fielded by each team on the grid,2,Every constructor enters exactly two cars each race weekend.
+,,,,6,Y,Teams on the 2026 F1 grid,11,Cadillac joined the grid as the sport's newest constructor in 2026.
+,,,,7,Y,Total drivers on the 2026 F1 grid,22,Eleven teams each fielding two drivers make up the full grid.
+,,,,8,,Laps in the Monaco Grand Prix,78,"Monaco is the shortest circuit on the calendar, so it needs the most laps."
+,,,,9,Y,Cylinders in a current F1 power unit,6,Modern engines are turbocharged 1.6-litre V6 hybrids.
+,,,,10,,Lewis Hamilton's Formula 1 World Championship titles,7,Hamilton shares the record for most titles with Michael Schumacher.
+,,,,11,,Michael Schumacher's Formula 1 World Championship titles,7,Schumacher won five of his titles consecutively with Ferrari.
+,,,,12,,Points awarded for 3rd place,15,A podium finish outside the top two still earns a solid points haul.
+,,,,13,,Points awarded for 10th place,1,The last point-scoring position on the grid.
+,,,,14,Y,Points awarded for 4th place,12,Points step down by decreasing amounts further down the order.
+,,,,15,Y,Max Verstappen's age when he won his first World title,24,He clinched the 2021 title at the season's final race in Abu Dhabi.
+,,,,16,,Dry-weather tyre compounds available across a season,3,"Soft, medium and hard compounds are colour-coded red, yellow and white."
+,,,,17,,Wheels changed during a standard pit stop,4,Modern pit crews can change all four tyres in around two seconds.
+,,,,18,,Approximate races on a modern F1 season calendar,24,The calendar has expanded significantly from around 16 races in the 1990s.
+,,,,19,,Grid-place penalty for an unscheduled gearbox change,5,Drivers are penalised for swapping gearboxes before the permitted interval.
+,,,,20,,Sprint race weekends on a typical recent F1 season,6,Sprint format weekends add a short extra race on Saturday.
+248,number,The Solar System,drag numbers to answer each clue,1,Y,Planets in the solar system,8,"Pluto was reclassified as a dwarf planet in 2006, leaving eight official planets."
+,,,,2,,Major Galilean moons of Jupiter,4,"Io, Europa, Ganymede and Callisto were first spotted by Galileo in 1610."
+,,,,3,,Moons of Mars,2,"Phobos and Deimos are both small, irregularly shaped moons."
+,,,,4,Y,Major ring groups around Saturn,7,Saturn's rings are labelled A through G in order of discovery.
+,,,,5,,Position of Earth from the Sun,3,"Earth is the third planet out, after Mercury and Venus."
+,,,,6,,Position of Mars from the Sun,4,"Mars sits just beyond Earth's orbit, before the asteroid belt."
+,,,,7,,Minutes for sunlight to reach Earth,8,Light takes about 8 minutes and 20 seconds to cross the roughly 150 million km gap.
+,,,,8,,Length of a year on Mercury in Earth days,88,"Mercury's tight, fast orbit gives it the shortest year of any planet."
+,,,,9,,Moons of Earth,1,"Earth has just the one natural satellite, simply called the Moon."
+,,,,10,,Officially recognised dwarf planets,5,"Pluto, Ceres, Eris, Haumea and Makemake hold the designation."
+,,,,11,,Years for Saturn to orbit the Sun,29,"Saturn's vast distance from the Sun gives it a long, slow orbit."
+,,,,12,Y,Years for Jupiter to orbit the Sun,12,"Jupiter's orbit takes roughly a Jovian ""year"" of 12 Earth years."
+,,,,13,,"Terrestrial, rocky planets in the solar system",4,"Mercury, Venus, Earth and Mars all have solid, rocky surfaces."
+,,,,14,,Gas giant planets in the solar system,2,Jupiter and Saturn are the solar system's two gas giants.
+,,,,15,,Ice giant planets in the solar system,2,Uranus and Neptune are classed separately as ice giants.
+,,,,16,,The asteroid belt's only dwarf planet,1,Ceres is the largest object in the asteroid belt between Mars and Jupiter.
+,,,,17,Y,Planets in the solar system known to have ring systems,4,"Jupiter, Saturn, Uranus and Neptune all have rings, though Saturn's are the most visible."
+,,,,18,Y,Length of a day on Jupiter in hours,10,Jupiter spins faster than any other planet despite its huge size.
+,,,,19,Y,Position of Saturn from the Sun,6,"Saturn is the sixth planet, best known for its spectacular ring system."
+,,,,20,,Terrestrial planet count sharing Earth's rocky classification,4,"Mercury, Venus, Earth and Mars form the inner rocky planets."
+249,number,Ancient Egypt,drag numbers to answer each clue,1,,Great Pyramids of Giza,3,"The Giza pyramids of Khufu, Khafre and Menkaure form the famous trio."
+,,,,2,,Sides on a pyramid's base,4,The square base gives the Great Pyramid its four triangular faces.
+,,,,3,Y,Dynasties commonly used to organise Ancient Egyptian history,30,The dynasty system was devised by the priest Manetho in the 3rd century BC.
+,,,,4,Y,"Years the Great Pyramid took to build, roughly",20,Historians estimate construction under Khufu took around two decades.
+,,,,5,Y,Tutankhamun's age when he became pharaoh,9,He took the throne as a child around 1332 BC.
+,,,,6,Y,Tutankhamun's age at death,19,His short reign and early death fuelled centuries of speculation.
+,,,,7,,Major crowns combined into Egypt's double crown,2,The red crown of Lower Egypt and white crown of Upper Egypt were combined after unification.
+,,,,8,,Pharaohs commonly named Ramesses,11,"Ramesses II, ""the Great"", was the most famous of the eleven."
+,,,,9,,Canopic jars used in mummification,4,"Each jar stored a different preserved organ, protected by its own guardian god."
+,,,,10,,Days the mummification process traditionally took,70,The full process of embalming and wrapping the body took around 70 days.
+,,,,11,,Chambers inside the Great Pyramid,3,"The King's Chamber, Queen's Chamber and an unfinished subterranean chamber."
+,,,,12,,Cleopatra VII's number in the line of Ptolemaic queens named Cleopatra,7,She was the last and most famous of the Cleopatras who ruled Egypt.
+,,,,13,,Scripts inscribed on the Rosetta Stone,3,"Hieroglyphic, Demotic and Ancient Greek text let scholars finally decode hieroglyphs."
+,,,,14,,"Year the Rosetta Stone was discovered, 17--",99,French soldiers found it near the town of Rosetta in 1799.
+,,,,15,Y,"Year Howard Carter discovered Tutankhamun's tomb, 19--",22,The nearly intact tomb was found in the Valley of the Kings in 1922.
+,,,,16,Y,Months in the Ancient Egyptian calendar year,12,The calendar was split into three farming seasons of four months each.
+,,,,17,,Extra days added at the end of the Egyptian calendar year,5,These epagomenal days brought the total to 365 days a year.
+,,,,18,,Approximate height of the Great Sphinx of Giza in metres,20,The Sphinx was carved from a single limestone outcrop.
+,,,,19,,Ancient Wonders of the World still standing today,1,The Great Pyramid of Giza is the sole survivor of the original Seven Wonders.
+,,,,20,,"Sides on the base of the Great Pyramid, aligned to the compass",4,"Its sides are aligned to true north, south, east and west with remarkable precision."
+250,number,The Human Body,drag numbers to answer each clue,1,,Pairs of ribs in the human body,12,"Most people have 24 ribs total, arranged in 12 pairs."
+,,,,2,Y,Bones in each human hand,27,"This includes the wrist, palm and finger bones."
+,,,,3,Y,Bones in the human skull,22,Eight cranial bones and fourteen facial bones make up the skull.
+,,,,4,Y,Chambers in the human heart,4,Two atria and two ventricles keep oxygenated and deoxygenated blood separate.
+,,,,5,Y,Litres of blood in an average adult,5,Total blood volume varies with body size but averages around 5 litres.
+,,,,6,Y,"Adult human teeth, full set",32,This includes the four wisdom teeth at the back.
+,,,,7,,Baby teeth in a full set,20,These primary teeth begin falling out around age six.
+,,,,8,Y,Vertebrae in the human spine,33,"The spine includes cervical, thoracic, lumbar, sacral and coccygeal vertebrae."
+,,,,9,,Pairs of chromosomes in a human cell,23,"Humans have 46 chromosomes total, arranged in 23 pairs."
+,,,,10,,Bones in the human foot,26,Each foot has more bones than almost any other body part relative to its size.
+,,,,11,,Layers of human skin,3,"The epidermis, dermis and hypodermis make up the skin."
+,,,,12,,Lobes on the right lung,3,The right lung is slightly larger than the left to accommodate its extra lobe.
+,,,,13,,Lobes on the left lung,2,The left lung has fewer lobes to make room for the heart.
+,,,,14,,Basic taste categories recognised,5,"Sweet, sour, salty, bitter and umami are the five basic tastes."
+,,,,15,,Human senses commonly recognised,5,"Sight, hearing, smell, taste and touch make up the traditional five senses."
+,,,,16,,Weeks a standard human pregnancy lasts,40,Pregnancy is typically counted from the last menstrual period.
+,,,,17,,Approximate percentage of adult body weight that is water,60,"Water content varies with age, sex and body composition."
+,,,,18,,Maximum number of wisdom teeth a person can have,4,"Not everyone develops all four, and some never emerge at all."
+,,,,19,,Pairs of cranial nerves,12,"These nerves connect the brain directly to the head, neck and torso."
+,,,,20,,Chambers of the human heart that pump blood out to the body,2,The left and right ventricles are the heart's main pumping chambers.
+251,number,Cricket,drag numbers to answer each clue,1,,Players per side in a cricket team,11,"Each team fields eleven players, including the wicketkeeper."
+,,,,2,Y,Balls in a standard cricket over,6,An over is bowled from one end before the bowling changes ends.
+,,,,3,Y,Stumps making up one wicket,3,"The three stumps are named off, middle and leg stump."
+,,,,4,Y,Bails resting on top of the stumps,2,A bail must be dislodged for a clean bowled or stumped dismissal.
+,,,,5,,Runs scored for a boundary hit along the ground,4,The ball must cross the boundary rope after touching the ground.
+,,,,6,,Runs scored for a boundary hit over the rope on the full,6,A six is cricket's biggest single-shot score.
+,,,,7,,Overs per side in a Twenty20 innings,20,T20 cricket is the shortest widely-played format.
+,,,,8,,Overs per side in a One Day International innings,50,ODIs sit between Test cricket and T20 in length.
+,,,,9,Y,Days a traditional Test match is scheduled for,5,Test matches are the longest format in international cricket.
+,,,,10,,Wickets needed to dismiss a team's full innings,10,"A team is ""all out"" once ten of its eleven batters are dismissed."
+,,,,11,,"Runs needed for a ""fifty"" milestone",50,Reaching fifty is usually marked by the batter raising their bat.
+,,,,12,,Height of cricket stumps in inches,28,The stumps must stand exactly 28 inches out of the ground.
+,,,,13,Y,Maximum overs one bowler can bowl in a T20 innings,4,This limit keeps the bowling workload spread across the team.
+,,,,14,,Maximum overs one bowler can bowl in an ODI innings,10,One-fifth of the full fifty-over innings.
+,,,,15,,"Full ICC Test-playing nations, approximately",12,"Test status is cricket's highest, most exclusive tier."
+,,,,16,,Runs typically awarded for a no-ball,1,"The batting team also gets an extra, free-hit delivery in some formats."
+,,,,17,,Runs typically awarded for a wide,1,A wide is called when the ball passes too far from the batter.
+,,,,18,Y,Men's Cricket World Cup titles won by Australia,6,Australia is the most successful team in the tournament's history.
+,,,,19,,Innings per side in a standard Test match,2,Each team bats and bowls twice across a Test match.
+,,,,20,,Balls remaining in an over after four have been bowled,2,"Six balls make up a full over, so two remain after four."
+252,number,Rugby,drag numbers to answer each clue,1,Y,Players per side in rugby union,15,Eight forwards and seven backs make up a rugby union team.
+,,,,2,,Players per side in rugby sevens,7,The fast-paced sevens format was added to the Olympics in 2016.
+,,,,3,,Points awarded for a try in rugby union,5,A try is rugby union's most valuable single score.
+,,,,4,,Points awarded for a conversion,2,A successful conversion kick follows a try.
+,,,,5,,Points awarded for a penalty kick,3,Penalty kicks are taken at the spot of an infringement.
+,,,,6,,Points awarded for a drop goal,3,A drop goal is scored by dropping and kicking the ball through the posts mid-play.
+,,,,7,,Minutes per half in rugby union,40,Matches run for two 40-minute halves.
+,,,,8,,Replacements typically allowed on a rugby union bench,8,Modern squads can rotate a large number of fresh players.
+,,,,9,,Men's Rugby World Cup titles won by New Zealand,3,The All Blacks are one of the tournament's most successful teams.
+,,,,10,,Men's Rugby World Cup titles won by South Africa,4,The Springboks hold the record for most titles won.
+,,,,11,,Metres from the goal line to the 22-metre line,22,This line marks a key tactical zone near each try line.
+,,,,12,Y,Players per side in rugby league,13,Rugby league fields two fewer players per side than union.
+,,,,13,Y,Points awarded for a try in rugby league,4,Tries are worth one point less in league than in union.
+,,,,14,Y,Tackles allowed before a rugby league handover,6,Possession switches to the other team after the sixth tackle.
+,,,,15,,Minutes per half in rugby league,40,"Like union, league matches are split into two 40-minute halves."
+,,,,16,,Forwards in a rugby union scrum,8,The scrum packs together all eight forwards from each team.
+,,,,17,Y,Backs in a rugby union team,7,The remaining seven players outside the scrum form the backline.
+,,,,18,,Edition number of the 2023 Rugby World Cup,10,The tournament has been held every four years since 1987.
+,,,,19,,Minutes a player spends in the sin bin for a yellow card,10,The temporary suspension leaves their team a player short.
+,,,,20,Y,Points on offer for a converted try in rugby union,7,A try (5) plus a successful conversion (2) totals seven points.
+253,number,The Roman Empire,drag numbers to answer each clue,1,,Roman numeral value of X,10,X is one of the seven basic Roman numeral symbols.
+,,,,2,,Roman numeral value of L,50,L represents fifty in the Roman numbering system.
+,,,,3,,Roman numeral value of V,5,V is the symbol for five.
+,,,,4,,Roman numeral value of I,1,I is the smallest and most basic Roman numeral.
+,,,,5,,"Year the Roman Republic became an Empire, BC",27,Augustus became Rome's first emperor in 27 BC.
+,,,,6,Y,"Emperors who ruled during the chaotic ""Year of the Four Emperors""",4,The year 69 AD saw four different men claim the imperial throne.
+,,,,7,Y,Cohorts making up a Roman legion,10,Each legion was organised into ten cohorts.
+,,,,8,,Centuries making up a Roman cohort,6,"A century nominally held around 80 to 100 soldiers, despite its name."
+,,,,9,Y,Years Hadrian's Wall took to build,6,Construction began around 122 AD under Emperor Hadrian.
+,,,,10,,"Length of Hadrian's Wall in miles, roughly",73,It stretched coast to coast across the north of Roman Britain.
+,,,,11,,"Approximate capacity of the Colosseum, in thousands",50,"The arena could hold around 50,000 spectators."
+,,,,12,,Years the Colosseum took to build,8,Construction ran from around 70 to 80 AD.
+,,,,13,Y,Hills Rome is traditionally built on,7,The Seven Hills of Rome are central to the city's founding legend.
+,,,,14,Y,Vestal Virgins serving at any one time,6,These priestesses tended Rome's sacred flame for up to thirty years of service.
+,,,,15,,Parts the Roman Empire was formally split into,2,It divided into the Western and Eastern Roman Empires in 285 AD.
+,,,,16,,"Year the Western Roman Empire fell, 4--",76,The last Western emperor was deposed in 476 AD.
+,,,,17,Y,Punic Wars fought between Rome and Carthage,3,These wars spanned over a century and made Rome a Mediterranean superpower.
+,,,,18,,"Year Julius Caesar was assassinated, BC",44,He was stabbed by senators on the Ides of March.
+,,,,19,,Chambers inside the Great Pyramid referenced by Roman-era tourists,3,Roman visitors left graffiti inside the pyramid as ancient tourists.
+,,,,20,,Main scripts used across the Roman Empire's administration,2,Latin in the west and Greek in the east served as the empire's main languages.
+254,number,Chemistry,drag numbers to answer each clue,1,Y,"Atoms making up a water molecule, H2O",3,Two hydrogen atoms bond with one oxygen atom to form water.
+,,,,2,,Protons in a hydrogen atom,1,Hydrogen is the simplest and lightest element on the periodic table.
+,,,,3,,Protons in a carbon atom,6,Carbon's atomic number of 6 underpins all organic chemistry.
+,,,,4,Y,Protons in an oxygen atom,8,Oxygen makes up roughly a fifth of Earth's atmosphere.
+,,,,5,,Elements in period 1 of the periodic table,2,Hydrogen and helium are the only elements in the table's first row.
+,,,,6,,Groups (columns) in the modern periodic table,18,Elements in the same group share similar chemical properties.
+,,,,7,Y,Naturally occurring noble gases,6,"Helium, neon, argon, krypton, xenon and radon make up the group."
+,,,,8,,pH value considered chemically neutral,7,"Pure water sits at pH 7, right in the middle of the scale."
+,,,,9,,States of matter commonly taught in school science,3,"Solid, liquid and gas are the three classic states."
+,,,,10,,"Atomic number of gold, Au",79,Gold's atomic number gives it its position on the periodic table.
+,,,,11,,"Atomic number of iron, Fe",26,"Iron's symbol Fe comes from its Latin name, ferrum."
+,,,,12,,Electrons in a neutral carbon atom,6,A neutral atom always has equal protons and electrons.
+,,,,13,Y,Valence electrons in a carbon atom,4,Carbon's four valence electrons let it form countless different compounds.
+,,,,14,,Elements discovered by Marie Curie,2,She discovered both polonium and radium alongside her husband Pierre.
+,,,,15,Y,Periods (rows) in the standard periodic table,7,Each new period represents another electron shell being filled.
+,,,,16,Y,Atomic number of helium,2,Helium is the second lightest element after hydrogen.
+,,,,17,,Atomic number of lithium,3,Lithium is the lightest metal on the periodic table.
+,,,,18,,Top value on the standard pH scale,14,"The scale runs from 0, highly acidic, to 14, highly alkaline."
+,,,,19,,Freezing point of water in degrees Celsius,0,Water freezes at exactly 0Â°C at standard atmospheric pressure.
+,,,,20,,Bonds a single carbon atom can form with other atoms,4,Carbon's four bonds make it uniquely versatile in forming molecules.
+255,number,The Beatles,drag numbers to answer each clue,1,,Members of the Beatles,4,"John Lennon, Paul McCartney, George Harrison and Ringo Starr made up the band."
+,,,,2,,"Year the Beatles formed, 19--",60,The band came together in Liverpool in 1960.
+,,,,3,,"Year the Beatles officially split up, 19--",70,The band broke up in 1970 after years of growing tension.
+,,,,4,,Grammy Awards won by the Beatles,8,Their Grammy haul spans their active years as a group.
+,,,,5,,"Weeks ""Hey Jude"" spent at number one in the US",9,It was the longest-running US number one of the 1960s.
+,,,,6,,Studio albums in the Beatles' core UK catalogue,12,"From Please Please Me to Let It Be, spanning under a decade."
+,,,,7,,"Hours it took to record the debut album ""Please Please Me""",10,The album was famously recorded in a single marathon day.
+,,,,8,Y,"Year ""Sgt. Pepper's Lonely Hearts Club Band"" was released, 19--",67,The album is widely considered one of the most influential in rock history.
+,,,,9,Y,US number one singles across the Beatles' career,20,No other act has matched their run of American chart-toppers.
+,,,,10,Y,UK number one singles across the Beatles' career,17,Their run of UK chart-toppers is among the most successful ever.
+,,,,11,Y,"Year of the Beatles' famous rooftop concert, 19--",69,"It was their final public performance, staged above Apple's London offices."
+,,,,12,,Minutes the rooftop concert lasted,42,The impromptu gig was eventually stopped by the police.
+,,,,13,,"Year Ringo Starr joined the Beatles, 19--",62,He replaced original drummer Pete Best that year.
+,,,,14,,"Year John Lennon died, 19--",80,Lennon was shot outside his New York apartment in 1980.
+,,,,15,,Age John Lennon was when he died,40,He had turned 40 just weeks before his death.
+,,,,16,,Beatles feature films made,5,"These include A Hard Day's Night, Help! and Yellow Submarine."
+,,,,17,Y,"Year debut single ""Love Me Do"" was released, 19--",62,It was the Beatles' first single release in the UK.
+,,,,18,,"UK chart peak position of ""Love Me Do""",17,It was a modest start compared to the huge hits that followed.
+,,,,19,,"Year of the Beatles' first US TV appearance on Ed Sullivan, 19--",64,Their performance sparked what became known as Beatlemania in America.
+,,,,20,Y,UK number one albums across the Beatles' career,15,Their run of chart-topping albums remains one of the most successful ever.
+256,number,James Bond,drag numbers to answer each clue,1,Y,Actors to officially play Bond for Eon Productions,6,"From Sean Connery to Daniel Craig, six actors have held the role."
+,,,,2,Y,Daniel Craig's official Bond films,5,His run began with Casino Royale and ended with No Time to Die.
+,,,,3,,"Year ""Dr. No"", the first Bond film, was released, 19--",62,It introduced Sean Connery as 007 to cinema audiences.
+,,,,4,,Bond's famous code number,7,"His code, 007, signals a licence to kill."
+,,,,5,,Bond novels written by Ian Fleming,12,Fleming created the character across a dozen novels.
+,,,,6,,Bond short story collections written by Ian Fleming,2,These include For Your Eyes Only and Octopussy and The Living Daylights.
+,,,,7,,"Year Ian Fleming died, 19--",64,He died just two years after the first Bond film reached cinemas.
+,,,,8,Y,Roger Moore's official Bond films,7,Moore held the role for longer than any other actor.
+,,,,9,,Sean Connery's official Eon Bond films,6,He returned briefly for Diamonds Are Forever after initially leaving the role.
+,,,,10,,"Year ""Skyfall"" was released, 20--",12,It became one of the highest-grossing Bond films ever made.
+,,,,11,,"Year ""No Time to Die"" was released, 20--",21,It was Daniel Craig's final outing as 007.
+,,,,12,,"Year ""GoldenEye"" was released, 19--",95,It marked Pierce Brosnan's debut as Bond.
+,,,,13,,Official Eon Productions Bond films made in total,25,The series runs from Dr. No in 1962 to No Time to Die in 2021.
+,,,,14,,"Year Daniel Craig's first Bond film ""Casino Royale"" was released, 20--",06,It rebooted the franchise with a grittier tone.
+,,,,15,,Sean Connery's age in his first Bond film,32,He was already an established actor before taking on the role.
+,,,,16,,"Year Timothy Dalton's first Bond film was released, 19--",87,The Living Daylights gave Dalton his first outing as 007.
+,,,,17,Y,Pierce Brosnan's official Bond films,4,He starred as Bond through the late 1990s and early 2000s.
+,,,,18,Y,"Year ""You Only Live Twice"" was released, 19--",67,The film was set largely in Japan.
+,,,,19,Y,"Year ""Goldfinger"" was released, 19--",64,It is widely considered one of the finest films in the series.
+,,,,20,,George Lazenby's official Bond films,1,"He played 007 only once, in On Her Majesty's Secret Service."
+257,number,Harry Potter,drag numbers to answer each clue,1,Y,Harry Potter books written by J.K. Rowling,7,The series runs from Philosopher's Stone to Deathly Hallows.
+,,,,2,Y,Harry Potter films in the main series,8,The final book was split into two films.
+,,,,3,,Houses at Hogwarts,4,"Gryffindor, Hufflepuff, Ravenclaw and Slytherin."
+,,,,4,,Players on a Quidditch team,7,"Chasers, Beaters, a Keeper and a Seeker make up the side."
+,,,,5,Y,"Platform number at King's Cross station, ignoring the three-quarters",9,Platform 9Â¾ is hidden between platforms nine and ten.
+,,,,6,,Weasley children in the family,7,"Bill, Charlie, Percy, Fred, George, Ron and Ginny."
+,,,,7,,"Year the first book was published in the UK, 19--",97,Philosopher's Stone was published in 1997.
+,,,,8,,Horcruxes Voldemort intentionally created,7,He split his soul into seven pieces to achieve immortality.
+,,,,9,Y,Age Harry Potter is when he starts at Hogwarts,11,Students traditionally begin their magical education at eleven.
+,,,,10,,Tasks in the Triwizard Tournament,3,"Competitors face a dragon, an underwater task and a maze."
+,,,,11,,Deathly Hallows objects,3,"The Elder Wand, the Resurrection Stone and the Cloak of Invisibility."
+,,,,12,,"Year the final film was released, 20--",11,Deathly Hallows Part 2 closed out the film series in 2011.
+,,,,13,,Sickles in one Galleon,17,Wizarding currency is famously awkward to convert.
+,,,,14,,Knuts in one Sickle,29,A Galleon is therefore worth 493 Knuts in total.
+,,,,15,,"Year Harry Potter was born, within the books' timeline, 19--",80,He was born on 31 July 1980.
+,,,,16,,"Year the first film was released, 20--",01,Philosopher's Stone reached cinemas in 2001.
+,,,,17,,Age Harry Potter turns by the end of the final book,17,He comes of age in the wizarding world partway through the story.
+,,,,18,Y,Students typically sharing Harry's Gryffindor dormitory,5,"Harry, Ron, Neville, Seamus and Dean share a room."
+,,,,19,,Schools competing in the Triwizard Tournament,3,"Hogwarts, Beauxbatons and Durmstrang each entered a champion."
+,,,,20,Y,Chasers on a Quidditch team,3,Chasers work together to score goals worth ten points each.
+258,number,London,drag numbers to answer each clue,1,Y,London Underground lines,11,The network is often simply called the Tube.
+,,,,2,Y,"Year Big Ben's clock tower was completed, 18--",59,The tower itself was finished in 1859.
+,,,,3,,Boroughs making up Greater London,32,"Plus the City of London, which sits outside the borough system."
+,,,,4,,London Underground fare zones in the standard system,9,"Zone 1 covers central London, with zones stretching out to 9."
+,,,,5,,"Year of the Great Fire of London, 16--",66,The fire destroyed much of the medieval city in 1666.
+,,,,6,,"Year the London Eye opened, 20--",00,It opened to mark the millennium in 2000.
+,,,,7,,Passengers a single London Eye capsule can carry,25,Each of its 32 capsules can hold around 25 people.
+,,,,8,Y,Royal Parks in London,8,"These include Hyde Park, Regent's Park and Greenwich Park."
+,,,,9,Y,"Year Tower Bridge was completed, 18--",94,It opened in 1894 after eight years of construction.
+,,,,10,,"Year the London Underground first opened, 18--",63,It was the world's first underground railway.
+,,,,11,,"West End theatres, approximately",40,London's West End is one of the world's great theatre districts.
+,,,,12,,"Year the Great Exhibition was held in London, 18--",51,It was staged inside the purpose-built Crystal Palace.
+,,,,13,Y,Bronze lions at the base of Nelson's Column,4,They have guarded Trafalgar Square since 1867.
+,,,,14,,Highest publicly accessible floor of the Shard,72,It houses London's highest outdoor viewing gallery.
+,,,,15,,"Year the Shard was completed, 20--",12,It became Western Europe's tallest building on completion.
+,,,,16,Y,Summer Olympic Games hosted by London,3,"London hosted in 1908, 1948 and 2012."
+,,,,17,,"Zones covered by a standard central London Travelcard, up to",6,A Zone 1-6 Travelcard covers all of Greater London.
+,,,,18,,"Year the Millennium Bridge opened, 20--",00,"It opened to mark the new millennium, though it briefly closed for wobble repairs."
+,,,,19,,Main airports serving London,6,"Heathrow, Gatwick, Stansted, Luton, City and Southend all serve the capital."
+,,,,20,,Approximate height of Big Ben's tower in metres,96,The clock tower is officially named the Elizabeth Tower.
+259,number,The Titanic,drag numbers to answer each clue,1,Y,Lifeboats carried aboard the Titanic,20,This was far fewer than needed for everyone on board.
+,,,,2,,"Year the Titanic sank, 19--",12,It sank in the early hours of 15 April 1912.
+,,,,3,,Days into her maiden voyage when the Titanic sank,4,She had departed Southampton just four days earlier.
+,,,,4,,Funnels on the Titanic,4,Only three of the four funnels were actually functional.
+,,,,5,,Watertight compartments built into the Titanic's hull,16,The iceberg breached five of these compartments at once.
+,,,,6,Y,Speed in knots at the moment of collision,22,The ship was travelling near its top speed when it struck the iceberg.
+,,,,7,,"Year the wreck of the Titanic was discovered, 19--",85,A joint French-American expedition found it in 1985.
+,,,,8,,Passenger classes aboard the Titanic,3,"First, second and third class passengers had very different experiences."
+,,,,9,,"Year construction began on the Titanic, 19--",09,Work started at the Harland and Wolff shipyard in Belfast.
+,,,,10,,Marconi wireless operators aboard the Titanic,2,Their distress signals helped guide rescue ships to survivors.
+,,,,11,,"Year James Cameron's ""Titanic"" film was released, 19--",97,It became one of the highest-grossing films of all time.
+,,,,12,,"Oscars won by the 1997 ""Titanic"" film",11,This tied the record for most Oscars won by a single film.
+,,,,13,Y,"Oscar nominations for the 1997 ""Titanic"" film",14,It was nominated across nearly every major category.
+,,,,14,,Sister ships in the Titanic's Olympic-class trio,3,"Olympic, Titanic and Britannic made up the class."
+,,,,15,Y,"Cruising speed the Titanic was designed for, in knots",21,Her design speed was slightly below her actual top speed.
+,,,,16,,Engines and propellers fitted to the Titanic,3,"Two reciprocating engines powered the outer propellers, with a turbine driving the centre one."
+,,,,17,Y,"Year the Titanic departed Southampton on her maiden voyage, 19--",12,She set sail on 10 April 1912.
+,,,,18,Y,Decks aboard the Titanic,9,"These were lettered A through G, plus the boat deck and orlop deck."
+,,,,19,,"Hours between the collision and the ship sinking, approximately",2,The Titanic sank roughly two hours and forty minutes after striking the iceberg.
+,,,,20,,Grand staircases aboard the Titanic,1,The Grand Staircase remains one of the ship's most iconic features.
+260,number,Volcanoes,drag numbers to answer each clue,1,,"Levels on the Volcanic Explosivity Index, numbered 0 to 8",9,The scale measures eruptions from gentle to catastrophic.
+,,,,2,Y,"Year of Krakatoa's catastrophic eruption, 18--",83,The 1883 eruption was heard thousands of kilometres away.
+,,,,3,Y,"Year Mount Vesuvius destroyed Pompeii, AD",79,The eruption buried the city in volcanic ash.
+,,,,4,Y,"Year Mount St Helens erupted in the US, 19--",80,The 1980 eruption was the deadliest in US history.
+,,,,5,Y,"Year Mount Pinatubo erupted in the Philippines, 19--",91,It was one of the largest eruptions of the 20th century.
+,,,,6,Y,"Countries situated along the Pacific ""Ring of Fire""",15,The Ring of Fire is home to the majority of the world's volcanoes.
+,,,,7,,Days European airspace was disrupted by EyjafjallajÃ¶kull's ash cloud,6,The 2010 shutdown grounded flights across the continent.
+,,,,8,,"Year EyjafjallajÃ¶kull disrupted European flights, 20--",10,The Icelandic eruption caused chaos for air travel in 2010.
+,,,,9,,Major tectonic plates recognised by geologists,7,These massive plates make up the Earth's outer shell.
+,,,,10,,Hawaiian islands with currently active volcanoes,2,The Big Island is home to both Kilauea and Mauna Loa.
+,,,,11,,"Year Mount Fuji last erupted, 17--",07,The Hoei eruption of 1707 remains its most recent.
+,,,,12,Y,"Height of Olympus Mons on Mars in kilometres, approximately",22,It is the tallest known volcano in the entire solar system.
+,,,,13,,"Active volcanoes in Iceland, approximately",30,Iceland sits directly on the Mid-Atlantic Ridge.
+,,,,14,,Continents with no currently active volcanoes,1,Mainland Australia is the exception among the inhabited continents.
+,,,,15,,VEI level of the 1980 Mount St Helens eruption,5,This places it among the larger eruptions of recent history.
+,,,,16,,VEI level of the 1883 Krakatoa eruption,6,It ranks among the most powerful eruptions ever recorded.
+,,,,17,,VEI level of the AD 79 Vesuvius eruption,5,Its explosive power is why Pompeii was buried so thoroughly.
+,,,,18,,"Year excavations at Pompeii began, 17--",48,"Systematic digging started in 1748, uncovering the buried city."
+,,,,19,,"Volcanoes on the Smithsonian/UN ""Decade Volcanoes"" watch list",16,These are singled out for close monitoring due to their eruption risk.
+,,,,20,,Countries containing volcanoes on the Decade Volcanoes list,12,The list spans volcanoes across multiple continents.
+261,number,Dinosaurs,drag numbers to answer each clue,1,,Millions of years since dinosaurs went extinct,66,A huge asteroid impact is the leading explanation for their extinction.
+,,,,2,Y,Horns on a Triceratops,3,Two large brow horns and one smaller nose horn.
+,,,,3,,Periods making up the Mesozoic Era,3,"The Triassic, Jurassic and Cretaceous periods span the age of dinosaurs."
+,,,,4,,"Year the original ""Jurassic Park"" film was released, 19--",93,It revolutionised dinosaurs on screen using groundbreaking CGI.
+,,,,5,,Teeth in a Tyrannosaurus rex's jaw,60,Its teeth were up to 20cm long and built for crushing bone.
+,,,,6,Y,Fingers on each Tyrannosaurus rex arm,2,Its famously short arms had just two clawed fingers.
+,,,,7,,Toes on a Velociraptor's foot,3,One of these bore its distinctive curved sickle claw.
+,,,,8,Y,Continents where dinosaur fossils have been found,7,Fossils have even been discovered in Antarctica.
+,,,,9,,"Year the first dinosaur was scientifically named, 18--",24,Megalosaurus was formally described in 1824.
+,,,,10,,"Wingspan of the largest known pterosaur in metres, approximately",11,Quetzalcoatlus is thought to be the largest flying animal ever known.
+,,,,11,,Estimated top speed of a Tyrannosaurus rex in km/h,18,Recent studies suggest it was a slower runner than films depict.
+,,,,12,Y,Approximate skull length of a Tyrannosaurus rex in feet,5,Its massive skull housed an extremely powerful bite.
+,,,,13,Y,"Main ""Jurassic Park"" and ""Jurassic World"" franchise films to date",6,The franchise has spanned decades since the original 1993 film.
+,,,,14,,Back plates commonly depicted along a Stegosaurus' spine,17,These plates may have helped regulate body temperature.
+,,,,15,Y,Spikes on a Stegosaurus' tail,4,"This spiked tail is nicknamed a ""thagomizer""."
+,,,,16,Y,Thumb spikes on each Iguanodon hand,1,This sharp spike may have been used for defence.
+,,,,17,,Legs a Tyrannosaurus rex walked on,2,"It was a bipedal predator, unlike many plant-eating dinosaurs."
+,,,,18,,Major orders dinosaurs are traditionally split into,2,Saurischia (lizard-hipped) and Ornithischia (bird-hipped).
+,,,,19,,Estimated length of Argentinosaurus in metres,35,It is among the largest land animals ever known to have existed.
+,,,,20,,"""Jurassic Park"" franchise films directed by Steven Spielberg",2,He directed the original 1993 film and its first sequel.
+262,number,Snooker,drag numbers to answer each clue,1,,Red balls on a snooker table,15,Reds are worth one point each and must be potted before colours.
+,,,,2,Y,"Colour balls on a snooker table, excluding reds",6,"Yellow, green, brown, blue, pink and black."
+,,,,3,,Points value of the black ball,7,Black is the most valuable ball on the table.
+,,,,4,,Points value of the pink ball,6,Pink sits just below black in value.
+,,,,5,Y,Points value of the yellow ball,2,Yellow is the lowest-value colour on the table.
+,,,,6,Y,Points value of the green ball,3,Green sits just above yellow in value.
+,,,,7,Y,Points value of the brown ball,4,Brown sits in the middle of the colour values.
+,,,,8,,Points value of the blue ball,5,Blue sits just below pink in value.
+,,,,9,,Pockets on a snooker table,6,Four corner pockets and two middle pockets.
+,,,,10,,Length of a snooker table in feet,12,It is one of the largest table sports in the world.
+,,,,11,,Players competing in a single snooker frame,2,Snooker is played strictly head-to-head.
+,,,,12,Y,World Championship titles won by Ronnie O'Sullivan,7,This ties him with Stephen Hendry for the modern record.
+,,,,13,,Age Ronnie O'Sullivan turned professional,16,He turned pro in 1992 as a teenager.
+,,,,14,,"Year the World Championship moved to the Crucible Theatre, 19--",77,The Sheffield venue has hosted the championship ever since.
+,,,,15,,Frames needed to win a World Championship final,18,The final is played as the best of 35 frames.
+,,,,16,,"Year snooker is commonly said to have been invented, 18--",75,It was devised by British Army officers stationed in India.
+,,,,17,,"Minutes for Ronnie O'Sullivan's fastest official maximum break, rounded down",5,His 1997 maximum remains the fastest ever recorded.
+,,,,18,,Reds that must be potted alongside colours during the opening phase of a break,15,Every red is paired with a colour attempt during this phase.
+,,,,19,,"Year the World Snooker Championship was first held, 19--",27,The first championship predates the Crucible era by fifty years.
+,,,,20,Y,"Diameter of a snooker ball in centimetres, rounded",5,All the balls on the table are exactly the same size.
+263,number,Star Wars,drag numbers to answer each clue,1,,Films in the original Star Wars trilogy,3,"A New Hope, The Empire Strikes Back and Return of the Jedi."
+,,,,2,Y,Films making up the full Skywalker saga,9,The saga spans three trilogies released across four decades.
+,,,,3,,Films in the Star Wars prequel trilogy,3,"The Phantom Menace, Attack of the Clones and Revenge of the Sith."
+,,,,4,,"Year the first Star Wars film was released, 19--",77,It became a cultural phenomenon on its 1977 release.
+,,,,5,,"Luke Skywalker's age in ""A New Hope""",19,He begins the saga as a young farm boy on Tatooine.
+,,,,6,,"Chewbacca's height in feet, rounded",7,He towers over most other characters in the saga.
+,,,,7,,Death Stars destroyed across the original trilogy,2,One is destroyed in each of the first and third films.
+,,,,8,Y,"Year ""The Empire Strikes Back"" was released, 19--",80,It is widely considered the darkest film of the original trilogy.
+,,,,9,Y,"Year ""Return of the Jedi"" was released, 19--",83,It closed out the original trilogy in 1983.
+,,,,10,,"Year the prequel trilogy began with ""The Phantom Menace"", 19--",99,It marked the saga's long-awaited return to cinemas.
+,,,,11,,"Year the sequel trilogy began with ""The Force Awakens"", 20--",15,It introduced a new generation of characters to the saga.
+,,,,12,,Seats on the Jedi Council shown in the prequel films,12,The council governs the Jedi Order from the Jedi Temple.
+,,,,13,,"Main saga and anthology Star Wars films released, approximately",11,This includes the nine saga films plus Rogue One and Solo.
+,,,,14,Y,Trilogies making up the core Star Wars saga,3,"The prequel, original and sequel trilogies together form the saga."
+,,,,15,Y,Suns Tatooine orbits,2,Its famous twin sunset is one of the saga's most iconic images.
+,,,,16,,Lightsaber blades on Darth Maul's signature weapon,2,His double-bladed lightsaber made him a unique visual threat.
+,,,,17,,Star Wars saga films directed by George Lucas,4,He directed the original 1977 film and all three prequels.
+,,,,18,Y,Hands Luke Skywalker loses across the original trilogy,1,He loses his right hand in a duel with Darth Vader.
+,,,,19,,Star Wars anthology spin-off films released,2,Rogue One and Solo both expand on the saga's wider universe.
+,,,,20,,Main characters typically shown on the original 1977 teaser poster,3,"Luke, Leia and Han Solo feature prominently in the saga's early marketing."
+264,number,Tour de France,drag numbers to answer each clue,1,,"Year the Tour de France was first held, 19--",03,The inaugural race took place in 1903.
+,,,,2,Y,Stages in the first Tour de France,6,The original race was far longer per stage than the modern event.
+,,,,3,,Stages in a modern Tour de France,21,The race is spread across three gruelling weeks.
+,,,,4,Y,"Age of the youngest ever Tour de France winner, Henri Cornet",19,He won the 1904 race after other riders were disqualified.
+,,,,5,,Riders per team in a recent Tour de France,8,Team sizes were reduced from nine riders in recent years.
+,,,,6,,Teams competing in a recent Tour de France,22,This brings the total peloton to well over 170 riders.
+,,,,7,Y,Consecutive Tour de France wins by Miguel Indurain,5,He won every edition from 1991 to 1995.
+,,,,8,,"Climb categories used to rank mountains, from 4 to HC",5,"Categories run from 4 up to the toughest, ""Hors Categorie""."
+,,,,9,,Times the Tour de France was cancelled for World Wars,2,The race paused during both the First and Second World Wars.
+,,,,10,,"Year the Tour de France Femmes was relaunched, 20--",22,The modern women's race returned in 2022 after decades away.
+,,,,11,,Jersey types awarded during the Tour de France,4,"Yellow, green, polka dot and white jerseys each reward a different achievement."
+,,,,12,Y,Rest days typically built into a modern Tour de France,2,These breaks are scattered through the three-week race.
+,,,,13,,Weeks a modern Tour de France roughly spans,3,The race runs for three demanding weeks each July.
+,,,,14,,"Year Lance Armstrong's first Tour de France win, 19--",99,All seven of his wins were later stripped for doping.
+,,,,15,,Tour de France wins later stripped from Lance Armstrong,7,He was stripped of every title he had won from 1999 to 2005.
+,,,,16,,Tour de France wins by Eddy Merckx,5,Merckx is widely regarded as one of cycling's greatest ever riders.
+,,,,17,,Tour de France wins by Bernard Hinault,5,He remains the last French rider to win the race.
+,,,,18,,Mountain ranges the Tour de France typically crosses,2,The Alps and the Pyrenees provide the race's toughest climbs.
+,,,,19,Y,Age Eddy Merckx was when he won his first Tour de France,24,He went on to dominate the race throughout the early 1970s.
+,,,,20,Y,Grand Tours on the professional cycling calendar,3,"The Giro d'Italia, Tour de France and Vuelta a EspaÃ±a."
+265,number,The Moon Landing,drag numbers to answer each clue,1,,"Year of the first Moon landing, 19--",69,Apollo 11 landed on the Moon in July 1969.
+,,,,2,Y,Apollo missions that successfully landed on the Moon,6,Six missions between 1969 and 1972 achieved a crewed landing.
+,,,,3,,Astronauts who have walked on the Moon in total,12,All twelve were part of NASA's Apollo program.
+,,,,4,,Apollo mission number of the first Moon landing,11,Apollo 11 carried the first crew to land on the Moon.
+,,,,5,,Astronauts aboard Apollo 11,3,"Neil Armstrong, Buzz Aldrin and Michael Collins."
+,,,,6,Y,Astronauts who walked on the Moon during Apollo 11,2,Armstrong and Aldrin descended while Collins stayed in orbit.
+,,,,7,,Day in July the Eagle lunar module landed,20,The landing took place on 20 July 1969.
+,,,,8,,Neil Armstrong's age during the Moon landing,38,He became the first person ever to walk on the Moon.
+,,,,9,Y,Buzz Aldrin's age during the Moon landing,39,He followed Armstrong onto the lunar surface shortly after.
+,,,,10,,"Year of the Apollo program's final Moon landing, 19--",72,Apollo 17 was the last crewed mission to land on the Moon.
+,,,,11,,Mission number of the final Apollo Moon landing,17,It remains the most recent crewed Moon landing to date.
+,,,,12,Y,Days the Apollo 11 round trip took,8,The full mission from launch to splashdown lasted eight days.
+,,,,13,,US flags planted on the Moon across all Apollo landings,6,Each of the six landing missions left a flag behind.
+,,,,14,,"Year of the near-disastrous Apollo 13 mission, 19--",70,An oxygen tank explosion forced the crew to abort their landing.
+,,,,15,,Apollo 13's mission number,13,"The mission became famous for its safe, dramatic return to Earth."
+,,,,16,Y,Days it took Apollo 11 to reach the Moon,4,"The spacecraft travelled roughly 240,000 miles to get there."
+,,,,17,Y,"Year NASA was founded, 19--",58,It was established in response to the early Space Race.
+,,,,18,,Astronauts who stayed in lunar orbit during Apollo 11 rather than landing,1,Michael Collins orbited alone while Armstrong and Aldrin walked below.
+,,,,19,,Later Apollo missions that used a Lunar Roving Vehicle,3,"Apollo 15, 16 and 17 each carried a ""moon buggy""."
+,,,,20,,Decade the last human Moon landing took place,70,"Apollo 17 landed in December 1972, in the early 1970s."

@@ -2699,5 +2699,42 @@
         "explain": "😈 her permanently mischievous streak, 🍯 the jam she's forever caught with sticky fingers in, 🙅‍♀️ the trouble she refuses to stay out of."
       }
     ]
+  },
+  {
+    "day": 291,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "The Famous Five",
+        "emoji": "5️⃣👦👧🐕",
+        "explain": "5️⃣ the five in the title — four children and their dog, 👦👧 Julian, Dick, Anne and George, the child adventurers, 🐕 Timmy, their loyal dog and unofficial fifth member."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "The A-Team",
+        "emoji": "🚐🛠️😎",
+        "explain": "🚐 their unmistakable black-and-red van, 🛠️ the makeshift weapons and gadgets they build from junk each episode, 😎 the team's cool, wisecracking swagger."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "La La Land",
+        "emoji": "🎹💃🌆⭐",
+        "explain": "🎹 the jazz pianist she falls for, 💃 the aspiring actress at its centre, 🌆 the Los Angeles setting, ⭐ the Hollywood stardom they're both chasing."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "Line of Duty",
+        "emoji": "👮🏻🔍🚔🤥",
+        "explain": "👮🏻 the police officers at its centre, 🔍 the anti-corruption unit investigating them, 🚔 the force they belong to, 🤥 the corrupt officers they're trying to expose."
+      }
+    ]
   }
 ]

@@ -1232,358 +1232,6 @@
     ]
   },
   {
-    "day": 246,
-    "category": "The Olympics",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Olympic rings, number of",
-        "answer": "5",
-        "more": "The five interlocking rings represent the five inhabited continents joined by Olympism."
-      },
-      {
-        "number": 2,
-        "question": "Events in a men's decathlon",
-        "answer": "10",
-        "more": "The decathlon spans track and field events over two days."
-      },
-      {
-        "number": 3,
-        "question": "Michael Phelps' total Olympic medal count",
-        "answer": "28",
-        "more": "Phelps is the most decorated Olympian in history."
-      },
-      {
-        "number": 4,
-        "question": "Age of the youngest ever individual Olympic gold medallist",
-        "answer": "13",
-        "more": "US diver Marjorie Gestring won gold at the 1936 Berlin Games."
-      },
-      {
-        "number": 5,
-        "question": "Edition number of the Tokyo 2020 Summer Olympiad",
-        "answer": "32",
-        "more": "It was officially the Games of the XXXII Olympiad despite being held in 2021."
-      },
-      {
-        "number": 6,
-        "question": "Players on court for one team in Olympic volleyball",
-        "answer": "6",
-        "more": "Indoor volleyball has been an Olympic sport since 1964."
-      }
-    ]
-  },
-  {
-    "day": 247,
-    "category": "Formula 1",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Points awarded for a race win",
-        "answer": "25",
-        "more": "The current scoring system was introduced in 2010."
-      },
-      {
-        "number": 2,
-        "question": "Teams on the 2026 F1 grid",
-        "answer": "11",
-        "more": "Cadillac joined the grid as the sport's newest constructor in 2026."
-      },
-      {
-        "number": 3,
-        "question": "Total drivers on the 2026 F1 grid",
-        "answer": "22",
-        "more": "Eleven teams each fielding two drivers make up the full grid."
-      },
-      {
-        "number": 4,
-        "question": "Cylinders in a current F1 power unit",
-        "answer": "6",
-        "more": "Modern engines are turbocharged 1.6-litre V6 hybrids."
-      },
-      {
-        "number": 5,
-        "question": "Points awarded for 4th place",
-        "answer": "12",
-        "more": "Points step down by decreasing amounts further down the order."
-      },
-      {
-        "number": 6,
-        "question": "Max Verstappen's age when he won his first World title",
-        "answer": "24",
-        "more": "He clinched the 2021 title at the season's final race in Abu Dhabi."
-      }
-    ]
-  },
-  {
-    "day": 248,
-    "category": "The Solar System",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Planets in the solar system",
-        "answer": "8",
-        "more": "Pluto was reclassified as a dwarf planet in 2006, leaving eight official planets."
-      },
-      {
-        "number": 2,
-        "question": "Major ring groups around Saturn",
-        "answer": "7",
-        "more": "Saturn's rings are labelled A through G in order of discovery."
-      },
-      {
-        "number": 3,
-        "question": "Years for Jupiter to orbit the Sun",
-        "answer": "12",
-        "more": "Jupiter's orbit takes roughly a Jovian \"year\" of 12 Earth years."
-      },
-      {
-        "number": 4,
-        "question": "Planets in the solar system known to have ring systems",
-        "answer": "4",
-        "more": "Jupiter, Saturn, Uranus and Neptune all have rings, though Saturn's are the most visible."
-      },
-      {
-        "number": 5,
-        "question": "Length of a day on Jupiter in hours",
-        "answer": "10",
-        "more": "Jupiter spins faster than any other planet despite its huge size."
-      },
-      {
-        "number": 6,
-        "question": "Position of Saturn from the Sun",
-        "answer": "6",
-        "more": "Saturn is the sixth planet, best known for its spectacular ring system."
-      }
-    ]
-  },
-  {
-    "day": 249,
-    "category": "Ancient Egypt",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Dynasties commonly used to organise Ancient Egyptian history",
-        "answer": "30",
-        "more": "The dynasty system was devised by the priest Manetho in the 3rd century BC."
-      },
-      {
-        "number": 2,
-        "question": "Years the Great Pyramid took to build, roughly",
-        "answer": "20",
-        "more": "Historians estimate construction under Khufu took around two decades."
-      },
-      {
-        "number": 3,
-        "question": "Tutankhamun's age when he became pharaoh",
-        "answer": "9",
-        "more": "He took the throne as a child around 1332 BC."
-      },
-      {
-        "number": 4,
-        "question": "Tutankhamun's age at death",
-        "answer": "19",
-        "more": "His short reign and early death fuelled centuries of speculation."
-      },
-      {
-        "number": 5,
-        "question": "Year Howard Carter discovered Tutankhamun's tomb, 19--",
-        "answer": "22",
-        "more": "The nearly intact tomb was found in the Valley of the Kings in 1922."
-      },
-      {
-        "number": 6,
-        "question": "Months in the Ancient Egyptian calendar year",
-        "answer": "12",
-        "more": "The calendar was split into three farming seasons of four months each."
-      }
-    ]
-  },
-  {
-    "day": 250,
-    "category": "The Human Body",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Bones in each human hand",
-        "answer": "27",
-        "more": "This includes the wrist, palm and finger bones."
-      },
-      {
-        "number": 2,
-        "question": "Bones in the human skull",
-        "answer": "22",
-        "more": "Eight cranial bones and fourteen facial bones make up the skull."
-      },
-      {
-        "number": 3,
-        "question": "Chambers in the human heart",
-        "answer": "4",
-        "more": "Two atria and two ventricles keep oxygenated and deoxygenated blood separate."
-      },
-      {
-        "number": 4,
-        "question": "Litres of blood in an average adult",
-        "answer": "5",
-        "more": "Total blood volume varies with body size but averages around 5 litres."
-      },
-      {
-        "number": 5,
-        "question": "Adult human teeth, full set",
-        "answer": "32",
-        "more": "This includes the four wisdom teeth at the back."
-      },
-      {
-        "number": 6,
-        "question": "Vertebrae in the human spine",
-        "answer": "33",
-        "more": "The spine includes cervical, thoracic, lumbar, sacral and coccygeal vertebrae."
-      }
-    ]
-  },
-  {
-    "day": 251,
-    "category": "Cricket",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Players per side in a cricket team",
-        "answer": "11",
-        "more": "Each team fields eleven players, including the wicketkeeper."
-      },
-      {
-        "number": 2,
-        "question": "Balls in a standard cricket over",
-        "answer": "6",
-        "more": "An over is bowled from one end before the bowling changes ends."
-      },
-      {
-        "number": 3,
-        "question": "Stumps making up one wicket",
-        "answer": "3",
-        "more": "The three stumps are named off, middle and leg stump."
-      },
-      {
-        "number": 4,
-        "question": "Bails resting on top of the stumps",
-        "answer": "2",
-        "more": "A bail must be dislodged for a clean bowled or stumped dismissal."
-      },
-      {
-        "number": 5,
-        "question": "Days a traditional Test match is scheduled for",
-        "answer": "5",
-        "more": "Test matches are the longest format in international cricket."
-      },
-      {
-        "number": 6,
-        "question": "Maximum overs one bowler can bowl in a T20 innings",
-        "answer": "4",
-        "more": "This limit keeps the bowling workload spread across the team."
-      }
-    ]
-  },
-  {
-    "day": 252,
-    "category": "Rugby",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Players per side in rugby union",
-        "answer": "15",
-        "more": "Eight forwards and seven backs make up a rugby union team."
-      },
-      {
-        "number": 2,
-        "question": "Metres from the goal line to the 22-metre line",
-        "answer": "22",
-        "more": "This line marks a key tactical zone near each try line."
-      },
-      {
-        "number": 3,
-        "question": "Players per side in rugby league",
-        "answer": "13",
-        "more": "Rugby league fields two fewer players per side than union."
-      },
-      {
-        "number": 4,
-        "question": "Points awarded for a try in rugby league",
-        "answer": "4",
-        "more": "Tries are worth one point less in league than in union."
-      },
-      {
-        "number": 5,
-        "question": "Tackles allowed before a rugby league handover",
-        "answer": "6",
-        "more": "Possession switches to the other team after the sixth tackle."
-      },
-      {
-        "number": 6,
-        "question": "Backs in a rugby union team",
-        "answer": "7",
-        "more": "The remaining seven players outside the scrum form the backline."
-      }
-    ]
-  },
-  {
-    "day": 253,
-    "category": "The Roman Empire",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Emperors who ruled during the chaotic \"Year of the Four Emperors\"",
-        "answer": "4",
-        "more": "The year 69 AD saw four different men claim the imperial throne."
-      },
-      {
-        "number": 2,
-        "question": "Cohorts making up a Roman legion",
-        "answer": "10",
-        "more": "Each legion was organised into ten cohorts."
-      },
-      {
-        "number": 3,
-        "question": "Years Hadrian's Wall took to build",
-        "answer": "6",
-        "more": "Construction began around 122 AD under Emperor Hadrian."
-      },
-      {
-        "number": 4,
-        "question": "Hills Rome is traditionally built on",
-        "answer": "7",
-        "more": "The Seven Hills of Rome are central to the city's founding legend."
-      },
-      {
-        "number": 5,
-        "question": "Punic Wars fought between Rome and Carthage",
-        "answer": "3",
-        "more": "These wars spanned over a century and made Rome a Mediterranean superpower."
-      },
-      {
-        "number": 6,
-        "question": "Year Julius Caesar was assassinated, BC",
-        "answer": "44",
-        "more": "He was stabbed by senators on the Ides of March."
-      }
-    ]
-  },
-  {
     "day": 254,
     "category": "Chemistry",
     "tagline": "drag numbers to answer each clue",
@@ -1597,13 +1245,13 @@
       },
       {
         "number": 2,
-        "question": "Protons in an oxygen atom",
+        "question": "Protons found in the nucleus of an oxygen atom",
         "answer": "8",
         "more": "Oxygen makes up roughly a fifth of Earth's atmosphere."
       },
       {
         "number": 3,
-        "question": "Naturally occurring noble gases",
+        "question": "Naturally occurring noble gases on the periodic table",
         "answer": "6",
         "more": "Helium, neon, argon, krypton, xenon and radon make up the group."
       },
@@ -1621,7 +1269,7 @@
       },
       {
         "number": 6,
-        "question": "Atomic number of helium",
+        "question": "Atomic number of helium, the second lightest element",
         "answer": "2",
         "more": "Helium is the second lightest element after hydrogen."
       }
@@ -1629,6 +1277,1634 @@
   },
   {
     "day": 255,
+    "category": "Queen (the band)",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of Freddie Mercury's birth first name",
+        "answer": "A",
+        "more": "His birth name was F<strong><u>a</u></strong>rrokh Bulsara."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of Queen's guitarist, who also holds a PhD in astrophysics",
+        "answer": "Y",
+        "more": "The guitarist is Brian Ma<strong><u>y</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the Queen bassist who wrote 'Another One Bites the Dust'",
+        "answer": "D",
+        "more": "The bassist is <strong><u>D</u></strong>eacon."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the Queen and Bowie duet about crushing weight",
+        "answer": "U",
+        "more": "The song is <strong><u>U</u></strong>nder Pressure."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the East African island where Freddie Mercury was born",
+        "answer": "Z",
+        "more": "He was born in <strong><u>Z</u></strong>anzibar."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the London stadium that hosted Queen's Live Aid set",
+        "answer": "B",
+        "more": "The stadium is Wem<strong><u>b</u></strong>ley."
+      }
+    ]
+  },
+  {
+    "day": 256,
+    "category": "The Titanic",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Lifeboats carried aboard the Titanic's maiden voyage",
+        "answer": "20",
+        "more": "This was far fewer than needed for everyone on board."
+      },
+      {
+        "number": 2,
+        "question": "Speed in knots at the moment of collision",
+        "answer": "22",
+        "more": "The ship was travelling near its top speed when it struck the iceberg."
+      },
+      {
+        "number": 3,
+        "question": "Oscar nominations for the 1997 \"Titanic\" film",
+        "answer": "14",
+        "more": "It was nominated across nearly every major category."
+      },
+      {
+        "number": 4,
+        "question": "Cruising speed the Titanic was designed for, in knots",
+        "answer": "21",
+        "more": "Her design speed was slightly below her actual top speed."
+      },
+      {
+        "number": 5,
+        "question": "Year of the Titanic's maiden voyage departure, 19--",
+        "answer": "12",
+        "more": "She set sail on 10 April 1912."
+      },
+      {
+        "number": 6,
+        "question": "Passenger decks built into the Titanic's original design",
+        "answer": "9",
+        "more": "These were lettered A through G, plus the boat deck and orlop deck."
+      }
+    ]
+  },
+  {
+    "day": 257,
+    "category": "British Prime Ministers",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the PM who led Britain through most of WWII",
+        "answer": "C",
+        "more": "The PM is <strong><u>C</u></strong>hurchill."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the PM who won a landslide victory in 1997",
+        "answer": "L",
+        "more": "The PM is B<strong><u>l</u></strong>air."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the shortest-serving UK PM, just 49 days in office",
+        "answer": "T",
+        "more": "The PM is <strong><u>T</u></strong>russ."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of Britain's first ever Prime Minister, in office from 1721",
+        "answer": "W",
+        "more": "The PM is <strong><u>W</u></strong>alpole."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the Victorian PM famous for his rivalry with Gladstone",
+        "answer": "I",
+        "more": "The PM is Disrael<strong><u>i</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the PM who signed the Munich Agreement with Hitler in 1938",
+        "answer": "H",
+        "more": "The PM is C<strong><u>h</u></strong>amberlain."
+      }
+    ]
+  },
+  {
+    "day": 258,
+    "category": "Martial Arts Belt Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Karate belt colour typically earned just after white, a first grade",
+        "answer": "yellow",
+        "more": "Yellow belt is usually the first grade earned after white in karate."
+      },
+      {
+        "number": 2,
+        "question": "Karate belt colour that typically follows orange in grading",
+        "answer": "green",
+        "more": "Green belt typically follows orange in standard karate grading."
+      },
+      {
+        "number": 3,
+        "question": "Karate belt colour that typically follows green in grading",
+        "answer": "blue",
+        "more": "Blue belt commonly follows green in many karate systems."
+      },
+      {
+        "number": 4,
+        "question": "Karate belt colour that follows blue, just before the advanced grades",
+        "answer": "purple",
+        "more": "Purple belt often follows blue before the advanced grades."
+      },
+      {
+        "number": 5,
+        "question": "Highest, most senior belt colour awarded in most martial arts",
+        "answer": "black",
+        "more": "Black belt represents the highest standard grading in most martial arts."
+      },
+      {
+        "number": 6,
+        "question": "Belt colour awarded to some 10th-dan grandmasters, instead of black",
+        "answer": "red",
+        "more": "Some styles award a red belt to grandmasters at the highest 10th-dan rank."
+      }
+    ]
+  },
+  {
+    "day": 259,
+    "category": "Dog Breeds",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the curly-coated breed known for hypoallergenic fur",
+        "answer": "E",
+        "more": "The breed is Poodl<strong><u>e</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the wrinkly English dog breed",
+        "answer": "L",
+        "more": "The breed is Bul<strong><u>l</u></strong>dog."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the German guard-dog breed, typically black and tan",
+        "answer": "R",
+        "more": "The breed is <strong><u>R</u></strong>ottweiler."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the tiny Mexican breed, one of the smallest in the world",
+        "answer": "H",
+        "more": "The breed is C<strong><u>h</u></strong>ihuahua."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the tallest dog breed, a German gentle giant, 2nd word",
+        "answer": "D",
+        "more": "The breed is Great <strong><u>D</u></strong>ane."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the lapdog breed named for a Mediterranean island",
+        "answer": "A",
+        "more": "The breed is M<strong><u>a</u></strong>ltese."
+      }
+    ]
+  },
+  {
+    "day": 260,
+    "category": "Skyscrapers",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the twin towers in Kuala Lumpur, once the world's tallest",
+        "answer": "P",
+        "more": "They are the <strong><u>P</u></strong>etronas Towers."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the city where the Burj Khalifa is located",
+        "answer": "B",
+        "more": "The city is Du<strong><u>b</u></strong>ai."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the Canadian city home to the CN Tower",
+        "answer": "T",
+        "more": "The city is <strong><u>T</u></strong>oronto."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the car-company-named NYC Art Deco skyscraper",
+        "answer": "R",
+        "more": "It is the Chrysle<strong><u>r</u></strong> Building."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the luxurious top-floor apartment of a skyscraper",
+        "answer": "E",
+        "more": "It is the P<strong><u>e</u></strong>nthouse."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the metal fastener used to join steel skyscraper beams",
+        "answer": "V",
+        "more": "It is a ri<strong><u>v</u></strong>et."
+      }
+    ]
+  },
+  {
+    "day": 261,
+    "category": "Superhero Costume Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour most associated with Batman's costume, sometimes with grey",
+        "answer": "black",
+        "more": "Batman's suit is almost always depicted in black, sometimes with grey."
+      },
+      {
+        "number": 2,
+        "question": "Colour of the ring wielded by DC's Hal Jordan, matching his costume",
+        "answer": "green",
+        "more": "Green Lantern Hal Jordan's ring and costume are both green, powered by willpower."
+      },
+      {
+        "number": 3,
+        "question": "Colour of the flowing cape worn as part of Thor's costume",
+        "answer": "red",
+        "more": "Thor's iconic costume includes a flowing red cape."
+      },
+      {
+        "number": 4,
+        "question": "Colour of Aquaman's traditional comic-book costume, alongside green",
+        "answer": "orange",
+        "more": "Aquaman's traditional comic costume is orange and green."
+      },
+      {
+        "number": 5,
+        "question": "Colour of Beast's fur in his most classic X-Men appearance",
+        "answer": "blue",
+        "more": "Beast is most commonly depicted with blue fur."
+      },
+      {
+        "number": 6,
+        "question": "Colour of Robin's cape, paired with a red tunic in his classic costume",
+        "answer": "yellow",
+        "more": "The classic Robin costume pairs a red tunic with a yellow cape."
+      }
+    ]
+  },
+  {
+    "day": 262,
+    "category": "Dinosaurs",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Facial horns on a Triceratops' skull, including its nose horn",
+        "answer": "3",
+        "more": "Two large brow horns and one smaller nose horn."
+      },
+      {
+        "number": 2,
+        "question": "Fingers on each Tyrannosaurus rex arm",
+        "answer": "2",
+        "more": "Its famously short arms had just two clawed fingers."
+      },
+      {
+        "number": 3,
+        "question": "Continents where dinosaur fossils have been found",
+        "answer": "7",
+        "more": "Fossils have even been discovered in Antarctica."
+      },
+      {
+        "number": 4,
+        "question": "Films in the main Jurassic Park and Jurassic World franchise",
+        "answer": "6",
+        "more": "The franchise has spanned decades since the original 1993 film."
+      },
+      {
+        "number": 5,
+        "question": "Bony tail spikes used by a Stegosaurus for defence",
+        "answer": "4",
+        "more": "This spiked tail is nicknamed a \"thagomizer\"."
+      },
+      {
+        "number": 6,
+        "question": "Thumb spikes on each Iguanodon hand",
+        "answer": "1",
+        "more": "This sharp spike may have been used for defence."
+      }
+    ]
+  },
+  {
+    "day": 263,
+    "category": "Famous Scientists",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the physicist who developed the theory of relativity",
+        "answer": "E",
+        "more": "The scientist is <strong><u>E</u></strong>instein."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the physicist who formulated the laws of motion",
+        "answer": "N",
+        "more": "The scientist is Newto<strong><u>n</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the astronomer who pioneered using a telescope",
+        "answer": "G",
+        "more": "The astronomer is <strong><u>G</u></strong>alileo."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the inventor behind alternating current",
+        "answer": "A",
+        "more": "The inventor is Tesl<strong><u>a</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the astronomer behind the heliocentric solar system model",
+        "answer": "O",
+        "more": "The astronomer is C<strong><u>o</u></strong>pernicus."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of Watson's co-discoverer of the DNA double helix",
+        "answer": "I",
+        "more": "He is Cr<strong><u>i</u></strong>ck."
+      }
+    ]
+  },
+  {
+    "day": 264,
+    "category": "Big Cats",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the largest big cat species, orange with black stripes",
+        "answer": "R",
+        "more": "It is the Tige<strong><u>r</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the spotted cat found in Africa and Asia, excellent climber",
+        "answer": "E",
+        "more": "It is the L<strong><u>e</u></strong>opard."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the North American big cat also known as a mountain lion",
+        "answer": "C",
+        "more": "It is the <strong><u>C</u></strong>ougar."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the small wild cat with tufted ears",
+        "answer": "Y",
+        "more": "It is the L<strong><u>y</u></strong>nx."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the small spotted wild cat of Central America",
+        "answer": "O",
+        "more": "It is the <strong><u>O</u></strong>celot."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the mountain lion's other common name",
+        "answer": "U",
+        "more": "It is the P<strong><u>u</u></strong>ma."
+      }
+    ]
+  },
+  {
+    "day": 265,
+    "category": "Fleetwood Mac",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the band's namesake drummer, surname",
+        "answer": "F",
+        "more": "The drummer is <strong><u>F</u></strong>leetwood."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the bassist whose surname is the band's other half",
+        "answer": "C",
+        "more": "The bassist is M<strong><u>c</u></strong>Vie."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the 'witchy' vocalist known for 'Landslide' and 'Gypsy'",
+        "answer": "S",
+        "more": "The singer is Stevie Nick<strong><u>s</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of Fleetwood Mac's best-selling studio album",
+        "answer": "O",
+        "more": "The album is Rum<strong><u>o</u></strong>urs."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the Fleetwood Mac song about a free-spirited wanderer",
+        "answer": "P",
+        "more": "The song is Gy<strong><u>p</u></strong>sy."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of Fleetwood Mac's instrumental hit named for a bird",
+        "answer": "L",
+        "more": "The song is A<strong><u>l</u></strong>batross."
+      }
+    ]
+  },
+  {
+    "day": 266,
+    "category": "Cricket Kit Colours (ODI)",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "India's ODI cricket kit colour, earning them a nickname",
+        "answer": "blue",
+        "more": "India's ODI kit is blue, earning them the nickname Men in Blue."
+      },
+      {
+        "number": 2,
+        "question": "Bangladesh's ODI cricket kit colour, echoing their flag",
+        "answer": "green",
+        "more": "Bangladesh's ODI kit is green, echoing their national flag."
+      },
+      {
+        "number": 3,
+        "question": "Colour of the specially coated ball used in day-night Test cricket",
+        "answer": "pink",
+        "more": "Day-night Tests use a specially coated pink ball for visibility."
+      },
+      {
+        "number": 4,
+        "question": "Colour of the boundary rope at most televised cricket grounds",
+        "answer": "yellow",
+        "more": "Boundary ropes are typically painted or marked in bright yellow."
+      },
+      {
+        "number": 5,
+        "question": "Zimbabwe's ODI cricket kit colour, most recognisably",
+        "answer": "red",
+        "more": "Zimbabwe's ODI cricket kit is predominantly red."
+      },
+      {
+        "number": 6,
+        "question": "Colour of the sightscreen commonly used behind the bowler at night",
+        "answer": "black",
+        "more": "Day-night matches often use black sightscreens for the pink ball."
+      }
+    ]
+  },
+  {
+    "day": 267,
+    "category": "Sweet & Candy Wrapper Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Wrapper colour of a Wham bar, the classic UK chew sweet",
+        "answer": "pink",
+        "more": "The original Wham bar has a bright pink wrapper."
+      },
+      {
+        "number": 2,
+        "question": "Colour of the lemon-flavoured sweet in a packet of Skittles",
+        "answer": "yellow",
+        "more": "Yellow is the standard colour for lemon-flavoured Skittles."
+      },
+      {
+        "number": 3,
+        "question": "Colour of the strawberry-flavoured sweet in a packet of Skittles",
+        "answer": "red",
+        "more": "Red is the standard colour for strawberry-flavoured Skittles."
+      },
+      {
+        "number": 4,
+        "question": "Colour of the apple-flavoured sweet in a packet of Skittles",
+        "answer": "green",
+        "more": "Green is the standard colour for green apple-flavoured Skittles."
+      },
+      {
+        "number": 5,
+        "question": "Colour of a classic Wispa bar's wrapper, matching Cadbury branding",
+        "answer": "purple",
+        "more": "Wispa's classic wrapper is purple, matching Cadbury's branding."
+      },
+      {
+        "number": 6,
+        "question": "Colour of a classic UK cola cube sweet, despite cola's darker shade",
+        "answer": "black",
+        "more": "Cola cubes are traditionally a dark, near-black brown colour."
+      }
+    ]
+  },
+  {
+    "day": 268,
+    "category": "Mountains of the World",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the tallest mountain in the world",
+        "answer": "E",
+        "more": "The mountain is <strong><u>E</u></strong>verest."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of Africa's tallest mountain, in Tanzania",
+        "answer": "I",
+        "more": "The mountain is K<strong><u>i</u></strong>limanjaro."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the most famous peak in the Alps",
+        "answer": "N",
+        "more": "The mountain is Matterhor<strong><u>n</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the mountain range crossing western North America",
+        "answer": "K",
+        "more": "The range is Roc<strong><u>k</u></strong>ies."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the tallest mountain in South America",
+        "answer": "A",
+        "more": "The mountain is Aconcagu<strong><u>a</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the sacred, active volcano in Japan",
+        "answer": "F",
+        "more": "The mountain is <strong><u>F</u></strong>uji."
+      }
+    ]
+  },
+  {
+    "day": 269,
+    "category": "Types of Bread",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the long, thin crusty French loaf",
+        "answer": "B",
+        "more": "It is a <strong><u>B</u></strong>aguette."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the slipper-shaped Italian sandwich bread",
+        "answer": "I",
+        "more": "It is C<strong><u>i</u></strong>abatta."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the rich, buttery French bread often shaped as a bun",
+        "answer": "O",
+        "more": "It is Bri<strong><u>o</u></strong>che."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the dark, dense bread made from a non-wheat grain",
+        "answer": "R",
+        "more": "It is <strong><u>R</u></strong>ye."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the flaky, crescent-shaped French pastry",
+        "answer": "S",
+        "more": "It is Croi<strong><u>s</u></strong>sant."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the braided Jewish bread eaten on the Sabbath",
+        "answer": "H",
+        "more": "It is Challa<strong><u>h</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 270,
+    "category": "Famous Painters",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the Spanish cubist painter, co-founder of Cubism",
+        "answer": "I",
+        "more": "His surname is P<strong><u>i</u></strong>casso."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the French painter famous for water lilies",
+        "answer": "N",
+        "more": "His surname is Mo<strong><u>n</u></strong>et."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the Dutch master who painted 'The Night Watch'",
+        "answer": "E",
+        "more": "His surname is R<strong><u>e</u></strong>mbrandt."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the Mexican painter famous for self-portraits, surname",
+        "answer": "H",
+        "more": "Her surname is Ka<strong><u>h</u></strong>lo."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the pop artist known for Campbell's Soup Cans, surname",
+        "answer": "L",
+        "more": "His surname is Warho<strong><u>l</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the dream-like art movement Dali belonged to",
+        "answer": "U",
+        "more": "The movement is S<strong><u>u</u></strong>rrealism."
+      }
+    ]
+  },
+  {
+    "day": 271,
+    "category": "Pixar Movies",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of Toy Story's director's surname",
+        "answer": "L",
+        "more": "The director is John <strong><u>L</u></strong>asseter."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the Pixar film about a rat who dreams of cooking",
+        "answer": "O",
+        "more": "The film is Ratat<strong><u>o</u></strong>uille."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the Pixar film about a family of retired superheroes",
+        "answer": "S",
+        "more": "The film is The Incredible<strong><u>s</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the Pixar prequel set at a college for scarers",
+        "answer": "Y",
+        "more": "The film is Monsters Universit<strong><u>y</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the Pixar film where balloons lift a house into the sky",
+        "answer": "U",
+        "more": "The film is <strong><u>U</u></strong>p."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the Pixar film about a Scottish princess with a bow",
+        "answer": "B",
+        "more": "The film is <strong><u>B</u></strong>rave."
+      }
+    ]
+  },
+  {
+    "day": 272,
+    "category": "Cocktails",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the gin cocktail James Bond orders 'shaken not stirred'",
+        "answer": "M",
+        "more": "It is a <strong><u>M</u></strong>artini."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the tequila-based cocktail served with salt on the rim",
+        "answer": "A",
+        "more": "It is a M<strong><u>a</u></strong>rgarita."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the rum, lime and mint Cuban cocktail",
+        "answer": "O",
+        "more": "It is a Mojit<strong><u>o</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the Italian aperitif made of gin, vermouth and Campari",
+        "answer": "R",
+        "more": "It is a Neg<strong><u>r</u></strong>oni."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the whiskey, sugar and bitters classic, second word",
+        "answer": "D",
+        "more": "It is an Old Fashione<strong><u>d</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the champagne and peach cocktail invented in Venice",
+        "answer": "L",
+        "more": "It is a Bel<strong><u>l</u></strong>ini."
+      }
+    ]
+  },
+  {
+    "day": 273,
+    "category": "Constellations",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the hunter constellation with a famous three-star belt",
+        "answer": "O",
+        "more": "It is <strong><u>O</u></strong>rion."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the 'Great Bear' constellation, 2nd word of its name",
+        "answer": "R",
+        "more": "It is Ursa Majo<strong><u>r</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the scorpion constellation, a zodiac sign",
+        "answer": "S",
+        "more": "It is <strong><u>S</u></strong>corpius."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the twins constellation, a zodiac sign",
+        "answer": "E",
+        "more": "It is G<strong><u>e</u></strong>mini."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the ram, a zodiac constellation",
+        "answer": "I",
+        "more": "It is Ar<strong><u>i</u></strong>es."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the winged horse constellation",
+        "answer": "P",
+        "more": "It is <strong><u>P</u></strong>egasus."
+      }
+    ]
+  },
+  {
+    "day": 274,
+    "category": "London Rail Line Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour of the Central line on the London Underground map",
+        "answer": "red",
+        "more": "The Central line is coloured red on the Tube map."
+      },
+      {
+        "number": 2,
+        "question": "Colour of the Hammersmith & City line on the Tube map",
+        "answer": "pink",
+        "more": "The Hammersmith & City line is coloured pink on the Tube map."
+      },
+      {
+        "number": 3,
+        "question": "Colour of the Northern line on the London Underground map",
+        "answer": "black",
+        "more": "The Northern line is coloured black on the Tube map."
+      },
+      {
+        "number": 4,
+        "question": "Colour of the Elizabeth line on London's rail network map",
+        "answer": "purple",
+        "more": "The Elizabeth line is coloured purple on the transport map."
+      },
+      {
+        "number": 5,
+        "question": "Colour of the Suffragette line, one of Overground's six named lines",
+        "answer": "green",
+        "more": "The Suffragette line, part of London Overground, is coloured green."
+      },
+      {
+        "number": 6,
+        "question": "Colour of the Underground line that serves Heathrow Airport",
+        "answer": "blue",
+        "more": "The Piccadilly line serves Heathrow Airport, coloured blue on the map, alongside the Elizabeth line."
+      }
+    ]
+  },
+  {
+    "day": 275,
+    "category": "DC Superheroes",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of Superman's reporter disguise, first name",
+        "answer": "C",
+        "more": "His first name is <strong><u>C</u></strong>lark Kent."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of Batman's billionaire alter ego, surname",
+        "answer": "E",
+        "more": "His surname is Wayn<strong><u>e</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of Wonder Woman's alter ego, first name",
+        "answer": "I",
+        "more": "Her first name is D<strong><u>i</u></strong>ana."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of Superman's home planet, destroyed in his origin story",
+        "answer": "K",
+        "more": "His home planet is <strong><u>K</u></strong>rypton."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the Joker's chaotic accomplice and love interest",
+        "answer": "A",
+        "more": "She is H<strong><u>a</u></strong>rley Quinn."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the superhero team including Superman and Batman",
+        "answer": "J",
+        "more": "The team is the <strong><u>J</u></strong>ustice League."
+      }
+    ]
+  },
+  {
+    "day": 276,
+    "category": "Football Kit Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour of the Netherlands' home shirt, tied to their royal house",
+        "answer": "orange",
+        "more": "The Dutch team is nicknamed Oranje after the House of Orange-Nassau."
+      },
+      {
+        "number": 2,
+        "question": "Colour of Japan's home football shirt, worn with white shorts",
+        "answer": "blue",
+        "more": "Japan's team is nicknamed Samurai Blue after their shirt colour."
+      },
+      {
+        "number": 3,
+        "question": "Colour of South Korea's home shirt, worn at major tournaments",
+        "answer": "red",
+        "more": "South Korea wear red at home, nicknamed the Reds."
+      },
+      {
+        "number": 4,
+        "question": "Colour of Colombia's home shirt, worn with blue and red trim",
+        "answer": "yellow",
+        "more": "Colombia wear yellow shirts with blue and red trim."
+      },
+      {
+        "number": 5,
+        "question": "Colour of Germany's away kit at the 2014 World Cup, trimmed in gold",
+        "answer": "black",
+        "more": "Germany wore a black away kit trimmed in red and gold that tournament."
+      },
+      {
+        "number": 6,
+        "question": "Colour of Nigeria's home shirt, taken from their national flag",
+        "answer": "green",
+        "more": "Nigeria's Super Eagles wear green at home, taken from their flag."
+      }
+    ]
+  },
+  {
+    "day": 277,
+    "category": "The Office (US)",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the actor who played Michael Scott, surname",
+        "answer": "C",
+        "more": "The actor is Steve <strong><u>C</u></strong>arell."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the actor who played Jim, surname",
+        "answer": "I",
+        "more": "The actor is John Krasinsk<strong><u>i</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of Jim's love interest, first name",
+        "answer": "A",
+        "more": "Her name is P<strong><u>a</u></strong>m."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the paper company where the show is set",
+        "answer": "D",
+        "more": "It is <strong><u>D</u></strong>under Mifflin."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the Pennsylvania city where the branch is located",
+        "answer": "S",
+        "more": "The city is <strong><u>S</u></strong>cranton."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the office's laziest, oldest salesman, surname",
+        "answer": "N",
+        "more": "His surname is Hudso<strong><u>n</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 278,
+    "category": "US National Parks",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the first national park in the US, home to Old Faithful geyser",
+        "answer": "Y",
+        "more": "It is <strong><u>Y</u></strong>ellowstone."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the California park home to El Capitan",
+        "answer": "E",
+        "more": "It is Yosemit<strong><u>e</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the Arizona park carved by the Colorado River",
+        "answer": "R",
+        "more": "It is G<strong><u>r</u></strong>and Canyon."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the hazy mountains in the most-visited US park",
+        "answer": "O",
+        "more": "The range's central word is Sm<strong><u>o</u></strong>ky."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the Colorado park's mountain range, 1st word",
+        "answer": "C",
+        "more": "It is Ro<strong><u>c</u></strong>ky Mountain."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the California park famous for giant ancient trees",
+        "answer": "A",
+        "more": "It is Sequoi<strong><u>a</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 279,
+    "category": "Star Trek",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the original USS Enterprise captain, surname",
+        "answer": "K",
+        "more": "The captain is <strong><u>K</u></strong>irk."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the communications officer's surname",
+        "answer": "U",
+        "more": "Her surname is Uh<strong><u>u</u></strong>ra."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the Next Generation captain, surname",
+        "answer": "P",
+        "more": "The captain is <strong><u>P</u></strong>icard."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the actor who played Spock, surname",
+        "answer": "Y",
+        "more": "The actor is Nimo<strong><u>y</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of Worf's alien species, known for war and honour",
+        "answer": "N",
+        "more": "The Klingo<strong><u>n</u></strong> race is known for war and honour."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the organisation that operates the Enterprise",
+        "answer": "F",
+        "more": "It is Star<strong><u>f</u></strong>leet."
+      }
+    ]
+  },
+  {
+    "day": 280,
+    "category": "Sharks",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the shark with a distinctive T-shaped head",
+        "answer": "D",
+        "more": "It is the Hammerhea<strong><u>d</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the world's largest fish, a filter-feeding shark, 1st word",
+        "answer": "A",
+        "more": "It is the Wh<strong><u>a</u></strong>le Shark."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the fastest shark species, built for speed",
+        "answer": "M",
+        "more": "It is the <strong><u>M</u></strong>ako."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the shark that can tolerate freshwater rivers, 1st word",
+        "answer": "L",
+        "more": "It is the Bul<strong><u>l</u></strong> Shark."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the term for a young shark",
+        "answer": "P",
+        "more": "It is a pu<strong><u>p</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the informal collective term for a group of sharks",
+        "answer": "H",
+        "more": "It is a s<strong><u>h</u></strong>iver."
+      }
+    ]
+  },
+  {
+    "day": 281,
+    "category": "Shakespeare Plays",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of Hamlet's love interest, who drowns",
+        "answer": "P",
+        "more": "She is O<strong><u>p</u></strong>helia."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the ambitious Scottish general driven to murder",
+        "answer": "H",
+        "more": "The general is Macbet<strong><u>h</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the Scottish general's surname, also his wife's",
+        "answer": "B",
+        "more": "Their surname is Mac<strong><u>b</u></strong>eth."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the villain who manipulates Othello into jealousy",
+        "answer": "O",
+        "more": "The villain is Iag<strong><u>o</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the moneylender in 'The Merchant of Venice', pound of flesh",
+        "answer": "S",
+        "more": "The moneylender is <strong><u>S</u></strong>hylock."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of Romeo's hot-headed friend, killed by Tybalt",
+        "answer": "E",
+        "more": "He is M<strong><u>e</u></strong>rcutio."
+      }
+    ]
+  },
+  {
+    "day": 282,
+    "category": "London",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Separate lines making up the London Underground network",
+        "answer": "11",
+        "more": "The network is often simply called the Tube."
+      },
+      {
+        "number": 2,
+        "question": "Year Big Ben's clock tower was completed, 18--",
+        "answer": "59",
+        "more": "The tower itself was finished in 1859."
+      },
+      {
+        "number": 3,
+        "question": "Official Royal Parks located within central London",
+        "answer": "8",
+        "more": "These include Hyde Park, Regent's Park and Greenwich Park."
+      },
+      {
+        "number": 4,
+        "question": "Year Tower Bridge was completed, 18--",
+        "answer": "94",
+        "more": "It opened in 1894 after eight years of construction."
+      },
+      {
+        "number": 5,
+        "question": "Bronze lions at the base of Nelson's Column",
+        "answer": "4",
+        "more": "They have guarded Trafalgar Square since 1867."
+      },
+      {
+        "number": 6,
+        "question": "Summer Olympic Games hosted by London",
+        "answer": "3",
+        "more": "London hosted in 1908, 1948 and 2012."
+      }
+    ]
+  },
+  {
+    "day": 283,
+    "category": "Monopoly Board Colours (UK Edition)",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour group containing Euston Road on the UK Monopoly board",
+        "answer": "blue",
+        "more": "Euston Road is a light blue property, alongside The Angel Islington and Pentonville Road."
+      },
+      {
+        "number": 2,
+        "question": "Colour group containing Whitehall on the UK Monopoly board",
+        "answer": "pink",
+        "more": "Whitehall sits in the pink group with Pall Mall and Northumberland Avenue."
+      },
+      {
+        "number": 3,
+        "question": "Colour group containing Marlborough Street on the UK Monopoly board",
+        "answer": "orange",
+        "more": "Marlborough Street sits in the orange group with Bow Street and Vine Street."
+      },
+      {
+        "number": 4,
+        "question": "Colour group containing Fleet Street on the UK Monopoly board",
+        "answer": "red",
+        "more": "Fleet Street sits in the red group with The Strand and Trafalgar Square."
+      },
+      {
+        "number": 5,
+        "question": "Colour group containing Coventry Street on the UK Monopoly board",
+        "answer": "yellow",
+        "more": "Coventry Street sits in the yellow group with Leicester Square and Piccadilly."
+      },
+      {
+        "number": 6,
+        "question": "Colour group containing Oxford Street on the UK Monopoly board",
+        "answer": "green",
+        "more": "Oxford Street sits in the green group with Regent Street and Bond Street."
+      }
+    ]
+  },
+  {
+    "day": 284,
+    "category": "Doctor Who",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the 4th Doctor's actor, famous for his long scarf",
+        "answer": "B",
+        "more": "The actor is <strong><u>B</u></strong>aker."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the Doctor's time-travelling ship, bigger on the inside",
+        "answer": "T",
+        "more": "It is the <strong><u>T</u></strong>ARDIS."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the companion of the 9th and 10th Doctors, first name",
+        "answer": "R",
+        "more": "Her name is <strong><u>R</u></strong>ose."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the very first Doctor Who actor, from 1963",
+        "answer": "H",
+        "more": "The actor is <strong><u>H</u></strong>artnell."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the Scottish actor who played the 12th Doctor",
+        "answer": "C",
+        "more": "The actor is <strong><u>C</u></strong>apaldi."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the Doctor's home planet",
+        "answer": "I",
+        "more": "The planet is Gall<strong><u>i</u></strong>frey."
+      }
+    ]
+  },
+  {
+    "day": 285,
+    "category": "Fairy Tales",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the creature who tricks Little Red Riding Hood",
+        "answer": "F",
+        "more": "The villain is the Wol<strong><u>f</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the boy who trades a cow for magic beans",
+        "answer": "J",
+        "more": "He is <strong><u>J</u></strong>ack."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the imp who spins straw into gold for a price",
+        "answer": "R",
+        "more": "He is <strong><u>R</u></strong>umpelstiltskin."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the golden object the princess drops down a well",
+        "answer": "A",
+        "more": "It is a b<strong><u>a</u></strong>ll."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the flute player who lures away a town's rats, 2nd word",
+        "answer": "P",
+        "more": "He is the Pied Pi<strong><u>p</u></strong>er."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the material the first little pig's house is made of",
+        "answer": "W",
+        "more": "It is made of stra<strong><u>w</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 286,
+    "category": "Birthstones by Month",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour of January's birthstone, garnet, most commonly",
+        "answer": "red",
+        "more": "Garnet, January's birthstone, is most commonly deep red."
+      },
+      {
+        "number": 2,
+        "question": "Colour of February's birthstone, amethyst",
+        "answer": "purple",
+        "more": "Amethyst, February's birthstone, is a purple quartz."
+      },
+      {
+        "number": 3,
+        "question": "Colour of peridot, August's official birthstone",
+        "answer": "green",
+        "more": "Peridot, August's birthstone, has a distinctive olive-green colour."
+      },
+      {
+        "number": 4,
+        "question": "Colour of a popular October tourmaline birthstone shade",
+        "answer": "pink",
+        "more": "Pink tourmaline is one of October's two official birthstones."
+      },
+      {
+        "number": 5,
+        "question": "Colour of the most common onyx variety, an alternative birthstone",
+        "answer": "black",
+        "more": "Black onyx is a popular dark gemstone alternative for several months."
+      },
+      {
+        "number": 6,
+        "question": "Colour of spessartine, a fiery orange garnet variety prized by collectors",
+        "answer": "orange",
+        "more": "Spessartine, sometimes called mandarin garnet, is a vivid orange gemstone."
+      }
+    ]
+  },
+  {
+    "day": 287,
+    "category": "Athletics",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the Jamaican 100m and 200m world record holder",
+        "answer": "B",
+        "more": "The sprinter is <strong><u>B</u></strong>olt."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the sprinter who won 4 golds at the 1936 Olympics",
+        "answer": "W",
+        "more": "The sprinter is O<strong><u>w</u></strong>ens."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the British runner known for the 'Mobot' celebration",
+        "answer": "H",
+        "more": "The runner is Fara<strong><u>h</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the sprinter known for his gold running shoes, surname",
+        "answer": "J",
+        "more": "The sprinter is <strong><u>J</u></strong>ohnson."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the ten-discipline track and field event for men",
+        "answer": "N",
+        "more": "It is the decathlo<strong><u>n</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the distance event run with hurdles and a water jump",
+        "answer": "S",
+        "more": "The event is <strong><u>S</u></strong>teeplechase."
+      }
+    ]
+  },
+  {
+    "day": 288,
+    "category": "Waterfalls",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the famous falls on the US-Canada border",
+        "answer": "N",
+        "more": "It is <strong><u>N</u></strong>iagara Falls."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the tallest waterfall in the world, in Venezuela",
+        "answer": "L",
+        "more": "It is Ange<strong><u>l</u></strong> Falls."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the falls on the Zambia-Zimbabwe border",
+        "answer": "I",
+        "more": "It is V<strong><u>i</u></strong>ctoria Falls."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the explorer who named Victoria Falls, first name",
+        "answer": "D",
+        "more": "His first name is <strong><u>D</u></strong>avid Livingstone."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the misty cloud created by a waterfall's impact",
+        "answer": "S",
+        "more": "It is <strong><u>S</u></strong>pray."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the term for a series of small waterfalls or steep rapids",
+        "answer": "C",
+        "more": "It is a cas<strong><u>c</u></strong>ade."
+      }
+    ]
+  },
+  {
+    "day": 289,
+    "category": "James Bond",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Actors to officially play Bond for Eon Productions",
+        "answer": "6",
+        "more": "From Sean Connery to Daniel Craig, six actors have held the role."
+      },
+      {
+        "number": 2,
+        "question": "Official Bond films starring Daniel Craig as 007",
+        "answer": "5",
+        "more": "His run began with Casino Royale and ended with No Time to Die."
+      },
+      {
+        "number": 3,
+        "question": "Official Bond films starring Roger Moore as 007",
+        "answer": "7",
+        "more": "Moore held the role for longer than any other actor."
+      },
+      {
+        "number": 4,
+        "question": "Pierce Brosnan's official Bond films",
+        "answer": "4",
+        "more": "He starred as Bond through the late 1990s and early 2000s."
+      },
+      {
+        "number": 5,
+        "question": "Year \"You Only Live Twice\" was released, 19--",
+        "answer": "67",
+        "more": "The film was set largely in Japan."
+      },
+      {
+        "number": 6,
+        "question": "Year \"Goldfinger\" was released, 19--",
+        "answer": "64",
+        "more": "It is widely considered one of the finest films in the series."
+      }
+    ]
+  },
+  {
+    "day": 290,
+    "category": "The Lord of the Rings",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the hobbit who bears the One Ring on the quest to destroy it",
+        "answer": "F",
+        "more": "He is <strong><u>F</u></strong>rodo."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the wizard who guides the Fellowship, known for fireworks",
+        "answer": "A",
+        "more": "The wizard is G<strong><u>a</u></strong>ndalf."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the hobbit who found the Ring before Frodo, his uncle",
+        "answer": "B",
+        "more": "He is <strong><u>B</u></strong>ilbo."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the dark realm where Sauron rules",
+        "answer": "M",
+        "more": "The realm is <strong><u>M</u></strong>ordor."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the creature who hunts Frodo for the Ring",
+        "answer": "O",
+        "more": "The creature is G<strong><u>o</u></strong>llum."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the hobbits' peaceful homeland",
+        "answer": "E",
+        "more": "It is the Shir<strong><u>e</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 291,
+    "category": "Racing Flags (Motorsport)",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Flag colour warning drivers of a hazard somewhere on the track",
+        "answer": "yellow",
+        "more": "A yellow flag tells drivers to slow down for danger ahead."
+      },
+      {
+        "number": 2,
+        "question": "Flag colour ordering a driver back to the pits, ending their race",
+        "answer": "black",
+        "more": "A black flag disqualifies a driver, calling them into the pit lane."
+      },
+      {
+        "number": 3,
+        "question": "Flag colour telling a driver a faster car is closing in behind",
+        "answer": "blue",
+        "more": "A blue flag tells a backmarker to let a faster car past."
+      },
+      {
+        "number": 4,
+        "question": "Flag colour that stops a race session completely",
+        "answer": "red",
+        "more": "A red flag halts the session, usually after a serious incident."
+      },
+      {
+        "number": 5,
+        "question": "Flag colour signalling the track is clear again after a hazard",
+        "answer": "green",
+        "more": "A green flag ends a caution period and resumes racing."
+      },
+      {
+        "number": 6,
+        "question": "Background colour of IndyCar's penalty flag, marked with a cross",
+        "answer": "orange",
+        "more": "IndyCar's 'meatball' flag is orange with a black cross."
+      }
+    ]
+  },
+  {
+    "day": 292,
     "category": "The Beatles",
     "tagline": "drag numbers to answer each clue",
     "type": "number",
@@ -1672,51 +2948,975 @@
     ]
   },
   {
-    "day": 256,
-    "category": "James Bond",
+    "day": 293,
+    "category": "Boxing",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of Muhammad Ali's birth surname, before his name change",
+        "answer": "Y",
+        "more": "His birth surname was Cla<strong><u>y</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the Filipino boxing legend and senator, surname",
+        "answer": "P",
+        "more": "He is <strong><u>P</u></strong>acquiao."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the British heavyweight, world champion boxer",
+        "answer": "A",
+        "more": "He is Joshu<strong><u>a</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the eccentric British 'Gypsy King' heavyweight, surname",
+        "answer": "U",
+        "more": "He is F<strong><u>u</u></strong>ry."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the country that hosted Ali's 'Rumble in the Jungle'",
+        "answer": "I",
+        "more": "The country is Za<strong><u>i</u></strong>re."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the punch thrown in an arc to the side of the head",
+        "answer": "H",
+        "more": "It is a <strong><u>H</u></strong>ook."
+      }
+    ]
+  },
+  {
+    "day": 294,
+    "category": "Disney Princesses",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the Native American princess, Powhatan's daughter",
+        "answer": "P",
+        "more": "The princess is <strong><u>P</u></strong>ocahontas."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the princess locked in a tower with magical hair",
+        "answer": "L",
+        "more": "The princess is Rapunze<strong><u>l</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the Polynesian princess who sails to save her island",
+        "answer": "M",
+        "more": "The princess is <strong><u>M</u></strong>oana."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the first word of the poisoned-apple princess's title",
+        "answer": "N",
+        "more": "The title is S<strong><u>n</u></strong>ow White."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the princess who loses her glass slipper at the ball",
+        "answer": "A",
+        "more": "The princess is Cinderell<strong><u>a</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the sea witch who seeks Ariel's voice",
+        "answer": "U",
+        "more": "The villain is <strong><u>U</u></strong>rsula."
+      }
+    ]
+  },
+  {
+    "day": 295,
+    "category": "Insects",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Middle letter of the winged insect that hovers and darts near ponds",
+        "answer": "O",
+        "more": "It is the Drag<strong><u>o</u></strong>nfly."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the jumping insect known for its powerful hind legs",
+        "answer": "G",
+        "more": "It is the <strong><u>G</u></strong>rasshopper."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the resilient household pest insect in kitchens",
+        "answer": "R",
+        "more": "It is the Cock<strong><u>r</u></strong>oach."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the insect that chirps by rubbing its wings together",
+        "answer": "C",
+        "more": "It is the <strong><u>C</u></strong>ricket."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the insect that glows in the dark, also called a lightning bug",
+        "answer": "I",
+        "more": "It is the F<strong><u>i</u></strong>refly."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the hard-shelled insect, the largest insect order",
+        "answer": "E",
+        "more": "It is the B<strong><u>e</u></strong>etle."
+      }
+    ]
+  },
+  {
+    "day": 296,
+    "category": "The Moon Landing",
     "tagline": "drag numbers to answer each clue",
     "type": "number",
     "questions": [
       {
         "number": 1,
-        "question": "Actors to officially play Bond for Eon Productions",
+        "question": "Apollo missions that successfully landed on the Moon",
         "answer": "6",
-        "more": "From Sean Connery to Daniel Craig, six actors have held the role."
+        "more": "Six missions between 1969 and 1972 achieved a crewed landing."
       },
       {
         "number": 2,
-        "question": "Daniel Craig's official Bond films",
-        "answer": "5",
-        "more": "His run began with Casino Royale and ended with No Time to Die."
+        "question": "Astronauts who walked on the Moon during Apollo 11",
+        "answer": "2",
+        "more": "Armstrong and Aldrin descended while Collins stayed in orbit."
       },
       {
         "number": 3,
-        "question": "Roger Moore's official Bond films",
-        "answer": "7",
-        "more": "Moore held the role for longer than any other actor."
+        "question": "Buzz Aldrin's age during the Moon landing",
+        "answer": "39",
+        "more": "He followed Armstrong onto the lunar surface shortly after."
       },
       {
         "number": 4,
-        "question": "Pierce Brosnan's official Bond films",
-        "answer": "4",
-        "more": "He starred as Bond through the late 1990s and early 2000s."
+        "question": "Total days the Apollo 11 round trip took, launch to splashdown",
+        "answer": "8",
+        "more": "The full mission from launch to splashdown lasted eight days."
       },
       {
         "number": 5,
-        "question": "Year \"You Only Live Twice\" was released, 19--",
-        "answer": "67",
-        "more": "The film was set largely in Japan."
+        "question": "Days it took Apollo 11 to reach the Moon",
+        "answer": "4",
+        "more": "The spacecraft travelled roughly 240,000 miles to get there."
       },
       {
         "number": 6,
-        "question": "Year \"Goldfinger\" was released, 19--",
-        "answer": "64",
-        "more": "It is widely considered one of the finest films in the series."
+        "question": "Year the NASA space agency was officially founded, 19--",
+        "answer": "58",
+        "more": "It was established in response to the early Space Race."
       }
     ]
   },
   {
-    "day": 257,
+    "day": 297,
+    "category": "Countries of Africa",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of Africa's most populous country",
+        "answer": "N",
+        "more": "The country is <strong><u>N</u></strong>igeria."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the country famous for the pyramids of Giza",
+        "answer": "G",
+        "more": "The country is E<strong><u>g</u></strong>ypt."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the country whose capital is Rabat, in North Africa",
+        "answer": "O",
+        "more": "The country is Morocc<strong><u>o</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the country famous for the Sahara, Africa's largest by area",
+        "answer": "A",
+        "more": "The country is <strong><u>A</u></strong>lgeria."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the West African country whose capital is N'Djamena",
+        "answer": "D",
+        "more": "The country is Cha<strong><u>d</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the country whose capital is Addis Ababa",
+        "answer": "E",
+        "more": "The country is <strong><u>E</u></strong>thiopia."
+      }
+    ]
+  },
+  {
+    "day": 298,
+    "category": "Australian States and Territories",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the state whose capital is Sydney, second word of its name",
+        "answer": "W",
+        "more": "The state is New South <strong><u>W</u></strong>ales."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the state whose capital is Melbourne",
+        "answer": "A",
+        "more": "The state is Victori<strong><u>a</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the state whose capital is Brisbane",
+        "answer": "U",
+        "more": "The state is Q<strong><u>u</u></strong>eensland."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the territory whose capital is Darwin, first word",
+        "answer": "O",
+        "more": "The territory is N<strong><u>o</u></strong>rthern Territory."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the capital of Queensland",
+        "answer": "R",
+        "more": "The city is B<strong><u>r</u></strong>isbane."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the capital of Tasmania",
+        "answer": "T",
+        "more": "The city is Hobar<strong><u>t</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 299,
+    "category": "Norse Mythology",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the god of thunder, who wields the hammer Mjolnir",
+        "answer": "R",
+        "more": "The god is Tho<strong><u>r</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the trickster god, father of monsters",
+        "answer": "O",
+        "more": "The god is L<strong><u>o</u></strong>ki."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the Norse goddess who rides a chariot pulled by cats",
+        "answer": "E",
+        "more": "The goddess is Fr<strong><u>e</u></strong>ya."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of Odin's wife, queen of Asgard",
+        "answer": "F",
+        "more": "The goddess is <strong><u>F</u></strong>rigg."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the home of the Norse gods",
+        "answer": "A",
+        "more": "The realm is <strong><u>A</u></strong>sgard."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the rainbow bridge connecting Asgard and Midgard",
+        "answer": "I",
+        "more": "The bridge is B<strong><u>i</u></strong>frost."
+      }
+    ]
+  },
+  {
+    "day": 300,
+    "category": "Oceans and Seas",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the ocean bordering East Africa, India and Australia",
+        "answer": "N",
+        "more": "It is the I<strong><u>n</u></strong>dian Ocean."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the popular cruise sea south of Europe",
+        "answer": "R",
+        "more": "It is the Medite<strong><u>r</u></strong>ranean."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the super-salty sea between Israel and Jordan, 1st word",
+        "answer": "D",
+        "more": "It is the Dea<strong><u>d</u></strong> Sea."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the sea between Russia and Turkey, first word",
+        "answer": "L",
+        "more": "It is the B<strong><u>l</u></strong>ack Sea."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the sea between Scandinavia and mainland Europe",
+        "answer": "B",
+        "more": "It is the <strong><u>B</u></strong>altic Sea."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the sea between Egypt and Saudi Arabia, 1st word",
+        "answer": "E",
+        "more": "It is the R<strong><u>e</u></strong>d Sea."
+      }
+    ]
+  },
+  {
+    "day": 301,
+    "category": "Rivers of the World",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the longest river in the world, flowing through Africa",
+        "answer": "N",
+        "more": "The river is the <strong><u>N</u></strong>ile."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of South America's mighty, rainforest-crossing river",
+        "answer": "M",
+        "more": "The river is the A<strong><u>m</u></strong>azon."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the river that flows through Paris",
+        "answer": "E",
+        "more": "The river is the Sein<strong><u>e</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the river that flows through Rome",
+        "answer": "B",
+        "more": "The river is the Ti<strong><u>b</u></strong>er."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the major river running through Germany",
+        "answer": "I",
+        "more": "The river is the Rh<strong><u>i</u></strong>ne."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the river that carved the Grand Canyon",
+        "answer": "O",
+        "more": "The river is the C<strong><u>o</u></strong>lorado."
+      }
+    ]
+  },
+  {
+    "day": 302,
+    "category": "Colour Idioms & Expressions",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour in the idiom for feeling jealous, '___ with envy'",
+        "answer": "green",
+        "more": "To be '__ with envy' describes strong jealousy."
+      },
+      {
+        "number": 2,
+        "question": "Colour in the idiom for cowardice, being '___-bellied'",
+        "answer": "yellow",
+        "more": "Being 'yellow-bellied' is an old idiom for cowardice."
+      },
+      {
+        "number": 3,
+        "question": "Colour in the idiom for being delighted, 'tickled ___'",
+        "answer": "pink",
+        "more": "To be 'tickled pink' means to be delighted."
+      },
+      {
+        "number": 4,
+        "question": "Colour in the idiom warning of danger ahead, 'a ___ flag'",
+        "answer": "red",
+        "more": "'A red flag' is an idiom for a clear warning sign."
+      },
+      {
+        "number": 5,
+        "question": "Colour in the idiom for being financially profitable, 'in the ___'",
+        "answer": "black",
+        "more": "Being 'in the black' means being financially profitable."
+      },
+      {
+        "number": 6,
+        "question": "Colour in the idiom for noble or royal birth, 'born to the ___'",
+        "answer": "purple",
+        "more": "Being 'born to the purple' is an old idiom for royal birth."
+      }
+    ]
+  },
+  {
+    "day": 303,
+    "category": "Friends (TV Show)",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the dinosaur-obsessed paleontologist friend's first name",
+        "answer": "R",
+        "more": "His name is <strong><u>R</u></strong>oss."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the actress who played Rachel, surname",
+        "answer": "N",
+        "more": "The actress is Jennifer A<strong><u>n</u></strong>iston."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of Chandler's surname, a job he can never explain",
+        "answer": "G",
+        "more": "His surname is Bin<strong><u>g</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of Joey's Italian surname",
+        "answer": "B",
+        "more": "His surname is Trib<strong><u>b</u></strong>iani."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the coffee shop the six friends regularly hang out at",
+        "answer": "C",
+        "more": "It is <strong><u>C</u></strong>entral Perk."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the Central Perk barista secretly in love with Rachel",
+        "answer": "T",
+        "more": "He is Gun<strong><u>t</u></strong>her."
+      }
+    ]
+  },
+  {
+    "day": 304,
+    "category": "Marvel Superheroes",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the actor who played Iron Man, surname",
+        "answer": "D",
+        "more": "The actor is Robert <strong><u>D</u></strong>owney Jr."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the actor who played Captain America, surname",
+        "answer": "V",
+        "more": "The actor is Chris E<strong><u>v</u></strong>ans."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of Spider-Man's civilian first name",
+        "answer": "T",
+        "more": "His first name is Pe<strong><u>t</u></strong>er Parker."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of Captain America's alter ego, surname",
+        "answer": "S",
+        "more": "His surname is Roger<strong><u>s</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of Black Widow's Russian first name",
+        "answer": "A",
+        "more": "Her first name is Nat<strong><u>a</u></strong>sha."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the tree-like hero who only says three words",
+        "answer": "R",
+        "more": "He is G<strong><u>r</u></strong>oot."
+      }
+    ]
+  },
+  {
+    "day": 305,
+    "category": "Breaking Bad",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the actor who played Walter White, surname",
+        "answer": "C",
+        "more": "The actor is Bryan <strong><u>C</u></strong>ranston."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the actor who played Jesse Pinkman, first name",
+        "answer": "A",
+        "more": "The actor's first name is A<strong><u>a</u></strong>ron."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of Walter White's DEA agent brother-in-law, surname",
+        "answer": "R",
+        "more": "His surname is Schrade<strong><u>r</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of Jesse Pinkman's surname in Breaking Bad",
+        "answer": "K",
+        "more": "His surname is Pin<strong><u>k</u></strong>man."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of Breaking Bad's crooked lawyer, first name",
+        "answer": "S",
+        "more": "His first name is <strong><u>S</u></strong>aul."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the New Mexico city where the show is set",
+        "answer": "E",
+        "more": "The city is Albuquerqu<strong><u>e</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 306,
+    "category": "Board Games",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the property game with tokens like the top hat",
+        "answer": "M",
+        "more": "It is <strong><u>M</u></strong>onopoly."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the word-building tile game played on a 15x15 board",
+        "answer": "E",
+        "more": "It is Scrabbl<strong><u>e</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the ancient dice game played with 15 pieces",
+        "answer": "N",
+        "more": "It is Backgammo<strong><u>n</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the quiz game's 1st word, where players collect wedges",
+        "answer": "V",
+        "more": "It is Tri<strong><u>v</u></strong>ial Pursuit."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the physical stacking game with wooden blocks",
+        "answer": "J",
+        "more": "It is <strong><u>J</u></strong>enga."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the mat game with coloured dots for hands and feet",
+        "answer": "R",
+        "more": "It is Twiste<strong><u>r</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 307,
+    "category": "Tennis Players",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the Swiss player with 20 Grand Slam titles, surname",
+        "answer": "F",
+        "more": "The player is <strong><u>F</u></strong>ederer."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the Spanish 'King of Clay', surname",
+        "answer": "A",
+        "more": "The player is N<strong><u>a</u></strong>dal."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the elder Williams sister, first name",
+        "answer": "N",
+        "more": "She is Ve<strong><u>n</u></strong>us."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of the fiery tennis star known for outbursts, surname",
+        "answer": "C",
+        "more": "The player is M<strong><u>c</u></strong>Enroe."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the champion who founded the WTA, first name",
+        "answer": "I",
+        "more": "Her first name is B<strong><u>i</u></strong>llie Jean King."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the tied score of 40-40 in a tennis game",
+        "answer": "U",
+        "more": "It is a De<strong><u>u</u></strong>ce."
+      }
+    ]
+  },
+  {
+    "day": 308,
+    "category": "Car Brands",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of the Japanese brand, the world's largest automaker",
+        "answer": "O",
+        "more": "The brand is T<strong><u>o</u></strong>yota."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of Ford's founder, first name",
+        "answer": "H",
+        "more": "His first name is <strong><u>H</u></strong>enry Ford."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the German brand known for four interlocking rings",
+        "answer": "U",
+        "more": "The brand is A<strong><u>u</u></strong>di."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the Japanese brand whose luxury division is Infiniti",
+        "answer": "N",
+        "more": "The brand is <strong><u>N</u></strong>issan."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the South Korean brand, sister company to Hyundai",
+        "answer": "A",
+        "more": "The brand is Ki<strong><u>a</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the British 4x4 brand, second word of 'Land ___'",
+        "answer": "V",
+        "more": "The brand is Ro<strong><u>v</u></strong>er."
+      }
+    ]
+  },
+  {
+    "day": 309,
+    "category": "Whisky",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the type of whisky that must be distilled in Scotland",
+        "answer": "S",
+        "more": "It is <strong><u>S</u></strong>cotch."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the corn whiskey named for a Kentucky county",
+        "answer": "N",
+        "more": "It is Bourbo<strong><u>n</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the Tennessee whiskey named after its founder, 1st word",
+        "answer": "J",
+        "more": "It is <strong><u>J</u></strong>ack Daniel's."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the Irish whiskey brand named after its founder, John",
+        "answer": "E",
+        "more": "It is Jam<strong><u>e</u></strong>son."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the Scottish island known for its smoky, peaty whiskies",
+        "answer": "Y",
+        "more": "It is Isla<strong><u>y</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the term for a spirit's alcohol-strength measurement",
+        "answer": "F",
+        "more": "It is proo<strong><u>f</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 310,
+    "category": "Snooker",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour balls on a snooker table, excluding reds",
+        "answer": "6",
+        "more": "Yellow, green, brown, blue, pink and black."
+      },
+      {
+        "number": 2,
+        "question": "Points value scored for potting snooker's yellow ball",
+        "answer": "2",
+        "more": "Yellow is the lowest-value colour on the table."
+      },
+      {
+        "number": 3,
+        "question": "Points value scored for potting snooker's green ball",
+        "answer": "3",
+        "more": "Green sits just above yellow in value."
+      },
+      {
+        "number": 4,
+        "question": "Points value scored for potting snooker's brown ball",
+        "answer": "4",
+        "more": "Brown sits in the middle of the colour values."
+      },
+      {
+        "number": 5,
+        "question": "World Championship titles won by Ronnie O'Sullivan",
+        "answer": "7",
+        "more": "This ties him with Stephen Hendry for the modern record."
+      },
+      {
+        "number": 6,
+        "question": "Diameter of a snooker ball in centimetres, rounded",
+        "answer": "5",
+        "more": "All the balls on the table are exactly the same size."
+      }
+    ]
+  },
+  {
+    "day": 311,
+    "category": "Star Wars",
+    "tagline": "drag numbers to answer each clue",
+    "type": "number",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Films making up the full Skywalker saga",
+        "answer": "9",
+        "more": "The saga spans three trilogies released across four decades."
+      },
+      {
+        "number": 2,
+        "question": "Year \"The Empire Strikes Back\" was released, 19--",
+        "answer": "80",
+        "more": "It is widely considered the darkest film of the original trilogy."
+      },
+      {
+        "number": 3,
+        "question": "Year \"Return of the Jedi\" was released, 19--",
+        "answer": "83",
+        "more": "It closed out the original trilogy in 1983."
+      },
+      {
+        "number": 4,
+        "question": "Trilogies making up the core Star Wars saga",
+        "answer": "3",
+        "more": "The prequel, original and sequel trilogies together form the saga."
+      },
+      {
+        "number": 5,
+        "question": "Suns that Luke Skywalker's home planet Tatooine orbits",
+        "answer": "2",
+        "more": "Its famous twin sunset is one of the saga's most iconic images."
+      },
+      {
+        "number": 6,
+        "question": "Hands Luke Skywalker loses across the original trilogy",
+        "answer": "1",
+        "more": "He loses his right hand in a duel with Darth Vader."
+      }
+    ]
+  },
+  {
+    "day": 312,
+    "category": "Musical Instruments",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the smallest, highest-pitched bowed string instrument",
+        "answer": "N",
+        "more": "It is a Violi<strong><u>n</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the woodwind instrument held sideways to play",
+        "answer": "F",
+        "more": "It is a <strong><u>F</u></strong>lute."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the single-reed woodwind popular in jazz music",
+        "answer": "L",
+        "more": "It is a C<strong><u>l</u></strong>arinet."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the large triangular instrument plucked by hand",
+        "answer": "H",
+        "more": "It is a <strong><u>H</u></strong>arp."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the free-reed instrument played with a bellows",
+        "answer": "C",
+        "more": "It is an A<strong><u>c</u></strong>cordion."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the small four-stringed Hawaiian instrument",
+        "answer": "U",
+        "more": "It is a <strong><u>U</u></strong>kulele."
+      }
+    ]
+  },
+  {
+    "day": 313,
+    "category": "NBA Teams",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "2nd letter of Chicago's team, home of a 1990s dynasty",
+        "answer": "U",
+        "more": "The team is B<strong><u>u</u></strong>lls."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of Denver's NBA team",
+        "answer": "G",
+        "more": "The team is Nug<strong><u>g</u></strong>ets."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of Miami's NBA team, nicknamed for its 'Heat Culture'",
+        "answer": "T",
+        "more": "The team is Hea<strong><u>t</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "2nd letter of Detroit's NBA team, named for its car industry",
+        "answer": "I",
+        "more": "The team is P<strong><u>i</u></strong>stons."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of Atlanta's NBA team, named after a bird of prey",
+        "answer": "H",
+        "more": "The team is <strong><u>H</u></strong>awks."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of Houston's NBA team, named for the Space Race",
+        "answer": "O",
+        "more": "The team is R<strong><u>o</u></strong>ckets."
+      }
+    ]
+  },
+  {
+    "day": 314,
+    "category": "Roald Dahl Books",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of the poor boy who wins a golden ticket, surname",
+        "answer": "T",
+        "more": "His surname is Bucke<strong><u>t</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the plant Jack's magic beans grow into overnight",
+        "answer": "K",
+        "more": "It is a beanstal<strong><u>k</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the boy who gives his grandmother a magic potion",
+        "answer": "G",
+        "more": "He is <strong><u>G</u></strong>eorge."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the pet tortoise in Roald Dahl's 'Esio Trot'",
+        "answer": "E",
+        "more": "The pet is a tortois<strong><u>e</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the title creatures who disguise themselves as women",
+        "answer": "C",
+        "more": "They are the Wit<strong><u>c</u></strong>hes."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of Roald Dahl's regular illustrator, surname",
+        "answer": "B",
+        "more": "The illustrator is <strong><u>B</u></strong>lake."
+      }
+    ]
+  },
+  {
+    "day": 315,
     "category": "Harry Potter",
     "tagline": "drag numbers to answer each clue",
     "type": "number",
@@ -1735,7 +3935,7 @@
       },
       {
         "number": 3,
-        "question": "Platform number at King's Cross station, ignoring the three-quarters",
+        "question": "Hogwarts Express platform number, ignoring the ¾",
         "answer": "9",
         "more": "Platform 9Â¾ is hidden between platforms nine and ten."
       },
@@ -1753,102 +3953,58 @@
       },
       {
         "number": 6,
-        "question": "Chasers on a Quidditch team",
+        "question": "Chaser players positioned on each Quidditch team",
         "answer": "3",
         "more": "Chasers work together to score goals worth ten points each."
       }
     ]
   },
   {
-    "day": 258,
-    "category": "London",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
+    "day": 316,
+    "category": "Currencies of the World",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
     "questions": [
       {
         "number": 1,
-        "question": "London Underground lines",
-        "answer": "11",
-        "more": "The network is often simply called the Tube."
+        "question": "2nd letter of Brazil's currency, South America's biggest economy",
+        "answer": "E",
+        "more": "It is the R<strong><u>e</u></strong>al."
       },
       {
         "number": 2,
-        "question": "Year Big Ben's clock tower was completed, 18--",
-        "answer": "59",
-        "more": "The tower itself was finished in 1859."
+        "question": "Middle letter of the currency of Switzerland",
+        "answer": "A",
+        "more": "It is the Fr<strong><u>a</u></strong>nc."
       },
       {
         "number": 3,
-        "question": "Royal Parks in London",
-        "answer": "8",
-        "more": "These include Hyde Park, Regent's Park and Greenwich Park."
+        "question": "1st letter of the currency used in Sweden, a Nordic nation",
+        "answer": "K",
+        "more": "It is the <strong><u>K</u></strong>rona."
       },
       {
         "number": 4,
-        "question": "Year Tower Bridge was completed, 18--",
-        "answer": "94",
-        "more": "It opened in 1894 after eight years of construction."
+        "question": "Last letter of the currency of South Korea",
+        "answer": "N",
+        "more": "It is the Wo<strong><u>n</u></strong>."
       },
       {
         "number": 5,
-        "question": "Bronze lions at the base of Nelson's Column",
-        "answer": "4",
-        "more": "They have guarded Trafalgar Square since 1867."
+        "question": "Middle letter of the currency of Poland",
+        "answer": "O",
+        "more": "It is the Zl<strong><u>o</u></strong>ty."
       },
       {
         "number": 6,
-        "question": "Summer Olympic Games hosted by London",
-        "answer": "3",
-        "more": "London hosted in 1908, 1948 and 2012."
+        "question": "1st letter of the currency used across Mexico and Latin America",
+        "answer": "P",
+        "more": "It is the <strong><u>P</u></strong>eso."
       }
     ]
   },
   {
-    "day": 259,
-    "category": "The Titanic",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
-    "questions": [
-      {
-        "number": 1,
-        "question": "Lifeboats carried aboard the Titanic",
-        "answer": "20",
-        "more": "This was far fewer than needed for everyone on board."
-      },
-      {
-        "number": 2,
-        "question": "Speed in knots at the moment of collision",
-        "answer": "22",
-        "more": "The ship was travelling near its top speed when it struck the iceberg."
-      },
-      {
-        "number": 3,
-        "question": "Oscar nominations for the 1997 \"Titanic\" film",
-        "answer": "14",
-        "more": "It was nominated across nearly every major category."
-      },
-      {
-        "number": 4,
-        "question": "Cruising speed the Titanic was designed for, in knots",
-        "answer": "21",
-        "more": "Her design speed was slightly below her actual top speed."
-      },
-      {
-        "number": 5,
-        "question": "Year the Titanic departed Southampton on her maiden voyage, 19--",
-        "answer": "12",
-        "more": "She set sail on 10 April 1912."
-      },
-      {
-        "number": 6,
-        "question": "Decks aboard the Titanic",
-        "answer": "9",
-        "more": "These were lettered A through G, plus the boat deck and orlop deck."
-      }
-    ]
-  },
-  {
-    "day": 260,
+    "day": 317,
     "category": "Volcanoes",
     "tagline": "drag numbers to answer each clue",
     "type": "number",
@@ -1892,146 +4048,674 @@
     ]
   },
   {
-    "day": 261,
-    "category": "Dinosaurs",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
+    "day": 318,
+    "category": "Premier League Clubs",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
     "questions": [
       {
         "number": 1,
-        "question": "Horns on a Triceratops",
-        "answer": "3",
-        "more": "Two large brow horns and one smaller nose horn."
+        "question": "1st letter of Arsenal's longest-serving manager's surname",
+        "answer": "W",
+        "more": "The manager is Arsene <strong><u>W</u></strong>enger."
       },
       {
         "number": 2,
-        "question": "Fingers on each Tyrannosaurus rex arm",
-        "answer": "2",
-        "more": "Its famously short arms had just two clawed fingers."
+        "question": "Middle letter of the club nicknamed 'The Reds' who play at Anfield",
+        "answer": "R",
+        "more": "The club is Live<strong><u>r</u></strong>pool."
       },
       {
         "number": 3,
-        "question": "Continents where dinosaur fossils have been found",
-        "answer": "7",
-        "more": "Fossils have even been discovered in Antarctica."
+        "question": "Last letter of the club nicknamed 'The Toffees'",
+        "answer": "N",
+        "more": "The club is Everto<strong><u>n</u></strong>."
       },
       {
         "number": 4,
-        "question": "Main \"Jurassic Park\" and \"Jurassic World\" franchise films to date",
-        "answer": "6",
-        "more": "The franchise has spanned decades since the original 1993 film."
+        "question": "Middle letter of the club whose home ground is Vicarage Road",
+        "answer": "F",
+        "more": "The club is Wat<strong><u>f</u></strong>ord."
       },
       {
         "number": 5,
-        "question": "Spikes on a Stegosaurus' tail",
-        "answer": "4",
-        "more": "This spiked tail is nicknamed a \"thagomizer\"."
+        "question": "Middle letter of the last word of the club nicknamed 'The Hammers'",
+        "answer": "A",
+        "more": "The club is West H<strong><u>a</u></strong>m."
       },
       {
         "number": 6,
-        "question": "Thumb spikes on each Iguanodon hand",
-        "answer": "1",
-        "more": "This sharp spike may have been used for defence."
+        "question": "2nd letter of the manager nicknamed 'The Special One'",
+        "answer": "O",
+        "more": "The manager is Jose M<strong><u>o</u></strong>urinho."
       }
     ]
   },
   {
-    "day": 262,
-    "category": "Snooker",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
+    "day": 319,
+    "category": "Famous Bridges",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
     "questions": [
       {
         "number": 1,
-        "question": "Colour balls on a snooker table, excluding reds",
-        "answer": "6",
-        "more": "Yellow, green, brown, blue, pink and black."
+        "question": "1st letter of the iconic red suspension bridge in San Francisco, first word",
+        "answer": "G",
+        "more": "It is the <strong><u>G</u></strong>olden Gate Bridge."
       },
       {
         "number": 2,
-        "question": "Points value of the yellow ball",
-        "answer": "2",
-        "more": "Yellow is the lowest-value colour on the table."
+        "question": "Last letter of the London bridge with two towers, 2nd word",
+        "answer": "E",
+        "more": "It is Tower Bridg<strong><u>e</u></strong>."
       },
       {
         "number": 3,
-        "question": "Points value of the green ball",
-        "answer": "3",
-        "more": "Green sits just above yellow in value."
+        "question": "1st letter of the Italian bridge in Florence lined with shops, first word",
+        "answer": "P",
+        "more": "It is <strong><u>P</u></strong>onte Vecchio."
       },
       {
         "number": 4,
-        "question": "Points value of the brown ball",
-        "answer": "4",
-        "more": "Brown sits in the middle of the colour values."
+        "question": "Last letter of the ancient Roman water-carrying structure",
+        "answer": "T",
+        "more": "It is an aqueduc<strong><u>t</u></strong>."
       },
       {
         "number": 5,
-        "question": "World Championship titles won by Ronnie O'Sullivan",
-        "answer": "7",
-        "more": "This ties him with Stephen Hendry for the modern record."
+        "question": "2nd letter of the Turkish city split by the Bosphorus strait",
+        "answer": "S",
+        "more": "The city is I<strong><u>s</u></strong>tanbul."
       },
       {
         "number": 6,
-        "question": "Diameter of a snooker ball in centimetres, rounded",
-        "answer": "5",
-        "more": "All the balls on the table are exactly the same size."
+        "question": "1st letter of the country home to the world's longest bridge",
+        "answer": "C",
+        "more": "The country is <strong><u>C</u></strong>hina."
       }
     ]
   },
   {
-    "day": 263,
-    "category": "Star Wars",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
+    "day": 320,
+    "category": "Castles",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
     "questions": [
       {
         "number": 1,
-        "question": "Films making up the full Skywalker saga",
-        "answer": "9",
-        "more": "The saga spans three trilogies released across four decades."
+        "question": "Last letter of the Scottish castle perched on an extinct volcano",
+        "answer": "H",
+        "more": "It is Edinburg<strong><u>h</u></strong> Castle."
       },
       {
         "number": 2,
-        "question": "Year \"The Empire Strikes Back\" was released, 19--",
-        "answer": "80",
-        "more": "It is widely considered the darkest film of the original trilogy."
+        "question": "Middle letter of the French valley region famous for its chateaux",
+        "answer": "I",
+        "more": "The region is Lo<strong><u>i</u></strong>re."
       },
       {
         "number": 3,
-        "question": "Year \"Return of the Jedi\" was released, 19--",
-        "answer": "83",
-        "more": "It closed out the original trilogy in 1983."
+        "question": "2nd letter of the Scottish castle that's the monarch's private home",
+        "answer": "A",
+        "more": "It is B<strong><u>a</u></strong>lmoral Castle."
       },
       {
         "number": 4,
-        "question": "Trilogies making up the core Star Wars saga",
-        "answer": "3",
-        "more": "The prequel, original and sequel trilogies together form the saga."
+        "question": "Middle letter of the French word for 'castle'",
+        "answer": "T",
+        "more": "The word is cha<strong><u>t</u></strong>eau."
       },
       {
         "number": 5,
-        "question": "Suns Tatooine orbits",
-        "answer": "2",
-        "more": "Its famous twin sunset is one of the saga's most iconic images."
+        "question": "Last letter of the fictional castle in the Harry Potter series",
+        "answer": "S",
+        "more": "It is Hogwart<strong><u>s</u></strong>."
       },
       {
         "number": 6,
-        "question": "Hands Luke Skywalker loses across the original trilogy",
-        "answer": "1",
-        "more": "He loses his right hand in a duel with Darth Vader."
+        "question": "1st letter of the 'Mad King' who built Neuschwanstein Castle",
+        "answer": "L",
+        "more": "He is <strong><u>L</u></strong>udwig."
       }
     ]
   },
   {
-    "day": 264,
+    "day": 321,
+    "category": "Ice Hockey (NHL)",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the NHL's all-time top scorer, 'The Great One'",
+        "answer": "G",
+        "more": "The player is <strong><u>G</u></strong>retzky."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the Penguins' long-time captain, surname",
+        "answer": "Y",
+        "more": "The player is Crosb<strong><u>y</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the Capitals' Russian goal-scoring machine, surname",
+        "answer": "V",
+        "more": "The player is O<strong><u>v</u></strong>echkin."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the NHL playoff champion's trophy, 1st word",
+        "answer": "N",
+        "more": "It is the Sta<strong><u>n</u></strong>ley Cup."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the Toronto team, one of the 'Original Six', first word",
+        "answer": "M",
+        "more": "The team is <strong><u>M</u></strong>aple Leafs."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the frozen disc used in the sport",
+        "answer": "U",
+        "more": "It is the p<strong><u>u</u></strong>ck."
+      }
+    ]
+  },
+  {
+    "day": 322,
+    "category": "US Presidents",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the president who delivered the Gettysburg Address",
+        "answer": "L",
+        "more": "The president is <strong><u>L</u></strong>incoln."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the only president to serve four terms, surname",
+        "answer": "O",
+        "more": "The president is R<strong><u>o</u></strong>osevelt."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the president who resigned over Watergate",
+        "answer": "N",
+        "more": "The president is Nixo<strong><u>n</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the first president of the United States",
+        "answer": "W",
+        "more": "The president is <strong><u>W</u></strong>ashington."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the president known as the 'Father of the Constitution'",
+        "answer": "I",
+        "more": "The president is Mad<strong><u>i</u></strong>son."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of the Union general turned president, on the $50 bill",
+        "answer": "G",
+        "more": "The president is <strong><u>G</u></strong>rant."
+      }
+    ]
+  },
+  {
+    "day": 323,
+    "category": "Countries of South America",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the largest country in South America by area and population",
+        "answer": "B",
+        "more": "The country is <strong><u>B</u></strong>razil."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the long, thin country along the Pacific coast",
+        "answer": "H",
+        "more": "The country is C<strong><u>h</u></strong>ile."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the country famous for its coffee",
+        "answer": "C",
+        "more": "The country is <strong><u>C</u></strong>olombia."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the oil-rich country whose capital is Caracas",
+        "answer": "A",
+        "more": "The country is Venezuel<strong><u>a</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the small country famed for football success",
+        "answer": "Y",
+        "more": "The country is Urugua<strong><u>y</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the capital of Chile, nestled in the Andes foothills",
+        "answer": "O",
+        "more": "The capital is Santiag<strong><u>o</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 324,
+    "category": "Game Piece Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour of the peg marking a hit in a game of Battleship",
+        "answer": "red",
+        "more": "Battleship pegs traditionally mark hits in red and misses in white."
+      },
+      {
+        "number": 2,
+        "question": "Trivial Pursuit wedge colour for the Geography category",
+        "answer": "blue",
+        "more": "Trivial Pursuit's Geography category is represented by a blue wedge."
+      },
+      {
+        "number": 3,
+        "question": "Trivial Pursuit wedge colour for the History category",
+        "answer": "yellow",
+        "more": "Trivial Pursuit's History category is represented by a yellow wedge."
+      },
+      {
+        "number": 4,
+        "question": "Trivial Pursuit wedge colour for Arts & Literature, in the original edition",
+        "answer": "purple",
+        "more": "The original Trivial Pursuit uses a purple wedge for Arts & Literature."
+      },
+      {
+        "number": 5,
+        "question": "Trivial Pursuit wedge colour for the Science & Nature category",
+        "answer": "green",
+        "more": "Trivial Pursuit's Science & Nature category is represented by a green wedge."
+      },
+      {
+        "number": 6,
+        "question": "Colour of UNO's special Wild and Wild Draw Four cards",
+        "answer": "black",
+        "more": "UNO's special Wild and Wild Draw Four cards are printed in black."
+      }
+    ]
+  },
+  {
+    "day": 325,
+    "category": "Herbs and Spices",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the herb central to Italian cooking, key in pesto",
+        "answer": "B",
+        "more": "It is <strong><u>B</u></strong>asil."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the sweet spice from tree bark, common in baking",
+        "answer": "C",
+        "more": "It is <strong><u>C</u></strong>innamon."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the spice grated from a hard brown seed, used in eggnog",
+        "answer": "G",
+        "more": "It is Nutme<strong><u>g</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the earthy spice in Mexican and Indian dishes",
+        "answer": "M",
+        "more": "It is Cu<strong><u>m</u></strong>in."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the world's priciest spice, made from crocus flowers",
+        "answer": "N",
+        "more": "It is Saffro<strong><u>n</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the sweet flavouring derived from orchid seed pods",
+        "answer": "I",
+        "more": "It is Van<strong><u>i</u></strong>lla."
+      }
+    ]
+  },
+  {
+    "day": 326,
+    "category": "Composers (Classical Music)",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the composer of 'Swan Lake' and 'The Nutcracker'",
+        "answer": "T",
+        "more": "The composer is <strong><u>T</u></strong>chaikovsky."
+      },
+      {
+        "number": 2,
+        "question": "1st letter of the opera composer of 'Aida' and 'La Traviata'",
+        "answer": "V",
+        "more": "The composer is <strong><u>V</u></strong>erdi."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the Finnish composer known for 'Finlandia', surname",
+        "answer": "I",
+        "more": "The composer is S<strong><u>i</u></strong>belius."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the composer of 'In the Hall of the Mountain King'",
+        "answer": "G",
+        "more": "The composer is <strong><u>G</u></strong>rieg."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the Russian composer of 'The Rite of Spring', surname",
+        "answer": "Y",
+        "more": "The composer is Stravinsk<strong><u>y</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the composer of 'La Boheme' and 'Madama Butterfly'",
+        "answer": "C",
+        "more": "The composer is Puc<strong><u>c</u></strong>ini."
+      }
+    ]
+  },
+  {
+    "day": 327,
+    "category": "Card Games",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the card game where players bet chips on a hand",
+        "answer": "P",
+        "more": "It is <strong><u>P</u></strong>oker."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the casino card game where the goal is 21",
+        "answer": "L",
+        "more": "It is B<strong><u>l</u></strong>ackjack."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the single-player patience game",
+        "answer": "S",
+        "more": "It is <strong><u>S</u></strong>olitaire."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the rummy game played with two decks",
+        "answer": "A",
+        "more": "It is Can<strong><u>a</u></strong>sta."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the card game you shout when down to one card",
+        "answer": "O",
+        "more": "It is Un<strong><u>o</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "1st letter of James Bond's favourite casino card game",
+        "answer": "B",
+        "more": "It is <strong><u>B</u></strong>accarat."
+      }
+    ]
+  },
+  {
+    "day": 328,
+    "category": "Snooker Ball Colours",
+    "tagline": "drag colours to answer each clue",
+    "type": "colour",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Colour of the lowest-value snooker ball, apart from red",
+        "answer": "yellow",
+        "more": "The yellow ball is worth 2 points, the lowest of snooker's six colours."
+      },
+      {
+        "number": 2,
+        "question": "Colour of the snooker ball spotted on the table's centre spot",
+        "answer": "blue",
+        "more": "The blue ball, worth 5 points, sits on the table's centre spot."
+      },
+      {
+        "number": 3,
+        "question": "Colour of the snooker ball worth 6 points",
+        "answer": "pink",
+        "more": "Pink is worth 6 points and sits near the top of the table."
+      },
+      {
+        "number": 4,
+        "question": "Colour of the ball whose spot sits nearest the top cushion",
+        "answer": "black",
+        "more": "The black ball's spot sits nearest the top cushion of the table."
+      },
+      {
+        "number": 5,
+        "question": "Colour of the snooker ball worth one point more than yellow",
+        "answer": "green",
+        "more": "Green is worth 3 points, one more than yellow's 2."
+      },
+      {
+        "number": 6,
+        "question": "Colour of ball that must be potted before any colour, at a frame's start",
+        "answer": "red",
+        "more": "Reds must be potted before colours at the start of a frame, worth 1 point each."
+      }
+    ]
+  },
+  {
+    "day": 329,
+    "category": "Greek Mythology",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Last letter of Zeus's wife, goddess of marriage",
+        "answer": "A",
+        "more": "The goddess is Her<strong><u>a</u></strong>."
+      },
+      {
+        "number": 2,
+        "question": "Middle letter of the god of the underworld",
+        "answer": "D",
+        "more": "The god is Ha<strong><u>d</u></strong>es."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the goddess of the harvest",
+        "answer": "E",
+        "more": "The goddess is Dem<strong><u>e</u></strong>ter."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the gorgon whose gaze turned people to stone",
+        "answer": "M",
+        "more": "The gorgon is <strong><u>M</u></strong>edusa."
+      },
+      {
+        "number": 5,
+        "question": "Last letter of the half-bull, half-man creature trapped in the labyrinth",
+        "answer": "R",
+        "more": "The creature is Minotau<strong><u>r</u></strong>."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the one-eyed giant encountered by Odysseus",
+        "answer": "Y",
+        "more": "The giant is C<strong><u>y</u></strong>clops."
+      }
+    ]
+  },
+  {
+    "day": 330,
+    "category": "Tech Companies",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Middle letter of Apple's co-founder, first name",
+        "answer": "E",
+        "more": "His first name is St<strong><u>e</u></strong>ve Jobs."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the tech company formerly called Facebook",
+        "answer": "A",
+        "more": "The company is Met<strong><u>a</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the American tech giant nicknamed 'Big Blue'",
+        "answer": "B",
+        "more": "The company is I<strong><u>B</u></strong>M."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the graphics chipmaker popular for gaming and AI",
+        "answer": "N",
+        "more": "The company is <strong><u>N</u></strong>vidia."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the company behind Photoshop and PDF",
+        "answer": "D",
+        "more": "The company is A<strong><u>d</u></strong>obe."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the short-video app owned by China's ByteDance",
+        "answer": "I",
+        "more": "The app is T<strong><u>i</u></strong>kTok."
+      }
+    ]
+  },
+  {
+    "day": 331,
+    "category": "Pokemon",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the franchise's famous electric mouse mascot",
+        "answer": "P",
+        "more": "It is <strong><u>P</u></strong>ikachu."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of the fire-breathing final evolution of Charmander",
+        "answer": "H",
+        "more": "It is C<strong><u>h</u></strong>arizard."
+      },
+      {
+        "number": 3,
+        "question": "Last letter of the trainer who dreams of being a Pokemon Master",
+        "answer": "M",
+        "more": "His surname is Ketchu<strong><u>m</u></strong>."
+      },
+      {
+        "number": 4,
+        "question": "Last letter of the water-type starter Pokemon",
+        "answer": "E",
+        "more": "It is Squirtl<strong><u>e</u></strong>."
+      },
+      {
+        "number": 5,
+        "question": "2nd letter of the professor who hands out starter Pokemon",
+        "answer": "A",
+        "more": "He is O<strong><u>a</u></strong>k."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the item used to catch wild Pokemon",
+        "answer": "L",
+        "more": "It is a Poke Bal<strong><u>l</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 332,
+    "category": "Taylor Swift",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of Taylor Swift's partner, an NFL tight end, surname",
+        "answer": "K",
+        "more": "He is <strong><u>K</u></strong>elce."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of Taylor's album named with a single colour",
+        "answer": "D",
+        "more": "The album is Re<strong><u>d</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of Taylor's cat, named after a Grey's Anatomy character",
+        "answer": "M",
+        "more": "The cat is <strong><u>M</u></strong>eredith."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of Taylor's 2008 hit about a modern Romeo and Juliet",
+        "answer": "L",
+        "more": "The song is <strong><u>L</u></strong>ove Story."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the US state where Taylor was born",
+        "answer": "P",
+        "more": "She was born in <strong><u>P</u></strong>ennsylvania."
+      },
+      {
+        "number": 6,
+        "question": "Last letter of Taylor's 'Everything Has Changed' duet partner",
+        "answer": "N",
+        "more": "He is Ed Sheera<strong><u>n</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 333,
     "category": "Tour de France",
     "tagline": "drag numbers to answer each clue",
     "type": "number",
     "questions": [
       {
         "number": 1,
-        "question": "Stages in the first Tour de France",
+        "question": "Stages making up the very first Tour de France in 1903",
         "answer": "6",
         "more": "The original race was far longer per stage than the modern event."
       },
@@ -2068,46 +4752,178 @@
     ]
   },
   {
-    "day": 265,
-    "category": "The Moon Landing",
-    "tagline": "drag numbers to answer each clue",
-    "type": "number",
+    "day": 334,
+    "category": "Deserts of the World",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
     "questions": [
       {
         "number": 1,
-        "question": "Apollo missions that successfully landed on the Moon",
-        "answer": "6",
-        "more": "Six missions between 1969 and 1972 achieved a crewed landing."
+        "question": "Last letter of the Asian desert spanning Mongolia and China",
+        "answer": "I",
+        "more": "It is the Gob<strong><u>i</u></strong>."
       },
       {
         "number": 2,
-        "question": "Astronauts who walked on the Moon during Apollo 11",
-        "answer": "2",
-        "more": "Armstrong and Aldrin descended while Collins stayed in orbit."
+        "question": "2nd letter of the southern African desert home to the San people",
+        "answer": "A",
+        "more": "It is the K<strong><u>a</u></strong>lahari."
       },
       {
         "number": 3,
-        "question": "Buzz Aldrin's age during the Moon landing",
-        "answer": "39",
-        "more": "He followed Armstrong onto the lunar surface shortly after."
+        "question": "Middle letter of the coastal African desert, one of the oldest in the world",
+        "answer": "M",
+        "more": "It is the Na<strong><u>m</u></strong>ib."
       },
       {
         "number": 4,
-        "question": "Days the Apollo 11 round trip took",
-        "answer": "8",
-        "more": "The full mission from launch to splashdown lasted eight days."
+        "question": "Middle letter of the cold desert covering southern Argentina",
+        "answer": "G",
+        "more": "It is Pata<strong><u>g</u></strong>onia."
       },
       {
         "number": 5,
-        "question": "Days it took Apollo 11 to reach the Moon",
-        "answer": "4",
-        "more": "The spacecraft travelled roughly 240,000 miles to get there."
+        "question": "Middle letter of the desert plant that stores water in fleshy leaves",
+        "answer": "U",
+        "more": "It is a succ<strong><u>u</u></strong>lent."
       },
       {
         "number": 6,
-        "question": "Year NASA was founded, 19--",
-        "answer": "58",
-        "more": "It was established in response to the early Space Race."
+        "question": "Last letter of the desert animal known for storing fat in its hump",
+        "answer": "L",
+        "more": "It is a came<strong><u>l</u></strong>."
+      }
+    ]
+  },
+  {
+    "day": 335,
+    "category": "Game of Thrones",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the actor who played Jon Snow, surname",
+        "answer": "H",
+        "more": "The actor is Kit <strong><u>H</u></strong>arington."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the witty dwarf Lannister, first name",
+        "answer": "N",
+        "more": "His name is Tyrio<strong><u>n</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "2nd letter of the actress who played Cersei, surname",
+        "answer": "E",
+        "more": "The actress is Lena H<strong><u>e</u></strong>adey."
+      },
+      {
+        "number": 4,
+        "question": "1st letter of the Mother of Dragons, first name",
+        "answer": "D",
+        "more": "Her name is <strong><u>D</u></strong>aenerys."
+      },
+      {
+        "number": 5,
+        "question": "1st letter of the seat of power in Westeros, a throne made of swords",
+        "answer": "I",
+        "more": "It is the <strong><u>I</u></strong>ron Throne."
+      },
+      {
+        "number": 6,
+        "question": "Middle letter of the Iron Throne's united kingdom count",
+        "answer": "V",
+        "more": "It is Se<strong><u>v</u></strong>en Kingdoms."
+      }
+    ]
+  },
+  {
+    "day": 336,
+    "category": "World Capitals",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the capital of France, home to the Eiffel Tower",
+        "answer": "P",
+        "more": "The capital is <strong><u>P</u></strong>aris."
+      },
+      {
+        "number": 2,
+        "question": "Last letter of the capital of Egypt, home to the Giza pyramids",
+        "answer": "O",
+        "more": "The capital is Cair<strong><u>o</u></strong>."
+      },
+      {
+        "number": 3,
+        "question": "Middle letter of the capital of Kenya",
+        "answer": "R",
+        "more": "The capital is Nai<strong><u>r</u></strong>obi."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of the capital of Iceland",
+        "answer": "J",
+        "more": "The capital is Reyk<strong><u>j</u></strong>avik."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the capital of Thailand",
+        "answer": "G",
+        "more": "The capital is Ban<strong><u>g</u></strong>kok."
+      },
+      {
+        "number": 6,
+        "question": "2nd letter of the capital of Vietnam",
+        "answer": "A",
+        "more": "The capital is H<strong><u>a</u></strong>noi."
+      }
+    ]
+  },
+  {
+    "day": 337,
+    "category": "ABBA",
+    "tagline": "drag letters to answer each clue",
+    "type": "letter",
+    "questions": [
+      {
+        "number": 1,
+        "question": "1st letter of the blonde ABBA member married to Bjorn, surname",
+        "answer": "F",
+        "more": "The member is Agnetha <strong><u>F</u></strong>altskog."
+      },
+      {
+        "number": 2,
+        "question": "2nd letter of ABBA member Bjorn's surname",
+        "answer": "L",
+        "more": "The member is Bjorn U<strong><u>l</u></strong>vaeus."
+      },
+      {
+        "number": 3,
+        "question": "1st letter of the ABBA song that won Eurovision for Sweden in 1974",
+        "answer": "W",
+        "more": "The song is <strong><u>W</u></strong>aterloo."
+      },
+      {
+        "number": 4,
+        "question": "Middle letter of ABBA's distress-signal-titled hit",
+        "answer": "O",
+        "more": "The song is S<strong><u>O</u></strong>S."
+      },
+      {
+        "number": 5,
+        "question": "Middle letter of the first word of the ABBA jukebox musical's title",
+        "answer": "M",
+        "more": "The musical is Ma<strong><u>m</u></strong>ma Mia!"
+      },
+      {
+        "number": 6,
+        "question": "Last letter of the Scandinavian country ABBA formed in",
+        "answer": "N",
+        "more": "ABBA are from Swede<strong><u>n</u></strong>."
       }
     ]
   }

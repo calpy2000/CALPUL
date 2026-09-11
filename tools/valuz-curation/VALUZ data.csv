@@ -1,401 +1,241 @@
-﻿Day,Type,Category,Tag Line,Question Number,Select,Question,Answer,More
-246,number,The Olympics,drag numbers to answer each clue,1,Y,"Olympic rings, number of",5,The five interlocking rings represent the five inhabited continents joined by Olympism.
-,,,,2,,Years between each Summer Olympics,4,The four-year gap is called an Olympiad.
-,,,,3,,Sports contested at the first modern Olympics in 1896,9,"Athens 1896 featured athletics, cycling, fencing, gymnastics, shooting, swimming, tennis, weightlifting and wrestling."
-,,,,4,Y,Events in a men's decathlon,10,The decathlon spans track and field events over two days.
-,,,,5,,Events in a women's heptathlon,7,The heptathlon combines seven track and field disciplines.
-,,,,6,,"Marathon distance in miles, to the nearest mile",26,"The official distance is 26.2 miles, fixed after the 1908 London Games."
-,,,,7,Y,Michael Phelps' total Olympic medal count,28,Phelps is the most decorated Olympian in history.
-,,,,8,,Michael Phelps' Olympic gold medal count,23,Phelps won golds across four different Olympic Games.
-,,,,9,,Usain Bolt's Olympic gold medal count,8,"Bolt won three golds at each of Beijing 2008, London 2012 and Rio 2016."
-,,,,10,Y,Age of the youngest ever individual Olympic gold medallist,13,US diver Marjorie Gestring won gold at the 1936 Berlin Games.
-,,,,11,,Medal types awarded at the Olympics,3,"Gold, silver and bronze have been awarded since the 1904 Games."
-,,,,12,,Times the modern Olympics have been cancelled by World Wars,3,"The 1916, 1940 and 1944 Games were all cancelled."
-,,,,13,,Players on court for one team in Olympic basketball,5,Basketball has been a full Olympic medal sport since 1936.
-,,,,14,,Minimum age in years for elite Olympic gymnastics,16,The age rule was raised to protect younger gymnasts from the pressures of elite competition.
-,,,,15,,Continents represented by the Olympic rings,5,"Africa, the Americas, Asia, Europe and Oceania are each represented by one ring."
-,,,,16,Y,Edition number of the Tokyo 2020 Summer Olympiad,32,It was officially the Games of the XXXII Olympiad despite being held in 2021.
-,,,,17,,Length of an Olympic swimming pool in metres,50,"A long-course pool is 50 metres, exactly double a short-course pool."
-,,,,18,,Racing lanes in an Olympic swimming pool,8,The pool is built with 10 lanes but only 8 are used for racing.
-,,,,19,Y,Players on court for one team in Olympic volleyball,6,Indoor volleyball has been an Olympic sport since 1964.
-,,,,20,,Sets needed to win an Olympic volleyball match,3,Matches are played as the best of five sets.
-247,number,Formula 1,drag numbers to answer each clue,1,,Wheels on a Formula 1 car,4,"Despite the huge speeds involved, F1 cars remain conventional four-wheeled single-seaters."
-,,,,2,Y,Points awarded for a race win,25,The current scoring system was introduced in 2010.
-,,,,3,,Points awarded for 2nd place,18,The gap between 1st and 2nd is the largest step in the points table.
-,,,,4,,"Points awarded for the fastest lap, if finishing in the top 10",1,The fastest-lap bonus point was reintroduced in 2019.
-,,,,5,,Drivers fielded by each team on the grid,2,Every constructor enters exactly two cars each race weekend.
-,,,,6,Y,Teams on the 2026 F1 grid,11,Cadillac joined the grid as the sport's newest constructor in 2026.
-,,,,7,Y,Total drivers on the 2026 F1 grid,22,Eleven teams each fielding two drivers make up the full grid.
-,,,,8,,Laps in the Monaco Grand Prix,78,"Monaco is the shortest circuit on the calendar, so it needs the most laps."
-,,,,9,Y,Cylinders in a current F1 power unit,6,Modern engines are turbocharged 1.6-litre V6 hybrids.
-,,,,10,,Lewis Hamilton's Formula 1 World Championship titles,7,Hamilton shares the record for most titles with Michael Schumacher.
-,,,,11,,Michael Schumacher's Formula 1 World Championship titles,7,Schumacher won five of his titles consecutively with Ferrari.
-,,,,12,,Points awarded for 3rd place,15,A podium finish outside the top two still earns a solid points haul.
-,,,,13,,Points awarded for 10th place,1,The last point-scoring position on the grid.
-,,,,14,Y,Points awarded for 4th place,12,Points step down by decreasing amounts further down the order.
-,,,,15,Y,Max Verstappen's age when he won his first World title,24,He clinched the 2021 title at the season's final race in Abu Dhabi.
-,,,,16,,Dry-weather tyre compounds available across a season,3,"Soft, medium and hard compounds are colour-coded red, yellow and white."
-,,,,17,,Wheels changed during a standard pit stop,4,Modern pit crews can change all four tyres in around two seconds.
-,,,,18,,Approximate races on a modern F1 season calendar,24,The calendar has expanded significantly from around 16 races in the 1990s.
-,,,,19,,Grid-place penalty for an unscheduled gearbox change,5,Drivers are penalised for swapping gearboxes before the permitted interval.
-,,,,20,,Sprint race weekends on a typical recent F1 season,6,Sprint format weekends add a short extra race on Saturday.
-248,number,The Solar System,drag numbers to answer each clue,1,Y,Planets in the solar system,8,"Pluto was reclassified as a dwarf planet in 2006, leaving eight official planets."
-,,,,2,,Major Galilean moons of Jupiter,4,"Io, Europa, Ganymede and Callisto were first spotted by Galileo in 1610."
-,,,,3,,Moons of Mars,2,"Phobos and Deimos are both small, irregularly shaped moons."
-,,,,4,Y,Major ring groups around Saturn,7,Saturn's rings are labelled A through G in order of discovery.
-,,,,5,,Position of Earth from the Sun,3,"Earth is the third planet out, after Mercury and Venus."
-,,,,6,,Position of Mars from the Sun,4,"Mars sits just beyond Earth's orbit, before the asteroid belt."
-,,,,7,,Minutes for sunlight to reach Earth,8,Light takes about 8 minutes and 20 seconds to cross the roughly 150 million km gap.
-,,,,8,,Length of a year on Mercury in Earth days,88,"Mercury's tight, fast orbit gives it the shortest year of any planet."
-,,,,9,,Moons of Earth,1,"Earth has just the one natural satellite, simply called the Moon."
-,,,,10,,Officially recognised dwarf planets,5,"Pluto, Ceres, Eris, Haumea and Makemake hold the designation."
-,,,,11,,Years for Saturn to orbit the Sun,29,"Saturn's vast distance from the Sun gives it a long, slow orbit."
-,,,,12,Y,Years for Jupiter to orbit the Sun,12,"Jupiter's orbit takes roughly a Jovian ""year"" of 12 Earth years."
-,,,,13,,"Terrestrial, rocky planets in the solar system",4,"Mercury, Venus, Earth and Mars all have solid, rocky surfaces."
-,,,,14,,Gas giant planets in the solar system,2,Jupiter and Saturn are the solar system's two gas giants.
-,,,,15,,Ice giant planets in the solar system,2,Uranus and Neptune are classed separately as ice giants.
-,,,,16,,The asteroid belt's only dwarf planet,1,Ceres is the largest object in the asteroid belt between Mars and Jupiter.
-,,,,17,Y,Planets in the solar system known to have ring systems,4,"Jupiter, Saturn, Uranus and Neptune all have rings, though Saturn's are the most visible."
-,,,,18,Y,Length of a day on Jupiter in hours,10,Jupiter spins faster than any other planet despite its huge size.
-,,,,19,Y,Position of Saturn from the Sun,6,"Saturn is the sixth planet, best known for its spectacular ring system."
-,,,,20,,Terrestrial planet count sharing Earth's rocky classification,4,"Mercury, Venus, Earth and Mars form the inner rocky planets."
-249,number,Ancient Egypt,drag numbers to answer each clue,1,,Great Pyramids of Giza,3,"The Giza pyramids of Khufu, Khafre and Menkaure form the famous trio."
-,,,,2,,Sides on a pyramid's base,4,The square base gives the Great Pyramid its four triangular faces.
-,,,,3,Y,Dynasties commonly used to organise Ancient Egyptian history,30,The dynasty system was devised by the priest Manetho in the 3rd century BC.
-,,,,4,Y,"Years the Great Pyramid took to build, roughly",20,Historians estimate construction under Khufu took around two decades.
-,,,,5,Y,Tutankhamun's age when he became pharaoh,9,He took the throne as a child around 1332 BC.
-,,,,6,Y,Tutankhamun's age at death,19,His short reign and early death fuelled centuries of speculation.
-,,,,7,,Major crowns combined into Egypt's double crown,2,The red crown of Lower Egypt and white crown of Upper Egypt were combined after unification.
-,,,,8,,Pharaohs commonly named Ramesses,11,"Ramesses II, ""the Great"", was the most famous of the eleven."
-,,,,9,,Canopic jars used in mummification,4,"Each jar stored a different preserved organ, protected by its own guardian god."
-,,,,10,,Days the mummification process traditionally took,70,The full process of embalming and wrapping the body took around 70 days.
-,,,,11,,Chambers inside the Great Pyramid,3,"The King's Chamber, Queen's Chamber and an unfinished subterranean chamber."
-,,,,12,,Cleopatra VII's number in the line of Ptolemaic queens named Cleopatra,7,She was the last and most famous of the Cleopatras who ruled Egypt.
-,,,,13,,Scripts inscribed on the Rosetta Stone,3,"Hieroglyphic, Demotic and Ancient Greek text let scholars finally decode hieroglyphs."
-,,,,14,,"Year the Rosetta Stone was discovered, 17--",99,French soldiers found it near the town of Rosetta in 1799.
-,,,,15,Y,"Year Howard Carter discovered Tutankhamun's tomb, 19--",22,The nearly intact tomb was found in the Valley of the Kings in 1922.
-,,,,16,Y,Months in the Ancient Egyptian calendar year,12,The calendar was split into three farming seasons of four months each.
-,,,,17,,Extra days added at the end of the Egyptian calendar year,5,These epagomenal days brought the total to 365 days a year.
-,,,,18,,Approximate height of the Great Sphinx of Giza in metres,20,The Sphinx was carved from a single limestone outcrop.
-,,,,19,,Ancient Wonders of the World still standing today,1,The Great Pyramid of Giza is the sole survivor of the original Seven Wonders.
-,,,,20,,"Sides on the base of the Great Pyramid, aligned to the compass",4,"Its sides are aligned to true north, south, east and west with remarkable precision."
-250,number,The Human Body,drag numbers to answer each clue,1,,Pairs of ribs in the human body,12,"Most people have 24 ribs total, arranged in 12 pairs."
-,,,,2,Y,Bones in each human hand,27,"This includes the wrist, palm and finger bones."
-,,,,3,Y,Bones in the human skull,22,Eight cranial bones and fourteen facial bones make up the skull.
-,,,,4,Y,Chambers in the human heart,4,Two atria and two ventricles keep oxygenated and deoxygenated blood separate.
-,,,,5,Y,Litres of blood in an average adult,5,Total blood volume varies with body size but averages around 5 litres.
-,,,,6,Y,"Adult human teeth, full set",32,This includes the four wisdom teeth at the back.
-,,,,7,,Baby teeth in a full set,20,These primary teeth begin falling out around age six.
-,,,,8,Y,Vertebrae in the human spine,33,"The spine includes cervical, thoracic, lumbar, sacral and coccygeal vertebrae."
-,,,,9,,Pairs of chromosomes in a human cell,23,"Humans have 46 chromosomes total, arranged in 23 pairs."
-,,,,10,,Bones in the human foot,26,Each foot has more bones than almost any other body part relative to its size.
-,,,,11,,Layers of human skin,3,"The epidermis, dermis and hypodermis make up the skin."
-,,,,12,,Lobes on the right lung,3,The right lung is slightly larger than the left to accommodate its extra lobe.
-,,,,13,,Lobes on the left lung,2,The left lung has fewer lobes to make room for the heart.
-,,,,14,,Basic taste categories recognised,5,"Sweet, sour, salty, bitter and umami are the five basic tastes."
-,,,,15,,Human senses commonly recognised,5,"Sight, hearing, smell, taste and touch make up the traditional five senses."
-,,,,16,,Weeks a standard human pregnancy lasts,40,Pregnancy is typically counted from the last menstrual period.
-,,,,17,,Approximate percentage of adult body weight that is water,60,"Water content varies with age, sex and body composition."
-,,,,18,,Maximum number of wisdom teeth a person can have,4,"Not everyone develops all four, and some never emerge at all."
-,,,,19,,Pairs of cranial nerves,12,"These nerves connect the brain directly to the head, neck and torso."
-,,,,20,,Chambers of the human heart that pump blood out to the body,2,The left and right ventricles are the heart's main pumping chambers.
-251,number,Cricket,drag numbers to answer each clue,1,,Players per side in a cricket team,11,"Each team fields eleven players, including the wicketkeeper."
-,,,,2,Y,Balls in a standard cricket over,6,An over is bowled from one end before the bowling changes ends.
-,,,,3,Y,Stumps making up one wicket,3,"The three stumps are named off, middle and leg stump."
-,,,,4,Y,Bails resting on top of the stumps,2,A bail must be dislodged for a clean bowled or stumped dismissal.
-,,,,5,,Runs scored for a boundary hit along the ground,4,The ball must cross the boundary rope after touching the ground.
-,,,,6,,Runs scored for a boundary hit over the rope on the full,6,A six is cricket's biggest single-shot score.
-,,,,7,,Overs per side in a Twenty20 innings,20,T20 cricket is the shortest widely-played format.
-,,,,8,,Overs per side in a One Day International innings,50,ODIs sit between Test cricket and T20 in length.
-,,,,9,Y,Days a traditional Test match is scheduled for,5,Test matches are the longest format in international cricket.
-,,,,10,,Wickets needed to dismiss a team's full innings,10,"A team is ""all out"" once ten of its eleven batters are dismissed."
-,,,,11,,"Runs needed for a ""fifty"" milestone",50,Reaching fifty is usually marked by the batter raising their bat.
-,,,,12,,Height of cricket stumps in inches,28,The stumps must stand exactly 28 inches out of the ground.
-,,,,13,Y,Maximum overs one bowler can bowl in a T20 innings,4,This limit keeps the bowling workload spread across the team.
-,,,,14,,Maximum overs one bowler can bowl in an ODI innings,10,One-fifth of the full fifty-over innings.
-,,,,15,,"Full ICC Test-playing nations, approximately",12,"Test status is cricket's highest, most exclusive tier."
-,,,,16,,Runs typically awarded for a no-ball,1,"The batting team also gets an extra, free-hit delivery in some formats."
-,,,,17,,Runs typically awarded for a wide,1,A wide is called when the ball passes too far from the batter.
-,,,,18,Y,Men's Cricket World Cup titles won by Australia,6,Australia is the most successful team in the tournament's history.
-,,,,19,,Innings per side in a standard Test match,2,Each team bats and bowls twice across a Test match.
-,,,,20,,Balls remaining in an over after four have been bowled,2,"Six balls make up a full over, so two remain after four."
-252,number,Rugby,drag numbers to answer each clue,1,Y,Players per side in rugby union,15,Eight forwards and seven backs make up a rugby union team.
-,,,,2,,Players per side in rugby sevens,7,The fast-paced sevens format was added to the Olympics in 2016.
-,,,,3,,Points awarded for a try in rugby union,5,A try is rugby union's most valuable single score.
-,,,,4,,Points awarded for a conversion,2,A successful conversion kick follows a try.
-,,,,5,,Points awarded for a penalty kick,3,Penalty kicks are taken at the spot of an infringement.
-,,,,6,,Points awarded for a drop goal,3,A drop goal is scored by dropping and kicking the ball through the posts mid-play.
-,,,,7,,Minutes per half in rugby union,40,Matches run for two 40-minute halves.
-,,,,8,,Replacements typically allowed on a rugby union bench,8,Modern squads can rotate a large number of fresh players.
-,,,,9,,Men's Rugby World Cup titles won by New Zealand,3,The All Blacks are one of the tournament's most successful teams.
-,,,,10,,Men's Rugby World Cup titles won by South Africa,4,The Springboks hold the record for most titles won.
-,,,,11,,Metres from the goal line to the 22-metre line,22,This line marks a key tactical zone near each try line.
-,,,,12,Y,Players per side in rugby league,13,Rugby league fields two fewer players per side than union.
-,,,,13,Y,Points awarded for a try in rugby league,4,Tries are worth one point less in league than in union.
-,,,,14,Y,Tackles allowed before a rugby league handover,6,Possession switches to the other team after the sixth tackle.
-,,,,15,,Minutes per half in rugby league,40,"Like union, league matches are split into two 40-minute halves."
-,,,,16,,Forwards in a rugby union scrum,8,The scrum packs together all eight forwards from each team.
-,,,,17,Y,Backs in a rugby union team,7,The remaining seven players outside the scrum form the backline.
-,,,,18,,Edition number of the 2023 Rugby World Cup,10,The tournament has been held every four years since 1987.
-,,,,19,,Minutes a player spends in the sin bin for a yellow card,10,The temporary suspension leaves their team a player short.
-,,,,20,Y,Points on offer for a converted try in rugby union,7,A try (5) plus a successful conversion (2) totals seven points.
-253,number,The Roman Empire,drag numbers to answer each clue,1,,Roman numeral value of X,10,X is one of the seven basic Roman numeral symbols.
-,,,,2,,Roman numeral value of L,50,L represents fifty in the Roman numbering system.
-,,,,3,,Roman numeral value of V,5,V is the symbol for five.
-,,,,4,,Roman numeral value of I,1,I is the smallest and most basic Roman numeral.
-,,,,5,,"Year the Roman Republic became an Empire, BC",27,Augustus became Rome's first emperor in 27 BC.
-,,,,6,Y,"Emperors who ruled during the chaotic ""Year of the Four Emperors""",4,The year 69 AD saw four different men claim the imperial throne.
-,,,,7,Y,Cohorts making up a Roman legion,10,Each legion was organised into ten cohorts.
-,,,,8,,Centuries making up a Roman cohort,6,"A century nominally held around 80 to 100 soldiers, despite its name."
-,,,,9,Y,Years Hadrian's Wall took to build,6,Construction began around 122 AD under Emperor Hadrian.
-,,,,10,,"Length of Hadrian's Wall in miles, roughly",73,It stretched coast to coast across the north of Roman Britain.
-,,,,11,,"Approximate capacity of the Colosseum, in thousands",50,"The arena could hold around 50,000 spectators."
-,,,,12,,Years the Colosseum took to build,8,Construction ran from around 70 to 80 AD.
-,,,,13,Y,Hills Rome is traditionally built on,7,The Seven Hills of Rome are central to the city's founding legend.
-,,,,14,Y,Vestal Virgins serving at any one time,6,These priestesses tended Rome's sacred flame for up to thirty years of service.
-,,,,15,,Parts the Roman Empire was formally split into,2,It divided into the Western and Eastern Roman Empires in 285 AD.
-,,,,16,,"Year the Western Roman Empire fell, 4--",76,The last Western emperor was deposed in 476 AD.
-,,,,17,Y,Punic Wars fought between Rome and Carthage,3,These wars spanned over a century and made Rome a Mediterranean superpower.
-,,,,18,,"Year Julius Caesar was assassinated, BC",44,He was stabbed by senators on the Ides of March.
-,,,,19,,Chambers inside the Great Pyramid referenced by Roman-era tourists,3,Roman visitors left graffiti inside the pyramid as ancient tourists.
-,,,,20,,Main scripts used across the Roman Empire's administration,2,Latin in the west and Greek in the east served as the empire's main languages.
-254,number,Chemistry,drag numbers to answer each clue,1,Y,"Atoms making up a water molecule, H2O",3,Two hydrogen atoms bond with one oxygen atom to form water.
-,,,,2,,Protons in a hydrogen atom,1,Hydrogen is the simplest and lightest element on the periodic table.
-,,,,3,,Protons in a carbon atom,6,Carbon's atomic number of 6 underpins all organic chemistry.
-,,,,4,Y,Protons in an oxygen atom,8,Oxygen makes up roughly a fifth of Earth's atmosphere.
-,,,,5,,Elements in period 1 of the periodic table,2,Hydrogen and helium are the only elements in the table's first row.
-,,,,6,,Groups (columns) in the modern periodic table,18,Elements in the same group share similar chemical properties.
-,,,,7,Y,Naturally occurring noble gases,6,"Helium, neon, argon, krypton, xenon and radon make up the group."
-,,,,8,,pH value considered chemically neutral,7,"Pure water sits at pH 7, right in the middle of the scale."
-,,,,9,,States of matter commonly taught in school science,3,"Solid, liquid and gas are the three classic states."
-,,,,10,,"Atomic number of gold, Au",79,Gold's atomic number gives it its position on the periodic table.
-,,,,11,,"Atomic number of iron, Fe",26,"Iron's symbol Fe comes from its Latin name, ferrum."
-,,,,12,,Electrons in a neutral carbon atom,6,A neutral atom always has equal protons and electrons.
-,,,,13,Y,Valence electrons in a carbon atom,4,Carbon's four valence electrons let it form countless different compounds.
-,,,,14,,Elements discovered by Marie Curie,2,She discovered both polonium and radium alongside her husband Pierre.
-,,,,15,Y,Periods (rows) in the standard periodic table,7,Each new period represents another electron shell being filled.
-,,,,16,Y,Atomic number of helium,2,Helium is the second lightest element after hydrogen.
-,,,,17,,Atomic number of lithium,3,Lithium is the lightest metal on the periodic table.
-,,,,18,,Top value on the standard pH scale,14,"The scale runs from 0, highly acidic, to 14, highly alkaline."
-,,,,19,,Freezing point of water in degrees Celsius,0,Water freezes at exactly 0Â°C at standard atmospheric pressure.
-,,,,20,,Bonds a single carbon atom can form with other atoms,4,Carbon's four bonds make it uniquely versatile in forming molecules.
-255,number,The Beatles,drag numbers to answer each clue,1,,Members of the Beatles,4,"John Lennon, Paul McCartney, George Harrison and Ringo Starr made up the band."
-,,,,2,,"Year the Beatles formed, 19--",60,The band came together in Liverpool in 1960.
-,,,,3,,"Year the Beatles officially split up, 19--",70,The band broke up in 1970 after years of growing tension.
-,,,,4,,Grammy Awards won by the Beatles,8,Their Grammy haul spans their active years as a group.
-,,,,5,,"Weeks ""Hey Jude"" spent at number one in the US",9,It was the longest-running US number one of the 1960s.
-,,,,6,,Studio albums in the Beatles' core UK catalogue,12,"From Please Please Me to Let It Be, spanning under a decade."
-,,,,7,,"Hours it took to record the debut album ""Please Please Me""",10,The album was famously recorded in a single marathon day.
-,,,,8,Y,"Year ""Sgt. Pepper's Lonely Hearts Club Band"" was released, 19--",67,The album is widely considered one of the most influential in rock history.
-,,,,9,Y,US number one singles across the Beatles' career,20,No other act has matched their run of American chart-toppers.
-,,,,10,Y,UK number one singles across the Beatles' career,17,Their run of UK chart-toppers is among the most successful ever.
-,,,,11,Y,"Year of the Beatles' famous rooftop concert, 19--",69,"It was their final public performance, staged above Apple's London offices."
-,,,,12,,Minutes the rooftop concert lasted,42,The impromptu gig was eventually stopped by the police.
-,,,,13,,"Year Ringo Starr joined the Beatles, 19--",62,He replaced original drummer Pete Best that year.
-,,,,14,,"Year John Lennon died, 19--",80,Lennon was shot outside his New York apartment in 1980.
-,,,,15,,Age John Lennon was when he died,40,He had turned 40 just weeks before his death.
-,,,,16,,Beatles feature films made,5,"These include A Hard Day's Night, Help! and Yellow Submarine."
-,,,,17,Y,"Year debut single ""Love Me Do"" was released, 19--",62,It was the Beatles' first single release in the UK.
-,,,,18,,"UK chart peak position of ""Love Me Do""",17,It was a modest start compared to the huge hits that followed.
-,,,,19,,"Year of the Beatles' first US TV appearance on Ed Sullivan, 19--",64,Their performance sparked what became known as Beatlemania in America.
-,,,,20,Y,UK number one albums across the Beatles' career,15,Their run of chart-topping albums remains one of the most successful ever.
-256,number,James Bond,drag numbers to answer each clue,1,Y,Actors to officially play Bond for Eon Productions,6,"From Sean Connery to Daniel Craig, six actors have held the role."
-,,,,2,Y,Daniel Craig's official Bond films,5,His run began with Casino Royale and ended with No Time to Die.
-,,,,3,,"Year ""Dr. No"", the first Bond film, was released, 19--",62,It introduced Sean Connery as 007 to cinema audiences.
-,,,,4,,Bond's famous code number,7,"His code, 007, signals a licence to kill."
-,,,,5,,Bond novels written by Ian Fleming,12,Fleming created the character across a dozen novels.
-,,,,6,,Bond short story collections written by Ian Fleming,2,These include For Your Eyes Only and Octopussy and The Living Daylights.
-,,,,7,,"Year Ian Fleming died, 19--",64,He died just two years after the first Bond film reached cinemas.
-,,,,8,Y,Roger Moore's official Bond films,7,Moore held the role for longer than any other actor.
-,,,,9,,Sean Connery's official Eon Bond films,6,He returned briefly for Diamonds Are Forever after initially leaving the role.
-,,,,10,,"Year ""Skyfall"" was released, 20--",12,It became one of the highest-grossing Bond films ever made.
-,,,,11,,"Year ""No Time to Die"" was released, 20--",21,It was Daniel Craig's final outing as 007.
-,,,,12,,"Year ""GoldenEye"" was released, 19--",95,It marked Pierce Brosnan's debut as Bond.
-,,,,13,,Official Eon Productions Bond films made in total,25,The series runs from Dr. No in 1962 to No Time to Die in 2021.
-,,,,14,,"Year Daniel Craig's first Bond film ""Casino Royale"" was released, 20--",06,It rebooted the franchise with a grittier tone.
-,,,,15,,Sean Connery's age in his first Bond film,32,He was already an established actor before taking on the role.
-,,,,16,,"Year Timothy Dalton's first Bond film was released, 19--",87,The Living Daylights gave Dalton his first outing as 007.
-,,,,17,Y,Pierce Brosnan's official Bond films,4,He starred as Bond through the late 1990s and early 2000s.
-,,,,18,Y,"Year ""You Only Live Twice"" was released, 19--",67,The film was set largely in Japan.
-,,,,19,Y,"Year ""Goldfinger"" was released, 19--",64,It is widely considered one of the finest films in the series.
-,,,,20,,George Lazenby's official Bond films,1,"He played 007 only once, in On Her Majesty's Secret Service."
-257,number,Harry Potter,drag numbers to answer each clue,1,Y,Harry Potter books written by J.K. Rowling,7,The series runs from Philosopher's Stone to Deathly Hallows.
-,,,,2,Y,Harry Potter films in the main series,8,The final book was split into two films.
-,,,,3,,Houses at Hogwarts,4,"Gryffindor, Hufflepuff, Ravenclaw and Slytherin."
-,,,,4,,Players on a Quidditch team,7,"Chasers, Beaters, a Keeper and a Seeker make up the side."
-,,,,5,Y,"Platform number at King's Cross station, ignoring the three-quarters",9,Platform 9Â¾ is hidden between platforms nine and ten.
-,,,,6,,Weasley children in the family,7,"Bill, Charlie, Percy, Fred, George, Ron and Ginny."
-,,,,7,,"Year the first book was published in the UK, 19--",97,Philosopher's Stone was published in 1997.
-,,,,8,,Horcruxes Voldemort intentionally created,7,He split his soul into seven pieces to achieve immortality.
-,,,,9,Y,Age Harry Potter is when he starts at Hogwarts,11,Students traditionally begin their magical education at eleven.
-,,,,10,,Tasks in the Triwizard Tournament,3,"Competitors face a dragon, an underwater task and a maze."
-,,,,11,,Deathly Hallows objects,3,"The Elder Wand, the Resurrection Stone and the Cloak of Invisibility."
-,,,,12,,"Year the final film was released, 20--",11,Deathly Hallows Part 2 closed out the film series in 2011.
-,,,,13,,Sickles in one Galleon,17,Wizarding currency is famously awkward to convert.
-,,,,14,,Knuts in one Sickle,29,A Galleon is therefore worth 493 Knuts in total.
-,,,,15,,"Year Harry Potter was born, within the books' timeline, 19--",80,He was born on 31 July 1980.
-,,,,16,,"Year the first film was released, 20--",01,Philosopher's Stone reached cinemas in 2001.
-,,,,17,,Age Harry Potter turns by the end of the final book,17,He comes of age in the wizarding world partway through the story.
-,,,,18,Y,Students typically sharing Harry's Gryffindor dormitory,5,"Harry, Ron, Neville, Seamus and Dean share a room."
-,,,,19,,Schools competing in the Triwizard Tournament,3,"Hogwarts, Beauxbatons and Durmstrang each entered a champion."
-,,,,20,Y,Chasers on a Quidditch team,3,Chasers work together to score goals worth ten points each.
-258,number,London,drag numbers to answer each clue,1,Y,London Underground lines,11,The network is often simply called the Tube.
-,,,,2,Y,"Year Big Ben's clock tower was completed, 18--",59,The tower itself was finished in 1859.
-,,,,3,,Boroughs making up Greater London,32,"Plus the City of London, which sits outside the borough system."
-,,,,4,,London Underground fare zones in the standard system,9,"Zone 1 covers central London, with zones stretching out to 9."
-,,,,5,,"Year of the Great Fire of London, 16--",66,The fire destroyed much of the medieval city in 1666.
-,,,,6,,"Year the London Eye opened, 20--",00,It opened to mark the millennium in 2000.
-,,,,7,,Passengers a single London Eye capsule can carry,25,Each of its 32 capsules can hold around 25 people.
-,,,,8,Y,Royal Parks in London,8,"These include Hyde Park, Regent's Park and Greenwich Park."
-,,,,9,Y,"Year Tower Bridge was completed, 18--",94,It opened in 1894 after eight years of construction.
-,,,,10,,"Year the London Underground first opened, 18--",63,It was the world's first underground railway.
-,,,,11,,"West End theatres, approximately",40,London's West End is one of the world's great theatre districts.
-,,,,12,,"Year the Great Exhibition was held in London, 18--",51,It was staged inside the purpose-built Crystal Palace.
-,,,,13,Y,Bronze lions at the base of Nelson's Column,4,They have guarded Trafalgar Square since 1867.
-,,,,14,,Highest publicly accessible floor of the Shard,72,It houses London's highest outdoor viewing gallery.
-,,,,15,,"Year the Shard was completed, 20--",12,It became Western Europe's tallest building on completion.
-,,,,16,Y,Summer Olympic Games hosted by London,3,"London hosted in 1908, 1948 and 2012."
-,,,,17,,"Zones covered by a standard central London Travelcard, up to",6,A Zone 1-6 Travelcard covers all of Greater London.
-,,,,18,,"Year the Millennium Bridge opened, 20--",00,"It opened to mark the new millennium, though it briefly closed for wobble repairs."
-,,,,19,,Main airports serving London,6,"Heathrow, Gatwick, Stansted, Luton, City and Southend all serve the capital."
-,,,,20,,Approximate height of Big Ben's tower in metres,96,The clock tower is officially named the Elizabeth Tower.
-259,number,The Titanic,drag numbers to answer each clue,1,Y,Lifeboats carried aboard the Titanic,20,This was far fewer than needed for everyone on board.
-,,,,2,,"Year the Titanic sank, 19--",12,It sank in the early hours of 15 April 1912.
-,,,,3,,Days into her maiden voyage when the Titanic sank,4,She had departed Southampton just four days earlier.
-,,,,4,,Funnels on the Titanic,4,Only three of the four funnels were actually functional.
-,,,,5,,Watertight compartments built into the Titanic's hull,16,The iceberg breached five of these compartments at once.
-,,,,6,Y,Speed in knots at the moment of collision,22,The ship was travelling near its top speed when it struck the iceberg.
-,,,,7,,"Year the wreck of the Titanic was discovered, 19--",85,A joint French-American expedition found it in 1985.
-,,,,8,,Passenger classes aboard the Titanic,3,"First, second and third class passengers had very different experiences."
-,,,,9,,"Year construction began on the Titanic, 19--",09,Work started at the Harland and Wolff shipyard in Belfast.
-,,,,10,,Marconi wireless operators aboard the Titanic,2,Their distress signals helped guide rescue ships to survivors.
-,,,,11,,"Year James Cameron's ""Titanic"" film was released, 19--",97,It became one of the highest-grossing films of all time.
-,,,,12,,"Oscars won by the 1997 ""Titanic"" film",11,This tied the record for most Oscars won by a single film.
-,,,,13,Y,"Oscar nominations for the 1997 ""Titanic"" film",14,It was nominated across nearly every major category.
-,,,,14,,Sister ships in the Titanic's Olympic-class trio,3,"Olympic, Titanic and Britannic made up the class."
-,,,,15,Y,"Cruising speed the Titanic was designed for, in knots",21,Her design speed was slightly below her actual top speed.
-,,,,16,,Engines and propellers fitted to the Titanic,3,"Two reciprocating engines powered the outer propellers, with a turbine driving the centre one."
-,,,,17,Y,"Year the Titanic departed Southampton on her maiden voyage, 19--",12,She set sail on 10 April 1912.
-,,,,18,Y,Decks aboard the Titanic,9,"These were lettered A through G, plus the boat deck and orlop deck."
-,,,,19,,"Hours between the collision and the ship sinking, approximately",2,The Titanic sank roughly two hours and forty minutes after striking the iceberg.
-,,,,20,,Grand staircases aboard the Titanic,1,The Grand Staircase remains one of the ship's most iconic features.
-260,number,Volcanoes,drag numbers to answer each clue,1,,"Levels on the Volcanic Explosivity Index, numbered 0 to 8",9,The scale measures eruptions from gentle to catastrophic.
-,,,,2,Y,"Year of Krakatoa's catastrophic eruption, 18--",83,The 1883 eruption was heard thousands of kilometres away.
-,,,,3,Y,"Year Mount Vesuvius destroyed Pompeii, AD",79,The eruption buried the city in volcanic ash.
-,,,,4,Y,"Year Mount St Helens erupted in the US, 19--",80,The 1980 eruption was the deadliest in US history.
-,,,,5,Y,"Year Mount Pinatubo erupted in the Philippines, 19--",91,It was one of the largest eruptions of the 20th century.
-,,,,6,Y,"Countries situated along the Pacific ""Ring of Fire""",15,The Ring of Fire is home to the majority of the world's volcanoes.
-,,,,7,,Days European airspace was disrupted by EyjafjallajÃ¶kull's ash cloud,6,The 2010 shutdown grounded flights across the continent.
-,,,,8,,"Year EyjafjallajÃ¶kull disrupted European flights, 20--",10,The Icelandic eruption caused chaos for air travel in 2010.
-,,,,9,,Major tectonic plates recognised by geologists,7,These massive plates make up the Earth's outer shell.
-,,,,10,,Hawaiian islands with currently active volcanoes,2,The Big Island is home to both Kilauea and Mauna Loa.
-,,,,11,,"Year Mount Fuji last erupted, 17--",07,The Hoei eruption of 1707 remains its most recent.
-,,,,12,Y,"Height of Olympus Mons on Mars in kilometres, approximately",22,It is the tallest known volcano in the entire solar system.
-,,,,13,,"Active volcanoes in Iceland, approximately",30,Iceland sits directly on the Mid-Atlantic Ridge.
-,,,,14,,Continents with no currently active volcanoes,1,Mainland Australia is the exception among the inhabited continents.
-,,,,15,,VEI level of the 1980 Mount St Helens eruption,5,This places it among the larger eruptions of recent history.
-,,,,16,,VEI level of the 1883 Krakatoa eruption,6,It ranks among the most powerful eruptions ever recorded.
-,,,,17,,VEI level of the AD 79 Vesuvius eruption,5,Its explosive power is why Pompeii was buried so thoroughly.
-,,,,18,,"Year excavations at Pompeii began, 17--",48,"Systematic digging started in 1748, uncovering the buried city."
-,,,,19,,"Volcanoes on the Smithsonian/UN ""Decade Volcanoes"" watch list",16,These are singled out for close monitoring due to their eruption risk.
-,,,,20,,Countries containing volcanoes on the Decade Volcanoes list,12,The list spans volcanoes across multiple continents.
-261,number,Dinosaurs,drag numbers to answer each clue,1,,Millions of years since dinosaurs went extinct,66,A huge asteroid impact is the leading explanation for their extinction.
-,,,,2,Y,Horns on a Triceratops,3,Two large brow horns and one smaller nose horn.
-,,,,3,,Periods making up the Mesozoic Era,3,"The Triassic, Jurassic and Cretaceous periods span the age of dinosaurs."
-,,,,4,,"Year the original ""Jurassic Park"" film was released, 19--",93,It revolutionised dinosaurs on screen using groundbreaking CGI.
-,,,,5,,Teeth in a Tyrannosaurus rex's jaw,60,Its teeth were up to 20cm long and built for crushing bone.
-,,,,6,Y,Fingers on each Tyrannosaurus rex arm,2,Its famously short arms had just two clawed fingers.
-,,,,7,,Toes on a Velociraptor's foot,3,One of these bore its distinctive curved sickle claw.
-,,,,8,Y,Continents where dinosaur fossils have been found,7,Fossils have even been discovered in Antarctica.
-,,,,9,,"Year the first dinosaur was scientifically named, 18--",24,Megalosaurus was formally described in 1824.
-,,,,10,,"Wingspan of the largest known pterosaur in metres, approximately",11,Quetzalcoatlus is thought to be the largest flying animal ever known.
-,,,,11,,Estimated top speed of a Tyrannosaurus rex in km/h,18,Recent studies suggest it was a slower runner than films depict.
-,,,,12,Y,Approximate skull length of a Tyrannosaurus rex in feet,5,Its massive skull housed an extremely powerful bite.
-,,,,13,Y,"Main ""Jurassic Park"" and ""Jurassic World"" franchise films to date",6,The franchise has spanned decades since the original 1993 film.
-,,,,14,,Back plates commonly depicted along a Stegosaurus' spine,17,These plates may have helped regulate body temperature.
-,,,,15,Y,Spikes on a Stegosaurus' tail,4,"This spiked tail is nicknamed a ""thagomizer""."
-,,,,16,Y,Thumb spikes on each Iguanodon hand,1,This sharp spike may have been used for defence.
-,,,,17,,Legs a Tyrannosaurus rex walked on,2,"It was a bipedal predator, unlike many plant-eating dinosaurs."
-,,,,18,,Major orders dinosaurs are traditionally split into,2,Saurischia (lizard-hipped) and Ornithischia (bird-hipped).
-,,,,19,,Estimated length of Argentinosaurus in metres,35,It is among the largest land animals ever known to have existed.
-,,,,20,,"""Jurassic Park"" franchise films directed by Steven Spielberg",2,He directed the original 1993 film and its first sequel.
-262,number,Snooker,drag numbers to answer each clue,1,,Red balls on a snooker table,15,Reds are worth one point each and must be potted before colours.
-,,,,2,Y,"Colour balls on a snooker table, excluding reds",6,"Yellow, green, brown, blue, pink and black."
-,,,,3,,Points value of the black ball,7,Black is the most valuable ball on the table.
-,,,,4,,Points value of the pink ball,6,Pink sits just below black in value.
-,,,,5,Y,Points value of the yellow ball,2,Yellow is the lowest-value colour on the table.
-,,,,6,Y,Points value of the green ball,3,Green sits just above yellow in value.
-,,,,7,Y,Points value of the brown ball,4,Brown sits in the middle of the colour values.
-,,,,8,,Points value of the blue ball,5,Blue sits just below pink in value.
-,,,,9,,Pockets on a snooker table,6,Four corner pockets and two middle pockets.
-,,,,10,,Length of a snooker table in feet,12,It is one of the largest table sports in the world.
-,,,,11,,Players competing in a single snooker frame,2,Snooker is played strictly head-to-head.
-,,,,12,Y,World Championship titles won by Ronnie O'Sullivan,7,This ties him with Stephen Hendry for the modern record.
-,,,,13,,Age Ronnie O'Sullivan turned professional,16,He turned pro in 1992 as a teenager.
-,,,,14,,"Year the World Championship moved to the Crucible Theatre, 19--",77,The Sheffield venue has hosted the championship ever since.
-,,,,15,,Frames needed to win a World Championship final,18,The final is played as the best of 35 frames.
-,,,,16,,"Year snooker is commonly said to have been invented, 18--",75,It was devised by British Army officers stationed in India.
-,,,,17,,"Minutes for Ronnie O'Sullivan's fastest official maximum break, rounded down",5,His 1997 maximum remains the fastest ever recorded.
-,,,,18,,Reds that must be potted alongside colours during the opening phase of a break,15,Every red is paired with a colour attempt during this phase.
-,,,,19,,"Year the World Snooker Championship was first held, 19--",27,The first championship predates the Crucible era by fifty years.
-,,,,20,Y,"Diameter of a snooker ball in centimetres, rounded",5,All the balls on the table are exactly the same size.
-263,number,Star Wars,drag numbers to answer each clue,1,,Films in the original Star Wars trilogy,3,"A New Hope, The Empire Strikes Back and Return of the Jedi."
-,,,,2,Y,Films making up the full Skywalker saga,9,The saga spans three trilogies released across four decades.
-,,,,3,,Films in the Star Wars prequel trilogy,3,"The Phantom Menace, Attack of the Clones and Revenge of the Sith."
-,,,,4,,"Year the first Star Wars film was released, 19--",77,It became a cultural phenomenon on its 1977 release.
-,,,,5,,"Luke Skywalker's age in ""A New Hope""",19,He begins the saga as a young farm boy on Tatooine.
-,,,,6,,"Chewbacca's height in feet, rounded",7,He towers over most other characters in the saga.
-,,,,7,,Death Stars destroyed across the original trilogy,2,One is destroyed in each of the first and third films.
-,,,,8,Y,"Year ""The Empire Strikes Back"" was released, 19--",80,It is widely considered the darkest film of the original trilogy.
-,,,,9,Y,"Year ""Return of the Jedi"" was released, 19--",83,It closed out the original trilogy in 1983.
-,,,,10,,"Year the prequel trilogy began with ""The Phantom Menace"", 19--",99,It marked the saga's long-awaited return to cinemas.
-,,,,11,,"Year the sequel trilogy began with ""The Force Awakens"", 20--",15,It introduced a new generation of characters to the saga.
-,,,,12,,Seats on the Jedi Council shown in the prequel films,12,The council governs the Jedi Order from the Jedi Temple.
-,,,,13,,"Main saga and anthology Star Wars films released, approximately",11,This includes the nine saga films plus Rogue One and Solo.
-,,,,14,Y,Trilogies making up the core Star Wars saga,3,"The prequel, original and sequel trilogies together form the saga."
-,,,,15,Y,Suns Tatooine orbits,2,Its famous twin sunset is one of the saga's most iconic images.
-,,,,16,,Lightsaber blades on Darth Maul's signature weapon,2,His double-bladed lightsaber made him a unique visual threat.
-,,,,17,,Star Wars saga films directed by George Lucas,4,He directed the original 1977 film and all three prequels.
-,,,,18,Y,Hands Luke Skywalker loses across the original trilogy,1,He loses his right hand in a duel with Darth Vader.
-,,,,19,,Star Wars anthology spin-off films released,2,Rogue One and Solo both expand on the saga's wider universe.
-,,,,20,,Main characters typically shown on the original 1977 teaser poster,3,"Luke, Leia and Han Solo feature prominently in the saga's early marketing."
-264,number,Tour de France,drag numbers to answer each clue,1,,"Year the Tour de France was first held, 19--",03,The inaugural race took place in 1903.
-,,,,2,Y,Stages in the first Tour de France,6,The original race was far longer per stage than the modern event.
-,,,,3,,Stages in a modern Tour de France,21,The race is spread across three gruelling weeks.
-,,,,4,Y,"Age of the youngest ever Tour de France winner, Henri Cornet",19,He won the 1904 race after other riders were disqualified.
-,,,,5,,Riders per team in a recent Tour de France,8,Team sizes were reduced from nine riders in recent years.
-,,,,6,,Teams competing in a recent Tour de France,22,This brings the total peloton to well over 170 riders.
-,,,,7,Y,Consecutive Tour de France wins by Miguel Indurain,5,He won every edition from 1991 to 1995.
-,,,,8,,"Climb categories used to rank mountains, from 4 to HC",5,"Categories run from 4 up to the toughest, ""Hors Categorie""."
-,,,,9,,Times the Tour de France was cancelled for World Wars,2,The race paused during both the First and Second World Wars.
-,,,,10,,"Year the Tour de France Femmes was relaunched, 20--",22,The modern women's race returned in 2022 after decades away.
-,,,,11,,Jersey types awarded during the Tour de France,4,"Yellow, green, polka dot and white jerseys each reward a different achievement."
-,,,,12,Y,Rest days typically built into a modern Tour de France,2,These breaks are scattered through the three-week race.
-,,,,13,,Weeks a modern Tour de France roughly spans,3,The race runs for three demanding weeks each July.
-,,,,14,,"Year Lance Armstrong's first Tour de France win, 19--",99,All seven of his wins were later stripped for doping.
-,,,,15,,Tour de France wins later stripped from Lance Armstrong,7,He was stripped of every title he had won from 1999 to 2005.
-,,,,16,,Tour de France wins by Eddy Merckx,5,Merckx is widely regarded as one of cycling's greatest ever riders.
-,,,,17,,Tour de France wins by Bernard Hinault,5,He remains the last French rider to win the race.
-,,,,18,,Mountain ranges the Tour de France typically crosses,2,The Alps and the Pyrenees provide the race's toughest climbs.
-,,,,19,Y,Age Eddy Merckx was when he won his first Tour de France,24,He went on to dominate the race throughout the early 1970s.
-,,,,20,Y,Grand Tours on the professional cycling calendar,3,"The Giro d'Italia, Tour de France and Vuelta a EspaÃ±a."
-265,number,The Moon Landing,drag numbers to answer each clue,1,,"Year of the first Moon landing, 19--",69,Apollo 11 landed on the Moon in July 1969.
-,,,,2,Y,Apollo missions that successfully landed on the Moon,6,Six missions between 1969 and 1972 achieved a crewed landing.
-,,,,3,,Astronauts who have walked on the Moon in total,12,All twelve were part of NASA's Apollo program.
-,,,,4,,Apollo mission number of the first Moon landing,11,Apollo 11 carried the first crew to land on the Moon.
-,,,,5,,Astronauts aboard Apollo 11,3,"Neil Armstrong, Buzz Aldrin and Michael Collins."
-,,,,6,Y,Astronauts who walked on the Moon during Apollo 11,2,Armstrong and Aldrin descended while Collins stayed in orbit.
-,,,,7,,Day in July the Eagle lunar module landed,20,The landing took place on 20 July 1969.
-,,,,8,,Neil Armstrong's age during the Moon landing,38,He became the first person ever to walk on the Moon.
-,,,,9,Y,Buzz Aldrin's age during the Moon landing,39,He followed Armstrong onto the lunar surface shortly after.
-,,,,10,,"Year of the Apollo program's final Moon landing, 19--",72,Apollo 17 was the last crewed mission to land on the Moon.
-,,,,11,,Mission number of the final Apollo Moon landing,17,It remains the most recent crewed Moon landing to date.
-,,,,12,Y,Days the Apollo 11 round trip took,8,The full mission from launch to splashdown lasted eight days.
-,,,,13,,US flags planted on the Moon across all Apollo landings,6,Each of the six landing missions left a flag behind.
-,,,,14,,"Year of the near-disastrous Apollo 13 mission, 19--",70,An oxygen tank explosion forced the crew to abort their landing.
-,,,,15,,Apollo 13's mission number,13,"The mission became famous for its safe, dramatic return to Earth."
-,,,,16,Y,Days it took Apollo 11 to reach the Moon,4,"The spacecraft travelled roughly 240,000 miles to get there."
-,,,,17,Y,"Year NASA was founded, 19--",58,It was established in response to the early Space Race.
-,,,,18,,Astronauts who stayed in lunar orbit during Apollo 11 rather than landing,1,Michael Collins orbited alone while Armstrong and Aldrin walked below.
-,,,,19,,Later Apollo missions that used a Lunar Roving Vehicle,3,"Apollo 15, 16 and 17 each carried a ""moon buggy""."
-,,,,20,,Decade the last human Moon landing took place,70,"Apollo 17 landed in December 1972, in the early 1970s."
+Day,Type,Category,Tag Line,Question Number,Select,Question,Answer,More
+326,colour,Football Kit Colours,drag colours to answer each clue,1,,"Colour of Brazil's home football shirt, worn since the 1950s",yellow,"Brazil's home kit is yellow with green trim, worn since the 1950s."
+,,,,2,Y,"Colour of the Netherlands' home shirt, tied to their royal house",orange,The Dutch team is nicknamed Oranje after the House of Orange-Nassau.
+,,,,3,,"Colour of Argentina's home shirt, worn with white stripes",blue,"Argentina's shirt, nicknamed the albiceleste, is pale blue with white stripes."
+,,,,4,,"Colour Italy's national team wear, chosen to honour the House of Savoy",blue,Italy wear azzurro blue in honour of the royal House of Savoy.
+,,,,5,,"Colour of Portugal's home football shirt, matching their flag",red,"Portugal's home kit is red with green shorts, matching their flag."
+,,,,6,,"Colour of Wales' home shirt, echoing the dragon on their flag",red,"Wales wear red, echoing the dragon on the Welsh flag."
+,,,,7,,"Colour of Scotland's home shirt, matching their saltire flag",blue,Scotland's navy blue kit matches the saltire on their flag.
+,,,,8,,"Colour of Belgium's home shirt, worn with black shorts",red,Belgium's Red Devils are named for their red home kit.
+,,,,9,,"Colour of Chile's home football shirt, worn with blue shorts",red,"Chile's team is nicknamed La Roja, meaning 'The Red One'."
+,,,,10,,"Colour of Switzerland's home shirt, worn with a white cross",red,"Switzerland wear red shirts with a white cross, from their flag."
+,,,,11,Y,"Colour of Japan's home football shirt, worn with white shorts",blue,Japan's team is nicknamed Samurai Blue after their shirt colour.
+,,,,12,Y,"Colour of South Korea's home shirt, worn at major tournaments",red,"South Korea wear red at home, nicknamed the Reds."
+,,,,13,,"Colour of Mexico's El Tri home shirt, from their national flag",green,"Mexico's El Tri wear green, one of their flag's three colours."
+,,,,14,,"Colour of the Republic of Ireland's home shirt, worn with white trim",green,Ireland's team are nicknamed the Boys in Green.
+,,,,15,Y,"Colour of Colombia's home shirt, worn with blue and red trim",yellow,Colombia wear yellow shirts with blue and red trim.
+,,,,16,,"Colour of Sweden's home shirt, matching their national flag",yellow,"Sweden's kit is yellow with blue trim, matching their flag."
+,,,,17,,"Colour of Ukraine's home shirt, taken from their national flag",yellow,"Ukraine's home shirts are yellow, taken from their national flag."
+,,,,18,,Colour forming half of Croatia's famous chequerboard shirt pattern,red,Croatia's kit alternates red and white checkerboard squares.
+,,,,19,Y,"Colour of Germany's away kit at the 2014 World Cup, trimmed in gold",black,Germany wore a black away kit trimmed in red and gold that tournament.
+,,,,20,Y,"Colour of Nigeria's home shirt, taken from their national flag",green,"Nigeria's Super Eagles wear green at home, taken from their flag."
+327,colour,Racing Flags (Motorsport),drag colours to answer each clue,1,Y,Flag colour warning drivers of a hazard somewhere on the track,yellow,A yellow flag tells drivers to slow down for danger ahead.
+,,,,2,Y,"Flag colour ordering a driver back to the pits, ending their race",black,"A black flag disqualifies a driver, calling them into the pit lane."
+,,,,3,Y,Flag colour telling a driver a faster car is closing in behind,blue,A blue flag tells a backmarker to let a faster car past.
+,,,,4,Y,Flag colour that stops a race session completely,red,"A red flag halts the session, usually after a serious incident."
+,,,,5,Y,Flag colour signalling the track is clear again after a hazard,green,A green flag ends a caution period and resumes racing.
+,,,,6,,Disc colour on motorsport's black mechanical-warning flag,orange,A black flag with an orange disc warns of a car's mechanical fault.
+,,,,7,,Left-hand stripe colour of the tricolour that starts Le Mans,blue,"The French tricolour flag is blue, white and red left to right."
+,,,,8,,Flag colour ordering a NASCAR driver to pit for a rule breach,black,NASCAR uses a black flag to summon a car in for a penalty.
+,,,,9,,Flag colour waved to start almost every motorsport race,green,Most motorsport series start the race with a green flag.
+,,,,10,,Stripe colour on the blue flag used to wave a slower car aside,yellow,Some series' blue flag carries a diagonal yellow stripe.
+,,,,11,Y,"Background colour of IndyCar's penalty flag, marked with a cross",orange,IndyCar's 'meatball' flag is orange with a black cross.
+,,,,12,,Flag colour waved around the track when a safety car is deployed,yellow,Yellow flags are shown around the track during a safety car period.
+,,,,13,,"Flag colour shown at pit exit, allowing cars to rejoin the track",green,A green light or flag at pit exit signals it's safe to rejoin.
+,,,,14,,Flag colour used to halt a rally stage after an incident ahead,red,Rally stages are stopped with a red flag shown to competitors.
+,,,,15,,Background colour of the flag marking a car no longer being scored,black,This black-flag variant carries a white cross instead of a disc.
+,,,,16,,"Flag colour waved twice together, warning of marshals trackside",yellow,"Two yellow flags waved together mean extra caution, no overtaking."
+,,,,17,,"Base colour of NASCAR's 'move over' flag, alongside a yellow stripe",blue,NASCAR's blue flag also carries a diagonal yellow stripe.
+,,,,18,,Colour of the starting lights at an F1 Grand Prix before they go out,red,"Five red lights illuminate, then go out together to start the race."
+,,,,19,,Base colour of the mechanical-fault flag marked with an orange disc,black,The base flag is black; the orange disc marks the specific warning.
+,,,,20,,Flag colour opening the pit lane for cars at a session's start,green,A green flag or light opens the pit lane for a new session.
+328,colour,Snooker Ball Colours,drag colours to answer each clue,1,Y,"Colour of the lowest-value snooker ball, apart from red",yellow,"The yellow ball is worth 2 points, the lowest of snooker's six colours."
+,,,,2,,Colour of the snooker ball worth exactly 3 points,green,Green is potted for 3 points when clearing the colours.
+,,,,3,Y,Colour of the snooker ball spotted on the table's centre spot,blue,"The blue ball, worth 5 points, sits on the table's centre spot."
+,,,,4,Y,Colour of the snooker ball worth 6 points,pink,Pink is worth 6 points and sits near the top of the table.
+,,,,5,,Colour of snooker's single most valuable ball,black,"Black is snooker's highest-value colour, worth 7 points."
+,,,,6,,Colour potted immediately after yellow when clearing the colours,green,"After the reds, colours are potted in order: yellow, green, brown, blue, pink, black."
+,,,,7,,Colour potted immediately after blue when clearing the colours,pink,Pink comes right after blue in snooker's colour-clearing order.
+,,,,8,,Colour of the very last ball potted when clearing all six colours,black,"Black, worth 7 points, is always potted last when clearing the colours."
+,,,,9,,Colour of the ball respotted on the exact centre of the table,blue,The blue ball is respotted on the exact centre spot of the table.
+,,,,10,Y,Colour of the ball whose spot sits nearest the top cushion,black,The black ball's spot sits nearest the top cushion of the table.
+,,,,11,Y,Colour of the snooker ball worth one point more than yellow,green,"Green is worth 3 points, one more than yellow's 2."
+,,,,12,,Colour of the snooker ball worth two points more than green,blue,"Blue is worth 5 points, two more than green's 3."
+,,,,13,,Colour of the snooker ball worth one point more than pink,black,"Black is worth 7 points, one more than pink's 6."
+,,,,14,,Colour of the snooker ball worth one point less than pink,blue,"Blue is worth 5 points, one less than pink's 6."
+,,,,15,Y,"Colour of ball that must be potted before any colour, at a frame's start",red,"Reds must be potted before colours at the start of a frame, worth 1 point each."
+,,,,16,,Colour needed alongside every red to score snooker's maximum 147 break,black,"A maximum 147 break pots every red with black, plus all six colours."
+,,,,17,,Colour of the woollen cloth covering a standard snooker table,green,Snooker tables are covered in a green woollen baize cloth.
+,,,,18,,Colour traditionally worn by a snooker referee's waistcoat,black,Snooker referees traditionally wear black waistcoats and white gloves.
+,,,,19,,Colour of the last ball potted before black in a full colour clearance,pink,Pink is the last colour potted before black to finish a clearance.
+,,,,20,,"Colour of one of the two ball spots on the baulk 'D', alongside green",yellow,Yellow and green are spotted at the two corners of the D on the baulk line.
+329,colour,Monopoly Board Colours (UK Edition),drag colours to answer each clue,1,,Colour group containing The Angel Islington on the UK Monopoly board,blue,"The Angel Islington is one of three light blue properties, with Euston Road and Pentonville Road."
+,,,,2,Y,Colour group containing Euston Road on the UK Monopoly board,blue,"Euston Road is a light blue property, alongside The Angel Islington and Pentonville Road."
+,,,,3,,Colour group containing Pentonville Road on the UK Monopoly board,blue,Pentonville Road completes the light blue group with Euston Road and The Angel Islington.
+,,,,4,,Colour group containing Pall Mall on the UK Monopoly board,pink,"Pall Mall is a pink property, alongside Whitehall and Northumberland Avenue."
+,,,,5,Y,Colour group containing Whitehall on the UK Monopoly board,pink,Whitehall sits in the pink group with Pall Mall and Northumberland Avenue.
+,,,,6,,Colour group containing Northumberland Avenue on the UK Monopoly board,pink,Northumberland Avenue completes the pink group with Pall Mall and Whitehall.
+,,,,7,,Colour group containing Bow Street on the UK Monopoly board,orange,"Bow Street is an orange property, alongside Marlborough Street and Vine Street."
+,,,,8,Y,Colour group containing Marlborough Street on the UK Monopoly board,orange,Marlborough Street sits in the orange group with Bow Street and Vine Street.
+,,,,9,,Colour group containing Vine Street on the UK Monopoly board,orange,Vine Street completes the orange group with Bow Street and Marlborough Street.
+,,,,10,,Colour group containing The Strand on the UK Monopoly board,red,"The Strand is a red property, alongside Fleet Street and Trafalgar Square."
+,,,,11,Y,Colour group containing Fleet Street on the UK Monopoly board,red,Fleet Street sits in the red group with The Strand and Trafalgar Square.
+,,,,12,,Colour group containing Trafalgar Square on the UK Monopoly board,red,Trafalgar Square completes the red group with The Strand and Fleet Street.
+,,,,13,,Colour group containing Leicester Square on the UK Monopoly board,yellow,"Leicester Square is a yellow property, alongside Coventry Street and Piccadilly."
+,,,,14,Y,Colour group containing Coventry Street on the UK Monopoly board,yellow,Coventry Street sits in the yellow group with Leicester Square and Piccadilly.
+,,,,15,,Colour group containing Piccadilly on the UK Monopoly board,yellow,Piccadilly completes the yellow group with Leicester Square and Coventry Street.
+,,,,16,,Colour group containing Regent Street on the UK Monopoly board,green,"Regent Street is a green property, alongside Oxford Street and Bond Street."
+,,,,17,Y,Colour group containing Oxford Street on the UK Monopoly board,green,Oxford Street sits in the green group with Regent Street and Bond Street.
+,,,,18,,Colour group containing Bond Street on the UK Monopoly board,green,Bond Street completes the green group with Regent Street and Oxford Street.
+,,,,19,,Colour group containing Park Lane on the UK Monopoly board,blue,"Park Lane is a dark blue property, paired only with Mayfair."
+,,,,20,,"Colour group containing Mayfair, the board's priciest property",blue,"Mayfair is the dark blue group's priciest property, paired with Park Lane."
+330,colour,Birthstones by Month,drag colours to answer each clue,1,Y,"Colour of January's birthstone, garnet, most commonly",red,"Garnet, January's birthstone, is most commonly deep red."
+,,,,2,Y,"Colour of February's birthstone, amethyst",purple,"Amethyst, February's birthstone, is a purple quartz."
+,,,,3,,"Colour of May's birthstone, emerald, prized for its rich shade",green,"Emerald, May's birthstone, is prized for its rich green colour."
+,,,,4,,"Colour of September's birthstone, sapphire, classically",blue,"Sapphire, September's birthstone, is classically deep blue."
+,,,,5,,"Colour of March's birthstone, aquamarine",blue,"Aquamarine, March's birthstone, is a pale blue-green gem."
+,,,,6,,"Colour of July's birthstone, ruby, famed for its vivid shade",red,"Ruby, July's birthstone, is famous for its vivid red colour."
+,,,,7,,"Colour of citrine, one of November's two official birthstones",yellow,"Citrine, one of November's birthstones, is a yellow quartz."
+,,,,8,,"Colour of tanzanite, one of December's official birthstones",blue,"Tanzanite, one of December's birthstones, is a deep blue-violet gem."
+,,,,9,Y,"Colour of peridot, August's official birthstone",green,"Peridot, August's birthstone, has a distinctive olive-green colour."
+,,,,10,,"Colour alexandrite, one of June's birthstones, shows in daylight",green,"Alexandrite, one of June's birthstones, appears green in daylight."
+,,,,11,Y,Colour of a popular October tourmaline birthstone shade,pink,Pink tourmaline is one of October's two official birthstones.
+,,,,12,,Rarest natural colour grade of April's diamond birthstone,yellow,Fancy yellow is one of the rarer natural diamond colour grades.
+,,,,13,Y,"Colour of the most common onyx variety, an alternative birthstone",black,Black onyx is a popular dark gemstone alternative for several months.
+,,,,14,,"Colour of the most popular topaz variety, an alternative December birthstone",blue,Blue topaz is a widely used alternative December birthstone.
+,,,,15,,"Colour of tsavorite, a rare and valuable January birthstone variety",green,Tsavorite and demantoid are rare green garnet varieties.
+,,,,16,,"Colour of a prized sapphire variety, alongside the classic blue kind",pink,"Sapphires occur in many colours, with pink being especially prized."
+,,,,17,,"Colour of a rare, collectible sapphire variety, beyond the classic blue kind",purple,"Purple sapphire is a rarer, highly collectible sapphire colour."
+,,,,18,,"Colour of padparadscha, a rare and prized sapphire variety",orange,Padparadscha sapphires show a distinctive pinkish-orange colour.
+,,,,19,,"Colour of the most common spinel variety, a modern alternative birthstone",black,Black spinel is used as a modern alternative gemstone for several months.
+,,,,20,Y,"Colour of spessartine, a fiery orange garnet variety prized by collectors",orange,"Spessartine, sometimes called mandarin garnet, is a vivid orange gemstone."
+331,colour,Cricket Kit Colours (ODI),drag colours to answer each clue,1,Y,"India's ODI cricket kit colour, earning them a nickname",blue,"India's ODI kit is blue, earning them the nickname Men in Blue."
+,,,,2,,"Australia's ODI cricket kit colour, alongside green trim",yellow,"Australia's ODI kit is yellow and green, reflecting their national colours."
+,,,,3,,"Pakistan's ODI cricket kit colour, matching their national flag",green,"Pakistan's ODI kit is a dark green, matching their national flag."
+,,,,4,,"England's ODI cricket kit colour, distinct from their Test whites",blue,"England's ODI kit is navy blue, distinct from their white Test whites."
+,,,,5,,"South Africa's ODI cricket kit colour, alongside gold",green,"South Africa's ODI kit is green, giving them their Proteas nickname."
+,,,,6,,"New Zealand's cricket kit colour, giving them a team nickname",black,"New Zealand's cricket team, the Black Caps, wear black in ODIs."
+,,,,7,,"Sri Lanka's ODI cricket kit colour, most predominantly",blue,Sri Lanka's ODI kit is predominantly blue.
+,,,,8,Y,"Bangladesh's ODI cricket kit colour, echoing their flag",green,"Bangladesh's ODI kit is green, echoing their national flag."
+,,,,9,,"Afghanistan's ODI cricket kit colour, worn by their national team",blue,Afghanistan's cricket team wear blue in One Day Internationals.
+,,,,10,,"Ireland's ODI cricket kit colour, matching their national flag",green,"Ireland's cricket team wear green in ODIs, matching their flag."
+,,,,11,,Colour of a cricket ball used in traditional Test matches,red,"Test cricket is played with a red ball, unlike the white ODI ball."
+,,,,12,Y,Colour of the specially coated ball used in day-night Test cricket,pink,Day-night Tests use a specially coated pink ball for visibility.
+,,,,13,,Colour of the cap traditionally worn by Australia's Test captain,green,Australia's iconic Test cap is known as the 'baggy green'.
+,,,,14,,"Colour of India's Test match cap, distinct from other nations'",blue,"India's Test cap is navy blue, distinct from other nations' caps."
+,,,,15,,Colour glow of the electronic bails used to aid run-out decisions,red,"Zing bails glow red when dislodged, aiding run-out decisions."
+,,,,16,Y,Colour of the boundary rope at most televised cricket grounds,yellow,Boundary ropes are typically painted or marked in bright yellow.
+,,,,17,Y,"Zimbabwe's ODI cricket kit colour, most recognisably",red,Zimbabwe's ODI cricket kit is predominantly red.
+,,,,18,,"West Indies' T20 International kit colour, unlike their maroon ODI shirt",black,"West Indies wear black for T20 Internationals, unlike their maroon ODI kit."
+,,,,19,,"Netherlands' ODI cricket kit colour, matching their national identity",orange,"The Netherlands wear orange in ODIs, matching their national identity."
+,,,,20,Y,Colour of the sightscreen commonly used behind the bowler at night,black,Day-night matches often use black sightscreens for the pink ball.
+332,colour,Superhero Costume Colours,drag colours to answer each clue,1,,"Colour of the cape worn over Superman's costume, paired with a blue bodysuit",red,Superman's costume pairs a blue bodysuit with a red cape.
+,,,,2,,Colour the Hulk's skin turns when Bruce Banner grows enraged,green,Bruce Banner transforms into the green-skinned Hulk when enraged.
+,,,,3,,"Colour of Spider-Man's classic costume, alongside its red",blue,Spider-Man's classic suit combines red with blue.
+,,,,4,Y,"Colour most associated with Batman's costume, sometimes with grey",black,"Batman's suit is almost always depicted in black, sometimes with grey."
+,,,,5,,"Colour of The Flash's costume, trimmed with gold lightning bolts",red,The Flash wears a red suit with gold lightning bolt accents.
+,,,,6,Y,"Colour of the ring wielded by DC's Hal Jordan, matching his costume",green,"Green Lantern Hal Jordan's ring and costume are both green, powered by willpower."
+,,,,7,,"Colour of Wonder Woman's star-spangled skirt, alongside red and gold",blue,Wonder Woman's classic costume includes a blue star-spangled skirt.
+,,,,8,,"Colour of Captain America's costume, alongside its red and white",blue,"Captain America's suit is based on the American flag's blue, red and white."
+,,,,9,,Colour of the vibranium-weave costume worn by Wakanda's masked protector,black,"Black Panther's suit is a sleek, all-black vibranium-weave design."
+,,,,10,,"Colour of Wolverine's classic X-Men costume, alongside blue",yellow,Wolverine's classic X-Men costume is yellow and blue.
+,,,,11,Y,Colour of the flowing cape worn as part of Thor's costume,red,Thor's iconic costume includes a flowing red cape.
+,,,,12,,"Colour making up most of Deadpool's costume, alongside black",red,Deadpool's suit is mostly red with black accents.
+,,,,13,Y,"Colour of Aquaman's traditional comic-book costume, alongside green",orange,Aquaman's traditional comic costume is orange and green.
+,,,,14,,"Colour of the Vision's synthetic skin, a Marvel android hero",red,"The Vision, a Marvel android, has distinctive red skin."
+,,,,15,,"Colour She-Hulk's skin turns, sharing her cousin's transformation",green,She-Hulk shares the Hulk's green skin transformation.
+,,,,16,,Colour making up most of Cyclops' optic-blast energy beams,red,Cyclops of the X-Men fires optic blasts described as red energy.
+,,,,17,Y,Colour of Beast's fur in his most classic X-Men appearance,blue,Beast is most commonly depicted with blue fur.
+,,,,18,,"Colour of Rogue's classic 90s X-Men costume, alongside green",yellow,Rogue's classic 90s X-Men costume is yellow and green.
+,,,,19,Y,"Colour of Robin's cape, paired with a red tunic in his classic costume",yellow,The classic Robin costume pairs a red tunic with a yellow cape.
+,,,,20,,Colour of the Human Torch's costume when Johnny Storm flames on,orange,The Human Torch's fiery form is depicted in bright orange flame.
+333,colour,Martial Arts Belt Colours,drag colours to answer each clue,1,Y,"Karate belt colour typically earned just after white, a first grade",yellow,Yellow belt is usually the first grade earned after white in karate.
+,,,,2,,Karate belt colour that typically comes right after yellow,orange,Orange belt commonly follows yellow in many karate grading systems.
+,,,,3,Y,Karate belt colour that typically follows orange in grading,green,Green belt typically follows orange in standard karate grading.
+,,,,4,Y,Karate belt colour that typically follows green in grading,blue,Blue belt commonly follows green in many karate systems.
+,,,,5,Y,"Karate belt colour that follows blue, just before the advanced grades",purple,Purple belt often follows blue before the advanced grades.
+,,,,6,Y,"Highest, most senior belt colour awarded in most martial arts",black,Black belt represents the highest standard grading in most martial arts.
+,,,,7,,"Brazilian Jiu-Jitsu belt colour earned after white, the first adult grade",blue,Blue belt is the first coloured belt in adult Brazilian Jiu-Jitsu.
+,,,,8,,Brazilian Jiu-Jitsu belt colour that comes right after blue,purple,Purple belt follows blue in the adult BJJ ranking system.
+,,,,9,,Taekwondo belt colour typically earned just after white,yellow,Yellow belt commonly follows white in taekwondo grading.
+,,,,10,,Belt colour paired with black for junior black-belt grades in some systems,red,Some systems use a red-and-black striped belt for junior black belt grades.
+,,,,11,Y,"Belt colour awarded to some 10th-dan grandmasters, instead of black",red,Some styles award a red belt to grandmasters at the highest 10th-dan rank.
+,,,,12,,Kickboxing belt colour that typically comes right after yellow,orange,Orange belt commonly follows yellow in kickboxing grading systems.
+,,,,13,,Karate belt colour sitting between green and the most advanced grades,blue,Blue belt sits between green and the advanced purple and brown grades.
+,,,,14,,"Judo belt colour typically earned after white, the first coloured grade",yellow,Yellow belt is commonly the first coloured grade after white in Judo.
+,,,,15,,Judo belt colour that typically comes right after yellow,orange,Orange belt commonly follows yellow in the Judo kyu grading system.
+,,,,16,,Kickboxing belt colour that typically follows orange in grading,green,Green belt commonly follows orange in many kickboxing systems.
+,,,,17,,"Colour of the belt worn by senior 6th-8th dan judoka, panelled with white",red,6th-8th dan judoka may wear a distinctive red-and-white panelled belt.
+,,,,18,,Colour of the belt worn by the most senior 9th-10th dan judoka,red,9th and 10th dan judo grades may wear a solid red belt.
+,,,,19,,Taekwondo belt colour for the most advanced grade before black,red,Red belt commonly marks the most advanced coloured grade before black in taekwondo.
+,,,,20,,Taekwondo belt colour that typically follows yellow in many federations,green,Green belt commonly follows yellow in many taekwondo grading systems.
+334,colour,Sweet & Candy Wrapper Colours,drag colours to answer each clue,1,Y,"Wrapper colour of a Wham bar, the classic UK chew sweet",pink,The original Wham bar has a bright pink wrapper.
+,,,,2,,Wrapper colour of the Starburst flavour shared with carrots and pumpkins,orange,The orange-flavoured sweet inside Starburst has an orange wrapper.
+,,,,3,,Colour of the grape-flavoured sweet in a packet of Skittles,purple,Purple is the standard colour for grape-flavoured Skittles.
+,,,,4,Y,Colour of the lemon-flavoured sweet in a packet of Skittles,yellow,Yellow is the standard colour for lemon-flavoured Skittles.
+,,,,5,Y,Colour of the strawberry-flavoured sweet in a packet of Skittles,red,Red is the standard colour for strawberry-flavoured Skittles.
+,,,,6,Y,Colour of the apple-flavoured sweet in a packet of Skittles,green,Green is the standard colour for green apple-flavoured Skittles.
+,,,,7,,"Colour of a classic packet of Peanut M&M's, unlike the plain variety",yellow,Peanut M&M's have used a yellow packet for decades.
+,,,,8,,Colour of a classic Cadbury Dairy Milk chocolate wrapper,purple,Cadbury's signature wrapper colour is a deep purple.
+,,,,9,Y,"Colour of a classic Wispa bar's wrapper, matching Cadbury branding",purple,"Wispa's classic wrapper is purple, matching Cadbury's branding."
+,,,,10,,"Colour of a classic Milkybar wrapper, reflecting the white chocolate inside",yellow,"Milkybar's wrapper is bright yellow, reflecting its white chocolate inside."
+,,,,11,,Colour of a classic UK Refreshers chew sweet's roll-style wrapper,yellow,Classic Refreshers sweets are sold in a bright yellow roll wrapper.
+,,,,12,,"Colour of a classic pale, flower-scented UK sweet, over a century old",purple,"Parma Violets are a pale purple, floral-flavoured sweet."
+,,,,13,,"Colour of a classic UK aniseed-flavoured chew sweet, a Swizzels favourite",black,"Black Jacks are aniseed-flavoured chews, coloured black."
+,,,,14,,Colour most associated with a classic UK Fruit Salad chew sweet,yellow,The classic Fruit Salad chew is most often yellow.
+,,,,15,,"Colour of a classic UK Pear Drop sweet, shaped like its namesake fruit",green,"Pear Drops are traditionally a pale green, pear-shaped hard sweet."
+,,,,16,Y,"Colour of a classic UK cola cube sweet, despite cola's darker shade",black,"Cola cubes are traditionally a dark, near-black brown colour."
+,,,,17,,Colour of a classic Love Heart sweet's foil-wrapped tube packaging,purple,Swizzels Love Hearts are sold in a purple foil-wrapped tube.
+,,,,18,,"Colour of a Refreshers chew bar's wrapper, matching the brand's rolls",yellow,The Refreshers chew bar uses the brand's signature bright yellow wrapper.
+,,,,19,,Colour of a classic Sherbet Fountain's paper wrapper,yellow,A classic Sherbet Fountain comes wrapped in bright yellow paper.
+,,,,20,,Colour most associated with classic bubblegum-flavoured sweet wrappers,pink,Classic bubblegum-flavoured sweets and gum are traditionally packaged in pink.
+335,colour,Game Piece Colours,drag colours to answer each clue,1,,Colour of one player's marbles in a six-player Chinese Checkers set,blue,"A classic six-player set uses red, yellow, green, black, white and blue marbles."
+,,,,2,Y,Colour of the peg marking a hit in a game of Battleship,red,Battleship pegs traditionally mark hits in red and misses in white.
+,,,,3,,"Colour of one player's army in a two-player game of Stratego, facing red",blue,Classic Stratego is played with red and blue armies facing off.
+,,,,4,,"Colour of the other set of Connect Four counters, played against red",yellow,"Connect Four's other colour of counters is yellow, alongside red."
+,,,,5,,"Colour of one set of Connect Four counters, played against yellow",red,"Connect Four is played with red and yellow discs, dropped in turns."
+,,,,6,Y,Trivial Pursuit wedge colour for the Geography category,blue,Trivial Pursuit's Geography category is represented by a blue wedge.
+,,,,7,,Trivial Pursuit wedge colour for the Entertainment category,pink,Trivial Pursuit's Entertainment category is represented by a pink wedge.
+,,,,8,Y,Trivial Pursuit wedge colour for the History category,yellow,Trivial Pursuit's History category is represented by a yellow wedge.
+,,,,9,Y,"Trivial Pursuit wedge colour for Arts & Literature, in the original edition",purple,The original Trivial Pursuit uses a purple wedge for Arts & Literature.
+,,,,10,Y,Trivial Pursuit wedge colour for the Science & Nature category,green,Trivial Pursuit's Science & Nature category is represented by a green wedge.
+,,,,11,,Trivial Pursuit wedge colour for the Sports & Leisure category,orange,Trivial Pursuit's Sports & Leisure category is represented by an orange wedge.
+,,,,12,,"Colour of a classic Risk army, alongside red, blue, green and yellow",black,Classic Risk sets include black as one of the six army colours.
+,,,,13,,"Colour of a classic Risk army, alongside black, blue, green and yellow",purple,Classic Risk sets include purple as one of the six army colours.
+,,,,14,Y,Colour of UNO's special Wild and Wild Draw Four cards,black,UNO's special Wild and Wild Draw Four cards are printed in black.
+,,,,15,,"Colour of one classic Ludo token, alongside red, blue and yellow",green,"Classic Ludo sets commonly use red, blue, yellow and green player tokens."
+,,,,16,,Colour of the piece set opposing black in a game of draughts,red,Draughts (checkers) is traditionally played with black pieces against red.
+,,,,17,,Colour of the piece set opposing white in a traditional chess set,black,"Chess 'black' pieces are traditionally black, opposing the white side."
+,,,,18,,Colour of one row of dots on a classic Twister mat,green,"Classic Twister mats have four rows of dots: red, blue, yellow and green."
+,,,,19,,"Colour of one classic Sorry! token, alongside red, blue and yellow",green,"Classic Sorry! uses red, blue, yellow and green player pieces."
+,,,,20,,Colour sometimes added as a sixth player option in Chinese Checkers,black,Some Chinese Checkers sets include black as a sixth player colour.
+336,colour,London Rail Line Colours,drag colours to answer each clue,1,Y,Colour of the Central line on the London Underground map,red,The Central line is coloured red on the Tube map.
+,,,,2,,Colour of the Circle line on the London Underground map,yellow,The Circle line is coloured yellow on the Tube map.
+,,,,3,,Colour of the District line on the London Underground map,green,The District line is coloured green on the Tube map.
+,,,,4,Y,Colour of the Hammersmith & City line on the Tube map,pink,The Hammersmith & City line is coloured pink on the Tube map.
+,,,,5,Y,Colour of the Northern line on the London Underground map,black,The Northern line is coloured black on the Tube map.
+,,,,6,,Colour of the Piccadilly line on the London Underground map,blue,The Piccadilly line is coloured (dark) blue on the Tube map.
+,,,,7,,Colour of the Victoria line on the London Underground map,blue,The Victoria line is coloured (light) blue on the Tube map.
+,,,,8,Y,Colour of the Elizabeth line on London's rail network map,purple,The Elizabeth line is coloured purple on the transport map.
+,,,,9,,"Colour of the Lioness line, one of Overground's six named lines",yellow,"The Lioness line, part of London Overground, is coloured yellow."
+,,,,10,,"Colour of the Mildmay line, one of Overground's six named lines",blue,"The Mildmay line, part of London Overground, is coloured blue."
+,,,,11,,"Colour of the Windrush line, one of Overground's six named lines",red,"The Windrush line, part of London Overground, is coloured red."
+,,,,12,Y,"Colour of the Suffragette line, one of Overground's six named lines",green,"The Suffragette line, part of London Overground, is coloured green."
+,,,,13,,Overground line colour named after England's Euro-winning women's team,yellow,The Lioness line is named after England's Euro 2022-winning women's football team.
+,,,,14,,Colour of the Overground line named after the Windrush generation,red,The Windrush line honours the Windrush generation of Caribbean migrants.
+,,,,15,,Colour of the Overground line named after a historic Shoreditch hospital,blue,The Mildmay line is named after a small Shoreditch hospital.
+,,,,16,,Colour of the Overground line named in honour of the suffragette movement,green,The Suffragette line honours the movement for women's votes.
+,,,,17,,Colour London's Overground network used before its 2024 line rebrand,orange,London Overground was a single orange line before splitting into six named lines in 2024.
+,,,,18,,Colour of the Underground line that runs in a loop around central London,yellow,"The Circle line forms a loop around central London, coloured yellow."
+,,,,19,Y,Colour of the Underground line that serves Heathrow Airport,blue,"The Piccadilly line serves Heathrow Airport, coloured blue on the map, alongside the Elizabeth line."
+,,,,20,,"Colour of London's newest railway line, opened to the public in 2022",purple,"The Elizabeth line, opened in 2022, is coloured purple on the map."
+337,colour,Colour Idioms & Expressions,drag colours to answer each clue,1,,"Colour in the idiom for being furiously angry, 'seeing ___'",red,To be 'seeing red' means to be suddenly and furiously angry.
+,,,,2,,"Colour in the idiom for feeling sad or down, 'feeling ___'",blue,To be 'feeling blue' means feeling sad or down.
+,,,,3,Y,"Colour in the idiom for feeling jealous, '___ with envy'",green,To be '__ with envy' describes strong jealousy.
+,,,,4,Y,"Colour in the idiom for cowardice, being '___-bellied'",yellow,Being 'yellow-bellied' is an old idiom for cowardice.
+,,,,5,Y,"Colour in the idiom for being delighted, 'tickled ___'",pink,To be 'tickled pink' means to be delighted.
+,,,,6,,"Colour in the idiom for a family's outsider or disgrace, the '___ sheep'",black,The 'black sheep' of the family is its outsider or disgrace.
+,,,,7,,"Colour in the idiom for a spell of good luck, 'a ___ patch'",purple,'A purple patch' describes a spell of good form or luck.
+,,,,8,,"Colour in the idiom for giving official approval, 'a ___ light'",green,Giving something 'a green light' means giving official approval.
+,,,,9,Y,"Colour in the idiom warning of danger ahead, 'a ___ flag'",red,'A red flag' is an idiom for a clear warning sign.
+,,,,10,,"Colour in the idiom for excessive bureaucracy, '___ tape'",red,'Red tape' describes excessive official rules and bureaucracy.
+,,,,11,,"Colour in the idiom for a rare, once-in-a-while event, 'a ___ moon'",blue,'A blue moon' describes a rare or infrequent event.
+,,,,12,,"Colour in the idiom for a sudden shock, 'a bolt from the ___'",blue,"'A bolt from the blue' describes a sudden, unexpected shock."
+,,,,13,,"Colour in the idiom for being extremely angry, '___ with rage'",purple,To be '__ with rage' describes extreme fury.
+,,,,14,,"Colour in the idiom for being caught in the act, '___-handed'",red,Being caught 'red-handed' means caught in the act of wrongdoing.
+,,,,15,,Colour used as British slang for someone naive or inexperienced,green,Calling someone 'green' means they're naive or inexperienced.
+,,,,16,Y,"Colour in the idiom for being financially profitable, 'in the ___'",black,Being 'in the black' means being financially profitable.
+,,,,17,,"Colour in the idiom for owing money or running a loss, 'in the ___'",red,Being 'in the red' means owing money or running at a loss.
+,,,,18,Y,"Colour in the idiom for noble or royal birth, 'born to the ___'",purple,Being 'born to the purple' is an old idiom for royal birth.
+,,,,19,,"Colour in the idiom for aristocratic ancestry, having '___ blood'",blue,Having 'blue blood' describes aristocratic ancestry.
+,,,,20,,"Colour in the UK idiom for a consultation document, a '___ paper'",green,A UK 'Green Paper' is a government consultation document.

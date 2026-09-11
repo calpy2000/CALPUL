@@ -64,6 +64,15 @@ const ALTERNATE_ANSWERS = {
   'Only Fools and Horses': ['fools and horses'],
   '101 Dalmatians': ['one hundred and one dalmatians'],
   'Absolutely Fabulous': ['ab fab'],
+  'Hook': ['captain hook', 'peter pan'],
+  "The Hitchhiker's Guide to the Galaxy": ['hitchhikers guide', 'hitchhiker guide to the galaxy'],
+  'Twenty Thousand Leagues Under the Sea': ['20000 leagues under the sea', '20,000 leagues under the sea'],
+  'Dr. Jekyll and Mr. Hyde': ['jekyll and hyde'],
+  'Buffy the Vampire Slayer': ['buffy'],
+  'Noddy Goes to Toyland': ['noddy'],
+  'SpongeBob SquarePants': ['spongebob'],
+  'The Incredible Hulk': ['hulk'],
+  'Men in Black': ['mib'],
 };
 
 // Turns a sequence of tokens like ["twenty", "one", "jump", "street"] into

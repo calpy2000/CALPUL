@@ -1848,5 +1848,856 @@
         "explain": "😱 'Nightmare', 🎃 Jack Skellington, the Pumpkin King of Halloween Town, 🎄 'Christmas' — the holiday he tries to take over, 🎅🏻 Santa, who Jack kidnaps to take his place, 💀 his skeleton form, 🧵 Sally, the stitched ragdoll who loves him."
       }
     ]
+  },
+  {
+    "day": 268,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "The Cat in the Hat",
+        "emoji": "🐱🔴⚪🎩",
+        "explain": "🐱 the mischievous cat, 🔴⚪ the red-and-white stripes of his hat, 🎩 the tall hat itself, worn through all the chaos he brings."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Around the World in Eighty Days",
+        "emoji": "🌍🎈⏱️🚂🚢📅",
+        "explain": "🌍 the round-the-world journey, 🎈 the hot air balloon leg of the trip, ⏱️ the race against the clock, 🚂 travelling by train, 🚢 and by ship, 📅 the eighty days he's wagered he can do it all in."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Treasure Island",
+        "emoji": "🗺️🏴‍☠️🦜🦵🪙🏝️",
+        "explain": "🗺️ the treasure map with X marks the spot, 🏴‍☠️ Long John Silver and the pirate crew, 🦜 his parrot Captain Flint, 🦵 his peg leg, 🪙 the buried treasure, 🏝️ the island it's hidden on."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The Hitchhiker's Guide to the Galaxy",
+        "emoji": "📖👍🌌👽4️⃣2️⃣🐋",
+        "explain": "📖 the guidebook itself, 👍 Arthur Dent hitchhiking off Earth, 🌌 the galaxy he's flung across, 👽 the alien bureaucrat Vogons, 4️⃣2️⃣ the 'answer to life, the universe and everything', 🐋 the whale improbably conjured into existence mid-air."
+      }
+    ]
+  },
+  {
+    "day": 269,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "Green Eggs and Ham",
+        "emoji": "🟢🥚🥓",
+        "explain": "🟢 the unusual green colour, 🥚 the eggs, 🥓 the ham Sam-I-Am refuses to try — until he finally does."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Gruffalo",
+        "emoji": "🐭🌲👹",
+        "explain": "🐭 the clever little mouse, 🌲 the deep dark wood, 👹 the monster he invents — then meets for real."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Noddy Goes to Toyland",
+        "emoji": "🚗🔔🧸👂",
+        "explain": "🚗 Noddy's little car, 🔔 the bell on his hat, 🧸 Toyland itself, 👂 his friend Big-Ears."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Twenty Thousand Leagues Under the Sea",
+        "emoji": "🌊🐙⚓👨‍🔬⚡",
+        "explain": "🌊 the depths of the ocean, 🐙 the giant squid attack, ⚓ Captain Nemo's submarine, the Nautilus, 👨‍🔬 Nemo himself, ⚡ the Nautilus's advanced electric power."
+      }
+    ]
+  },
+  {
+    "day": 270,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "Peter Rabbit",
+        "emoji": "🐰🥕👨‍🌾🌱",
+        "explain": "🐰 Peter, the mischievous rabbit, 🥕 the vegetables he's after, 👨‍🌾 Mr McGregor, the farmer chasing him off, 🌱 the forbidden garden."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Fox in Socks",
+        "emoji": "🦊🧦📖",
+        "explain": "🦊 the fox, 🧦 the socks of the title, 📖 the tongue-twisting wordplay of the book itself."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Little Prince",
+        "emoji": "👦🪐🌹🦊",
+        "explain": "👦 the young prince, 🪐 the tiny planet he calls home, 🌹 the rose he loves and cares for, 🦊 the fox who asks to be tamed."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Nosferatu",
+        "emoji": "🧛🌑🏰🐀",
+        "explain": "🧛 the vampire Count Orlok, 🌑 the shadow that creeps up the stairs, 🏰 his castle in the Carpathians, 🐀 the plague of rats that follows him."
+      }
+    ]
+  },
+  {
+    "day": 271,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Pinocchio",
+        "emoji": "🪵👃🦗🐳",
+        "explain": "🪵 the wooden puppet carved by Geppetto, 👃 his nose, which grows every time he lies, 🦗 Jiminy Cricket, his conscience, 🐳 the whale that swallows them both."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Time Machine",
+        "emoji": "⏳🕰️⚙️🔮",
+        "explain": "⏳ time itself, the story's subject, 🕰️ the machine built to travel through it, ⚙️ its whirring mechanism, 🔮 the strange future it's ridden into."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The War of the Worlds",
+        "emoji": "👽🛸💥🌍🔴",
+        "explain": "👽 the invading Martians, 🛸 their war machines descending, 💥 the devastation they cause, 🌍 the Earth under attack, 🔴 the red Martian weed that spreads across the land."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Fantasia",
+        "emoji": "🎩🧙🎼💧🦕🧹",
+        "explain": "🎩 the wizard's hat, 🧙 Mickey Mouse as the Sorcerer's Apprentice, 🎼 the classical score the whole film is animated to, 💧 the flood of water, 🦕 the dinosaurs of the Rite of Spring segment, 🧹 the enchanted, endlessly multiplying brooms."
+      }
+    ]
+  },
+  {
+    "day": 272,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Dumbo",
+        "emoji": "🐘👂✈️",
+        "explain": "🐘 the baby circus elephant, 👂 his oversized ears, ✈️ the flying they let him do."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "The Invisible Man",
+        "emoji": "🎩🕶️🩹",
+        "explain": "🎩 his hat, floating with nothing visible beneath it, 🕶️ his dark glasses, part of the disguise, 🩹 the bandages he wraps himself in to be seen at all."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Life of Pi",
+        "emoji": "👦🐅🚣🌊🥧",
+        "explain": "👦 Pi, the shipwrecked teenager, 🐅 Richard Parker, the Bengal tiger sharing his lifeboat, 🚣 the tiny boat they're trapped on together, 🌊 the endless ocean they drift across, 🥧 'Pi' — sounds just like the dessert."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Coraline",
+        "emoji": "🔘👁️🚪",
+        "explain": "🔘 the buttons sewn over people's eyes in the Other World, 👁️ the eyes themselves, the story's central horror, 🚪 the secret door leading between the two worlds."
+      }
+    ]
+  },
+  {
+    "day": 273,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Cars",
+        "emoji": "🚗🚙🛻🏎️",
+        "explain": "🚗🚙🛻🏎️ the whole cast of talking cars, led by 🏎️ Lightning McQueen, the hotshot race car stranded in an old Route 66 town."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Dr. Jekyll and Mr. Hyde",
+        "emoji": "🧪😇➡️😈",
+        "explain": "🧪 the potion he drinks, 😇 his respectable, gentlemanly side, ➡️ the transformation between the two, 😈 his monstrous alter ego, Mr Hyde."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Animal Farm",
+        "emoji": "🐷🐴🐑🚜🚩",
+        "explain": "🐷 the pigs who seize control, 🐴 Boxer, the loyal, hardworking horse, 🐑 the sheep who blindly chant along, 🚜 the farm itself, 🚩 the revolution that turns into a new tyranny."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Klaus",
+        "emoji": "🎅🏹🛷",
+        "explain": "🎅 Klaus, the reclusive toymaker who becomes Santa, 🏹 the arrows tied to the sleigh's origin story, 🛷 the sleigh delivering toys that begins it all."
+      }
+    ]
+  },
+  {
+    "day": 274,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Rudolph the Red-Nosed Reindeer",
+        "emoji": "🔴👃🦌🛷",
+        "explain": "🔴 the glowing colour of his nose, 👃 the nose itself, that makes him an outcast, 🦌 Rudolph, the reindeer, 🛷 the sleigh he ends up guiding."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Book",
+        "title": "Swiss Family Robinson",
+        "emoji": "🇨🇭⛵🏝️👨‍👩‍👧‍👦",
+        "explain": "🇨🇭 the Swiss family at the story's centre, ⛵ the shipwreck that strands them, 🏝️ the deserted island, 👨‍👩‍👧‍👦 the family building a new life together."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Lord of the Flies",
+        "emoji": "👦👦🏝️🐚🔥👓🐷",
+        "explain": "👦👦 the boys stranded together, 🏝️ the deserted island, 🐚 the conch shell used to call meetings and keep order, 🔥 the signal fire, 👓 Piggy's glasses, stolen to light it, 🐷 Piggy himself, and the imagined 'beast' the boys hunt."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Wreck-It Ralph",
+        "emoji": "🕹️👊🍬",
+        "explain": "🕹️ the arcade cabinets he lives inside, 👊 Ralph's wrecking fists, his whole job as the game's villain, 🍬 Sugar Rush, the candy-themed game he escapes into."
+      }
+    ]
+  },
+  {
+    "day": 275,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Popeye",
+        "emoji": "🥬⚓💪",
+        "explain": "🥬 the spinach he swears by, ⚓ Popeye, the sailor man, 💪 the sudden burst of muscle it gives him."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Mary Poppins",
+        "emoji": "☂️👩🏼🎩👦👧",
+        "explain": "☂️ the umbrella she flies in on, 👩🏼 the magical nanny herself, 🎩 her prim carpet-bag look, 👦👧 Jane and Michael Banks, the children she's sent to look after."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Of Mice and Men",
+        "emoji": "🐭🐇👬🌾",
+        "explain": "🐭 the mice Lennie can't stop petting, 🐇 the rabbits he dreams of tending one day, 👬 George and Lennie, the inseparable pair, 🌾 the ranch they drift between."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Cruella",
+        "emoji": "🐕🐕🖤🤍✂️🎬",
+        "explain": "🐕🐕 the dalmatians she covets, 🖤🤍 her signature black-and-white fashion, ✂️ the ruthless designer she becomes, 🎬 the flamboyant fashion shows she stages."
+      }
+    ]
+  },
+  {
+    "day": 276,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Puss in Boots",
+        "emoji": "🐱👢⚔️",
+        "explain": "🐱 Puss, the swashbuckling cat, 👢 his famous boots, ⚔️ the rapier he duels with."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Pretty Woman",
+        "emoji": "👩👠💋🛍️🏨",
+        "explain": "👩 Vivian, the woman at the heart of the story, 👠 the glamorous makeover, 💋 the romance at the story's heart, 🛍️ the famous Rodeo Drive shopping spree, 🏨 the Beverly Hills hotel where their week together unfolds."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Old Man and the Sea",
+        "emoji": "👴🎣🐟🌊🦈",
+        "explain": "👴 the old fisherman, Santiago, 🎣 his long, lonely fishing streak, 🐟 the giant marlin he battles, 🌊 the open sea he's alone on, 🦈 the sharks that tear the marlin apart before he can bring it home."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "I Love Lucy",
+        "emoji": "👩❤️🍫📺",
+        "explain": "👩 Lucy herself, the show's scatterbrained star, ❤️ 'Love' — right there in the title, 🍫 the chaos of the chocolate factory conveyor-belt episode, 📺 the groundbreaking sitcom itself."
+      }
+    ]
+  },
+  {
+    "day": 277,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Madagascar",
+        "emoji": "🦁🦓🦒🏝️🗽",
+        "explain": "🦁 Alex the lion, 🦓 Marty the zebra, 🦒 Melman the giraffe, 🏝️ the island they all wash up on after escaping the zoo, 🗽 the New York zoo they escape from at the start."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Swan Lake",
+        "emoji": "🦢🩰🏞️👑🖤",
+        "explain": "🦢 the swan the princess is cursed to become, 🩰 the ballet built around her, 🏞️ the lake where the curse takes hold, 👑 Odette, the Swan Queen, 🖤 Odile, the Black Swan, her wicked double."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "My Fair Lady",
+        "emoji": "🌸👩🎩🗣️👗🎶",
+        "explain": "🌸 Eliza Doolittle, the flower girl, 👩 the elegant lady she's transformed into, 🎩 Professor Higgins, the gentleman who takes her on, 🗣️ the speech lessons meant to remake her accent, 👗 her transformation into a lady of society, 🎶 the musical numbers built around her transformation."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "Knight Rider",
+        "emoji": "🚗🗣️🕶️⚫",
+        "explain": "🚗 KITT, the talking, self-driving car, 🗣️ KITT's dry, sardonic voice, 🕶️ Michael Knight's leather-jacket cool, ⚫ KITT's sleek black paintwork."
+      }
+    ]
+  },
+  {
+    "day": 278,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Brave",
+        "emoji": "👧🦰🏹🐻🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+        "explain": "👧🦰 Merida, the fiercely independent, red-haired princess, 🏹 her skill with a bow, 🐻 the bear her own mother is turned into., 🏴󠁧󠁢󠁳󠁣󠁴󠁿 the Scottish Highlands the whole story is set in."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Oliver!",
+        "emoji": "🥣👦🤏🎶🇬🇧",
+        "explain": "🥣 his empty bowl and 'please sir, I want some more', 👦 Oliver, the orphan at the story's centre, 🤏 the pickpocketing gang he falls in with, 🎶 the musical numbers built around his story, 🇬🇧 the Dickensian London streets he's adrift in."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Grinch",
+        "emoji": "💚🎄🐕",
+        "explain": "💚 the Grinch's green fur, 🎄 the Christmas he tries to steal, 🐕 Max, his loyal, put-upon dog."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "Poldark",
+        "emoji": "🌊🐴👨🏻‍🌾⛏️",
+        "explain": "🌊 the rugged Cornish coastline, 🐴 his brooding rides across the clifftops, 👨🏻‍🌾 Ross Poldark, the returning soldier turned struggling mine owner, ⛏️ the copper mine he's fighting to save."
+      }
+    ]
+  },
+  {
+    "day": 279,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Babe",
+        "emoji": "🐷🐑🚜🐺",
+        "explain": "🐷 Babe, the pig who dreams of herding, 🐑 the sheep he learns to work with, 🚜 the farm he's determined to prove himself on, 🐺 the wolves who threaten the flock."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Hook",
+        "emoji": "🪝🧑🧚🐊⛵",
+        "explain": "🪝 Captain Hook and his iconic hand, 🧑 a grown-up Peter Pan who's forgotten who he was, 🧚 Tinker Bell, dragging him back to Neverland, 🐊 the crocodile that swallowed Hook's hand and is always hungry for the rest of him, ⛵ the Jolly Roger, Hook's pirate ship."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Lady and the Tramp",
+        "emoji": "🐕🐕‍🦺🍝",
+        "explain": "🐕 Lady, the pampered cocker spaniel, 🐕‍🦺 Tramp, the streetwise mutt, 🍝 the spaghetti dinner they famously share a kiss over."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "White Christmas",
+        "emoji": "❄️⚪🎤🏨🎖️",
+        "explain": "❄️ the snow everyone's hoping for, ⚪ the 'white' of the title, 🎤 the song-and-dance duo staging a show, 🏨 the struggling Vermont inn they're trying to save, 🎖️ the army buddies reuniting after the war."
+      }
+    ]
+  },
+  {
+    "day": 280,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Mamma Mia!",
+        "emoji": "🇬🇷💃👰🎶👨👨👨",
+        "explain": "🇬🇷 the sun-soaked Greek island setting, 💃 the dancing that breaks out everywhere, 👰 the wedding at the story's centre, 🎶 the ABBA songs the whole thing is built from, 👨👨👨 the three men who could all be her father."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Aristocats",
+        "emoji": "🐈‍⬛🐈🎹🗼",
+        "explain": "🐈‍⬛🐈 Duchess and her kittens, the aristocratic cats of the title, 🎹 Thomas O'Malley, the piano-playing alley cat, 🗼 the Paris setting, complete with the Eiffel Tower."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "How to Train Your Dragon",
+        "emoji": "🐉👦🏼🔥🚂",
+        "explain": "🐉 Toothless, the dragon he befriends instead of hunting, 👦🏼 Hiccup, the young Viking, 🔥 the fire breath dragons are feared for, 🚂 'train' taken literally — how to train your dragon."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "It's a Wonderful Life",
+        "emoji": "👼🌉🔔👨⭐",
+        "explain": "👼 Clarence, the angel sent to help him, 🌉 the bridge where George considers ending it all, 🔔 the bell that rings every time an angel gets its wings, 👨 George Bailey himself, ⭐ the star atop the tree as the whole town rallies round him."
+      }
+    ]
+  },
+  {
+    "day": 281,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "The Muppet Show",
+        "emoji": "🐸🐷🐻🎭🎪",
+        "explain": "🐸 Kermit the Frog, running the show, 🐷 Miss Piggy, the diva of the troupe, 🐻 Fozzie Bear, cracking jokes nobody laughs at, 🎭 the chaotic backstage variety show around them, 🎪 the theatre it's all staged in."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Monsters University",
+        "emoji": "👹🎓🏫",
+        "explain": "👹 Mike and Sulley, the one-eyed and furry monsters, 🎓 their college years, 🏫 the university itself."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Free Willy",
+        "emoji": "🆓👦🐋🌊",
+        "explain": "🆓 'Free' — right there in the title, 👦 Jesse, the troubled boy who befriends him, 🐋 Willy, the orca trapped in a tiny amusement-park pool, 🌊 the open ocean Jesse helps him leap free into."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Nutcracker",
+        "emoji": "🥜🪖🐭🩰",
+        "explain": "🥜 the nutcracker itself, 🪖 the wooden soldier he transforms into, 🐭 the Mouse King and his army, 🩰 the ballet the whole story is told through."
+      }
+    ]
+  },
+  {
+    "day": 282,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "The Walking Dead",
+        "emoji": "🚶🏻🧟🪦",
+        "explain": "🚶🏻 the wandering survivors, 🧟 the zombies — 'walkers' — overrunning the world, 🪦 the graveyard of a world they're fighting to survive in."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Beethoven",
+        "emoji": "🐕💧👨‍👩‍👧‍👦🎻🎹",
+        "explain": "🐕 Beethoven, the enormous St Bernard, 💧 his constant, famous drool, 👨‍👩‍👧‍👦 the family that adopts him., 🎻🎹 the classical composer he's named after."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Stuart Little",
+        "emoji": "🐭🚗👨‍👩‍👦🤏",
+        "explain": "🐭 Stuart, the talking mouse, 🚗 the tiny car he drives, 👨‍👩‍👦 the human family who adopt him as their son., 🤏 just how little he is."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Flipper",
+        "emoji": "🐬🌊👦",
+        "explain": "🐬 Flipper, the clever bottlenose dolphin, 🌊 the Florida waters he swims, 👦 the boy who befriends and protects him."
+      }
+    ]
+  },
+  {
+    "day": 283,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Godzilla",
+        "emoji": "🦖🏙️🔥🌊",
+        "explain": "🦖 Godzilla, the giant monster, 🏙️ the city he rampages through, 🔥 his radioactive fire breath, 🌊 the ocean he emerges from."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Elvis",
+        "emoji": "🕺🎸👑",
+        "explain": "🕺 his hip-shaking stage moves, 🎸 the guitar he's rarely seen without, 👑 'The King' — the nickname that outlived him."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Bohemian Rhapsody",
+        "emoji": "🎤👑🎸🏟️",
+        "explain": "🎤 Freddie Mercury's unmistakable mic-stand pose, 👑 Queen, the band's name, 🎸 the band's biggest hits, retold through the film, 🏟️ the Live Aid stadium performance it builds to."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Fantastic Mr. Fox",
+        "emoji": "🦊🐔🕳️🔫",
+        "explain": "🦊 Mr Fox, the sly, stylish thief, 🐔 the farmers' chickens he can't resist raiding, 🕳️ the tunnels his family digs to escape underground, 🔫 the furious farmers hunting him."
+      }
+    ]
+  },
+  {
+    "day": 284,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Who Framed Roger Rabbit",
+        "emoji": "🐰🖼️🕵️🎨",
+        "explain": "🐰 Roger Rabbit, the cartoon star, 🖼️ 'framed' — literally, for a murder he didn't commit, 🕵️ the detective hired to help him, 🎨 the blend of cartoon and live-action worlds."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Sesame Street",
+        "emoji": "🟡🐦🍪🔢",
+        "explain": "🟡 the yellow of Big Bird's feathers, 🐦 Big Bird himself, towering over the street, 🍪 Cookie Monster and his favourite snack, 🔢 the counting and letters the whole show teaches through."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Postman Pat",
+        "emoji": "📮✉️🐈‍⬛",
+        "explain": "📮 the postbox he delivers to, ✉️ the letters he carries around the village, 🐈‍⬛ Jess, his black-and-white cat."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Great Escape",
+        "emoji": "🕳️🏍️🧥🪖🔫",
+        "explain": "🕳️ the tunnels dug to break the whole camp out, 🏍️ his famous motorcycle leap for the border, 🧥 the civilian disguises made for the escape, 🪖 the POW camp setting, 🔫 the guards hunting them down."
+      }
+    ]
+  },
+  {
+    "day": 285,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Blues Brothers",
+        "emoji": "🔵🕶️🕶️🎷🚓🌆",
+        "explain": "🔵 'Blues' — the colour standing in for the name, 🕶️🕶️ the two brothers' matching sunglasses, 🎷 the soul and blues music throughout, 🚓 the epic police car chases, 🌆 the Chicago setting they tear through."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Paw Patrol",
+        "emoji": "🐶🐾🚒🏔️",
+        "explain": "🐶 the team of rescue pups, 🐾 their paw-shaped badges, 🚒 the fire truck and rescue vehicles they roll out in, 🏔️ Adventure Bay, the town they protect."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Rugrats",
+        "emoji": "👶👶🎨🐀🐀",
+        "explain": "👶👶 the gang of babies at the show's centre, 🎨 the wild, imaginative adventures they picture in their playroom, 🐀🐀 'rats' — the wordplay hiding in the title itself."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Annie",
+        "emoji": "👧🦰🐕🌅🏚️🎩🇺🇸",
+        "explain": "👧 Annie, the young orphan girl, 🦰 her curly red hair, 🐕 Sandy, the stray dog she rescues, 🌅 'Tomorrow', the sunrise the song looks forward to, 🏚️ the orphanage she's desperate to leave, 🎩 Daddy Warbucks, the billionaire who takes her in, 🇺🇸 the Depression-era America it's all set in."
+      }
+    ]
+  },
+  {
+    "day": 286,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Pink Panther",
+        "emoji": "💗🐾🕵️",
+        "explain": "💗 the panther's pink colour, 🐾 the sly panther itself, 🕵️ Inspector Clouseau, the bumbling detective on his trail."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "The Flintstones",
+        "emoji": "🦖🪨🚗🦴",
+        "explain": "🦖 the dinosaurs living alongside them, 🪨 the Stone Age setting, 🚗 Fred's foot-powered stone car, 🦴 the prehistoric, bone-and-club way of life."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Bewitched",
+        "emoji": "👃✨🧙‍♀️",
+        "explain": "👃 the nose-twitch that casts her spells, ✨ the magic she's constantly hiding from the neighbours, 🧙‍♀️ Samantha, the witch trying to live an ordinary suburban life."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "South Park",
+        "emoji": "🏔️🧑‍🎨🤬❄️",
+        "explain": "🏔️ the small Colorado mountain town, 🧑‍🎨 its crude, cut-out animation style, 🤬 the show's blunt, foul-mouthed humour, ❄️ the snowy setting the boys are always trudging through."
+      }
+    ]
+  },
+  {
+    "day": 287,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Spider-Man",
+        "emoji": "🕷️🕸️🏙️🔴🔵📸",
+        "explain": "🕷️ the spider whose bite gives him his powers, 🕸️ the webs he swings through the city on, 🏙️ New York, the city he protects, 🔴🔵 his red-and-blue suit, 📸 the photos he sells of his own alter ego."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "The Addams Family",
+        "emoji": "🖤🧟👩🏻‍🦲🖐🏻🕷️🫰👧🏻",
+        "explain": "🖤 the ghoulish, gothic family at its centre, 🧟 Lurch, the family's towering butler, 👩🏻‍🦲 Uncle Fester, bald and eerie, 🖐🏻 Thing, the disembodied hand who scuttles around helping out, 🕷️ the macabre, cobwebbed mansion they call home, 🫰 the finger-snaps of the theme tune, 👧🏻 Wednesday, the deadpan Addams daughter."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Danger Mouse",
+        "emoji": "⚠️🐭🕶️",
+        "explain": "⚠️ 'Danger' — right there in the title, 🐭 Danger Mouse, the secret agent mouse, 🕶️ his sharp, spy-movie style, eyepatch included."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Buffy the Vampire Slayer",
+        "emoji": "🧛‍♀️🗡️👩‍🎓🩸",
+        "explain": "🧛‍♀️ the vampires she's destined to fight, 🗡️ her wooden stake, 👩‍🎓 Buffy, the ordinary high-schooler by day, 🩸 the danger lurking under the surface of every episode."
+      }
+    ]
+  },
+  {
+    "day": 288,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Superman",
+        "emoji": "🦸‍♂️🔴🔵🪨💨",
+        "explain": "🦸‍♂️ the world's first superhero, 🔴🔵 his iconic red-and-blue costume, 🪨 kryptonite, the one substance that can weaken him, 💨 the incredible speed he flies at."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Teletubbies",
+        "emoji": "📺🤰🌞🔴🟡🟢🟣",
+        "explain": "📺 the screen built into each Teletubby's belly, 🤰 the belly itself, where the screen sits, 🌞 the baby-faced sun watching over them, 🔴🟡🟢🟣 the four Teletubbies' colours — Po, Laa-Laa, Dipsy and Tinky Winky."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Baywatch",
+        "emoji": "🏖️👀🩱",
+        "explain": "🏖️ the beach the whole show is set on, 👀 the ogling slow-motion camera work, 🩱 the iconic red swimsuits."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Black Mirror",
+        "emoji": "⚫📱🪞😨",
+        "explain": "⚫ the dark, unsettling tone of every episode, 📱 the technology each story warns about, 🪞 the 'mirror' — the black screen reflecting our own faces back, 😨 the dread each episode leaves you with."
+      }
+    ]
+  },
+  {
+    "day": 289,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Dora the Explorer",
+        "emoji": "🎒🗺️🐒🗣️",
+        "explain": "🎒 her talking backpack, 🗺️ the map that guides every adventure, 🐒 Boots, her monkey best friend, 🗣️ the way she talks straight to the camera and asks you to answer."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Squid Game",
+        "emoji": "🦑🩷🎮💰🪆",
+        "explain": "🦑 the schoolyard game the finale is named for, 🩷 the pink-suited guards, 🎮 the deadly children's games the contestants play, 💰 the enormous cash prize at stake, 🪆 the giant doll from 'Red Light, Green Light'."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Beetlejuice",
+        "emoji": "🪲🧃👻",
+        "explain": "🪲 'Beetle', 🧃 'juice' — his name spelled out literally, 👻 the mischievous ghost he plays."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Bridgerton",
+        "emoji": "💌👰🎻👗",
+        "explain": "💌 Lady Whistledown's scandal-sheet letters, 👰 the Regency-era marriage market at its centre, 🎻 the string-quartet covers of pop songs that score every ball, 👗 the extravagant ballgowns of the ton."
+      }
+    ]
+  },
+  {
+    "day": 290,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Teenage Mutant Ninja Turtles",
+        "emoji": "🐢🐢🐢🐢🍕🥷",
+        "explain": "🐢🐢🐢🐢 the four mutant turtle brothers, 🍕 their favourite food, 🥷 the ninja skills they fight with."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Wayne's World",
+        "emoji": "🎸🤘🚐📺",
+        "explain": "🎸 Wayne's air-guitar heroics, 🤘 the rock-and-roll spirit throughout, 🚐 the Mirthmobile they cruise around in, 📺 the public-access TV show they host from Wayne's basement."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Power Rangers",
+        "emoji": "🦸‍♀️🌈🤖⚔️",
+        "explain": "🦸‍♀️ the team of teenage superheroes, 🌈 their different coloured ranger suits, 🤖 the Megazord, the giant robot they form together, ⚔️ the weapons they fight monsters with."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Book",
+        "title": "Little Miss Naughty",
+        "emoji": "😈🍯🙅‍♀️",
+        "explain": "😈 her permanently mischievous streak, 🍯 the jam she's forever caught with sticky fingers in, 🙅‍♀️ the trouble she refuses to stay out of."
+      }
+    ]
   }
 ]

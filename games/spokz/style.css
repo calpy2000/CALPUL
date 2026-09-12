@@ -49,6 +49,8 @@
 
 .clue-text {
   flex: 1;
+  color: #c1554d; /* same red as --tile-invalid-border, for consistency with the rest of SPOKZ's palette */
+  font-weight: 700;
 }
 
 /* Same width-driven "bias above dead-center" flex-spacer trick as QUADZ/

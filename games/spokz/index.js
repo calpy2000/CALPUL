@@ -209,12 +209,15 @@ $(function () {
 
   // Checks all 6 spokes: toggles is-filled/is-valid/is-amber/is-invalid/
   // is-locked on each spoke's 3 tiles, and returns whether the WHOLE
-  // puzzle is solved (all 6 spokes spelling ANY real word, unchanged "any
-  // word wins" rule — spokeValid[i] still just means "is a real word",
-  // exactly as before; is-valid vs is-amber is a purely cosmetic split of
-  // that same true case, not a stricter win condition). is-invalid (all 3
-  // circles full, real word or not) only ever applies once a spoke is
-  // fully filled — a half-filled spoke isn't "wrong" yet, just incomplete.
+  // puzzle is solved. Win requires all 6 of TODAY'S curated SOLUTION words
+  // to be found somewhere on the board — spelling 6 valid-but-uncurated
+  // (amber) words does NOT win, even though each spoke is individually a
+  // real word; spokeValid[i] still just means "is a real word" and drives
+  // the red is-invalid state, but the win/completion check itself now
+  // counts distinct claimed solution words, not just "is every spoke any
+  // real word" (see claimedWords below). is-invalid (all 3 circles full,
+  // real word or not) only ever applies once a spoke is fully filled — a
+  // half-filled spoke isn't "wrong" yet, just incomplete.
   //
   // is-locked (green only, not amber) is what actually drives canDrag/
   // canSwap below — once a spoke spells one of TODAY'S own solution words,
@@ -228,13 +231,31 @@ $(function () {
   // spoke's letters change again, so a locked spoke can never stop being
   // green later.
   function updateValidity() {
-    let win = true;
+    // A solution word can only be "claimed" (green/locked) by ONE spoke at a
+    // time — otherwise the shared tray-letter pool can spell the same
+    // solution word twice, double-claiming letters meant for two different
+    // words and stranding a leftover word elsewhere. An already-locked
+    // spoke always keeps its claim (it never re-enters the pool below,
+    // since canDrag/canSwap already refuse to change its letters), so a
+    // first pass seeds claimedWords from currently-locked spokes before any
+    // not-yet-locked spoke gets a chance to compete for the same word.
+    const claimedWords = new Set();
+    for (let i = 0; i < 6; i++) {
+      if (spokeTileEl(i, 0).classList.contains('is-locked')) {
+        claimedWords.add(CENTER_LETTER + getSpokeLetters(i).join(''));
+      }
+    }
     for (let i = 0; i < 6; i++) {
       const letters = getSpokeLetters(i);
       const filled = letters.every((l) => l !== '');
       const word = CENTER_LETTER + letters.join('');
       const isRealWord = filled && checkWord(word);
-      const isSolutionWord = isRealWord && SOLUTION.includes(word);
+      const alreadyLocked = spokeTileEl(i, 0).classList.contains('is-locked');
+      let isSolutionWord = false;
+      if (isRealWord && SOLUTION.includes(word) && (alreadyLocked || !claimedWords.has(word))) {
+        isSolutionWord = true;
+        claimedWords.add(word);
+      }
       const isAmberWord = isRealWord && !isSolutionWord;
       const isInvalidFull = filled && !isRealWord;
       spokeValid[i] = isRealWord;
@@ -246,9 +267,12 @@ $(function () {
         el.classList.toggle('is-invalid', isInvalidFull);
         el.classList.toggle('is-locked', isSolutionWord);
       }
-      if (!isRealWord) win = false;
     }
-    return win;
+    // claimedWords only ever holds distinct, currently-locked solution
+    // words (the dedup logic above guarantees at most one spoke claims
+    // each), so its size is exactly the count of today's 6 solution words
+    // found so far — win only once all 6 are accounted for.
+    return claimedWords.size === 6;
   }
 
   // `usedHelp`/`revealed`/`firstRevealUsed`/`secondRevealUsed` are read

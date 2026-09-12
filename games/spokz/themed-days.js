@@ -1,31 +1,53 @@
 // SPOKZ — a hand-curated set of themed daily puzzles, one example per
 // "theme pool type" from the design discussion (category, prefix/suffix
 // compound, hidden word, double letter, bookend, single vowel,
-// semordnilap, alphabetical order, vowel pair, end letter, no repeat).
+// semordnilap, alphabetical order, vowel pair, end letter, no repeat,
+// lone vowel).
 // Every word here is a real, verified entry in games/spokz/words.js's own
 // dictionary — nothing guessed.
 //
-// 180 days total (this is still not the full 366-day themed calendar) —
-// see index.js's buildDailyPuzzle() for how these get mapped onto real
-// calendar days, cycling through all 180 repeatedly beyond that until more
-// themed days are curated. The original 8 entries (indices 0-7) come
-// first, followed by a 52-day batch (indices 8-59) added 2026-08-29, then
-// a 120-day batch (indices 60-179) added 2026-09-12 — 3 brand-new
+// 366 days total — the FULL themed calendar, reached 2026-09-12. See
+// index.js's buildDailyPuzzle() for how these map onto real calendar days.
+// The original 8 entries come first, followed by a 52-day batch added
+// 2026-08-29, then a 120-day batch added 2026-09-12 — 3 brand-new
 // poolTypes (vowelPair, endLetter, noRepeat; 20 days each) plus 20 extra
-// days each for hiddenWord/doubleLetter/singleVowel. index.js's
-// THEMED_START_DAY did NOT need to change for either batch — it only
-// fixes which calendar day maps to index 0, not how long the cycle is, so
-// growing this array just pushes out the "starts repeating" date without
-// shifting which puzzle shows on any day already covered. Both batches
-// were deliberately ordered so no two consecutive days share the same
-// poolType (checked including the boundary between batches and the
-// wrap-around from the last entry back to index 0) — don't reshuffle this
-// order casually, regenerate it the same way if entries are added/removed.
+// days each for hiddenWord/doubleLetter/singleVowel — then a 131-day batch
+// added 2026-09-12 (same day, later session): 31 more days each for
+// noRepeat/hiddenWord/singleVowel/endLetter, but only 1 more doubleLetter
+// day and 6 more vowelPair days — those two types' supply of clean,
+// everyday words (after the prior batches already claimed most of it) ran
+// out well short of 31; user chose to take what was clean rather than fill
+// with archaic/dialect words. Finally a 55-day batch (a brand-new
+// poolType, loneVowel) added 2026-09-12, which brought the total from 311
+// to the full 366 — see that batch's own marker comment below for what
+// loneVowel means and why it's spread through the array instead of
+// appended as one block. index.js's THEMED_START_DAY did NOT need to
+// change for any of these batches — it only fixes which calendar day maps
+// to index 0, not how long the cycle is. All batches were deliberately
+// ordered so no two consecutive days share the same poolType (checked
+// including the wrap-around from the last entry back to index 0) — don't
+// reshuffle this order casually, regenerate it the same way if entries are
+// added/removed.
 //
 // `clue` is just the description half of the "Clue: ..." line — the
 // "Clue:" label itself is a fixed part of the UI (see index.js's
 // clue-banner), not repeated here.
 export const THEMED_DAYS = [
+  // --- 55-day loneVowel batch appended 2026-09-12 (indices vary, evenly
+  // interspersed among the existing 311 entries rather than appended as
+  // one block, since every entry here shares this single new poolType —
+  // clumping them would violate the no-two-consecutive-same-poolType
+  // rule on its own. loneVowel: word has exactly one vowel LETTER total
+  // (not just one distinct vowel — SEED doesn't qualify, DECK does),
+  // and unlike singleVowel the 6 words in a day do NOT need to share the
+  // same vowel (mixed E/I/O etc. in one day is fine). This batch brings
+  // THEMED_DAYS to the full 366-day themed calendar.
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SUCH', 'SEND', 'SHOW', 'SIGN', 'SHOP', 'SELL'],
+    clue: 'each word has just one vowel',
+  },
   {
     poolType: 'category',
     centerLetter: 'C',
@@ -57,6 +79,12 @@ export const THEMED_DAYS = [
     centerLetter: 'S',
     words: ['SEES', 'SETS', 'SUNS', 'SONS', 'SAWS', 'SAYS'],
     clue: 'every word starts and ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['STAR', 'SELF', 'SAYS', 'SORT', 'STEP', 'STAY'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'singleVowel',
@@ -99,6 +127,12 @@ export const THEMED_DAYS = [
     clue: 'every word today uses only one vowel: A',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BACK', 'BEST', 'BOTH', 'BODY', 'BABY', 'BILL'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'hiddenWord',
     centerLetter: 'P',
     words: ['PART', 'PINK', 'PEAR', 'PLOT', 'PACE', 'PARK'],
@@ -130,6 +164,12 @@ export const THEMED_DAYS = [
     centerLetter: 'F',
     words: ['FUSS', 'FIZZ', 'FILL', 'FEED', 'FOOT', 'FELL'],
     clue: 'every word today has a double leTTer',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['STOP', 'SENT', 'SONG', 'SHIP', 'SEXY', 'SKIN'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'singleVowel',
@@ -172,6 +212,12 @@ export const THEMED_DAYS = [
     clue: 'the 3 letters in each spoke make their own 3 letter word',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BANK', 'BUSH', 'BAND', 'BOYS', 'BORN', 'BALL'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'doubleLetter',
     centerLetter: 'W',
     words: ['WELL', 'WOOL', 'WEED', 'WOOF', 'WEEK', 'WALL'],
@@ -211,6 +257,12 @@ export const THEMED_DAYS = [
     clue: 'every word today uses only one vowel: O',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SETS', 'SKIP', 'SOLD', 'SHOT', 'SOFT', 'SNOW'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'alphabetical',
     centerLetter: 'B',
     words: ['BELT', 'BENT', 'BEST', 'BINS', 'BLOT', 'BLOW'],
@@ -242,6 +294,12 @@ export const THEMED_DAYS = [
     vowel: 'A',
     words: ['DAWN', 'DART', 'DASH', 'DATA', 'DRAG', 'DRAW'],
     clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'C',
+    words: ['CITY', 'CALL', 'CARD', 'COST', 'CART', 'CLUB'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'alphabetical',
@@ -284,6 +342,12 @@ export const THEMED_DAYS = [
     clue: 'every word today uses only one vowel: E',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BLOW', 'BATH', 'BAGS', 'BARS', 'BIRD', 'BIDS'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'alphabetical',
     centerLetter: 'G',
     words: ['GILT', 'GIMP', 'GIST', 'GLOP', 'GLOW', 'GORY'],
@@ -323,6 +387,12 @@ export const THEMED_DAYS = [
     clue: 'the 3 letters in each spoke make their own 3 letter word',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SPAM', 'SLOW', 'SPOT', 'SALT', 'SUCK', 'SLOT'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'doubleLetter',
     centerLetter: 'P',
     words: ['POOL', 'PUFF', 'PASS', 'PEEL', 'PILL', 'POOR'],
@@ -354,6 +424,12 @@ export const THEMED_DAYS = [
     words: ['LIAR', 'LIVE', 'LOOP', 'LEEK', 'LEER', 'LAIR'],
     reversedWords: ['RAIL', 'EVIL', 'POOL', 'KEEL', 'REEL', 'RIAL'],
     clue: 'every word is an ANADROME (when read backward it is another real word)',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'T',
+    words: ['THAT', 'THIS', 'THEY', 'THAN', 'THEM', 'THEN'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'category',
@@ -392,6 +468,12 @@ export const THEMED_DAYS = [
     centerLetter: 'B',
     words: ['BEGS', 'BEVY', 'BIOS', 'BOPS', 'BOXY', 'BENS'],
     clue: 'every word\'s letters are in alphabetic order',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'P',
+    words: ['POST', 'PART', 'PLAN', 'PLAY', 'PARK', 'PAST'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'prefixSuffix',
@@ -440,6 +522,12 @@ export const THEMED_DAYS = [
     clue: 'the 3 letters in each spoke make their own 3 letter word',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'C',
+    words: ['CELL', 'CARS', 'CHAT', 'COPY', 'CASH', 'COLD'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'noRepeat',
     centerLetter: 'K',
     words: ['KELP', 'KEPT', 'KILN', 'KING', 'KNIT', 'KNOW'],
@@ -470,6 +558,12 @@ export const THEMED_DAYS = [
     centerLetter: 'W',
     words: ['WAIL', 'WAIT', 'WEAK', 'WEAN', 'WEAR', 'WAIF'],
     clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BASS', 'BOND', 'BOWL', 'BITS', 'BEDS', 'BOLD'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'noRepeat',
@@ -507,6 +601,12 @@ export const THEMED_DAYS = [
     centerLetter: 'A',
     words: ['AIDE', 'AIDS', 'AIMS', 'AIRY', 'AREA', 'AUNT'],
     clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SCAN', 'SAND', 'SICK', 'SONS', 'SILK', 'SLIP'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'doubleLetter',
@@ -547,6 +647,12 @@ export const THEMED_DAYS = [
     clue: 'every word today has a double leTTer',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'T',
+    words: ['TYPE', 'TEXT', 'TEST', 'TERM', 'TELL', 'TALK'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'singleVowel',
     centerLetter: 'R',
     vowel: 'A',
@@ -578,6 +684,12 @@ export const THEMED_DAYS = [
     words: ['FACE', 'FACT', 'FALL', 'FARE', 'FATE', 'FEAT'],
     hiddenWords: ['ACE', 'ACT', 'ALL', 'ARE', 'ATE', 'EAT'],
     clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'P',
+    words: ['PLUS', 'PICS', 'PORT', 'PASS', 'PACK', 'PATH'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'endLetter',
@@ -618,6 +730,12 @@ export const THEMED_DAYS = [
     clue: 'each word has 2 different vowels in a row',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'C',
+    words: ['CAMP', 'CAST', 'CLIP', 'CENT', 'CREW', 'CHIP'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'doubleLetter',
     centerLetter: 'P',
     words: ['PEEK', 'PEEP', 'PEER', 'POLL', 'PULL', 'PURR'],
@@ -656,6 +774,12 @@ export const THEMED_DAYS = [
     clue: 'each word has 4 different letters',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BULK', 'BANG', 'BUGS', 'BUSY', 'BELT', 'BUTT'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'vowelPair',
     centerLetter: 'G',
     words: ['GAIN', 'GAIT', 'GEAR', 'GLUE', 'GOAL', 'GOAT'],
@@ -685,6 +809,12 @@ export const THEMED_DAYS = [
     centerLetter: 'S',
     words: ['SEEN', 'SEEP', 'SEER', 'SHOO', 'SOOT', 'SUSS'],
     clue: 'every word today has a double leTTer',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SPIN', 'SHUT', 'SURF', 'SING', 'STEM', 'SLIM'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'endLetter',
@@ -722,6 +852,12 @@ export const THEMED_DAYS = [
     centerLetter: 'A',
     words: ['AAHS', 'ADDS', 'ALLY', 'AMMO', 'ALOO', 'APPS'],
     clue: 'every word today has a double leTTer',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'T',
+    words: ['TIPS', 'TECH', 'TOWN', 'TOYS', 'TURN', 'THUS'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'endLetter',
@@ -762,6 +898,12 @@ export const THEMED_DAYS = [
     clue: 'each word has 4 different letters',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'D',
+    words: ['DAYS', 'DOWN', 'DRUG', 'DEBT', 'DARK', 'DROP'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'singleVowel',
     centerLetter: 'R',
     vowel: 'U',
@@ -792,6 +934,12 @@ export const THEMED_DAYS = [
     centerLetter: 'R',
     words: ['RAID', 'RAIL', 'RAIN', 'READ', 'REAL', 'ROAD'],
     clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'P',
+    words: ['PALM', 'PINK', 'PICK', 'PETS', 'PLUG', 'POLL'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'singleVowel',
@@ -832,6 +980,12 @@ export const THEMED_DAYS = [
     clue: 'each word ends with the same letter',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'C',
+    words: ['CHAR', 'CATS', 'CLAY', 'CUTS', 'CAPS', 'CORD'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'singleVowel',
     centerLetter: 'F',
     vowel: 'I',
@@ -870,6 +1024,12 @@ export const THEMED_DAYS = [
     clue: 'each word has 4 different letters',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BOSS', 'BURN', 'BRAD', 'BYTE', 'BULL', 'BOMB'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'endLetter',
     centerLetter: 'T',
     words: ['TACK', 'TALK', 'TANK', 'TASK', 'TICK', 'TUCK'],
@@ -899,6 +1059,12 @@ export const THEMED_DAYS = [
     vowel: 'A',
     words: ['YAKS', 'YAMS', 'YANK', 'YARD', 'YARN', 'YAWN'],
     clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'L',
+    words: ['LIST', 'LAST', 'LINK', 'LEFT', 'LESS', 'LAND'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'doubleLetter',
@@ -935,6 +1101,12 @@ export const THEMED_DAYS = [
     centerLetter: 'M',
     words: ['MAIL', 'MARK', 'MELT', 'MIND', 'MORE', 'MUST'],
     clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SPEC', 'SEPT', 'STUD', 'SPAN', 'SWIM', 'STAT'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'doubleLetter',
@@ -974,6 +1146,12 @@ export const THEMED_DAYS = [
     clue: 'each word has 4 different letters',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'H',
+    words: ['HELP', 'HIGH', 'HARD', 'HAND', 'HALF', 'HELD'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'endLetter',
     centerLetter: 'S',
     words: ['SAND', 'SEED', 'SHED', 'SLED', 'SOLD', 'STUD'],
@@ -1003,6 +1181,12 @@ export const THEMED_DAYS = [
     centerLetter: 'W',
     words: ['WARD', 'WEED', 'WILD', 'WIND', 'WOOD', 'WORD'],
     clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'T',
+    words: ['TOLD', 'TRIP', 'TASK', 'TAGS', 'TOLL', 'TONY'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'hiddenWord',
@@ -1045,6 +1229,12 @@ export const THEMED_DAYS = [
     clue: 'the 3 letters in each spoke make their own 3 letter word',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'D',
+    words: ['DISC', 'DISK', 'DESK', 'DUTY', 'DELL', 'DOGS'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'doubleLetter',
     centerLetter: 'B',
     words: ['BIFF', 'BOON', 'BOSS', 'BULL', 'BUFF', 'BURR'],
@@ -1075,6 +1265,12 @@ export const THEMED_DAYS = [
     centerLetter: 'P',
     words: ['PAID', 'PAIN', 'PAIR', 'PEAK', 'PEAR', 'POEM'],
     clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'P',
+    words: ['PUSH', 'PULL', 'PLOT', 'PUMP', 'PILL', 'PUNK'],
+    clue: 'each word has just one vowel',
   },
   {
     poolType: 'singleVowel',
@@ -1116,6 +1312,12 @@ export const THEMED_DAYS = [
     clue: 'every word today uses only one vowel: E',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'F',
+    words: ['FROM', 'FIND', 'FULL', 'FORM', 'FILM', 'FAST'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'hiddenWord',
     centerLetter: 'S',
     words: ['SHOP', 'SHOT', 'SHOW', 'SHUT', 'SKID', 'SKIN'],
@@ -1154,6 +1356,12 @@ export const THEMED_DAYS = [
     clue: 'the 3 letters in each spoke make their own 3 letter word',
   },
   {
+    poolType: 'loneVowel',
+    centerLetter: 'C',
+    words: ['CROP', 'CORN', 'CAMS', 'CHEF', 'COMP', 'CUPS'],
+    clue: 'each word has just one vowel',
+  },
+  {
     poolType: 'singleVowel',
     centerLetter: 'N',
     vowel: 'A',
@@ -1185,5 +1393,998 @@ export const THEMED_DAYS = [
     vowel: 'A',
     words: ['ADDS', 'AFAR', 'ALAS', 'ALLY', 'ARMS', 'ARTS'],
     clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BUZZ', 'BIND', 'BUCK', 'BUYS', 'BARN', 'BALD'],
+    clue: 'each word has just one vowel',
+  },
+  // --- 131-day batch appended 2026-09-12 (indices 180-310): 31 more days
+  // each for noRepeat/hiddenWord/singleVowel/endLetter, but only 1 more
+  // doubleLetter day and 6 more vowelPair days (clean-word supply for those
+  // two ran out — see header comment above). Randomly shuffled then
+  // repaired so no two consecutive entries share a poolType (including at
+  // the boundary with the block above and the wrap-around back to index
+  // 0), same rule as prior batches, done via a throwaway Node script.
+  {
+    poolType: 'endLetter',
+    centerLetter: 'D',
+    words: ['DATE', 'DONE', 'DOSE', 'DUKE', 'DALE', 'DIVE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'F',
+    words: ['FROM', 'FOUR', 'FIRE', 'FLAT', 'FLOW', 'FILL'],
+    hiddenWords: ['ROM', 'OUR', 'IRE', 'LAT', 'LOW', 'ILL'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'E',
+    words: ['SEND', 'SELL', 'SELF', 'STEP', 'SEEN', 'SENT'],
+    clue: 'every word today uses only one vowel: E',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'B',
+    words: ['BUSH', 'BAND', 'BOYS', 'BORN', 'BOAT', 'BEAR'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'T',
+    words: ['TALL', 'TABS', 'TOPS', 'TONS', 'TRIM', 'TIRE'],
+    hiddenWords: ['ALL', 'ABS', 'OPS', 'ONS', 'RIM', 'IRE'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'P',
+    words: ['PLUS', 'PICS', 'PASS', 'PETS', 'PUTS', 'PAYS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'L',
+    words: ['LOSS', 'LOST', 'LORD', 'LAWS', 'LOTS', 'LACK'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'L',
+    words: ['LOAD', 'LACK', 'LADY', 'LANE', 'LOSE', 'LENS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'A',
+    words: ['STAR', 'SAYS', 'STAY', 'SPAM', 'SALT', 'SPAN'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'B',
+    words: ['BEAT', 'BIKE', 'BOND', 'BOWL', 'BITS', 'BEDS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'W',
+    words: ['WERE', 'WIDE', 'WINE', 'WIFE', 'WIRE', 'WAVE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'P',
+    vowel: 'O',
+    words: ['POST', 'PORT', 'POOL', 'POOR', 'POLL', 'PLOT'],
+    clue: 'every word today uses only one vowel: O',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'M',
+    words: ['MORE', 'MAKE', 'MADE', 'MOVE', 'MODE', 'MALE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'M',
+    words: ['MOST', 'MANY', 'MUST', 'MUCH', 'MIND', 'MAPS'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'C',
+    vowel: 'A',
+    words: ['CAMP', 'CAST', 'CHAR', 'CATS', 'CLAY', 'CAPS'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'R',
+    words: ['RIDE', 'RIPE', 'ROPE', 'RAGE', 'RUDE', 'RITE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'vowelPair',
+    centerLetter: 'S',
+    words: ['SOUR', 'SUED', 'SHEA', 'SOAR', 'SOAK', 'SEAM'],
+    clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'C',
+    words: ['CAPE', 'CREW', 'CHIP', 'CHAR', 'CUTE', 'CAKE'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'B',
+    words: ['BEDS', 'BUGS', 'BOSS', 'BIAS', 'BIOS', 'BUYS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SINK', 'SNAP', 'SWAP', 'SIMS', 'SHED', 'SANS'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'C',
+    vowel: 'A',
+    words: ['CAMS', 'CANT', 'CALM', 'CLAN', 'CRAB', 'CANS'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'C',
+    words: ['CITY', 'CODE', 'CASE', 'CARE', 'CARD', 'COST'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'I',
+    words: ['SLIP', 'SPIN', 'SING', 'SLIM', 'SWIM', 'SINK'],
+    clue: 'every word today uses only one vowel: I',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'C',
+    words: ['CAPE', 'CUTE', 'CAKE', 'CAFE', 'CURE', 'CAVE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'P',
+    vowel: 'A',
+    words: ['PART', 'PLAN', 'PLAY', 'PARK', 'PAST', 'PASS'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'L',
+    words: ['LAST', 'LIFE', 'LINE', 'LINK', 'LOVE', 'LEFT'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'H',
+    words: ['HOLD', 'HOST', 'HITS', 'HOLY', 'HELL', 'HURT'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'H',
+    words: ['HONE', 'HAVE', 'HOME', 'HERE', 'HUGE', 'HIRE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'B',
+    vowel: 'A',
+    words: ['BACK', 'BABY', 'BANK', 'BAND', 'BALL', 'BATH'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'doubleLetter',
+    centerLetter: 'H',
+    words: ['HELL', 'HOOK', 'HOOD', 'HULL', 'HEEL', 'HOOP'],
+    clue: 'every word today has a double leTTer',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'P',
+    words: ['PINS', 'PROM', 'PROD', 'PLEA', 'PANT', 'POPS'],
+    hiddenWords: ['INS', 'ROM', 'ROD', 'LEA', 'ANT', 'OPS'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'B',
+    words: ['BACK', 'BEST', 'BOTH', 'BODY', 'BANK', 'BASE'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'L',
+    vowel: 'O',
+    words: ['LOOK', 'LOSS', 'LOST', 'LOGO', 'LORD', 'LOTS'],
+    clue: 'every word today uses only one vowel: O',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'T',
+    words: ['TANK', 'TWIN', 'TINY', 'TILL', 'THIN', 'TALL'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'H',
+    words: ['HOLE', 'HALE', 'HALT', 'HERS', 'HELM', 'HART'],
+    hiddenWords: ['OLE', 'ALE', 'ALT', 'ERS', 'ELM', 'ART'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'U',
+    words: ['SUCH', 'SUCK', 'SHUT', 'SURF', 'STUD', 'SUNG'],
+    clue: 'every word today uses only one vowel: U',
+  },
+  {
+    poolType: 'vowelPair',
+    centerLetter: 'D',
+    words: ['DOES', 'DIED', 'DUAL', 'DIES', 'DUES', 'DUEL'],
+    clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'B',
+    words: ['BITS', 'BONE', 'BRAD', 'BARE', 'BRAS', 'BASH'],
+    hiddenWords: ['ITS', 'ONE', 'RAD', 'ARE', 'RAS', 'ASH'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'C',
+    vowel: 'O',
+    words: ['COST', 'COPY', 'COLD', 'COMP', 'CONS', 'CORK'],
+    clue: 'every word today uses only one vowel: O',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'D',
+    words: ['DIFF', 'DRAW', 'DISH', 'DECK', 'DUST', 'DRUM'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'S',
+    words: ['SAID', 'SAVE', 'SELF', 'STOP', 'SOLD', 'SNOW'],
+    hiddenWords: ['AID', 'AVE', 'ELF', 'TOP', 'OLD', 'NOW'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'L',
+    vowel: 'A',
+    words: ['LADS', 'LAST', 'LAND', 'LAWS', 'LACK', 'LADY'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'A',
+    words: ['ARTS', 'AIDS', 'ARMS', 'AGES', 'ACTS', 'ADDS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'A',
+    words: ['STAT', 'SNAP', 'SWAP', 'SANS', 'SPAS', 'SWAN'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'C',
+    words: ['COME', 'CART', 'CARS', 'CHAT', 'COPY', 'CASH'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'S',
+    words: ['SPAM', 'SLOW', 'SPOT', 'SALT', 'SOIL', 'SCAN'],
+    hiddenWords: ['PAM', 'LOW', 'POT', 'ALT', 'OIL', 'CAN'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'P',
+    words: ['PUTS', 'PAYS', 'POND', 'PADS', 'PRAY', 'PREP'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'vowelPair',
+    centerLetter: 'A',
+    words: ['AUTO', 'AQUA', 'AERO', 'AURA', 'ARIA', 'ALOE'],
+    clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SIDE', 'STAR', 'SELF', 'SURE', 'SORT', 'STEP'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'G',
+    words: ['GAVE', 'GONE', 'GROW', 'GRID', 'GRAD', 'GRAM'],
+    hiddenWords: ['AVE', 'ONE', 'ROW', 'RID', 'RAD', 'RAM'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'B',
+    words: ['BLOW', 'BATH', 'BETA', 'BAGS', 'BARS', 'BIDS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'C',
+    words: ['CARS', 'CATS', 'CUTS', 'CAPS', 'CAMS', 'CUPS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'R',
+    words: ['ROLE', 'RICH', 'RARE', 'RAID', 'RAND', 'RAMP'],
+    hiddenWords: ['OLE', 'ICH', 'ARE', 'AID', 'AND', 'AMP'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'W',
+    words: ['WITH', 'WILL', 'WHAT', 'WHEN', 'WORK', 'WELL'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'L',
+    words: ['LORE', 'LAIR', 'LADS', 'LODE', 'LIKE', 'LIST'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'G',
+    words: ['GEMS', 'GALS', 'GOWN', 'GALA', 'GRIM', 'GRAY'],
+    hiddenWords: ['EMS', 'ALS', 'OWN', 'ALA', 'RIM', 'RAY'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'vowelPair',
+    centerLetter: 'S',
+    words: ['SEAR', 'SOUL', 'SOIL', 'SUIT', 'SHOE', 'SEAS'],
+    clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'F',
+    words: ['FREE', 'FILE', 'FIVE', 'FIRE', 'FACE', 'FINE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SHOW', 'SAME', 'SIZE', 'SHOP', 'SAVE', 'SALE'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'F',
+    words: ['FACT', 'FUND', 'FALL', 'FISH', 'FARM', 'FLAT'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'M',
+    words: ['MARS', 'META', 'MICE', 'MESS', 'MOLD', 'MAMA'],
+    hiddenWords: ['ARS', 'ETA', 'ICE', 'ESS', 'OLD', 'AMA'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'L',
+    words: ['LORE', 'LODE', 'LIKE', 'LIFE', 'LINE', 'LOVE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'S',
+    words: ['SPIT', 'SLAP', 'SOAK', 'SLUG', 'STAB', 'SIRE'],
+    hiddenWords: ['PIT', 'LAP', 'OAK', 'LUG', 'TAB', 'IRE'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'R',
+    words: ['RATE', 'ROLE', 'RULE', 'RACE', 'RARE', 'RISE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'C',
+    words: ['CAFE', 'CATS', 'CLAY', 'CUTS', 'CAPS', 'COAT'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'C',
+    words: ['CONS', 'CROW', 'CONE', 'COPS', 'CLAD', 'CHOW'],
+    hiddenWords: ['ONS', 'ROW', 'ONE', 'OPS', 'LAD', 'HOW'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'C',
+    words: ['CANT', 'CALM', 'CONS', 'CLAN', 'CULT', 'CORK'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'C',
+    words: ['CODE', 'CASE', 'CARE', 'COME', 'CAME', 'CORE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'P',
+    words: ['PAGE', 'PART', 'PLAY', 'PAST', 'PLUS', 'PICS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'L',
+    words: ['LORE', 'LAIR', 'LADS', 'LODE', 'LESS', 'LAMP'],
+    hiddenWords: ['ORE', 'AIR', 'ADS', 'ODE', 'ESS', 'AMP'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'B',
+    vowel: 'U',
+    words: ['BUSH', 'BULK', 'BUGS', 'BUSY', 'BUTT', 'BURN'],
+    clue: 'every word today uses only one vowel: U',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'P',
+    words: ['PADS', 'PROS', 'PINS', 'PUBS', 'PENS', 'PEAS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'T',
+    words: ['TURN', 'TOUR', 'THUS', 'TOLD', 'TASK', 'TAGS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'B',
+    words: ['BLAH', 'BRAS', 'BOLT', 'BENT', 'BULB', 'BASH'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'L',
+    words: ['LIVE', 'LAKE', 'LATE', 'LANE', 'LOSE', 'LITE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'C',
+    words: ['CARS', 'CAMP', 'CLAY', 'CUPS', 'CANT', 'CAVE'],
+    hiddenWords: ['ARS', 'AMP', 'LAY', 'UPS', 'ANT', 'AVE'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'T',
+    vowel: 'A',
+    words: ['THAT', 'THAN', 'TALK', 'TASK', 'TAGS', 'TANK'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'P',
+    words: ['POST', 'PART', 'PAST', 'PORT', 'PLOT', 'PEST'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'D',
+    words: ['DATE', 'DOES', 'DAYS', 'DOWN', 'DONE', 'DRUG'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'L',
+    words: ['LADY', 'LENS', 'LEGS', 'LOCK', 'LUCK', 'LETS'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'S',
+    words: ['SWAP', 'SPAS', 'SWAN', 'SITS', 'SCAM', 'SINS'],
+    hiddenWords: ['WAP', 'PAS', 'WAN', 'ITS', 'CAM', 'INS'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'E',
+    words: ['SEXY', 'SETS', 'SEEM', 'SEEK', 'SEED', 'STEM'],
+    clue: 'every word today uses only one vowel: E',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'M',
+    words: ['MIKE', 'MINE', 'MILE', 'MICE', 'MATE', 'MERE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'M',
+    words: ['MALT', 'MASH', 'MORE', 'MANY', 'MASS', 'MALL'],
+    hiddenWords: ['ALT', 'ASH', 'ORE', 'ANY', 'ASS', 'ALL'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'M',
+    vowel: 'A',
+    words: ['MALT', 'MASH', 'MANY', 'MAPS', 'MASS', 'MATH'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'vowelPair',
+    centerLetter: 'E',
+    words: ['EACH', 'EAST', 'EASY', 'EURO', 'EARN', 'EASE'],
+    clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'M',
+    words: ['MASS', 'MISS', 'MATH', 'MESH', 'MILK', 'MALL'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'P',
+    words: ['PORT', 'PAID', 'PACK', 'PATH', 'PALM', 'PAIN'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'L',
+    words: ['LADS', 'LESS', 'LOSS', 'LAWS', 'LOTS', 'LENS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'H',
+    words: ['HONE', 'HAVE', 'HOUR', 'HOLD', 'HITS', 'HIRE'],
+    hiddenWords: ['ONE', 'AVE', 'OUR', 'OLD', 'ITS', 'IRE'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'B',
+    words: ['BEST', 'BOAT', 'BEAT', 'BOOT', 'BELT', 'BUTT'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SEAR', 'SITE', 'SOME', 'SUCH', 'SAID', 'SEND'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'P',
+    vowel: 'O',
+    words: ['POND', 'PROS', 'POLO', 'PORK', 'PONY', 'POGO'],
+    clue: 'every word today uses only one vowel: O',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'S',
+    words: ['SPAS', 'STIR', 'SWAN', 'SITS', 'SCAM', 'SINS'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'M',
+    words: ['MALT', 'MASH', 'MOST', 'MAKE', 'MANY', 'MADE'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'A',
+    words: ['AIDS', 'ATOM', 'AGED', 'AMID', 'ALAS', 'ARID'],
+    hiddenWords: ['IDS', 'TOM', 'GED', 'MID', 'LAS', 'RID'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'S',
+    vowel: 'I',
+    words: ['SIGN', 'SHIP', 'SKIN', 'SKIP', 'SICK', 'SILK'],
+    clue: 'every word today uses only one vowel: I',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'F',
+    words: ['FLAP', 'FORE', 'FLAW', 'FLED', 'FLEE', 'FINS'],
+    hiddenWords: ['LAP', 'ORE', 'LAW', 'LED', 'LEE', 'INS'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'S',
+    words: ['SAYS', 'SETS', 'SONS', 'SEES', 'SIMS', 'SANS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'G',
+    words: ['GIFT', 'GOLD', 'GIRL', 'GOLF', 'GETS', 'GUYS'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'D',
+    words: ['DEAL', 'DEBT', 'DIET', 'DROP', 'DISC', 'DISK'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'T',
+    words: ['THIS', 'THEY', 'THEN', 'TRUE', 'TOWN', 'TURN'],
+    hiddenWords: ['HIS', 'HEY', 'HEN', 'RUE', 'OWN', 'URN'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'T',
+    words: ['TAKE', 'TERM', 'TIPS', 'TECH', 'TOWN', 'TOYS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'S',
+    words: ['SORT', 'SENT', 'SHOT', 'SOFT', 'SEAT', 'SPOT'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'D',
+    words: ['DONE', 'DRUG', 'DRAW', 'DALE', 'DIRE', 'DAMP'],
+    hiddenWords: ['ONE', 'RUG', 'RAW', 'ALE', 'IRE', 'AMP'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'M',
+    words: ['MAPS', 'MASS', 'MISS', 'MARS', 'MOMS', 'MESS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'H',
+    words: ['HATS', 'HANG', 'HARM', 'HUNG', 'HORN', 'HULL'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'B',
+    vowel: 'E',
+    words: ['BEEN', 'BEST', 'BEER', 'BEDS', 'BELT', 'BEEF'],
+    clue: 'every word today uses only one vowel: E',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'C',
+    words: ['COAL', 'CORD', 'CROP', 'CORN', 'CAMS', 'CHEF'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'T',
+    words: ['THIS', 'TIPS', 'TOYS', 'THUS', 'TAGS', 'TABS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'B',
+    vowel: 'O',
+    words: ['BOTH', 'BODY', 'BOYS', 'BLOW', 'BOWL', 'BOSS'],
+    clue: 'every word today uses only one vowel: O',
+  },
+  {
+    poolType: 'vowelPair',
+    centerLetter: 'T',
+    words: ['TRUE', 'THOU', 'TIES', 'TIED', 'TRIO', 'TIER'],
+    clue: 'each word has 2 different vowels in a row',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'T',
+    words: ['TONE', 'TUBE', 'TUNE', 'TALE', 'TIRE', 'THEE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'T',
+    words: ['TABS', 'TEND', 'TEMP', 'TOPS', 'TONS', 'TREK'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'B',
+    vowel: 'A',
+    words: ['BAGS', 'BARS', 'BASS', 'BANG', 'BRAD', 'BARN'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'L',
+    words: ['LOAN', 'LOST', 'LEAD', 'LORD', 'LAWS', 'LOTS'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'F',
+    words: ['FITS', 'FOLD', 'FLUX', 'FLEX', 'FUSE', 'FLEA'],
+    hiddenWords: ['ITS', 'OLD', 'LUX', 'LEX', 'USE', 'LEA'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'P',
+    words: ['PAGE', 'PURE', 'PIPE', 'PINE', 'PACE', 'POLE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SEXY', 'SKIN', 'SKIP', 'SOLD', 'SHOT', 'SOFT'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'D',
+    words: ['DAWN', 'DOLL', 'DAMN', 'DREW', 'DOCS', 'DRAG'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'T',
+    vowel: 'E',
+    words: ['THEN', 'TYPE', 'TEXT', 'TERM', 'TELL', 'TECH'],
+    clue: 'every word today uses only one vowel: E',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'A',
+    words: ['AIMS', 'AXIS', 'ASKS', 'AMPS', 'ALPS', 'ALAS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'W',
+    words: ['WILL', 'WHEN', 'WIRE', 'WARS', 'WAVE', 'WINS'],
+    hiddenWords: ['ILL', 'HEN', 'IRE', 'ARS', 'AVE', 'INS'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SLOT', 'SUIT', 'SCAN', 'SEMI', 'SHOE', 'SEAL'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'A',
+    vowel: 'A',
+    words: ['AWAY', 'ARMY', 'ACTS', 'ARCH', 'ASKS', 'AMPS'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SOUL', 'SPAM', 'SEAT', 'SPOT', 'SOIL', 'SUCK'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'R',
+    words: ['ROCK', 'RISK', 'RING', 'REST', 'RENT', 'RICH'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'S',
+    words: ['SLAM', 'SOUR', 'SORE', 'STAG', 'STUB', 'SLAB'],
+    hiddenWords: ['LAM', 'OUR', 'ORE', 'TAG', 'TUB', 'LAB'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'T',
+    vowel: 'O',
+    words: ['TOWN', 'TOYS', 'TOOK', 'TOOL', 'TOLD', 'TOLL'],
+    clue: 'every word today uses only one vowel: O',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['SICK', 'SOLE', 'SLIP', 'SPIN', 'SOAP', 'SHUT'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'C',
+    vowel: 'A',
+    words: ['CALL', 'CARD', 'CART', 'CARS', 'CHAT', 'CASH'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'T',
+    words: ['TIME', 'TYPE', 'TAKE', 'TRUE', 'TREE', 'TAPE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'S',
+    words: ['SOLE', 'SONS', 'SLIP', 'SPIN', 'SINK', 'SNAP'],
+    hiddenWords: ['OLE', 'ONS', 'LIP', 'PIN', 'INK', 'NAP'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'P',
+    words: ['PROS', 'PINS', 'PUBS', 'PEST', 'PING', 'PORK'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'M',
+    vowel: 'A',
+    words: ['MALL', 'MARS', 'MASK', 'MART', 'MATS', 'MAMA'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'L',
+    words: ['LABS', 'LAID', 'LION', 'LONE', 'LIMP', 'LAMA'],
+    hiddenWords: ['ABS', 'AID', 'ION', 'ONE', 'IMP', 'AMA'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'B',
+    vowel: 'U',
+    words: ['BULL', 'BUZZ', 'BUCK', 'BUYS', 'BULB', 'BUMP'],
+    clue: 'every word today uses only one vowel: U',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'T',
+    words: ['THIS', 'THEY', 'THAN', 'THEM', 'THEN', 'TYPE'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'W',
+    vowel: 'I',
+    words: ['WITH', 'WILL', 'WISH', 'WIND', 'WILD', 'WING'],
+    clue: 'every word today uses only one vowel: I',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'W',
+    words: ['WANT', 'WORD', 'WISH', 'WENT', 'WALL', 'WAYS'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'P',
+    words: ['PAID', 'PASS', 'POLE', 'PADS', 'PRAY', 'PREP'],
+    hiddenWords: ['AID', 'ASS', 'OLE', 'ADS', 'RAY', 'REP'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'S',
+    words: ['STAY', 'STOP', 'SENT', 'SONG', 'SAFE', 'SHIP'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'T',
+    vowel: 'I',
+    words: ['THIS', 'TIPS', 'TRIP', 'TWIN', 'TINY', 'TILL'],
+    clue: 'every word today uses only one vowel: I',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'T',
+    words: ['TOUR', 'TOLD', 'TASK', 'TWIN', 'TONE', 'TILL'],
+    hiddenWords: ['OUR', 'OLD', 'ASK', 'WIN', 'ONE', 'ILL'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'R',
+    words: ['RUNS', 'RATS', 'ROWS', 'RUGS', 'RAYS', 'RODS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'C',
+    words: ['CAME', 'CORE', 'COLD', 'CAST', 'CLIP', 'CENT'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'loneVowel',
+    centerLetter: 'F',
+    words: ['FLOW', 'FIRM', 'FILL', 'FORT', 'FELT', 'FLAG'],
+    clue: 'each word has just one vowel',
+  },
+  {
+    poolType: 'singleVowel',
+    centerLetter: 'P',
+    vowel: 'A',
+    words: ['PACK', 'PATH', 'PALM', 'PAYS', 'PADS', 'PRAY'],
+    clue: 'every word today uses only one vowel: A',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'S',
+    words: ['SITE', 'SOME', 'SAME', 'SIZE', 'SAVE', 'SALE'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'noRepeat',
+    centerLetter: 'H',
+    words: ['HONE', 'HAVE', 'HOME', 'HELP', 'HARD', 'HEAD'],
+    clue: 'each word has 4 different letters',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'B',
+    words: ['BORE', 'BINS', 'BOUT', 'BRED', 'BEAU', 'BEND'],
+    hiddenWords: ['ORE', 'INS', 'OUT', 'RED', 'EAU', 'END'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
+  },
+  {
+    poolType: 'endLetter',
+    centerLetter: 'B',
+    words: ['BOYS', 'BAGS', 'BARS', 'BIDS', 'BASS', 'BITS'],
+    clue: 'each word ends with the same letter',
+  },
+  {
+    poolType: 'hiddenWord',
+    centerLetter: 'B',
+    words: ['BILL', 'BLOW', 'BETA', 'BARS', 'BIDS', 'BASS'],
+    hiddenWords: ['ILL', 'LOW', 'ETA', 'ARS', 'IDS', 'ASS'],
+    clue: 'the 3 letters in each spoke make their own 3 letter word',
   },
 ];

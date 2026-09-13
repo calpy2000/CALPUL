@@ -2736,5 +2736,708 @@
         "explain": "👮🏻 the police officers at its centre, 🔍 the anti-corruption unit investigating them, 🚔 the force they belong to, 🤥 the corrupt officers they're trying to expose."
       }
     ]
+  },
+  {
+    "day": 292,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Thunderbirds",
+        "emoji": "⛈️🦆🦢🚀🆘🪢",
+        "explain": "⛈️ 'Thunder', 🦆🦢 'birds' — the name spelled out literally, 🚀 the futuristic rescue vehicles, 🆘 International Rescue, the organisation's core mission, 🪢 the marionette strings — the whole show is performed with puppets."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Hannah Montana",
+        "emoji": "👱‍♀️🎤👩‍🎤🎭⛰️",
+        "explain": "👱‍♀️ Miley, an ordinary schoolgirl by day, 🎤 the pop star she secretly is by night, 👩‍🎤 the wig that keeps her identity hidden, 🎭 the double life she's constantly juggling, ⛰️ 'Montana' — the mountainous state her stage surname is borrowed from."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Whiplash",
+        "emoji": "🥁👨🏻‍🏫😤🩸",
+        "explain": "🥁 the drummer pushing himself to the limit, 👨🏻‍🏫 the abusive music teacher driving him, 😤 the relentless pressure he's put under, 🩸 his bloodied hands from practising so hard."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Luther",
+        "emoji": "👮🏿🏙️🌃🔦",
+        "explain": "👮🏿 DCI Luther, the detective at its centre, 🏙️ the London setting, 🌃 the dark, moody nights he works through, 🔦 the murders he's investigating."
+      }
+    ]
+  },
+  {
+    "day": 293,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "The Secret Seven",
+        "emoji": "7️⃣🤫🕵️",
+        "explain": "7️⃣ the seven in the title — the members of the secret club, 🤫 the secrecy of their meetings and passwords, 🕵️ the mysteries they solve together."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Green Hornet",
+        "emoji": "💚🐝🥋",
+        "explain": "💚 the green of his mask and his name, 🐝 the hornet he's named after, 🥋 Kato, his martial-arts-trained sidekick and driver."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Prison Break",
+        "emoji": "🔓🏢🎨👬",
+        "explain": "🔓 the prison break they're planning, 🏢 Fox River, the prison they're locked up in, 🎨 the tattoo covering his body with the blueprint, 👬 the two brothers at the heart of the plan."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Terminator",
+        "emoji": "🤖⏳🔫",
+        "explain": "🤖 the relentless cyborg assassin, ⏳ sent back through time on his mission, 🔫 to kill Sarah Connor before she can have a son."
+      }
+    ]
+  },
+  {
+    "day": 294,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Ocean's 8",
+        "emoji": "🌊🌊8️⃣",
+        "explain": "🌊🌊 'Ocean's' — sounds just like the sea, standing in for Danny Ocean's surname, 8️⃣ the eight women pulling off the heist."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Ghost",
+        "emoji": "👻🏺💏",
+        "explain": "👻 the ghost he becomes after being murdered, 🏺 the iconic pottery-wheel scene, 💏 the love he's desperate to protect even after death."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Departed",
+        "emoji": "👋🏽🚔🤫🐀🍀🔫",
+        "explain": "👋🏽 'Departed' — the farewell the title itself names, 🚔 the undercover cop planted deep in the mob, 🤫 the double life he's forced to live, 🐀 the informant burrowed just as deep on the other side, 🍀 the Irish-American Boston underworld it's all set in, 🔫 the violence that eventually catches up with everyone."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Heat",
+        "emoji": "🏦🔫🚔☕",
+        "explain": "🏦 the elaborate bank heist at its centre, 🔫 the explosive shootout that follows, 🚔 the detective obsessively pursuing the crew, ☕ the famous coffee-shop face-off between the two rivals."
+      }
+    ]
+  },
+  {
+    "day": 295,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Men in Black",
+        "emoji": "🕶️👽🖤✨",
+        "explain": "🕶️ their signature black sunglasses, 👽 the aliens living secretly among us, 🖤 their matching black suits, ✨ the flash of the neuralyzer that wipes memories."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Alvin and the Chipmunks",
+        "emoji": "🐿️🐿️🐿️🎤",
+        "explain": "🐿️🐿️🐿️ Alvin, Simon and Theodore, the three singing chipmunks, 🎤 the high-pitched pop covers they're famous for."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Memento",
+        "emoji": "🧠🔄📷🖊️🔫",
+        "explain": "🧠 the short-term memory loss he lives with, 🔄 the story told entirely in reverse, 📷 the Polaroids he snaps to remember what just happened, 🖊️ the notes and tattoos he covers himself in as reminders, 🔫 the revenge plot to find his wife's killer."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Eternal Sunshine of the Spotless Mind",
+        "emoji": "♾️☀️🧼🧠🗑️💔",
+        "explain": "♾️ 'Eternal', ☀️ 'Sunshine', 🧼 'Spotless', 🧠 'Mind' — the title spelled out literally, 🗑️ the procedure that erases memories of an ex, 💔 the painful breakup the whole story circles back to."
+      }
+    ]
+  },
+  {
+    "day": 296,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Incredible Hulk",
+        "emoji": "🧑‍🔬💚😡💥👖",
+        "explain": "🧑‍🔬 Bruce Banner, the scientist underneath, 💚 the green skin he turns when he transforms, 😡 the rage that triggers it, 💥 the destruction he causes once he 'Hulks out', 👖 the torn purple trousers that are all that's left of his clothes."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Chicken Little",
+        "emoji": "🐔🌰😱🌌",
+        "explain": "🐔 Chicken Little, the small, anxious hero, 🌰 the acorn that starts his 'sky is falling' panic, 😱 the town's disbelief and mockery, 🌌 the real alien invasion it turns out to be warning about."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "The Powerpuff Girls",
+        "emoji": "👧👧👧💥🧪🏙️",
+        "explain": "👧👧👧 Blossom, Bubbles and Buttercup, the three girls at its centre, 💥 the huge blast that creates them, 🧪 Chemical X, the secret ingredient that gives them their powers, 🏙️ Townsville, the city they protect."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Sixth Sense",
+        "emoji": "6️⃣👁️👻🤫",
+        "explain": "6️⃣ 'Sixth' the number in the title, 👁️ 'Sense' — seeing what others can't, 👻 the dead people the boy can see, 🤫 the secret he's been told never to tell."
+      }
+    ]
+  },
+  {
+    "day": 297,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Independence Day",
+        "emoji": "🛸🏙️💥🇺🇸🎆🚀",
+        "explain": "🛸 the massive alien ships that appear over Earth, 🏙️ the cities they devastate, 💥 the explosive battle to save the planet, 🇺🇸 the 4th of July setting the title is named for, 🎆 the fireworks the date is usually known for, 🚀 the fighter jets scrambled to fight back."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "TV",
+        "title": "SpongeBob SquarePants",
+        "emoji": "🧽🍍🍳🟨👖",
+        "explain": "🧽 SpongeBob, the square yellow sponge, 🍍 the pineapple under the sea he calls home, 🍳 the Krabby Patties he's always flipping at the Krusty Krab, 🟨👖 'SquarePants' — his literally square trousers."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Silence of the Lambs",
+        "emoji": "🦋🐑🔒🧠",
+        "explain": "🦋 the moths left as a signature by the killer she's hunting, 🐑 the childhood memory that gives the title its name, 🔒 the imprisoned, brilliant psychiatrist she turns to for help, 🧠 his infamous taste for eating his victims."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Goodfellas",
+        "emoji": "🗽🍝🔫💰🕴️🚬🎥",
+        "explain": "🗽 the New York City setting the story is rooted in, 🍝 the Italian-American mob family at its centre, 🔫 the casual, constant violence of that life, 💰 the fast money and glamour it brings, 🕴️ the wiseguy narrating his own rise and fall, 🚬 the smoky, stylish decades it spans, 🎥 the narration that breaks the fourth wall throughout."
+      }
+    ]
+  },
+  {
+    "day": 298,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Tom and Jerry",
+        "emoji": "🐱🐭🏃🧀",
+        "explain": "🐱 Tom, the cat forever chasing, 🐭 Jerry, the mouse who always outsmarts him, 🏃 the endless chase between them, 🧀 the cheese Jerry's forever after."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Happy Days",
+        "emoji": "😊📅🏍️",
+        "explain": "😊 'Happy' — right there in the title, 📅 the nostalgic 1950s setting, 🏍️ the Fonz's leather-jacket cool."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "No Country for Old Men",
+        "emoji": "🚫🌵👴🏽👴🏼👴🏽🪙🔫",
+        "explain": "🚫 the 'No' in the title, 🌵 the desolate Texas backdrop, 👴🏽👴🏼👴🏽 'Old Men' — the plural title, shown as more than one, 🪙 the coin toss the killer uses to decide who lives, 🔫 the relentless hitman stalking a bag of drug money."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Fargo",
+        "emoji": "❄️🚓🤰🪵💰",
+        "explain": "❄️ the snowbound Minnesota setting, 🚓 the small-town police investigation, 🤰 Marge, the pregnant chief leading it, 🪵 the film's infamous wood chipper, 💰 the ransom kidnapping plot that spirals out of control."
+      }
+    ]
+  },
+  {
+    "day": 299,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Wacky Races",
+        "emoji": "🏎️😜🏁🐶",
+        "explain": "🏎️ the fleet of ridiculous racing cars, 😜 the wacky, cartoonish characters driving them, 🏁 the race that's always the goal, 🐶 Muttley, the wheezing, scheming sidekick dog."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Top Cat",
+        "emoji": "🐱🎩👑🗑️",
+        "explain": "🐱 Top Cat, the sharp-suited alley cat, 🎩 his signature top hat, 👑 the leader he is to his gang of fellow cats, 🗑️ the back-alley bins they call home."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Cast Away",
+        "emoji": "🏝️🏐✈️📦",
+        "explain": "🏝️ the deserted island he's stranded on, 🏐 Wilson, the volleyball he befriends, ✈️ the plane crash that strands him, 📦 the FedEx packages he was delivering."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Catch Me If You Can",
+        "emoji": "✈️🤵🏻🚔🖊️",
+        "explain": "✈️ the pilot he impersonates, 🤵🏻 the many identities he fakes, 🚔 the FBI agent chasing him, 🖊️ the forged cheques he cons people with."
+      }
+    ]
+  },
+  {
+    "day": 300,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Inspector Gadget",
+        "emoji": "🕵️🦾🔧👧🐕🚨🔍",
+        "explain": "🕵️ the bumbling detective at its centre, 🦾 the extendable gadget-arms hidden all over his body, 🔧 the wild mechanical gadgets he's built from head to toe, 👧 Penny, his clever niece, 🐕 Brain, her even cleverer dog, 🚨 the alarm-like chime of 'Go-Go-Gadget', 🔍 the mysteries he's hopelessly investigating."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Book",
+        "title": "Mr. Happy",
+        "emoji": "🟠😊🌻",
+        "explain": "🟠 his orange colour, 😊 his permanently cheerful smile, 🌻 the sunny, happy mood he spreads wherever he goes."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Scarface",
+        "emoji": "🇨🇺🇺🇸❄️🔫",
+        "explain": "🇨🇺 the Cuban immigrant at its centre, 🇺🇸 the America he arrives in chasing the dream, ❄️ the cocaine empire he builds from nothing, 🔫 the violent, explosive end it all comes to."
+      },
+      {
+        "number": 4,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Wolf of Wall Street",
+        "emoji": "🐺📈💊💰🛥️🎉📞",
+        "explain": "🐺 'Wolf' — the nickname he earns on Wall Street, 📈 the fraudulent stock schemes that make him rich, 💊 the drug-fuelled excess of his lifestyle, 💰 the obscene wealth at the centre of it all, 🛥️ the yacht that sums up his greed, 🎉 the wild, debauched parties his firm becomes famous for, 📞 the boiler-room sales calls where it all begins."
+      }
+    ]
+  },
+  {
+    "day": 301,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Thor",
+        "emoji": "🔨🦸🏻⚡",
+        "explain": "🔨 Mjolnir, his enchanted hammer, 🦸🏻 the Asgardian superhero himself, ⚡ the lightning and thunder he commands."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Parasite",
+        "emoji": "🦟🦟🦟",
+        "explain": "🦟🦟🦟 'Parasite' — the poor family who infiltrate and feed off the wealthy household, just like the insects the title borrows its name from."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Se7en",
+        "emoji": "7️⃣📦🩸",
+        "explain": "7️⃣ the seven deadly sins each murder is built around, 📦 the box at the centre of its infamous ending, 🩸 the gruesome crime scenes each killing leaves behind."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Donnie Darko",
+        "emoji": "🐰⏳🌌😴✈️",
+        "explain": "🐰 Frank, the ominous rabbit-costumed figure who guides him, ⏳ the exact countdown to the end of the world he's given, 🌌 the parallel-universe theory underpinning it all, 😴 the sleepwalking episode that starts everything, ✈️ the jet engine that mysteriously crashes into his bedroom."
+      }
+    ]
+  },
+  {
+    "day": 302,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Ant-Man",
+        "emoji": "🐜👨🏻🔬",
+        "explain": "🐜 the ants he can shrink down to the size of and command, 👨🏻 Scott Lang, the ordinary guy inside the suit, 🔬 the shrinking technology that makes it all possible."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Police Academy",
+        "emoji": "👮🏻👮🏻‍♂️🚔🏢",
+        "explain": "👮🏻👮🏻‍♂️ the mismatched recruits at the heart of it, 🚔 the police cars they're always crashing, 🏢 the academy they're all trying (and failing) to graduate from."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Truman Show",
+        "emoji": "📺🏘️☀️🎬",
+        "explain": "📺 the hidden TV show his whole life is secretly being broadcast on, 🏘️ the fake town built as his set, ☀️ the artificial sun over the dome, 🎬 the director secretly controlling everything."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Ready Player One",
+        "emoji": "🎮🥚🔑1️⃣",
+        "explain": "🎮 the game-like virtual universe at its centre, 🥚 the hidden Easter egg everyone's hunting for, 🔑 the keys needed to find it, 1️⃣ 'One' — the number in the title."
+      }
+    ]
+  },
+  {
+    "day": 303,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "A Quiet Place",
+        "emoji": "🤫👂👨‍👩‍👧‍👦🦶🏚️",
+        "explain": "🤫 the silence the family must keep to survive, 👂 the blind monsters that hunt entirely by sound, 👨‍👩‍👧‍👦 the family fighting to protect each other, 🦶 the bare feet they use to move without a sound, 🏚️ the abandoned farmhouse they shelter in."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Signs",
+        "emoji": "⚠️⛔🚫",
+        "explain": "⚠️⛔🚫 'Signs' — three different warning signs, the plural title spelled out literally."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Get Out",
+        "emoji": "🚪🧠☕👨🏿",
+        "explain": "🚪 'Get Out' — the literal warning at the heart of the film, 🧠 the sinister mind-transplant scheme at its core, ☕ the teacup-and-spoon trick used to hypnotise victims, 👨🏿 the boyfriend uncovering the horror during a weekend visit."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "The Prestige",
+        "emoji": "🎩⚡👯🔄",
+        "explain": "🎩 the two rival stage magicians at its centre, ⚡ Tesla's mysterious device central to the final trick, 👯 the doubles behind the illusion's dark secret, 🔄 the bitter, escalating rivalry between them."
+      }
+    ]
+  },
+  {
+    "day": 304,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Rear Window",
+        "emoji": "⬅️🪟📷",
+        "explain": "⬅️ 'Rear' — the back of the building his window looks out on, 🪟 the window he watches his neighbours through, 📷 the camera he uses to investigate what he sees."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "North by Northwest",
+        "emoji": "⬆️✖️⬆️⬅️",
+        "explain": "⬆️ 'North', ✖️ 'by', ⬆️ 'North' again, ⬅️ 'West' — the whole title spelled out as compass directions."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Imitation Game",
+        "emoji": "🔢💻🇩🇪🔐",
+        "explain": "🔢 the codes Alan Turing is trying to crack, 💻 the machine he builds to do it, 🇩🇪 the German Enigma code at the centre of it, 🔐 the encryption he's racing to break."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "The Greatest Showman",
+        "emoji": "🎪🎩🦁🎶",
+        "explain": "🎪 the circus he builds, 🎩 P.T. Barnum, the ringmaster at its centre, 🦁 the extraordinary performers he recruits, 🎶 the big musical numbers throughout."
+      }
+    ]
+  },
+  {
+    "day": 305,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Zodiac",
+        "emoji": "✉️🔤🗞️❓🌃🕰️",
+        "explain": "✉️ the taunting letters sent to the press, 🔤 the ciphers hidden inside them, 🗞️ the newspaper cartoonist who becomes obsessed with cracking them, ❓ the case that, to this day, was never solved, 🌃 the string of night-time attacks at its centre, 🕰️ the decades the investigation drags on for."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Dexter",
+        "emoji": "🩸🔪🌴😈🚔",
+        "explain": "🩸 the blood-spatter analyst by day, 🔪 the meticulous serial killer by night, 🌴 the sun-soaked Miami setting, 😈 the 'Dark Passenger' driving him to kill, 🚔 the police department he works inside undetected."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Arrival",
+        "emoji": "🛸👽🔤⭕⏳",
+        "explain": "🛸 the alien spacecraft that appear around the world, 👽 the aliens inside communicating in an unfamiliar language, 🔤 the linguist tasked with decoding it, ⭕ the circular symbols their language is written in, ⏳ the non-linear sense of time it turns out to reveal."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Shutter Island",
+        "emoji": "🏝️🏥🕵️🧠⛈️🔒🌊",
+        "explain": "🏝️ the remote island setting, 🏥 the psychiatric hospital he's investigating, 🕵️ the U.S. Marshal at the centre of the case, 🧠 the mental illness at the heart of its final twist, ⛈️ the storm that closes in, 🔒 the locked ward hiding the truth, 🌊 the stormy sea cutting the island off from the mainland."
+      }
+    ]
+  },
+  {
+    "day": 306,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Birds",
+        "emoji": "🐔🐥🕊️🦅🦆🦢",
+        "explain": "🐔🐥🕊️🦅🦆🦢 the birds themselves — the swarms of different species that turn violently on the town."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "The Irishman",
+        "emoji": "🇮🇪👨🏻🔫",
+        "explain": "🇮🇪 'Irishman' — his Irish-American heritage, 👨🏻 Frank Sheeran, the man at the centre of the story, 🔫 the decades he spent as a mob hitman."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Moneyball",
+        "emoji": "⚾📊💰",
+        "explain": "⚾ the baseball team at its centre, 📊 the statistics-driven strategy used to build it, 💰 the tight budget they're working with."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Knives Out",
+        "emoji": "🔪🕵🏻🏚️👨‍👩‍👧‍👦",
+        "explain": "🔪 the knife-shaped clue at the heart of the mystery, 🕵🏻 the detective investigating the death, 🏚️ the old family mansion where it happened, 👨‍👩‍👧‍👦 the dysfunctional family full of suspects."
+      }
+    ]
+  },
+  {
+    "day": 307,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Money Heist",
+        "emoji": "🔴🎭🏛️💰👨‍🏫🚁",
+        "explain": "🔴 the red jumpsuits the crew all wear, 🎭 the Dali masks hiding their identities, 🏛️ the Royal Mint they take over, 💰 the money they print rather than steal, 👨‍🏫 'The Professor', the mastermind directing it all from outside, 🚁 the dramatic escape plan at the heart of it."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Mindhunter",
+        "emoji": "🕵️🎙️🧠",
+        "explain": "🕵️ the FBI agents pioneering a new kind of investigation, 🎙️ the taped prison interviews at its centre, 🧠 the psychological profiling method being invented as they go."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "Twin Peaks",
+        "emoji": "⛰️⛰️☕🍩🦉🔴🪵",
+        "explain": "⛰️⛰️ 'Twin Peaks' — two mountains, the title spelled out literally, ☕🍩 Agent Cooper's beloved coffee and donuts, 🦉 the owls that recur as an unsettling omen, 🔴 the red curtains of its surreal dream world, 🪵 the Log Lady and the cryptic log she carries everywhere."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "TV",
+        "title": "True Detective",
+        "emoji": "🕵️🕵️🌀⭕",
+        "explain": "🕵️🕵️ the two detectives, decades apart, chasing the same case, 🌀 the spiral symbol tied to the killer, ⭕ 'time is a flat circle' — the show's own words."
+      }
+    ]
+  },
+  {
+    "day": 308,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Z Cars",
+        "emoji": "💤🚗🚘🚓",
+        "explain": "💤 'Z' — the 'zzz' sound standing in for the letter, 🚗🚘 the patrol cars at its centre, 🚓 the police drama the whole show is built around."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "TV",
+        "title": "Love Island",
+        "emoji": "🥰😍🏝️👱🏻‍♀️👱🏻‍♂️",
+        "explain": "🥰😍 the couples falling for each other on camera, 🏝️ the villa on the island where they all live, 👱🏻‍♀️👱🏻‍♂️ the blonde islanders coupling up."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Broadchurch",
+        "emoji": "🏖️🔪👮🏻👦🏻⛪",
+        "explain": "🏖️ the small coastal town where it's set, 🔪 the murder that shakes the community, 👮🏻 the two detectives investigating, 👦🏻 the boy whose death starts it all, ⛪ 'Church' — the second half of the town's name."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Killing Eve",
+        "emoji": "🔪👩🏻‍🦰🕵🏻‍♀️❤️",
+        "explain": "🔪 the assassin at the centre of it, 👩🏻‍🦰 Villanelle, the red-headed killer, 🕵🏻‍♀️ Eve, the MI5 agent hunting her, ❤️ the strange obsession that grows between them."
+      }
+    ]
+  },
+  {
+    "day": 309,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "TV",
+        "title": "Ozark",
+        "emoji": "💵🌊👨‍👩‍👧‍👦🕴️🎰🇲🇽",
+        "explain": "💵 the cartel money he's forced to launder, 🌊 the Ozarks lake his family relocates to, 👨‍👩‍👧‍👦 the family dragged into the danger with him, 🕴️ the cartel figures closing in throughout, 🎰 the casino he builds as a front, 🇲🇽 the cartel he's laundering the money for."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Book",
+        "title": "The Girl with the Dragon Tattoo",
+        "emoji": "👧🏻🐉💻🔍🖤",
+        "explain": "👧🏻 'Girl' — the hacker at the story's centre, 🐉 the dragon tattoo that gives the title its name, 💻 her brilliant hacking skills, 🔍 the decades-old disappearance she's drawn into investigating, 🖤 her dark, punk aesthetic."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "Gone Girl",
+        "emoji": "💨👰📔📺",
+        "explain": "💨 the wife who vanishes without a trace, 👰 the picture-perfect marriage everyone believes in, 📔 the diary that seems to reveal the truth, 📺 the media frenzy that follows."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The Girl on the Train",
+        "emoji": "🚆👩👀🍷❓",
+        "explain": "🚆 the train she rides every day, 👩 the woman at the centre of it, 👀 the couple she watches from the window, 🍷 the drinking that leaves her memory full of blackouts, ❓ the unreliable narrator at the heart of the mystery."
+      }
+    ]
+  },
+  {
+    "day": 310,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "TV",
+        "title": "The Masked Singer",
+        "emoji": "🎭🎤🎶🗣️",
+        "explain": "🎭 the masked costume hiding who's underneath, 🎤 the mic each celebrity performs with, 🎶 the songs they sing, 🗣️ the panel trying to guess who's really speaking."
+      },
+      {
+        "number": 2,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Suits",
+        "emoji": "👔⚖️🗽🎓",
+        "explain": "👔 the sharp suits the lawyers wear, ⚖️ the top Manhattan law firm they work at, 🗽 the New York setting, 🎓 the fake Harvard degree at the centre of the plot."
+      },
+      {
+        "number": 3,
+        "tier": "hard",
+        "category": "Book",
+        "title": "And Then There Were None",
+        "emoji": "🏝️🔟➡️0️⃣🔪",
+        "explain": "🏝️ the remote island they're all lured to, 🔟➡️0️⃣ 'And Then There Were None' — ten strangers trapped there, then none left alive, 🔪 the murders that pick them off one by one."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The Handmaid's Tale",
+        "emoji": "🔴👒🤰👁️🚫📚",
+        "explain": "🔴 the red robes the handmaids are forced to wear, 👒 their white bonnets, 🤰 the forced pregnancies at the regime's core, 👁️ 'Under His Eye' — the surveillance greeting spoken throughout, 🚫📚 women being banned from reading, one of the regime's cruellest rules."
+      }
+    ]
   }
 ]

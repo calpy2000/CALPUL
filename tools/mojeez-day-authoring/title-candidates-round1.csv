@@ -1,0 +1,1601 @@
+Set,Slot,Tier,Category,Title,Alternates,Reject (X)
+1,1,Easy,Movie,Beauty and the Beast,,
+1,2,Medium,Movie,The Princess Bride,,
+1,3,Hard,Movie,Citizen Kane,,
+1,4,Hardest,Book,Ulysses,,
+2,1,Easy,Movie,Cinderella,,
+2,2,Medium,Movie,The NeverEnding Story,,
+2,3,Hard,Movie,Sunset Boulevard,,
+2,4,Hardest,Book,Finnegans Wake,,X
+3,1,Easy,Movie,Moana,,
+3,2,Medium,Movie,Labyrinth,,
+3,3,Hard,Movie,Vertigo,,
+3,4,Hardest,Book,A Portrait of the Artist as a Young Man,,X
+4,1,Easy,Movie,Tangled,,X
+4,2,Medium,Movie,Willow,,X
+4,3,Hard,Movie,Rear Window,,
+4,4,Hardest,Book,Dubliners,,
+5,1,Easy,Movie,The Incredibles,,
+5,2,Medium,Movie,Big Fish,,
+5,3,Hard,Movie,North by Northwest,,
+5,4,Hardest,Book,To the Lighthouse,,
+6,1,Easy,Movie,"Monsters, Inc.",Monsters Inc,
+6,2,Medium,Movie,Edward Scissorhands,,
+6,3,Hard,Movie,The Birds,,
+6,4,Hardest,Book,Mrs Dalloway,,X
+7,1,Easy,Movie,Up,,
+7,2,Medium,Movie,Beetlejuice,,
+7,3,Hard,Movie,Rope,,X
+7,4,Hardest,Book,Orlando,,X
+8,1,Easy,Movie,Coco,,
+8,2,Medium,Movie,Corpse Bride,,
+8,3,Hard,Movie,Dial M for Murder,,
+8,4,Hardest,Book,The Waves,,X
+9,1,Easy,Movie,Encanto,,X
+9,2,Medium,Movie,The Nightmare Before Christmas,,
+9,3,Hard,Movie,Rebecca,,
+9,4,Hardest,Book,A Room of One's Own,,X
+10,1,Easy,Movie,Zootopia,Zootropolis,
+10,2,Medium,Movie,Coraline,,
+10,3,Hard,Movie,Gaslight,,
+10,4,Hardest,Book,Light in August,,X
+11,1,Easy,Movie,Inside Out,,
+11,2,Medium,Movie,ParaNorman,,X
+11,3,Hard,Movie,Double Indemnity,,X
+11,4,Hardest,Book,Gravity's Rainbow,,
+12,1,Easy,Movie,Despicable Me,,
+12,2,Medium,Movie,Kubo and the Two Strings,,X
+12,3,Hard,Movie,The Maltese Falcon,,
+12,4,Hardest,Book,Infinite Jest,,X
+13,1,Easy,Movie,Madagascar,,
+13,2,Medium,Movie,Spirited Away,,
+13,3,Hard,Movie,The Big Sleep,,
+13,4,Hardest,Book,The Corrections,,X
+14,1,Easy,Movie,Kung Fu Panda,,
+14,2,Medium,Movie,My Neighbor Totoro,Totoro,X
+14,3,Hard,Movie,Chinatown,,
+14,4,Hardest,Book,White Noise,,X
+15,1,Easy,Movie,How to Train Your Dragon,,
+15,2,Medium,Movie,Howl's Moving Castle,,X
+15,3,Hard,Movie,L.A. Confidential,,X
+15,4,Hardest,Book,Underworld,,X
+16,1,Easy,Movie,The Jungle Book,,
+16,2,Medium,Movie,Princess Mononoke,,X
+16,3,Hard,Movie,Touch of Evil,,X
+16,4,Hardest,Book,Blood Meridian,,X
+17,1,Easy,Movie,Bambi,,
+17,2,Medium,Movie,Ponyo,,X
+17,3,Hard,Movie,Some Like It Hot,,
+17,4,Hardest,Book,The Road,,
+18,1,Easy,Movie,Dumbo,,
+18,2,Medium,Movie,Akira,,X
+18,3,Hard,Movie,Breakfast at Tiffany's,,
+18,4,Hardest,Book,All the Pretty Horses,,
+19,1,Easy,Movie,Pinocchio,,
+19,2,Medium,Movie,Grave of the Fireflies,,X
+19,3,Hard,Movie,Roman Holiday,,
+19,4,Hardest,Book,Beloved,,
+20,1,Easy,Movie,Sleeping Beauty,,
+20,2,Medium,Movie,The Boy and the Heron,,X
+20,3,Hard,Movie,My Fair Lady,,
+20,4,Hardest,Book,Song of Solomon,,X
+21,1,Easy,Movie,101 Dalmatians,One Hundred and One Dalmatians,
+21,2,Medium,Movie,Pan's Labyrinth,,
+21,3,Hard,Movie,Gone with the Wind,,
+21,4,Hardest,Book,The Color Purple,,
+22,1,Easy,Movie,Mulan,,
+22,2,Medium,Movie,The Shape of Water,,
+22,3,Hard,Movie,Lawrence of Arabia,,
+22,4,Hardest,Book,Invisible Man,,
+23,1,Easy,Movie,Pocahontas,,
+23,2,Medium,Movie,Amélie,Amelie,
+23,3,Hard,Movie,Doctor Zhivago,,
+23,4,Hardest,Book,Native Son,,X
+24,1,Easy,Movie,Hercules,,
+24,2,Medium,Movie,Life Is Beautiful,,X
+24,3,Hard,Movie,The Bridge on the River Kwai,,
+24,4,Hardest,Book,Go Tell It on the Mountain,,X
+25,1,Easy,Movie,Brave,,
+25,2,Medium,Movie,Cinema Paradiso,,X
+25,3,Hard,Movie,A Streetcar Named Desire,,
+25,4,Hardest,Book,The Bell Jar,,X
+26,1,Easy,Movie,Ratatouille,,
+26,2,Medium,Movie,Parasite,,
+26,3,Hard,Movie,On the Waterfront,,
+26,4,Hardest,Book,Slouching Towards Bethlehem,,X
+27,1,Easy,Movie,WALL-E,Wall-E,X
+27,2,Medium,Movie,Oldboy,,X
+27,3,Hard,Movie,Cool Hand Luke,,
+27,4,Hardest,Book,The Year of Magical Thinking,,X
+28,1,Easy,Movie,Cars,,
+28,2,Medium,Movie,"Crouching Tiger, Hidden Dragon",,
+28,3,Hard,Movie,The Great Escape,,
+28,4,Hardest,Book,A Confederacy of Dunces,,X
+29,1,Easy,Movie,Big Hero 6,,
+29,2,Medium,Movie,Slumdog Millionaire,,
+29,3,Hard,Movie,Bonnie and Clyde,,
+29,4,Hardest,Book,Pale Fire,,X
+30,1,Easy,Movie,Wreck-It Ralph,,
+30,2,Medium,Movie,The Grand Budapest Hotel,,
+30,3,Hard,Movie,The Wild Bunch,,
+30,4,Hardest,Book,Pnin,,X
+31,1,Easy,Movie,Sing,,
+31,2,Medium,Movie,Moonrise Kingdom,,
+31,3,Hard,Movie,Butch Cassidy and the Sundance Kid,,
+31,4,Hardest,Book,The Unbearable Lightness of Being,,
+32,1,Easy,Movie,Trolls,,X
+32,2,Medium,Movie,Fantastic Mr. Fox,,
+32,3,Hard,Movie,The Godfather Part II,Godfather Part 2,X
+32,4,Hardest,Book,The Book of Laughter and Forgetting,,X
+33,1,Easy,Movie,The Secret Life of Pets,,
+33,2,Medium,Movie,Isle of Dogs,,X
+33,3,Hard,Movie,The Godfather Part III,Godfather Part 3,X
+33,4,Hardest,Book,If on a Winter's Night a Traveler,,X
+34,1,Easy,Movie,Finding Dory,,X
+34,2,Medium,Movie,The Royal Tenenbaums,,
+34,3,Hard,Movie,Taxi Driver,,
+34,4,Hardest,Book,Invisible Cities,,X
+35,1,Easy,Movie,Toy Story 2,,X
+35,2,Medium,Movie,Little Miss Sunshine,,
+35,3,Hard,Movie,Raging Bull,,
+35,4,Hardest,Book,The Name of the Rose,,
+36,1,Easy,Movie,Toy Story 3,,X
+36,2,Medium,Movie,Juno,,
+36,3,Hard,Movie,Annie Hall,,
+36,4,Hardest,Book,Foucault's Pendulum,,X
+37,1,Easy,Movie,Toy Story 4,,X
+37,2,Medium,Movie,Silver Linings Playbook,,
+37,3,Hard,Movie,Manhattan,,
+37,4,Hardest,Book,One Hundred Years of Solitude,,
+38,1,Easy,Movie,Shrek 2,,X
+38,2,Medium,Movie,The Fault in Our Stars,,
+38,3,Hard,Movie,The Deer Hunter,,
+38,4,Hardest,Book,Love in the Time of Cholera,,X
+39,1,Easy,Movie,Ice Age,,
+39,2,Medium,Movie,A Star Is Born,,
+39,3,Hard,Movie,Kramer vs. Kramer,,
+39,4,Hardest,Book,Chronicle of a Death Foretold,,X
+40,1,Easy,Movie,Rio,,
+40,2,Medium,Movie,Bohemian Rhapsody,,
+40,3,Hard,Movie,Ordinary People,,X
+40,4,Hardest,Book,The House of the Spirits,,X
+41,1,Easy,Movie,The Croods,,
+41,2,Medium,Movie,Rocketman,,
+41,3,Hard,Movie,Amadeus,,
+41,4,Hardest,Book,Like Water for Chocolate,,
+42,1,Easy,Movie,Minions,,
+42,2,Medium,Movie,Walk the Line,,
+42,3,Hard,Movie,Out of Africa,,
+42,4,Hardest,Book,The Blind Assassin,,X
+43,1,Easy,Movie,Luca,,X
+43,2,Medium,Movie,Ray,,
+43,3,Hard,Movie,The Last Emperor,,
+43,4,Hardest,Book,Oryx and Crake,,X
+44,1,Easy,Movie,Turning Red,,X
+44,2,Medium,Movie,8 Mile,,
+44,3,Hard,Movie,Rain Man,,
+44,4,Hardest,Book,Cat's Eye,,X
+45,1,Easy,Movie,Onward,,X
+45,2,Medium,Movie,Straight Outta Compton,,
+45,3,Hard,Movie,Glory,,
+45,4,Hardest,Book,Bring Up the Bodies,,X
+46,1,Easy,Movie,Soul,,
+46,2,Medium,Movie,The Blind Side,,X
+46,3,Hard,Movie,JFK,,
+46,4,Hardest,Book,The Mirror and the Light,,
+47,1,Easy,Movie,Elemental,,
+47,2,Medium,Movie,Remember the Titans,,
+47,3,Hard,Movie,Unforgiven,,
+47,4,Hardest,Book,A Suitable Boy,,
+48,1,Easy,Movie,The Boss Baby,,
+48,2,Medium,Movie,Coach Carter,,X
+48,3,Hard,Movie,The Piano,,
+48,4,Hardest,Book,Midnight's Children,,X
+49,1,Easy,Movie,Hotel Transylvania,,
+49,2,Medium,Movie,Miracle,,X
+49,3,Hard,Movie,Legends of the Fall,,
+49,4,Hardest,Book,The Satanic Verses,,
+50,1,Easy,Movie,Puss in Boots,,
+50,2,Medium,Movie,Moneyball,,
+50,3,Hard,Movie,The English Patient,,
+50,4,Hardest,Book,Shame,,X
+51,1,Easy,Movie,Kung Fu Panda 2,,X
+51,2,Medium,Movie,Rudy,,X
+51,3,Hard,Movie,The Thin Red Line,,X
+51,4,Hardest,Book,The God of Small Things,,
+52,1,Easy,Movie,Frozen II,Frozen 2,X
+52,2,Medium,Movie,Field of Dreams,,
+52,3,Hard,Movie,American Beauty,,
+52,4,Hardest,Book,The White Tiger,,X
+53,1,Easy,Movie,Spider-Man,,
+53,2,Medium,Movie,A League of Their Own,,
+53,3,Hard,Movie,Magnolia,,
+53,4,Hardest,Book,The Sympathizer,,X
+54,1,Easy,Movie,Spider-Man 2,,X
+54,2,Medium,Movie,Rocky IV,,X
+54,3,Hard,Movie,Boogie Nights,,X
+54,4,Hardest,Book,The Namesake,,
+55,1,Easy,Movie,Spider-Man: Into the Spider-Verse,Into the Spider-Verse,X
+55,2,Medium,Movie,Creed,,
+55,3,Hard,Movie,Being John Malkovich,,
+55,4,Hardest,Book,Interpreter of Maladies,,X
+56,1,Easy,Movie,Batman Begins,,X
+56,2,Medium,Movie,Warrior,,
+56,3,Hard,Movie,Adaptation,,
+56,4,Hardest,Book,A Fine Balance,,
+57,1,Easy,Movie,The Dark Knight,,
+57,2,Medium,Movie,Million Dollar Baby,,
+57,3,Hard,Movie,Eternal Sunshine of the Spotless Mind,,
+57,4,Hardest,Book,In the Skin of a Lion,,X
+58,1,Easy,Movie,Superman,,
+58,2,Medium,Movie,Whiplash,,
+58,3,Hard,Movie,Requiem for a Dream,,X
+58,4,Hardest,Book,Disgrace,,X
+59,1,Easy,Movie,Iron Man,,
+59,2,Medium,Movie,Good Will Hunting,,
+59,3,Hard,Movie,Trainspotting,,
+59,4,Hardest,Book,Waiting for the Barbarians,,
+60,1,Easy,Movie,The Avengers,,
+60,2,Medium,Movie,Dead Poets Society,,
+60,3,Hard,Movie,The Full Monty,,
+60,4,Hardest,Book,Life & Times of Michael K,,X
+61,1,Easy,Movie,Avengers: Endgame,Endgame,X
+61,2,Medium,Movie,A Beautiful Mind,,
+61,3,Hard,Movie,Billy Elliot,,
+61,4,Hardest,Book,"The Sea, the Sea",,X
+62,1,Easy,Movie,Wonder Woman,,
+62,2,Medium,Movie,The Imitation Game,,
+62,3,Hard,Movie,East Is East,,
+62,4,Hardest,Book,A Severed Head,,X
+63,1,Easy,Movie,Black Panther,,
+63,2,Medium,Movie,Hidden Figures,,
+63,3,Hard,Movie,Bend It Like Beckham,,
+63,4,Hardest,Book,The Golden Notebook,,X
+64,1,Easy,Movie,Guardians of the Galaxy,,
+64,2,Medium,Movie,The Theory of Everything,,
+64,3,Hard,Movie,This Is England,,
+64,4,Hardest,Book,Homage to Catalonia,,X
+65,1,Easy,Movie,Thor,,
+65,2,Medium,Movie,The Social Network,,
+65,3,Hard,Movie,Kes,,
+65,4,Hardest,Book,Down and Out in Paris and London,,X
+66,1,Easy,Movie,Captain America: The First Avenger,Captain America,X
+66,2,Medium,Movie,Steve Jobs,,
+66,3,Hard,Movie,Withnail and I,,
+66,4,Hardest,Book,The Road to Wigan Pier,,
+67,1,Easy,Movie,X-Men,,
+67,2,Medium,Movie,The Big Short,,
+67,3,Hard,Movie,Barry Lyndon,,
+67,4,Hardest,Book,Brave New World Revisited,,X
+68,1,Easy,Movie,Deadpool,,
+68,2,Medium,Movie,Catch Me If You Can,,
+68,3,Hard,Movie,2001: A Space Odyssey,,
+68,4,Hardest,Book,We,,X
+69,1,Easy,Movie,Aquaman,,
+69,2,Medium,Movie,The Terminal,,
+69,3,Hard,Movie,Solaris,,X
+69,4,Hardest,Book,The Castle,,
+70,1,Easy,Movie,The Flash,,
+70,2,Medium,Movie,Schindler's List,,
+70,3,Hard,Movie,Stalker,,
+70,4,Hardest,Book,Amerika,,
+71,1,Easy,Movie,Justice League,,
+71,2,Medium,Movie,Saving Private Ryan,,
+71,3,Hard,Movie,Metropolis,,
+71,4,Hardest,Book,In the Penal Colony,,X
+72,1,Easy,Movie,Wolverine,X-Men Origins: Wolverine,
+72,2,Medium,Movie,Dunkirk,,
+72,3,Hard,Movie,Nosferatu,,
+72,4,Hardest,Book,The Stranger,L'Étranger,X
+73,1,Easy,Movie,Ant-Man,,
+73,2,Medium,Movie,1917,,X
+73,3,Hard,Movie,The Cabinet of Dr. Caligari,,X
+73,4,Hardest,Book,The Plague,,X
+74,1,Easy,Movie,Doctor Strange,,
+74,2,Medium,Movie,Hacksaw Ridge,,
+74,3,Hard,Movie,M,,X
+74,4,Hardest,Book,The Myth of Sisyphus,,X
+75,1,Easy,Movie,Captain Marvel,,
+75,2,Medium,Movie,Full Metal Jacket,,
+75,3,Hard,Movie,Seven Samurai,,
+75,4,Hardest,Book,Nausea,,X
+76,1,Easy,Movie,Shazam!,Shazam,
+76,2,Medium,Movie,Apocalypse Now,,
+76,3,Hard,Movie,Rashomon,,X
+76,4,Hardest,Book,No Exit,,X
+77,1,Easy,Movie,The Incredible Hulk,,
+77,2,Medium,Movie,Platoon,,
+77,3,Hard,Movie,Ikiru,,
+77,4,Hardest,Book,Waiting for Godot,,
+78,1,Easy,Movie,Batman v Superman: Dawn of Justice,Batman v Superman,
+78,2,Medium,Movie,Black Hawk Down,,
+78,3,Hard,Movie,Yojimbo,,X
+78,4,Hardest,Book,Rhinoceros,,
+79,1,Easy,Movie,Joker,,
+79,2,Medium,Movie,American Sniper,,
+79,3,Hard,Movie,Ran,,X
+79,4,Hardest,Book,The Bald Soprano,,X
+80,1,Easy,Movie,Venom,,
+80,2,Medium,Movie,Braveheart,,
+80,3,Hard,Movie,Tokyo Story,,
+80,4,Hardest,Book,Death of a Salesman,,
+81,1,Easy,Movie,The Amazing Spider-Man,,X
+81,2,Medium,Movie,Gladiator,,
+81,3,Hard,Movie,8½,8 1/2,X
+81,4,Hardest,Book,The Crucible,,
+82,1,Easy,Movie,Man of Steel,,X
+82,2,Medium,Movie,300,,
+82,3,Hard,Movie,La Dolce Vita,,
+82,4,Hardest,Book,A View from the Bridge,,X
+83,1,Easy,Movie,Avatar,,
+83,2,Medium,Movie,Troy,,
+83,3,Hard,Movie,Bicycle Thieves,,
+83,4,Hardest,Book,All My Sons,,
+84,1,Easy,Movie,Star Trek,,
+84,2,Medium,Movie,Kingdom of Heaven,,
+84,3,Hard,Movie,The Battle of Algiers,,
+84,4,Hardest,Book,Cat on a Hot Tin Roof,,
+85,1,Easy,Movie,Terminator 2: Judgment Day,Terminator 2,X
+85,2,Medium,Movie,Robin Hood,,
+85,3,Hard,Movie,Persona,,X
+85,4,Hardest,Book,The Glass Menagerie,,
+86,1,Easy,Movie,Alien,,
+86,2,Medium,Movie,The Last Samurai,,
+86,3,Hard,Movie,The Seventh Seal,,
+86,4,Hardest,Book,Long Day's Journey Into Night,,X
+87,1,Easy,Movie,Transformers,,
+87,2,Medium,Movie,Pearl Harbor,,
+87,3,Hard,Movie,Wild Strawberries,,
+87,4,Hardest,Book,Who's Afraid of Virginia Woolf?,,
+88,1,Easy,Movie,Men in Black,,
+88,2,Medium,Movie,Munich,,
+88,3,Hard,Movie,Breathless,,X
+88,4,Hardest,Book,Angels in America,,X
+89,1,Easy,Movie,Independence Day,,
+89,2,Medium,Movie,Argo,,
+89,3,Hard,Movie,Jules and Jim,,X
+89,4,Hardest,Book,Hamlet,,
+90,1,Easy,Movie,Star Wars: The Empire Strikes Back,The Empire Strikes Back,X
+90,2,Medium,Movie,Zero Dark Thirty,,
+90,3,Hard,Movie,The 400 Blows,,X
+90,4,Hardest,Book,Macbeth,,
+91,1,Easy,Movie,Star Wars: Return of the Jedi,Return of the Jedi,X
+91,2,Medium,Movie,No Country for Old Men,,
+91,3,Hard,Movie,Au Revoir les Enfants,,X
+91,4,Hardest,Book,King Lear,,
+92,1,Easy,Movie,Star Wars: The Force Awakens,The Force Awakens,X
+92,2,Medium,Movie,There Will Be Blood,,
+92,3,Hard,Movie,Three Colours: Blue,Three Colors: Blue,
+92,4,Hardest,Book,Othello,,
+93,1,Easy,Movie,Star Wars: The Phantom Menace,The Phantom Menace,X
+93,2,Medium,Movie,The Departed,,
+93,3,Hard,Movie,The Lives of Others,,X
+93,4,Hardest,Book,The Tempest,,
+94,1,Easy,Movie,Jurassic World,,
+94,2,Medium,Movie,Goodfellas,,
+94,3,Hard,Movie,Downfall,,
+94,4,Hardest,Book,A Midsummer Night's Dream,,
+95,1,Easy,Movie,The Lord of the Rings: The Fellowship of the Ring,Fellowship of the Ring;LOTR,X
+95,2,Medium,Movie,Casino,,
+95,3,Hard,Movie,Das Boot,,X
+95,4,Hardest,Book,Much Ado About Nothing,,
+96,1,Easy,Movie,The Lord of the Rings: The Two Towers,The Two Towers,X
+96,2,Medium,Movie,Heat,,X
+96,3,Hard,Movie,Wings of Desire,,X
+96,4,Hardest,Book,Twelfth Night,,
+97,1,Easy,Movie,The Lord of the Rings: The Return of the King,Return of the King,X
+97,2,Medium,Movie,The Town,,X
+97,3,Hard,Movie,Run Lola Run,,X
+97,4,Hardest,Book,The Merchant of Venice,,
+98,1,Easy,Movie,Harry Potter and the Chamber of Secrets,Chamber of Secrets,X
+98,2,Medium,Movie,Se7en,Seven,
+98,3,Hard,Movie,City of God,,
+98,4,Hardest,Book,Julius Caesar,,
+99,1,Easy,Movie,Harry Potter and the Prisoner of Azkaban,Prisoner of Azkaban,X
+99,2,Medium,Movie,Zodiac,,
+99,3,Hard,Movie,Central Station,,X
+99,4,Hardest,Book,Antony and Cleopatra,,
+100,1,Easy,Movie,Harry Potter and the Goblet of Fire,Goblet of Fire,X
+100,2,Medium,Movie,Gone Girl,,
+100,3,Hard,Movie,Amores Perros,,
+100,4,Hardest,Book,Coriolanus,,
+101,1,Easy,Movie,Harry Potter and the Deathly Hallows,Deathly Hallows,
+101,2,Medium,Movie,Prisoners,,X
+101,3,Hard,Movie,Y Tu Mamá También,Y Tu Mama Tambien,X
+101,4,Hardest,Book,Titus Andronicus,,
+102,1,Easy,Movie,King Kong,,
+102,2,Medium,Movie,Fight Club,,
+102,3,Hard,Movie,Volver,,X
+102,4,Hardest,Book,Richard III,,
+103,1,Easy,Movie,Godzilla,,
+103,2,Medium,Movie,American Psycho,,
+103,3,Hard,Movie,Talk to Her,,X
+103,4,Hardest,Book,Henry V,,
+104,1,Easy,Movie,Jumanji,,
+104,2,Medium,Movie,The Silence of the Lambs,,
+104,3,Hard,Movie,All About My Mother,,X
+104,4,Hardest,Book,The Winter's Tale,,
+105,1,Easy,Movie,The Mummy,,
+105,2,Medium,Movie,Misery,,
+105,3,Hard,Movie,The Piano Teacher,,
+105,4,Hardest,Book,As You Like It,,
+106,1,Easy,Movie,Night at the Museum,,
+106,2,Medium,Movie,Carrie,,
+106,3,Hard,Movie,Funny Games,,
+106,4,Hardest,Book,The Faerie Queene,,X
+107,1,Easy,Movie,Pirates of the Caribbean: The Curse of the Black Pearl,Pirates of the Caribbean,
+107,2,Medium,Movie,Hereditary,,X
+107,3,Hard,Movie,Amour,,X
+107,4,Hardest,Book,Paradise Regained,,X
+108,1,Easy,Movie,Willy Wonka & the Chocolate Factory,Willy Wonka,
+108,2,Medium,Movie,Midsommar,,X
+108,3,Hard,Movie,The White Ribbon,,X
+108,4,Hardest,Book,The Pilgrim's Progress,,
+109,1,Easy,Movie,Mary Poppins,,
+109,2,Medium,Movie,The Witch,The VVitch,X
+109,3,Hard,Movie,Ida,,X
+109,4,Hardest,Book,Utopia,,X
+110,1,Easy,Movie,Chicken Run,,
+110,2,Medium,Movie,Us,,X
+110,3,Hard,Movie,Cold War,,X
+110,4,Hardest,Book,The Prince,,
+111,1,Easy,TV,SpongeBob SquarePants,SpongeBob,X
+111,2,Medium,Movie,Rosemary's Baby,,
+111,3,Hard,Movie,Roma,,X
+111,4,Hardest,Book,The Last Man,,
+112,1,Easy,TV,Sesame Street,,
+112,2,Medium,Movie,The Omen,,
+112,3,Hard,Movie,The Handmaiden,,
+112,4,Hardest,Book,The Monk,,X
+113,1,Easy,TV,Paw Patrol,,
+113,2,Medium,Movie,Poltergeist,,
+113,3,Hard,Movie,Burning,,X
+113,4,Hardest,Book,The Castle of Otranto,,X
+114,1,Easy,TV,Peppa Pig,,
+114,2,Medium,Movie,The Ring,,
+114,3,Hard,Movie,Memories of Murder,,X
+114,4,Hardest,Book,The Mysteries of Udolpho,,X
+115,1,Easy,TV,Scooby-Doo,,
+115,2,Medium,Movie,The Grudge,,X
+115,3,Hard,Movie,Train to Busan,,X
+115,4,Hardest,Book,Melmoth the Wanderer,,X
+116,1,Easy,TV,Tom and Jerry,,
+116,2,Medium,Movie,Insidious,,X
+116,3,Hard,Movie,Snowpiercer,,
+116,4,Hardest,Book,Uncle Tom's Cabin,,
+117,1,Easy,TV,Looney Tunes,,
+117,2,Medium,Movie,Annabelle,,
+117,3,Hard,Movie,The Host,,
+117,4,Hardest,Book,The Scarlet Letter,,
+118,1,Easy,TV,Dora the Explorer,,
+118,2,Medium,Movie,World War Z,,
+118,3,Hard,Movie,A Separation,,X
+118,4,Hardest,Book,The House of the Seven Gables,,
+119,1,Easy,TV,The Powerpuff Girls,,
+119,2,Medium,Movie,28 Days Later,,
+119,3,Hard,Movie,The Salesman,,
+119,4,Hardest,Book,Billy Budd,,
+120,1,Easy,TV,Bluey,,
+120,2,Medium,Movie,Zombieland,,
+120,3,Hard,Movie,Timbuktu,,
+120,4,Hardest,Book,"Bartleby, the Scrivener",,X
+121,1,Easy,TV,Thomas & Friends,,X
+121,2,Medium,Movie,Shaun of the Dead,,
+121,3,Hard,Movie,Wild Tales,,X
+121,4,Hardest,Book,The Adventures of Huckleberry Finn,Huckleberry Finn,
+122,1,Easy,TV,Postman Pat,,
+122,2,Medium,Movie,Hot Fuzz,,
+122,3,Hard,Movie,The Secret in Their Eyes,,X
+122,4,Hardest,Book,The Adventures of Tom Sawyer,Tom Sawyer,
+123,1,Easy,Book,Winnie the Pooh,Winnie-the-Pooh,
+123,2,Medium,Movie,The World's End,,
+123,3,Hard,Movie,City Lights,,
+123,4,Hardest,Book,A Connecticut Yankee in King Arthur's Court,,X
+124,1,Easy,Book,Peter Rabbit,The Tale of Peter Rabbit,
+124,2,Medium,Movie,Baby Driver,,
+124,3,Hard,Movie,Modern Times,,
+124,4,Hardest,Book,The Turn of the Screw,,
+125,1,Easy,Book,Curious George,,X
+125,2,Medium,Movie,Kingsman: The Secret Service,Kingsman,
+125,3,Hard,Movie,The Great Dictator,,
+125,4,Hardest,Book,The Portrait of a Lady,,
+126,1,Easy,TV,Rugrats,,
+126,2,Medium,Movie,John Wick,,
+126,3,Hard,Movie,Sherlock Jr.,,X
+126,4,Hardest,Book,The Wings of the Dove,,X
+127,1,Easy,TV,Arthur,,X
+127,2,Medium,Movie,The Bourne Identity,,
+127,3,Hard,Movie,The General,,X
+127,4,Hardest,Book,The Golden Bowl,,X
+128,1,Easy,TV,Blue's Clues,,X
+128,2,Medium,Movie,Mr. & Mrs. Smith,,
+128,3,Hard,Movie,A Trip to the Moon,,X
+128,4,Hardest,Book,Washington Square,,
+129,1,Easy,Movie,The Sound of Music,,
+129,2,Medium,Movie,True Lies,,
+129,3,Hard,Movie,Battleship Potemkin,,X
+129,4,Hardest,Book,Ethan Frome,,X
+130,1,Easy,Movie,Annie,,
+130,2,Medium,Movie,Speed,,
+130,3,Hard,Movie,The Gold Rush,,
+130,4,Hardest,Book,The Age of Innocence,,
+131,1,Easy,Movie,The Parent Trap,,
+131,2,Medium,Movie,Die Hard 2,,X
+131,3,Hard,Movie,Duck Soup,,
+131,4,Hardest,Book,The House of Mirth,,X
+132,1,Easy,Movie,Freaky Friday,,
+132,2,Medium,Movie,Lethal Weapon,,
+132,3,Hard,Movie,It Happened One Night,,X
+132,4,Hardest,Book,Sister Carrie,,X
+133,1,Easy,Movie,National Treasure,,
+133,2,Medium,Movie,Point Break,,
+133,3,Hard,Movie,Mr. Smith Goes to Washington,,
+133,4,Hardest,Book,An American Tragedy,,X
+134,1,Easy,Movie,The Princess Diaries,,
+134,2,Medium,Movie,Top Gun,,
+134,3,Hard,Movie,How Green Was My Valley,,X
+134,4,Hardest,Book,Main Street,,X
+135,1,Easy,Movie,The Karate Kid,,
+135,2,Medium,Movie,Top Gun: Maverick,Maverick,
+135,3,Hard,Movie,Notorious,,X
+135,4,Hardest,Book,Babbitt,,X
+136,1,Easy,Movie,Back to the Future Part II,Back to the Future 2,X
+136,2,Medium,Movie,The Right Stuff,,
+136,3,Hard,Movie,Shadow of a Doubt,,X
+136,4,Hardest,Book,"Winesburg, Ohio",,X
+137,1,Easy,Movie,Ferris Bueller's Day Off,,
+137,2,Medium,Movie,Apollo 13,,
+137,3,Hard,Movie,Strangers on a Train,,
+137,4,Hardest,Book,The Beautiful and Damned,,X
+138,1,Easy,Movie,The Goonies,,
+138,2,Medium,Movie,Gravity,,
+138,3,Hard,Movie,The Third Man,,
+138,4,Hardest,Book,"Go Down, Moses",,X
+139,1,Easy,TV,Modern Family,,
+139,2,Medium,Movie,The Martian,,
+139,3,Hard,Movie,Brief Encounter,,
+139,4,Hardest,Book,The Hamlet,,X
+140,1,Easy,TV,How I Met Your Mother,,
+140,2,Medium,Movie,Interstellar,,
+140,3,Hard,Movie,Kind Hearts and Coronets,,
+140,4,Hardest,Book,A Death in the Family,,X
+141,1,Easy,TV,Seinfeld,,
+141,2,Medium,Movie,Arrival,,
+141,3,Hard,Movie,The Ladykillers,,
+141,4,Hardest,Book,All the King's Men,,X
+142,1,Easy,TV,Cheers,,
+142,2,Medium,Movie,Contact,,X
+142,3,Hard,Movie,Whisky Galore!,,
+142,4,Hardest,Book,The Adventures of Augie March,,X
+143,1,Easy,TV,Frasier,,
+143,2,Medium,Movie,Close Encounters of the Third Kind,,
+143,3,Hard,Movie,Passport to Pimlico,,
+143,4,Hardest,Book,Herzog,,X
+144,1,Easy,TV,The Big Bang Theory,,
+144,2,Medium,Movie,Blade Runner,,
+144,3,Hard,Movie,A Matter of Life and Death,,
+144,4,Hardest,Book,Humboldt's Gift,,X
+145,1,Easy,TV,Brooklyn Nine-Nine,,X
+145,2,Medium,Movie,Blade Runner 2049,,
+145,3,Hard,Movie,Black Narcissus,,X
+145,4,Hardest,Book,Seize the Day,,X
+146,1,Easy,TV,Parks and Recreation,,
+146,2,Medium,Movie,Minority Report,,
+146,3,Hard,Movie,The Red Shoes,,
+146,4,Hardest,Book,"Rabbit, Run",,X
+147,1,Easy,TV,The Fresh Prince of Bel-Air,,
+147,2,Medium,Movie,Ex Machina,,
+147,3,Hard,Movie,A Man for All Seasons,,
+147,4,Hardest,Book,Couples,,X
+148,1,Easy,TV,Full House,,X
+148,2,Medium,Movie,Her,,X
+148,3,Hard,Movie,Becket,,X
+148,4,Hardest,Book,The Centaur,,X
+149,1,Easy,TV,Two and a Half Men,,
+149,2,Medium,Movie,Wall Street,,
+149,3,Hard,Movie,The Lion in Winter,,
+149,4,Hardest,Book,Portnoy's Complaint,,X
+150,1,Easy,TV,Everybody Loves Raymond,,
+150,2,Medium,Movie,The Pursuit of Happyness,,
+150,3,Hard,Movie,Anne of the Thousand Days,,X
+150,4,Hardest,Book,American Pastoral,,
+151,1,Easy,TV,That '70s Show,,X
+151,2,Medium,Movie,Erin Brockovich,,
+151,3,Hard,Movie,Elizabeth,,
+151,4,Hardest,Book,The Human Stain,,X
+152,1,Easy,TV,Malcolm in the Middle,,
+152,2,Medium,Movie,Philadelphia,,
+152,3,Hard,Movie,Shakespeare in Love,,
+152,4,Hardest,Book,"Goodbye, Columbus",,X
+153,1,Easy,TV,iCarly,,X
+153,2,Medium,Movie,Milk,,
+153,3,Hard,Movie,The Madness of King George,,
+153,4,Hardest,Book,Revolutionary Road,,X
+154,1,Easy,TV,Hannah Montana,,
+154,2,Medium,Movie,Brokeback Mountain,,
+154,3,Hard,Movie,The King's Speech,,
+154,4,Hardest,Book,The Hours,,
+155,1,Easy,TV,Wizards of Waverly Place,,X
+155,2,Medium,Movie,Moonlight,,
+155,3,Hard,Movie,Darkest Hour,,
+155,4,Hardest,Book,Specimen Days,,X
+156,1,Easy,TV,Victorious,,X
+156,2,Medium,Movie,Green Book,,
+156,3,Hard,Movie,Victoria & Abdul,,X
+156,4,Hardest,Book,A Home at the End of the World,,X
+157,1,Easy,TV,Drake & Josh,,
+157,2,Medium,Movie,The Help,,
+157,3,Hard,Movie,Mrs. Brown,,
+157,4,Hardest,Book,Cloud Atlas,,X
+158,1,Easy,Book,The Very Hungry Caterpillar,,
+158,2,Medium,Movie,Twelve Years a Slave,12 Years a Slave,
+158,3,Hard,Movie,The Queen,,
+158,4,Hardest,Book,Ghostwritten,,X
+159,1,Easy,Book,Where the Wild Things Are,,
+159,2,Medium,Movie,Selma,,
+159,3,Hard,Movie,Iris,,X
+159,4,Hardest,Book,Number9Dream,,X
+160,1,Easy,Book,The Cat in the Hat,,
+160,2,Medium,Movie,Malcolm X,,
+160,3,Hard,Movie,Diana,,
+160,4,Hardest,Book,The Bone Clocks,,X
+161,1,Easy,Book,Green Eggs and Ham,,
+161,2,Medium,Movie,Do the Right Thing,,X
+161,3,Hard,Movie,Spencer,,X
+161,4,Hardest,Book,A Little Life,,X
+162,1,Easy,Book,Goodnight Moon,,X
+162,2,Medium,Movie,The Green Mile,,
+162,3,Hard,Movie,Jackie,,X
+162,4,Hardest,Book,The People in the Trees,,X
+163,1,Easy,Book,The Gruffalo,,
+163,2,Medium,Movie,A Few Good Men,,
+163,3,Hard,Movie,Lincoln,,
+163,4,Hardest,Book,To Paradise,,X
+164,1,Easy,Book,James and the Giant Peach,,
+164,2,Medium,Movie,12 Angry Men,,
+164,3,Hard,Movie,Frost/Nixon,,
+164,4,Hardest,Book,The Goldfinch,,X
+165,1,Easy,Book,The BFG,,
+165,2,Medium,Movie,Legally Blonde 2,,X
+165,3,Hard,Movie,All the President's Men,,
+165,4,Hardest,Book,The Secret History,,X
+166,1,Easy,Book,Fantastic Mr Fox,,
+166,2,Medium,Movie,The Devil's Advocate,,
+166,3,Hard,Movie,Spotlight,,
+166,4,Hardest,Book,The Little Friend,,X
+167,1,Easy,Book,The Twits,,
+167,2,Medium,TV,The Wire,,
+167,3,Hard,Movie,The Post,,
+167,4,Hardest,Book,Freedom,,X
+168,1,Easy,TV,Home and Away,,
+168,2,Medium,TV,Better Call Saul,,
+168,3,Hard,Movie,"Good Night, and Good Luck",,
+168,4,Hardest,Book,Purity,,X
+169,1,Easy,TV,Neighbours,,
+169,2,Medium,TV,Ozark,,
+169,3,Hard,Movie,Network,,
+169,4,Hardest,Book,Crossroads,,
+170,1,Easy,TV,EastEnders,,
+170,2,Medium,TV,Narcos,,
+170,3,Hard,Movie,Broadcast News,,
+170,4,Hardest,Book,The Marriage Plot,,X
+171,1,Easy,TV,Coronation Street,,
+171,2,Medium,TV,Fargo,,
+171,3,Hard,Movie,Being There,,
+171,4,Hardest,Book,Middlesex,,X
+172,1,Easy,TV,Britain's Got Talent,,
+172,2,Medium,TV,True Detective,,
+172,3,Hard,Movie,The Candidate,,
+172,4,Hardest,Book,The Virgin Suicides,,
+173,1,Easy,TV,The X Factor,,
+173,2,Medium,TV,Mindhunter,,X
+173,3,Hard,Movie,Primary Colors,,
+173,4,Hardest,Book,White Teeth,,X
+174,1,Easy,TV,Strictly Come Dancing,,
+174,2,Medium,TV,Dexter,,
+174,3,Hard,Movie,Wag the Dog,,X
+174,4,Hardest,Book,On Beauty,,X
+175,1,Easy,TV,MasterChef,,
+175,2,Medium,TV,Prison Break,,
+175,3,Hard,Movie,Dr. Strangelove,Doctor Strangelove,
+175,4,Hardest,Book,NW,,X
+176,1,Easy,TV,Deal or No Deal,,
+176,2,Medium,TV,24,Twenty Four,
+176,3,Hard,Movie,Fail Safe,,X
+176,4,Hardest,Book,Swing Time,,X
+177,1,Easy,TV,Who Wants to Be a Millionaire,,
+177,2,Medium,TV,Homeland,,
+177,3,Hard,Movie,The Manchurian Candidate,,
+177,4,Hardest,Book,Saturday,,X
+178,1,Easy,Movie,Home Alone 2: Lost in New York,Home Alone 2,X
+178,2,Medium,TV,The Blacklist,,X
+178,3,Hard,Movie,Seven Days in May,,X
+178,4,Hardest,Book,Enduring Love,,X
+179,1,Easy,Movie,Elf,,
+179,2,Medium,Movie,Sherlock Holmes,,
+179,3,Hard,Movie,Three Days of the Condor,,X
+179,4,Hardest,Book,Amsterdam,,
+180,1,Easy,Movie,The Polar Express,,
+180,2,Medium,TV,Poirot,Agatha Christie's Poirot,
+180,3,Hard,Movie,Marathon Man,,
+180,4,Hardest,Book,The Children Act,,
+181,1,Easy,Movie,Rudolph the Red-Nosed Reindeer,,
+181,2,Medium,TV,Miss Marple,,
+181,3,Hard,Movie,The Parallax View,,X
+181,4,Hardest,Book,Nutshell,,X
+182,1,Easy,Movie,National Lampoon's Christmas Vacation,Christmas Vacation,
+182,2,Medium,TV,"Murder, She Wrote",,
+182,3,Hard,Movie,Klute,,X
+182,4,Hardest,Book,Lessons,,X
+183,1,Easy,Movie,Miracle on 34th Street,,
+183,2,Medium,TV,Columbo,,
+183,3,Hard,Movie,The French Connection,,
+183,4,Hardest,Book,Solar,,X
+184,1,Easy,Movie,It's a Wonderful Life,,
+184,2,Medium,TV,Line of Duty,,
+184,3,Hard,Movie,Serpico,,X
+184,4,Hardest,Movie,Carmen,,X
+185,1,Easy,Movie,White Christmas,,
+185,2,Medium,TV,Broadchurch,,
+185,3,Hard,Movie,Dog Day Afternoon,,
+185,4,Hardest,Movie,The Magic Flute,,
+186,1,Easy,Movie,A Charlie Brown Christmas,,
+186,2,Medium,TV,Happy Valley,,X
+186,3,Hard,Movie,Midnight Cowboy,,
+186,4,Hardest,Movie,La Traviata,,X
+187,1,Easy,Movie,The Grinch,How the Grinch Stole Christmas,
+187,2,Medium,TV,Luther,,
+187,3,Hard,Movie,The Last Picture Show,,
+187,4,Hardest,Movie,Madama Butterfly,,
+188,1,Easy,Movie,Grease 2,,X
+188,2,Medium,TV,Killing Eve,,
+188,3,Hard,Movie,Nashville,,X
+188,4,Hardest,Movie,The Marriage of Figaro,,X
+189,1,Easy,Movie,Dirty Dancing,,
+189,2,Medium,TV,The Bridge,,
+189,3,Hard,Movie,McCabe & Mrs. Miller,,X
+189,4,Hardest,Movie,Tosca,,X
+190,1,Easy,Movie,Footloose,,
+190,2,Medium,TV,Wallander,,
+190,3,Hard,Movie,Days of Heaven,,X
+190,4,Hardest,Movie,Rigoletto,,X
+191,1,Easy,Movie,Mamma Mia!,Mamma Mia,
+191,2,Medium,TV,Midsomer Murders,,
+191,3,Hard,Movie,Badlands,,
+191,4,Hardest,Movie,The Barber of Seville,,
+192,1,Easy,Movie,The Greatest Showman,,
+192,2,Medium,TV,Vera,,X
+192,3,Hard,Movie,Tree of Life,The Tree of Life,X
+192,4,Hardest,Movie,Don Giovanni,,X
+193,1,Easy,Movie,La La Land,,
+193,2,Medium,TV,Endeavour,,
+193,3,Hard,Movie,Phantom Thread,,X
+193,4,Hardest,Movie,Aida,,X
+194,1,Easy,Movie,Singin' in the Rain,,
+194,2,Medium,TV,Call the Midwife,,
+194,3,Hard,Movie,Punch-Drunk Love,,
+194,4,Hardest,Movie,La Bohème,La Boheme,X
+195,1,Easy,Movie,West Side Story,,
+195,2,Medium,TV,Grey's Anatomy,,
+195,3,Hard,Movie,A Prophet,,X
+195,4,Hardest,Movie,Turandot,,X
+196,1,Easy,Movie,Chicago,,
+196,2,Medium,TV,ER,,
+196,3,Hard,Movie,Rust and Bone,,X
+196,4,Hardest,Movie,Swan Lake,,
+197,1,Easy,Movie,Hairspray,,
+197,2,Medium,TV,House,House M.D.,
+197,3,Hard,Movie,Blue Is the Warmest Colour,,X
+197,4,Hardest,Movie,The Nutcracker,,
+198,1,Easy,Movie,The Sandlot,,X
+198,2,Medium,TV,Scrubs,,
+198,3,Hard,Movie,The Artist,,
+198,4,Hardest,Movie,Giselle,,
+199,1,Easy,Movie,Space Jam,,
+199,2,Medium,TV,The Good Doctor,,
+199,3,Hard,Movie,Hugo,,
+199,4,Hardest,Movie,Coppélia,Coppelia,X
+200,1,Easy,Movie,Rocky,,
+200,2,Medium,TV,Chicago Fire,,X
+200,3,Hard,Movie,The Diving Bell and the Butterfly,,X
+200,4,Hardest,Book,Buddenbrooks,,X
+201,1,Easy,Movie,The Fast and the Furious,Fast & Furious,
+201,2,Medium,TV,NCIS,,
+201,3,Hard,Movie,Persepolis,,X
+201,4,Hardest,Book,The Magic Mountain,,X
+202,1,Easy,Movie,Mission: Impossible,Mission Impossible,
+202,2,Medium,TV,CSI,CSI: Crime Scene Investigation,
+202,3,Hard,Movie,Waltz with Bashir,,
+202,4,Hardest,Book,Doctor Faustus,,
+203,1,Easy,Movie,James Bond: Skyfall,Skyfall,
+203,2,Medium,TV,Criminal Minds,,
+203,3,Hard,Movie,A Scanner Darkly,,
+203,4,Hardest,Book,Steppenwolf,,X
+204,1,Easy,Movie,James Bond: Goldfinger,Goldfinger,
+204,2,Medium,TV,Law & Order,,
+204,3,Hard,Movie,Waking Life,,X
+204,4,Hardest,Book,Siddhartha,,X
+205,1,Easy,Movie,Ocean's Eleven,,
+205,2,Medium,TV,Suits,,
+205,3,Hard,Movie,"Synecdoche, New York",,X
+205,4,Hardest,Book,The Glass Bead Game,,X
+206,1,Easy,Movie,The Wolf of Wall Street,,
+206,2,Medium,TV,The Good Wife,,
+206,3,Hard,Movie,I Heart Huckabees,,X
+206,4,Hardest,Book,The Tin Drum,,X
+207,1,Easy,Movie,Pretty Woman,,
+207,2,Medium,TV,How to Get Away with Murder,,
+207,3,Hard,Movie,The Master,,X
+207,4,Hardest,Book,Cat and Mouse,,X
+208,1,Easy,Movie,Notting Hill,,
+208,2,Medium,TV,Boston Legal,,
+208,3,Hard,Movie,Inherent Vice,,X
+208,4,Hardest,Book,Dog Years,,X
+209,1,Easy,Movie,Love Actually,,
+209,2,Medium,TV,Ally McBeal,,
+209,3,Hard,Movie,Under the Skin,,X
+209,4,Hardest,Book,The Book of Disquiet,,X
+210,1,Easy,Movie,Bridget Jones's Diary,Bridget Jones,
+210,2,Medium,TV,Mad Men,,
+210,3,Hard,Movie,Enemy,,X
+210,4,Hardest,Book,Pedro Páramo,Pedro Paramo,X
+211,1,Easy,Movie,27 Dresses,,X
+211,2,Medium,TV,The West Wing,,
+211,3,Hard,Movie,Nightcrawler,,
+211,4,Hardest,Book,The Autumn of the Patriarch,,X
+212,1,Easy,Movie,Mean Girls,,
+212,2,Medium,TV,House of Cards,,
+212,3,Hard,Movie,Drive,,X
+212,4,Hardest,Book,The General in His Labyrinth,,X
+213,1,Easy,Movie,Legally Blonde,,
+213,2,Medium,TV,Veep,,
+213,3,Hard,Movie,Only God Forgives,,X
+213,4,Hardest,Book,Labyrinths,,X
+214,1,Easy,Movie,Clueless,,
+214,2,Medium,TV,Succession,,
+214,3,Hard,Movie,Blue Velvet,,
+214,4,Hardest,Book,Ficciones,,X
+215,1,Easy,Movie,The Devil Wears Prada,,
+215,2,Medium,TV,Billions,,X
+215,3,Hard,Movie,Mulholland Drive,,
+215,4,Hardest,Book,The Aleph,,X
+216,1,Easy,Movie,Bring It On,,X
+216,2,Medium,TV,This Is Us,,X
+216,3,Hard,Movie,Lost Highway,,X
+216,4,Hardest,Book,Hopscotch,,X
+217,1,Easy,Movie,High School Musical,,
+217,2,Medium,TV,Six Feet Under,,X
+217,3,Hard,Movie,Eraserhead,,
+217,4,Hardest,Book,The Savage Detectives,,X
+218,1,Easy,Movie,Camp Rock,,X
+218,2,Medium,TV,The Sopranos,,
+218,3,Hard,Movie,The Elephant Man,,
+218,4,Hardest,Book,2666,,X
+219,1,Easy,Movie,Twilight,,
+219,2,Medium,TV,Boardwalk Empire,,
+219,3,Hard,TV,Twin Peaks,,X
+219,4,Hardest,Book,The Feast of the Goat,,
+220,1,Easy,Movie,Divergent,,
+220,2,Medium,TV,Call My Agent!,,X
+220,3,Hard,Movie,The Fisher King,,
+220,4,Hardest,Book,Conversation in the Cathedral,,
+221,1,Easy,Movie,The Maze Runner,,
+221,2,Medium,TV,Money Heist,La Casa de Papel,X
+221,3,Hard,Movie,Brazil,,
+221,4,Hardest,Book,The Time of the Hero,,X
+222,1,Easy,Movie,Percy Jackson & the Olympians: The Lightning Thief,Percy Jackson,
+222,2,Medium,TV,Dark,,X
+222,3,Hard,Movie,Twelve Monkeys,12 Monkeys,
+222,4,Hardest,Book,Death and the Maiden,,X
+223,1,Easy,Movie,Charlie's Angels,,
+223,2,Medium,TV,Squid Game,,
+223,3,Hard,Movie,Fear and Loathing in Las Vegas,,
+223,4,Hardest,Book,The Idiot,,X
+224,1,Easy,Movie,Now You See Me,,
+224,2,Medium,TV,The Umbrella Academy,,
+224,3,Hard,Movie,Naked Lunch,,
+224,4,Hardest,Book,Demons,,X
+225,1,Easy,Movie,The Purge,,
+225,2,Medium,TV,Wednesday,,X
+225,3,Hard,Movie,The Killing,,X
+225,4,Hardest,Book,Notes from Underground,,X
+226,1,Easy,Movie,Get Out,,X
+226,2,Medium,TV,You,,X
+226,3,Hard,Movie,Paths of Glory,,X
+226,4,Hardest,Book,The Gambler,,X
+227,1,Easy,Movie,A Quiet Place,,X
+227,2,Medium,TV,Big Little Lies,,X
+227,3,Hard,Movie,Lolita,,
+227,4,Hardest,Book,Oblomov,,X
+228,1,Easy,Movie,It,,
+228,2,Medium,TV,Sharp Objects,,X
+228,3,Hard,Movie,Days of Wine and Roses,,X
+228,4,Hardest,Book,A Hero of Our Time,,
+229,1,Easy,Movie,The Conjuring,,X
+229,2,Medium,TV,The Handmaid's Tale,,
+229,3,Hard,Movie,The Apartment,,
+229,4,Hardest,Book,Eugene Onegin,,
+230,1,Easy,Movie,Paranormal Activity,,
+230,2,Medium,TV,Westworld,,
+230,3,Hard,Movie,Sweet Smell of Success,,X
+230,4,Hardest,Book,The Cherry Orchard,,X
+231,1,Easy,Movie,Scream,,
+231,2,Medium,TV,Black Mirror,,
+231,3,Hard,Movie,A Face in the Crowd,,X
+231,4,Hardest,Book,Uncle Vanya,,X
+232,1,Easy,Movie,Halloween,,
+232,2,Medium,TV,The Twilight Zone,,
+232,3,Hard,Movie,The Hustler,,
+232,4,Hardest,Book,Three Sisters,,
+233,1,Easy,Movie,Friday the 13th,,
+233,2,Medium,TV,Doctor Foster,,
+233,3,Hard,Movie,Bullitt,,
+233,4,Hardest,Book,The Seagull,,X
+234,1,Easy,Movie,Nightmare on Elm Street,A Nightmare on Elm Street,
+234,2,Medium,TV,Bodyguard,,X
+234,3,Hard,Movie,The Italian Job,,
+234,4,Hardest,Book,In Search of Lost Time,,X
+235,1,Easy,Movie,Saw,,X
+235,2,Medium,TV,Peep Show,,
+235,3,Hard,Book,Tender Is the Night,,
+235,4,Hardest,Book,Swann's Way,,X
+236,1,Easy,Movie,The Exorcist,,
+236,2,Medium,TV,The Inbetweeners,,
+236,3,Hard,Book,This Side of Paradise,,X
+236,4,Hardest,Book,Journey to the End of the Night,,
+237,1,Easy,Movie,The Sixth Sense,,
+237,2,Medium,TV,Gavin & Stacey,,
+237,3,Hard,Book,The Sun Also Rises,,X
+237,4,Hardest,Book,The Little Prince,,
+238,1,Easy,Movie,Signs,,
+238,2,Medium,TV,Blackadder,,
+238,3,Hard,Book,A Farewell to Arms,,
+238,4,Hardest,Book,The Alchemist,,X
+239,1,Easy,Movie,War of the Worlds,,
+239,2,Medium,TV,Only Fools and Horses,,
+239,3,Hard,Book,For Whom the Bell Tolls,,
+239,4,Hardest,Book,Perfume: The Story of a Murderer,Perfume,X
+240,1,Easy,Movie,Cloverfield,,
+240,2,Medium,TV,Dad's Army,,
+240,3,Hard,Book,The Old Man and the Sea,,
+240,4,Hardest,Book,Suite Française,Suite Francaise,X
+241,1,Easy,Movie,Cast Away,,
+241,2,Medium,TV,Keeping Up Appearances,,X
+241,3,Hard,Book,As I Lay Dying,,X
+241,4,Hardest,Book,The Elegance of the Hedgehog,,X
+242,1,Easy,Movie,The Truman Show,,
+242,2,Medium,TV,'Allo 'Allo!,,
+242,3,Hard,Book,The Sound and the Fury,,X
+242,4,Hardest,Book,All Quiet on the Western Front,,
+243,1,Easy,Movie,Groundhog Day,,
+243,2,Medium,TV,Yes Minister,,
+243,3,Hard,Book,"Absalom, Absalom!",,X
+243,4,Hardest,Book,The Reader,,X
+244,1,Easy,Movie,Home Alone 3,,X
+244,2,Medium,TV,The Good Life,,
+244,3,Hard,Book,East of Eden,,
+244,4,Hardest,Book,Measuring the World,,X
+245,1,Easy,Movie,The Wedding Singer,,
+245,2,Medium,TV,Last of the Summer Wine,,
+245,3,Hard,Book,Of Human Bondage,,X
+245,4,Hardest,Movie,Memento,,
+246,1,Easy,Movie,50 First Dates,,
+246,2,Medium,TV,Are You Being Served?,,
+246,3,Hard,Book,The Remains of the Day,,
+246,4,Hardest,Movie,Primer,,X
+247,1,Easy,Movie,Big,,
+247,2,Medium,TV,Mr. Bean,,
+247,3,Hard,Book,Atonement,,
+247,4,Hardest,Movie,Donnie Darko,,
+248,1,Easy,Movie,Liar Liar,,X
+248,2,Medium,TV,Monty Python's Flying Circus,Monty Python,
+248,3,Hard,Book,On Chesil Beach,,
+248,4,Hardest,Movie,The Butterfly Effect,,X
+249,1,Easy,Movie,Bruce Almighty,,
+249,2,Medium,TV,The Vicar of Dibley,,
+249,3,Hard,Book,The Buried Giant,,X
+249,4,Hardest,Movie,Enter the Void,,
+250,1,Easy,Movie,The Mask,,
+250,2,Medium,TV,Absolutely Fabulous,,
+250,3,Hard,Book,An Artist of the Floating World,,X
+250,4,Hardest,Movie,Irreversible,,X
+251,1,Easy,Movie,Dumb and Dumber,,
+251,2,Medium,TV,Miranda,,
+251,3,Hard,Book,Middlemarch,,
+251,4,Hardest,Movie,The Fountain,,X
+252,1,Easy,Movie,Zoolander,,
+252,2,Medium,TV,Not Going Out,,
+252,3,Hard,Book,The Mill on the Floss,,
+252,4,Hardest,Movie,Melancholia,,
+253,1,Easy,Movie,Anchorman,,
+253,2,Medium,TV,Outnumbered,,
+253,3,Hard,Book,Silas Marner,,
+253,4,Hardest,Movie,Antichrist,,X
+254,1,Easy,Movie,Step Brothers,,X
+254,2,Medium,TV,My Family,,
+254,3,Hard,Book,Tess of the d'Urbervilles,,
+254,4,Hardest,Movie,Nymphomaniac,,X
+255,1,Easy,Movie,Talladega Nights,,
+255,2,Medium,TV,Birds of a Feather,,
+255,3,Hard,Book,Far from the Madding Crowd,,
+255,4,Hardest,Movie,The House That Jack Built,,
+256,1,Easy,Movie,Napoleon Dynamite,,
+256,2,Medium,TV,Will & Grace,,
+256,3,Hard,Book,Jude the Obscure,,
+256,4,Hardest,Movie,Dogville,,
+257,1,Easy,Movie,Superbad,,
+257,2,Medium,TV,3rd Rock from the Sun,,
+257,3,Hard,Book,The Return of the Native,,
+257,4,Hardest,Movie,Breaking the Waves,,
+258,1,Easy,Movie,The Hangover,,
+258,2,Medium,TV,Roseanne,,
+258,3,Hard,Book,North and South,,X
+258,4,Hardest,Movie,Dancer in the Dark,,
+259,1,Easy,Movie,Bridesmaids,,
+259,2,Medium,TV,Married... with Children,,
+259,3,Hard,Book,Cranford,,X
+259,4,Hardest,Movie,Manderlay,,X
+260,1,Easy,Movie,Meet the Parents,,
+260,2,Medium,TV,The Golden Girls,,
+260,3,Hard,Book,Vanity Fair,,
+260,4,Hardest,Movie,Once Upon a Time in America,,
+261,1,Easy,Movie,The Secret Life of Walter Mitty,,
+261,2,Medium,TV,Happy Days,,
+261,3,Hard,Book,Barchester Towers,,X
+261,4,Hardest,Movie,Once Upon a Time in the West,,
+262,1,Easy,Movie,Iron Man 2,,X
+262,2,Medium,TV,Taxi,,
+262,3,Hard,Book,The Warden,,X
+262,4,Hardest,Movie,Heaven's Gate,,
+263,1,Easy,Movie,Iron Man 3,,X
+263,2,Medium,TV,The Cosby Show,,
+263,3,Hard,Book,Bleak House,,
+263,4,Hardest,Movie,The Last Temptation of Christ,,
+264,1,Easy,Movie,Thor: Ragnarok,,X
+264,2,Medium,TV,The Wonder Years,,
+264,3,Hard,Book,Little Dorrit,,
+264,4,Hardest,Movie,Silence,,
+265,1,Easy,Movie,Thor: Love and Thunder,,X
+265,2,Medium,TV,Boy Meets World,,X
+265,3,Hard,Book,David Copperfield,,
+265,4,Hardest,Movie,Kundun,,X
+266,1,Easy,Movie,Guardians of the Galaxy Vol. 2,,X
+266,2,Medium,TV,Saved by the Bell,,X
+266,3,Hard,Book,Oliver Twist,,
+266,4,Hardest,Book,Measure for Measure,,
+267,1,Easy,Movie,Guardians of the Galaxy Vol. 3,,X
+267,2,Medium,TV,Charmed,,
+267,3,Hard,Book,Nicholas Nickleby,,
+267,4,Hardest,Book,All's Well That Ends Well,,
+268,1,Easy,Movie,Avengers: Age of Ultron,,X
+268,2,Medium,TV,Buffy the Vampire Slayer,Buffy,
+268,3,Hard,Book,The Pickwick Papers,,
+268,4,Hardest,Book,Cymbeline,,X
+269,1,Easy,Movie,Avengers: Infinity War,Infinity War,X
+269,2,Medium,TV,Angel,,X
+269,3,Hard,Book,A Tale of Two Cities,,
+269,4,Hardest,Book,"Pericles, Prince of Tyre",Pericles,X
+270,1,Easy,Movie,Captain America: Civil War,Civil War,X
+270,2,Medium,TV,Supernatural,,
+270,3,Hard,Book,Hard Times,,
+270,4,Hardest,Book,Timon of Athens,,X
+271,1,Easy,Movie,Captain America: The Winter Soldier,The Winter Soldier,X
+271,2,Medium,TV,Smallville,,
+271,3,Hard,Book,Our Mutual Friend,,X
+271,4,Hardest,Book,"Henry IV, Part 1",,X
+272,1,Easy,Movie,Ant-Man and the Wasp,,X
+272,2,Medium,TV,Arrow,,X
+272,3,Hard,Book,The Old Curiosity Shop,,
+272,4,Hardest,Book,"Henry IV, Part 2",,X
+273,1,Easy,Movie,Black Widow,,
+273,2,Medium,TV,Gotham,,
+273,3,Hard,Book,Emma,,
+273,4,Hardest,Book,"Henry VI, Part 1",,X
+274,1,Easy,Movie,Eternals,,
+274,2,Medium,TV,Daredevil,,
+274,3,Hard,Book,Sense and Sensibility,,
+274,4,Hardest,Book,Richard II,,X
+275,1,Easy,Movie,Shang-Chi and the Legend of the Ten Rings,Shang-Chi,X
+275,2,Medium,TV,Jessica Jones,,
+275,3,Hard,Book,Mansfield Park,,
+275,4,Hardest,Book,King John,,X
+276,1,Easy,Movie,Spider-Man: Homecoming,,
+276,2,Medium,TV,The Boys,,
+276,3,Hard,Book,Persuasion,,
+276,4,Hardest,Book,Love's Labour's Lost,,
+277,1,Easy,Movie,Spider-Man: Far From Home,,X
+277,2,Medium,TV,Invincible,,X
+277,3,Hard,Book,Northanger Abbey,,
+277,4,Hardest,Book,The Two Gentlemen of Verona,,
+278,1,Easy,Movie,Spider-Man: No Way Home,,X
+278,2,Medium,TV,Watchmen,,
+278,3,Hard,Book,Jane Eyre,,
+278,4,Hardest,Book,The Merry Wives of Windsor,,
+279,1,Easy,Movie,Batman Returns,,X
+279,2,Medium,TV,Chernobyl,,X
+279,3,Hard,Book,Villette,,X
+279,4,Hardest,Book,The Taming of the Shrew,,
+280,1,Easy,Movie,Batman Forever,,X
+280,2,Medium,TV,Band of Brothers,,
+280,3,Hard,Book,The Tenant of Wildfell Hall,,X
+280,4,Hardest,Book,Troilus and Cressida,,X
+281,1,Easy,Movie,Batman & Robin,,
+281,2,Medium,TV,The Pacific,,X
+281,3,Hard,Book,Agnes Grey,,
+281,4,Hardest,Book,Gilgamesh,The Epic of Gilgamesh,X
+282,1,Easy,Movie,X2,X-Men 2,X
+282,2,Medium,TV,Rome,,
+282,3,Hard,Book,Moll Flanders,,
+282,4,Hardest,Book,The Mahabharata,,X
+283,1,Easy,Movie,X-Men: Days of Future Past,,X
+283,2,Medium,TV,Spartacus,,
+283,3,Hard,Book,Tristram Shandy,,X
+283,4,Hardest,Book,The Ramayana,,X
+284,1,Easy,Movie,X-Men: Apocalypse,,X
+284,2,Medium,TV,Vikings,,X
+284,3,Hard,Book,Clarissa,,X
+284,4,Hardest,Book,Njál's Saga,Njals Saga,X
+285,1,Easy,Movie,Logan,,
+285,2,Medium,TV,The Last Kingdom,,
+285,3,Hard,Book,Pamela,,X
+285,4,Hardest,Book,The Kalevala,,X
+286,1,Easy,Movie,Deadpool 2,,X
+286,2,Medium,TV,Outlander,,
+286,3,Hard,Book,Tom Jones,,
+286,4,Hardest,Book,The Bacchae,,X
+287,1,Easy,Movie,The Incredibles 2,Incredibles 2,X
+287,2,Medium,TV,Bridgerton,,
+287,3,Hard,Book,Candide,,X
+287,4,Hardest,Book,Prometheus Bound,,X
+288,1,Easy,Movie,Cars 2,,X
+288,2,Medium,TV,Poldark,,
+288,3,Hard,Book,Don Quixote,,
+288,4,Hardest,Book,Lysistrata,,X
+289,1,Easy,Movie,Cars 3,,X
+289,2,Medium,TV,Victoria,,
+289,3,Hard,Book,The Canterbury Tales,,
+289,4,Hardest,Book,The Frogs,,X
+290,1,Easy,Movie,Monsters University,,
+290,2,Medium,TV,The Tudors,,
+290,3,Hard,Book,Paradise Lost,,
+290,4,Hardest,Book,The Clouds,,X
+291,1,Easy,Movie,Inside Out 2,,X
+291,2,Medium,TV,Wolf Hall,,
+291,3,Hard,Book,The Divine Comedy,Dante's Inferno,
+291,4,Hardest,Book,Electra,,X
+292,1,Easy,Movie,The Good Dinosaur,,
+292,2,Medium,Book,Little Women,,
+292,3,Hard,Book,Beowulf,,
+292,4,Hardest,TV,Roots,,
+293,1,Easy,Movie,Planes,,X
+293,2,Medium,Book,Anne of Green Gables,,
+293,3,Hard,Book,The Odyssey,,
+293,4,Hardest,TV,John Adams,,X
+294,1,Easy,Movie,Ralph Breaks the Internet,,X
+294,2,Medium,Book,Black Beauty,,
+294,3,Hard,Book,The Iliad,,
+294,4,Hardest,TV,Show Me a Hero,,X
+295,1,Easy,Movie,Moana 2,,X
+295,2,Medium,Book,The Secret Garden,,
+295,3,Hard,Book,The Aeneid,,X
+295,4,Hardest,TV,Mrs. America,Mrs America,X
+296,1,Easy,Movie,Lightyear,,
+296,2,Medium,Book,Heidi,,
+296,3,Hard,Book,Metamorphoses,,X
+296,4,Hardest,TV,The Plot Against America,,X
+297,1,Easy,Movie,Raya and the Last Dragon,,X
+297,2,Medium,Book,Swiss Family Robinson,,
+297,3,Hard,Book,Oedipus Rex,,X
+297,4,Hardest,TV,The Night Of,,X
+298,1,Easy,Movie,Strange World,,X
+298,2,Medium,Book,Treasure Island,,
+298,3,Hard,Book,Antigone,,X
+298,4,Hardest,TV,When They See Us,,X
+299,1,Easy,Movie,Migration,,X
+299,2,Medium,Book,Robinson Crusoe,,
+299,3,Hard,Book,Medea,,X
+299,4,Hardest,TV,The Underground Railroad,,
+300,1,Easy,Movie,The Wild Robot,,
+300,2,Medium,Book,Gulliver's Travels,,
+300,3,Hard,Book,The Trial,,X
+300,4,Hardest,TV,Fosse/Verdon,,X
+301,1,Easy,Movie,Star Wars: Attack of the Clones,,X
+301,2,Medium,Book,Around the World in Eighty Days,,
+301,3,Hard,Book,The Metamorphosis,,X
+301,4,Hardest,Book,Things Fall Apart,,X
+302,1,Easy,Movie,Star Wars: Revenge of the Sith,,X
+302,2,Medium,Book,Twenty Thousand Leagues Under the Sea,,
+302,3,Hard,Book,Crime and Punishment,,X
+302,4,Hardest,Book,No Longer at Ease,,X
+303,1,Easy,Movie,Star Wars: The Last Jedi,,X
+303,2,Medium,Book,Journey to the Center of the Earth,,
+303,3,Hard,Book,The Brothers Karamazov,,
+303,4,Hardest,Book,A Grain of Wheat,,X
+304,1,Easy,Movie,Star Wars: The Rise of Skywalker,,X
+304,2,Medium,Book,The Time Machine,,
+304,3,Hard,Book,War and Peace,,
+304,4,Hardest,Book,Petals of Blood,,X
+305,1,Easy,Movie,Rogue One: A Star Wars Story,Rogue One,X
+305,2,Medium,Book,The Invisible Man,,
+305,3,Hard,Book,Anna Karenina,,
+305,4,Hardest,Book,The Famished Road,,X
+306,1,Easy,Movie,Solo: A Star Wars Story,Solo,X
+306,2,Medium,Book,The War of the Worlds,,
+306,3,Hard,Book,One Day in the Life of Ivan Denisovich,,X
+306,4,Hardest,Book,Half of a Yellow Sun,,X
+307,1,Easy,Movie,Ready Player One,,
+307,2,Medium,Book,Dr. Jekyll and Mr. Hyde,Jekyll and Hyde,
+307,3,Hard,Book,The Master and Margarita,,X
+307,4,Hardest,Book,Purple Hibiscus,,
+308,1,Easy,Movie,The Hunger Games: Catching Fire,Catching Fire,X
+308,2,Medium,Book,The Picture of Dorian Gray,,
+308,3,Hard,Book,Dead Souls,,
+308,4,Hardest,Book,Wizard of the Crow,,X
+309,1,Easy,Movie,The Hunger Games: Mockingjay – Part 1,Mockingjay,X
+309,2,Medium,Book,The Importance of Being Earnest,,
+309,3,Hard,Book,Fathers and Sons,,X
+309,4,Hardest,Book,The Kingdom of This World,,X
+310,1,Easy,Movie,The Lost World: Jurassic Park,,X
+310,2,Medium,Book,A Study in Scarlet,,
+310,3,Hard,Book,Madame Bovary,,X
+310,4,Hardest,Book,Explosion in a Cathedral,,X
+311,1,Easy,Movie,Jurassic World: Fallen Kingdom,,X
+311,2,Medium,Book,The Hound of the Baskervilles,,
+311,3,Hard,Book,Les Misérables,Les Miserables,
+311,4,Hardest,Book,Kokoro,,X
+312,1,Easy,Movie,Jurassic World Dominion,,X
+312,2,Medium,Book,Anne Frank: The Diary of a Young Girl,The Diary of a Young Girl,X
+312,3,Hard,Book,The Hunchback of Notre-Dame,The Hunchback of Notre Dame,
+312,4,Hardest,Book,Norwegian Wood,,
+313,1,Easy,Movie,Teenage Mutant Ninja Turtles,,
+313,2,Medium,Book,The Wind in the Willows,,
+313,3,Hard,Book,The Count of Monte Cristo,,
+313,4,Hardest,Book,Kafka on the Shore,,X
+314,1,Easy,TV,Power Rangers,,
+314,2,Medium,Book,Watership Down,,
+314,3,Hard,Book,The Three Musketeers,,
+314,4,Hardest,Book,1984,,
+315,1,Easy,TV,He-Man and the Masters of the Universe,He-Man,X
+315,2,Medium,Book,Animal Farm,,
+315,3,Hard,Book,Cyrano de Bergerac,,
+315,4,Hardest,Book,The Wind-Up Bird Chronicle,,X
+316,1,Easy,TV,My Little Pony: Friendship Is Magic,My Little Pony,X
+316,2,Medium,Book,Brave New World,,
+316,3,Hard,Book,The Phantom of the Opera,,
+316,4,Hardest,Book,Snow Country,,X
+317,1,Easy,TV,Care Bears,,X
+317,2,Medium,Book,Fahrenheit 451,,
+317,3,Hard,Movie,Suspicion,,X
+317,4,Hardest,Book,The Sound of the Mountain,,X
+318,1,Easy,Movie,Barbie,,
+318,2,Medium,Book,Lord of the Flies,,X
+318,3,Hard,Movie,Spellbound,,X
+318,4,Hardest,Book,The Makioka Sisters,,
+319,1,Easy,TV,Pokémon,Pokemon,
+319,2,Medium,Book,Of Mice and Men,,
+319,3,Hard,Movie,Foreign Correspondent,,X
+319,4,Hardest,Book,Confessions of a Mask,,X
+320,1,Easy,TV,Digimon,,X
+320,2,Medium,Book,The Grapes of Wrath,,
+320,3,Hard,Movie,Saboteur,,X
+320,4,Hardest,Book,The Sailor Who Fell from Grace with the Sea,,X
+321,1,Easy,TV,Yu-Gi-Oh!,Yu-Gi-Oh,X
+321,2,Medium,Book,Catch-22,,
+321,3,Hard,Movie,Lifeboat,,X
+321,4,Hardest,Book,Dream of the Red Chamber,,X
+322,1,Easy,TV,Dragon Ball Z,Dragon Ball,X
+322,2,Medium,Book,Slaughterhouse-Five,,X
+322,3,Hard,Movie,The Trouble with Harry,,X
+322,4,Hardest,Book,Journey to the West,,X
+323,1,Easy,TV,Naruto,,X
+323,2,Medium,Book,The Catcher in the Rye,,
+323,3,Hard,Movie,Frenzy,,X
+323,4,Hardest,Book,Romance of the Three Kingdoms,,X
+324,1,Easy,TV,One Piece,,X
+324,2,Medium,Book,On the Road,,
+324,3,Hard,Movie,Family Plot,,X
+324,4,Hardest,Book,Water Margin,,X
+325,1,Easy,TV,My Hero Academia,,X
+325,2,Medium,Book,One Flew Over the Cuckoo's Nest,,
+325,3,Hard,Movie,Marnie,,X
+325,4,Hardest,Book,To Live,,X
+326,1,Easy,Movie,Sonic the Hedgehog,,X
+326,2,Medium,Book,A Clockwork Orange,,
+326,3,Hard,Movie,Torn Curtain,,X
+326,4,Hardest,Book,Red Sorghum,,X
+327,1,Easy,Movie,The Super Mario Bros. Movie,Super Mario Bros,X
+327,2,Medium,Book,Never Let Me Go,,X
+327,3,Hard,Movie,The Rules of the Game,,X
+327,4,Hardest,Book,Wild Swans,,X
+328,1,Easy,Movie,Detective Pikachu,,X
+328,2,Medium,Book,The Kite Runner,,
+328,3,Hard,Movie,Children of Paradise,,X
+328,4,Hardest,Book,Soul Mountain,,X
+329,1,Easy,TV,Love Island,,
+329,2,Medium,Book,Life of Pi,,
+329,3,Hard,Movie,Umberto D.,Umberto D,X
+329,4,Hardest,Book,Train to Pakistan,,X
+330,1,Easy,TV,Big Brother,,
+330,2,Medium,Book,The Book Thief,,X
+330,3,Hard,Movie,Rocco and His Brothers,,X
+330,4,Hardest,Book,The Guide,,X
+331,1,Easy,TV,Survivor,,
+331,2,Medium,Book,The Curious Incident of the Dog in the Night-Time,,X
+331,3,Hard,Movie,The Leopard,,X
+331,4,Hardest,Book,Malgudi Days,,X
+332,1,Easy,TV,The Voice,,
+332,2,Medium,Book,The Perks of Being a Wallflower,,
+332,3,Hard,Movie,Death in Venice,,
+332,4,Hardest,Book,Season of Migration to the North,,X
+333,1,Easy,TV,American Idol,,X
+333,2,Medium,Book,Looking for Alaska,,X
+333,3,Hard,Movie,Blow-Up,,X
+333,4,Hardest,Book,The Cairo Trilogy,,X
+334,1,Easy,TV,RuPaul's Drag Race,,X
+334,2,Medium,Book,Paper Towns,,X
+334,3,Hard,Movie,The Conformist,,X
+334,4,Hardest,Book,Palace Walk,,X
+335,1,Easy,TV,Dancing with the Stars,,
+335,2,Medium,Book,Percy Jackson and the Sea of Monsters,,X
+335,3,Hard,Movie,1900,,X
+335,4,Hardest,Book,Men in the Sun,,X
+336,1,Easy,TV,Come Dine with Me,,
+336,2,Medium,Book,Eragon,,X
+336,3,Hard,Movie,Manchester by the Sea,,
+336,4,Hardest,Book,A Thousand Splendid Suns,,X
+337,1,Easy,TV,First Dates,,X
+337,2,Medium,Book,Artemis Fowl,,X
+337,3,Hard,Movie,Call Me by Your Name,,X
+337,4,Hardest,Book,Reading Lolita in Tehran,,X
+338,1,Easy,TV,The Apprentice,,
+338,2,Medium,Book,A Series of Unfortunate Events,,X
+338,3,Hard,Movie,Lady Bird,,X
+338,4,Hardest,Movie,Norma,,X
+339,1,Easy,TV,Dragons' Den,,
+339,2,Medium,Book,"The Chronicles of Narnia: The Lion, the Witch and the Wardrobe","The Lion, the Witch and the Wardrobe;Narnia",
+339,3,Hard,Movie,"Three Billboards Outside Ebbing, Missouri",Three Billboards,
+339,4,Hardest,Movie,Falstaff,,X
+340,1,Easy,TV,Shark Tank,,X
+340,2,Medium,Book,Prince Caspian,,
+340,3,Hard,Movie,BlacKkKlansman,,X
+340,4,Hardest,Movie,Nabucco,,X
+341,1,Easy,Book,Diary of a Wimpy Kid,,
+341,2,Medium,Book,The Golden Compass,Northern Lights,
+341,3,Hard,Movie,Nomadland,,
+341,4,Hardest,Movie,Il Trovatore,,
+342,1,Easy,Book,Captain Underpants,,
+342,2,Medium,Book,Stardust,,X
+342,3,Hard,Movie,Sound of Metal,,X
+342,4,Hardest,Movie,Cavalleria Rusticana,,X
+343,1,Easy,Book,The Magic Faraway Tree,,X
+343,2,Medium,Book,American Gods,,X
+343,3,Hard,Movie,Minari,,X
+343,4,Hardest,Movie,Pagliacci,,
+344,1,Easy,Book,Horrid Henry,,
+344,2,Medium,Book,Good Omens,,
+344,3,Hard,Movie,CODA,,X
+344,4,Hardest,Movie,Fidelio,,X
+345,1,Easy,Book,Mr. Men,,X
+345,2,Medium,Book,The Graveyard Book,,X
+345,3,Hard,Movie,The Power of the Dog,,X
+345,4,Hardest,Movie,Lohengrin,,X
+346,1,Easy,Book,The Famous Five,,
+346,2,Medium,Book,His Dark Materials,,
+346,3,Hard,Movie,Belfast,,
+346,4,Hardest,Movie,Tannhäuser,Tannhauser,X
+347,1,Easy,Book,The Secret Seven,,
+347,2,Medium,Book,The Wheel of Time,,X
+347,3,Hard,Movie,Drive My Car,,X
+347,4,Hardest,Movie,Tristan und Isolde,,X
+348,1,Easy,Book,Malory Towers,,X
+348,2,Medium,Book,Mistborn,,X
+348,3,Hard,Movie,Tár,Tar,X
+348,4,Hardest,Movie,La Sylphide,,X
+349,1,Easy,Book,The Worst Witch,,X
+349,2,Medium,Book,The Name of the Wind,,X
+349,3,Hard,Movie,Everything Everywhere All at Once,,
+349,4,Hardest,Movie,Petrushka,,X
+350,1,Easy,Book,Goosebumps,,X
+350,2,Medium,Book,A Song of Ice and Fire,,X
+350,3,Hard,Movie,The Whale,,X
+350,4,Hardest,Movie,The Rite of Spring,,X
+351,1,Easy,Movie,Alvin and the Chipmunks,,
+351,2,Medium,Book,The Silmarillion,,X
+351,3,Hard,Movie,Women Talking,,X
+351,4,Hardest,Movie,The Firebird,,X
+352,1,Easy,Movie,Paddington,,
+352,2,Medium,Book,The Fellowship of the Ring,,X
+352,3,Hard,Movie,Past Lives,,X
+352,4,Hardest,Book,Hunger,,X
+353,1,Easy,Movie,Paddington 2,,X
+353,2,Medium,Book,The Two Towers,,
+353,3,Hard,Movie,Anatomy of a Fall,,X
+353,4,Hardest,Book,Growth of the Soil,,X
+354,1,Easy,Movie,Wonka,,
+354,2,Medium,Book,The Return of the King,,
+354,3,Hard,Movie,The Zone of Interest,,X
+354,4,Hardest,Book,Kristin Lavransdatter,,X
+355,1,Easy,Movie,Enchanted,,
+355,2,Medium,TV,The Americans,,X
+355,3,Hard,Movie,Poor Things,,X
+355,4,Hardest,Book,The Ice Palace,,X
+356,1,Easy,Movie,Maleficent,,
+356,2,Medium,TV,Better Things,,X
+356,3,Hard,Movie,American Fiction,,X
+356,4,Hardest,Book,Smilla's Sense of Snow,,X
+357,1,Easy,Movie,Cruella,,
+357,2,Medium,TV,Atlanta,,X
+357,3,Hard,Movie,Oppenheimer,,
+357,4,Hardest,Book,Independent People,,X
+358,1,Easy,Movie,Jungle Cruise,,X
+358,2,Medium,TV,Barry,,X
+358,3,Hard,Movie,Killers of the Flower Moon,,
+358,4,Hardest,Book,The Good Soldier Švejk,The Good Soldier Svejk,X
+359,1,Easy,Movie,Pete's Dragon,,
+359,2,Medium,TV,Ted Lasso,,
+359,3,Hard,Movie,Terms of Endearment,,
+359,4,Hardest,Book,Too Loud a Solitude,,X
+360,1,Easy,Movie,Christopher Robin,,
+360,2,Medium,TV,Yellowstone,,
+360,3,Hard,Movie,Steel Magnolias,,
+360,4,Hardest,Book,I Served the King of England,,X
+361,1,Easy,Movie,Dolittle,,
+361,2,Medium,TV,1883,,X
+361,3,Hard,Movie,Beaches,,X
+361,4,Hardest,Book,The Golden Ass,,X
+362,1,Easy,Movie,Jingle All the Way,,X
+362,2,Medium,TV,1923,,X
+362,3,Hard,Movie,The Prince of Tides,,
+362,4,Hardest,Book,Satyricon,,X
+363,1,Easy,Movie,The Santa Clause,,
+363,2,Medium,TV,The Last of Us,,X
+363,3,Hard,Movie,Fried Green Tomatoes,,
+363,4,Hardest,Book,The Grass Is Singing,,X
+364,1,Easy,Movie,Arthur Christmas,,X
+364,2,Medium,TV,Shogun,,
+364,3,Hard,Movie,Doubt,,X
+364,4,Hardest,Book,The Radetzky March,,X
+365,1,Easy,Movie,Klaus,,
+365,2,Medium,TV,The White Lotus,,
+365,3,Hard,Movie,August: Osage County,,X
+365,4,Hardest,Book,Job: The Story of a Simple Man,Job,X
+366,1,Easy,Movie,Fred Claus,,X
+366,2,Medium,TV,Euphoria,,X
+366,3,Hard,Movie,Nebraska,,X
+366,4,Hardest,Book,The Emigrants,,X
+367,1,Easy,Movie,Jumanji: Welcome to the Jungle,,X
+367,2,Medium,TV,Industry,,
+367,3,Hard,Movie,The Descendants,,
+367,4,Hardest,Book,Austerlitz,,X
+368,1,Easy,Movie,School of Rock,,
+368,2,Medium,Movie,Jerry Maguire,,
+368,3,Hard,Book,A Passage to India,,
+368,4,Hardest,Book,The Rings of Saturn,,X
+369,1,Easy,Movie,Ella Enchanted,,X
+369,2,Medium,Movie,As Good as It Gets,,X
+369,3,Hard,Book,Howards End,,
+369,4,Hardest,Book,Berlin Alexanderplatz,,X
+370,1,Easy,Movie,Nanny McPhee,,
+370,2,Medium,Movie,When Harry Met Sally...,When Harry Met Sally,
+370,3,Hard,Book,A Room with a View,,
+370,4,Hardest,TV,Heimat,,X
+371,1,Easy,Movie,Stuart Little,,
+371,2,Medium,Movie,Sleepless in Seattle,,
+371,3,Hard,Book,Where Angels Fear to Tread,,
+371,4,Hardest,Movie,The Best of Youth,,X
+372,1,Easy,Movie,Because of Winn-Dixie,,X
+372,2,Medium,Movie,You've Got Mail,,
+372,3,Hard,Movie,Reds,,
+372,4,Hardest,Movie,Scenes from a Marriage,,X
+373,1,Easy,Movie,Flipper,,
+373,2,Medium,Movie,My Best Friend's Wedding,,
+373,3,Hard,Movie,Gandhi,,
+373,4,Hardest,Movie,Fanny and Alexander,,X
+374,1,Easy,Movie,Free Willy,,
+374,2,Medium,Movie,The Proposal,,
+374,3,Hard,Movie,Chariots of Fire,,
+374,4,Hardest,Movie,The Mirror,,X
+375,1,Easy,Movie,Homeward Bound: The Incredible Journey,Homeward Bound,X
+375,2,Medium,Movie,"Crazy, Stupid, Love.",Crazy Stupid Love,
+375,3,Hard,Movie,The Killing Fields,,
+375,4,Hardest,Movie,Andrei Rublev,,X
+376,1,Easy,Movie,Beethoven,,
+376,2,Medium,Movie,The Holiday,,
+376,3,Hard,Movie,Places in the Heart,,X
+376,4,Hardest,Movie,Ivan's Childhood,,X
+377,1,Easy,Movie,Air Bud,,X
+377,2,Medium,Movie,Sweet Home Alabama,,
+377,3,Hard,Movie,Tender Mercies,,X
+377,4,Hardest,Movie,Nostalghia,,X
+378,1,Easy,Movie,Lassie,,
+378,2,Medium,Movie,How to Lose a Guy in 10 Days,,X
+378,3,Hard,Movie,The Trip to Bountiful,,X
+378,4,Hardest,Movie,The Sacrifice,,X
+379,1,Easy,Movie,Babe,,
+379,2,Medium,Movie,13 Going on 30,,X
+379,3,Hard,Movie,Driving Miss Daisy,,
+379,4,Hardest,Movie,Last Year at Marienbad,,X
+380,1,Easy,Movie,Chicken Little,,
+380,2,Medium,Movie,Failure to Launch,,X
+380,3,Hard,Movie,Dances with Wolves,,
+380,4,Hardest,Movie,Hiroshima Mon Amour,,X
+381,1,Easy,Movie,The Wild,,X
+381,2,Medium,Movie,Just Go with It,,X
+381,3,Hard,Movie,Crash,,X
+381,4,Hardest,Movie,La Jetée,La Jetee,X
+382,1,Easy,Movie,Open Season,,X
+382,2,Medium,Movie,Two Weeks Notice,,X
+382,3,Hard,Movie,Birdman,,
+382,4,Hardest,Movie,Weekend,,X
+383,1,Easy,Movie,Surf's Up,,X
+383,2,Medium,Movie,We Were Soldiers,,X
+383,3,Hard,Movie,Out of the Past,,X
+383,4,Hardest,Movie,Pierrot le Fou,,X
+384,1,Easy,Movie,Happy Feet,,
+384,2,Medium,Movie,Flags of Our Fathers,,X
+384,3,Hard,Movie,Detour,,X
+384,4,Hardest,Movie,Vivre Sa Vie,,X
+385,1,Easy,Movie,Barnyard,,
+385,2,Medium,Movie,Letters from Iwo Jima,,
+385,3,Hard,Movie,The Killers,,X
+385,4,Hardest,Movie,Contempt,,X
+386,1,Easy,Movie,Over the Hedge,,
+386,2,Medium,Movie,The Hurt Locker,,
+386,3,Hard,Movie,Gun Crazy,,X
+386,4,Hardest,Movie,Band of Outsiders,,X
+387,1,Easy,Movie,Shrek Forever After,,X
+387,2,Medium,Movie,Lone Survivor,,X
+387,3,Hard,Movie,The Big Combo,,X
+387,4,Hardest,Movie,Cries and Whispers,,X
+388,1,Easy,Movie,Shrek the Third,,X
+388,2,Medium,Movie,13 Hours,,X
+388,3,Hard,Movie,Kiss Me Deadly,,X
+388,4,Hardest,Movie,Autumn Sonata,,X
+389,1,Easy,Movie,Puss in Boots: The Last Wish,,X
+389,2,Medium,Movie,Midway,,X
+389,3,Hard,Movie,In a Lonely Place,,X
+389,4,Hardest,Movie,Through a Glass Darkly,,X
+390,1,Easy,Movie,Trolls World Tour,,X
+390,2,Medium,Movie,Fury,,
+390,3,Hard,Movie,The Postman Always Rings Twice,,
+390,4,Hardest,Movie,Winter Light,,X
+391,1,Easy,Movie,Trolls Band Together,,X
+391,2,Medium,Movie,Enemy at the Gates,,X
+391,3,Hard,Movie,Body Heat,,X
+391,4,Hardest,Movie,The Silence,,X
+392,1,Easy,Movie,Uncharted,,X
+392,2,Medium,Movie,The Monuments Men,,
+392,3,Hard,Movie,Gosford Park,,
+392,4,Hardest,Movie,Saraband,,X
+393,1,Easy,Movie,Tomb Raider,,
+393,2,Medium,Movie,Edge of Tomorrow,,
+393,3,Hard,Movie,Brideshead Revisited,,
+393,4,Hardest,Book,The Death of Ivan Ilyich,,X
+394,1,Easy,Movie,Mortal Kombat,,
+394,2,Medium,Movie,Oblivion,,
+394,3,Hard,Movie,Tinker Tailor Soldier Spy,,
+394,4,Hardest,Book,Resurrection,,X
+395,1,Easy,Movie,Resident Evil,,X
+395,2,Medium,Movie,Elysium,,X
+395,3,Hard,Movie,The Constant Gardener,,X
+395,4,Hardest,Book,"Childhood, Boyhood, Youth",,X
+396,1,Easy,Movie,Five Nights at Freddy's,,X
+396,2,Medium,Movie,District 9,,X
+396,3,Hard,Movie,A Bridge Too Far,,
+396,4,Hardest,Book,Poor Folk,,X
+397,1,Easy,Movie,A Minecraft Movie,,X
+397,2,Medium,Movie,Chappie,,X
+397,3,Hard,Movie,Patton,,X
+397,4,Hardest,Book,The Double,,X
+398,1,Easy,TV,Home Improvement,,
+398,2,Medium,Movie,"I, Robot",I Robot,X
+398,3,Hard,Movie,MacArthur,,X
+398,4,Hardest,Book,White Nights,,X
+399,1,Easy,TV,8 Simple Rules,,
+399,2,Medium,Movie,I Am Legend,,
+399,3,Hard,Movie,Tora! Tora! Tora!,,X
+399,4,Hardest,Book,Oresteia,,X
+400,1,Easy,TV,George Lopez,,X
+400,2,Medium,Movie,Passengers,,X
+400,3,Hard,Movie,The Longest Day,,
+400,4,Hardest,Book,Agamemnon,,X

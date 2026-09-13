@@ -1,0 +1,400 @@
+Category,Title,Alternates,Reject (X)
+Movie,Dune,,
+Movie,Dune: Part Two,Dune Part Two,X
+Movie,Wicked,,
+Movie,Twisters,,
+Movie,Godzilla Minus One,,X
+Movie,Challengers,,X
+Movie,Anyone But You,,
+Movie,A Quiet Place: Day One,A Quiet Place Day One,X
+Movie,Alien: Romulus,Alien Romulus,X
+Movie,Longlegs,,X
+Movie,Beetlejuice Beetlejuice,,X
+Movie,Terrifier,,X
+Movie,Smile,,X
+Movie,Talk to Me,,X
+Movie,M3GAN,,X
+Movie,Planet of the Apes,,
+Movie,Rise of the Planet of the Apes,,X
+Movie,Dawn of the Planet of the Apes,,X
+Movie,War for the Planet of the Apes,,X
+Movie,Kingdom of the Planet of the Apes,,X
+Movie,Total Recall,,
+Movie,RoboCop,,
+Movie,Predator,,
+Movie,The Thing,,
+Movie,They Live,,X
+Movie,Escape from New York,,
+Movie,Big Trouble in Little China,,
+Movie,Van Helsing,,
+Movie,The Mummy Returns,,X
+Movie,The Twilight Saga: New Moon,New Moon,X
+Movie,The Twilight Saga: Eclipse,Eclipse,X
+Movie,The Twilight Saga: Breaking Dawn – Part 1,Breaking Dawn Part 1,X
+Movie,The Twilight Saga: Breaking Dawn – Part 2,Breaking Dawn Part 2,X
+Movie,The Green Hornet,,
+Movie,300: Rise of an Empire,,X
+Movie,Kick-Ass,Kick Ass,X
+Movie,Scott Pilgrim vs. the World,Scott Pilgrim,X
+Movie,Ready or Not,,X
+Movie,Bodies Bodies Bodies,,X
+Movie,The Menu,,X
+Movie,Barbarian,,X
+Movie,Nope,,X
+Movie,Don't Breathe,Dont Breathe,X
+Movie,Uncut Gems,,X
+Movie,Good Time,,X
+Movie,Marriage Story,,X
+Movie,Booksmart,,X
+Movie,Blockers,,X
+Movie,Good Boys,,X
+Movie,Eighth Grade,,X
+TV,The Walking Dead,,
+TV,House of the Dragon,,
+TV,The Rings of Power,The Lord of the Rings: The Rings of Power,X
+TV,Severance,,X
+TV,The Bear,,
+TV,Poker Face,,X
+TV,Yellowjackets,,X
+TV,Cobra Kai,,X
+TV,Emily in Paris,,
+TV,Outer Banks,,X
+TV,Never Have I Ever,,X
+TV,Sex Education,,X
+TV,Heartstopper,,X
+TV,Derry Girls,,
+TV,Fleabag,,
+TV,Baby Reindeer,,
+TV,Adolescence,,
+TV,One Day,,X
+TV,The Diplomat,,
+TV,Beef,,X
+TV,Foundation,,X
+TV,Silo,,X
+TV,Star Trek: The Next Generation,Star Trek TNG,X
+TV,Star Trek: Voyager,,X
+TV,Star Trek: Deep Space Nine,,X
+TV,Battlestar Galactica,,X
+TV,Firefly,,X
+TV,The X-Files,,
+TV,Lost,,
+TV,Alias,,X
+TV,Fringe,,X
+TV,Person of Interest,,X
+TV,Elementary,,
+TV,Monk,,
+TV,Psych,,X
+TV,White Collar,,X
+TV,Burn Notice,,X
+TV,Chuck,,X
+TV,Curb Your Enthusiasm,,
+TV,It's Always Sunny in Philadelphia,,X
+TV,30 Rock,,X
+TV,Arrested Development,,X
+TV,Reno 911!,Reno 911,X
+TV,The League,,X
+TV,Broad City,,X
+TV,Insecure,,X
+TV,Master of None,,X
+TV,What We Do in the Shadows,,
+TV,Silicon Valley,,X
+TV,The Marvelous Mrs. Maisel,The Marvelous Mrs Maisel,X
+TV,Transparent,,X
+TV,Orange Is the New Black,,
+TV,Unbreakable Kimmy Schmidt,,X
+TV,Grace and Frankie,,X
+TV,Dead to Me,,X
+TV,Russian Doll,,X
+Book,Becoming,,X
+Book,Sapiens,,
+Book,Long Walk to Freedom,,
+Book,The Girl with All the Gifts,,X
+Book,Gone Baby Gone,,X
+Book,Mystic River,,
+Book,Station Eleven,,X
+Book,Project Hail Mary,,X
+Book,Artemis,,X
+Book,Recursion,,X
+Book,Dark Matter,,X
+Book,Dark Places,,X
+Book,The Lovely Bones,,X
+Book,Room,,X
+Book,We Need to Talk About Kevin,,
+Book,Water for Elephants,,
+Book,The Bridges of Madison County,,
+Book,Into Thin Air,,X
+Book,Unbroken,,X
+Book,Circe,,X
+Book,The Song of Achilles,,X
+Book,Piranesi,,X
+Book,The Night Circus,,X
+Book,The Ocean at the End of the Lane,,X
+Book,Neverwhere,,X
+Book,The Martian Chronicles,,X
+Book,Ender's Game,Enders Game,X
+Book,The Hitchhiker's Guide to the Galaxy,Hitchhiker's Guide to the Galaxy,
+Movie,Sister Act,,
+Movie,Moulin Rouge!,Moulin Rouge,
+Movie,Rent,,X
+Movie,Cats,,
+Movie,In the Heights,,X
+Movie,"Tick, Tick... Boom!",Tick Tick Boom,X
+Movie,Dreamgirls,,X
+Movie,Jersey Boys,,X
+Movie,Sweeney Todd: The Demon Barber of Fleet Street,Sweeney Todd,X
+Movie,Into the Woods,,X
+Movie,Pitch Perfect,,
+Movie,Pitch Perfect 2,,X
+Movie,Step Up,,X
+Movie,You Got Served,,X
+Movie,Honey,,X
+Movie,Save the Last Dance,,X
+Movie,Center Stage,,X
+Movie,42,,X
+Movie,Ali,,X
+Movie,The Fighter,,
+Movie,Cinderella Man,,X
+Movie,Bull Durham,,
+Movie,Major League,,X
+Movie,The Natural,,
+Movie,Hoosiers,,X
+Movie,Friday Night Lights,,X
+Movie,We Are Marshall,,X
+Movie,Air,,X
+Movie,Ford v Ferrari,,
+Movie,Rush,,
+Movie,The Poseidon Adventure,,
+Movie,The Towering Inferno,,
+Movie,Twister,,
+Movie,Deep Impact,,
+Movie,Armageddon,,
+Movie,Dante's Peak,Dantes Peak,X
+Movie,Volcano,,X
+Movie,San Andreas,,X
+Movie,2012,,X
+Movie,The Day After Tomorrow,,
+Movie,Contagion,,
+Movie,Outbreak,,
+Movie,28 Weeks Later,,
+Movie,The Happening,,X
+Movie,A Quiet Place Part II,A Quiet Place Part 2,X
+Movie,Bird Box,,X
+Movie,Don't Look Up,Dont Look Up,
+TV,Vikings: Valhalla,Vikings Valhalla,X
+TV,The Witcher,,
+TV,Shadow and Bone,,X
+TV,Wheel of Time,The Wheel of Time,X
+TV,American Horror Story,,X
+TV,The Haunting of Hill House,,X
+TV,The Haunting of Bly Manor,,X
+TV,Midnight Mass,,X
+TV,Archive 81,,X
+TV,Making a Murderer,,X
+TV,Tiger King,,X
+TV,The Jinx,,X
+TV,Wild Wild Country,,X
+TV,Don't F**k with Cats,Dont Fk with Cats,X
+TV,American Crime Story,,X
+TV,Genius,,X
+TV,Silent Witness,,
+TV,Waking the Dead,,X
+TV,New Tricks,,X
+TV,Cracker,,
+TV,Prime Suspect,,
+TV,Taggart,,X
+TV,Sanditon,,X
+TV,Belgravia,,X
+TV,World on Fire,,X
+Book,The Book of Lost Things,,X
+Book,The Shadow of the Wind,,X
+Book,The Historian,,X
+Book,The Passage,,X
+Book,Wool,,X
+Book,Annihilation,,X
+Book,Leviathan Wakes,,X
+Book,Old Man's War,Old Mans War,X
+Book,Redshirts,,X
+Book,The Left Hand of Darkness,,X
+Book,A Wizard of Earthsea,,X
+Book,White Fang,,
+Book,The Call of the Wild,,
+Book,The Trumpet of the Swan,,X
+Book,Old Yeller,,X
+Book,Where the Red Fern Grows,,X
+Book,The Yearling,,X
+Book,National Velvet,,X
+Book,Misty of Chincoteague,,X
+Book,The Black Stallion,,X
+Movie,Your Name,,X
+Movie,Weathering with You,Weathering With You,X
+Movie,Suzume,,X
+Movie,A Silent Voice,,X
+TV,Demon Slayer: Kimetsu no Yaiba,Demon Slayer,X
+TV,Attack on Titan,,X
+TV,Death Note,,X
+TV,Fullmetal Alchemist: Brotherhood,Fullmetal Alchemist,X
+TV,Cowboy Bebop,,X
+TV,Neon Genesis Evangelion,Evangelion,X
+TV,Sailor Moon,,X
+TV,Hunter x Hunter,,X
+TV,Jujutsu Kaisen,,X
+TV,Spy x Family,,X
+TV,Chainsaw Man,,X
+TV,One Punch Man,,X
+Movie,Four Christmases,,X
+Movie,The Family Stone,,X
+Movie,Love the Coopers,,X
+Movie,Deck the Halls,,X
+Movie,Christmas with the Kranks,,X
+Movie,Surviving Christmas,,X
+Movie,The Family Man,,X
+Movie,While You Were Sleeping,,
+Movie,The Age of Adaline,,X
+Movie,About a Boy,,
+Movie,High Fidelity,,
+Movie,Sliding Doors,,
+Movie,Four Weddings and a Funeral,,
+Movie,The Usual Suspects,,
+Movie,Logan Lucky,,X
+Movie,Den of Thieves,,X
+Movie,Triple 9,,X
+Movie,American Animals,,X
+Movie,The Bank Job,,X
+Movie,Inside Job,,X
+Movie,Focus,,X
+TV,The Last Dance,,X
+TV,OJ: Made in America,O.J.: Made in America,X
+TV,Planet Earth,,
+TV,Blue Planet,,
+TV,Our Planet,,X
+TV,Cosmos,,X
+Movie,Ben-Hur,Ben Hur,
+Movie,The Ten Commandments,,
+Movie,Cleopatra,,
+Movie,Funny Girl,,
+Movie,Oliver!,Oliver,
+Movie,Mary Poppins Returns,,
+Movie,The Aristocats,,
+Movie,Lady and the Tramp,,
+Movie,Fantasia,,
+Book,The Girl Before,,X
+Book,The Wife,,X
+Book,The Perfect Marriage,,X
+Book,The Golden Couple,,X
+Book,The Last Flight,,X
+Book,Malibu Rising,,X
+Book,Daisy Jones & The Six,Daisy Jones and the Six,X
+Book,The Seven Husbands of Evelyn Hugo,,X
+Book,One True Loves,,X
+Book,Maybe in Another Life,,X
+Book,It Happened One Summer,,X
+Book,Book Lovers,,X
+Book,People We Meet on Vacation,,X
+Book,Beach Read,,X
+Book,The Hating Game,,X
+Book,"Red, White & Royal Blue",Red White and Royal Blue,X
+Book,Funny Story,,X
+Book,Happy Place,,X
+Movie,The Revenant,,
+Movie,Wind River,,X
+Movie,Hell or High Water,,X
+Movie,Wind Talkers,Windtalkers,X
+Movie,Jarhead,,X
+Movie,Three Kings,,X
+Movie,Vice,,X
+Movie,Concussion,,X
+Movie,Joy,,
+Movie,The Aviator,,X
+Movie,Tucker: The Man and His Dream,Tucker,X
+Movie,Flight,,X
+Movie,Sully,,
+Movie,Captain Phillips,,
+Movie,Deepwater Horizon,,X
+Movie,Patriots Day,,X
+Movie,World Trade Center,,X
+Movie,United 93,,X
+Movie,12 Strong,,X
+Movie,Green Zone,,X
+Movie,The Kingdom,,X
+Movie,Rendition,,X
+Movie,Lions for Lambs,,X
+Movie,In the Valley of Elah,,X
+Movie,Stop-Loss,Stop Loss,X
+Movie,The Messenger,,X
+Movie,Brothers,,X
+Movie,Taking Chance,,X
+TV,Manifest,,X
+TV,Station 19,,X
+TV,09/01/2001,911,X
+TV,Chicago Med,,X
+TV,Chicago P.D.,Chicago PD,X
+TV,The Rookie,,X
+TV,S.W.A.T.,SWAT,X
+TV,FBI,,X
+TV,Blue Bloods,,X
+TV,NCIS: Los Angeles,NCIS Los Angeles,X
+TV,Hawaii Five-0,Hawaii Five-O,
+TV,Magnum P.I.,Magnum PI,
+TV,MacGyver,,
+TV,Quantum Leap,,
+TV,The A-Team,The A Team,
+TV,Knight Rider,,
+TV,Baywatch,,
+TV,Melrose Place,,
+TV,"Beverly Hills, 90210",Beverly Hills 90210,X
+TV,Dawson's Creek,Dawsons Creek,X
+TV,One Tree Hill,,X
+TV,Gossip Girl,,
+TV,Pretty Little Liars,,X
+TV,Riverdale,,X
+TV,13 Reasons Why,Thirteen Reasons Why,X
+TV,Skins,,X
+TV,Misfits,,X
+TV,Shameless,,X
+TV,Queer as Folk,,X
+TV,The L Word,,X
+TV,Pose,,X
+TV,Avatar: The Last Airbender,Avatar The Last Airbender,X
+TV,The Legend of Korra,,X
+TV,Adventure Time,,X
+TV,Regular Show,,X
+TV,Gravity Falls,,X
+TV,Steven Universe,,X
+TV,Rick and Morty,,X
+TV,Bob's Burgers,Bobs Burgers,X
+TV,Family Guy,,
+TV,American Dad!,American Dad,
+TV,King of the Hill,,
+TV,South Park,,
+TV,Futurama,,
+TV,Phineas and Ferb,,X
+TV,Kim Possible,,X
+TV,Danny Phantom,,X
+TV,Jimmy Neutron,,X
+TV,The Fairly OddParents,Fairly OddParents,X
+TV,Teen Titans,,X
+TV,Ben 10,,X
+TV,Total Drama Island,,X
+TV,Codename: Kids Next Door,Kids Next Door,X
+TV,"Ed, Edd n Eddy",Ed Edd n Eddy,X
+TV,Courage the Cowardly Dog,,X
+TV,Dexter's Laboratory,Dexters Laboratory,X
+TV,The Grim Adventures of Billy & Mandy,Billy and Mandy,X
+TV,Foster's Home for Imaginary Friends,Fosters Home for Imaginary Friends,X
+Book,The Thorn Birds,,
+Book,Peyton Place,,
+Book,Valley of the Dolls,,
+Book,Flowers in the Attic,,X
+Book,Interview with the Vampire,,
+Book,The Vampire Lestat,,X
+Book,Dead Until Dark,,X
+Book,The Vampire Diaries,,X
+Book,Practical Magic,,X
+Movie,The Craft,,X
+Movie,Hocus Pocus,,X
+Book,Anansi Boys,,X
+Book,The Sandman,,X
+Book,V for Vendetta,,X
+Book,Maus,,X
+Book,Fun Home,,X
+Book,Ghost World,,X

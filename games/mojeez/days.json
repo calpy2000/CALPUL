@@ -3439,5 +3439,338 @@
         "explain": "🔴 the red robes the handmaids are forced to wear, 👒 their white bonnets, 🤰 the forced pregnancies at the regime's core, 👁️ 'Under His Eye' — the surveillance greeting spoken throughout, 🚫📚 women being banned from reading, one of the regime's cruellest rules."
       }
     ]
+  },
+  {
+    "day": 311,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Casino Royale",
+        "emoji": "🎰🎲👑",
+        "explain": "🎰🎲 Casino, 👑 Royale."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Song",
+        "title": "Diamonds Are a Girl's Best Friend",
+        "emoji": "💎💎👧🤝",
+        "explain": "💎💎 Diamonds, 👧 a Girl's, 🤝 Best Friend."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Dr No",
+        "emoji": "👨🏻‍⚕️👎🏻🔫",
+        "explain": "👨🏻‍⚕️ Dr, 👎🏻 No, 🔫 the spy-thriller violence at its core."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Goldfinger",
+        "emoji": "🥇☝🏻🔫",
+        "explain": "🥇 Gold, ☝🏻 Finger, 🔫 Bond's mission against him."
+      }
+    ]
+  },
+  {
+    "day": 312,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Book",
+        "title": "The Bible",
+        "emoji": "⛪📖✝️",
+        "explain": "⛪ church, 📖 The Bible itself, a book, ✝️ the cross."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Seven Monkeys",
+        "emoji": "7️⃣🐵🐵",
+        "explain": "7️⃣ Seven, 🐵🐵 Monkeys."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Diamonds Are Forever",
+        "emoji": "💎💎♾️",
+        "explain": "💎💎 Diamonds, ♾️ Forever."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "A Bridge Too Far",
+        "emoji": "🌉2️⃣↗️",
+        "explain": "🌉 Bridge, 2️⃣ Too (sounds like 'two'), ↗️ Far."
+      }
+    ]
+  },
+  {
+    "day": 313,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Rain Man",
+        "emoji": "🌧️👨🏻🧑🏻‍🤝‍👨🏻",
+        "explain": "🌧️ Rain, 👨🏻 Man, 🧑🏻‍🤝‍👨🏻 the bond between two brothers at its heart."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Nine to Five",
+        "emoji": "🕘2️⃣🕔",
+        "explain": "🕘 Nine o'clock, 2️⃣ to (sounds like 'two'), 🕔 Five o'clock."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Spy Kids",
+        "emoji": "🕵🏼👧🏻👦🏻👧🏽",
+        "explain": "🕵🏼 Spy, 👧🏻👦🏻👧🏽 the Kids at the center of it."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "A Time to Die",
+        "emoji": "⏱️2️⃣🪦",
+        "explain": "⏱️ Time, 2️⃣ to (sounds like 'two'), 🪦 Die."
+      }
+    ]
+  },
+  {
+    "day": 314,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Cowboys vs Aliens",
+        "emoji": "🤠🆚👽",
+        "explain": "🤠 Cowboys, 🆚 vs, 👽 Aliens."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Aliens",
+        "emoji": "👽👽👽",
+        "explain": "👽👽👽 Aliens — more than one this time."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Midnight Cowboy",
+        "emoji": "🕛🤠",
+        "explain": "🕛 Midnight, 🤠 Cowboy."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "Thunderball",
+        "emoji": "⛈️⚽🔫",
+        "explain": "⛈️ Thunder, ⚽ Ball, 🔫 Bond's mission."
+      }
+    ]
+  },
+  {
+    "day": 315,
+    "items": [
+      {
+        "number": 1,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "Cats vs Dogs",
+        "emoji": "🐈‍⬛🐈‍⬛🆚🐕🐕",
+        "explain": "🐈‍⬛🐈‍⬛ Cats, 🆚 vs, 🐕🐕 Dogs."
+      },
+      {
+        "number": 2,
+        "tier": "easy",
+        "category": "Movie",
+        "title": "2001: A Space Odyssey",
+        "emoji": "2️⃣0️⃣0️⃣1️⃣⬛🔴🚀",
+        "explain": "2️⃣0️⃣0️⃣1️⃣ spelling out the title's year, ⬛ the monolith, 🔴 HAL 9000's glowing red eye, 🚀 the space odyssey itself."
+      },
+      {
+        "number": 3,
+        "tier": "medium",
+        "category": "TV",
+        "title": "Star Trek",
+        "emoji": "⭐🥾",
+        "explain": "⭐ Star, 🥾 Trek — a long journey."
+      },
+      {
+        "number": 4,
+        "tier": "medium",
+        "category": "Movie",
+        "title": "12 Angry Men",
+        "emoji": "1️⃣2️⃣🤬🤬",
+        "explain": "1️⃣2️⃣ Twelve, 🤬🤬 Angry Men — a jury divided."
+      }
+    ]
+  },
+  {
+    "day": 316,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Colour of Money",
+        "emoji": "🎨💵💶💷",
+        "explain": "🎨 Colour, 💵💶💷 Money — in more than one currency."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Fight Club",
+        "emoji": "🥊👊🏻♣️🤐",
+        "explain": "🥊👊🏻 the underground fights he starts, ♣️ Club, 🤐 rule one — don't talk about Fight Club."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Book",
+        "title": "The Canterbury Tales",
+        "emoji": "🐎🪦📖",
+        "explain": "🐎 canter, 🪦 bury, 📖 tales — a phonetic spelling of the title."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "There Will Be Blood",
+        "emoji": "🛢️⛪🥤🎳🩸",
+        "explain": "🛢️ Daniel Plainview's oil empire, ⛪ his rival, preacher Eli Sunday, 🥤 \"I drink your milkshake,\" 🎳 the bowling pin that ends it, 🩸 Blood."
+      }
+    ]
+  },
+  {
+    "day": 317,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Usual Suspects",
+        "emoji": "🔍❓👨🏻🧔🏻‍♂️👨🏻‍🦰👨🏻‍🦱👨🏻‍🦳",
+        "explain": "🔍 the police investigation into a heist gone wrong, ❓ who's really pulling the strings, 👨🏻🧔🏻‍♂️👨🏻‍🦰👨🏻‍🦱👨🏻‍🦳 the five-man lineup at the center of it all."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "American Psycho",
+        "emoji": "🇺🇸🤬👿🔪🪓🩸",
+        "explain": "🇺🇸 the yuppie American excess he's obsessed with, 🤬 the rage simmering under his polished surface, 👿 the monster underneath, 🔪🪓 his weapons of choice, 🩸 the violence underneath the surface."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Mulholland Drive",
+        "emoji": "🛣️🌃🔑📦🎬",
+        "explain": "🛣️🌃 the winding LA road by night the title is named for, 🔑📦 the mysterious blue key and box at the story's core, 🎬 the Hollywood-dream layer underneath it all."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Being John Malkovich",
+        "emoji": "🎭🚪🧠👤➡️👤",
+        "explain": "🎭 the puppeteer protagonist, 🚪🧠 the secret portal into someone else's mind, 👤➡️👤 becoming — literally — another person."
+      }
+    ]
+  },
+  {
+    "day": 318,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "The Green Mile",
+        "emoji": "👨🏿‍🦲👮🟩🐭✋⚡",
+        "explain": "👨🏿‍🦲 John Coffey, 👮 the death row guard who comes to believe in him, 🟩 the green corridor that gives the film its name, 🐭 Mr. Jingles, the death row mouse, ✋ John Coffey's healing touch, ⚡ the electric chair waiting at the end of it."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "American History X",
+        "emoji": "🇺🇸📖✖️",
+        "explain": "🇺🇸 American, 📖 History, ✖️ X — a neo-Nazi brother's path toward redemption, spelled out from the title itself."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Saw",
+        "emoji": "🪚⛓️❓",
+        "explain": "🪚 Saw — both the title and the tool victims must use to escape, ⛓️ chained in place by Jigsaw, ❓ \"I want to play a game.\""
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Ex Machina",
+        "emoji": "🤖🏠🧠🔑",
+        "explain": "🤖 Ava, the AI at the center of it, 🏠 the isolated glass house she's tested in, 🧠 the Turing test for a true artificial mind, 🔑 her bid to get out."
+      }
+    ]
+  },
+  {
+    "day": 319,
+    "items": [
+      {
+        "number": 1,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "Cube",
+        "emoji": "🧊🔲⚠️🧍‍♂️🧍‍♀️",
+        "explain": "🧊 Cube, the shifting shape they're trapped inside, 🔲 room after identical room, ⚠️ deadly traps hidden in some of them, 🧍‍♂️🧍‍♀️ strangers who have to cooperate to survive."
+      },
+      {
+        "number": 2,
+        "tier": "hard",
+        "category": "Movie",
+        "title": "A Clockwork Orange",
+        "emoji": "⏰⚙️🟠👁️🎩",
+        "explain": "⏰⚙️ Clockwork, 🟠 Orange, 👁️ his eyes forced open for the Ludovico technique, 🎩 his bowler hat, the film's most iconic image."
+      },
+      {
+        "number": 3,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "Nightcrawler",
+        "emoji": "🌙📹🚗🚓🩸",
+        "explain": "🌙 the nights he prowls, 📹 his camera, filming crime scenes for cash, 🚗 the chases he causes for better footage, 🚓 the crimes he films — and sometimes creates, 🩸 how far he's willing to go."
+      },
+      {
+        "number": 4,
+        "tier": "hardest",
+        "category": "Movie",
+        "title": "The Lighthouse",
+        "emoji": "💡🏠🧜‍♀️🐦🌊",
+        "explain": "💡🏠 Light + house, spelling out the title, 🧜‍♀️ the mermaid visions, 🐦 the seagull said to carry a sailor's soul, 🌊 the storm that strands them."
+      }
+    ]
   }
 ]

@@ -316,7 +316,7 @@ export function initShell({
     }
   }
 
-  // Four different celebration "styles" built on the canvas-confetti
+  // Three different celebration "styles" built on the canvas-confetti
   // library (loaded via a <script> tag in each game's HTML — see
   // index.html's comment near that tag) — fireConfetti() below picks one at
   // random each time, so repeat wins don't all look identical.
@@ -357,13 +357,9 @@ export function initShell({
         if (Date.now() < endTime) requestAnimationFrame(nextBurst);
       })();
     },
-    // A single burst using an emoji as the "confetti" shape instead of
-    // paper/stars — confetti.shapeFromText() is a canvas-confetti helper
-    // that rasterizes a text string (here, one emoji) into a reusable shape.
-    function emoji() {
-      const shape = window.confetti.shapeFromText({ text: '🎉', scalar: 3 });
-      window.confetti({ shapes: [shape], particleCount: 40, spread: 100, startVelocity: 35, origin: { y: 0.6 }, scalar: 3 });
-    },
+    // (A fourth "emoji" variation using confetti.shapeFromText() was removed:
+    // on some devices its particles drew with opaque white backgrounds that
+    // hid whatever was behind them. Not reproducible in desktop Chromium.)
   ];
 
   // `typeof window.confetti !== 'function'` is a defensive check, not
